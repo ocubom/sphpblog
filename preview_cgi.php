@@ -107,7 +107,7 @@
 				}
 				
 				$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
-				$temp_text = stripslashes( $_POST[ 'blog_text' ] );
+				$temp_text = htmlentities( stripslashes( $_POST[ 'blog_text' ] ) );
 				$temp_tb_ping = stripslashes( $_POST[ 'tb_ping' ] );
 				
 				$blog_content = preview_entry( $temp_subject, $temp_text, $temp_tb_ping );		
@@ -155,7 +155,7 @@
 			<?php echo image_dropdown(); ?><br /><br />
 			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php global $temp_text; echo( $temp_text ); ?></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php global $temp_text; echo $temp_text; ?></textarea><br /><br />
 			
 			<?php if ( $blog_config[ 'blog_trackback_enabled' ] ) { ?>
 		      <label for="tb_ping"><?php echo( $lang_string[ 'label_tb_ping' ] ); ?></label><br />
