@@ -21,7 +21,7 @@
 		// format is pipe delimited.)
 		global $lang_string;
 		$str = str_replace( '|', '&#124;', $str );
-		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		$str = @htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 
 		return ( $str );
 	}
