@@ -1,10 +1,10 @@
 <?php
 	// Italian Language File
 	// (c) 2004 Porro Luciano (alias drudo), drudo3 <at> jumpy <dot> it, http://drudo.altervista.org/blog/
-	// last update 26.01.2005
+	// last update 15.02.2005
 	//
-	// Simple PHP Version: 0.4.0
-	// Language Version:   0.4.0.1
+	// Simple PHP Version: 0.4.3
+	// Language Version:   0.4.3.1
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -46,7 +46,7 @@
 		$lang_string['menu_add_block'] = "Blocchi";
 		
 		// Other
-		$lang_string['home'] = "Torna alla pagina principale";
+		$lang_string['home'] = "Torna alla pagina iniziale";
 		$lang_string['nav_next'] = 'Altre notizie'; // <-- New 0.3.7
 		$lang_string['nav_back'] = 'Indietro'; // <-- New 0.3.7
 		$lang_string['search_title'] = 'Cerca:'; // <-- New 0.3.7
@@ -161,7 +161,7 @@
 				$lang_string['static_pages'] = "Pagina statica:";
 				// Add / Manage Links
 				$lang_string['title'] = "Aggiungi / Gestisci link";
-				$lang_string['instructions'] = "Per aggiungere link a siti esterni, o collegamenti interni al blog, compila i campi sottostanti. Per inserire un titolo prima della lista basta compilare il form lasciando in bianco il campo 'Indirizzo URL'. <br /><br />Clicca su:<br />1) 'Aggiungi link' per inserire un link.<br />2) 'su' o 'gi&ugrave;' per far cambiare posizione ai link<br />3) 'cancella' per eliminare il link";
+				$lang_string['instructions'] = "Per aggiungere link a siti esterni, o collegamenti interni al blog, compila i campi sottostanti. Per inserire un titolo prima della lista basta compilare il form lasciando in bianco il campo 'Indirizzo URL'. <br /><br />Clicca su:<br />1) 'Aggiungi link' per inserire un link.<br />2) 'su' o 'gi&ugrave;' per far cambiare posizione ai link<br />3) 'cancella' per eliminare il link.";
 				$lang_string['up'] = "su";
 				$lang_string['down'] = "gi&ugrave;";
 				$lang_string['edit'] = "modifica";
@@ -230,7 +230,7 @@
 				break;
 			case 'comments':
 				// Comments
-				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: inserisci <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Commenti";
 				$lang_string['header'] = "Aggiungi commento";
 				$lang_string['instructions'] = "Compilare i campi sottostanti per inserire un commento.<br /><br />";
@@ -375,7 +375,7 @@
 				break;
 			case 'setup':
 				$lang_string['title'] = "Preferenze";
-				$lang_string['instructions'] = "Puoi cambiare il nome del tuo Blog, i dati personali, decidere il numero massimo di notizie visualizzabili nella pagina principale, abilitare i commenti da parte degli utenti e i tag in essi utilizzabili.";
+				$lang_string['instructions'] = "Puoi cambiare il nome del tuo Blog, i dati personali, decidere il numero massimo di notizie visualizzabili nella pagina iniziale, abilitare i commenti da parte degli utenti e i tag in essi utilizzabili.";
 				$lang_string['blog_title'] = "Nome Blog:";
 				$lang_string['blog_author'] = "Autore:";
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
@@ -505,11 +505,11 @@
 				$lang_string['trackback_info'] = "<b>%s</b> trackbacks / <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> pagine statiche / <b>%s</b> parole / <b>%s</b> bytes";
 				$lang_string['most_viewed_entries'] = "<h3>Le 10 notizie più visitate:</h3>";
-				$lang_string['most_commented_entries'] = "<h3>La 10 notizie pi&ugrave; commentate:</h3>";
+				$lang_string['most_commented_entries'] = "<h3>Le 10 notizie pi&ugrave; commentate:</h3>";
 				$lang_string['most_trackbacked_entries'] = "<h3>Le 10 notizie con maggior numero di trackback:</h3>";
-				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
-				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				$lang_string['vote_info'] = "<b>%s</b> voti / <b>%s</b> bytes"; // 0.4.1
+				$lang_string["most_voted_entries"] = "<h3>Le 10 notizie pi&ugrave; votate:</h3>"; // 0.4.1
+				$lang_string["most_rated_entries"] = "<h3>Le 10 notizie con voto pi&ugrave; alto:</h3>"; // 0.4.1
 				break;
 			default:
 				break;

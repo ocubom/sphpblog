@@ -1,35 +1,26 @@
 Simple PHP Blog:
-
 ----------------
 
 To do list
-
 ----------
 
 0.3.8
-
 Assigned	Feature 	Description
-
 --------	-----------	-----------
-
 Alex		Permalinks 	[100%] Permalinks are alreay being generated in the RSS feed. Add a link appears with the entries
 
 Guti		Quotes		[100%] Apply only double quotes when are strictly necessary
 
 Guti		Search Static 	[100%] Include Static Pages on searches
-
 		Pages
 
 Guti		Improved  	[100%] Now featuring CHANGELOG.TXT, CREDITS.TXT, INSTALL.TXT, README.TXT, TODO.TXT and UPGRADING.TXT
-
 		documentation
 
 Guti		Remove unneded 	[100%] Remove .DS_Store, thumbs.db and *.bak from the official distribution
-
 		files
 
 Guti		New interfaces	[100%] Move favicon.ico, to interface/. Implement a channel logo (interface/rss.png) to be shown in RSS
-
 		files
 
 Guti		Calendar	[100%] Replace the Archive links with a calendar.
@@ -39,7 +30,6 @@ Guti		RSS listings	[100%] Implement an optional parameter in rss.php indicating 
 Guti		Remember Me 	[100%] Add "Remember Me" checkbox to Comments. Name, Email, and URL address should be stored in a cookie.
 
 Guti		Email in 	[100%] Add Email field and URL to Comments. Obfuscate email addresses.
-
 		Comments 	
 
 Guti		Delete comments	[100%] When a comment in the most recent list is deleted, it is not removed from last_updated.txt. It should be removed from there (there was a bug when // is in the URL instead of /)
@@ -57,7 +47,6 @@ Jesse		Mood and song	[0%] Move the display of mood and song after the entry text
 		Go back		[0%] When data is submited the user should be redirected to the appropiate page, not always index.php. Example: When rating an entry the user is always redirected to index.php
 
 		HTML 		[0%] Make sure the generated output is HTML/XHTML compliant
-
 		validation
 
 		Update views	[0%] Comment views should be updated even if there are no comments posted
@@ -65,17 +54,12 @@ Jesse		Mood and song	[0%] Move the display of mood and song after the entry text
 		// in the URLs	[0%] Sometimes // is appended to the URL. This causes problems in the blog engine, and also in some web servers. Fix it!
 
 0.3.9
-
 Assigned	Feature 	Description
-
 --------	-----------	-----------
-
 Alex		Image/File 	[0%] Enhance the Image Upload feature. Add ability to delete files, move files, create directories, unzip files...
-
 		Update
 
 Alex		Anit-Leech /	[0%] Add some protection against people stealing bandwidth by hijacking images. 
-
 		Anit-hotlink
 
 Alex		Guest Book	[0%] Optional Guest Book.
@@ -85,31 +69,23 @@ Alex		Links Menu	[0%] Add checkbox to the Links Menu to open URLs in new window.
 Guti		404 static	[0%] Add a default static page to show if the requested static page is not found. Also consider making hidden static entries (ie starting with a dot) that are not shown in the links menu
 
 		Move 		[0%] Move the sensitive information stored in password.txt to a PHP file to increase security. Also check MD5 issues
-
 		password.txt
 
 		Mandatory	[0%] Include an asterisk in all the input fields that are required
-
 		fields
 
 		More themes	[0%] Add new themes, and expand the predefined colors palete. Try to get http://nodo1.taramay.tropicalwireless.org 
-
 		and colors
 
 		Missing		[0%] Search for all the missing translatable strings and add the the the languages files
-
 		translations	
 
 		Cleanup		[0%] Take care of the total memory used by a script. Try to recycle big temporal array, and to unset them as soon as they are not needed
 
 0.4.x
-
 Assigned	Feature 	Description
-
 --------	-----------	-----------
-
 Alex		Improve 	[0%] Continue to improve the installation scripts. Detect more cases (like Safe Mode issues.)
-
 		Installation 	
 
 Alex		XML 		[0%] Switch to XML data format.
@@ -129,4 +105,3 @@ Guti		Atom		[0%] Add Atom feed
 		Edit dates	[0%] Ability to edit publish dates in entries, comments and static pages
 
 		Polls		[0%] Implement a new entry type, so we can create customizable polls, and the users can vote
-

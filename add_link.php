@@ -43,7 +43,6 @@
 			}
 			
 			function load_static() {
-				// alert( 'hello' );
 				str = document.forms['addlink']['static_pages'].value;
 				document.getElementById("link_name").value = str;
 				document.getElementById("link_url").value = "static.php?page=" + str;
