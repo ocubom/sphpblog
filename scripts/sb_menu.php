@@ -31,24 +31,10 @@
 			$d = date( 'd' );
 		}
 		
-		$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
-		// Loop Through Days
-		for ( $i = 0; $i < count( $entries ); $i++ ) {
-			$temp_index = substr( $entries[$i], 9, 2 )-1;
-			$temp_entry = substr( $entries[$i], 0, 11 );
-
-			// Count the number of entries on this day
-			$counts[$temp_index] = 1;
-			for ( $j = $i + 1; $j < count( $entries ); $j++ ) {
-				if ( $temp_entry == substr( $entries[$j], 0, 11 ) ) {
-					$counts[$temp_index]++;
-				} 
-				else {
-					break;
-				}
-			}
-			$i = $j - 1;
-		}
+		//$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
+		//print_r($entries);
+		$entries = blog_entry_listing();
+		//print_r($entries);
 		
 		$date_string = mktime(0, 0, 0, $m, 1, $y ); //The date string we need for some info... saves space ^_^
 		$day_start = date( 'w', $date_string ); //The number of the 1st day of the week
@@ -77,13 +63,60 @@
 			$previous_year = $y - 1;
 			$previous_month = 12;
 		}
+		
+		//Don't let go before the first article
+		if ( substr( $entries[ count( $entries ) - 1 ], 7, 2 ) + ( substr( $entries[ count( $entries ) - 1 ], 5, 2 ) * 12 ) >=
+			$y*12+$m ) {
+			$previous_year = substr( $entries[ count( $entries ) - 1 ], 5, 2 )+2000;
+			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
+		}
+		//Don't let go past now
+		if ( date( 'm' ) + ( date( 'y' ) * 12 ) >=
+			$y*12+$m ) {
+			$next_year = date( 'Y' );
+			$next_month = date( 'm' );
+		}
+		//Remove not current month/day entries
+		$temp_entries=array();
+		for ( $i = 0; $i < count( $entries ); $i++ ) {
+			if ( ( substr( $entries[ $i ], 5, 2 ) == $y ) && ( substr( $entries[ $i ], 7, 2 ) == $m ) ) {
+				array_push( $temp_entries, $entries[ $i ] );
+			}
+		}
+		$entries=$temp_entries;
+		unset( $temp_entries );
+		// Loop Through Days
+		for ( $i = 0; $i < count( $entries ); $i++ ) {
+			$temp_index = substr( $entries[$i], 9, 2 )-1;
+			$temp_entry = substr( $entries[$i], 0, 11 );
+
+			// Count the number of entries on this day
+			$counts[$temp_index] = 1;
+			for ( $j = $i + 1; $j < count( $entries ); $j++ ) {
+				if ( $temp_entry == substr( $entries[$j], 0, 11 ) ) {
+					$counts[$temp_index]++;
+				} 
+				else {
+					break;
+				}
+			}
+			$i = $j - 1;
+		}
 
 		$str = '
 		<table border="0" cellpadding="0" cellspacing="0" align="center" class="calendar">
 		<tr>
-		<td align="center"><a href="' . $_SERVER['PHP_SELF'] . '?y=' . sprintf( '%02d', $previous_year % 100 ) . '&m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a></td>
+		<td align="center">';
+		if ( ( ( $previous_year%100 )!=$y ) || ( $previous_month!=$m ) ) {
+			$str.='<a href="index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
+		}
+		$str.='</td>
 		<td align="center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
-		<td align="center"><a href="' . $_SERVER['PHP_SELF'] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a></td>
+		<td align="center">';
+		if ( ( ( $next_year%100 )!=$y ) || ( $next_month!=$m ) ) {
+			$str.='<a href="' . $_SERVER['PHP_SELF'] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
+		}
+		$str.='</td>
 		</tr>
 		<tr>';
 		for ( $i=0; $i<7; $i++ )
