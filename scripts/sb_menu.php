@@ -59,19 +59,6 @@
 			$previous_month = 12;
 		}
 		
-		//Don't let go before the first article
-		if ( substr( $entries[ count( $entries ) - 1 ], 7, 2 ) + ( substr( $entries[ count( $entries ) - 1 ], 5, 2 ) * 12 ) >=
-			$y*12+$m ) {
-			$previous_year = substr( $entries[ count( $entries ) - 1 ], 5, 2 )+2000;
-			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
-		}
-		//Don't let go past now
-		if ( date( 'm' ) + ( date( 'y' ) * 12 ) >=
-			$y*12+$m ) {
-			$next_year = date( 'Y' );
-			$next_month = date( 'm' );
-		}
-
 		$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
 
 		/*
@@ -88,6 +75,19 @@
 		$entries=$temp_entries;
 		unset( $temp_entries );
 		*/
+
+		//Don't let go before the first article
+		if ( substr( $entries[ count( $entries ) - 1 ], 7, 2 ) + ( substr( $entries[ count( $entries ) - 1 ], 5, 2 ) * 12 ) >=
+			$y*12+$m ) {
+			$previous_year = substr( $entries[ count( $entries ) - 1 ], 5, 2 )+2000;
+			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
+		}
+		//Don't let go past now
+		if ( date( 'm' ) + ( date( 'y' ) * 12 ) >=
+			$y*12+$m ) {
+			$next_year = date( 'Y' );
+			$next_month = date( 'm' );
+		}
 
 		// Loop Through Days
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
