@@ -6,8 +6,12 @@ Version History
 
 0.4.4 - 
 - - - - - - - - - -
-- Graphic capchas is GD is available.
+- Graphic capchas if GD is available.
 - 404 page for static entries.
+- Autoparse URL in entries and comments.
+- Support for c parameter in feeds specifying the category(ies) to syndicate.
+- Added alt, align and valing attributes for the [img] tag.
+- Enhaced block configuration.
 - Some speed optimizations.
 - Stability improvements.
 
