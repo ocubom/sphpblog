@@ -101,11 +101,11 @@
 		$basedir = 'content/';
 		$dir = $basedir.$y.'/'.$m.'/'.$entry;
 		
-		if (!file_exists($dir)) {
-			$oldumask = umask(0);
+		if (!file_exists( $dir ) ) {
+			$oldumask = umask( 0 );
 			$ok = mkdir($dir, 0777 );
-			umask($oldumask);
-			if (!$ok) {
+			umask( $oldumask );
+			if ( !$ok ) {
 				// There is a bug in some versions of PHP that will
 				// cause mkdir to fail if there is a trailing "/".
 				//
@@ -117,11 +117,11 @@
 		
 		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/trackbacks';
 		
-		if (!file_exists($dir)) {
-			$oldumask = umask(0);
-			$ok = mkdir($dir, 0777 );
-			umask($oldumask);
-			if (!$ok) {
+		if (!file_exists( $dir ) ) {
+			$oldumask = umask( 0 );
+			$ok = mkdir( $dir, 0777 );
+			umask( $oldumask );
+			if ( !$ok ) {
 				// There is a bug in some versions of PHP that will
 				// cause mkdir to fail if there is a trailing "/".
 				//
@@ -284,11 +284,11 @@
 				return( false );
 			}
 	      
-	      if( preg_match_all( '/(<rdf:RDF.*?<\/rdf:RDF>)/sm', $data, $rdf_all, PREG_SET_ORDER ) ) {
+	      if ( preg_match_all( '/(<rdf:RDF.*?<\/rdf:RDF>)/sm', $data, $rdf_all, PREG_SET_ORDER ) ) {
 	         for( $k=0; $k<count($rdf_all); $k++ ){
-	            if( preg_match( '|dc:identifier="'.preg_quote($link).'"|ms', $rdf_all[$k][1] ) ) {
+	            if( preg_match( '|dc:identifier="'.preg_quote( $link ).'"|ms', $rdf_all[$k][1] ) ) {
 	               // dc:identifier matches requested $link, so return the trackback ping URI
-	               if( preg_match( '/trackback:ping="([^"]+)"/', $rdf_all[$k][1], $matches ) ) {
+	               if ( preg_match( '/trackback:ping="([^"]+)"/', $rdf_all[$k][1], $matches ) ) {
 	                  return $matches[1];
 	               }
 	            }
@@ -303,7 +303,7 @@
 		$results = array();
 		$links = array();
 		
-		if( preg_match_all( '/\[url=([^\]]+)\]/', $blog_text, $links, PREG_SET_ORDER ) ) {
+		if ( preg_match_all( '/\[url=([^\]]+)\]/', $blog_text, $links, PREG_SET_ORDER ) ) {
    		for( $i=0; $i<count($links); $i++ ) {
    		   if( ($uri = get_tb_uri( $links[$i][1] ) ) !== false ) {
 		         $results[] = $uri;

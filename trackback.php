@@ -8,18 +8,18 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'trackbacks' );
 
-   function trackback_response( $val, $msg ) {
-      echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n";
-      echo "<response>\n";
-      echo "  <error>$val</error>\n";
-      if( $val > 0 ) {
-         echo "  <message>$msg</message>\n";
+	function trackback_response( $val, $msg ) {
+		echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n";
+		echo "<response>\n";
+		echo "  <error>$val</error>\n";
+		if( $val > 0 ) {
+		echo "  <message>$msg</message>\n";
       }
       echo "</response>\n";
       exit;
-   }
+	}
 	
-	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname( $_SERVER[ 'PHP_SELF' ] ) == '/' ) ) {
 		// Hosted at root.
 		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ];
 	} else {
@@ -31,7 +31,7 @@
 	$redirect = true;
 	if ( isset( $_GET[ 'y' ] ) && isset( $_GET[ 'm' ] ) && isset( $_GET[ 'entry' ] ) ) {
 		$entry_id = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
-      $entry = $_GET[ 'entry' ];
+		$entry = $_GET[ 'entry' ];
 		$year = $_GET[ 'y' ];
 		$month = $_GET[ 'm' ];
 		if ( file_exists( $entry_id . '.txt' ) ) {
@@ -53,26 +53,26 @@
 	}
 	
 
-	if ( ( strlen('' . $entry ) ) && ( empty( $_GET[ '__mode' ] ) ) && ( strlen( '' . $tb_url ) ) && ( strpos( sb_read_file( $tb_url ), $base_url ) !== false ) ) {
+	if ( ( strlen( '' . $entry ) ) && ( empty( $_GET[ '__mode' ] ) ) && ( strlen( $tb_url ) ) && ( strpos( sb_read_file( $tb_url ), $base_url ) !== false ) ) {
       @header('Content-Type: text/xml');
 
-      $tb_url = addslashes($tb_url);
-      $title = strip_tags($title);
-      $title = ( strlen($title) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
-      $excerpt = strip_tags($excerpt);
-      $excerpt = ( strlen($excerpt) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
+      $tb_url = addslashes( $tb_url );
+      $title = strip_tags( $title );
+      $title = ( strlen( $title ) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
+      $excerpt = strip_tags( $excerpt );
+      $excerpt = ( strlen( $excerpt ) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
       $blog_name = htmlspecialchars($blog_name);
-      $blog_name = ( strlen($blog_name) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
+      $blog_name = ( strlen( $blog_name ) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
       
-      $user_ip = $HTTP_SERVER_VARS[ 'REMOTE_ADDR' ];
+      $user_ip = $_SERVER[ 'REMOTE_ADDR' ];
       $user_domain = gethostbyaddr($user_ip);
       
       $ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
       
       if (!$ok) {
-         trackback_response(1, $lang_string[ 'error_add' ] );
+         trackback_response( 1, $lang_string[ 'error_add' ] );
       } else {
-         trackback_response(0, '');
+         trackback_response( 0, '' );
       }
 
    } else if( $_GET[ '__mode' ] === 'html' ) {
