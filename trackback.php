@@ -11,23 +11,24 @@
 	function trackback_response( $val, $msg ) {
 		echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n";
 		echo "<response>\n";
-		echo "  <error>$val</error>\n";
+		echo "\t<error>" . $val . "</error>\n";
 		if( $val > 0 ) {
-		echo "  <message>$msg</message>\n";
-      }
-      echo "</response>\n";
-      exit;
+			echo "\t\t<message>" . $msg . "</message>\n";
+		}
+		echo "</response>\n";
+		exit;
 	}
 	
 	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname( $_SERVER[ 'PHP_SELF' ] ) == '/' ) ) {
 		// Hosted at root.
 		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ];
-	} else {
+	}
+	else {
 		// Hosted in sub-directory.
 		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]);
 	}
 	
-   // trackback ping contains entry in the URI
+	// trackback ping contains entry in the URI
 	$redirect = true;
 	if ( isset( $_GET[ 'y' ] ) && isset( $_GET[ 'm' ] ) && isset( $_GET[ 'entry' ] ) ) {
 		$entry_id = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
@@ -36,16 +37,17 @@
 		$month = $_GET[ 'm' ];
 		if ( file_exists( $entry_id . '.txt' ) ) {
 			$redirect = false;
-		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
+		}
+		else if ( file_exists( $entry_id . '.txt.gz' ) ) {
 			$redirect = false;
 		}
 	}
 
-   // trackback is done by a POST
-   $tb_url = $_POST[ 'url' ];
-   $title = $_POST[ 'title' ];
-   $excerpt = $_POST[ 'excerpt' ];
-   $blog_name = $_POST[ 'blog_name' ];
+	// trackback is done by a POST
+	$tb_url = $_POST[ 'url' ];
+	$title = $_POST[ 'title' ];
+	$excerpt = $_POST[ 'excerpt' ];
+	$blog_name = $_POST[ 'blog_name' ];
 
 	// No such entry exists OR trackback is disabled
 	if ( ($redirect === true ) || ( !$blog_config[ 'blog_trackback_enabled' ] ) ) {
@@ -53,33 +55,32 @@
 	}
 	
 
-	if ( ( strlen( '' . $entry ) ) && ( empty( $_GET[ '__mode' ] ) ) && ( strlen( $tb_url ) ) && ( strpos( sb_read_file( $tb_url ), $base_url ) !== false ) ) {
-      @header('Content-Type: text/xml');
+	if ( ( strlen( $entry ) ) && ( empty( $_GET[ '__mode' ] ) ) && ( strlen( $tb_url ) ) && ( strpos( sb_read_file( $tb_url ), $base_url ) !== false ) ) {
+		@header('Content-Type: text/xml');
 
-      $tb_url = addslashes( $tb_url );
-      $title = strip_tags( $title );
-      $title = ( strlen( $title ) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
-      $excerpt = strip_tags( $excerpt );
-      $excerpt = ( strlen( $excerpt ) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
-      $blog_name = htmlspecialchars($blog_name);
-      $blog_name = ( strlen( $blog_name ) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
-      
-      $user_ip = $_SERVER[ 'REMOTE_ADDR' ];
-      $user_domain = gethostbyaddr($user_ip);
-      
-      $ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
-      
-      if (!$ok) {
-         trackback_response( 1, $lang_string[ 'error_add' ] );
-      } else {
-         trackback_response( 0, '' );
-      }
+		$tb_url = addslashes( $tb_url );
+		$title = strip_tags( $title );
+		$title = ( strlen( $title ) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
+		$excerpt = strip_tags( $excerpt );
+		$excerpt = ( strlen( $excerpt ) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
+		$blog_name = htmlspecialchars( $blog_name );
+		$blog_name = ( strlen( $blog_name ) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
 
-   } else if( $_GET[ '__mode' ] === 'html' ) {
-      //
-      // Mode HTML: display in the style of the sphpblog
-      //
+		$user_ip = $_SERVER[ 'REMOTE_ADDR' ];
+		$user_domain = gethostbyaddr( $user_ip );
 
+		$ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
+		if (!$ok) {
+			trackback_response( 1, $lang_string[ 'error_add' ] );
+		}
+		else {
+			trackback_response( 0, '' );
+		}
+	}
+	else if ( $_GET[ '__mode' ] === 'html' ) {
+		//
+		// Mode HTML: display in the style of the sphpblog
+		//
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -110,7 +111,7 @@
 	<meta name="dc.coverage"    content="global">
 	<meta name="distribution"   content="GLOBAL"> 
 	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
-<!--	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>"> -->
+	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
 	
 	<!-- Robots -->
 	<meta name="robots" content="ALL,INDEX,FOLLOW,ARCHIVE"> 

@@ -338,8 +338,45 @@
 				}
 			}
 		}
-
 		return ( true );
 	}
 
+	// Send a trackback ping to a ping server in url.
+	// Contributed by: Arjan Hakkesteegt, sphpblog <at> hakwerk <dot> com
+	//
+	function sb_tb_ping ( $url, $title, $permalink, $excerpt )
+	{
+		if ( $url == NULL || $url == '' || $permalink == NULL || $permalink == '' ) {
+			return( false );
+		}
+		
+		global $blog_config, $sb_info;
+
+		$result = '';
+		$user_agent = 'SPHPBLOG ping script/' . $sb_info[ 'version' ];
+		$url = parse_url($url);
+		
+		$data = "";
+		$data = $data . "title=" . urlencode( strip_tags( $title ) );
+		// Use external name (SERVER_NAME) for pings to the outside world!!
+		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		   $data = $data . "&url=http://" . $_SERVER['SERVER_NAME'] . "/" . urlencode( strip_tags( $permalink ) );
+		} else {
+		   $data = $data . "&url=http://" . $_SERVER['SERVER_NAME'] . dirname( $_SERVER['PHP_SELF'] ) . "/" . urlencode( strip_tags( $permalink ) );
+		}
+		$data = $data . "&excerpt=" . urlencode( strip_tags( $excerpt ) );
+		$data = $data . "&blog_name=" . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
+
+		// $socket = fsockopen( $url['host'], 80, $errno, $errstr, 30);
+		$socket = fsockopen( ( $url['host'] === $_SERVER['HTTP_HOST'] ? $_SERVER['SERVER_ADDR'] : $url['host'] ), 80, $errno, $errstr, 30);
+		if ( $socket ) { 
+			fwrite( $socket, 'POST ' . $url['scheme'] . '://' . $url['host'] . $url['path'] . '?' . $url['query'] . " HTTP/1.0\nHost: " . $url['host'] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: application/x-www-form-urlencoded\nContent-Length: " . strlen ( $data ) . "\n\n" . $data . "\n" );
+			$result = fread( $socket, 8192 );
+			fclose ( $socket );
+			return( strpos( $result, '<error>0</error>' ) );
+		}
+		else {
+			return( false );
+		}
+	}
 ?>
