@@ -19,7 +19,7 @@
 	**************************************************************************/
 	
 	function read_menus_calendar ( $m, $y, $d ) {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $blog_config;
 		
 		if ( !isset( $m ) ) {
 			$m = date( 'm' );
@@ -61,6 +61,11 @@
 		
 		//$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
 		$entries = blog_entry_listing();
+		if ( $blog_config[ 'blog_entry_order' ] != 'old_to_new' )
+		{
+			sort ( $entries );
+		}
+
 		//Remove not current month/day entries
 		$temp_entries=array();
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
@@ -70,10 +75,10 @@
 		}
 
 		//Don't let go before the first article
-		if ( substr( $entries[ 0 ], 7, 2 ) + ( substr( $entries[ 0 ], 5, 2 ) * 12 ) >
+		if ( substr( $entries[ 0 ], 7, 2 ) + ( substr( $entries[ 0 ], 5, 2 ) * 12 ) >=
 			$y*12+$m ) {
-			$previous_year = substr( $entries[ count( $entries ) - 1 ], 5, 2 )+2000;
-			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
+			$previous_year = $y+2000;
+			$previous_month = $m;
 		}
 		//Don't let go past now
 		if ( date( 'm' ) + ( date( 'y' ) * 12 ) <=
