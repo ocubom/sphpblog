@@ -14,8 +14,8 @@ SPHPBlog is among the faster and simpler blogging engines.
 
 Requirements
 ------------
-- PHP 4.1 or greater.
-- 500 Kb of free disk space.
+- PHP 4.1 or greater (5.0 recommended).
+- 500 Kb of free disk space (1500 Kb for a full installation).
 
 License
 -------
