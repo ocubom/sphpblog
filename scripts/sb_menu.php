@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//

@@ -19,7 +19,7 @@
 		return( $str );
 	}
 
-	function generate_rss ( $max_entries=0 )
+	function generate_rss ( $max_entries=0, $category='' )
 	{
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
@@ -42,7 +42,7 @@
 			$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]) . '/';
 		}
 		
-		header('Content-type: application/xml');
+		//header('Content-type: application/xml');
 		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
 		echo "<rss version=\"2.0\">\n";
 		echo "\t<channel>\n";
@@ -72,35 +72,42 @@
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
 		}
-		
-		for ( $i = 0; $i < $max_entries; $i++ ) {
+		$entries=0;
+		$i=0;
+		while ( ( $entries<$max_entries ) && ( $i<count( $entry_file_array ) ) ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-			echo "\t\t<item>\n";
-			//Required item fields
-			echo "\t\t\t<title>" . clean_rss_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
-			echo "\t\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
-			echo "\t\t\t<description><![CDATA[" . clean_rss_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
-			//Optional item fields
-			echo "\t\t\t<category>";
-			//debugbreak();
-			$categories = split( ',', $contents[ 'CATEGORIES' ] );
-			for ( $j = 0; $j < count( $categories ); $j++ ) {
-				echo get_category_by_id( $categories[ $j ] );
-				if ( $j < count( $categories ) - 1 ) {
-					echo ', ';
+			$cats = split( ',', $contents[ 'CATEGORIES' ] );
+			for ( $j = 0; $j < count( $cats ); $j++ ) {
+				if ( strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
+					$entries++;
+					echo "\t\t<item>\n";
+					//Required item fields
+					echo "\t\t\t<title>" . clean_rss_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
+					echo "\t\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
+					echo "\t\t\t<description><![CDATA[" . clean_rss_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
+					//Optional item fields
+					echo "\t\t\t<category>";
+					for ( $k = 0; $k < count( $cats ); $k++ ) {
+						echo get_category_by_id( $cats[ $k ] );
+						if ( $k < count( $cats ) - 1 ) {
+							echo ', ';
+						}
+					}
+					echo "</category>\n";
+					echo "\t\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
+					echo "\t\t\t<author>" . clean_rss_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
+					echo "\t\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
+					
+					// Only output if <comments> if they are enabled.
+					if ( $blog_config[ 'blog_enable_comments' ] ) {
+						echo "\t\t\t<comments>" . $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . "</comments>\n";
+					}
+					echo "\t\t</item>\n";
+					break;
 				}
 			}
-			echo "</category>\n";
-			echo "\t\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
-			echo "\t\t\t<author>" . clean_rss_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
-			echo "\t\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
-			
-			// Only output if <comments> if they are enabled.
-			if ( $blog_config[ 'blog_enable_comments' ] ) {
-				echo "\t\t\t<comments>" . $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . "</comments>\n";
-			}
-			echo "\t\t</item>\n";
+			$i++;
 		}
 
 		echo "\t</channel>\n";
@@ -116,7 +123,7 @@
 		return( $str );
 	}
 
-	function generate_rdf ( $max_entries=0 )
+	function generate_rdf ( $max_entries=0, $category='' )
 	{
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
@@ -176,7 +183,7 @@
 		echo "\t\t</items>\n";
 		echo "\t</channel>\n";
 
-		for ( $i = 0; $i < $max_entries; $i++ ) {	
+		for ( $i = 0; $i < $max_entries; $i++ ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			echo "\t<item rdf:about=\"" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "\">\n";
@@ -202,7 +209,7 @@
 		return( $str );
 	}
 
-	function generate_atom ( $max_entries=0 )
+	function generate_atom ( $max_entries=0, $category='' )
 	{
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
@@ -247,24 +254,32 @@
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
 		}
-		
-		for ( $i = 0; $i < $max_entries; $i++ ) {
+		$entries=0;
+		$i=0;
+		while ( ( $entries<$max_entries ) && ( $i<count( $entry_file_array ) ) ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-			echo "\t<entry>\n";
-			//Required item fields
-			echo "\t\t<title>" . clean_atom_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
-			echo "\t\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "\" />\n";
-			echo "\t\t<content type=\"text/html\" mode=\"escaped\"><![CDATA[" . blog_to_html( $contents[ 'CONTENT' ], false, false ) . $content_footer . "]]></content>\n";
-			//Optional item fields
-			echo "\t\t<id>" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "</id>\n";
-			echo "\t\t<issued>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</issued>\n";
-			echo "\t\t<modified>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</modified>\n";
-			// Only output if <comments> if they are enabled.
-			if ( $blog_config[ 'blog_enable_comments' ] ) {
-				//echo "\t\t<comments>" . $base_url . "comments.php?y=" . $year_dir . "&amp;m=" . $month_dir . "&amp;entry=" . sb_strip_extension( $entry_filename ) . "</comments>\n";
+			$cats = split( ',', $contents[ 'CATEGORIES' ] );
+			for ( $j = 0; $j < count( $cats ); $j++ ) {
+				if ( strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
+					$entries++;
+					echo "\t<entry>\n";
+					//Required item fields
+					echo "\t\t<title>" . clean_atom_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
+					echo "\t\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "\" />\n";
+					echo "\t\t<content type=\"text/html\" mode=\"escaped\"><![CDATA[" . blog_to_html( $contents[ 'CONTENT' ], false, false ) . $content_footer . "]]></content>\n";
+					//Optional item fields
+					echo "\t\t<id>" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "</id>\n";
+					echo "\t\t<issued>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</issued>\n";
+					echo "\t\t<modified>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</modified>\n";
+					// Only output if <comments> if they are enabled.
+					if ( $blog_config[ 'blog_enable_comments' ] ) {
+						//echo "\t\t<comments>" . $base_url . "comments.php?y=" . $year_dir . "&amp;m=" . $month_dir . "&amp;entry=" . sb_strip_extension( $entry_filename ) . "</comments>\n";
+					}
+					echo "\t</entry>\n";
+				}
 			}
-			echo "\t</entry>\n";
+			$i++;
 		}
 		echo "</feed>\n";
 	}

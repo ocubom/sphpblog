@@ -15,5 +15,5 @@
 	sb_language( 'index' );
 	
 	// Output Page
-	generate_atom( @$_GET[ 'n' ] );
+	generate_atom( @$_GET[ 'n' ], @$_GET[ 'c' ] );
 ?>
