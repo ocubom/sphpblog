@@ -42,7 +42,7 @@
 			$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]) . '/';
 		}
 		
-		//header('Content-type: application/xml');
+		header('Content-type: application/xml');
 		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
 		echo "<rss version=\"2.0\">\n";
 		echo "\t<channel>\n";
