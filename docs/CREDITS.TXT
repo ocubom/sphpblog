@@ -11,17 +11,20 @@ Contributors
 RSS, RDF, Atom, ping, GZip, email, search and some bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
 Date: 12/05/2004
 
-TXT Powered logo by Juano (powerjuano <at> hotmail <dot> com 
+TXT Powered logo by Juano (powerjuano <at> hotmail <dot> com)
 Date: 10/07/2004
 
-Trackbacks by Arjan Hakkesteegt, sphpblog <at> hakwerk <dot> com
+Trackbacks by Arjan Hakkesteegt (sphpblog <at> hakwerk <dot> com)
 Date: 28/11/2004
 
-Block management enhacement, and theme/color preview by Fco Jesús Gil ridgarou <at> gmail <dot> com
+Block management enhacement, and theme/color preview by Fco Jesús Gil (ridgarou <at> gmail <dot> com)
 Date: 10/02/2005
 
-Graphic capcha contributed by Oscar Cubo Medina (ocubo <at> fi <dot>upm <dot> es>
-Date 18/02/2005
+Graphic capcha contributed by Oscar Cubo Medina (ocubo <at> fi <dot>upm <dot> es)
+Date: 18/02/2005
+
+Auto parse URL contributed by diegocaro (diegocaro <at> gmail <dot> com)
+Date: 21/02/2005
 
 Translations
 ------------
