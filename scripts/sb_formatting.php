@@ -526,4 +526,9 @@
 		
 		return ( $str );
 	}
+	
+	function sb_parse_url ( $text )
+	{
+		return ( preg_replace( '/(?<!\[url=)((http|ftp)+(s)?:\/\/[^<>\s]+\b)/i', '[url=\\0]\\0[/url]', $text ) );
+	}
 ?>
