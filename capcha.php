@@ -103,9 +103,9 @@
 	imagepng( $image );
 
 	// Free resources
-	imagedestroy( $image );
 	foreach($color as $name => $value) {
-		imagecolordeallocate( $value );
+		imagecolordeallocate( $image, $value );
 	} // foreach
+	imagedestroy( $image );
 ?> 
 
