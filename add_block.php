@@ -75,6 +75,7 @@
 			$block_name = '';
 			$block_scope = '';
 			$block_status = '';
+			$block_position = '';
 			if($action != 'edit')
 				$block_id = NULL;
 		
@@ -87,18 +88,37 @@
 				} else {
 					$block_title =  '[' . $lang_string[substr($array2[0],1)] . ']';
 				}
-
+				$block_title .= '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				//Scope
 				if ($array2[1] == '1') 
-					$block_title .= ' (Private - ';
+					$block_title .= '(' . $lang_string[ 'block_scope_pri' ] . ' - ';
 				else
-					$block_title .= ' (Public - ';
+					$block_title .= '(' . $lang_string[ 'block_scope_pub' ] . ' - ';
 
 				//Status
 				if ($array2[2] == '1') 
-					$block_title .= ' Disable) ';
+					$block_title .= ' ' . $lang_string[ 'block_status_dis' ] . ' - ';
 				else
-					$block_title .= ' Enable) ';
+					$block_title .= ' ' . $lang_string[ 'block_status_ena' ] . ' - ';
+					
+				//Position
+				switch ($array2[3]) {
+				  case "T" : 
+				  	$block_title .= ' ' . $lang_string[ 'block_position_top' ] . ') ';
+					break;
+				  case "B" :
+				  	$block_title .= ' ' . $lang_string[ 'block_position_botton' ] . ') ';
+					break;
+				  case "L" :
+				  	$block_title .= ' ' . $lang_string[ 'block_position_left' ] . ') ';
+					break;
+				  case "C" :
+				  	$block_title .= ' ' . $lang_string[ 'block_position_center' ] . ') ';
+					break;
+				  default :
+				  	$block_title .= ' ' . $lang_string[ 'block_position_right' ] . ') ';
+					break;
+				};
 
 				$str = $str . ( 1 + ($i/2) ) . ' - ' . $block_title . '<br />';
 
@@ -134,7 +154,13 @@
 					$block_name = $array2[0];
 					//Scope
 					if ($array2[1] == '1') 
-						$block_scope = 'CHECKED';
+						$block_scope = 'CHECKED'; 
+						
+					//Position
+					if (isset($array2[3]))
+						$block_position = $array2[3];
+					else
+						$block_position = "R";
 				} 
 			}
 		}
@@ -176,8 +202,21 @@
 			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
 			<?php echo image_dropdown(); ?><br />
 
-			<label for="blog_subject"><?php echo( $lang_string[ 'block_scope' ] ); ?></label>&nbsp;<input type="checkbox" id="block_scope" name="block_scope" <?php echo $block_scope; ?>><br /><br />
+			<label for="blog_subject"><?php echo( $lang_string[ 'block_scope_pri' ] ); ?></label>&nbsp;<input type="checkbox" id="block_scope" name="block_scope" <?php echo $block_scope; ?>>
 			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <label for="blog_subject"><?php echo( $lang_string[ 'block_position' ] ); ?></label>
+
+			<select name="position_dropdown" DISABLED>
+				<option label="<?php echo( $lang_string[ 'block_position_top' ] ); ?>" value="T"><?php echo( $lang_string[ 'block_position_top' ] ); ?></option>
+				<option label="<?php echo( $lang_string[ 'block_position_left' ] ); ?>" value="L"><?php echo( $lang_string[ 'block_position_left' ] ); ?></option>
+				<option label="<?php echo( $lang_string[ 'block_position_center' ] ); ?>" value="C"><?php echo( $lang_string[ 'block_position_center' ] ); ?></option>
+				<option label="<?php echo( $lang_string[ 'block_position_right' ] ); ?>" value="R"><?php echo( $lang_string[ 'block_position_right' ] ); ?></option>
+				<option label="<?php echo( $lang_string[ 'block_position_botton' ] ); ?>" value="B"><?php echo( $lang_string[ 'block_position_botton' ] ); ?></option>
+			</select><br /><br />
+			<script LANGUAGE="Javascript">
+				document.all.position_dropdown.value="<?php echo $block_position; ?>";
+			</script>			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50" autocomplete=OFF><?php echo $block_content; ?></textarea><br /><br />
 			

@@ -149,8 +149,24 @@
 				$lang_string[ 'down' ] = "down";
 				$lang_string[ 'edit' ] = "edit";
 				$lang_string[ 'delete' ] = "delete";
+				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
+				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
 				$lang_string[ 'block_name' ] = "Block Name:";
-				$lang_string[ 'block_content' ] = "Block content:";
+				$lang_string[ 'block_content' ] = "Block content:";	  
+				
+				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
+				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
+				
+				$lang_string[ 'block_status_ena' ] = "Enabled";	 // <-- New 0.4.4
+				$lang_string[ 'block_status_dis' ] = "Disabled"; // <-- New 0.4.4	 
+				
+				$lang_string[ 'block_position' ] = "Position ";	     // <-- New 0.4.4
+				$lang_string[ 'block_position_top' ] = "Top";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_left' ] = "Left";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_center' ] = "Center"; // <-- New 0.4.4
+				$lang_string[ 'block_position_right' ] = "Right";   // <-- New 0.4.4
+				$lang_string[ 'block_position_botton' ] = "Botton"; // <-- New 0.4.4				
+				
 				$lang_string[ 'instructions_edit' ] = "You are currently editing block:";
 				$lang_string[ 'instructions_modify' ] = "Click below to modify a block:";
 				$lang_string[ 'submit_btn_edit' ] = "Edit Block";

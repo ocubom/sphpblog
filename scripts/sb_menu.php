@@ -433,7 +433,6 @@
 		}
 	}
 	
-	// DATOH_ADD
 	// ----------------------------
 	// "Blocks" Functions
 	// ----------------------------
@@ -631,10 +630,7 @@
 			// Probably couldn't create file...
 			return ( $filename );
 		}
-
 	}
-
-	// DATOH_END
 
 	// ----------------------------
 	// "Most Recent Menu" Functions
