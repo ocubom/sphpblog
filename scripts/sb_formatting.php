@@ -20,7 +20,7 @@
 		// This makes entries safe for saving to a file (since the data
 		// format is pipe delimited.)
 		global $lang_string;
-		$str = str_replace( '|', ':', $str );
+		$str = str_replace( '|', '&#124;', $str );
 		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
 
 		return ( $str );
@@ -34,6 +34,7 @@
 		//
 		// ( Could use str_ireplace() but it's only supported in PHP 5. )
 		global $blog_config;
+		
 		
 		if ( $comment_mode ) {
 			$tag_arr = array();
@@ -162,6 +163,7 @@
 			}
 		}
 		
+		$str = str_replace( '&amp;#124;', '|', $str );
 		return ( $str );
 	}
 	
