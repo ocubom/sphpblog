@@ -8,17 +8,18 @@ Date: 08/02/2004
 
 Contributors
 ------------
-RSS, ping, GZip, email, search and minor bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
-Date: 12/05/2004
-
-RSS, ping, GZip, email, search and minor bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
+RSS, RDF, Atom, ping, GZip, email, search and minor bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
 Date: 12/05/2004
 
 TXT Powered logo by Juano (powerjuano <at> hotmail <dot> com 
 Date: 10/07/2004
-Trackbacks
-Arjan Hakkesteegt, sphpblog <at> hakwerk <dot> com
-Date: 28-Nov-2004
+
+Trackbacks by Arjan Hakkesteegt, sphpblog <at> hakwerk <dot> com
+Date: 28/11/2004
+
+Block management enhacement, and theme/color preview by Fco Jesús Gil (ridgarou <at> gmail <dot> com)
+Date: 10/02/2005
+
 Translations
 ------------
 Chinese Language File
