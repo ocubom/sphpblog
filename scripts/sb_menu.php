@@ -31,11 +31,6 @@
 			$d = date( 'd' );
 		}
 		
-		//$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
-		//print_r($entries);
-		$entries = blog_entry_listing();
-		//print_r($entries);
-		
 		$date_string = mktime(0, 0, 0, $m, 1, $y ); //The date string we need for some info... saves space ^_^
 		$day_start = date( 'w', $date_string ); //The number of the 1st day of the week
 		if ( strftime( '%w', mktime( 0, 0, 0, 1, 1, 2007 ) )!=0 )
@@ -76,6 +71,13 @@
 			$next_year = date( 'Y' );
 			$next_month = date( 'm' );
 		}
+
+		$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
+
+		/*
+		The following using cached blog_entry_listing should be faster, but it isn't, at least, with more than 
+		400 articles, so it is commented unter further evaluation is done.
+		$entries = blog_entry_listing();
 		//Remove not current month/day entries
 		$temp_entries=array();
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
@@ -85,6 +87,8 @@
 		}
 		$entries=$temp_entries;
 		unset( $temp_entries );
+		*/
+
 		// Loop Through Days
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
 			$temp_index = substr( $entries[$i], 9, 2 )-1;
