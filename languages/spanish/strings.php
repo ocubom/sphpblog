@@ -491,13 +491,15 @@
 			case 'contact': // <-- New 0.3.8
 				$lang_string['title'] = "Contacta Conmigo";
 				$lang_string['instructions'] = "Rellena el formulario:";
-				$lang_string['form_error'] = "Por favor, completa los campos Asunto y Comentario.";
+				$lang_string['form_error'] = "Por favor, completa los campos Asunto, Comentario y Anti-Spam.";
 				$lang_string['name'] = "Su Nombre:";
 				$lang_string['email'] = "Su Email:";
 				$lang_string['subject'] = "Asunto:";
 				$lang_string['comment'] = "Comentario:";
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				$lang_string['success'] = "<h2>¡Listo!</h2>Su mensaje ha sido enviado.<p />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>El email no pudo ser enviado.<p />"; //0.4.4
+				$lang_string['capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.4
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Estad&iacute;sticas</h2>";
@@ -518,5 +520,5 @@
 		}
 
 	}
-		
+
 ?>

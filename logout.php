@@ -1,11 +1,11 @@
-<?php 
+<?php
 	require('scripts/sb_functions.php');
 	logout();
-	
+
 	$logged_in = logged_in( true, true );
-	
+
 	read_config();
-	
+
 	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'logout' );
 ?>
@@ -19,10 +19,10 @@
 	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string['title'] ); ?></title>
 </head>
-<?php 
+<?php
 	function page_content() {
 		global $lang_string, $user_colors;
-		
+
 		echo( $lang_string['error'] );
 		echo( '<a href="index.php">' . $lang_string['home'] . '</a><br /><br />' );
 	}

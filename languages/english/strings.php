@@ -100,7 +100,7 @@
 				$lang_string['insert_url1'] = "Enter the text to be displayed for the link (Optional):";
 				$lang_string['insert_url2'] = "Enter the full URL for the link:";
 				$lang_string['insert_url3'] = "Open URL in new window (Optional):";
-				$lang_string['form_error'] = "Please complete the Subject and Entry fields.";	
+				$lang_string['form_error'] = "Please complete the Subject and Entry fields.";
 				// More Javascript Strings
 				$lang_string['insert_image_optional'] = 'Optional:';
 				$lang_string['insert_image_width'] = 'Width (Optional):';
@@ -137,7 +137,7 @@
 				$lang_string['instructions_preview'] = "Here's how your Static Page looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
 				$lang_string['title_update'] = "Update Static Page";
 				$lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
-				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";	
+				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
@@ -492,13 +492,15 @@
 			case 'contact':
 				$lang_string['title'] = "Contact Me";
 				$lang_string['instructions'] = "Fill in the form:";
-				$lang_string['form_error'] = "Please complete the Subject and Comment fields.";
+				$lang_string['form_error'] = "Please complete the Subject, Comment fields and Anti-Spam fields.";
 				$lang_string['name'] = "Name:";
 				$lang_string['email'] = "Email:";
 				$lang_string['subject'] = "Subject:";
 				$lang_string['comment'] = "Comment:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
+				$lang_string['error'] = "<h2>Whoops!</h2>Mail not sent.<p />"; //0.4.4
+				$lang_string['capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.4
 				break;
 			case 'stats':
 				$lang_string["title"] = "<h2>Statistics</h2>";
@@ -519,5 +521,5 @@
 		}
 
 	}
-		
+
 ?>

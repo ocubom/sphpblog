@@ -1,16 +1,16 @@
-<?php 
+<?php
 	require('scripts/sb_functions.php');
 	global $logged_in;
-	$logged_in = logged_in( false, true );	
+	$logged_in = logged_in( false, true );
 	if ( !session_id() ) {
 		session_start();
 	}
-	
+
 	read_config();
-	
+
 	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'comments' );
-	
+
 	// Verify information being passed:
 	$redirect = true;
 	if ( array_key_exists( 'y', $_GET ) && array_key_exists( 'm', $_GET ) && array_key_exists( 'entry', $_GET ) ) {
@@ -21,15 +21,15 @@
 		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET['y'] ) == 2 &&
 				strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET['m'] ) == 2 &&
 				strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET['entry'] ) == 18 ) {
-			
+
 			// Verify that the file exists.
 			if ( entry_exists ( $_GET['y'], $_GET['m'], $_GET['entry'] ) ) {
-				$_SESSION[ 'capcha' . $_GET[ 'entry' ] ] = sb_get_capcha();
+				$_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] = sb_get_capcha();
 				$redirect = false;
 			}
 		}
 	}
-	
+
 	if ( $redirect === true ) {
 		redirect_to_url( 'index.php' );
 	}
@@ -39,14 +39,14 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
-	 
+
 	<!-- Meta Data -->
 	<?php global $lang_string, $sb_info, $blog_config; ?>
 	<meta name="generator" content="Simple PHP Blog <?php echo( $sb_info[ 'version' ] );?>" />
 	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php" />
 	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php" />
 	<link rel="alternate" type="application/atom+xml" title="Get Atom 0.3 Feed" href="atom.php" />
-	
+
 	<!-- Meta Data -->
 	<!-- http://dublincore.org/documents/dces/ -->
 	<meta name="dc.title"       content="<?php echo( $blog_config[ 'blog_title' ] ); ?>">
@@ -58,15 +58,15 @@
 	<meta name="description"    content="<?php echo( $blog_config[ 'info_description' ] ); ?>">
 	<meta name="dc.type"        content="weblog">
 	<meta name="dc.type"        content="blog">
-	<meta name="resource-type"  content="document"> 
+	<meta name="resource-type"  content="document">
 	<meta name="dc.format"      scheme="IMT" content="text/html">
 	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) { echo( 'http://'.$_SERVER['HTTP_HOST'].'/index.php' ); } else { echo( 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php' ); } ?>">
 	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string['locale']) ); ?>" >
 	<meta name="dc.coverage"    content="global">
-	<meta name="distribution"   content="GLOBAL"> 
+	<meta name="distribution"   content="GLOBAL">
 	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
 	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
-	
+
 	<!-- Robots -->
 	<meta name="robots" content="ALL,INDEX,FOLLOW,ARCHIVE"> 
 	<meta name="revisit-after" content="7 days"> 
@@ -176,10 +176,10 @@
 					if ( in_array( 'strike', $blog_config[ 'comment_tags_allowed' ] ) ) {
 						?><option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option><?php
 					}
-				?>				
+				?>
 			</select>
 			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><br><br>
-			
+
 			<?php
 				if ( in_array( 'img', $blog_config[ 'comment_tags_allowed' ] ) ) {
 					global $theme_vars;
@@ -189,13 +189,13 @@
 					<?php
 				}
 			?>
-			
+
 			<label for="blog_text"><?php echo( $lang_string['comment_text'] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars['max_image_width'] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
-			
-			<label for="comment_capcha"><?php printf( $lang_string['comment_capcha'], sb_str_to_ascii( $_SESSION[ 'capcha' ] ) ); ?></label><br />
-			<input type="text" name="comment_capcha" value="" autocomplete="OFF"><br /><br />
-			
+
+			<label for="comment_capcha"><?php printf( $lang_string['comment_capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); ?></label><br />
+			<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />
+
 			<input type="submit" name="submit" value="<?php echo( $lang_string['post_btn'] ); ?>" />
 			
 		</form>

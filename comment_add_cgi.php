@@ -1,16 +1,16 @@
-<?php 
+<?php
 	require('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 	if ( !session_id() ) {
 		session_start();
 	}
-	
+
 	read_config();
-	
+
 	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'comments' );
-	
+
 	// Verify information being passed:
 	$ok = false;
 	if ( array_key_exists( 'y', $_POST ) && array_key_exists( 'm', $_POST ) && array_key_exists( 'entry', $_POST ) && array_key_exists( 'comment_capcha', $_POST ) ) {
@@ -18,19 +18,20 @@
 		// user is not able to back-up a directory.
 		//
 		// Make sure the string lengths are correct.
-		if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha' . $_GET[ 'entry' ] ] ) {
+		if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] ) {
 			if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST['y'] ) == 2 &&
 					strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST['m'] ) == 2 &&
 					strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST['entry'] ) == 18 ) {
-				
+
 				// Verify that the file exists.
 				if ( entry_exists ( $_POST['y'], $_POST['m'], $_POST['entry'] ) ) {
 					$ok = write_comment( $_POST['y'], $_POST['m'], $_POST['entry'], stripslashes( $_POST['comment_name'] ), stripslashes( $_POST['comment_email'] ), stripslashes( $_POST['comment_url'] ), $_POST['comment_remember'], stripslashes( $_POST['blog_text'] ) );
+					@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
 				}
 			}
 		}
 	}
-	
+
 	if ( $ok === true ) {
 		$relative_url = 'comments.php?y='.$_POST['y'].'&m='.$_POST['m'].'&entry='.$_POST['entry'];
 		redirect_to_url( $relative_url );
