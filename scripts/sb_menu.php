@@ -83,11 +83,15 @@
 			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
 		}
 		//Don't let go past now
-		if ( date( 'm' ) + ( date( 'y' ) * 12 ) >=
+		if ( date( 'm' ) + ( date( 'y' ) * 12 ) <=
 			$y*12+$m ) {
-			$next_year = date( 'Y' );
-			$next_month = date( 'm' );
+			$next_year = $y;
+			$next_month = $m;
 		}
+
+		echo "current: " . $y . "/" . $m . "<br>";		
+		echo "previous: " . $previous_year . "/" . $previous_month . "<br>";
+		echo "next: " . $next_year . "/" . $next_month . "<br>";
 
 		// Loop Through Days
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
