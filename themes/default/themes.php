@@ -382,6 +382,24 @@
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
+		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
+
+		// New 0.3.8
+		//
+		// The ADD BLOCKS page lets you insert your own
+		// content "blocks" into the menu area.
+		$array = read_blocks($logged_in);
+		for($i=0 ; $i<count($array) ; $i+=2) {
+			// Si no hay contenido, no pinto nada
+			if ( $array[$i+1] != "" ) {
+				echo( "<span class=\"menu_title\">" . $array[$i] . "</span><br/>" );
+				echo( $array[$i+1] . "" );
+				echo( "<div class=\"hr\"><hr /></div>" );
+			}
+		}
+		
+		/*
+		
 		$result = menu_display_links();
 		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 		echo( $result[ 'content' ] . '' );
@@ -455,6 +473,8 @@
 		
 		echo( '<div class="hr"><hr /></div>' );
 	
+		*/
+		
 		// Web Badges - Changed in 0.4.4
 		echo( '<div align="center">' );
 		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" title="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" border="0" /></a> ' );

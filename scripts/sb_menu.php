@@ -440,13 +440,19 @@
 	function read_blocks ( $logged_in ) {
 		// Create the right-hand block. Return array
 		//
-	
+		
 		global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in;
 		global $lang_string;
 		
 		// Read blocks file.
 		$filename = 'config/blocks.txt';
 		$result = sb_read_file( $filename );
+		
+		if ( !$result ) {
+			initialize_blocks();
+			$filename = 'config/blocks.txt';
+			$result = sb_read_file( $filename );
+		}
 		
 		// Append new blocks.
 		$block_array = array();
