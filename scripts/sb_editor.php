@@ -42,6 +42,9 @@
 				image_height = prompt('<?php echo( $lang_string[ 'insert_image_height' ] ); ?>'+'\n[img=xxx height=xxx]','');
 				image_popup = prompt('<?php echo( $lang_string[ 'insert_image_popup' ] ); ?>'+'\n[img=xxx popup=true/false]', '');
 				image_float = prompt('<?php echo( $lang_string[ 'insert_image_float' ] ); ?>'+'\n[img=xxx float=left/right]','');
+				image_align = prompt('<?php echo( $lang_string[ 'insert_image_align' ] ); ?>'+'\n[img=xxx align=left/right/center]','');
+				image_valign = prompt('<?php echo( $lang_string[ 'insert_image_valign' ] ); ?>'+'\n[img=xxx valign=top/bottom/middle]','');
+				image_alt = prompt('<?php echo( $lang_string[ 'insert_image_alt' ] ); ?>'+'\n[img=xxx alt=xxx]','');
 				
 				str = '[img='+image_url;
 				if ((image_width != null) && (image_width != '')) {
@@ -62,6 +65,22 @@
 						str += ' float='+image_float;
 					}
 				}
+				if ((image_align != null) && (image_align != '')) {
+					image_align.toLowerCase;
+					if ( image_align == 'left' || image_align == 'right' || image_align == 'center' ) {
+						str += ' align='+image_align;
+					}
+				}
+				if ((image_valign != null) && (image_valign != '')) {
+					image_valign.toLowerCase;
+					if ( image_valign == 'top' || image_valign == 'bottom' || image_valign == 'middle' ) {
+						str += ' valign='+image_valign;
+					}
+				}
+				if ((image_alt != null) && (image_alt != '')) {
+					str += ' alt='+escape(image_alt);
+				}
+
 				str += ']';
 				
 				theform.value += str;

@@ -107,6 +107,9 @@
 		// height - height of image in pixels
 		// popup  - (true/false)
 		// float  - (left/right)
+		// alt    - alternative text
+		// align  - (left/right/center)
+		// valign - (top/bottom/middle)
 		//
 		// [img=http://xxx]
 		// [img=http://xxx width=xxx height=xxx popup=true float=left]
@@ -403,6 +406,9 @@
 					$attrib_height = NULL;
 					$attrib_popup = NULL;
 					$attrib_float = NULL;
+					$attrib_align = NULL;
+					$attrib_valign = NULL;
+					$attrib_alt = NULL;
 					
 					if ( is_array( $attrib_array ) ) {
 						$str_url = $attrib_array[0];
@@ -423,13 +429,22 @@
 									case 'float';
 										$attrib_float = $temp_arr[1];
 										break;
+									case 'align';
+										$attrib_align = $temp_arr[1];
+										break;
+									case 'valign';
+										$attrib_valign = $temp_arr[1];
+										break;
+									case 'alt';
+										$attrib_alt = urldecode( $temp_arr[1] );
+										break;
 								}
 							}
 						}
 					} else {
 						$str_url = $attrib_array;
 					}
-				
+					
 					// Grab image size and calculate scaled sizes
 					
 					// if ( file_exists( $str_url ) !== false ) {
@@ -437,86 +452,123 @@
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
-						$max_image_width = $theme_vars[ 'max_image_width' ];
-						
-						if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
-								$width = $attrib_width;
-								$height = $attrib_height;
-						} else {
-							if ( isset( $attrib_width ) ) {
-								$height = round( $height * ( $attrib_width / $width ) );
-								$width = $attrib_width;
-							}
-							
-							if ( isset( $attrib_height ) ) {
-								$width = round( $width * ( $attrib_height / $height ) );
-								$height = $attrib_height;
-							}
-						}
-						
-						if ( $width > $max_image_width ) {
-							$height = round( $height * ( $max_image_width / $width ) );
-							$width = $max_image_width;
-						}
-						
-						
-						if ( isset( $attrib_popup ) ) {
-							if ( $attrib_popup == 'true' ) {
-								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'';
-								if ( isset( $attrib_float ) ) {
-									switch ( $attrib_float ) {
-										case 'left';
-											$str_out = $str_out . ' id="img_float_left"';
-											break;
-										case 'right';
-											$str_out = $str_out . ' id="img_float_right"';
-											break;
-									}
-								}
-								$str_out = $str_out . '></a>';
-							} else {
-								$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'';
-								if ( isset( $attrib_float ) ) {
-									switch ( $attrib_float ) {
-										case 'left';
-											$str_out = $str_out . ' id="img_float_left"';
-											break;
-										case 'right';
-											$str_out = $str_out . ' id="img_float_right"';
-											break;
-									}
-								}
-								$str_out = $str_out . '>';
-							}
-						} else {
-							if ( $width != $img_size[0] || $height != $img_size[1] ) {
-								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'></a>';							
-							} else {
-								$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'>';
-							}
-						}
-										
-						// Store sub_string after the tag.
-						$str = substr( $str, $str_offset + strlen( $tag_end ) );
-						// Search for next beginning tag.
-						$str_offset = strpos( $str, $tag_begin );
-					} else {
+					}
+					else {
 						// Append HTML tag.
 						if ( isset( $attrib_popup ) ) {
 							if ( $attrib_popup == 'true' ) {
-								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border=0 alt=\'\'></a>';						
-							} else {
-								$str_out = $str_out . '<img src="' . $str_url . '" border=0 alt=\'\'>';		
+								$width = $img_size[0];
+								$height = $img_size[1];
 							}
-						} else {
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border=0 alt=\'\'></a>';	
 						}
-										
-						// Store sub_string after the tag.
-						$str = substr( $str, $str_offset + strlen( $tag_end ) );
-						// Search for next beginning tag.
-						$str_offset = strpos( $str, $tag_begin );
 					}
+					$max_image_width = $theme_vars[ 'max_image_width' ];
+						
+					if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
+						$width = $attrib_width;
+						$height = $attrib_height;
+					} else {
+						if ( isset( $attrib_width ) ) {
+							$height = round( $height * ( $attrib_width / $width ) );
+							$width = $attrib_width;
+						}
+						
+						if ( isset( $attrib_height ) ) {
+							$width = round( $width * ( $attrib_height / $height ) );
+							$height = $attrib_height;
+						}
+					}
+					
+					if ( $width > $max_image_width ) {
+						$height = round( $height * ( $max_image_width / $width ) );
+						$width = $max_image_width;
+					}
+					
+					//Open the tag
+					if ( isset( $attrib_align ) ) {
+						switch ( $attrib_align ) {
+							case 'left';
+								$str_out = $str_out . '<p align="left">';
+								break;
+							case 'right';
+								$str_out = $str_out . '<p align="right">';
+								break;
+							case 'cemter';
+								$str_out = $str_out . '<p align="center">';
+								break;
+						}
+					}
+					
+					if ( isset( $attrib_popup ) ) {
+						if ( $attrib_popup == 'true' ) {
+							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0';
+						}
+						else {
+							$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height;
+						}
+					} else {
+						if ( $width != $img_size[0] || $height != $img_size[1] ) {
+							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0';
+						} else {
+							$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height;
+						}
+					}
+					
+					if ( isset( $attrib_float ) ) {
+						switch ( $attrib_float ) {
+							case 'left';
+								$str_out = $str_out . ' id="img_float_left"';
+								break;
+							case 'right';
+								$str_out = $str_out . ' id="img_float_right"';
+								break;
+						}
+					}
+					
+					if ( isset( $attrib_valign ) ) {
+						switch ( $attrib_valign ) {
+							case 'top';
+								$str_out = $str_out . ' valign="top"';
+								break;
+							case 'bottom';
+								$str_out = $str_out . ' valign="bottom"';
+								break;
+							case 'middle';
+								$str_out = $str_out . ' valign="middle"';
+								break;
+						}
+					}
+
+					if ( isset( $attrib_alt ) ) {
+						$str_out = $str_out . ' alt="' . $attrib_alt . '"';
+					}
+
+					//Close the tag
+					if ( isset( $attrib_popup ) ) {
+						if ( $attrib_popup == 'true' ) {
+							$str_out = $str_out . '></a>';
+						}
+						else {
+							$str_out = $str_out . '>';
+						}
+					}
+					else {
+						if ( $width != $img_size[0] || $height != $img_size[1] ) {
+							$str_out = $str_out . '></a>';
+						}
+						else {
+							$str_out = $str_out . '>';
+						}
+					}
+					if ( isset( $attrib_align ) ) {
+						if ( $attrib_align =='center' ) {
+							$str_out = $str_out . '</p>';
+						}
+					}
+					// Store sub_string after the tag.
+					$str = substr( $str, $str_offset + strlen( $tag_end ) );
+					// Search for next beginning tag.
+					$str_offset = strpos( $str, $tag_begin );
 				}
 			}
 		}

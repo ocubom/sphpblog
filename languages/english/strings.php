@@ -107,6 +107,9 @@
 				$lang_string[ 'insert_image_height' ] = 'Height (Optional):';
 				$lang_string[ 'insert_image_popup' ] = 'View full-size in pop-up when clicked (Optional):';
 				$lang_string[ 'insert_image_float' ] = 'Float (Optional):';
+				$lang_string['insert_image_align'] = 'Horizontal align (Optional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Vertical align (Optional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Alternative text (Optional):';	//0.4.4
 		}
 	
 		switch ($page) {

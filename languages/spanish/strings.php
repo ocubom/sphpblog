@@ -108,6 +108,9 @@
 				$lang_string['insert_image_height'] = 'Alto (Opcional):';
 				$lang_string['insert_image_popup'] = 'Ver en una ventana emergente al hacer clic (Opcional):';
 				$lang_string['insert_image_float'] = 'Flotar (Opcional):';
+				$lang_string['insert_image_align'] = 'Alineación horizontal (Opcional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Alineación vertical (Opcional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Texto alternativo (Opcional):';	//0.4.4
 		}
 	
 		switch ($page) {
