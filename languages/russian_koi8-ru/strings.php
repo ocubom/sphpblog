@@ -107,6 +107,9 @@
 				$lang_string[ 'insert_image_height' ] = 'Height (Optional):';
 				$lang_string[ 'insert_image_popup' ] = 'View full-size in pop-up when clicked (Optional):';
 				$lang_string[ 'insert_image_float' ] = 'Float (Optional):';
+				$lang_string['insert_image_align'] = 'Horizontal align (Optional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Vertical align (Optional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Alternative text (Optional):';	//0.4.4
 		}
 	
 		switch ($page) {
@@ -151,6 +154,23 @@
 				$lang_string[ 'delete' ] = "delete";
 				$lang_string[ 'block_name' ] = "Block Name:";
 				$lang_string[ 'block_content' ] = "Block content:";
+				
+				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
+				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
+				
+				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
+				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
+				
+				$lang_string[ 'block_status_ena' ] = "Enabled";	 // <-- New 0.4.4
+				$lang_string[ 'block_status_dis' ] = "Disabled"; // <-- New 0.4.4	 
+				
+				$lang_string[ 'block_position' ] = "Position ";	     // <-- New 0.4.4
+				$lang_string[ 'block_position_top' ] = "Top";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_left' ] = "Left";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_center' ] = "Center"; // <-- New 0.4.4
+				$lang_string[ 'block_position_right' ] = "Right";   // <-- New 0.4.4
+				$lang_string[ 'block_position_botton' ] = "Botton"; // <-- New 0.4.4				
+				
 				$lang_string[ 'instructions_edit' ] = "You are currently editing block:";
 				$lang_string[ 'instructions_modify' ] = "Click below to modify a block:";
 				$lang_string[ 'submit_btn_edit' ] = "Edit Block";
@@ -500,6 +520,8 @@
 				$lang_string[ 'comment' ] = "Comment:";
 				$lang_string[ 'submit_btn' ] = "&nbsp;Submit&nbsp;";
 				$lang_string[ 'success' ] = "<h2>Success!</h2>Your message has been sent.<p />";
+				$lang_string[ 'error' ] = "<h2>Whoops!</h2>Mail not sent.<p />"; //0.4.4
+				$lang_string[ 'capcha' ] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.4
 				break;
 			case 'stats':
 				$lang_string[ 'title' ] = "<h2>Statistics</h2>";

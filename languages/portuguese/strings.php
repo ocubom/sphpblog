@@ -108,6 +108,9 @@
 				$lang_string['insert_image_height'] = 'Altura (Opcional):';
 				$lang_string['insert_image_popup'] = 'Ver Maximizado numa Janela "Pop-UP" quando clicar (Opcional):';
 				$lang_string['insert_image_float'] = 'Flutuar no Écran (Opcional):';
+				$lang_string['insert_image_align'] = 'Horizontal align (Optional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Vertical align (Optional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Alternative text (Optional):';	//0.4.4
 		}
 	
 		switch ($page) {
@@ -152,6 +155,23 @@
 				$lang_string['delete'] = "apagar";
 				$lang_string['block_name'] = "Nome do Bloco:";
 				$lang_string['block_content'] = "Conteúdo do Bloco:";
+				
+				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
+				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
+				
+				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
+				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
+				
+				$lang_string[ 'block_status_ena' ] = "Enabled";	 // <-- New 0.4.4
+				$lang_string[ 'block_status_dis' ] = "Disabled"; // <-- New 0.4.4	 
+				
+				$lang_string[ 'block_position' ] = "Position ";	     // <-- New 0.4.4
+				$lang_string[ 'block_position_top' ] = "Top";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_left' ] = "Left";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_center' ] = "Center"; // <-- New 0.4.4
+				$lang_string[ 'block_position_right' ] = "Right";   // <-- New 0.4.4
+				$lang_string[ 'block_position_botton' ] = "Botton"; // <-- New 0.4.4				
+				
 				$lang_string['instructions_edit'] = "Está a editar o Bloco:";
 				$lang_string['instructions_modify'] = "Clique em baixo para modificar o Bloco:";
 				$lang_string['submit_btn_edit'] = "Editar o Bloco";
@@ -231,6 +251,7 @@
 				break;
 			case 'comments':
 				// Comments
+				$lang_string[ 'comment_capcha' ] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Comentários";
 				$lang_string['header'] = "Gerir comentário";
 				$lang_string['instructions'] = "Preencha os campos abaixo para deixar o seu comentário.";
@@ -500,6 +521,8 @@
 				$lang_string['comment'] = "Comentário:";
 				$lang_string['submit_btn'] = "&nbsp;Submeter&nbsp;";
 				$lang_string['success'] = "<h2>Sucesso!</h2>A sua mensagem foi enviada.<p />";
+				$lang_string[ 'error' ] = "<h2>Whoops!</h2>Mail not sent.<p />"; //0.4.4
+				$lang_string[ 'capcha' ] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.4
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Estatísticas</h2>";
@@ -511,6 +534,9 @@
 				$lang_string['most_viewed_entries'] = "<h3>10 Entradas mais vistas</h3>";
 				$lang_string['most_commented_entries'] = "<h3>10 Entradas mais comentadas</h3>";
 				$lang_string['most_trackbacked_entries'] = "<h3>10 Entradas mais trashbacks</h3>";
+				$lang_string[ 'vote_info' ] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
+				$lang_string[ 'most_voted_entries' ] = "<h3>10 Most voted entries</h3>"; // 0.4.1
+				$lang_string[ 'most_rated_entries' ] = "<h3>10 Most rated entries</h3>"; // 0.4.1
 				break;
 			default:
 				break;

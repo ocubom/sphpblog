@@ -111,6 +111,9 @@
 				$lang_string['insert_image_height'] = 'Hauteur (Optionnel):';
 				$lang_string['insert_image_popup'] = 'Voir en taille réel dans un pop-up en cliquant (Optionnel):';
 				$lang_string['insert_image_float'] = 'Flotter (Optionnel):';
+				$lang_string['insert_image_align'] = 'Horizontal align (Optional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Vertical align (Optional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Alternative text (Optional):';	//0.4.4
 		}
 	
 		switch ($page) {
@@ -155,6 +158,23 @@
 				$lang_string['delete'] = "supprimer";
 				$lang_string['block_name'] = "Nom du bloc :";
 				$lang_string['block_content'] = "Contenu du bloc :";
+				
+				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
+				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
+				
+				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
+				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
+				
+				$lang_string[ 'block_status_ena' ] = "Enabled";	 // <-- New 0.4.4
+				$lang_string[ 'block_status_dis' ] = "Disabled"; // <-- New 0.4.4	 
+				
+				$lang_string[ 'block_position' ] = "Position ";	     // <-- New 0.4.4
+				$lang_string[ 'block_position_top' ] = "Top";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_left' ] = "Left";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_center' ] = "Center"; // <-- New 0.4.4
+				$lang_string[ 'block_position_right' ] = "Right";   // <-- New 0.4.4
+				$lang_string[ 'block_position_botton' ] = "Botton"; // <-- New 0.4.4				
+				
 				$lang_string['instructions_edit'] = "Vous êtes en train d'éditer le bloc :";
 				$lang_string['instructions_modify'] = "Cliquer ci-dessous pour modifier le bloc :";
 				$lang_string['submit_btn_edit'] = "Editer le bloc";
@@ -234,6 +254,7 @@
 				break;
 			case 'comments':
 				// Comments
+				$lang_string[ 'comment_capcha' ] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Commentaires";
 				$lang_string['header'] = "Ajouter Commentaire";
 				$lang_string['instructions'] = "Remplissez ce formulaire pour ajouter un commentaire.";
@@ -503,6 +524,8 @@
 				$lang_string['comment'] = "Commentaire :";
 				$lang_string['submit_btn'] = "&nbsp;Soumettre&nbsp;";
 				$lang_string['success'] = "<h2>Merci de votre contribution !</h2>Votre message a bien été envoyé.<p />";
+				$lang_string[ 'error' ] = "<h2>Whoops!</h2>Mail not sent.<p />"; //0.4.4
+				$lang_string[ 'capcha' ] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.4
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistiques</h2>";
@@ -514,6 +537,9 @@
 				$lang_string['most_viewed_entries'] = "<h3>Les 10 sujets les plus vus</h3>";
 				$lang_string['most_commented_entries'] = "<h3>Les 10 sujets les plus commentés</h3>";
 				$lang_string['most_trackbacked_entries'] = "<h3>Les 10 sujet les plus 'trackbackés'</h3>";
+				$lang_string[ 'vote_info' ] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
+				$lang_string[ 'most_voted_entries' ] = "<h3>10 Most voted entries</h3>"; // 0.4.1
+				$lang_string[ 'most_rated_entries' ] = "<h3>10 Most rated entries</h3>"; // 0.4.1
 				break;
 			default:
 				break;

@@ -109,6 +109,9 @@
 	$lang_string[ 'insert_image_height' ] = '½Ä¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):';
 	$lang_string[ 'insert_image_popup' ] = '¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥£¥ó¥É¥¦ÀßÄê(¥ª¥×¥·¥ç¥ó):';
 	$lang_string[ 'insert_image_float' ] = '²èÁü¤Î²ó¤ê¹þ¤ß°ÌÃÖ(¥ª¥×¥·¥ç¥ó):';
+				$lang_string['insert_image_align'] = 'Horizontal align (Optional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Vertical align (Optional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Alternative text (Optional):';	//0.4.4
 		}
 	
 	switch ($page) {
@@ -153,6 +156,23 @@
 	$lang_string[ 'delete' ] = "ºï½ü";
 	$lang_string[ 'block_name' ] = "¥Ö¥í¥Ã¥¯¥¿¥¤¥È¥ë";
 	$lang_string[ 'block_content' ] = "¥Ö¥í¥Ã¥¯¤ÎÆâÍÆ";
+				
+				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
+				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
+				
+				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
+				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
+				
+				$lang_string[ 'block_status_ena' ] = "Enabled";	 // <-- New 0.4.4
+				$lang_string[ 'block_status_dis' ] = "Disabled"; // <-- New 0.4.4	 
+				
+				$lang_string[ 'block_position' ] = "Position ";	     // <-- New 0.4.4
+				$lang_string[ 'block_position_top' ] = "Top";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_left' ] = "Left";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_center' ] = "Center"; // <-- New 0.4.4
+				$lang_string[ 'block_position_right' ] = "Right";   // <-- New 0.4.4
+				$lang_string[ 'block_position_botton' ] = "Botton"; // <-- New 0.4.4				
+				
 	$lang_string[ 'instructions_edit' ] = "¥Ö¥í¥Ã¥¯ÊÔ½¸Ãæ";
 $lang_string[ 'instructions_modify' ] = "¥¯¥ê¥Ã¥¯¤·¤Æ¥Ö¥í¥Ã¥¯¤òÊÑ¹¹¤·¤Æ²¼¤µ¤¤";
 	$lang_string[ 'submit_btn_edit' ] = "¥¨¥Ç¥£¥Ã¥È";
@@ -292,6 +312,9 @@ $lang_string[ 'instructions' ] = "°Ê²¼¤Î¥Õ¥©¡¼¥à¤ò»ÈÍÑ¤·¤
 				$lang_string[ 'error' ] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				break;
 case 'login':
+				$lang_string[ 'upgrade' ] = "<h2>Upgrade</h2>"; // New 0.3.8
+				$lang_string[ 'upgrade_count' ] = "%n comment files need to be upgraded:"; // New 0.3.8
+				$lang_string[ 'upgrade_url' ] = "Upgrade Comments"; // New 0.3.8
 $lang_string[ 'title' ] = "¥í¥°¥¤¥ó";
 $lang_string[ 'instructions' ] = "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
 $lang_string[ 'username' ] = "¥æ¡¼¥¶¡¼Ì¾:";
@@ -496,6 +519,8 @@ $lang_string[ 'subject' ] = "¥¿¥¤¥È¥ë¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡�
 $lang_string[ 'comment' ] = "¥á¥Ã¥»¡¼¥¸¤ò¤ª´ê¤¤¤·¤Þ¤¹¡£";
 $lang_string[ 'submit_btn' ] = "&nbsp;Submit&nbsp;";
 				$lang_string[ 'success' ] = "<h2>Success!</h2>Your message has been sent.<p />";
+				$lang_string[ 'error' ] = "<h2>Whoops!</h2>Mail not sent.<p />"; //0.4.4
+				$lang_string[ 'capcha' ] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.4
 				break;
 	case 'stats':
 	$lang_string[ 'title' ] = "<h2>Åý·×</h2>";

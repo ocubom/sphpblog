@@ -156,7 +156,24 @@
 				$lang_string['enable'] = "Habilitar";  // <-- New 0.4.4
 				$lang_string['disable'] = "Deshabilitar"; // <-- New 0.4.4
 				$lang_string['block_name'] = "Nombre del Bloque:";
-				$lang_string['block_content'] = "Contenido del Bloque:";   
+				$lang_string['block_content'] = "Contenido del Bloque:";
+				
+				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
+				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
+				
+				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
+				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
+				
+				$lang_string[ 'block_status_ena' ] = "Enabled";	 // <-- New 0.4.4
+				$lang_string[ 'block_status_dis' ] = "Disabled"; // <-- New 0.4.4	 
+				
+				$lang_string[ 'block_position' ] = "Position ";	     // <-- New 0.4.4
+				$lang_string[ 'block_position_top' ] = "Top";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_left' ] = "Left";	    // <-- New 0.4.4
+				$lang_string[ 'block_position_center' ] = "Center"; // <-- New 0.4.4
+				$lang_string[ 'block_position_right' ] = "Right";   // <-- New 0.4.4
+				$lang_string[ 'block_position_botton' ] = "Botton"; // <-- New 0.4.4				
+				   
 				
 				$lang_string['block_scope_pri'] = "Privado"; // <-- New 0.4.4
 				$lang_string['block_scope_pub'] = "Público"; // <-- New 0.4.4

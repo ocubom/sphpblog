@@ -152,10 +152,11 @@
 				$lang_string[ 'down' ] = "down";
 				$lang_string[ 'edit' ] = "edit";
 				$lang_string[ 'delete' ] = "delete";
+				$lang_string[ 'block_name' ] = "Block Name:";
+				$lang_string[ 'block_content' ] = "Block content:";
+				
 				$lang_string[ 'enable' ] = "enable";   // <-- New 0.4.4
 				$lang_string[ 'disable' ] = "disable"; // <-- New 0.4.4
-				$lang_string[ 'block_name' ] = "Block Name:";
-				$lang_string[ 'block_content' ] = "Block content:";	  
 				
 				$lang_string[ 'block_scope_pri' ] = "Private"; // <-- New 0.4.4
 				$lang_string[ 'block_scope_pub' ] = "Public";  // <-- New 0.4.4	
