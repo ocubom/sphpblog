@@ -532,11 +532,11 @@
 	    // Con espacios 
 	    $text = eregi_replace("([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=\\2]\\2[/url]", $text); //http
 	    $text = eregi_replace("([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=http://\\2]\\2[/url]", $text); // www.
-	    $text = eregi_replace("([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
+	    $text = eregi_replace("([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
 	    // Al principio de una cadena
 	    $text = eregi_replace("^((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=\\1]\\1[/url]", $text); //http
 	    $text = eregi_replace("^(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=http://\\1]\\1[/url]", $text); // www
-	    $text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})","[url=mailto:\\1]\\1[/url]", $text); // mail
+	    $text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","[url=mailto:\\1]\\1[/url]", $text); // mail
 	    return ( $text );
 	}
 
