@@ -330,6 +330,7 @@
    				$entry_array[ 'count' ] = $i;
    				$entry_array[ 'maxcount' ] = count( $contents ) - 1;
    				$entry_array[ 'logged_in' ] = $logged_in;
+				$entry_array[ 'id' ] = $entry;
    				
    				$blog_content = $blog_content . theme_blogentry( $entry_array );
 			}
@@ -543,7 +544,8 @@
 		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
 		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
-						
+		$entry_array[ 'id' ] = substr( $entry_id, strlen( $entry_id )-18, 18 );
+
 		// Categories
 		if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
 			$temp_cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );

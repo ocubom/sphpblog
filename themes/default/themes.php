@@ -100,7 +100,7 @@
    		$blog_content = $blog_content . '-->' . "\n";
 	   }
 	
-		$blog_content = $blog_content . '<div class="blog_subject">' . $entry_array[ 'subject' ] . '</div>' . "\n";
+		$blog_content = $blog_content . '<div class="blog_subject">' . $entry_array[ 'subject' ]  . '<a name="' . $entry_array[ 'id' ] . '">&nbsp</a></div>' . "\n";
 		
 		$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
 		

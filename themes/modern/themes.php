@@ -105,7 +105,7 @@
 		$blog_content = "";
 		$blog_content = $blog_content . "\n<!-- BLOG ENTRY BEGIN -->\n";
 		
-		// New 0.3.8
+		// New 0.4.4
 		// You must have this if you are using the trackback feature.
       if ( $blog_config[ "blog_trackback_enabled" ] ) {
    		$blog_content = $blog_content . "<!--\n";
@@ -123,7 +123,7 @@
 	   
 		// Display SUBJECT Line
 		$blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'subject' ] . "<br />\n";
+		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp</a>' . "<br />\n";
 		
 		// Display EDIT and DELETE buttons if the user is logged in.
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
