@@ -22,8 +22,8 @@
 	// Last version and update information.
 	//
 	global $sb_info;
-	$sb_info[ 'version' ] = '0.4.4c';
-	$sb_info[ 'last_update' ] = '03/19/05';
+	$sb_info[ 'version' ] = '0.4.4d';
+	$sb_info[ 'last_update' ] = '03/27/05';
 	
 	// Error reporting should be set to 0 in production environments.
 	//
