@@ -5,7 +5,6 @@
 	if ( !session_id() ) {
 		session_start();
 	}
-	$_SESSION[ 'capcha' ] = sb_get_capcha();
 	
 	read_config();
 	
@@ -19,19 +18,20 @@
 		// user is not able to back-up a directory.
 		//
 		// Make sure the string lengths are correct.
-		if ( strpos( $_GET[ "y" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["y"] ) == 2 &&
-				strpos( $_GET[ "m" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["m"] ) == 2 &&
-				strpos( $_GET[ "entry" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["entry"] ) == 18 ) {
+		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET['y'] ) == 2 &&
+				strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET['m'] ) == 2 &&
+				strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET['entry'] ) == 18 ) {
 			
 			// Verify that the file exists.
 			if ( entry_exists ( $_GET['y'], $_GET['m'], $_GET['entry'] ) ) {
+				$_SESSION[ 'capcha' . $_GET[ 'entry' ] ] = sb_get_capcha();
 				$redirect = false;
 			}
 		}
 	}
 	
 	if ( $redirect === true ) {
-		redirect_to_url( "index.php" );
+		redirect_to_url( 'index.php' );
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
