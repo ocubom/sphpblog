@@ -57,8 +57,8 @@
 			for ( $i = $entry_index; $i < count( $entry_file_array ); $i++ ) {			
 				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 				$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-				if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
-					$cat_array = explode( ",", $blog_entry_data[ "CATEGORIES" ] );
+				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
+					$cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
 					for ( $j=0; $j < count($cat_array); $j++ ) {
 						if ( $cat_array[ $j ] == $category ) {
 							array_push( $file_array, $entry_file_array[ $i ] );
@@ -92,12 +92,12 @@
 			if ( $entry_index == 0 ) {
 				$previous_entry = NULL;
 			} else {
-				$previous_file_array = array();			
-				for ( $i = $entry_index; $i >= 0; $i-- ) {			
+				$previous_file_array = array();
+				for ( $i = $entry_index; $i >= 0; $i-- ) {
 					list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 					$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-					if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
-						$cat_array = explode( ",", $blog_entry_data[ "CATEGORIES" ] );
+					if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
+						$cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
 						for ( $j=0; $j < count($cat_array); $j++ ) {
 							if ( $cat_array[ $j ] == $category ) {
 								array_push( $previous_file_array, $entry_file_array[ $i ] );
@@ -180,9 +180,9 @@
 			} else {
 				$theme_vars = array();
 				$theme_vars['popup_window']['width'] = 500;
-				$theme_vars['popup_window']['height'] = 500;			
+				$theme_vars['popup_window']['height'] = 500;
 			}
-			
+
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
 				// Read and Parse Blog Entry
 				$blog_entry_data = blog_entry_to_array( 'content/' . $contents[$i]['year'] . '/' . $contents[$i]['month'] . '/' . $contents[$i]['entry'] );
@@ -194,8 +194,8 @@
 				$entry_array['date'] = blog_to_html( format_date( $blog_entry_data['DATE'] ), false, false );
 				
 				// Categories
-				if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
-					$temp_cat_array = explode( ",", $blog_entry_data[ "CATEGORIES" ] );
+				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
+					$temp_cat_array = explode( ',', $blog_entry_data[ "CATEGORIES" ] );
 					$temp_cat_names = Array();
 					for ( $j = 0; $j < count( $temp_cat_array ); $j++ ) {
 						array_push( $temp_cat_names, get_category_by_id ( $temp_cat_array[$j] ) );
@@ -443,10 +443,10 @@
 			}
 			// Flip entry order
 			if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-				$entry_array = sort( $entry_array );
+				sort( $entry_array );
 			}
 			else {
-				$entry_array = rsort( $entry_array );
+				rsort( $entry_array );
 			}
 			
 			// Do not create cache if empty
@@ -540,13 +540,13 @@
 		$blog_entry_data = blog_entry_to_array( $filename );
 		
 		$entry_array = array();
-		$entry_array['subject'] = blog_to_html( $blog_entry_data["SUBJECT"], false, false );
-		$entry_array['date'] = blog_to_html( format_date( $blog_entry_data["DATE"] ), false, false );
-		$entry_array['entry'] = blog_to_html( $blog_entry_data["CONTENT"], false, false ) . '<br clear="all" />';
+		$entry_array['subject'] = blog_to_html( $blog_entry_data['SUBJECT'], false, false );
+		$entry_array['date'] = blog_to_html( format_date( $blog_entry_data['DATE'] ), false, false );
+		$entry_array['entry'] = blog_to_html( $blog_entry_data['CONTENT'], false, false ) . '<br clear="all" />';
 						
 		// Categories
-		if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
-			$temp_cat_array = explode( ",", $blog_entry_data[ "CATEGORIES" ] );
+		if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
+			$temp_cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
 			$temp_cat_names = Array();
 			for ( $j = 0; $j < count( $temp_cat_array ); $j++ ) {
 				array_push( $temp_cat_names, get_category_by_id ( $temp_cat_array[$j] ) );

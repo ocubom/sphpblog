@@ -62,7 +62,7 @@
 		$save_data = array();
 		$save_data[ 'VERSION' ] = $sb_info[ 'version' ];
 		$save_data[ 'SUBJECT' ] = clean_post_text( $blog_subject );
-		$save_data[ 'CONTENT' ] = clean_post_text( $blog_text );
+		$save_data[ 'CONTENT' ] = sb_parse_url( clean_post_text( $blog_text ) );
 		if ( count( $blog_categories ) > 0 ) {
 			$save_data[ 'CATEGORIES' ] = implode( ",", $blog_categories );
 		}
@@ -151,7 +151,7 @@
 		// Implode the array
 		$str = implode_with_keys( $save_data );
 		
-		// Save the file		
+		// Save the file
 		$result = sb_write_file( $entryFile, $str );
 		
 		// Result
@@ -165,12 +165,12 @@
 			}
 			
 			// Trackback pings?
-   	   if ( $blog_config[ 'blog_trackback_enabled' ] ) {
-   	      trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
-   	   }
-   	   
+			if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+   		      trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
+			}
 			return ( true );
-		} else {
+		}
+		else {
 			// Error:
 			// Probably couldn't create file...
 			return ( $entryFile );

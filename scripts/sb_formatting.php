@@ -529,6 +529,8 @@
 	
 	function sb_parse_url ( $text )
 	{
+		// I have detected some bugs in the regular expression, disabled at the moment.
+		return ( $text );
 		return ( preg_replace( '/(?<!\[url=)((http|ftp)+(s)?:\/\/[^<>\s]+\b)/i', '[url=\\0]\\0[/url]', $text ) );
 	}
 ?>

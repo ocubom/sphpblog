@@ -223,15 +223,15 @@
 		
 		// Save the file
 		$save_data = array();
-		$save_data[ "VERSION" ] = $sb_info[ "version" ];
-		$save_data[ "NAME" ] = clean_post_text( $comment_name );
-		$save_data[ "DATE" ] = $comment_date;
-		$save_data[ "CONTENT" ] = clean_post_text( $comment_text );
-		if ( $comment_email != "" ) {
-			$save_data[ "EMAIL" ] = clean_post_text( $comment_email );
+		$save_data[ 'VERSION' ] = $sb_info[ 'version' ];
+		$save_data[ 'NAME' ] = clean_post_text( $comment_name );
+		$save_data[ 'DATE' ] = $comment_date;
+		$save_data[ 'CONTENT' ] = sb_parse_url( clean_post_text( $comment_text ) );
+		if ( $comment_email != '' ) {
+			$save_data[ 'EMAIL' ] = clean_post_text( $comment_email );
 		}
-		if ( $comment_url != "" ) {
-			$save_data[ "URL" ] = clean_post_text( $comment_url );
+		if ( $comment_url != '' ) {
+			$save_data[ 'URL' ] = clean_post_text( $comment_url );
 		}
 
 		// Implode the array
