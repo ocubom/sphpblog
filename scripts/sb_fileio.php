@@ -99,7 +99,7 @@
 					$filename = readdir( $dhandle );
 				}
 			}
-			closedir( $dhandle) ;
+			closedir( $dhandle );
 		}
 		sort( $result );
 		return( $result );

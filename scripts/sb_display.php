@@ -377,6 +377,8 @@
 	
 	
 	function blog_entry_listing ( ) {
+		global $blog_config;
+		
 		// Return listing of all the blog entries in order
 		// of newest to oldest.
 		//
@@ -439,9 +441,18 @@
 					}
 				}
 			}
-			sort( $entry_array );
-			$entry_array = array_reverse( $entry_array );
-			sb_write_file( $filename, serialize( $entry_array ) );
+			// Flip entry order
+			if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
+				$entry_array = sort( $entry_array );
+			}
+			else {
+				$entry_array = rsort( $entry_array );
+			}
+			
+			// Do not create cache if empty
+			if ( count( $entry_array )>0 ) {
+				sb_write_file( $filename, serialize( $entry_array ) );
+			}
 		}
 		return( $entry_array );
 	}

@@ -34,11 +34,6 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		// Flip entry order
-		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-			$entry_file_array = array_reverse( $entry_file_array );
-		}
-		
 		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
 			// Hosted at root.
 			$base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/';
@@ -136,11 +131,6 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		// Flip entry order
-		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-			$entry_file_array = array_reverse( $entry_file_array );
-		}
-		
 		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
 			// Hosted at root.
 			$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
@@ -227,11 +217,6 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		// Flip entry order
-		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-			$entry_file_array = array_reverse( $entry_file_array );
-		}
-		
 		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
 			// Hosted at root.
 			$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/';

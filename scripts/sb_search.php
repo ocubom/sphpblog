@@ -30,11 +30,6 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		// Flip entry order
-		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-			$entry_file_array = array_reverse( $entry_file_array );
-		}
-		
 		$words=@split( ' ', strtoupper( $search_str ) );
 		
 		if ( strlen( $search_str ) > 1) {
