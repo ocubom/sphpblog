@@ -19,7 +19,7 @@
 	**************************************************************************/
 	
 	function read_menus_calendar ( $m, $y, $d ) {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $blog_config;
 		
 		if ( !isset( $m ) ) {
 			$m = date( 'm' );
@@ -59,25 +59,13 @@
 			$previous_month = 12;
 		}
 		
-		//Don't let go before the first article
-		if ( substr( $entries[ count( $entries ) - 1 ], 7, 2 ) + ( substr( $entries[ count( $entries ) - 1 ], 5, 2 ) * 12 ) >=
-			$y*12+$m ) {
-			$previous_year = substr( $entries[ count( $entries ) - 1 ], 5, 2 )+2000;
-			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
-		}
-		//Don't let go past now
-		if ( date( 'm' ) + ( date( 'y' ) * 12 ) >=
-			$y*12+$m ) {
-			$next_year = date( 'Y' );
-			$next_month = date( 'm' );
-		}
-
-		$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
-
-		/*
-		The following using cached blog_entry_listing should be faster, but it isn't, at least, with more than 
-		400 articles, so it is commented unter further evaluation is done.
+		//$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
 		$entries = blog_entry_listing();
+		if ( $blog_config[ 'blog_entry_order' ] != 'old_to_new' )
+		{
+			sort ( $entries );
+		}
+
 		//Remove not current month/day entries
 		$temp_entries=array();
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
@@ -85,9 +73,22 @@
 				array_push( $temp_entries, $entries[ $i ] );
 			}
 		}
+
+		//Don't let go before the first article
+		if ( substr( $entries[ 0 ], 7, 2 ) + ( substr( $entries[ 0 ], 5, 2 ) * 12 ) >=
+			$y*12+$m ) {
+			$previous_year = $y+2000;
+			$previous_month = $m;
+		}
+		//Don't let go past now
+		if ( date( 'm' ) + ( date( 'y' ) * 12 ) <=
+			$y*12+$m ) {
+			$next_year = $y+2000;
+			$next_month = $m;
+		}
+
 		$entries=$temp_entries;
 		unset( $temp_entries );
-		*/
 
 		// Loop Through Days
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
@@ -112,13 +113,13 @@
 		<tr>
 		<td align="center">';
 		if ( ( ( $previous_year%100 )!=$y ) || ( $previous_month!=$m ) ) {
-			$str.='<a href="index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
+			$str.='<a href="index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&amp;m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
 		}
 		$str.='</td>
 		<td align="center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
 		<td align="center">';
 		if ( ( ( $next_year%100 )!=$y ) || ( $next_month!=$m ) ) {
-			$str.='<a href="' . $_SERVER[ 'PHP_SELF' ] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
+			$str.='<a href="' . $_SERVER[ 'PHP_SELF' ] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&amp;m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
 		}
 		$str.='</td>
 		</tr>
@@ -158,7 +159,7 @@
 			}
 			if ( $counts[$i-1] > 0 )
 			{
-				$str = $str . '<a href="index.php?d=' . sprintf( '%02d', $i) . '&m=' . sprintf( '%02d', $m ) . '&y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
+				$str = $str . '<a href="index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
 			}
 			else
 			{
@@ -189,7 +190,7 @@
 			$str = $str . '<td></td>';
 		}
 		$str = $str . '</tr><tr>';
-		$str = $str . '<td colspan=7 align="center">' . strftime( '<a href="index.php?y=%y&m=%m&d=%d">%x') . '</a></td></tr></table>'; // Close the table
+		$str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">%x') . '</a></td></tr></table>'; // Close the table
 		return( $str );
 	}
 	
@@ -264,19 +265,19 @@
 												} else {
 													if ( $default_view != 2) {
 														// Non-Selected Days
-														$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&d='.$temp_day.'">&nbsp;&nbsp;&nbsp;' . $temp_date  . ' ( ' . $temp_count . ' )' . '</a><br />' . $str_month;
+														$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;d='.$temp_day.'">&nbsp;&nbsp;&nbsp;' . $temp_date  . ' ( ' . $temp_count . ' )' . '</a><br />' . $str_month;
 													}
 												}
 											}
 											
-											$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&default_view=1">' . $months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
+											$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;default_view=1">' . $months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
 										} else {
 											// Non-Selected Months
 											if ( count( $entries ) > 0 ) {
 												$latest_d = substr( $entries[ count( $entries ) - 1 ], 9, 2 );
-												$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&d='.$latest_d.'&default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
+												$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;d='.$latest_d.'&amp;default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
 											} else {
-												$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
+												$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
 											}
 										}
 									}
