@@ -464,7 +464,6 @@
       			}
 			}
 		}
-		
 		return ( $block_array );
 	}
 	

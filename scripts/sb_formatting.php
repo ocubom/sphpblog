@@ -58,13 +58,13 @@
 		$replace_arr = array();
 		for ( $i = 0; $i < count( $tag_arr ); $i++ ) {
 			$tag = $tag_arr[$i];
-			array_push( $search_arr,  '[ ' . strtolower( $tag ) . ' ]',  '[ ' . strtoupper( $tag ) . ' ]' );
+			array_push( $search_arr,  '[' . strtolower( $tag ) . ']',  '[' . strtoupper( $tag ) . ']' );
 			if ( $strip_all_tags ) {
 				array_push( $replace_arr, '',  '' );
 			} else {
 				array_push( $replace_arr, '<' . strtolower( $tag ) . '>',  '<' . strtoupper( $tag ) . '>' );
 			}
-			array_push( $search_arr,  '[/' . strtolower( $tag ) . ' ]', '[/' . strtoupper( $tag ) . ' ]' );
+			array_push( $search_arr,  '[/' . strtolower( $tag ) . ']', '[/' . strtoupper( $tag ) . ']' );
 			if ( $strip_all_tags ) {
 				array_push( $replace_arr, '',  '' );
 			} else {
@@ -85,19 +85,19 @@
 		// [url=http://xxx new=true]xxx[/url]
 		if ( $comment_mode ) {
 			if ( in_array( 'url', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false ) {
-				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', false, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ']', '[/url]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', false, $add_no_follow );
 			} else {
-				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', true, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ']', '[/url]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', true, $add_no_follow );
 			}
 		} else {
 			if ( $strip_all_tags ) {
-				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', true, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ']', '[/url]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', true, $add_no_follow );
 			} else {
-				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', false, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ']', '[/url]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', false, $add_no_follow );
 			}
 		}
 		
@@ -112,19 +112,19 @@
 		// [img=http://xxx width=xxx height=xxx popup=true float=left]
 		if ( $comment_mode ) {
 			if ( in_array( 'img', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false  ) {
-				$str = replace_img_tag( $str, '[img=', ' ]', false );
-				$str = replace_img_tag( $str, '[IMG=', ' ]', false );
+				$str = replace_img_tag( $str, '[img=', ']', false );
+				$str = replace_img_tag( $str, '[IMG=', ']', false );
 			} else {
-				$str = replace_img_tag( $str, '[img=', ' ]', true );
-				$str = replace_img_tag( $str, '[IMG=', ' ]', true );
+				$str = replace_img_tag( $str, '[img=', ']', true );
+				$str = replace_img_tag( $str, '[IMG=', ']', true );
 			}
 		} else {
 			if ( $strip_all_tags ) {
-				$str = replace_img_tag( $str, '[img=', ' ]', true );
-				$str = replace_img_tag( $str, '[IMG=', ' ]', true );
+				$str = replace_img_tag( $str, '[img=', ']', true );
+				$str = replace_img_tag( $str, '[IMG=', ']', true );
 			} else {
-				$str = replace_img_tag( $str, '[img=', ' ]', false );
-				$str = replace_img_tag( $str, '[IMG=', ' ]', false );
+				$str = replace_img_tag( $str, '[img=', ']', false );
+				$str = replace_img_tag( $str, '[IMG=', ']', false );
 			}
 		}
 		
@@ -531,6 +531,6 @@
 	{
 		// I have detected some bugs in the regular expression, disabled at the moment.
 		return ( $text );
-		return ( preg_replace( '/(?<!\[url=)((http|ftp)+(s)?:\/\/[^<>\s]+\b)/i', '[url=\\0]\\0[/url]', $text ) );
+		//return ( preg_replace( '/(?<!\[url=)((http|ftp)+(s)?:\/\/[^<>\s]+\b)/i', '[url=\\0]\\0[/url]', $text ) );
 	}
 ?>
