@@ -1,0 +1,73 @@
+Simple PHP Blog:
+
+----------------
+
+Author
+
+------
+
+Created by: Alexander Palmo (apalmo <at> bigevilbrain <dot> com)
+
+Date: 08/02/2004
+
+Contributors
+
+------------
+
+RSS, ping, GZip, email, search and minor bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
+
+Date: 12/05/2004
+
+RSS, ping, GZip, email, search and minor bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
+
+Date: 12/05/2004
+
+TXT Powered logo by Juano (powerjuano <at> hotmail <dot> com 
+
+Date: 10/07/2004
+
+Trackbacks
+Arjan Hakkesteegt, sphpblog <at> hakwerk <dot> com
+Date: 28-Nov-2004
+
+Translations
+------------
+Chinese Language File
+(c) 2004 Jfly, jflycn <at> hotmail <dot> com
+
+Danish Language File
+(c) 2004 Thomas Petersen, thomasp <at> nsd <dot> dk
+
+Dutch & Nederlands Language Files
+(c) 2004 S. Klippert, klippy@users.sourceforge.net
+
+French Language File
+(c) 2004 Thibaud Chon, thibaud <dot> chone <at> insa-lyon <dot> fr
+
+German Language File
+(c) 2004 Josef Angstenberger, jtxa <at> users <dot> sourceforge <dot> net
+
+Italian Language File
+(c) 2004 Porro Luciano (alias drudo), drudo3 <at> jumpy <dot> it, http://drudo.altervista.org/blog/
+
+Japanese Language File
+(c) 2004-2005 Sanshiro Akiyama
+
+Malay Language File
+(c) 2004 Mohammad Fahmi Adam, farisi <at> hotmail <dot> com
+
+Portuguese Language File
+(c) 2004 Nuno Cardoso, nuno.cardoso@tugamail.com
+
+Russian Language File
+(c) 2004 Artyom Pervukhin, trem <at> pm <dot> convex <dot> ru
+
+Spanish Language File
+(c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com
+
+Turkish Language File
+(c) 2004 A. Murat Eren, meren <at> uludag <dot> org <dot> tr
+
+Traditional Chinese UTF-8 Language File
+(c) 2004 Markmcm, mcha226 <at> hotmail <dot> com
+(c) 2004 Judge Hu, judgehou <at> gmail <dot> com

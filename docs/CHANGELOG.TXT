@@ -1,0 +1,269 @@
+Simple PHP Blog:
+
+----------------
+
+Version History
+
+---------------
+
+0.4.3
+-----
+- Guti added capcha to comments
+- Fixed another 2005 date bug
+
+0.4.2
+-----
+- More updates to themes
+
+0.4.1
+-----
+- Some updates to themes
+
+0.4.0
+-----
+- Major release
+
+0.3.8 - 01/18/05
+- - - - - - - - - -
+1) Fixed "next" and "back" buttons when browsing by category
+2) Added "upgrade" check to login_cgi page.
+3) Added strings for stats, upgrade, login, and links pages.
+4) Tweaked the navigation menus.
+5) Tweaked the contact email (line breaks, and reply-to email...)
+6) Added static page drop-down to links page.
+7) Added categories display to preview and comment pages.
+8) Added some more color schemes.
+
+0.3.7m,n,o,p,q,r - 10/01/2004 --> 01/01/2005
+- - - - - - - - - -
+Tons and tons of improvements and bug fixes. :)
+
+0.3.7l - 09/20/2004
+
+- - - - - - - - - -
+
+1) PHP 5 optimizations, but still working with 4.1.
+
+2) Added in all themes hints in the PHP's and SPHPBlog's logos showing the installed version.
+
+3) Improved documentation.
+
+4) Now current date in calendar is clickable.
+
+0.3.7k - 09/17/2004
+
+- - - - - - - - - -
+
+1) Replaced the archive view, with calendar one.
+
+2) RSS feed accepts the max entries to publish if defined.
+
+3) Email, URL and remember me in comments.
+
+4) Fixed a bug in the most recent comments when deleting a comment.
+
+5) Added the TXT Powered logo to all themes.
+
+6) Updated english and spanish translations with new strings.
+
+0.3.7j - 09/14/2004
+
+- - - - - - - - - -
+
+1) Search also finds contents in static pages. Great speed improvements.
+
+2) Fixed a bug in the search results.
+
+3) Minor improvements and speed hacks.
+
+4) Improved documentation.
+
+5) favicon support.
+
+6) RSS channel image.
+
+0.3.7i - 08/10/2004
+
+- - - - - - - - - -
+
+Various...
+
+0.3.7h - 08/02/2004
+
+- - - - - - - - - -
+
+Various...
+
+0.3.7g - 08/28/2004
+
+- - - - - - - - - -
+
+1) Added support for current song and current mood.
+
+0.3.7f - 07/23/2004
+
+- - - - - - - - - -
+
+Various...
+
+0.3.7e - 07/21/2004
+
+- - - - - - - - - -
+
+Various...
+
+0.3.7c - 07/12/2004
+
+- - - - - - - - - -
+
+Various...
+
+0.3.7b - 07/06/2004
+
+- - - - - - - - - -
+
+Bugs:
+
+1) Fixed a bug with RSS encoding and charsets. Should handle
+
+multiple language HTML encoding properly now.
+
+2) Fixed comment display on main page for past months.
+
+0.3.7 - 06/21/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) RSS
+
+2) Compression
+
+3) Search
+
+0.3.6 - 06/12/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Lots of new formatting options
+
+2) Re-wrote read-entries() function
+
+3) Re-wrote all the parsing in blog_to_html() function
+
+0.3.5 - 06/04/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Themes are done
+
+2) Changed the Setup/Install Process
+
+Every single file has changes...
+
+0.3.4 - 05/14/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) New menu date formatting.
+
+2) Themes are partially implemented...
+
+Bugs:
+
+1) Fixed a bug that caused multiple static entries in menu, when editing an existing entry.
+
+0.3.3 - 05/14/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Date and time formatting.
+
+0.3.2 - 05/07/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Most Recent Comments area.
+
+0.3.1 - 04/28/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Static Pages.
+
+2) More control over Custom Links.
+
+0.3.0 - 04/28/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Added "Entry Order" and "Comment Order" to setup page.
+
+2) Moved all colors to the "$user_colors" array. (Colors were stored in a bunch of globals.)
+
+0.2d - 04/26/2004
+
+- - - - - - - - - -
+
+Additions:
+
+1) Folders 'Config', 'Content', and 'Images' are now dynamically created.
+
+They will no longer be included in the .zip files.
+
+Bug Fixes:
+
+1) Fixed image size issue. If you posted more than one image in a blog
+
+entry. All of the images will be sized to the dimensions of the first
+
+image.
+
+2) Fixed a bug with the mkdir commands. When PHP is running in safe
+
+mode, you should set the 'umask' before creating a directory. Also,
+
+mkdir will fail if you have a trailing '/'.
+
+0.2a - 0.2c - 04/25/2004
+
+- - - - - - - - - - - - -
+
+Added multi-lingual support. (Danish and Russian translations are
+
+currently included.)
+
+Many bug fixes.
+
+0.2 - 04/20/2004
+
+- - - - - - - - -
+
+Bug Fixes:
+
+1) Pop-Up Window Bug.
+
+Scrollbars weren't showing up in the Comment window on IE.
+
+0.1 - 04/09/2004
+
+- - - - - - - - -
+
+First Release:
+
+Release the code on Source Forge under the GNU Public License
