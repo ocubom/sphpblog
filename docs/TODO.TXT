@@ -28,7 +28,7 @@ Alex		Guest Book		[0%] Optional Guest Book.
 
 Alex		Links Menu		[0%] Add checkbox to the Links Menu to open URLs in new window.
 
-Guti		404 static		[0%] Add a default static page to show if the requested static page is not found. Also consider making hidden static entries (ie starting with a dot) that are not shown in the links menu
+Guti		404 static		[90%] Add a default static page to show if the requested static page is not found. Also consider making hidden static entries (ie starting with a dot) that are not shown in the links menu
 
 			Move 			[0%] Move the sensitive information stored in password.txt to a PHP file to increase security. Also check MD5 issues. But what about PHP obfustators/optimizers. It is compatible?
 			password.txt

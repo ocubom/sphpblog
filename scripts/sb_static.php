@@ -51,8 +51,15 @@
 		
 		if ( file_exists( 'content/static/' . $entry_id . '.txt' ) ) {
 			$filename = 'content/static/' . $entry_id . '.txt';
-		} elseif ( file_exists( 'content/static/' . $entry_id . '.txt.gz' ) ) {
+		}
+		else if ( file_exists( 'content/static/' . $entry_id . '.txt.gz' ) ) {
 			$filename = 'content/static/' . $entry_id . '.txt.gz';
+		}
+		else if ( file_exists( 'content/static/_404.txt.gz' ) ) {
+			$filename = 'content/static/_404.txt.gz';
+		}
+		else if ( file_exists( 'content/static/_404.txt' ) ) {
+			$filename = 'content/static/_404.txt';
 		}
 		
 		$blog_entry_data = static_entry_to_array( $filename );
