@@ -12,6 +12,7 @@ Version History
 - Support for c parameter in feeds specifying the category(ies) to syndicate.
 - Added alt, align and valing attributes for the [img] tag.
 - Enhaced block configuration.
+- XHTML compatibility fixes.
 - Some speed optimizations.
 - Stability improvements.
 
