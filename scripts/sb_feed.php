@@ -79,7 +79,7 @@
 			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			$cats = split( ',', $contents[ 'CATEGORIES' ] );
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
-				if ( strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
+				if ( ( $category=='' ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
 					$entries++;
 					echo "\t\t<item>\n";
 					//Required item fields
@@ -261,7 +261,7 @@
 			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			$cats = split( ',', $contents[ 'CATEGORIES' ] );
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
-				if ( strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
+				if ( ( $category=='' ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
 					$entries++;
 					echo "\t<entry>\n";
 					//Required item fields
