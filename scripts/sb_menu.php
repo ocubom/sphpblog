@@ -641,6 +641,8 @@
 	// ----------------------------
 	
 	function add_most_recent ( $comment_id, $y, $m, $blog_entry_id ) {
+		global $blog_config;
+		
 		// Add an item to the 'Last Updated' List
 		//
 		
@@ -656,7 +658,7 @@
 			$array = array( $blog_entry_id, $m, $y, $comment_id );
 		}
 		
-		$max_comments = 5;
+		$max_comments = $blog_config[ 'blog_max_entries' ];
 		if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
 			// $array = array_reverse( $array );
 			$array = array_slice( $array, $max_comments * -4, $max_comments * 4);
@@ -750,9 +752,9 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
+						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
 					} else {
-						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
+						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
 					}
 					
 					// $str_comments = $str_comments . format_date_menu( $comment_date ) . '<br />';
@@ -766,6 +768,8 @@
 	}
 	
 	function add_most_recent_trackback ( $trackback_id, $y, $m, $blog_entry_id ) {
+		global $blog_config;
+		
 		// Add an item to the 'Last Updated' List
 		//
 		
@@ -781,7 +785,7 @@
 			$array = array( $blog_entry_id, $m, $y, $trackback_id );
 		}
 		
-		$max_comments = 5;
+		$max_comments = $blog_config[ 'blog_max_entries' ];
 		if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
 			// $array = array_reverse( $array );
 			$array = array_slice( $array, $max_comments * -4, $max_comments * 4);
@@ -870,9 +874,9 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
+						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
 					} else {
-						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html">'.$trackback_title.'</a><br />';
+						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
 					}
 					
 					$str_trackbacks = $str_trackbacks . format_date_menu( $trackback_date ) . '<br />';
