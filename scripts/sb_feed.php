@@ -13,8 +13,8 @@
 	function clean_rss_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		//$str = html_entity_decode( $str, ENT_QUOTES, $lang_string['php_charset'] );
-		//$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
+		//$str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		//$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		return( $str );
 	}
@@ -34,16 +34,16 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+			$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ] . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://' . $_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']) . '/';
+			$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]) . '/';
 		}
 		
 		header('Content-type: application/xml');
-		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string['php_charset'] . "\"?>\n";
+		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
 		echo "<rss version=\"2.0\">\n";
 		echo "\t<channel>\n";
 		//Required channel fields
@@ -62,7 +62,7 @@
 		//Optional channel fields
 		echo "\t\t<copyright>" . clean_rss_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
 		echo "\t\t<managingEditor>" . clean_rss_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
-		echo "\t\t<language>" . str_replace( '_', '-', $lang_string['locale'] ) . "</language>\n";
+		echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
 		echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
@@ -80,7 +80,7 @@
 			//Required item fields
 			echo "\t\t\t<title>" . clean_rss_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
 			echo "\t\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
-			echo "\t\t\t<description><![CDATA[" . clean_rss_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]>" . "</description>\n";
+			echo "\t\t\t<description><![CDATA[" . clean_rss_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
 			//Optional item fields
 			echo "\t\t\t<category>";
 			//debugbreak();
@@ -110,8 +110,8 @@
 	function clean_rdf_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		//$str = html_entity_decode( $str, ENT_QUOTES, $lang_string['php_charset'] );
-		//$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
+		//$str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		//$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		return( $str );
 	}
@@ -131,16 +131,16 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 		}
 		
 		header('Content-type: application/xml');
-		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string['php_charset'] . "\"?>\n";
+		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
 		echo '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ref="http://purl.org/rss/1.0/modules/reference/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://purl.org/rss/1.0/">' . "\n";
 		echo "\t<channel rdf:about=\"" . $base_url . "/rss.rdf\">\n";
 		//Required channel fields
@@ -154,7 +154,7 @@
 		}
 		//echo "\t\t<copyright>" . clean_rdf_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
 		//echo "\t\t<managingEditor>" . clean_rdf_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
-		//echo "\t\t<language>" . str_replace( '_', '-', $lang_string['locale'] ) . "</language>\n";
+		//echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
 		//echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
@@ -196,8 +196,8 @@
 	function clean_atom_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		$str = html_entity_decode( $str, ENT_QUOTES, $lang_string['php_charset'] );
-		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
+		$str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		return( $str );
 	}
@@ -217,17 +217,17 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 		}
 		
 		header('Content-type: application/xml');
-		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string['php_charset'] . "\"?>\n";
-		echo '<feed version="0.3" xmlns="http://purl.org/atom/ns#" xml:lang="' . str_replace('_', '-', $lang_string['locale']) . "\">\n";
+		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
+		echo '<feed version="0.3" xmlns="http://purl.org/atom/ns#" xml:lang="' . str_replace('_', '-', $lang_string[ 'locale' ]) . "\">\n";
 		//Required channel fields
 		echo "\t<title>" . clean_atom_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
 		echo "\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php\" />\n";

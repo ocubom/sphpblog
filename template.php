@@ -3,7 +3,7 @@
 	// -------------------
 	
 	// Load/Include Functions
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	
 	// Check Login (See scripts/sb_login.php for details)
 	// ---------
@@ -22,7 +22,7 @@
 	// In most cases you won't be adding new strings
 	// to the strings.php file unless you are developing
 	// something for release.
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
 	// Start HTML Page
@@ -36,9 +36,9 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
@@ -58,8 +58,8 @@
 			// to pass your content to the theme_staticentry() function
 			// located in themes/{theme_name}/themes.php
 			$entry_array = array();
-			$entry_array['subject'] = "Subject Line";
-			$entry_array['entry'] = "Body Content<br /><a href=\"http://www.google.com/\">Google</a>";
+			$entry_array[ 'subject' ] = 'Subject Line';
+			$entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
 			
 			echo( theme_staticentry( $entry_array ) );
 			

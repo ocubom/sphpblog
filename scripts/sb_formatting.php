@@ -21,7 +21,7 @@
 		// format is pipe delimited.)
 		global $lang_string;
 		$str = str_replace( '|', '&#124;', $str );
-		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
+		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 
 		return ( $str );
 	}
@@ -58,13 +58,13 @@
 		$replace_arr = array();
 		for ( $i = 0; $i < count( $tag_arr ); $i++ ) {
 			$tag = $tag_arr[$i];
-			array_push( $search_arr,  '[' . strtolower( $tag ) . ']',  '[' . strtoupper( $tag ) . ']' );
+			array_push( $search_arr,  '[ ' . strtolower( $tag ) . ' ]',  '[ ' . strtoupper( $tag ) . ' ]' );
 			if ( $strip_all_tags ) {
 				array_push( $replace_arr, '',  '' );
 			} else {
 				array_push( $replace_arr, '<' . strtolower( $tag ) . '>',  '<' . strtoupper( $tag ) . '>' );
 			}
-			array_push( $search_arr,  '[/' . strtolower( $tag ) . ']', '[/' . strtoupper( $tag ) . ']' );
+			array_push( $search_arr,  '[/' . strtolower( $tag ) . ' ]', '[/' . strtoupper( $tag ) . ' ]' );
 			if ( $strip_all_tags ) {
 				array_push( $replace_arr, '',  '' );
 			} else {
@@ -85,19 +85,19 @@
 		// [url=http://xxx new=true]xxx[/url]
 		if ( $comment_mode ) {
 			if ( in_array( 'url', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false ) {
-				$str = replace_url_tag( $str, '[url=', ']', '[/url]', false, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', false, $add_no_follow );
 			} else {
-				$str = replace_url_tag( $str, '[url=', ']', '[/url]', true, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', true, $add_no_follow );
 			}
 		} else {
 			if ( $strip_all_tags ) {
-				$str = replace_url_tag( $str, '[url=', ']', '[/url]', true, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', true, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', true, $add_no_follow );
 			} else {
-				$str = replace_url_tag( $str, '[url=', ']', '[/url]', false, $add_no_follow );
-				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[url=', ' ]', '[/url]', false, $add_no_follow );
+				$str = replace_url_tag( $str, '[URL=', ' ]', '[/URL]', false, $add_no_follow );
 			}
 		}
 		
@@ -112,19 +112,19 @@
 		// [img=http://xxx width=xxx height=xxx popup=true float=left]
 		if ( $comment_mode ) {
 			if ( in_array( 'img', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false  ) {
-				$str = replace_img_tag( $str, '[img=', ']', false );
-				$str = replace_img_tag( $str, '[IMG=', ']', false );
+				$str = replace_img_tag( $str, '[img=', ' ]', false );
+				$str = replace_img_tag( $str, '[IMG=', ' ]', false );
 			} else {
-				$str = replace_img_tag( $str, '[img=', ']', true );
-				$str = replace_img_tag( $str, '[IMG=', ']', true );
+				$str = replace_img_tag( $str, '[img=', ' ]', true );
+				$str = replace_img_tag( $str, '[IMG=', ' ]', true );
 			}
 		} else {
 			if ( $strip_all_tags ) {
-				$str = replace_img_tag( $str, '[img=', ']', true );
-				$str = replace_img_tag( $str, '[IMG=', ']', true );
+				$str = replace_img_tag( $str, '[img=', ' ]', true );
+				$str = replace_img_tag( $str, '[IMG=', ' ]', true );
 			} else {
-				$str = replace_img_tag( $str, '[img=', ']', false );
-				$str = replace_img_tag( $str, '[IMG=', ']', false );
+				$str = replace_img_tag( $str, '[img=', ' ]', false );
+				$str = replace_img_tag( $str, '[IMG=', ' ]', false );
 			}
 		}
 		
@@ -233,7 +233,7 @@
 				// Also, decode HTML entities between the tags.
 				$temp_str = substr( $str, 0, $str_offset );
 				if ( $strip_tags === false ) {
-					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string['php_charset'] );
+					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 				}
 				$str_out = $str_out . $temp_str;
 				
@@ -437,7 +437,7 @@
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
-						$max_image_width = $theme_vars['max_image_width'];
+						$max_image_width = $theme_vars[ 'max_image_width' ];
 						
 						if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
 								$width = $attrib_width;

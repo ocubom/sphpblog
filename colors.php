@@ -1,20 +1,20 @@
 <?php 
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
 	read_config();
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'colors' );
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	
 	<style type="text/css">
 	<!--
@@ -33,12 +33,12 @@
 	// Update Text Fields
 	function set_hex ( hex_val ) {
 		var str;
-		for (i=0; i<document.forms['colors']['area'].length; i++) {
-			if (document.forms['colors']['area'][i].checked == true) {
-				str = document.forms['colors']['area'][i].value;
+		for (i=0; i<document.forms[ 'colors' ][ 'area' ].length; i++) {
+			if (document.forms[ 'colors' ][ 'area' ][i].checked == true) {
+				str = document.forms[ 'colors' ][ 'area' ][i].value;
 			}
 		}
-		document.forms['colors'][str].value = hex_val;
+		document.forms[ 'colors' ][str].value = hex_val;
 		changeColor(str, "#"+hex_val);
 	}
 	
@@ -49,13 +49,13 @@
 	
 	function load_preset() {
 		// alert( 'hello' );
-		str = document.forms['colors']['presets'].value;
+		str = document.forms[ 'colors' ][ 'presets' ].value;
 		if ( str != '--' ) {
 			arr = str.split('|');
 			for (i=4; i<arr.length; i=i+2) {
 				id = arr[i];
 				hex = arr[i+1];
-				document.forms['colors'][id].value = hex;
+				document.forms[ 'colors' ][id].value = hex;
 				document.getElementById(id+'_swatch').style.backgroundColor = "#"+hex;
 			}
 			document.getElementById("scheme_name").value = arr[0];
@@ -66,32 +66,32 @@
 	-->
 	</script>
 
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string['title'] ); ?></title>
+	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $blog_theme;
 		
 		?>
-		<h2><?php echo( $lang_string['title'] ); ?></h2>
-		<?php echo( $lang_string['instructions'] ); ?><p />
+		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<?php 
 		$entry_array = array();
-		$entry_array['subject'] = 'BLOG ENTRY SAMPLE';
-		$entry_array['date'] = 'viernes, 22 de octubre de 2004, 09:48';
-		$entry_array['permalink']['name'] = $lang_string['sb_permalink'];
-		$entry_array['permalink']['url'] = 'colors.php';
-		$entry_array['entry'] = blog_to_html('[html]El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.<br /><br /><a href="colors.php">El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.</a><br /><br />El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.[/html]', false, false ) . '<br clear="all">';
-		$entry_array['stars'] = '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/half_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">';
-		$entry_array['comment']['url'] = 'colors.php';
-		$entry_array['comment']['name'] = $lang_string['sb_add_comment_btn'];
-		$entry_array['comment']['count'] = $lang_string['sb_view_counter_pre'] . '0' . $lang_string['sb_view_counter_post'];
-		$entry_array['trackback']['url'] = 'colors.php';
-		$entry_array['trackback']['ping_url'] = 'colors.php';
-		$entry_array['count'] = 1;
-		$entry_array['maxcount'] = 1;
-		$entry_array['logged_in'] = $logged_in;
+		$entry_array[ 'subject' ] = 'BLOG ENTRY SAMPLE';
+		$entry_array[ 'date' ] = 'viernes, 22 de octubre de 2004, 09:48';
+		$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
+		$entry_array[ 'permalink' ][ 'url' ] = 'colors.php';
+		$entry_array[ 'entry' ] = blog_to_html('[html]El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.<br /><br /><a href="colors.php">El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.</a><br /><br />El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.[/html]', false, false ) . '<br clear="all">';
+		$entry_array[ 'stars' ] = '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/half_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">';
+		$entry_array[ 'comment' ][ 'url' ] = 'colors.php';
+		$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_add_comment_btn' ];
+		$entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_pre' ] . '0' . $lang_string[ 'sb_view_counter_post' ];
+		$entry_array[ 'trackback' ][ 'url' ] = 'colors.php';
+		$entry_array[ 'trackback' ][ 'ping_url' ] = 'colors.php';
+		$entry_array[ 'count' ] = 1;
+		$entry_array[ 'maxcount' ] = 1;
+		$entry_array[ 'logged_in' ] = $logged_in;
 		
 		echo ( theme_blogentry( $entry_array ));
 		?>
@@ -116,14 +116,14 @@
 				
 				$left_count = floor( count( $color_def ) / 2 );
 				
-				echo ('<table border="0" width="' . $theme_vars['max_image_width'] . '" cellspacing="0" cellpadding="0">' . "\n");
+				echo ('<table border="0" width="' . $theme_vars[ 'max_image_width' ] . '" cellspacing="0" cellpadding="0">' . "\n");
 				// Left Column
 				echo ('<tr align="left" valign="top">' . "\n");
 				echo ('<td width="50%">' . "\n");
 				for ( $i = 0; $i < $left_count; $i++ ) {
-					$id = $color_def[$i]['id'];
+					$id = $color_def[$i][ 'id' ];
 					$color = $user_colors[$id];
-					$string = $color_def[$i]['string'];
+					$string = $color_def[$i][ 'string' ];
 					$str = '';
 					if ( $i == 0 ) {
 						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked> ';
@@ -138,9 +138,9 @@
 				// Right Column
 				echo ('<td width="50%">' . "\n");
 				for ( $i = $left_count; $i < count( $color_def ); $i++ ) {
-					$id = $color_def[$i]['id'];
+					$id = $color_def[$i][ 'id' ];
 					$color = $user_colors[$id];
-					$string = $color_def[$i]['string'];
+					$string = $color_def[$i][ 'string' ];
 					$str = '';
 					if ( $i == 0 ) {
 						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked> ';
@@ -156,11 +156,11 @@
 				
 				echo ('</table><p />' . "\n");
 			
-				echo ('<input type="submit" name="submit" value="' . $lang_string['submit_btn'] . '"/>' );
-				echo ('<hr noshade size="1" color=#' . $user_colors['inner_border_color'] . '>' . "\n");
+				echo ('<input type="submit" name="submit" value="' . $lang_string[ 'submit_btn' ] . '"/>' );
+				echo ('<hr noshade size="1" color=#' . $user_colors[ 'inner_border_color' ] . '>' . "\n");
 				
 				// Preset Color Dropdown
-				echo ('<label for="presets">' . $lang_string['color_preset'] . '</label><br />' . "\n");
+				echo ('<label for="presets">' . $lang_string[ 'color_preset' ] . '</label><br />' . "\n");
 				echo ('<select name="presets" id="presets" onChange="load_preset();">' . "\n");
 				echo( '<option label="--" value="--">--</option>' . "\n");
 				
@@ -213,11 +213,11 @@
 				echo ('</select><br /><br />');
 			?>
 			
-			<label for="scheme_name"><?php echo( $lang_string['scheme_name'] ); ?></label><br />
+			<label for="scheme_name"><?php echo( $lang_string[ 'scheme_name' ] ); ?></label><br />
 			<input type="text" name="scheme_name" id="scheme_name" autocomplete=OFF value="" size="40"><br /><br />
 			
-			<label for="scheme_file"><?php echo( $lang_string['scheme_file'] ); ?></label><br />
-			<input type="text" name="scheme_file" id="scheme_file" autocomplete=OFF value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string['save_btn'] ); ?>" /><br />
+			<label for="scheme_file"><?php echo( $lang_string[ 'scheme_file' ] ); ?></label><br />
+			<input type="text" name="scheme_file" id="scheme_file" autocomplete=OFF value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" /><br />
 		
 		</form>
 		

@@ -8,7 +8,7 @@
 		$trackback_entry_data = array();
 				
 		$str = sb_read_file( $entryFile );
-		$exploded_array = explode( "|", $str );
+		$exploded_array = explode( '|', $str );
 		
 		if ( count( $exploded_array ) > 1 ) {
 			$trackback_entry_data = explode_with_keys( $exploded_array );
@@ -22,20 +22,20 @@
 	function read_trackbacks ( $y, $m, $entry, $logged_in, $is_html ) {
 		global $blog_content, $blog_config, $lang_string, $user_colors;
 		
-		$blog_content = "";
+		$blog_content = '';
 
 		// Trackbacks
-		$basedir = "content/";
-		$dir = $basedir.$y."/".$m."/".$entry."/trackbacks/";
-		$file_array = sb_folder_listing( $dir, array( ".txt", ".gz" ) );
-		if ( $blog_config[ "blog_comment_order" ] == "new_to_old" ) {
+		$basedir = 'content/';
+		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/trackbacks/';
+		$file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
+		if ( $blog_config[ 'blog_comment_order' ] == 'new_to_old' ) {
 			$file_array = array_reverse( $file_array );
 		}
 		
 		$contents = array();
 		for ( $i = 0; $i < count( $file_array ); $i++ ) {
-			if ( $file_array[$i] !== "rating.txt" ) {
-				array_push( $contents, array( "path" => ( $dir . $file_array[$i] ), "entry" => $file_array[$i] ) );
+			if ( $file_array[$i] !== 'rating.txt' ) {
+				array_push( $contents, array( 'path' => ( $dir . $file_array[$i] ), 'entry' => $file_array[$i] ) );
 			}
 		}
 		
@@ -45,34 +45,34 @@
 		
 		if ( $contents ) {	
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
-				$trackback_entry_data = trackback_to_array( $contents[$i]["path"] );
+				$trackback_entry_data = trackback_to_array( $contents[$i][ 'path' ] );
 				
 				$entry_array = array();
-				$entry_array["date"] = blog_to_html( format_date( $trackback_entry_data["DATE"] ), true, false );
-				$entry_array["url"] = blog_to_html( $trackback_entry_data["URL"], true, false );
+				$entry_array[ 'date' ] = blog_to_html( format_date( $trackback_entry_data[ 'DATE' ] ), true, false );
+				$entry_array[ 'url' ] = blog_to_html( $trackback_entry_data[ 'URL' ], true, false );
 
-				if ( isset( $trackback_entry_data[ "TITLE" ] ) ) {
-				   $entry_array["title"] = blog_to_html( $trackback_entry_data["TITLE"], true, false );
+				if ( isset( $trackback_entry_data[ 'TITLE' ] ) ) {
+				   $entry_array[ 'title' ] = blog_to_html( $trackback_entry_data[ 'TITLE' ], true, false );
 				}
-				if ( isset( $trackback_entry_data[ "EXCERPT" ] ) ) {
-				   $entry_array["excerpt"] = blog_to_html( $trackback_entry_data["EXCERPT"], true, false );
+				if ( isset( $trackback_entry_data[ 'EXCERPT' ] ) ) {
+				   $entry_array[ 'excerpt' ] = blog_to_html( $trackback_entry_data[ 'EXCERPT' ], true, false );
 				}
-				if ( isset( $trackback_entry_data[ "BLOGNAME" ] ) ) {
-				   $entry_array["blog_name"] = blog_to_html( $trackback_entry_data["BLOGNAME"], true, false );
+				if ( isset( $trackback_entry_data[ 'BLOGNAME' ] ) ) {
+				   $entry_array[ 'blog_name' ] = blog_to_html( $trackback_entry_data[ 'BLOGNAME' ], true, false );
 				}
-				if ( isset( $trackback_entry_data[ "IP" ] ) ) {
-				   $entry_array["ip"] = blog_to_html( $trackback_entry_data["IP"], true, false );
+				if ( isset( $trackback_entry_data[ 'IP' ] ) ) {
+				   $entry_array[ 'ip' ] = blog_to_html( $trackback_entry_data[ 'IP' ], true, false );
 				}
-				if ( isset( $trackback_entry_data[ "DOMAIN" ] ) ) {
-				   $entry_array["domain"] = blog_to_html( $trackback_entry_data["DOMAIN"], true, false );
+				if ( isset( $trackback_entry_data[ 'DOMAIN' ] ) ) {
+				   $entry_array[ 'domain' ] = blog_to_html( $trackback_entry_data[ 'DOMAIN' ], true, false );
 				}
 				
-				$entry_array["logged_in"] = $logged_in;
+				$entry_array[ 'logged_in' ] = $logged_in;
 				
 				// Author
 				if ( $logged_in ) {
-					$entry_array["delete"]["name"] = $lang_string["delete_btn"];
-					$entry_array["delete"]["url"] = "trackback_delete_cgi.php?y=".$y."&m=".$m."&entry=".$entry."&trackback=".$dir.( $contents[$i]["entry"] );
+					$entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'delete_btn' ];
+					$entry_array[ 'delete' ][ 'url' ] = 'trackback_delete_cgi.php?y='.$y.'&m='.$m.'&entry='.$entry.'&trackback='.$dir.( $contents[$i][ 'entry' ] );
 				}
 				
       		if( $is_html ) {
@@ -98,8 +98,8 @@
 		//clearstatcache();
 		
 		// We're going to assume that the y and m directories exist...
-		$basedir = "content/";
-		$dir = $basedir.$y."/".$m."/".$entry;
+		$basedir = 'content/';
+		$dir = $basedir.$y.'/'.$m.'/'.$entry;
 		
 		if (!file_exists($dir)) {
 			$oldumask = umask(0);
@@ -113,9 +113,9 @@
 				return ( $dir );
 			}
 		}
-		$dir = $dir . "/";
+		$dir = $dir . '/';
 		
-		$dir = $basedir.$y."/".$m."/".$entry."/trackbacks";
+		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/trackbacks';
 		
 		if (!file_exists($dir)) {
 			$oldumask = umask(0);
@@ -129,25 +129,25 @@
 				return ( $dir );
 			}
 		}
-		$dir = $dir . "/";
+		$dir = $dir . '/';
 		
 		$trackback_date = time();
 		
-		$stamp = date("ymd-His");
-		if ( $blog_config[ "blog_enable_gzip_txt" ] ) {
-			$entryFile = $dir."trackback".$stamp.".txt.gz";
+		$stamp = date('ymd-His');
+		if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
+			$entryFile = $dir.'trackback'.$stamp.'.txt.gz';
 		} else {
-			$entryFile = $dir."trackback".$stamp.".txt";
+			$entryFile = $dir.'trackback'.$stamp.'.txt';
 		}
 		
 		$save_data = array();
 
 		// Is there already an existing trackback entry from this URL?
 		$found = false;
-		$file_array = sb_folder_listing( $dir, array( ".txt", ".gz" ) );
+		$file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
 		for ( $i = 0; $i < count( $file_array ); $i++ ) {
 			$trackback_entry_data = trackback_to_array( $dir.$file_array[$i] );
-			if ( $trackback_entry_data["URL"] === clean_post_text( $tb_url ) ) {
+			if ( $trackback_entry_data[ 'URL' ] === clean_post_text( $tb_url ) ) {
 				$found = true;
 				$entryFile = $dir.$file_array[$i];
 			}
@@ -168,17 +168,17 @@
 				}
 			}
 		} else {
-		   $save_data[ "DATE" ] = $trackback_date;
+		   $save_data[ 'DATE' ] = $trackback_date;
 		}
 
 		// Save the file
-		$save_data[ "VERSION" ] = $sb_info[ "version" ];
-		$save_data[ "URL" ] = clean_post_text( $tb_url );
-		$save_data[ "TITLE" ] = clean_post_text( $title );
-		$save_data[ "EXCERPT" ] = clean_post_text( $excerpt );
-		$save_data[ "BLOGNAME" ] = clean_post_text( $blog_name );
-		$save_data[ "IP" ] = clean_post_text( $user_ip );
-		$save_data[ "DOMAIN" ] = clean_post_text( $user_domain );
+		$save_data[ 'VERSION' ] = $sb_info[ 'version' ];
+		$save_data[ 'URL' ] = clean_post_text( $tb_url );
+		$save_data[ 'TITLE' ] = clean_post_text( $title );
+		$save_data[ 'EXCERPT' ] = clean_post_text( $excerpt );
+		$save_data[ 'BLOGNAME' ] = clean_post_text( $blog_name );
+		$save_data[ 'IP' ] = clean_post_text( $user_ip );
+		$save_data[ 'DOMAIN' ] = clean_post_text( $user_domain );
 
 		// Implode the array
 		$str = implode_with_keys( $save_data );
@@ -193,28 +193,28 @@
 		      $tb_file = str_replace( '/', '', sb_strip_extension( strrchr( $entryFile, '/') ) );
 	 		   add_most_recent_trackback( $tb_file, $y, $m, $entry );
 			} else {
-	 		   add_most_recent_trackback( "trackback".$stamp, $y, $m, $entry );
+	 		   add_most_recent_trackback( 'trackback'.$stamp, $y, $m, $entry );
 	 		}
 	 		
-	 		if ( $blog_config[ "blog_email_notification" ] ) {
+	 		if ( $blog_config[ 'blog_email_notification' ] ) {
 				// Send Email Notification:
 				if( $found ) {
-					$subject="New trackback received at " . $blog_config[ "blog_title" ];
+					$subject='New trackback received at ' . $blog_config[ 'blog_title' ];
 				} else {
-					$subject="Updated trackback received at " . $blog_config[ "blog_title" ];
+					$subject='Updated trackback received at ' . $blog_config[ 'blog_title' ];
 				}
-				$body="From: " . $save_data[ "BLOGNAME" ] . "<br />\n";
+				$body='From: ' . $save_data[ 'BLOGNAME' ] . "<br />\n";
 				
-				if ( dirname($_SERVER["PHP_SELF"]) == '\\' ) {
+				if ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' ) {
 					// Hosted at root.
-					$base_url = "http://".$_SERVER["HTTP_HOST"]."/";
+					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 				} else {
 					// Hosted in sub-directory.
-					$base_url = "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/";
+					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 				}
 				
 				$body=$body . '<a href="' . $base_url . 'trackback.php?y=' . $y . '&m=' . $m . '&entry=' . $entry . '&__mode=html">' . $base_url . 'comments.php?y=' . $y . '&m=' . $m . '&entry=' . $entry . "&__mode=html</a><br /><br />\n\n";
-				$body=$body . '<i>On ' . format_date( $trackback_date ) . ', the following trackback was received from '.$save_data["DOMAIN"].' ('.$save_data["IP"].')'.":</i><br /><br />\n\n" . blog_to_html( $save_data["TITLE"].'<br />'.$save_data["EXCERPT"], false, false );
+				$body=$body . '<i>On ' . format_date( $trackback_date ) . ', the following trackback was received from '.$save_data[ 'DOMAIN' ].' ('.$save_data[ 'IP' ].')'.":</i><br /><br />\n\n" . blog_to_html( $save_data[ 'TITLE' ].'<br />'.$save_data[ 'EXCERPT' ], false, false );
 				sb_mail( $blog_config[ 'blog_email' ], $blog_config[ 'blog_email' ], $subject, $body, false );
 	 		}
 	 	}
@@ -233,23 +233,23 @@
 
 		// Trim off filename and leave path to last directory.
 		$dirpath = $entryFile;
-		$pos = strrpos( $dirpath, "/" );
+		$pos = strrpos( $dirpath, '/' );
 		if ($pos !== false) {
 			$dirpath = substr( $dirpath, 0, $pos );
 			
 			// Get listing of files in folder.
-			$file_array = sb_folder_listing( $dirpath . "/", array( ".txt", ".gz" ) );
+			$file_array = sb_folder_listing( $dirpath . '/', array( '.txt', '.gz' ) );
 			if ( count( $file_array ) == 0 ) {
 				// Directory is empty, delete it...
 				sb_delete_directory( $dirpath );
 			}
 			
-	      $pos = strrpos( $dirpath, "/" );
+	      $pos = strrpos( $dirpath, '/' );
    		if ($pos !== false) {
    			$dirpath = substr( $dirpath, 0, $pos );
    			
    			// Get listing of files in folder.
-   			$file_array = sb_folder_listing( $dirpath . "/", array( ".txt", ".gz" ) );
+   			$file_array = sb_folder_listing( $dirpath . '/', array( '.txt', '.gz' ) );
    			if ( count( $file_array ) == 0 ) {
    				// Directory is empty, delete it...
    				sb_delete_directory( $dirpath );
@@ -266,15 +266,15 @@
 	
    function get_tb_uri( $link ) {
       $url = parse_url($link);
-      if( (!strlen($url['host'])) && (strpos($link, 'mailto:') === false) ) {
-         $link = 'http://'.$_SERVER['HTTP_HOST'].$link;
+      if( (!strlen($url[ 'host' ])) && (strpos($link, 'mailto:') === false) ) {
+         $link = 'http://'.$_SERVER[ 'HTTP_HOST' ].$link;
       	$url = parse_url($link);
       }
-      if( $url['scheme'] === 'http' ) {
-	      // $socket = fsockopen( $url['host'], 80, $errno, $errstr, 30);
-	      $socket = fsockopen( ( $url['host'] === $_SERVER['HTTP_HOST'] ? $_SERVER['SERVER_ADDR'] : $url['host'] ), 80, $errno, $errstr, 30);
+      if( $url[ 'scheme' ] === 'http' ) {
+	      // $socket = fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
+	      $socket = fsockopen( ( $url[ 'host' ] === $_SERVER[ 'HTTP_HOST' ] ? $_SERVER[ 'SERVER_ADDR' ] : $url[ 'host' ] ), 80, $errno, $errstr, 30);
 			if ( $socket ) { 
-				fwrite( $socket, 'GET ' . $url['scheme'] . '://' . $url['host'] . $url['path'] . '?' . $url['query'] . " HTTP/1.0\nHost: " . $url['host'] . "\n\n" );
+				fwrite( $socket, 'GET ' . $url[ 'scheme' ] . '://' . $url[ 'host' ] . $url[ 'path' ] . '?' . $url[ 'query' ] . ' HTTP/1.0\nHost: ' . $url[ 'host' ] . "\n\n" );
 				$data = '';
 	         while( !feof( $socket ) ) {
 	            $data .= fread($socket, 8192);
@@ -325,13 +325,13 @@
 		$url_array = explode( ',', $tb_ping );
 		if ( is_array( $url_array ) ) {
 			for ( $i = 0; $i < count( $url_array ); $i++ ) {
-				if ( $url_array[$i] === $lang_string['label_tb_autodiscovery'] ) {
+				if ( $url_array[$i] === $lang_string[ 'label_tb_autodiscovery' ] ) {
 					if( $blog_config[ 'blog_trackback_auto_discovery' ] ) {
 					   // The actual ping URIs are to be confirmed by the user
-					   $auto_discovery_confirm['text']      = $blog_text;
-					   $auto_discovery_confirm['title']     = $title;
-					   $auto_discovery_confirm['permalink'] = $permalink;
-					   $auto_discovery_confirm['excerpt']   = $excerpt;
+					   $auto_discovery_confirm[ 'text' ]      = $blog_text;
+					   $auto_discovery_confirm[ 'title' ]     = $title;
+					   $auto_discovery_confirm[ 'permalink' ] = $permalink;
+					   $auto_discovery_confirm[ 'excerpt' ]   = $excerpt;
 					}
 				} else {
 					sb_tb_ping ( $url_array[$i], $title, $permalink, $excerpt );

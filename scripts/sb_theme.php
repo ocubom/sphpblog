@@ -43,19 +43,19 @@
 		//
 		global $lang_string, $logged_in, $blog_config;
 		
-		$str = '<a href="index.php">' . $lang_string['menu_home'] . '</a><br />';
+		$str = '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
 		if ( !empty( $blog_config[ 'blog_email' ] ) ) {
-			$str = $str . '<a href="contact.php">' . $lang_string['menu_contact'] . '</a><br />';
+			$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
 		}
-		$str = $str . '<a href="stats.php">' . $lang_string['menu_stats'] . '</a><br />';
+		$str = $str . '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
 		
 		$str = $str . read_links( $logged_in );
 		
 		$str = $str . "<br />" . menu_display_login();
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_links'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_links' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -67,8 +67,8 @@
 		$str = read_menus_calendar( $month, $year, $day );
 
 		$result = array();
-		$result['title'] = $lang_string['menu_archive'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_archive' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -87,8 +87,8 @@
 		$str = read_menus_tree ( $m, $y, $d );
 
 		$result = array();
-		$result['title'] = $lang_string['menu_archive'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_archive' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -104,10 +104,10 @@
 		
 		$str = '';
 		if ($logged_in === true) {
-			$str = $str . '<a href="set_login.php">' . $lang_string['menu_change_login'] . '</a><br />';
-			$str = $str . '<a href="logout.php">' . $lang_string['menu_logout'] . '</a>';
+			$str = $str . '<a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a><br />';
+			$str = $str . '<a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a>';
 		} else {
-			$str = $str . '<a href="login.php">' . $lang_string['menu_login'] . '</a>';
+			$str = $str . '<a href="login.php">' . $lang_string[ 'menu_login' ] . '</a>';
 		}
 		
 		return ( $str );
@@ -127,14 +127,14 @@
 		
 		$str = '';
 		if ($logged_in === true) {
-			$str = $str . '<a href="add.php">' . $lang_string['menu_add'] . '</a><br />';
-			$str = $str . '<a href="add_static.php">' . $lang_string['menu_add_static'] . '</a><br />';
-			$str = $str . '<a href="upload_img.php">' . $lang_string['menu_upload'] . '</a>';
+			$str = $str . '<a href="add.php">' . $lang_string[ 'menu_add' ] . '</a><br />';
+			$str = $str . '<a href="add_static.php">' . $lang_string[ 'menu_add_static' ] . '</a><br />';
+			$str = $str . '<a href="upload_img.php">' . $lang_string[ 'menu_upload' ] . '</a>';
 		}
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_menu'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_menu' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -152,7 +152,7 @@
 		global $lang_string;
 		global $day, $month, $year, $category;
 		
-		$base_date = "";
+		$base_date = '';
 		if ( isset( $day ) ) {
 			$base_date .= '?d=' . $day;
 		}
@@ -180,7 +180,7 @@
 		$base_date .= 'category=';
 		
 		
-		$str = "";
+		$str = '';
 		$catArray = get_category_array();
 		if ( count($catArray) > 0) {
 			for ( $i = 0; $i < count( $catArray ); $i++ ) {
@@ -188,7 +188,7 @@
 				$name_str = $catArray[$i][1];
 				$space_count = $catArray[$i][2];
 				for ( $j = 0; $j < $space_count; $j++ ) {
-					$str = $str . "&nbsp;";
+					$str = $str . '&nbsp;';
 				}
 				if ( $category == $id_number ) {
 					$str = $str . $name_str;
@@ -204,8 +204,8 @@
 		}
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_categories'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_categories' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -226,18 +226,18 @@
 		
 		$str = '';
 		if ($logged_in === true) {
-			$str = $str . '<a href="categories.php">' . $lang_string['menu_categories'] . '</a><br />';
-			$str = $str . '<a href="add_block.php">' . $lang_string['menu_add_block'] . '</a><br />';
-			$str = $str . '<a href="setup.php">' . $lang_string['menu_setup'] . '</a><br />';
-			$str = $str . '<a href="themes.php">' . $lang_string['menu_themes'] . '</a><br />';
-			$str = $str . '<a href="colors.php">' . $lang_string['menu_colors'] . '</a><br />';
-			$str = $str . '<a href="options.php">' . $lang_string['menu_options'] . '</a><br />';
-			$str = $str . '<a href="info.php">' . $lang_string['menu_info'] . '</a><br />';
+			$str = $str . '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
+			$str = $str . '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
+			$str = $str . '<a href="setup.php">' . $lang_string[ 'menu_setup' ] . '</a><br />';
+			$str = $str . '<a href="themes.php">' . $lang_string[ 'menu_themes' ] . '</a><br />';
+			$str = $str . '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
+			$str = $str . '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
+			$str = $str . '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
 		}
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_setup'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_setup' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -248,8 +248,8 @@
 		$str = get_most_recent();
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_most_recent'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_most_recent' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -261,11 +261,11 @@
 		
 		if( $blog_config[ 'blog_trackback_enabled' ] ) {
 			$str = get_most_recent_trackback();
-			$result['title'] = $lang_string['menu_most_recent_trackback'];
-			$result['content'] = $str;
+			$result[ 'title' ] = $lang_string[ 'menu_most_recent_trackback' ];
+			$result[ 'content' ] = $str;
 		} else {
-   			$result['title'] = "";
-			$result['content'] = "";
+   			$result[ 'title' ] = '';
+			$result[ 'content' ] = '';
 		}
 		return ( $result );
 	}
@@ -282,12 +282,12 @@
 		
 		$str = "<form method=\"get\" action=\"search.php\">";
 		$str = $str . "<input type=\"text\" size=\"16\" name=\"q\" />&nbsp;";
-		$str = $str . "<input type=\"submit\" value=\"" . $lang_string["search_go"] . "\" />";
+		$str = $str . "<input type=\"submit\" value=\"" . $lang_string[ 'search_go' ] . "\" />";
 		$str = $str . "</form>";
 		
 		$result = array();
-		$result["title"] = $lang_string["search_title"];
-		$result["content"] = $str;
+		$result[ 'title' ] = $lang_string[ 'search_title' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}
@@ -296,7 +296,7 @@
 		// Returns "Page Generated x.xxxx in seconds"
 		global $lang_string, $page_timestamp;
 		
-		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $lang_string['page_generated_in'] );
+		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $lang_string[ 'page_generated_in' ] );
 
 		return ( $str );
 	}
@@ -324,31 +324,31 @@
 		
 		$str = '';
 		if ( $contents ) {
-			if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+			if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 				// Hosted at root.
-				$base_permalink_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 			} else {
 				// Hosted in sub-directory.
-				$base_permalink_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/';
+				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 			}
 			
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
-				$blog_entry_data = blog_entry_to_array( $contents[$i]['path'] );
+				$blog_entry_data = blog_entry_to_array( $contents[$i][ 'path' ] );
 				
 				$entry_array = array();
-				$entry_array['subject'] = blog_to_html( $blog_entry_data["SUBJECT"], false, false );
+				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
 				
-				$entry = sb_strip_extension( $contents[$i]['entry'] );
+				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
 				
-				$entry_array['permalink']['url'] = $base_permalink_url . 'index.php?entry=' . $entry;
+				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 				
-				$str = $str . '<a href="' . $entry_array['permalink']['url'] . '">' . $entry_array['subject'] . '</a><br />';
+				$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><br />';
 			}
 		}
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_most_recent_entries'];
-		$result['content'] = $str;
+		$result[ 'title' ] = $lang_string[ 'menu_most_recent_entries' ];
+		$result[ 'content' ] = $str;
 		
 		return ( $result );
 	}

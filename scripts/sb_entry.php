@@ -64,7 +64,7 @@
 		$save_data[ 'SUBJECT' ] = clean_post_text( $blog_subject );
 		$save_data[ 'CONTENT' ] = sb_parse_url( clean_post_text( $blog_text ) );
 		if ( count( $blog_categories ) > 0 ) {
-			$save_data[ 'CATEGORIES' ] = implode( ",", $blog_categories );
+			$save_data[ 'CATEGORIES' ] = implode( ',', $blog_categories );
 		}
 		if ( $tb_ping !== '' ) {
 			$save_data[ 'TB_PING' ] = clean_post_text( $tb_ping );

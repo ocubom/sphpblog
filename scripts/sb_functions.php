@@ -22,7 +22,7 @@
 	// Last version and update information.
 	//
 	global $sb_info;
-	$sb_info[ 'version' ] = "0.4.4";
+	$sb_info[ 'version' ] = '0.4.4';
 	$sb_info[ 'last_update' ] = '02/17/05';	
 	
 	// Error reporting should be set to 0 in production environments.
@@ -49,24 +49,24 @@
 	$page_timestamp = getmicrotime();
 	
 	// Load all the other functions.
-	require('scripts/sb_fileio.php');
-	require('scripts/sb_config.php');
-	require('scripts/sb_login.php');
-	require('scripts/sb_theme.php');
-	require('scripts/sb_formatting.php');
-	require('scripts/sb_date.php');
-	require('scripts/sb_communicate.php');
-	require('scripts/sb_comments.php');
-	require('scripts/sb_static.php');
-	require('scripts/sb_utility.php');
-	require('scripts/sb_menu.php');
-	require('scripts/sb_search.php');
-	require('scripts/sb_entry.php');
-	require('scripts/sb_image.php');
-	require('scripts/sb_display.php');
-	require('scripts/sb_color.php');
-	require('scripts/sb_trackback.php');
-	require('scripts/sb_feed.php');
-	require('scripts/sb_categories.php');
+	require_once('scripts/sb_fileio.php');
+	require_once('scripts/sb_config.php');
+	require_once('scripts/sb_login.php');
+	require_once('scripts/sb_theme.php');
+	require_once('scripts/sb_formatting.php');
+	require_once('scripts/sb_date.php');
+	require_once('scripts/sb_communicate.php');
+	require_once('scripts/sb_comments.php');
+	require_once('scripts/sb_static.php');
+	require_once('scripts/sb_utility.php');
+	require_once('scripts/sb_menu.php');
+	require_once('scripts/sb_search.php');
+	require_once('scripts/sb_entry.php');
+	require_once('scripts/sb_image.php');
+	require_once('scripts/sb_display.php');
+	require_once('scripts/sb_color.php');
+	require_once('scripts/sb_trackback.php');
+	require_once('scripts/sb_feed.php');
+	require_once('scripts/sb_categories.php');
 	
 ?>

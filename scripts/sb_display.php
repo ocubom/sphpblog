@@ -158,66 +158,66 @@
 		
 		$blog_content = '';
 		if ( $contents ) {
-			if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+			if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 				// Hosted at root.
-				$base_permalink_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 			} else {
 				// Hosted in sub-directory.
-				$base_permalink_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/';
+				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 			}
 			
 			// I'm putting this check in here for people who have made
 			// custom themes before I added these values...
 			global $theme_vars;
 			if ( is_array( $theme_vars ) ) {
-				if ( isset( $theme_vars['popup_window']['width'] ) === false ) {
-					$theme_vars['popup_window']['width'] = 500;
+				if ( isset( $theme_vars[ 'popup_window' ][ 'width' ] ) === false ) {
+					$theme_vars[ 'popup_window' ][ 'width' ] = 500;
 				}
-				if ( isset( $theme_vars['popup_window']['height'] ) === false ) {
-					$theme_vars['popup_window']['height'] = 500;	
+				if ( isset( $theme_vars[ 'popup_window' ][ 'height' ] ) === false ) {
+					$theme_vars[ 'popup_window' ][ 'height' ] = 500;	
 				}	
 			
 			} else {
 				$theme_vars = array();
-				$theme_vars['popup_window']['width'] = 500;
-				$theme_vars['popup_window']['height'] = 500;
+				$theme_vars[ 'popup_window' ][ 'width' ] = 500;
+				$theme_vars[ 'popup_window' ][ 'height' ] = 500;
 			}
 
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
 				// Read and Parse Blog Entry
-				$blog_entry_data = blog_entry_to_array( 'content/' . $contents[$i]['year'] . '/' . $contents[$i]['month'] . '/' . $contents[$i]['entry'] );
+				$blog_entry_data = blog_entry_to_array( 'content/' . $contents[$i][ 'year' ] . '/' . $contents[$i][ 'month' ] . '/' . $contents[$i][ 'entry' ] );
 				
 				$entry_array = array();
 				
 				// Subject / Date
-				$entry_array['subject'] = blog_to_html( $blog_entry_data['SUBJECT'], false, false );
-				$entry_array['date'] = blog_to_html( format_date( $blog_entry_data['DATE'] ), false, false );
+				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+				$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
 				
 				// Categories
 				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
-					$temp_cat_array = explode( ',', $blog_entry_data[ "CATEGORIES" ] );
+					$temp_cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
 					$temp_cat_names = Array();
 					for ( $j = 0; $j < count( $temp_cat_array ); $j++ ) {
 						array_push( $temp_cat_names, get_category_by_id ( $temp_cat_array[$j] ) );
 					}
-					$entry_array["categories"] = $temp_cat_names;
+					$entry_array[ 'categories' ] = $temp_cat_names;
 				}
 				
 				// Author edit and delete
-				$entry = sb_strip_extension( $contents[$i]['entry'] );
-				$y = sb_strip_extension( $contents[$i]['year'] );
-				$m = sb_strip_extension( $contents[$i]['month'] );
+				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
+				$y = sb_strip_extension( $contents[$i][ 'year' ] );
+				$m = sb_strip_extension( $contents[$i][ 'month' ] );
 				
 				if ( $logged_in ) {
-					$entry_array['edit']['name'] = $lang_string['sb_edit'];
-					$entry_array['edit']['url'] = 'preview_cgi.php?y='.$y.'&m='.$m.'&entry='.$entry;
-					$entry_array['delete']['name'] = $lang_string['sb_delete'];
-					$entry_array['delete']['url'] = 'delete.php?y='.$y.'&m='.$m.'&entry='.$entry;
+					$entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
+					$entry_array[ 'edit' ][ 'url' ] = 'preview_cgi.php?y='.$y.'&m='.$m.'&entry='.$entry;
+					$entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
+					$entry_array[ 'delete' ][ 'url' ] = 'delete.php?y='.$y.'&m='.$m.'&entry='.$entry;
 				}
-				$entry_array['permalink']['name'] = $lang_string['sb_permalink'];
-				$entry_array['permalink']['url'] = $base_permalink_url . 'index.php?entry=' . $entry;
+				$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
+				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 				
-				$entry_array['entry'] = blog_to_html( $blog_entry_data['CONTENT'], false, false ) . '<br clear="all" />';
+				$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
 				
 				// Comments link and count
 				$comment_trackback_base = 'content/'.$y.'/'.$m.'/'.$entry.'/';
@@ -263,46 +263,46 @@
 						} else {
 							$star_image = 'no_star.png';
 						}
-						$str = $str . '<a href="rate_cgi.php?y=' . $y . '&m=' . $m . '&entry=' . $entry . '&rating=' . $star_number . '" title="' . $lang_string['sb_rate_entry_btn'] . '" alt="' . $lang_string['sb_rate_entry_btn'] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" border="0"></a>';	
+						$str = $str . '<a href="rate_cgi.php?y=' . $y . '&m=' . $m . '&entry=' . $entry . '&rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '" alt="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" border="0"></a>';	
 					}
 					$str = $str . ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
-					$entry_array['stars'] = $str;
+					$entry_array[ 'stars' ] = $str;
 				}
 				
 				// Comments
 				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
 					// Add comment buttons
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$entry_array['comment']['url'] = 'javascript:openpopup(\'comments.php?y='.$y.'&m='.$m.'&entry='.$entry.'\','.$theme_vars['popup_window']['width'].','.$theme_vars['popup_window']['height'].',true)';
+						$entry_array[ 'comment' ][ 'url' ] = 'javascript:openpopup(\'comments.php?y='.$y.'&m='.$m.'&entry='.$entry.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
 					} else {
-						$entry_array['comment']['url'] = 'comments.php?y='.$y.'&m='.$m.'&entry='.$entry;
+						$entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&m='.$m.'&entry='.$entry;
 					}
 					
 					if ( $comment_count == 0) {
 						// [ add comment ]
-						$entry_array['comment']['name'] = $lang_string['sb_add_comment_btn'];
+						$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_add_comment_btn' ];
 					} else if ( $comment_count == 1) {
 						// [ 1 comment ] (In Russian the number should come last.)
-						if ( $lang_string['sb_comment_btn_number_first'] == true ) {
-							$entry_array['comment']['name'] = $comment_count . ' ' . $lang_string['sb_comment_btn'];
+						if ( $lang_string[ 'sb_comment_btn_number_first' ] == true ) {
+							$entry_array[ 'comment' ][ 'name' ] = $comment_count . ' ' . $lang_string[ 'sb_comment_btn' ];
 						} else {
-							$entry_array['comment']['name'] = $lang_string['sb_comment_btn'] . ' ' . $comment_count;
+							$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_comment_btn' ] . ' ' . $comment_count;
 						}
 					} else {
 						// [ n comments ] (In Russian the number should come last.)
-						if ( $lang_string['sb_comments_plural_btn_number_first'] == true ) {
-							$entry_array['comment']['name'] = $comment_count . ' ' . $lang_string['sb_comments_plural_btn'];
+						if ( $lang_string[ 'sb_comments_plural_btn_number_first' ] == true ) {
+							$entry_array[ 'comment' ][ 'name' ] = $comment_count . ' ' . $lang_string[ 'sb_comments_plural_btn' ];
 						} else {
-							$entry_array['comment']['name'] = $lang_string['sb_comments_plural_btn'] . ' ' . $comment_count;
+							$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_comments_plural_btn' ] . ' ' . $comment_count;
 						}
 					}
 					
 					// Add view counter
 					if ( $view_counter > 0 ) {
 						if ( $view_counter == 1) {
-							$entry_array['comment']['count'] = $lang_string['sb_view_counter_pre'] . $view_counter . $lang_string['sb_view_counter_post'];
+							$entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_post' ];
 						} else {
-							$entry_array['comment']['count'] = $lang_string['sb_view_counter_plural_pre'] . $view_counter . $lang_string['sb_view_counter_plural_post'];
+							$entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_plural_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_plural_post' ];
 						}
 					}
 				}
@@ -310,26 +310,26 @@
 				// Trackback
 				if ( $blog_config[ 'blog_trackback_enabled' ] == true ) {
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$entry_array['trackback']['url'] = 'javascript:openpopup(\'trackback.php?y='.$y.'&m='.$m.'&entry='.$entry.'&__mode=html\','.$theme_vars['popup_window']['width'].','.$theme_vars['popup_window']['height'].',true)';
+						$entry_array[ 'trackback' ][ 'url' ] = 'javascript:openpopup(\'trackback.php?y='.$y.'&m='.$m.'&entry='.$entry.'&__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
 					} else {
-						$entry_array['trackback']['url'] = 'trackback.php?y='.$y.'&m='.$m.'&entry='.$entry.'&__mode=html';
+						$entry_array[ 'trackback' ][ 'url' ] = 'trackback.php?y='.$y.'&m='.$m.'&entry='.$entry.'&__mode=html';
 					}
 
-					$entry_array['trackback']['ping_url'] = $base_permalink_url . 'trackback.php?y='.$y.'&m='.$m.'&entry='.$entry;
+					$entry_array[ 'trackback' ][ 'ping_url' ] = $base_permalink_url . 'trackback.php?y='.$y.'&m='.$m.'&entry='.$entry;
 
 					// [ n trackbacks ] (In Russian the number should come last.)
-					if ( $lang_string['sb_comment_btn_number_first'] == true ) {
-						$entry_array['trackback']['name'] = $trackback_count . ' ' . $lang_string['sb_trackback'];
+					if ( $lang_string[ 'sb_comment_btn_number_first' ] == true ) {
+						$entry_array[ 'trackback' ][ 'name' ] = $trackback_count . ' ' . $lang_string[ 'sb_trackback' ];
 					} else {
-						$entry_array['trackback']['name'] = $lang_string['sb_trackback'] . ' ' . $trackback_count;
+						$entry_array[ 'trackback' ][ 'name' ] = $lang_string[ 'sb_trackback' ] . ' ' . $trackback_count;
 					}
 				}
 
    				// TODO: link opbouwen net als comments!
    				
-   				$entry_array['count'] = $i;
-   				$entry_array['maxcount'] = count( $contents ) - 1;
-   				$entry_array['logged_in'] = $logged_in;
+   				$entry_array[ 'count' ] = $i;
+   				$entry_array[ 'maxcount' ] = count( $contents ) - 1;
+   				$entry_array[ 'logged_in' ] = $logged_in;
    				
    				$blog_content = $blog_content . theme_blogentry( $entry_array );
 			}
@@ -344,7 +344,7 @@
 			if ( $category != NULL ) {
 				$blog_content = $blog_content . '&category=' . $category;
 			}
-			$blog_content = $blog_content . '">' . $lang_string['nav_back'] . '</a></span> ';
+			$blog_content = $blog_content . '">' . $lang_string[ 'nav_back' ] . '</a></span> ';
 		}
 		
 		if ( $next_entry != NULL ) {
@@ -354,7 +354,7 @@
 			if ( $category != NULL ) {
 				$blog_content = $blog_content . '&category=' . $category;
 			}
-			$blog_content = $blog_content . '">' . $lang_string['nav_next'] . '</a></span><br> ';
+			$blog_content = $blog_content . '">' . $lang_string[ 'nav_next' ] . '</a></span><br> ';
 		}
 		
 		return $blog_content;
@@ -365,13 +365,13 @@
 		// This is done so we're not displaying an empty page. If it's April and the last
 		// entry was March, then we want to show March's entries (not April...)
 		//
-		// Returns nothing but sets $GLOBALS['month'] and $GLOBALS['year']
+		// Returns nothing but sets $GLOBALS[ 'month' ] and $GLOBALS[ 'year' ]
 		//
 		$entry_array=blog_entry_listing();
 		if ( count( $entry_array>0 ) ) {
-			$GLOBALS['year'] = substr($entry_array[0], 5, 2);
-			$GLOBALS['month'] = substr($entry_array[0], 7, 2);
-			$GLOBALS['day'] = substr($entry_array[0], 9, 2);
+			$GLOBALS[ 'year' ] = substr($entry_array[0], 5, 2);
+			$GLOBALS[ 'month' ] = substr($entry_array[0], 7, 2);
+			$GLOBALS[ 'day' ] = substr($entry_array[0], 9, 2);
 		}
 	}
 	
@@ -490,11 +490,11 @@
 		list( $blog_subject, $blog_date, $blog_text, $tb_ping ) = explode( '|', $str );
 		
 		$entry_array = array();
-		$entry_array['subject'] = blog_to_html( $blog_subject, false, false );
-		$entry_array['date'] = blog_to_html( format_date( $blog_date ), false, false );
-		$entry_array['entry'] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
-		if ( $tb_ping !== "" ) {
-			$entry_array['tb_ping'] = blog_to_html( $tb_ping, false, false );
+		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false );
+		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
+		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
+		if ( $tb_ping !== '' ) {
+			$entry_array[ 'tb_ping' ] = blog_to_html( $tb_ping, false, false );
 		}
 		
 		$blog_content = theme_blogentry( $entry_array, $logged_in );
@@ -514,9 +514,9 @@
 		list( $blog_subject, $blog_date, $blog_text ) = explode( '|', $str );
 		
 		$entry_array = array();
-		$entry_array['subject'] = blog_to_html( $blog_subject, false, false );
-		$entry_array['date'] = blog_to_html( format_date( $blog_date ), false, false );
-		$entry_array['entry'] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
+		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false );
+		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
+		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
 		
 		$blog_content = theme_blogentry( $entry_array, $logged_in );
 		
@@ -531,18 +531,18 @@
 		//    2). preview_cgi.php
 		//    3). sb_comments.php
 		//
-		if ( file_exists( $entry_id . ".txt" ) ) {
-			$filename = $entry_id . ".txt";
-		} elseif ( file_exists( $entry_id . ".txt.gz" ) ) {
-			$filename = $entry_id . ".txt.gz";
+		if ( file_exists( $entry_id . '.txt' ) ) {
+			$filename = $entry_id . '.txt';
+		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
+			$filename = $entry_id . '.txt.gz';
 		}
 		
 		$blog_entry_data = blog_entry_to_array( $filename );
 		
 		$entry_array = array();
-		$entry_array['subject'] = blog_to_html( $blog_entry_data['SUBJECT'], false, false );
-		$entry_array['date'] = blog_to_html( format_date( $blog_entry_data['DATE'] ), false, false );
-		$entry_array['entry'] = blog_to_html( $blog_entry_data['CONTENT'], false, false ) . '<br clear="all" />';
+		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
+		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
 						
 		// Categories
 		if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
@@ -551,7 +551,7 @@
 			for ( $j = 0; $j < count( $temp_cat_array ); $j++ ) {
 				array_push( $temp_cat_names, get_category_by_id ( $temp_cat_array[$j] ) );
 			}
-			$entry_array["categories"] = $temp_cat_names;
+			$entry_array[ 'categories' ] = $temp_cat_names;
 		}
 		
 		$blog_content = theme_blogentry( $entry_array, $logged_in );

@@ -58,18 +58,18 @@
 		$blog_entry_data = static_entry_to_array( $filename );
 		
 		$entry_array = array();
-		$entry_array['subject'] = blog_to_html( $blog_entry_data["SUBJECT"], false, false );
-		$entry_array['date'] = blog_to_html( format_date( $blog_entry_data["DATE"] ), false, false );
-		$entry_array['entry'] = blog_to_html( $blog_entry_data["CONTENT"], false, false ) . '<br clear="all" />';
-		$entry_array['logged_in'] = $logged_in;
+		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
+		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
+		$entry_array[ 'logged_in' ] = $logged_in;
 		
 		// Author edit and delete
 		$entry = sb_strip_extension( $entry_id );
 		if ( $logged_in ) {
-			$entry_array['edit']['name'] = $lang_string['sb_edit'];
-			$entry_array['edit']['url'] = 'preview_static_cgi.php?entry='.$entry;
-			$entry_array['delete']['name'] = $lang_string['sb_delete'];
-			$entry_array['delete']['url'] = 'delete_static.php?entry='.$entry;
+			$entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
+			$entry_array[ 'edit' ][ 'url' ] = 'preview_static_cgi.php?entry='.$entry;
+			$entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
+			$entry_array[ 'delete' ][ 'url' ] = 'delete_static.php?entry='.$entry;
 		}
 		
 		return ( $entry_array );
@@ -194,9 +194,9 @@
 		$blog_entry_data = static_entry_to_array( $filename );
 		
 		$entry_array = array();
-		$entry_array['subject'] = blog_to_html( $blog_entry_data["SUBJECT"], false, false );
-		$entry_array['date'] = blog_to_html( format_date( $blog_entry_data["DATE"] ), false, false );
-		$entry_array['entry'] = blog_to_html( $blog_entry_data["CONTENT"], false, false ) . '<br clear="all" />';
+		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
+		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
 		
 		$blog_content = theme_staticentry( $entry_array, $logged_in );
 		

@@ -7,13 +7,13 @@
 	
 	
 	// Include Required Functions
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	
 	read_config();
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
 	// Output Page
-	generate_atom( @$_GET['n'] );
+	generate_atom( @$_GET[ 'n' ] );
 ?>

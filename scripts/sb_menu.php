@@ -118,7 +118,7 @@
 		<td align="center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
 		<td align="center">';
 		if ( ( ( $next_year%100 )!=$y ) || ( $next_month!=$m ) ) {
-			$str.='<a href="' . $_SERVER['PHP_SELF'] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
+			$str.='<a href="' . $_SERVER[ 'PHP_SELF' ] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
 		}
 		$str.='</td>
 		</tr>
@@ -202,7 +202,7 @@
 		$str = NULL;
 		$basedir = 'content/';
 		
-		$months = $lang_string['sb_months'];
+		$months = $lang_string[ 'sb_months' ];
 		
 		// Open Base Directory
 		// (The '@' before the call is to suppress the error if the directory is not found.)
@@ -328,7 +328,7 @@
 		}
 		
 		if ( $logged_in === true ) {
-			$str = $str . '<a href="add_link.php">[ ' . $lang_string['sb_add_link_btn']  . ' ]</a><br />';
+			$str = $str . '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
 		}
 		
 		return ( $str );
@@ -343,7 +343,7 @@
 		// Clean up link name and make safe for HTML and text database storage.
 		global $lang_string;
 		$link_name = str_replace( '|', ':', $link_name );
-		$link_name = htmlspecialchars( $link_name, ENT_QUOTES, $lang_string['php_charset'] );
+		$link_name = htmlspecialchars( $link_name, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		// Clean up link url and make safe text database storage.
 		$link_url = str_replace( '|', ':', $link_url );
@@ -453,14 +453,14 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i+=2 ) {
-				if (substr ($array[$i], 0, 1) != "#") {
+				if (substr ($array[$i], 0, 1) != '#') {
 					$block_array[$i] = blog_to_html( $array[$i], false, false );
 					$block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false );
 				} else {
-					$funccion = substr($array[$i + 1],1,-1) . "()";
-					eval("\$result2 = " . $funccion . ";");
-					$block_array[$i] = $result2["title"];
-					$block_array[$i + 1] = $result2["content"];
+					$funccion = substr($array[$i + 1],1,-1) . '()';
+					eval("\$result2 = " . $funccion . ';');
+					$block_array[$i] = $result2[ 'title' ];
+					$block_array[$i + 1] = $result2[ 'content' ];
       			}
 			}
 		}
@@ -475,7 +475,7 @@
 		// Clean up block name and make safe for HTML and text database storage.
 		global $lang_string;
 		$block_name = str_replace( '|', ':', $block_name );
-		$block_name = htmlspecialchars( $block_name, ENT_QUOTES, $lang_string['php_charset'] );
+		$block_name = htmlspecialchars( $block_name, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		// Clean up block url and make safe text database storage.
 		$block_content = clean_post_text(str_replace( '|', ':', $block_content ));
@@ -488,7 +488,7 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			
-			if ( $block_id !== "" ) {
+			if ( $block_id !== '' ) {
 				array_splice( $array, $block_id, 2 );
 				array_splice( $array, $block_id, 0, array( $block_name, $block_content ) );
 			} else {
@@ -524,24 +524,24 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			
-			if ( $action === "up" ) {
+			if ( $action === 'up' ) {
 				if ( count( $array ) > 2 && $block_id != 0 ) {
 					$pop_array = array_splice( $array, $block_id, 2 );
 					array_splice( $array, $block_id-2, 0, $pop_array );
 				}
 			}
-			if ( $action === "down" ) {
+			if ( $action === 'down' ) {
 				if ( count( $array ) > 2 && $block_id < ( count( $array ) - 3 ) ) {
 					$pop_array = array_splice( $array, $block_id, 2 );
 					array_splice( $array, $block_id+2, 0, $pop_array );
 				}
 			}
-			if ( $action === "delete" ) {
+			if ( $action === 'delete' ) {
 				if ( $block_id <= ( count( $array ) - 1 ) ) {
 					array_splice( $array, $block_id, 2 );
 				}
 			}
-			if ( $action === "delete_static" ) {
+			if ( $action === 'delete_static' ) {
 				for ( $i = 0; $i < count( $array ); $i++ ) {
 					if ( $block_id == $array[$i] ) {
 						array_splice( $array, $i-1, 2 );
@@ -661,9 +661,9 @@
 				if ( $comment_entry_data !== false) {
 					global $blog_config;
 					
-					$comment_name = $comment_entry_data["NAME"];
-					$comment_date = $comment_entry_data["DATE"];
-					$comment_text = $comment_entry_data["CONTENT"];
+					$comment_name = $comment_entry_data[ 'NAME' ];
+					$comment_date = $comment_entry_data[ 'DATE' ];
+					$comment_text = $comment_entry_data[ 'CONTENT' ];
 					
 					$comment_text = blog_to_html( $comment_text, false, true );
 					
@@ -679,7 +679,7 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'\','.$theme_vars['popup_window']['width'].','.$theme_vars['popup_window']['height'].',true)">'.$comment_name.'</a><br />';
+						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
 					} else {
 						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
 					}
@@ -783,9 +783,9 @@
 				
 				$trackback_entry_data = comment_to_array( $trackback_file );
 				if ( $trackback_entry_data !== false) {
-					$trackback_date = $trackback_entry_data["DATE"];
-					$trackback_title = $trackback_entry_data["TITLE"];
-					$trackback_blogname = $trackback_entry_data["BLOGNAME"];
+					$trackback_date = $trackback_entry_data[ 'DATE' ];
+					$trackback_title = $trackback_entry_data[ 'TITLE' ];
+					$trackback_blogname = $trackback_entry_data[ 'BLOGNAME' ];
 					
 					if ( strlen( $trackback_title ) > 40 ) {
 						$trackback_title = substr( $trackback_title, 0, 40 );
@@ -799,7 +799,7 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html\','.$theme_vars['popup_window']['width'].','.$theme_vars['popup_window']['height'].',true)">'.$trackback_title.'</a><br />';
+						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
 					} else {
 						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html">'.$trackback_title.'</a><br />';
 					}
