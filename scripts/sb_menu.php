@@ -59,11 +59,7 @@
 			$previous_month = 12;
 		}
 		
-		$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
-
-		/*
-		The following using cached blog_entry_listing should be faster, but it isn't, at least, with more than 
-		400 articles, so it is commented unter further evaluation is done.
+		//$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
 		$entries = blog_entry_listing();
 		//Remove not current month/day entries
 		$temp_entries=array();
@@ -72,12 +68,9 @@
 				array_push( $temp_entries, $entries[ $i ] );
 			}
 		}
-		$entries=$temp_entries;
-		unset( $temp_entries );
-		*/
 
 		//Don't let go before the first article
-		if ( substr( $entries[ count( $entries ) - 1 ], 7, 2 ) + ( substr( $entries[ count( $entries ) - 1 ], 5, 2 ) * 12 ) >=
+		if ( substr( $entries[ 0 ], 7, 2 ) + ( substr( $entries[ 0 ], 5, 2 ) * 12 ) >
 			$y*12+$m ) {
 			$previous_year = substr( $entries[ count( $entries ) - 1 ], 5, 2 )+2000;
 			$previous_month = substr( $entries[ count( $entries ) - 1 ], 7, 2 );
@@ -85,13 +78,12 @@
 		//Don't let go past now
 		if ( date( 'm' ) + ( date( 'y' ) * 12 ) <=
 			$y*12+$m ) {
-			$next_year = $y;
+			$next_year = $y+2000;
 			$next_month = $m;
 		}
 
-		echo "current: " . $y . "/" . $m . "<br>";		
-		echo "previous: " . $previous_year . "/" . $previous_month . "<br>";
-		echo "next: " . $next_year . "/" . $next_month . "<br>";
+		$entries=$temp_entries;
+		unset( $temp_entries );
 
 		// Loop Through Days
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
