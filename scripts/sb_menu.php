@@ -569,6 +569,8 @@
 	// ----------------------------
 	
 	function add_most_recent ( $comment_id, $y, $m, $blog_entry_id ) {
+		global $blog_config;
+		
 		// Add an item to the 'Last Updated' List
 		//
 		
@@ -584,7 +586,7 @@
 			$array = array( $blog_entry_id, $m, $y, $comment_id );
 		}
 		
-		$max_comments = 5;
+		$max_comments = $blog_config[ 'blog_max_entries' ];
 		if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
 			// $array = array_reverse( $array );
 			$array = array_slice( $array, $max_comments * -4, $max_comments * 4);
@@ -694,6 +696,8 @@
 	}
 	
 	function add_most_recent_trackback ( $trackback_id, $y, $m, $blog_entry_id ) {
+		global $blog_config;
+		
 		// Add an item to the 'Last Updated' List
 		//
 		
@@ -709,7 +713,7 @@
 			$array = array( $blog_entry_id, $m, $y, $trackback_id );
 		}
 		
-		$max_comments = 5;
+		$max_comments = $blog_config[ 'blog_max_entries' ];
 		if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
 			// $array = array_reverse( $array );
 			$array = array_slice( $array, $max_comments * -4, $max_comments * 4);

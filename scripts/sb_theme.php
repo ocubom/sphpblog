@@ -302,13 +302,13 @@
 	}
 	
 	function menu_most_recent_entries () {
-		global $lang_string;
+		global $lang_string, $blog_config;
 		
 		$entry_file_array = blog_entry_listing();
 		
 		// Grab the next X number of entries
 		$file_array = array();
-		for ( $i = 0; $i < min( 10, count( $entry_file_array ) ); $i++ ) {
+		for ( $i = 0; $i < min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) ); $i++ ) {
 			array_push( $file_array, $entry_file_array[ $i ] );
 		}
 		

@@ -67,7 +67,7 @@
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config[ 'blog_max_entries' ], count( $entry_file_array ) );
+			$max_entries=min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
@@ -159,7 +159,7 @@
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config[ 'blog_max_entries' ], count( $entry_file_array ) );
+			$max_entries=min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
@@ -242,7 +242,7 @@
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config[ 'blog_max_entries' ], count( $entry_file_array ) );
+			$max_entries=min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
