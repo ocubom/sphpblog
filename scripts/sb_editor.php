@@ -3,9 +3,9 @@
 		// Insert Style Tags
 		function ins_styles(theform,sb_code,prompt_text,tag_prompt) {
 			// insert [x]yyy[/x] style markup
-			inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n[ '+sb_code+' ]xxx[/"+sb_code+' ]", prompt_text);
+			inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", prompt_text);
 			if ( (inserttext != null) ) {
-				theform.value += " [ '+sb_code+' ]"+inserttext+"[/"+sb_code+' ]";
+				theform.value += " ["+sb_code+"]"+inserttext+"[/"+sb_code+"]";
 				theform.focus();
 			}
 		}
@@ -14,10 +14,10 @@
 		function ins_style_dropdown(theform, sb_code) {
 			// insert [sb_code]xxx[/sb_code] style markup
 			if ( sb_code != '--' ) {
-				prompt_text = '[ ' + sb_code + ' ]xxx[/' + sb_code + ' ]';
+				prompt_text = '[' + sb_code + ']xxx[/' + sb_code + ']';
 				user_input = prompt( prompt_text, '' );
 				if ( (user_input != null) ) {
-					theform.value += '[ '+sb_code+' ]'+user_input+'[/'+sb_code+' ]';
+					theform.value += '['+sb_code+']'+user_input+'[/'+sb_code+']';
 					theform.focus();
 				}
 			}
@@ -28,7 +28,7 @@
 			// insert [x]yyy[/x] style markup
 			inserttext = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+"\n[img="+prompt_text+"xxx]",prompt_text);
 			if ((inserttext != null) && (inserttext != "")) {
-				theform.value += "[img="+inserttext+' ] ";
+				theform.value += "[img="+inserttext+"] ";
 			}
 			theform.focus();
 		}
@@ -62,7 +62,7 @@
 						str += ' float='+image_float;
 					}
 				}
-				str += ' ]';
+				str += ']';
 				
 				theform.value += str;
 				theform.focus();
@@ -96,7 +96,7 @@
 						
 					}
 				}
-				str += ' ]'+link_text+'[/url] ';
+				str += ']'+link_text+'[/url] ';
 				
 				theform.value += str;
 				theform.focus();
@@ -112,7 +112,7 @@
 				if ( (link_text == null) || (link_text == '') ) {
 					link_text = link_url;
 				}
-				str = '[url='+link_url+' ]'+link_text+'[/url] ';
+				str = '[url='+link_url+']'+link_text+'[/url] ';
 				
 				theform.value += str;
 				theform.focus();
