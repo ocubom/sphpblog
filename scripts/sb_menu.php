@@ -9,6 +9,15 @@
 	// ------------------------
 	// "Archive Menu" Functions
 	// ------------------------
+	
+	/**************************************************************************
+	MODIFICACIONES PARA LA GESTION DE LOS BLOQUES FIJOS DEL SPHPBLOG
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* Se ha modificado la funcion "read_blocks" para que diferencie entre los
+	  bloques por defecto (#) y los definidos por el usuario, y en el caso de
+	  los primeros llame a la funcion correspondiente. (Lineas 419 a 427)
+	**************************************************************************/
+	
 	function read_menus_calendar ( $m, $y, $d ) {
 		global $lang_string, $user_colors;
 		
@@ -407,8 +416,15 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i+=2 ) {
-				$block_array[$i] = blog_to_html( $array[$i], false, false );
-				$block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false );
+				if (substr ($array[$i], 0, 1) != "#") {
+					$block_array[$i] = blog_to_html( $array[$i], false, false );
+					$block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false );
+				} else {
+					$funccion = substr($array[$i + 1],1,-1) . "()";
+					eval("\$result2 = " . $funccion . ";");
+					$block_array[$i] = $result2["title"];
+					$block_array[$i + 1] = $result2["content"];
+      			}
 			}
 		}
 		

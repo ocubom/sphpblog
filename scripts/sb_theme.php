@@ -19,6 +19,18 @@
 	// Theme Menu Display
 	// ------------------
 	
+	/**************************************************************************
+	MODIFICACIONES PARA LA GESTION DE LOS BLOQUES FIJOS DEL SPHPBLOG
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* Se ha añadido la insercion de la opción de Login [menu_display_login] en
+	  la función "menu_display_links", de manera que sea dicha funcion la que
+	  construya la opción de login. (Linea 54)
+	* Se ha añadido a la función "menu_most_recent_trackbacks" la consulta
+	  a las variables globales, para ver si dicha opcion está habilitada.
+      (Linea 262)
+	**************************************************************************/
+	
+	
 	function menu_display_links () {
 		// Returns the Links menu as HTML.
 		//
@@ -38,6 +50,8 @@
 		$str = $str . '<a href="stats.php">' . $lang_string['menu_stats'] . '</a><br />';
 		
 		$str = $str . read_links( $logged_in );
+		
+		$str = $str . "<br />" . menu_display_login();
 		
 		$result = array();
 		$result['title'] = $lang_string['menu_links'];
@@ -241,14 +255,18 @@
 	}
 	
 	function menu_most_recent_trackbacks () {
-		global $lang_string;
-		
-		$str = get_most_recent_trackback();
+		global $lang_string, $blog_config;
 		
 		$result = array();
-		$result['title'] = $lang_string['menu_most_recent_trackback'];
-		$result['content'] = $str;
 		
+		if( $blog_config[ 'blog_trackback_enabled' ] ) {
+			$str = get_most_recent_trackback();
+			$result['title'] = $lang_string['menu_most_recent_trackback'];
+			$result['content'] = $str;
+		} else {
+   			$result['title'] = "";
+			$result['content'] = "";
+		}
 		return ( $result );
 	}
 	

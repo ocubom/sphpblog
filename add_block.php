@@ -1,4 +1,21 @@
-<?php 
+<?php
+	/**************************************************************************
+	MODIFICACIONES PARA LA GESTION DE LOS BLOQUES FIJOS DEL SPHPBLOG
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	En el fichero "blocks.txt" del directorio "config" se definen los bloques
+	por defecto:
+
+	#menu_home|{menu_display_links}|#menu_menu|{menu_display_user}|#menu_archive|{menu_display_blognav}|#menu_categories|{menu_display_categories}|#menu_setup|{menu_display_setup}|#menu_most_recent|{menu_most_recent_comments}|#search_title|{menu_search_field}|#menu_most_recent_trackback|{menu_most_recent_trackbacks}|#menu_most_recent_entries|{menu_most_recent_entries}
+
+	De modo que "#cadena1" es el identificador del bloque usado para los
+	lenguajes, y "{cadena2}" es el nombre de la funcion de "sb_theme.php" que
+	construye el bloque.
+
+	El caracter "#" lo usamos tanto para mostrar el titulo en el lenguage
+	seleccionado, como para deshabilitar la edicion y borrado del bloque.
+	Lineas 76 a 80 y 92 a 98 respectivamente.
+	**************************************************************************/
+
 	require('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -59,7 +76,11 @@
 		
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i+=2 ) {
-				$str = $str . ( 1 + ($i/2) ) . ' - ' . $array[$i] . '<br />';
+				if (substr ($array[$i], 0, 1) != "#") {
+					$str = $str . ( 1 + ($i/2) ) . ' - ' . $array[$i] . '<br />';
+				} else {
+					$str = $str . ( 1 + ($i/2) ) . ' - ' . $lang_string[substr($array[$i],1)] . '<br />';
+				}
 				$str = $str . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 1 ) {
 					$str = $str . '<a href="add_block.php?action=up&block_id='.$i.'">' . $lang_string['up'] . '</a> | ';
@@ -71,8 +92,13 @@
 				} else {
 					$str = $str . $lang_string['down'] . ' | ';
 				}
-				$str = $str . '<a href="add_block.php?action=edit&block_id='.$i.'">' . $lang_string['edit'] . '</a> | ';
-				$str = $str . '<a href="add_block.php?action=delete&block_id='.$i.'">' . $lang_string['delete'] . '</a> ';
+				if (substr ($array[$i], 0, 1) != "#") {
+					$str = $str . '<a href="add_block.php?action=edit&block_id='.$i.'">' . $lang_string['edit'] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=delete&block_id='.$i.'">' . $lang_string['delete'] . '</a> ';
+				} else {
+					$str = $str .  $lang_string['edit'] . ' | ';
+					$str = $str .  $lang_string['delete'] . ' ';
+				}
 				$str = $str . '<br /><br />';
 				if($action === "edit" && $i == $block_id) {
 					$block_name = $array[$i];

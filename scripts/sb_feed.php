@@ -162,10 +162,10 @@
 		if ( file_exists( 'interface/feed.png' ) ) {
 			echo "\t\t<image rdf:resource=\"" . $base_url . "interface/feed.png\" />";
 		}
-		echo "\t\t<copyright>" . clean_rdf_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
-		echo "\t\t<managingEditor>" . clean_rdf_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
-		echo "\t\t<language>" . str_replace( '_', '-', $lang_string['locale'] ) . "</language>\n";
-		echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
+		//echo "\t\t<copyright>" . clean_rdf_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
+		//echo "\t\t<managingEditor>" . clean_rdf_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
+		//echo "\t\t<language>" . str_replace( '_', '-', $lang_string['locale'] ) . "</language>\n";
+		//echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
@@ -195,9 +195,9 @@
 			echo "\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
 			echo "\t\t<description><![CDATA[" . clean_rdf_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
 			//Optional item fields
-			echo "\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
-			echo "\t\t<author>" . clean_rdf_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
-			echo "\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
+			//echo "\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
+			//echo "\t\t<author>" . clean_rdf_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
+			//echo "\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
 			echo "\t</item>\n";
 		}
 		echo "</rdf:RDF>\n";

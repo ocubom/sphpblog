@@ -14,6 +14,15 @@
 	// All graphic will be relative to the base-url (i.e. the folder
 	// where index.php is located.) 
 	
+	/**************************************************************************
+	MODIFICACIONES PARA LA GESTION DE LOS BLOQUES FIJOS DEL SPHPBLOG
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* Se ha modificado la funcion "theme_menu" para que solo llame a la funcion
+      "read_blocks" que construya todos los bloques, tanto los del usuario como
+      los de "por defecto"  (Lineas 555 - 564)
+	**************************************************************************/
+
+	
 	theme_init();
 	
 	// ---------------
@@ -538,107 +547,20 @@
 		// I could go on, but this is kind of boring stuff... :)
 		
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
-		
-		// Retained from 0.3.7c
-		echo( "\n<!-- LINKS -->\n" );
-		$result = menu_display_links();
-		echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-		echo( "<div class=\"menu_body\">\n" );
-		echo( $result["content"] . "\n" );
-		echo( "<br />" . menu_display_login() . "\n" );
-		echo( "</div><br />\n" );
-		
-		// Retained from 0.3.7c
-		$result = menu_display_user();
-		if ( $result["content"] != "" ) {
-			echo( "\n<!-- USER MENU -->\n" );
-			echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result["content"] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
-		// Retained from 0.3.7c
-		$result = menu_display_setup();
-		if ( $result["content"] != "" ) {
-			echo( "\n<!-- SETUP MENU -->\n" );
-			echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result["content"] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
+
 		// New 0.3.8
 		//
 		// The ADD BLOCKS page lets you insert your own
 		// content "blocks" into the menu area.
 		$array = read_blocks($logged_in);
 		for($i=0 ; $i<count($array) ; $i+=2) {
-			echo("<div class=\"menu_title\">" . $array[$i] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $array[$i+1] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
-		// Retained from 0.3.7c
-		//
-		// However, this function now displays a calendar
-		// rather then the "tree view"....
-		echo( "\n<!-- ARCHIVE -->\n" );
-		$result = menu_display_blognav();
-		echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-		echo( "<div class=\"menu_body\">\n" );
-		echo( $result["content"] . "\n" );
-		echo( "</div><br />\n" );
-		
-		// New 0.3.8
-		$result = menu_display_categories();
-		if ( $result["content"] != "" ) {
-			echo( "\n<!-- RECENT ENTRIES -->\n" );
-			echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result["content"] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
-		// Retained from 0.3.7c
-		echo( "\n<!-- SEARCH -->\n" );
-		$result = menu_search_field();
-		echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-		echo( "<div class=\"menu_body\">\n" );
-		echo( $result["content"] . "\n" );
-		echo( "</div><br />\n" );
-		
-		// New 0.3.8
-		$result = menu_most_recent_entries();
-		if ( $result["content"] != "" ) {
-			echo( "\n<!-- RECENT ENTRIES -->\n" );
-			echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result["content"] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
-		// Retained from 0.3.7c
-		$result = menu_most_recent_comments();
-		if ( $result["content"] != "" ) {
-			echo( "\n<!-- RECENT COMMENTS -->\n" );
-			echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result["content"] . "\n" );
-			echo( "</div><br />\n" );
-		}
-	
-		// New 0.3.8
-		if( $blog_config[ 'blog_trackback_enabled' ] ) {
-   		$result = menu_most_recent_trackbacks();
-   		if ( $result["content"] != "" ) {
-   			echo( "\n<!-- RECENT TRACKBACKS -->\n" );
-   			echo("<div class=\"menu_title\">" . $result["title"] . "</div>\n" );
-   			echo( "<div class=\"menu_body\">\n" );
-   			echo( $result["content"] . "\n" );
-   			echo( "</div><br />\n" );
-   		}
+			// Si no hay contenido, no pinto nada
+			if ( $array[$i+1] != "" ) {
+				echo( "<div class=\"menu_title\">" . $array[$i] . "</div>\n" );
+				echo( "<div class=\"menu_body\">\n" );
+				echo( $array[$i+1] . "\n" );
+				echo( "</div><br />\n" );
+			}
 		}
 		
 		// Web Badges - Updated for 0.3.8

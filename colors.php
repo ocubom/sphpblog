@@ -70,11 +70,31 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $blog_theme;
 		
 		?>
 		<h2><?php echo( $lang_string['title'] ); ?></h2>
 		<?php echo( $lang_string['instructions'] ); ?><p />
+		
+		<?php 
+		$entry_array = array();
+		$entry_array['subject'] = 'BLOG ENTRY SAMPLE';
+		$entry_array['date'] = 'viernes, 22 de octubre de 2004, 09:48';
+		$entry_array['permalink']['name'] = $lang_string['sb_permalink'];
+		$entry_array['permalink']['url'] = 'colors.php';
+		$entry_array['entry'] = blog_to_html('[html]El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.<br /><br /><a href="colors.php">El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.</a><br /><br />El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.[/html]', false, false ) . '<br clear="all">';
+		$entry_array['stars'] = '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/half_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">';
+		$entry_array['comment']['url'] = 'colors.php';
+		$entry_array['comment']['name'] = $lang_string['sb_add_comment_btn'];
+		$entry_array['comment']['count'] = $lang_string['sb_view_counter_pre'] . '0' . $lang_string['sb_view_counter_post'];
+		$entry_array['trackback']['url'] = 'colors.php';
+		$entry_array['trackback']['ping_url'] = 'colors.php';
+		$entry_array['count'] = 1;
+		$entry_array['maxcount'] = 1;
+		$entry_array['logged_in'] = $logged_in;
+		
+		echo ( theme_blogentry( $entry_array ));
+		?>
 		
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" 

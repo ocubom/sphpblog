@@ -67,7 +67,7 @@
 		}
 		$xml=$xml . "\t</params>\n";
 		$xml=$xml . "</methodCall>\n";
-		$socket = fsockopen( $url['host'], 80, $errno, $errstr, 30);
+		$socket = @fsockopen( $url['host'], 80, $errno, $errstr, 30);
 		if ( $socket ) { 
 			fwrite( $socket, 'POST ' . $url['scheme'] . '://' . $url['host'] . $url['path'] . " HTTP/1.0\nHost: " . $url['host'] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: text/xml\nContent-Length: " . strlen ( $xml ) . "\n\n" . $xml . "\n" );
 			$result = fread( $socket, 8192 );
