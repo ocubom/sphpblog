@@ -146,14 +146,18 @@
 			// DATOH_ADD
 			case 'add_block':
 				// Add / Manage Blocks
-				$lang_string[ 'title' ] = "Add / Manage Links";
+				$lang_string[ 'title' ] = "Add / Manage Blocks";
 				$lang_string[ 'instructions' ] = "Añadir Bloques";
 				$lang_string[ 'up' ] = "up";
 				$lang_string[ 'down' ] = "down";
 				$lang_string[ 'edit' ] = "edit";
 				$lang_string[ 'delete' ] = "delete";
+				$lang_string[ 'enable' ] = "enable";
+				$lang_string[ 'disable' ] = "disable";
 				$lang_string[ 'block_name' ] = "Block Name:";
 				$lang_string[ 'block_content' ] = "Block content:";
+				$lang_string[ 'block_scope' ] = "Private";
+				$lang_string[ 'block_status' ] = "Disabled";
 				$lang_string[ 'instructions_edit' ] = "You are currently editing block:";
 				$lang_string[ 'instructions_modify' ] = "Click below to modify a block:";
 				$lang_string[ 'submit_btn_edit' ] = "Edit Block";
