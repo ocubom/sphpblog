@@ -204,6 +204,9 @@
 		$filename = 'config/config.txt';
 		$result = sb_write_file( $filename, $str );
 		
+		$filename='config/~blog_entry_listing.tmp';
+		sb_delete_file( $filename );
+
 		if ( $result ) {
 			return ( true );
 		} else {
@@ -288,7 +291,7 @@
 		$result = sb_read_file( $filename );
 		
 		if ( $result ) {
-			list( $blog_theme ) = explode('|', $result);		
+			list( $blog_theme ) = explode('|', $result);
 		} else {
 			// Error:
 			// Probably couldn't read file.
