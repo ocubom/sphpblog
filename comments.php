@@ -193,7 +193,14 @@
 			<label for="blog_text"><?php echo( $lang_string['comment_text'] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars['max_image_width'] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
 
-			<label for="comment_capcha"><?php printf( $lang_string['comment_capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); ?></label><br />
+			<label for="comment_capcha"><?php 
+				if ( function_exists('imagecreate') ) {
+					printf( $lang_string['comment_capcha'], '<br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
+				}
+				else {
+					printf( $lang_string['comment_capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); 
+				}
+				?></label><br />
 			<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />
 
 			<input type="submit" name="submit" value="<?php echo( $lang_string['post_btn'] ); ?>" />

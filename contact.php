@@ -55,7 +55,14 @@
 		<input type="text" name="subject" size="40"><br /><br />
 		<label for="comment"><?php echo( $lang_string['comment'] ); ?></label><br />
 		<textarea style="width: <?php global $theme_vars; echo( $theme_vars['max_image_width'] ); ?>px;" id="text" name="comment" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
-		<label for="capcha"><?php printf( $lang_string['capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) ); ?></label><br />
+		<label for="capcha"><?php 
+			if ( function_exists('imagecreate') ) {
+				printf( $lang_string['capcha'], '<br /><img src="capcha.php?entry=contact" />' );
+			}
+			else {
+				printf( $lang_string['capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) ); 
+			}
+		?></label><br />
 		<input type="text" name="capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />
 		<hr noshade size="1" color=#<?php echo( $user_colors['inner_border_color'] ); ?>>
 
