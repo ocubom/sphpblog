@@ -62,20 +62,20 @@
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 			
-			<form action="info.php" method="POST" name="info" name="info">
+			<form action="info.php" method="POST" name="info">
 				
 				<label for="info_keywords"><?php echo( $lang_string[ 'info_keywords' ] ); ?></label><br />
-				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_keywords" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'info_keywords' ]); ?></textarea><br /><br />
+				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="info_keywords" name="info_keywords" rows="5" cols="50"><?php echo($blog_config[ 'info_keywords' ]); ?></textarea><br /><br />
 				
 				<label for="info_description"><?php echo( $lang_string[ 'info_description' ] ); ?></label><br />
-				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_description" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'info_description' ]); ?></textarea><br /><br />
+				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="info_description" name="info_description" rows="5" cols="50"><?php echo($blog_config[ 'info_description' ]); ?></textarea><br /><br />
 				
 				<label for="info_copyright"><?php echo( $lang_string[ 'info_copyright' ] ); ?></label><br />
-				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_copyright" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'info_copyright' ]); ?></textarea><br />
+				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="info_copyright" name="info_copyright" rows="5" cols="50"><?php echo($blog_config[ 'info_copyright' ]); ?></textarea><br />
 			
-				<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+				<div class="hr"><hr /></div>
 				
 				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 			</form>

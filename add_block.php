@@ -40,14 +40,14 @@
 		}
 	}
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	<?php require_once('scripts/sb_editor.php'); ?>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
@@ -58,7 +58,7 @@
 		//$result = initialize_blocks();
 
 		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
-		echo( $lang_string[ 'instructions' ] . '<p />' );
+		echo( '<p>' . $lang_string[ 'instructions' ] . '</p>' );
 		
 		// Read blocks file.
 		$filename = 'config/blocks.txt';
@@ -68,8 +68,8 @@
 		$str = NULL;
 		if ( $result ) {
 			
-			echo( '<hr noshade size="1" color=#' . $user_colors[ 'inner_border_color' ] . '>' );
-			echo $lang_string[ 'instructions_modify' ] . '<p />';
+			echo( '<div class="hr"><hr /></div>' );
+			echo '<p>' . $lang_string[ 'instructions_modify' ] . '</p>';
 	
 			$block_content = '';
 			$block_name = '';
@@ -124,18 +124,18 @@
 
 				$str = $str . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 1 ) {
-					$str = $str . '<a href="add_block.php?action=up&block_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=up&amp;block_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
 				} else {
 					$str = $str . $lang_string[ 'up' ] . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str = $str . '<a href="add_block.php?action=down&block_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=down&amp;block_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
 				} else {
 					$str = $str . $lang_string[ 'down' ] . ' | ';
 				}
 				if (substr ($array[$i], 0, 1) != '#') {
-					$str = $str . '<a href="add_block.php?action=edit&block_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
-					$str = $str . '<a href="add_block.php?action=delete&block_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=edit&amp;block_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=delete&amp;block_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> | ';
 				} else {
 					$str = $str .  $lang_string[ 'edit' ] . ' | ';
 					$str = $str .  $lang_string[ 'delete' ] . ' | ';
@@ -143,9 +143,9 @@
 
 				//Status
 				if ($array2[2] == '1') 
-					$str = $str . '<a href="add_block.php?action=enable&block_id='.$i.'">' . $lang_string[ 'enable' ] . '</a> ';
+					$str = $str . '<a href="add_block.php?action=enable&amp;block_id='.$i.'">' . $lang_string[ 'enable' ] . '</a> ';
 				else
-					$str = $str . '<a href="add_block.php?action=disable&block_id='.$i.'">' . $lang_string[ 'disable' ] . '</a> ';
+					$str = $str . '<a href="add_block.php?action=disable&amp;block_id='.$i.'">' . $lang_string[ 'disable' ] . '</a> ';
 				
 
 				$str = $str . '<br /><br />';
@@ -167,14 +167,14 @@
 		
 		echo( $str );
 		
-		echo( '<hr noshade size="1" color=#' . $user_colors[ 'inner_border_color' ] . '>' );
+		echo( '<div class="hr"><hr /></div>' );
 		
 		?>
 		
 		<form action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />
-			<input type="text" name="block_name" autocomplete=OFF value="<?php echo $block_name; ?>" size="40"><br /><br />
+			<input type="text" name="block_name" value="<?php echo $block_name; ?>" size="40" /><br /><br />
 			
 			<?php echo( $lang_string[ 'block_content' ] ); ?><br />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.block_content,'b','');" />
@@ -197,7 +197,7 @@
 				<option label="[ins]xxx[/ins]" value="ins">[ins]xxx[/ins]</option>
 				<option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option>
 			</select>
-			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.block_content,this.form.style_dropdown.value);"/><br><br>
+			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.block_content,this.form.style_dropdown.value);" /><br /><br />
 			
 			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
 			<?php echo image_dropdown(); ?><br />
@@ -218,7 +218,7 @@
 				document.all.position_dropdown.value="<?php echo $block_position; ?>";
 			</script>			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50" autocomplete=OFF><?php echo $block_content; ?></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50"><?php echo $block_content; ?></textarea><br /><br />
 			
 			<?php if( isset( $block_id ) ) { ?>
 			<input type="hidden" name="block_id" value="<?php echo $block_id; ?>" />

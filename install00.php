@@ -45,9 +45,9 @@
 									$lang_dir = $sub_dir;
 									$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
 									if ( $lang_name ) {
-										$str = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
+										$str = '<option value="' . $lang_dir . '"';
 										if ( $blog_config[ 'blog_language' ] == $lang_dir ) {
-											$str = $str . ' selected';
+											$str = $str . ' selected="selected"';
 										}
 										$str = $str . '>' . $lang_name . '</option>';
 										

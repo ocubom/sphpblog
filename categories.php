@@ -223,7 +223,7 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $lang_string[ 'error' ] . $ok . '<p />' );
+				echo( '<p>' . $lang_string[ 'error' ] . $ok . '</p>' );
 			}
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 		} else {
@@ -232,7 +232,7 @@
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 	
 			<?php echo( $lang_string[ 'current_categories' ] ); ?><br />
 			
@@ -254,11 +254,11 @@
 					echo( $lang_string[ 'no_categories_found' ] . '<br />' );
 				}
 			?>
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 			
 			<form action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
 			<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete=OFF><?php
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50"><?php
 				$catArray = get_category_array();
 				if ( count($catArray) > 0) {
 					$str = "";
@@ -277,7 +277,7 @@
 				<br />
 				<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" /><br />
 				
-				<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+				<div class="hr"><hr /></div>
 				
 				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 			</form>

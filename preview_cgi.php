@@ -43,7 +43,7 @@
 				}
 				
 				if ( $selected == true ) {
-					$str = $str . '<option label="' . $label . '" value="' . $id_number . '" selected>' . $label . "</option>\n";
+					$str = $str . '<option label="' . $label . '" value="' . $id_number . '" selected="selected">' . $label . "</option>\n";
 				} else {
 					$str = $str . '<option label="' . $label . '" value="' . $id_number . '">' . $label . "</option>\n";
 				}
@@ -75,9 +75,9 @@
 		<h2><?php echo( $lang_string[ 'title_preview' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 
-		<?php
+		<p><?php
 			global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry, $temp_tb_ping, $temp_categories;
 			
 			if ( isset( $_GET[ 'entry' ] ) ) {
@@ -119,14 +119,14 @@
 		<h2><?php echo( $lang_string[ 'title_update' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions_update' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 
 		<form action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
-			<input type="hidden" name="entry" value="<?php global $entry; echo( $entry ); ?>">
+			<input type="hidden" name="entry" value="<?php global $entry; echo( $entry ); ?>" />
 			
 			<label for="blog_subject"><?php echo( $lang_string[ 'label_subject' ] ); ?></label><br />
-			<input type="text" name="blog_subject" autocomplete="OFF" value="<?php global $temp_subject; echo( $temp_subject ); ?>" size="40"><br /><br />
+			<input type="text" name="blog_subject" value="<?php global $temp_subject; echo( $temp_subject ); ?>" size="40" /><br /><br />
 			
 			<?php echo( $lang_string[ 'label_insert' ] ); ?><br />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
@@ -155,18 +155,18 @@
 			<?php echo image_dropdown(); ?><br /><br />
 			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php global $temp_text; echo $temp_text; ?></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50"><?php global $temp_text; echo( $temp_text ); ?></textarea><br /><br />
 			
 			<?php if ( $blog_config[ 'blog_trackback_enabled' ] ) { ?>
 		      <label for="tb_ping"><?php echo( $lang_string[ 'label_tb_ping' ] ); ?></label><br />
 		      <input type="text" id="tb_ping" name="tb_ping" 
 		      <?php global $temp_tb_ping; if( $blog_config[ 'blog_trackback_auto_discovery' ] ) { echo ' value="' . $temp_tb_ping . '" '; } ?>
-		      style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
+		      style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" /><br /><br />
 			<?php } ?>
 			
 			<?php echo( category_selection_box() ); ?><br /><br />
 
-			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='preview_cgi.php'"; />
+			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='preview_cgi.php'" />
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='add_cgi.php'" />
 			
 		</form>

@@ -52,14 +52,14 @@
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 			
 			<?php
 				$blog_content = read_entry_from_file( 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ] );
 				echo( $blog_content );
 			?>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 			
 			<form action='delete.php' method="POST">
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">

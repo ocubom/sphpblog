@@ -82,8 +82,8 @@
 		$entry_array[ 'date' ] = 'viernes, 22 de octubre de 2004, 09:48';
 		$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
 		$entry_array[ 'permalink' ][ 'url' ] = 'colors.php';
-		$entry_array[ 'entry' ] = blog_to_html('[html]El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.<br /><br /><a href="colors.php">El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.</a><br /><br />El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.[/html]', false, false ) . '<br clear="all">';
-		$entry_array[ 'stars' ] = '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/half_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0">';
+		$entry_array[ 'entry' ] = blog_to_html('[html]El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.<br /><br /><a href="colors.php">El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.</a><br /><br />El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.[/html]', false, false ) . '<br clear="all" />';
+		$entry_array[ 'stars' ] = '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0" alt="Rating" />' . '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" border="0" alt="Rating" />' . '<img src="themes/' . $blog_theme . '/images/stars/half_star.png" border="0" alt="Rating" />' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0" alt="Rating" />' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" border="0" alt="Rating" />';
 		$entry_array[ 'comment' ][ 'url' ] = 'colors.php';
 		$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_add_comment_btn' ];
 		$entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_pre' ] . '0' . $lang_string[ 'sb_view_counter_post' ];
@@ -96,18 +96,18 @@
 		echo ( theme_blogentry( $entry_array ));
 		?>
 		
-		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+		<p><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" 
-			width="390" height="390" id="color_picker" align="">
-			<param name=movie value="flash/color_picker.swf"> 
-			<param name=quality value=high> 
-			<param name=bgcolor value=#E6E6E6> 
-			<embed src="flash/color_picker.swf" quality=high bgcolor=#E6E6E6 
-				width="390" height="390" name="color_picker" align="" 
+			width="390" height="390">
+			<param name="movie" value="flash/color_picker.swf"> 
+			<param name="quality" value="high"> 
+			<param name="bgcolor "value="#E6E6E6"> 
+			<embed src="flash/color_picker.swf" quality="high" bgcolor="#E6E6E6" 
+				width="390" height="390" name="color_picker" 
 				type="application/x-shockwave-flash" 
 				pluginspage="http://www.macromedia.com/go/getflashplayer">
 			</embed>
-		</object><p />
+		</object></p>
 		
 		<form method="post" name="colors" id="colors" action="colors_cgi.php">
 			<?php
@@ -126,12 +126,12 @@
 					$string = $color_def[$i][ 'string' ];
 					$str = '';
 					if ( $i == 0 ) {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked> ';
+						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked /> ';
 					} else {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '"> ';
+						$str = $str . '<input type="radio" name="area" value="' . $id . '" /> ';
 					}
 					$str = $str . '<span class="swatch" style="background: #' . $color . ';" id="' . $id . '_swatch">&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
-					$str = $str . '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6"> ' . $string . '<br />' . "\n";
+					$str = $str . '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6" /> ' . $string . '<br />' . "\n";
 					echo ( $str );
 				}
 				echo ('</td>' . "\n");
@@ -143,21 +143,21 @@
 					$string = $color_def[$i][ 'string' ];
 					$str = '';
 					if ( $i == 0 ) {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked> ';
+						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked /> ';
 					} else {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '"> ';
+						$str = $str . '<input type="radio" name="area" value="' . $id . '" /> ';
 					}
 					$str = $str . '<span class="swatch" style="background: #' . $color . ';" id="' . $id . '_swatch">&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
-					$str = $str . '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6"> ' . $string . '<br />' . "\n";
+					$str = $str . '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6" /> ' . $string . '<br />' . "\n";
 					echo ( $str );
 				}
 				echo ('</td>' . "\n");
 				echo ('</tr>' . "\n");
 				
-				echo ('</table><p />' . "\n");
+				echo ('</table>' . "\n");
 			
-				echo ('<input type="submit" name="submit" value="' . $lang_string[ 'submit_btn' ] . '"/>' );
-				echo ('<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' . "\n");
+				echo ('<input type="submit" name="submit" value="' . $lang_string[ 'submit_btn' ] . '" />' );
+				echo ('<div class="hr"><hr /></div>' . "\n");
 				
 				// Preset Color Dropdown
 				echo ('<label for="presets">' . $lang_string[ 'color_preset' ] . '</label><br />' . "\n");
@@ -214,10 +214,10 @@
 			?>
 			
 			<label for="scheme_name"><?php echo( $lang_string[ 'scheme_name' ] ); ?></label><br />
-			<input type="text" name="scheme_name" id="scheme_name" autocomplete=OFF value="" size="40"><br /><br />
+			<input type="text" name="scheme_name" id="scheme_name" value="" size="40" /><br /><br />
 			
 			<label for="scheme_file"><?php echo( $lang_string[ 'scheme_file' ] ); ?></label><br />
-			<input type="text" name="scheme_file" id="scheme_file" autocomplete=OFF value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" /><br />
+			<input type="text" name="scheme_file" id="scheme_file" value="" size="40" /> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" /><br />
 		
 		</form>
 		

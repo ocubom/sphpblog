@@ -32,13 +32,13 @@
 		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<div class="hr"><hr /></div>' );
 		
 		$result = create_folder( 'config' );
 		$result = $result + create_folder( 'content' );
 		$result = $result + create_folder( 'images' );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<div class="hr"><hr /></div>' );
 		
 		if ( $result < 0 ) {
 			echo( $lang_string[ 'help' ] . '<p />' );

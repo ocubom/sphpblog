@@ -31,7 +31,7 @@
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
 		?>
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 		
 		<form action="languages_cgi.php" method="POST">
 			
@@ -54,7 +54,7 @@
 									if ( $lang_name ) {
 										$str_temp = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
 										if ( $blog_config[ 'blog_language' ] == $lang_dir ) {
-											$str_temp = $str_temp . ' selected';
+											$str_temp = $str_temp . ' selected="selected"';
 										}
 										$str_temp = $str_temp . '>' . $lang_name . "</option>\n";
 										

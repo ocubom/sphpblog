@@ -109,13 +109,13 @@
 			<input type="hidden" name="m" value="<?php echo( $_GET[ 'm' ] ); ?>">
 			<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 			<label for="comment_name"><?php echo( $lang_string[ 'comment_name' ] ); ?></label><br />
-			<input type="text" name="comment_name" value="<?php echo $_COOKIE[ 'comment_name' ]; ?>" autocomplete="OFF"><br />
+			<input type="text" name="comment_name" value="<?php echo $_COOKIE[ 'comment_name' ]; ?>"><br />
 			<label for="comment_email"><?php echo( $lang_string[ 'comment_email' ] ); ?></label><br />
-			<input type="text" name="comment_email" value="<?php echo $_COOKIE[ 'comment_email' ]; ?>" autocomplete="OFF"><br />
+			<input type="text" name="comment_email" value="<?php echo $_COOKIE[ 'comment_email' ]; ?>"><br />
 			<label for="comment_url"><?php echo( $lang_string[ 'comment_url' ] ); ?></label><br />
-			<input type="text" name="comment_url" value="<?php echo $_COOKIE[ 'comment_url' ]; ?>" autocomplete="OFF"><br />
+			<input type="text" name="comment_url" value="<?php echo $_COOKIE[ 'comment_url' ]; ?>"><br />
 			
-			<label for="comment_remember"><?php echo( $lang_string[ 'comment_remember' ] ); ?><input type="checkbox" name="comment_remember" value="1" <?php if (!empty($_COOKIE[ 'comment_name' ])) echo 'checked'; ?> autocomplete="OFF"></label><br /><br />
+			<label for="comment_remember"><?php echo( $lang_string[ 'comment_remember' ] ); ?><input type="checkbox" name="comment_remember" value="1" <?php if (!empty($_COOKIE[ 'comment_name' ])) echo 'checked'; ?>></label><br /><br />
 			
 			<!-- NEW -->
 			
@@ -191,7 +191,7 @@
 			?>
 
 			<label for="blog_text"><?php echo( $lang_string[ 'comment_text' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50"></textarea><br /><br />
 
 			<label for="comment_capcha"><?php 
 				if ( function_exists('imagecreate') ) {
@@ -201,7 +201,7 @@
 					printf( $lang_string[ 'comment_capcha' ], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); 
 				}
 				?></label><br />
-			<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />
+			<input type="text" name="comment_capcha" value="" maxlength="6"><br /><br />
 
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'post_btn' ] ); ?>" />
 			

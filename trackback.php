@@ -22,8 +22,7 @@
 	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname( $_SERVER[ 'PHP_SELF' ] ) == '/' ) ) {
 		// Hosted at root.
 		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ];
-	}
-	else {
+	} else {
 		// Hosted in sub-directory.
 		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]);
 	}
@@ -37,8 +36,7 @@
 		$month = $_GET[ 'm' ];
 		if ( file_exists( $entry_id . '.txt' ) ) {
 			$redirect = false;
-		}
-		else if ( file_exists( $entry_id . '.txt.gz' ) ) {
+		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
 			$redirect = false;
 		}
 	}

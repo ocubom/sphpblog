@@ -42,5 +42,8 @@
 
 	a:active {
 		color: #<?php echo( $user_colors[ 'link_down_color' ] ); ?>;
-	}';	
+	}
+	
+	div.hr {  border-top: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>; margin: 10px 0; }
+	div.hr hr { display: none; }
 </style>

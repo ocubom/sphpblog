@@ -39,19 +39,19 @@
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 		
 		<form action="login_cgi.php" method="POST" onSubmit="return validate(this)">
 		
 		<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />
-		<input type="text" name="user" size="40"><br /><br />
+		<input type="text" name="user" id="user" size="40" /><br /><br />
 		
 		<label for="pass"><?php echo( $lang_string[ 'password' ] ); ?></label><br />
-		<input type="password" name="pass" size="40"><br />
+		<input type="password" name="pass" id="pass" size="40" /><br />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 		
-		<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
+		<input type="submit" name="submit" id="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 		</form>
 		
 		<?php 

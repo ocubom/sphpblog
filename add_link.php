@@ -67,7 +67,7 @@
 		$str = NULL;
 		if ( $result ) {
 			
-			echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<div class="hr"><hr /></div>' );
 			echo $lang_string[ 'instructions_modify' ] . '<p />';
 	
 			$array = explode('|', $result);
@@ -104,7 +104,7 @@
 		
 		echo( $str );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<div class="hr"><hr /></div>' );
 		
 		if ( isset( $link_id ) == true ) {
 			echo $lang_string[ 'instructions_edit' ] . '<br /><br />';
@@ -138,10 +138,10 @@
 			?>
 		
 			<label for="link_name"><?php echo( $lang_string[ 'link_name' ] ); ?></label><br />
-			<input type="text" name="link_name" id="link_name" autocomplete="OFF" value="<?php if ( isset( $link_name ) ) { echo( $link_name ); } ?>"><br /><br />
+			<input type="text" name="link_name" id="link_name" value="<?php if ( isset( $link_name ) ) { echo( $link_name ); } ?>"><br /><br />
 			
 			<label for="link_url"><?php echo( $lang_string[ 'link_url' ] ); ?></label><br />
-			<input type="text" name="link_url" id="link_url" autocomplete="OFF" size="45" value="<?php if ( isset( $link_url ) ) { echo( $link_url ); } else { echo( 'http://' ); }?>"><br /><br />
+			<input type="text" name="link_url" id="link_url" size="45" value="<?php if ( isset( $link_url ) ) { echo( $link_url ); } else { echo( 'http://' ); }?>"><br /><br />
 			
 			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $link_id ) ) { echo $lang_string[ 'submit_btn_edit' ]; } else { echo $lang_string[ 'submit_btn_add' ]; } ?>&nbsp;" onclick="this.form.action='add_link.php';" />
 		</form>

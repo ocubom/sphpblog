@@ -35,18 +35,18 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $lang_string[ 'error' ] . $ok . '<p />' );
+				echo( '<p>' . $lang_string[ 'error' ] . $ok . '</p>' );
 			}
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 		} else {
 			// Display theme selection page
 			?>
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
+			<p><?php echo( $lang_string[ 'instructions' ] ); ?></p>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 			
-			<form action="themes.php" method="POST" name="setup" name="setup">
+			<form action="themes.php" method="post" name="setup">
 				
 				<label for="blog_theme"><?php echo( $lang_string[ 'choose_theme' ] ); ?></label><br />
 				<select name="blog_theme">
@@ -65,7 +65,7 @@
 										if ( $lang_name ) {
 											$str = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
 											if ( $blog_theme == $lang_dir ) {
-												$str = $str . ' selected';
+												$str = $str . ' selected="selected"';
 											}
 											$str = $str . '>' . $lang_name . '</option>';
 											
@@ -80,7 +80,7 @@
 					?>
 				</select><br />
 				
-				<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+				<div class="hr"><hr /></div>
 				
 				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 			</form>

@@ -81,7 +81,7 @@
 			<h2><?php echo( $lang_string[ 'title_ad' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions_ad' ] ); ?><p />
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<div class="hr"><hr /></div>
 			
 			<form action='add_cgi.php' method="POST">
 			

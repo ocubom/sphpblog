@@ -28,7 +28,7 @@
 		<h2><?php echo( $lang_string[ 'title_preview' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 
 		<?php
 			global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry;
@@ -66,14 +66,14 @@
 		<h2><?php echo( $lang_string[ 'title_update' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions_update' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<div class="hr"><hr /></div>
 
 		<form action='add_static_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate_static(this)">
 		
 			<input type="hidden" name="entry" value="<?php global $entry; echo( $entry ); ?>">
 			
 			<label for="blog_subject"><?php echo( $lang_string[ 'label_subject' ] ); ?></label><br />
-			<input type="text" name="blog_subject" autocomplete="OFF" value="<?php global $temp_subject; echo( $temp_subject ); ?>" size="40"><br /><br />
+			<input type="text" name="blog_subject" value="<?php global $temp_subject; echo( $temp_subject ); ?>" size="40"><br /><br />
 			
 			<?php echo( $lang_string[ 'label_insert' ] ); ?><br />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
@@ -102,10 +102,10 @@
 			<?php echo image_dropdown(); ?><br /><br />
 			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php global $temp_text; echo( $temp_text ); ?></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50"><?php global $temp_text; echo( $temp_text ); ?></textarea><br /><br />
 			
 			<label for="file_name"><?php echo( $lang_string[ 'file_name' ] ); ?></label><br/>
-			<input type="text" name="file_name" autocomplete="OFF" value="<?php echo( $temp_file_name ); ?>" size="40"><br /><br />
+			<input type="text" name="file_name" value="<?php echo( $temp_file_name ); ?>" size="40"><br /><br />
 			
 			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='preview_static_cgi.php';" />
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='add_static_cgi.php';" />
