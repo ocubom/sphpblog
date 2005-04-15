@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
@@ -178,4 +178,40 @@
 		return( $info );
 	}
 
-	?>
+	
+	function sb_folder_listing_recurse( $dir )
+	{
+		$stack[] = $dir;
+		while ( $stack ) {
+			$current_dir = array_pop( $stack );
+			if ($dh = opendir( $current_dir ) ) {
+				while ( ( $file = readdir( $dh ) ) !== false ) {
+					if ( $file !== '.' && $file !== '..' ) {
+						$current_file = $current_dir . '/' . $file;
+						if ( is_file( $current_file ) ) {
+							$file_list[] = $current_file;
+						}
+						else if ( is_dir( $current_file ) ) {
+							$stack[] = $current_file;
+						}
+					}
+				}
+			}
+		}
+		return ( $file_list );
+	}
+
+	
+	function sb_folder_stats( $dir )
+	{
+		$files = sb_folder_listing_recurse( $dir );
+		$res[ 'number' ]=0;
+		$res[ 'bytes' ]=0;
+		for ( $i=0; $i<count( $files ); $i++) {
+			$res[ 'number' ]++;
+			$res[ 'bytes' ]+=filesize( $files[ $i ] );
+		}
+		return ( $res );
+	}
+	
+?>

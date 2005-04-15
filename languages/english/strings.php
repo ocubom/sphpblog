@@ -500,6 +500,7 @@
 				$lang_string[ 'title' ] = "Upload Image";
 				$lang_string[ 'instructions' ] = "Click on the button below to select a file to upload.";
 				$lang_string[ 'select_file' ] = "Select file:";
+				$lang_string[ 'stats' ] = "Now you have uploaded <b>%s</b> file(s) using <b>%s</b> bytes.";		//0.4.4
 				$lang_string[ 'upload_btn' ] = "Upload";
 				// Error Response
 				$lang_string[ 'error' ] = "<h2>Whoops!</h2>Couldn't upload image. Here's some more information:<br /><br />Server Reported:<br />";
@@ -526,6 +527,7 @@
 				$lang_string[ 'title' ] = "<h2>Statistics</h2>";
 				$lang_string[ 'general' ] = "<h3>General</h3>";
 				$lang_string[ 'entry_info' ] = "<b>%s</b> entries using <b>%s</b> words stored in <b>%s</b> bytes";
+				$lang_string[ 'upload_info' ]= "<b>%s</b> uploaded files in <b>%s</b> bytes";		//0.4.4
 				$lang_string[ 'comment_info' ] = "<b>%s</b> comments using <b>%s</b> words stored in <b>%s</b> bytes";
 				$lang_string[ 'trackback_info' ] = "<b>%s</b> trackbacks stored in <b>%s</b> bytes";
 				$lang_string[ 'static_info' ] = "<b>%s</b> static pages using <b>%s</b> words stored in <b>%s</b> bytes";

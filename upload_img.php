@@ -25,6 +25,10 @@
 		?>
 		
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+		<?php
+			$stats = sb_folder_stats( 'images' );
+			printf( $lang_string[ 'stats' ],  number_format( $stats[ 'number' ], 0 ), number_format( $stats[ 'bytes' ], 0 ) );
+		?><br>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<div class="hr"><hr /></div>

@@ -512,6 +512,7 @@
 				$lang_string['title'] = "Subir imagen";
 				$lang_string['instructions'] = "Haga clic debajo para subir una imagen.";
 				$lang_string['select_file'] = "Seleccionar archivo:";
+				$lang_string['stats']="Actualmente tienes subidos <b>%s</b> archivo(s) usando <b>%s</b> bytes.";		//0.4.4
 				$lang_string['upload_btn'] = "Subir";
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>Fue imposible subir la imagen. Aquí hay mas información:<br /><br />Respuesta del servidor:<br />";
@@ -537,14 +538,15 @@
 			case 'stats':
 				$lang_string['title'] = "<h2>Estadísticas</h2>";
 				$lang_string['general'] = "<h3>General</h3>";
-				$lang_string['entry_info'] = "<b>%s</b> artículos usando <b>%s</b> palabras ocupando en <b>%s</b> bytes";
-				$lang_string['comment_info'] = "<b>%s</b> comentarios usando <b>%s</b> palabras ocupando en <b>%s</b> bytes";
-				$lang_string['trackback_info'] = "<b>%s</b> trackbacks ocupando en <b>%s</b> bytes";
+				$lang_string['entry_info'] = "<b>%s</b> artículos usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
+				$lang_string['upload_info']="<b>%s</b> archivos subidos ocupando <b>%s</b> bytes";		//0.4.4
+				$lang_string['comment_info'] = "<b>%s</b> comentarios usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
+				$lang_string['trackback_info'] = "<b>%s</b> trackbacks ocupando <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> páginas estáticas usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
 				$lang_string['most_viewed_entries'] = "<h3>10 Artículos más vistos</h3>";
 				$lang_string['most_commented_entries'] = "<h3>10 Artículos más comentados</h3>";
 				$lang_string['most_trackbacked_entries'] = "<h3>10 Artículos con más trackbacks</h3>";
-				$lang_string['vote_info'] = "<b>%s</b> votos ocupando en <b>%s</b> bytes"; // 0.4.1
+				$lang_string['vote_info'] = "<b>%s</b> votos ocupando <b>%s</b> bytes"; // 0.4.1
 				$lang_string['most_voted_entries'] = "<h3>10 Artículos más votados</h3>"; //0.4.1
 				$lang_string['most_rated_entries'] = "<h3>10 Artículos mejor valorados</h3>"; //0.4.1
 				break;

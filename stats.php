@@ -148,14 +148,18 @@
 		}
 		unset( $static_file_array );
 
+		//Calc upload stats
+		$upload = sb_folder_stats( 'images' );
+
 		echo $lang_string[ 'title' ];
 		echo '<br />';
 		echo $lang_string[ 'general' ];
-		echo sprintf( $lang_string[ 'entry_info' ], number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
-		echo sprintf( $lang_string[ 'comment_info' ], number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
-		echo sprintf( $lang_string[ 'trackback_info' ], number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
-		echo sprintf( $lang_string[ 'static_info' ], number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) ) . '.<br />';
-		echo sprintf( $lang_string[ 'vote_info' ], number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
+		printf( $lang_string[ 'entry_info' ] . '.<br />', number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) );
+		printf( $lang_string[ 'upload_info' ] . '.<br />', number_format( $upload[ 'number' ], 0 ), number_format( $upload[ 'bytes' ], 0 ) );
+		printf( $lang_string[ 'comment_info' ] . '.<br />', number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) );
+		printf( $lang_string[ 'trackback_info' ] . '.<br />', number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) );
+		printf( $lang_string[ 'static_info' ] . '.<br />', number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) );
+		printf( $lang_string[ 'vote_info' ] . '.<br />', number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) );
 		echo '<br />';
 		
 		if ( $blog_config[ 'blog_enable_voting' ] == true ) {
