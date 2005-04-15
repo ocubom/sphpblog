@@ -23,7 +23,7 @@
 	//
 	global $sb_info;
 	$sb_info[ 'version' ] = '0.4.4g';
-	$sb_info[ 'last_update' ] = '04/15/05';
+	$sb_info[ 'last_update' ] = '04/16/05';
 	
 	// Error reporting should be set to 0 in production environments.
 	//
