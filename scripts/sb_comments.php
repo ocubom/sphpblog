@@ -22,7 +22,7 @@
 		
 		if ( count( $exploded_array ) > 1 ) {
 			if ( count( $exploded_array ) <= 5 ) {
-				// Old List Format: name, date, content, email, url				
+				// Old List Format: name, date, content, email, url
 				$comment_entry_data[ 'VERSION' ]  = $sb_info[ 'version' ];
 				$comment_entry_data[ 'NAME' ]  = $exploded_array[0];
 				$comment_entry_data[ 'DATE' ]  = $exploded_array[1];

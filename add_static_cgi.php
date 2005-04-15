@@ -8,7 +8,7 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'add' );
 	
-	$ok = write_static_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), $_POST[ 'entry' ], stripslashes( $_POST[ 'file_name' ] ) );
+	$ok = write_static_entry( $_POST[ 'blog_subject' ], $_POST[ 'blog_text' ], $_POST[ 'entry' ], stripslashes( $_POST[ 'file_name' ] ) );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
