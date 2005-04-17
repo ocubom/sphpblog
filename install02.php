@@ -38,6 +38,8 @@
 		$result = $result + create_folder( 'content' );
 		$result = $result + create_folder( 'images' );
 		
+		$result = $result + initialize_blocks();
+
 		echo( '<div class="hr"><hr /></div>' );
 		
 		if ( $result < 0 ) {

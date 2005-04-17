@@ -378,7 +378,6 @@
 		<?php 
 		// End Popup Layout HTML
 	}
-	
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
@@ -392,88 +391,11 @@
 		for($i=0 ; $i<count($array) ; $i+=2) {
 			// Si no hay contenido, no pinto nada
 			if ( $array[$i+1] != "" ) {
-				echo( "<span class=\"menu_title\">" . $array[$i] . "</span><br/>" );
-				echo( $array[$i+1] . "" );
 				echo( "<div class=\"hr\"><hr /></div>" );
+				echo( '<span class="menu_title">' . $array[$i] . '</span><br/>' );
+				echo( $array[$i+1] . '' );
 			}
 		}
-		
-		/*
-		
-		$result = menu_display_links();
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
-		
-		
-		echo( '<div class="hr"><hr /></div>' );
-		echo( menu_display_login() );
-		
-		$array = read_blocks($logged_in);
-		for($i=0 ; $i<count($array) ; $i+=2) {
-			echo( '<div class="hr"><hr /></div>' );
-			echo( '<span class="menu_title">' . $array[$i] . '</span><br/>' );
-			echo( $array[$i+1] . '' );
-		}
-		
-		echo( '<div class="hr"><hr /></div>' );
-		
-		$result = menu_display_blognav();
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
-		
-		$result = menu_display_categories();
-		if ( $result[ 'content' ] != '' ) {			
-			echo( '<div class="hr"><hr /></div>' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
-		
-		// Search Box - Added in 0.3.7
-		$result = menu_search_field();
-		echo( '<div class="hr"><hr /></div>' );
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
-		
-		$result = menu_display_user();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<div class="hr"><hr /></div>' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
-		
-		$result = menu_display_setup();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<div class="hr"><hr /></div>' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
-		
-		$result = menu_most_recent_comments();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<div class="hr"><hr /></div>' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
-		
-		if( $blog_config[ 'blog_trackback_enabled' ] ) {
-			$result = menu_most_recent_trackbacks();
-			if ( $result[ 'content' ] != '' ) {
-				echo( '<div class="hr"><hr /></div>' );
-				echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-				echo( $result[ 'content' ] . '' );
-			}
-		}
-		
-		$result = menu_most_recent_entries();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<div class="hr"><hr /></div>' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
-		
-		echo( '<div class="hr"><hr /></div>' );
-	
-		*/
 		
 		// Web Badges - Changed in 0.4.4
 		echo( '<div align="center">' );

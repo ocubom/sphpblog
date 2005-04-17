@@ -27,7 +27,7 @@
 	
 	if ( isset( $_POST[ 'block_name' ] ) ) {
 		if(!isset($_POST[ 'block_id' ])) $_POST[ 'block_id' ] = '';
-		$ok = write_block( stripslashes( $_POST[ 'block_name' ] ), stripslashes( $_POST[ 'block_content' ] ), $_POST[ 'block_id' ], $_POST[ 'block_scope' ] );
+		$ok = write_block( stripslashes( $_POST[ 'block_name' ] ), stripslashes( $_POST[ 'block_content' ] ), $_POST[ 'block_id' ], $_POST[ 'block_scope' ] , $_POST[ 'position_dropdown'] );
 	}
 	
 	if ( isset( $_GET[ 'action' ] ) ) {
@@ -48,6 +48,19 @@
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		<!--
+		// Validate the Form
+		function validate_block(theform) {
+			if (theform.block_name.value=="" || theform.block_content.value=="") {
+				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+				return false;
+			} else {
+				return true;
+			}
+		}
+		-->
+	</script>
 	<?php require_once('scripts/sb_editor.php'); ?>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
@@ -124,18 +137,18 @@
 
 				$str = $str . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 1 ) {
-					$str = $str . '<a href="add_block.php?action=up&amp;block_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=up&block_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
 				} else {
 					$str = $str . $lang_string[ 'up' ] . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str = $str . '<a href="add_block.php?action=down&amp;block_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=down&block_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
 				} else {
 					$str = $str . $lang_string[ 'down' ] . ' | ';
 				}
 				if (substr ($array[$i], 0, 1) != '#') {
-					$str = $str . '<a href="add_block.php?action=edit&amp;block_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
-					$str = $str . '<a href="add_block.php?action=delete&amp;block_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=edit&block_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
+					$str = $str . '<a href="add_block.php?action=delete&block_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> | ';
 				} else {
 					$str = $str .  $lang_string[ 'edit' ] . ' | ';
 					$str = $str .  $lang_string[ 'delete' ] . ' | ';
@@ -143,9 +156,9 @@
 
 				//Status
 				if ($array2[2] == '1') 
-					$str = $str . '<a href="add_block.php?action=enable&amp;block_id='.$i.'">' . $lang_string[ 'enable' ] . '</a> ';
+					$str = $str . '<a href="add_block.php?action=enable&block_id='.$i.'">' . $lang_string[ 'enable' ] . '</a> ';
 				else
-					$str = $str . '<a href="add_block.php?action=disable&amp;block_id='.$i.'">' . $lang_string[ 'disable' ] . '</a> ';
+					$str = $str . '<a href="add_block.php?action=disable&block_id='.$i.'">' . $lang_string[ 'disable' ] . '</a> ';
 				
 
 				$str = $str . '<br /><br />';
@@ -171,9 +184,9 @@
 		
 		?>
 		
-		<form action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
+		<form action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate_block(this)">
 		
-			<label for="blog_subject"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />
+			<label for="block_name"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />
 			<input type="text" name="block_name" value="<?php echo $block_name; ?>" size="40" /><br /><br />
 			
 			<?php echo( $lang_string[ 'block_content' ] ); ?><br />
@@ -202,12 +215,12 @@
 			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
 			<?php echo image_dropdown(); ?><br />
 
-			<label for="blog_subject"><?php echo( $lang_string[ 'block_scope_pri' ] ); ?></label>&nbsp;<input type="checkbox" id="block_scope" name="block_scope" <?php echo $block_scope; ?>>
+			<label for="block_scope"><?php echo( $lang_string[ 'block_scope_pri' ] ); ?></label>&nbsp;<input type="checkbox" id="block_scope" name="block_scope" <?php echo $block_scope; ?>>
 			
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    <label for="blog_subject"><?php echo( $lang_string[ 'block_position' ] ); ?></label>
+		    <label for="position_dropdown"><?php echo( $lang_string[ 'block_position' ] ); ?></label>
 
-			<select name="position_dropdown" DISABLED>
+			<select name="position_dropdown">
 				<option label="<?php echo( $lang_string[ 'block_position_top' ] ); ?>" value="T"><?php echo( $lang_string[ 'block_position_top' ] ); ?></option>
 				<option label="<?php echo( $lang_string[ 'block_position_left' ] ); ?>" value="L"><?php echo( $lang_string[ 'block_position_left' ] ); ?></option>
 				<option label="<?php echo( $lang_string[ 'block_position_center' ] ); ?>" value="C"><?php echo( $lang_string[ 'block_position_center' ] ); ?></option>
@@ -215,10 +228,10 @@
 				<option label="<?php echo( $lang_string[ 'block_position_botton' ] ); ?>" value="B"><?php echo( $lang_string[ 'block_position_botton' ] ); ?></option>
 			</select><br /><br />
 			<script LANGUAGE="Javascript">
-				document.all.position_dropdown.value="<?php echo $block_position; ?>";
+				document.editor.position_dropdown.value='<?php echo $block_position; ?>';
 			</script>			
-			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50"><?php echo $block_content; ?></textarea><br /><br />
+			<label for="block_content"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="block_content" name="block_content" rows="20" cols="50"><?php echo $block_content; ?></textarea><br /><br />
 			
 			<?php if( isset( $block_id ) ) { ?>
 			<input type="hidden" name="block_id" value="<?php echo $block_id; ?>" />

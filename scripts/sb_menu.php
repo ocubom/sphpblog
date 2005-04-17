@@ -436,11 +436,11 @@
 	// ----------------------------
 	// "Blocks" Functions
 	// ----------------------------
-
-	function read_blocks ( $logged_in ) {
+	
+	function read_blocks ( $logged_in, $block_position = '' ) {
 		// Create the right-hand block. Return array
 		//
-		
+	
 		global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in;
 		global $lang_string;
 		
@@ -453,6 +453,8 @@
 			$filename = 'config/blocks.txt';
 			$result = sb_read_file( $filename );
 		}
+
+		if ($block_position == '') $block_position = 'R'; 
 		
 		// Append new blocks.
 		$block_array = array();
@@ -463,7 +465,8 @@
 				$block_array[$i] = '';
 				$block_array[$i + 1] = '';
 
-				$array2 = explode('¤', $array[$i]); 
+				$array2 = explode('¤', $array[$i]);
+				if ($array2[3] == $block_position) { 
 				//Status (Si está habilitado...)
 				if ($array2[2] !== '1') {
 					//Scope 
@@ -491,13 +494,14 @@
 						}
 					}
 				}
+				}
 			}
 		}
 		
 		return ( $block_array );
 	}
 	
-	function write_block ( $block_name, $block_content, $block_id, $block_scope ) {
+	function write_block ( $block_name, $block_content, $block_id, $block_scope, $block_position ) {
 		// Save new block. Update blocks file
 		//
 		
@@ -510,6 +514,11 @@
 			$block_name .= '¤1¤0';
 		else
 			$block_name .= '¤0¤0';
+
+		if ($block_position == '')			 
+			$block_name .= '¤R';
+		else
+			$block_name .= '¤' . $block_position;
 
 		// Clean up block url and make safe text database storage.
 		$block_content = clean_post_text(str_replace( '|', ':', $block_content ));
@@ -617,15 +626,15 @@
 		$separador = '¤'; 
 
 		$str = '';
-		$str .= '#menu_home' . $separador . '0' . $separador . '0|{menu_display_links}|';
-		$str .= '#menu_menu' . $separador . '1' . $separador . '0|{menu_display_user}|';
-		$str .= '#menu_archive' . $separador . '0' . $separador . '0|{menu_display_blognav}|';
-		$str .= '#menu_categories' . $separador . '0' . $separador . '0|{menu_display_categories}|';
-		$str .= '#menu_setup' . $separador . '1' . $separador . '0|{menu_display_setup}|';
-		$str .= '#menu_most_recent' . $separador . '0' . $separador . '0|{menu_most_recent_comments}|';
-		$str .= '#search_title' . $separador . '0' . $separador . '0|{menu_search_field}|';
-		$str .= '#menu_most_recent_trackback' . $separador . '0' . $separador . '0|{menu_most_recent_trackbacks}|';
-		$str .= '#menu_most_recent_entries' . $separador . '0' . $separador . '0|{menu_most_recent_entries}';
+		$str .= '#menu_home' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_display_links}|';
+		$str .= '#menu_menu' . $separador . '1' . $separador . '0' . $separador . 'R|{menu_display_user}|';
+		$str .= '#menu_archive' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_display_blognav}|';
+		$str .= '#menu_categories' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_display_categories}|';
+		$str .= '#menu_setup' . $separador . '1' . $separador . '0' . $separador . 'R|{menu_display_setup}|';
+		$str .= '#menu_most_recent' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_most_recent_comments}|';
+		$str .= '#search_title' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_search_field}|';
+		$str .= '#menu_most_recent_trackback' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_most_recent_trackbacks}|';
+		$str .= '#menu_most_recent_entries' . $separador . '0' . $separador . '0' . $separador . 'R|{menu_most_recent_entries}';
 
 		$result = sb_write_file( $filename, $str );
 
@@ -634,7 +643,8 @@
 		} else {
 			// Error:
 			// Probably couldn't create file...
-			return ( $filename );
+			echo ( 'Probably couldn\'t create file' . $filename . '<br />' );
+			return ( false );
 		}
 	}
 
