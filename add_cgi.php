@@ -33,7 +33,7 @@
 		// Initial passthrough
 		global $auto_discovery_confirm;
 		
-		$ok = write_entry( $_POST[ 'blog_subject' ], $_POST[ 'blog_text' ], stripslashes( $_POST[ 'tb_ping' ] ), $_POST[ 'entry' ], $_POST[ 'catlist' ] );
+		$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), $_POST[ 'entry' ], $_POST[ 'catlist' ] );
 		
 		if ( $ok === true ) {
 		   if( strlen($auto_discovery_confirm[ 'text' ]) > 0 ) {

@@ -55,8 +55,8 @@
 					$entry = $_POST[ 'entry' ];
 				}
 				
-				$temp_subject = $_POST[ 'blog_subject' ];
-				$temp_text = $_POST[ 'blog_text' ];
+				$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
+				$temp_text = stripslashes( $_POST[ 'blog_text' ] );
 				$blog_content = preview_static_entry( $temp_subject, $temp_text );
 				$temp_file_name = stripslashes( $_POST[ 'file_name' ] );
 				echo( $blog_content );
@@ -73,7 +73,7 @@
 			<input type="hidden" name="entry" value="<?php global $entry; echo( $entry ); ?>">
 			
 			<label for="blog_subject"><?php echo( $lang_string[ 'label_subject' ] ); ?></label><br />
-			<input type="text" name="blog_subject" value="<?php global $temp_subject; echo( htmlentities( $temp_subject ) ); ?>" size="40"><br /><br />
+			<input type="text" name="blog_subject" value="<?php global $temp_subject; echo( $temp_subject ); ?>" size="40"><br /><br />
 			
 			<?php echo( $lang_string[ 'label_insert' ] ); ?><br />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
@@ -101,7 +101,7 @@
 			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
 			<?php echo image_dropdown(); ?><br /><br />
 			
-			<label for="blog_text"><?php echo( htmlentities( $lang_string[ 'label_entry' ] ) ); ?></label><br />
+			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50"><?php global $temp_text; echo( $temp_text ); ?></textarea><br /><br />
 			
 			<label for="file_name"><?php echo( $lang_string[ 'file_name' ] ); ?></label><br/>
