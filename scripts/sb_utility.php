@@ -433,4 +433,25 @@
 		return( $capcha );
 	}
 	
+	
+	function sb_addslashes ( $s )
+	{
+		if ( get_magic_quotes_gpc() != 0 ) {
+			return ( $s );
+		}
+		else {
+			return( addslashes( $s ) );
+		}
+	}
+	
+	function sb_stripslashes ( $s )
+	{
+		if ( get_magic_quotes_gpc() != 0 ) {
+			return ( $s );
+		}
+		else {
+			return( stripslashes( $s ) );
+		}
+	}
+	
 ?>
