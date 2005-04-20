@@ -436,7 +436,7 @@
 	
 	function sb_addslashes ( $s )
 	{
-		if ( get_magic_quotes_gpc() != 0 ) {
+		 if ( ( get_magic_quotes_gpc() !=0 ) || ( get_magic_quotes_runtime() !=0) ) {
 			return ( $s );
 		}
 		else {
@@ -446,7 +446,7 @@
 	
 	function sb_stripslashes ( $s )
 	{
-		if ( get_magic_quotes_gpc() != 0 ) {
+		if ( ( get_magic_quotes_gpc() !=0 ) || ( get_magic_quotes_runtime() !=0) ) {
 			return ( $s );
 		}
 		else {
