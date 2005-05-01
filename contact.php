@@ -45,7 +45,7 @@
 
 		<div class="hr"><hr /></div>
 
-		<form action="contact_cgi.php" method="POST" onSubmit="return validate(this)">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="contact_cgi.php" method="POST" onSubmit="return validate(this)">
 
 		<label for="name"><?php echo( $lang_string[ 'name' ] ); ?></label><br />
 		<input type="text" name="name" id="name" size="40" /><br /><br />

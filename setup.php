@@ -46,7 +46,7 @@
 		
 		<div class="hr"><hr /></div>
 		
-		<form action="setup_cgi.php" method="post" name="setup" onSubmit="return validate(this)">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="setup_cgi.php" method="post" name="setup" onSubmit="return validate(this)">
 			
 			<label for="blog_language"><?php echo( $lang_string[ 'blog_choose_language' ] ); ?></label><br />
 			<select name="blog_language">

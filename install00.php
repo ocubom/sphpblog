@@ -26,7 +26,7 @@
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
 		?>
-		<form action="install01.php" method="POST">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="install01.php" method="POST">
 			
 			<label for="blog_language"><?php echo( $lang_string[ 'blog_choose_language' ] ); ?></label><br />
 			<select name="blog_language">

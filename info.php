@@ -64,7 +64,7 @@
 			
 			<div class="hr"><hr /></div>
 			
-			<form action="info.php" method="POST" name="info">
+			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="info.php" method="POST" name="info">
 				
 				<label for="info_keywords"><?php echo( $lang_string[ 'info_keywords' ] ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="info_keywords" name="info_keywords" rows="5" cols="50"><?php echo($blog_config[ 'info_keywords' ]); ?></textarea><br /><br />

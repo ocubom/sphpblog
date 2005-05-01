@@ -107,7 +107,7 @@
 				}
 				
 				$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
-				$temp_text = htmlentities( stripslashes( $_POST[ 'blog_text' ] ) );
+				$temp_text = stripslashes( $_POST[ 'blog_text' ] );
 				$temp_tb_ping = stripslashes( $_POST[ 'tb_ping' ] );
 				
 				$blog_content = preview_entry( $temp_subject, $temp_text, $temp_tb_ping );		
@@ -121,7 +121,7 @@
 		
 		<div class="hr"><hr /></div>
 
-		<form action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
 			<input type="hidden" name="entry" value="<?php global $entry; echo( $entry ); ?>" />
 			

@@ -280,7 +280,7 @@
 		//
 		global $lang_string;
 		
-		$str = "<form method=\"get\" action=\"search.php\">";
+		$str = "<form accept-charset=\"" . $lang_string[ 'html_charset' ] . "\",iso-8859-1,utf-8\" method=\"get\" action=\"search.php\">";
 		$str = $str . "<input type=\"text\" size=\"16\" name=\"q\" />&nbsp;";
 		$str = $str . "<input type=\"submit\" value=\"" . $lang_string[ 'search_go' ] . "\" />";
 		$str = $str . "</form>";

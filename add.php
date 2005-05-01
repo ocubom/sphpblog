@@ -71,7 +71,7 @@
 		
 		<div class="hr"><hr /></div>
 		
-		<form action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'label_subject' ] ); ?></label><br />
 			<input type="text" name="blog_subject" value="" size="40" /><br /><br />

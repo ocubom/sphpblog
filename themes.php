@@ -46,7 +46,7 @@
 			
 			<div class="hr"><hr /></div>
 			
-			<form action="themes.php" method="post" name="setup">
+			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="themes.php" method="post" name="setup">
 				
 				<label for="blog_theme"><?php echo( $lang_string[ 'choose_theme' ] ); ?></label><br />
 				<select name="blog_theme">

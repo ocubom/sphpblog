@@ -273,7 +273,7 @@
 		
 		<div class="hr"><hr /></div>
 		
-		<form enctype="multipart/form-data" action="upload_img.php<?php global $basedir; echo( '?basedir=' . urlencode($basedir) ); ?>" method="POST">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" enctype="multipart/form-data" action="upload_img.php<?php global $basedir; echo( '?basedir=' . urlencode($basedir) ); ?>" method="POST">
 			<?php echo( folder_list() ); ?>
 			<div class="hr"><hr /></div>
 			<input type="button" class="bginput" name="new_dir" value="New Dir" onclick="new_directory(this.form, 'new_dir');">

@@ -61,7 +61,7 @@
 			
 			<div class="hr"><hr /></div>
 			
-			<form action='delete.php' method="POST">
+			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='delete.php' method="POST">
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 				<input type="hidden" name="path" value="<?php echo( 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/' ); ?>">
 				<input type="submit" name="yes" value="<?php echo( $lang_string[ 'ok_btn' ] ); ?>" />

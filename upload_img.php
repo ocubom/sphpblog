@@ -33,7 +33,7 @@
 		
 		<div class="hr"><hr /></div>
 		
-		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">
 			<?php echo( $lang_string[ 'select_file' ] ); ?><br /><br />
 			<input name="userfile" type="file" /><br />
 			

@@ -104,7 +104,7 @@
 						
 		<h2><?php echo( $lang_string[ 'header' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?></p>
-		<form action='comment_add_cgi.php' method="POST" name="vbform" onSubmit="return validate_comment(this)">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='comment_add_cgi.php' method="POST" name="vbform" onSubmit="return validate_comment(this)">
 			<input type="hidden" name="y" value="<?php echo( $_GET[ 'y' ] ); ?>">
 			<input type="hidden" name="m" value="<?php echo( $_GET[ 'm' ] ); ?>">
 			<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
