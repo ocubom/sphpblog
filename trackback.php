@@ -138,7 +138,7 @@
 		}
 		
 		$tb[ 'subject' ] = $lang_string[ 'title' ];
-		$tb[ 'entry' ] = $lang_string[ 'header' ] . '<br />' . '<input type="text" style="width: ' . $theme_vars[ 'max_image_width' ] . 'px;" OnMouseOver=this.select() value="'.$base_url.'trackback.php?y='.$_GET[ 'y' ].'&m='.$_GET[ 'm' ].'&entry='.$_GET[ 'entry' ] . '">' . "<p />\n";
+		$tb[ 'entry' ] = $lang_string[ 'header' ] . '<br />' . '<input readonly type="text" style="width: ' . $theme_vars[ 'max_image_width' ] . 'px;" OnMouseOver=this.select() value="'.$base_url.'trackback.php?y='.$_GET[ 'y' ].'&m='.$_GET[ 'm' ].'&entry='.$_GET[ 'entry' ] . '">' . "<p />\n";
 		echo ( theme_blogentry( $tb ) );
 		
       echo ( read_trackbacks ( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in, true ) );
