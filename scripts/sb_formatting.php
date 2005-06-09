@@ -165,6 +165,10 @@
 				$str = replace_html_tag( $str, false );
 			}
 		}
+		// Selectively replace line breaks and/or decode php entities.
+		if ( !$comment_mode ) {
+			$str = replace_php_tag( $str );
+		}
 		
 		$str = str_replace( '&amp;#124;', '|', $str );
 		return ( $str );
@@ -578,6 +582,115 @@
 		
 		return ( $str );
 	}
+
+	function replace_php_tag( $str ) {
+		// Replacements for HTML tags. Sub-function of blog_to_html.
+		//
+		// This function decodes HTML entities that are located between
+		// HTML tags. Also, inserts <br />'s for new lines only if blocks
+		// are outside the HTML tags.
+		global $lang_string;
+
+		$str_out = NULL;
+		$tag_begin = '[php]';
+		$tag_end = '[/php]';
+		
+		// Search for the openning HTML tag. Tag could be either upper or
+		// lower case so we want to find the nearest one.
+		//
+		// Get initial $str_offset value.
+		ob_start( 'replace_php_tag_callback' );
+		$temp_lower = strpos( $str, strtolower( $tag_begin ) );
+		$temp_upper = strpos( $str, strtoupper( $tag_begin ) );
+		if ( $temp_lower === false ) {
+			if ( $temp_upper === false ) {
+				$str_offset = false;
+			} else {
+				$str_offset = $temp_upper;
+			}
+		} else {
+			if ( $temp_upper === false ) {
+				$str_offset = $temp_lower;
+			} else {
+				$str_offset = min( $temp_upper, $temp_lower );
+			}
+		}
+		
+		while ( $str_offset !== false ) {
+			// Store all the text BEFORE the openning HTML tag.
+			//
+			// Also, replace hard returns with '<br />' tags.
+			$temp_str = substr( $str, 0, $str_offset );
+			//$temp_str = str_replace( chr(10), '<br />', $temp_str );
+			$str_out = $str_out . $temp_str;
+			echo $str_out;
+			
+			// Store all text AFTER the tag
+			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
+		
+			// Search for the closing HTML tag. Find the nearest one.
+			$temp_lower = strpos( $str, strtolower( $tag_end ) );
+			$temp_upper = strpos( $str, strtoupper( $tag_end ) );
+			if ( $temp_lower === false ) {
+				if ( $temp_upper === false ) {
+					$str_offset = false;
+				} else {
+					$str_offset = $temp_upper;
+				}
+			} else {
+				if ( $temp_upper === false ) {
+					$str_offset = $temp_lower;
+				} else {
+					$str_offset = min( $temp_upper, $temp_lower );
+				}
+			}
+			
+			if ( $str_offset !== false ) {
+				// Store all the text BETWEEN the HTML tags.
+				//
+				// Also, decode HTML entities between the tags.
+				$temp_str = substr( $str, 0, $str_offset );
+				//$str_out = $str_out . $temp_str;
+				eval( $temp_str );
+
+				// Store sub_string after the tag.
+				$str = substr( $str, $str_offset + strlen( $tag_end ) );
+
+				// Search for openning HTML tag again.
+				$temp_lower = strpos( $str, strtolower( $tag_begin ) );
+				$temp_upper = strpos( $str, strtoupper( $tag_begin ) );
+				if ( $temp_lower === false ) {
+					if ( $temp_upper === false ) {
+						$str_offset = false;
+					} else {
+						$str_offset = $temp_upper;
+					}
+				} else {
+					if ( $temp_upper === false ) {
+						$str_offset = $temp_lower;
+					} else {
+						$str_offset = min( $temp_upper, $temp_lower );
+					}
+				}
+			}
+		}
+
+		// Append remainder of text.
+		//
+		// All this text will be outside of any HTML tags so
+		// we need to encode the line breaks.
+		//$str = $str_out . $str;
+		echo $str;
+		$str=ob_get_contents();
+		ob_end_clean();
+		return ( $str );
+	}
+
+	function replace_php_tag_callback ( $out )
+	{
+		return( $out );
+	}
+	
 	
 	function sb_parse_url ( $text )
 	{
