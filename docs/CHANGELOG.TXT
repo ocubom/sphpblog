@@ -6,6 +6,8 @@ Version History
 
 0.4.4 - 
 - - - - - - - - - -
+- Preliminary PHP code support by using [php]
+- Sitemap enabled.
 - Graphic capchas if GD is available.
 - 404 page for static entries.
 - Autoparse URL in entries and comments.
