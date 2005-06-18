@@ -27,16 +27,16 @@
 	
 	if ( isset( $_POST[ 'block_name' ] ) ) {
 		if(!isset($_POST[ 'block_id' ])) $_POST[ 'block_id' ] = '';
-		$ok = write_block( stripslashes( $_POST[ 'block_name' ] ), stripslashes( $_POST[ 'block_content' ] ), $_POST[ 'block_id' ], $_POST[ 'block_scope' ] , $_POST[ 'position_dropdown'] );
+		$ok = write_block( sb_stripslashes( $_POST[ 'block_name' ] ), sb_stripslashes( $_POST[ 'block_content' ] ), $_POST[ 'block_id' ], $_POST[ 'block_scope' ] , $_POST[ 'position_dropdown'] );
 	}
 	
 	if ( isset( $_GET[ 'action' ] ) ) {
-		$action = stripslashes( $_GET[ 'action' ] );
+		$action = sb_stripslashes( $_GET[ 'action' ] );
 		if ( $action === 'edit' ) {
-			$block_id = stripslashes( $_GET[ 'block_id' ] );
+			$block_id = sb_stripslashes( $_GET[ 'block_id' ] );
 			// nothing
 		} else {
-			$ok = modify_block( $action, stripslashes( $_GET[ 'block_id' ] ) );
+			$ok = modify_block( $action, sb_stripslashes( $_GET[ 'block_id' ] ) );
 		}
 	}
 ?>

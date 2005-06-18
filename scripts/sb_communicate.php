@@ -33,7 +33,7 @@
 		$headers=$headers . 'X-Priority: ' . $priority . " \r\n";
 		$headers=$headers . 'X-Mailer: SPHPBLOG/' . $sb_info[ 'version' ] . " \r\n";
 		ini_set('sendmail_from', $from);
-		$res=mail($to, stripslashes($subject), stripslashes($body), $headers);
+		$res=mail($to, sb_stripslashes($subject), sb_stripslashes($body), $headers);
 		ini_restore('sendmail_from');
 		return($res);
 	}

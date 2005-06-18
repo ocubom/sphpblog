@@ -25,7 +25,7 @@
 
 				// Verify that the file exists.
 				if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
-					$ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ], stripslashes( $_POST[ 'comment_name' ] ), stripslashes( $_POST[ 'comment_email' ] ), stripslashes( $_POST[ 'comment_url' ] ), $_POST[ 'comment_remember' ], stripslashes( $_POST[ 'blog_text' ] ) );
+					$ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ], sb_stripslashes( $_POST[ 'comment_name' ] ), sb_stripslashes( $_POST[ 'comment_email' ] ), sb_stripslashes( $_POST[ 'comment_url' ] ), $_POST[ 'comment_remember' ], sb_stripslashes( $_POST[ 'blog_text' ] ) );
 					@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
 				}
 			}

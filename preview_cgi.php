@@ -106,9 +106,9 @@
 					$entry = $_POST[ 'entry' ];
 				}
 				
-				$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
-				$temp_text = stripslashes( $_POST[ 'blog_text' ] );
-				$temp_tb_ping = stripslashes( $_POST[ 'tb_ping' ] );
+				$temp_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
+				$temp_text = sb_stripslashes( $_POST[ 'blog_text' ] );
+				$temp_tb_ping = sb_stripslashes( $_POST[ 'tb_ping' ] );
 				
 				$blog_content = preview_entry( $temp_subject, $temp_text, $temp_tb_ping );		
 				

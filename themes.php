@@ -10,7 +10,7 @@
 	
 	// Post
 	if ( array_key_exists( 'blog_theme', $_POST ) ) {
-		$ok = write_theme( stripslashes( $_POST[ 'blog_theme' ] ) );
+		$ok = write_theme( sb_stripslashes( $_POST[ 'blog_theme' ] ) );
 		
 		if ( $ok === true ) {
 		redirect_to_url( 'index.php' );

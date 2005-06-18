@@ -3,7 +3,7 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	$ok = create_password( stripslashes( $_POST[ 'user' ] ), stripslashes( $_POST[ 'pass' ] ) );
+	$ok = create_password( sb_stripslashes( $_POST[ 'user' ] ), sb_stripslashes( $_POST[ 'pass' ] ) );
 	$logged_in = $ok;
 	
 	read_config();

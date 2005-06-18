@@ -14,9 +14,9 @@
 		
 	// "CGI" Functions
 	if ( array_key_exists( 'info_keywords', $_POST ) && array_key_exists( 'info_description', $_POST ) && array_key_exists( 'info_copyright', $_POST ) ) {	
-		$ok = write_metainfo( 	stripslashes( $_POST[ 'info_keywords' ] ),
-								stripslashes( $_POST[ 'info_description' ] ),
-								stripslashes( $_POST[ 'info_copyright' ] ) );
+		$ok = write_metainfo( 	sb_stripslashes( $_POST[ 'info_keywords' ] ),
+								sb_stripslashes( $_POST[ 'info_description' ] ),
+								sb_stripslashes( $_POST[ 'info_copyright' ] ) );
 								
 		if ( $ok === true ) {	
 			redirect_to_url( 'index.php' );

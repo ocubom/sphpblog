@@ -56,7 +56,7 @@
 	if ( ( strlen( $entry ) ) && ( empty( $_GET[ '__mode' ] ) ) && ( strlen( $tb_url ) ) && ( strpos( sb_read_file( $tb_url ), $base_url ) !== false ) ) {
 		@header('Content-Type: text/xml');
 
-		$tb_url = addslashes( $tb_url );
+		$tb_url = sb_addslashes( $tb_url );
 		$title = strip_tags( $title );
 		$title = ( strlen( $title ) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
 		$excerpt = strip_tags( $excerpt );
