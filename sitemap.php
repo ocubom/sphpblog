@@ -31,7 +31,14 @@
 	header('Content-type: application/xml');
 	echo "<?xml version='1.0' encoding='UTF-8'?>\n";
 	echo "<urlset xmlns=\"http://www.google.com/schemas/sitemap/0.84\">\n";
+	write_map( $base_url . 'atom.php', gmdate( 'Y-m-d', time() ), 'always', 0.9 );
+	write_map( $base_url . 'contact.php', gmdate( 'Y-m-d', time() ), 'monthly', 0.1 );
 	write_map( $base_url . 'index.php', gmdate( 'Y-m-d', time() ), 'always', 0.9 );
+	write_map( $base_url . 'login.php', gmdate( 'Y-m-d', time() ), 'monthly', 0.1 );
+	write_map( $base_url . 'rdf.php', gmdate( 'Y-m-d', time() ), 'always', 0.9 );
+	write_map( $base_url . 'rss.php', gmdate( 'Y-m-d', time() ), 'always', 0.9 );
+	write_map( $base_url . 'search.php', gmdate( 'Y-m-d', time() ), 'monthly', 0.1 );
+	write_map( $base_url . 'stats.php', gmdate( 'Y-m-d', time() ), 'daily', 0.1 );
 	//Add more static pages here
 	
 	// Read entry files
@@ -40,12 +47,16 @@
 	while ( $i<$max_entries ) {
 		list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 		$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-		write_map( $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', $contents[ 'DATE' ] ), 'weekly', 0.1 );
+		write_map( $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', $contents[ 'DATE' ] ), 'weekly', 0.5 );
 		if ( $blog_config[ 'blog_enable_comments' ] ) {
-			write_map( $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', time() ), 'daily', 0.5 );
+			write_map( $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', time() ), 'daily', 0.7 );
+		}
+		if ( $blog_config[ 'blog_enable_trackbacks' ] ) {
+			write_map( $base_url . 'trackback.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;__mode=html', gmdate( 'Y-m-d', time() ), 'daily', 0.1 );
 		}
 		$i++;
 	}
+	//Need to dump static pages
 	echo "</urlset>";
 	
 	
