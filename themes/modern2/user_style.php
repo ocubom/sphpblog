@@ -85,4 +85,26 @@
 	#sidebar .menu_body a:active {
 		color: #<?php echo( $user_colors[ 'menu_link_down_color' ] ); ?>;
 	}
+
+	#menubar .menu_body {
+		border-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;
+		color: #<?php echo( $user_colors[ 'menu_text' ] ); ?>;
+		background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>;
+	}
+	
+	#menubar .menu_body a:link {
+		color: #<?php echo( $user_colors[ 'menu_link_reg_color' ] ); ?>;
+	}
+	
+	#menubar .menu_body a:visited {
+		color: #<?php echo( $user_colors[ 'menu_link_reg_color' ] ); ?>;
+	}
+	
+	#menubar .menu_body a:hover {
+		color: #<?php echo( $user_colors[ 'menu_link_hi_color' ] ); ?>;
+	}
+	
+	#menubar .menu_body a:active {
+		color: #<?php echo( $user_colors[ 'menu_link_down_color' ] ); ?>;
+	}
 </style>

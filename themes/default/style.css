@@ -126,6 +126,11 @@ input, select, option, textarea
 	padding: 2px;
 }
 
+#menubar
+{
+	padding: 0px;
+}
+
 #maincontent .blog_subject
 {
 	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;

@@ -431,6 +431,11 @@
 						<div id="header">
 							<?php echo($blog_config[ 'blog_title' ]); ?>
 						</div>
+						<div  id="menubar">
+							<table><tr align="center">
+							<?php echo(menu_bar_display_links());; ?>
+							</tr></table>
+						</div>
 						<div id="pagebody">
 							<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
 								<tr valign="top">

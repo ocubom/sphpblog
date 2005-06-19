@@ -46,4 +46,10 @@
 	
 	div.hr {  border-top: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>; margin: 10px 0; }
 	div.hr hr { display: none; }
+
+	#menubar .menu_body {
+		border-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;
+		color: #<?php echo( $user_colors[ 'menu_text' ] ); ?>;
+		background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>;
+	}
 </style>
