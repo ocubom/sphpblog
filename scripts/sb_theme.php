@@ -43,21 +43,54 @@
 		//
 		global $lang_string, $logged_in, $blog_config;
 		
-		$str = '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
-		if ( !empty( $blog_config[ 'blog_email' ] ) ) {
-			$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
-		}
-		$str = $str . '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
+		$str = '';
+		//$str = '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
+		//if ( !empty( $blog_config[ 'blog_email' ] ) ) {
+		//	$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
+		//}
+		//$str = $str . '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
 		
 		$str = $str . read_links( $logged_in );
 		
-		$str = $str . "<br />" . menu_display_login();
+		//$str = $str . "<br />" . menu_display_login();
 		
 		$result = array();
 		$result[ 'title' ] = $lang_string[ 'menu_links' ];
 		$result[ 'content' ] = $str;
 		
 		return ( $result );
+	}
+
+	function menu_bar_display_links () {
+		// Returns the Links menu as HTML.
+		//
+		// Example:
+		// --------
+		// Links
+		// Home
+		// Static
+		// [ + link ]
+		//
+		global $lang_string, $logged_in, $blog_config;
+		
+		$str = '<TD width="20%" class="menu_body"><a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br /></TD>';
+		if ( !empty( $blog_config[ 'blog_email' ] ) ) {
+			$str .= '<TD width="20%" class="menu_body"><a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br /></TD>';
+		} else {
+			$str .= '<TD width="20%" class="menu_body"><a href="#" onclick="return false;" DISABLED>' . $lang_string[ 'menu_contact' ] . '</a><br /></TD>';
+		}
+
+		$str .= '<TD width="20%" class="menu_body"><a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br /></TD>';
+
+		if ($logged_in === true) {
+			$str .= '<TD width="20%" class="menu_body"><a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a></TD>';
+			$str .= '<TD width="20%" class="menu_body"><a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a></TD>';
+		} else {
+			$str .= '<TD width="20%" class="menu_body"><a href="login.php">' . $lang_string[ 'menu_login' ] . '</a></TD>';
+			$str .= '<TD width="20%" class="menu_body">&nbsp;</TD>';
+		}
+
+		return ( $str );
 	}
 	
 	function menu_display_blognav () {
