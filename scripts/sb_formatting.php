@@ -651,7 +651,7 @@
 				// Also, decode HTML entities between the tags.
 				$temp_str = substr( $str, 0, $str_offset );
 				//$str_out = $str_out . $temp_str;
-				eval( $temp_str );
+				eval( html_entity_decode( $temp_str ) );
 
 				// Store sub_string after the tag.
 				$str = substr( $str, $str_offset + strlen( $tag_end ) );
