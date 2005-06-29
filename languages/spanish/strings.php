@@ -316,7 +316,7 @@
 				$lang_string['password'] = "Contraseña";
 				$lang_string['submit_btn'] = "&nbsp;Guardar&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>¡Bienvenido!</h2>¡Se ha coenctado con éxito!<p />";
+				$lang_string['success'] = "<h2>¡Bienvenido!</h2>¡Se ha conectado con éxito!<p />";
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>No puede ingresar. Verifique su nombre de usuario y contraseña e inténtelo de nuevo.<p />";
 				$lang_string['form_error'] = "Por favor rellene los campos Usuario y Contraseña."; // <-- Need Translation
