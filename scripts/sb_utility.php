@@ -16,7 +16,7 @@
 	{
 		// Contributed by: Javier Gutierrez, guti <at> ya <dot> com
 		//
-	  	if ( ( ini_get( 'zlib.output_compression' ) != '0' ) && ( ini_get('zlib.output_compression' ) != 'On' ) && ( extension_loaded('zlib') ) )
+	  	if ( extension_loaded('zlib') )
 		{
 			ini_set( 'zlib.output_compression_level', 9);
 			ob_start( 'ob_gzhandler' );
