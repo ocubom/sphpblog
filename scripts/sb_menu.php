@@ -766,7 +766,7 @@
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
 						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
 					} else {
-						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
+						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'#'.$comment_id.'">'.$comment_name.'</a><br />';
 					}
 					
 					// $str_comments = $str_comments . format_date_menu( $comment_date ) . '<br />';

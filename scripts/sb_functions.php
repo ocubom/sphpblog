@@ -61,6 +61,7 @@
 	require_once('scripts/sb_utility.php');
 	require_once('scripts/sb_menu.php');
 	require_once('scripts/sb_search.php');
+	require_once('scripts/sb_entries.php');
 	require_once('scripts/sb_entry.php');
 	require_once('scripts/sb_image.php');
 	require_once('scripts/sb_display.php');

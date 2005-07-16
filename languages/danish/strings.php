@@ -512,6 +512,11 @@
 				$lang_string[ 'instructions' ] = "Resultat af søgning for <b>%string</b>:";
 				$lang_string[ 'not_found' ] = "Ingen resultat fundet";
 				break;
+			case 'entries': // <-- New 0.4.4
+				$lang_string['title'] = "Oversigt over alle meddelser";
+				$lang_string['instructions'] = "Nedenfor er en komplet liste over meddelelser.";
+				$lang_string['no_entries'] = "Der er ingen meddelelser.";
+				break;
 			case 'contact':
 				$lang_string[ 'title' ] = "Kontakt mig";
 				$lang_string[ 'instructions' ] = "Udfyld formularen:";

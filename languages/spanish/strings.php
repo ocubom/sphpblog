@@ -505,6 +505,11 @@
 				$lang_string['instructions'] = "Resultados de la búsqueda para la cadena <b>'%string'</b>:";
 				$lang_string['not_found'] = "No se encontraron resultados";
 				break;
+			case 'entries':	// <-- New 0.4.4
+				$lang_string['title'] = "Listado completo de art&iacute;culos";
+				$lang_string['instructions'] = "A continuaci&oacute;n se muestran todos los art&iacute;culos disponibles.";
+				$lang_string['no_entries'] = "No hay art&iacute;culos.";
+				break;
 			case 'contact': // <-- New 0.3.8
 				$lang_string['title'] = "Contacta Conmigo";
 				$lang_string['instructions'] = "Rellena el formulario:";

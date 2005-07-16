@@ -510,6 +510,11 @@
 				$lang_string[ 'instructions' ] = "Search results for <b>%string</b>:";
 				$lang_string[ 'not_found' ] = "No results found";
 				break;
+			case 'entries':	// <-- New 0.4.4
+				$lang_string['title'] = "Complete entry list";
+				$lang_string['instructions'] = "Below is a list of all blog entries.";
+				$lang_string['no_entries'] = "There are no entries.";
+				break;
 			case 'contact':
 				$lang_string[ 'title' ] = "Contact Me";
 				$lang_string[ 'instructions' ] = "Fill in the form:";

@@ -26,6 +26,9 @@ Date: 18/02/2005
 Auto parse URL contributed by diegocaro (diegocaro <at> gmail <dot> com)
 Date: 21/02/2005
 
+Entries listing contributed by Jan Normann Nielsen (spam@Edubbekarl.dk)
+Date: 16/07/2005
+
 Translations
 ------------
 Chinese Language File
