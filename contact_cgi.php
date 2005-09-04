@@ -23,7 +23,7 @@
 	// Replace hard returns with '<br />' tags.
 	$body=$body . str_replace( chr(10), '<br />', $_POST['comment'] );
 	$ok = false;
-	if ($_POST[ 'contact_capcha' ] == $_SESSION[ 'capcha' ] ) {	
+	if ($_POST[ 'contact_capcha' ] == $_SESSION[ 'capcha' ] AND $_SESSION[ 'capcha' ]!='') {	
 		sb_mail( $_POST['email'], $blog_config[ 'blog_email' ], $subject, $body, false );
 		$ok = true;
 	}
