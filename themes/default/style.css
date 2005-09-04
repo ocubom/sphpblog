@@ -15,6 +15,7 @@ Also refer to user_style.php...
 */
 
 /* Images */
+
 img	{
 	border: 0;
 }
@@ -124,11 +125,6 @@ input, select, option, textarea
 #sidebar .calendar td
 {
 	padding: 2px;
-}
-
-#menubar
-{
-	padding: 0px;
 }
 
 #maincontent .blog_subject
