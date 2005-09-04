@@ -1,27 +1,27 @@
 <?php 
-	require_once('scripts/sb_functions.php');
+	require("scripts/sb_functions.php");
 	$logged_in = logged_in( true, true );
 	
 	read_config();
 	
-	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
-	sb_language( 'upload_img' );
+	require("languages/" . $blog_config[ "blog_language" ] . "/strings.php");
+	sb_language( "upload_img" );
 	
 	// Base Directory
 	global $basedir;	
-	if ( isset( $_GET[ 'basedir' ] ) ) {
-		$basedir = urldecode( $_GET[ 'basedir' ] );
+	if ( isset( $_GET["basedir"] ) ) {
+		$basedir = urldecode( $_GET["basedir"] );
 	} else {
-		$basedir = 'images/';
+		$basedir = "images/";
 	}
 	
 	// File IO Functions
 	if ( count( $_POST ) > 0 ) {
-		switch ( $_POST[ 'btn_command' ] ) {
-			case 'new_dir':
-				if ( !file_exists( $basedir . $_POST[ 'btn_value' ] . '/' ) ) {
+		switch ( $_POST[ "btn_command" ] ) {
+			case "new_dir":
+				if ( !file_exists( $basedir . $_POST[ "btn_value" ] . "/" ) ) {
 					$oldumask = umask(0);
-					$ok = mkdir( $basedir . $_POST[ 'btn_value' ] . '/', 0777 );
+					$ok = mkdir( $basedir . $_POST[ "btn_value" ] . "/", 0777 );
 					umask($oldumask);
 				} else {
 					// File or Folder Already Exists
@@ -50,25 +50,25 @@
 							// Filter files by extension
 							$ok = false;
 							for ( $i = 0; $i < count( $ext_array ); $i++ ) {
-								if ( strrchr( $filename, '.' ) == $ext_array[$i] ) {
+								if ( strrchr( $filename, "." ) == $ext_array[$i] ) {
 									$ok = true;
 									break;
 								}
 							}
 							if ( $ok == true ) {
-								if ( strpos( $filename, '.' ) !== 0 ) {
+								if ( strpos( $filename, "." ) !== 0 ) {
 									array_push( $result, file_properties( $dir, $filename ) );
 								}
 							}
 						} else {
 							// No filter
-							if ( strpos( $filename, '.' ) !== 0 ) {
+							if ( strpos( $filename, "." ) !== 0 ) {
 								array_push( $result, file_properties( $dir, $filename ) );
 							}
 						}
 					} else {
-						if ( strpos( $filename, '.' ) !== 0 ) {
-							array_push( $result, array( 'folder', $filename, bytesToHumanReadableUsage( filesize( $dir . $filename ) ), date( 'g:ia m/d/y', filemtime( $dir . $filename ) ) ) );
+						if ( strpos( $filename, "." ) !== 0 ) {
+							array_push( $result, array( "folder", $filename, bytesToHumanReadableUsage( filesize( $dir . $filename ) ), date( "g:ia m/d/y", filemtime( $dir . $filename ) ) ) );
 						}
 					}
 					$filename = readdir( $dhandle );
@@ -83,14 +83,14 @@
 	
 	function file_properties ( $dir, $filename ) {
 		$result = array();
-		array_push( $result, 'file' );
+		array_push( $result, "file" );
 		array_push( $result, $filename );
 		array_push( $result, bytesToHumanReadableUsage( filesize( $dir . $filename ) ) );
-		array_push( $result, date( 'g:ia m/d/y', filemtime( $dir . $filename ) ) );
+		array_push( $result, date( "g:ia m/d/y", filemtime( $dir . $filename ) ) );
 		return( $result );
 	}
 	
-	function bytesToHumanReadableUsage($bytes, $precision = 2, $names = '') {
+	function bytesToHumanReadableUsage($bytes, $precision = 2, $names = "") {
 		if (!is_numeric($bytes) || $bytes < 0) {
 			return false;
 		}
@@ -102,31 +102,31 @@
 		switch ($level)
 		{
 			case 0:
-				$suffix = (isset($names[0])) ? $names[0] : 'Bytes';
+				$suffix = (isset($names[0])) ? $names[0] : "Bytes";
 				break;
 			case 1:
-				$suffix = (isset($names[1])) ? $names[1] : 'KB';
+				$suffix = (isset($names[1])) ? $names[1] : "KB";
 				break;
 			case 2:
-				$suffix = (isset($names[2])) ? $names[2] : 'MB';
+				$suffix = (isset($names[2])) ? $names[2] : "MB";
 				break;
 			case 3:
-				$suffix = (isset($names[3])) ? $names[3] : 'GB';
+				$suffix = (isset($names[3])) ? $names[3] : "GB";
 				break;	 	 	 
 			case 4:
-				$suffix = (isset($names[4])) ? $names[4] : 'TB';
+				$suffix = (isset($names[4])) ? $names[4] : "TB";
 				break;	 	 	 	 	 	 	 	 	 	 	 	 	 	 
 			default:
-				$suffix = (isset($names[$level])) ? $names[$level] : '';
+				$suffix = (isset($names[$level])) ? $names[$level] : "";
 				break;
 		}
 		
 		if (empty($suffix)) {
-			trigger_error('Unable to find suffix for case ' . $level);
+			trigger_error("Unable to find suffix for case " . $level);
 			return false;
 		}
 		
-		return round($bytes, $precision) . ' ' . $suffix;
+		return round($bytes, $precision) . " " . $suffix;
 	}
 	
 	function folder_list () {
@@ -134,7 +134,7 @@
 		//
 		global $basedir;	
 		$dir = $basedir;
-		// $filter = array( '.jpg', '.gif', '.zip', '.sit' );
+		// $filter = array( ".jpg", ".gif", ".zip", ".sit" );
 		$filter = array();
 		$contents = fb_folder_listing( $dir, $filter );
 		
@@ -156,15 +156,15 @@
 					// Even
 					$str = $str . "\n".'<tr id="row_even">';
 				}
-				if ( $fileinfo[0] == 'file' ) {
+				if ( $fileinfo[0] == "file" ) {
 					$str = $str . "\n\t".'<td id="vertline"><input type="checkbox" name="'.$fileinfo[1].'"></td>';
-					$str = $str . "\n\t".'<td id="topline"><img src="interface/filebrowser/file_icon.gif" alt="File" width="16" height="16" border="0"></td>';
+					$str = $str . "\n\t".'<td id="topline"><img src="interface/filebrowser/file_icon.gif" alt="" width="16" height="16" border="0"></td>';
 					$str = $str . "\n\t".'<td id="vertline" width="50%"><a href="'.$dir.$fileinfo[1].'">'.$fileinfo[1].'</a></td>';
 					$str = $str . "\n\t".'<td id="vertline">'.$fileinfo[2].'</td>';
 					$str = $str . "\n\t".'<td id="topline">'.$fileinfo[3].'</td>';
 				} else {
 					$str = $str . "\n\t".'<td id="vertline"><input type="checkbox" name="'.$fileinfo[1].'"></td>';
-					$str = $str . "\n\t".'<td id="topline"><img src="interface/filebrowser/folder_icon.gif" alt="Folder" width="16" height="16" border="0"></td>';
+					$str = $str . "\n\t".'<td id="topline"><img src="interface/filebrowser/folder_icon.gif" alt="" width="16" height="16" border="0"></td>';
 					$str = $str . "\n\t".'<td id="vertline"><a href="upload_img.php?basedir='.(urlencode($dir.$fileinfo[1].'/')).'">'.$fileinfo[1].'</a></td>';
 					$str = $str . "\n\t".'<td id="vertline">'.$fileinfo[2].'</td>';
 					$str = $str . "\n\t".'<td id="topline">'.$fileinfo[3].'</td>';
@@ -178,15 +178,15 @@
 		return ( $str );
 	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require_once("themes/" . $blog_theme . "/user_style.php"); ?>
-	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-	<title><?php echo($blog_config[ "blog_title" ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+	<?php require("themes/" . $blog_theme . "/user_style.php"); ?>
+	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
+	<title><?php echo($blog_config[ "blog_title" ]); ?> - <?php echo( $lang_string["title"] ); ?></title>
 	
 	<style type="text/css">
 		#filebrowser {
@@ -268,25 +268,25 @@
 		
 		?>
 		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
+		<h2><?php echo( $lang_string["title"] ); ?></h2>
+		<?php echo( $lang_string["instructions"] ); ?><p />
 		
-		<div class="hr"><hr /></div>
+		<hr noshade size="1" color=#<?php echo( $user_colors["inner_border_color"] ); ?>>
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" enctype="multipart/form-data" action="upload_img.php<?php global $basedir; echo( '?basedir=' . urlencode($basedir) ); ?>" method="POST">
+		<form enctype="multipart/form-data" action="upload_img.php<?php global $basedir; echo( '?basedir=' . urlencode($basedir) ); ?>" method="POST">
 			<?php echo( folder_list() ); ?>
-			<div class="hr"><hr /></div>
+			<hr noshade size="1" color=#<?php echo( $user_colors["inner_border_color"] ); ?>>
 			<input type="button" class="bginput" name="new_dir" value="New Dir" onclick="new_directory(this.form, 'new_dir');">
 			<input type="submit" name="copy" value="Copy">
 			<input type="submit" name="move" value="Move">
 			<input type="submit" name="delete" value="Delete">
-			<div class="hr"><hr /></div>
+			<hr noshade size="1" color=#<?php echo( $user_colors["inner_border_color"] ); ?>>
 			<input type="submit" name="rename" value="Rename">
 			<input type="submit" name="chmod" value="Chmod">
 			<input type="submit" name="zip_unzip" value="Zip/Unzip">
-			<div class="hr"><hr /></div>
+			<hr noshade size="1" color=#<?php echo( $user_colors["inner_border_color"] ); ?>>
 			<input type="file" name="userfile"><br /><br />
-			<input type="submit" value="<?php echo( $lang_string[ 'upload_btn' ] ); ?>">
+			<input type="submit" value="<?php echo( $lang_string['upload_btn'] ); ?>">
 			<input type="hidden" name="btn_command" value="">
 			<input type="hidden" name="btn_value" value="">
 		</form>

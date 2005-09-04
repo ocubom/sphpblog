@@ -68,7 +68,7 @@
 		}
 		
 		if ( !isset( $blog_config[ 'blog_footer' ] ) ) {
-			$blog_config[ 'blog_footer' ] = 'No Footer'; // $lang_string[ 'sb_default_footer' ];
+			$blog_config[ 'blog_footer' ] = 'No Footer'; // $lang_string['sb_default_footer'];
 		}
 		
 		if ( !isset( $blog_config[ 'blog_entry_order' ] ) ) {
@@ -159,7 +159,7 @@
 		read_theme();
 		
 		global $blog_theme;
-		require_once('themes/' . $blog_theme . '/themes.php');
+		require('themes/' . $blog_theme . '/themes.php');
 		
 		// LOAD COLORS
 		read_colors();
@@ -204,9 +204,6 @@
 		$filename = 'config/config.txt';
 		$result = sb_write_file( $filename, $str );
 		
-		$filename='config/~blog_entry_listing.tmp';
-		sb_delete_file( $filename );
-
 		if ( $result ) {
 			return ( true );
 		} else {
@@ -272,9 +269,9 @@
 		} else {
 			// Error:
 			if ( file_exists( $filename ) ) {
-				$str = 'Could not update file: '.$filename.'<br />';
+				$str = "Could not update file: ".$filename."<br />";
 			} else {
-				$str = 'Could not create file: '.$filename.'<br />';
+				$str = "Could not create file: ".$filename."<br />";
 			}
 			return ( $str );
 		}
@@ -291,7 +288,7 @@
 		$result = sb_read_file( $filename );
 		
 		if ( $result ) {
-			list( $blog_theme ) = explode('|', $result);
+			list( $blog_theme ) = explode('|', $result);		
 		} else {
 			// Error:
 			// Probably couldn't read file.
@@ -338,7 +335,7 @@
 		global $user_colors, $blog_theme;
 		$color_def = theme_default_colors();
 		for ( $i = 0; $i < count( $color_def ); $i++ ) {
-			$user_colors[ $color_def[$i][ 'id' ] ] = $color_def[$i][ 'default' ];
+			$user_colors[ $color_def[$i]['id'] ] = $color_def[$i]['default'];
 		}
 		
 		$filename = 'config/colors-' . $blog_theme . '.txt';

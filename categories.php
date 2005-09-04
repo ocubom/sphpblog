@@ -1,20 +1,20 @@
 <?php 
-	require_once('scripts/sb_functions.php');
+	require('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
 	read_config();
 		
-	if ( isset( $_GET[ 'blog_language' ] ) ) {	
-		$blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
+	if ( isset( $_GET['blog_language'] ) ) {	
+		$blog_config[ 'blog_language' ] = $_GET['blog_language'];
 	}
 	
-	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'categories' );
 		
 	// "CGI" Functions
-	if ( array_key_exists( 'category_list', $_POST ) ) {
-		$catArray = phpValidate( $_POST[ 'category_list' ] );
+	if ( array_key_exists( "category_list", $_POST ) ) {
+		$catArray = phpValidate( $_POST[ "category_list" ] );
 		
 		$ok = false;
 		if ($catArray !== false ) {
@@ -22,27 +22,27 @@
 		}
 								
 		if ( $ok === true ) {	
-			redirect_to_url( 'index.php' );
+			redirect_to_url( "index.php" );
 		}
 	}
 	
 	// PHP Validate results
 	function phpValidate( $str ) {
-		if ( $str == '' ) {
+		if ( $str == "" ) {
 			// Make sure the form is filled out
 			// echo("Uh, you should type something first...");
 			return false;
 		} else {
 			// Define the return character
-			if ( strstr( $str, urldecode( '%0D%0A') ) !== false ) {
+			if ( strstr( $str, urldecode("%0D%0A") ) !== false ) {
 				// Windows
-				$return_char = urldecode( '%0D%0A' );
-			} else if ( strstr( $str, urldecode( '%0A' ) ) !== false ) {
+				$return_char = urldecode("%0D%0A");
+			} else if ( strstr( $str, urldecode("%0A") ) !== false ) {
 				// Unix / Mac IE
-				$return_char = urldecode( '%0A' );
-			} else if ( strstr( $str, urldecode( '%0D' ) ) !== false ) {
+				$return_char = urldecode("%0A");
+			} else if ( strstr( $str, urldecode("%0D") ) !== false ) {
 				// Mac
-				$return_char = urldecode( '%0D' );
+				$return_char = urldecode("%0D");
 			}
 			
 			// Split input into an array
@@ -55,13 +55,13 @@
 			// Loop through the array, validate input.
 			for ( $i=0; $i< count( $input_arr ); $i++ ) {
 				$line_str = $input_arr[$i];
-				if ( $line_str == '' ) {
+				if ( $line_str == "" ) {
 					// Whoops! Empty Line. Skip it...
 					continue;
 				} else {
 					// Search for the ID Number in parentheses... (###)
-					$parentheses_start = strrpos( $line_str, '(' );
-					$parentheses_end = strrpos( $line_str, ')' );
+					$parentheses_start = strrpos( $line_str, "(" );
+					$parentheses_end = strrpos( $line_str, ")" );
 					if ( $parentheses_start === false || $parentheses_end === false || $parentheses_start >= $parentheses_end ) {
 						// Whoops! parentheses missing...
 						// echo( "Missing parentheses on line: " . $i . "\n\n" . $line_str . "<br />");
@@ -69,28 +69,28 @@
 					} else {
 						// Grab ID
 						$id_str = substr( $line_str, $parentheses_start+1, ( $parentheses_end - $parentheses_start - 1 ) );
-						if ( $id_str == '' ) {
+						if ( $id_str == "" ) {
 							// echo( "Missing 'Unique ID Number' on line: " . $i . "\n\n" . $line_str );
 							return false;
 						} else {
 							$id_number = intVal( $id_str );
-							if ( gettype( $id_number ) === 'integer' ) {
+							if ( gettype( $id_number ) === "integer" ) {
 								// echo( "'" . $id_str . "' - '" . $id_number . "'<br />" );
 							
 								// So far so good... Now get rid of trailing spaces.
 								$name_str = substr( $line_str, 0, $parentheses_start );
-								while ( substr( $name_str, strlen( $name_str )-1, strlen( $name_str ) ) == ' ' ) {
+								while ( substr( $name_str, strlen( $name_str )-1, strlen( $name_str ) ) == " " ) {
 									$name_str = substr( $name_str, 0, strlen( $name_str ) - 1 );
 								}
 								
 								// Count beginning spaces or &nbsp; characters...
 								$space_count = 0;
-								while ( substr( $name_str, 0, 1 ) == ' ' || substr( $name_str, 0, 1 ) == chr( 160 ) ) {
+								while ( substr( $name_str, 0, 1 ) == " " || substr( $name_str, 0, 1 ) == chr( 160 ) ) {
 									$name_str = substr( $name_str, 1, strlen( $name_str ) - 1 );
 									$space_count++;
 								}
 								
-								if ( $name_str != '' ) {
+								if ( $name_str != "" ) {
 									// Okay, we've got all the parts...
 									$item_arr = Array( $id_number, clean_post_text( $name_str ), $space_count );
 									array_push( $valid_arr, $item_arr );
@@ -116,14 +116,14 @@
 		}
 	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
+	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
 	<script type="text/javascript">
 		<!--
 		function validate(theform) {
@@ -213,52 +213,30 @@
 		}
 		//-->
 	</script>
-	<title><?php echo( $blog_config[ 'blog_title' ] ); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+	<title><?php echo( $blog_config[ 'blog_title' ] ); ?> - <?php echo( $lang_string['title'] ); ?></title>
 </head>
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $blog_config;
 		
-		if ( array_key_exists( 'info_keywords', $_POST ) && array_key_exists( 'info_description', $_POST ) && array_key_exists( 'info_copyright', $_POST ) ) {	
+		if ( array_key_exists( "info_keywords", $_POST ) && array_key_exists( "info_description", $_POST ) && array_key_exists( "info_copyright", $_POST ) ) {	
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( '<p>' . $lang_string[ 'error' ] . $ok . '</p>' );
+				echo( $lang_string['error'] . $ok . '<p />' );
 			}
-			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+			echo( '<a href="index.php">' . $lang_string['home'] . '</a><br /><br />' );
 		} else {
 			?>
 			
-			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
+			<h2><?php echo( $lang_string['title'] ); ?></h2>
+			<?php echo( $lang_string['instructions'] ); ?><p />
 			
-			<div class="hr"><hr /></div>
+			<hr noshade size="1" color="#<?php echo( $user_colors['inner_border_color'] ); ?>">
 	
-			<?php echo( $lang_string[ 'current_categories' ] ); ?><br />
+			<?php echo( $lang_string['current_categories'] ); ?><br />
 			
 			<?php
-				$catArray = get_category_array();
-				if ( count($catArray) > 0) {
-					$str = '';
-					for ( $i = 0; $i < count( $catArray ); $i++ ) {
-						$id_number = $catArray[$i][0];
-						$name_str = $catArray[$i][1];
-						$space_count = $catArray[$i][2];
-						for ( $j = 0; $j < $space_count; $j++ ) {
-							$str = $str . '&nbsp;';
-						}
-						$str = $str . $name_str . ' (' . $id_number . ")<br />\n";
-					}
-					echo( $str );
-				} else {
-					echo( $lang_string[ 'no_categories_found' ] . '<br />' );
-				}
-			?>
-			<div class="hr"><hr /></div>
-			
-			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
-			<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50"><?php
 				$catArray = get_category_array();
 				if ( count($catArray) > 0) {
 					$str = "";
@@ -267,19 +245,41 @@
 						$name_str = $catArray[$i][1];
 						$space_count = $catArray[$i][2];
 						for ( $j = 0; $j < $space_count; $j++ ) {
-							$str = $str . ' ';
+							$str = $str . "&nbsp;";
 						}
-						$str = $str . $name_str . ' (' . $id_number . ")\n";
+						$str = $str . $name_str . " (" . $id_number . ")<br />\n";
+					}
+					echo( $str );
+				} else {
+					echo( $lang_string['no_categories_found'] . '<br />' );
+				}
+			?>
+			<hr noshade size="1" color="#<?php echo( $user_colors['inner_border_color'] ); ?>">
+			
+			<form action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
+			<label for="category_list"><?php echo( $lang_string['category_list'] ); ?></label><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars['max_image_width'] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete=OFF><?php
+				$catArray = get_category_array();
+				if ( count($catArray) > 0) {
+					$str = "";
+					for ( $i = 0; $i < count( $catArray ); $i++ ) {
+						$id_number = $catArray[$i][0];
+						$name_str = $catArray[$i][1];
+						$space_count = $catArray[$i][2];
+						for ( $j = 0; $j < $space_count; $j++ ) {
+							$str = $str . " ";
+						}
+						$str = $str . $name_str . " (" . $id_number . ")\n";
 					}
 					echo( $str );
 				}
 			?></textarea><br />
 				<br />
-				<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" /><br />
+				<input type="button" class="bginput" value="<?php echo( $lang_string['validate'] ); ?>" onclick="validate(document.forms.categories);" /><br />
 				
-				<div class="hr"><hr /></div>
+				<hr noshade size="1" color=#<?php echo( $user_colors['inner_border_color'] ); ?>>
 				
-				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
+				<input type="submit" name="submit" value="<?php echo( $lang_string['submit_btn'] ); ?>" /><br /><br />
 			</form>
 			
 			<?php 

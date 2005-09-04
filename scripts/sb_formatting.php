@@ -20,8 +20,8 @@
 		// This makes entries safe for saving to a file (since the data
 		// format is pipe delimited.)
 		global $lang_string;
-		$str = str_replace( '|', '&#124;', $str );
-		$str = @htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		$str = str_replace( '|', ':', $str );
+		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
 
 		return ( $str );
 	}
@@ -34,7 +34,6 @@
 		//
 		// ( Could use str_ireplace() but it's only supported in PHP 5. )
 		global $blog_config;
-		
 		
 		if ( $comment_mode ) {
 			$tag_arr = array();
@@ -107,9 +106,6 @@
 		// height - height of image in pixels
 		// popup  - (true/false)
 		// float  - (left/right)
-		// alt    - alternative text
-		// align  - (left/right/center)
-		// valign - (top/bottom/middle)
 		//
 		// [img=http://xxx]
 		// [img=http://xxx width=xxx height=xxx popup=true float=left]
@@ -165,12 +161,7 @@
 				$str = replace_html_tag( $str, false );
 			}
 		}
-		// Selectively replace line breaks and/or decode php entities.
-		if ( !$comment_mode ) {
-			$str = replace_php_tag( $str );
-		}
 		
-		$str = str_replace( '&amp;#124;', '|', $str );
 		return ( $str );
 	}
 	
@@ -240,7 +231,7 @@
 				// Also, decode HTML entities between the tags.
 				$temp_str = substr( $str, 0, $str_offset );
 				if ( $strip_tags === false ) {
-					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string['php_charset'] );
 				}
 				$str_out = $str_out . $temp_str;
 				
@@ -410,9 +401,6 @@
 					$attrib_height = NULL;
 					$attrib_popup = NULL;
 					$attrib_float = NULL;
-					$attrib_align = NULL;
-					$attrib_valign = NULL;
-					$attrib_alt = NULL;
 					
 					if ( is_array( $attrib_array ) ) {
 						$str_url = $attrib_array[0];
@@ -433,22 +421,13 @@
 									case 'float';
 										$attrib_float = $temp_arr[1];
 										break;
-									case 'align';
-										$attrib_align = $temp_arr[1];
-										break;
-									case 'valign';
-										$attrib_valign = $temp_arr[1];
-										break;
-									case 'alt';
-										$attrib_alt = urldecode( $temp_arr[1] );
-										break;
 								}
 							}
 						}
 					} else {
 						$str_url = $attrib_array;
 					}
-					
+				
 					// Grab image size and calculate scaled sizes
 					
 					// if ( file_exists( $str_url ) !== false ) {
@@ -456,123 +435,86 @@
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
-					}
-					else {
+						$max_image_width = $theme_vars['max_image_width'];
+						
+						if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
+								$width = $attrib_width;
+								$height = $attrib_height;
+						} else {
+							if ( isset( $attrib_width ) ) {
+								$height = round( $height * ( $attrib_width / $width ) );
+								$width = $attrib_width;
+							}
+							
+							if ( isset( $attrib_height ) ) {
+								$width = round( $width * ( $attrib_height / $height ) );
+								$height = $attrib_height;
+							}
+						}
+						
+						if ( $width > $max_image_width ) {
+							$height = round( $height * ( $max_image_width / $width ) );
+							$width = $max_image_width;
+						}
+						
+						
+						if ( isset( $attrib_popup ) ) {
+							if ( $attrib_popup == 'true' ) {
+								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'';
+								if ( isset( $attrib_float ) ) {
+									switch ( $attrib_float ) {
+										case 'left';
+											$str_out = $str_out . ' id="img_float_left"';
+											break;
+										case 'right';
+											$str_out = $str_out . ' id="img_float_right"';
+											break;
+									}
+								}
+								$str_out = $str_out . '></a>';
+							} else {
+								$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'';
+								if ( isset( $attrib_float ) ) {
+									switch ( $attrib_float ) {
+										case 'left';
+											$str_out = $str_out . ' id="img_float_left"';
+											break;
+										case 'right';
+											$str_out = $str_out . ' id="img_float_right"';
+											break;
+									}
+								}
+								$str_out = $str_out . '>';
+							}
+						} else {
+							if ( $width != $img_size[0] || $height != $img_size[1] ) {
+								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'></a>';							
+							} else {
+								$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'>';
+							}
+						}
+										
+						// Store sub_string after the tag.
+						$str = substr( $str, $str_offset + strlen( $tag_end ) );
+						// Search for next beginning tag.
+						$str_offset = strpos( $str, $tag_begin );
+					} else {
 						// Append HTML tag.
 						if ( isset( $attrib_popup ) ) {
 							if ( $attrib_popup == 'true' ) {
-								$width = $img_size[0];
-								$height = $img_size[1];
+								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border=0 alt=\'\'></a>';						
+							} else {
+								$str_out = $str_out . '<img src="' . $str_url . '" border=0 alt=\'\'>';		
 							}
-						}
-					}
-					$max_image_width = $theme_vars[ 'max_image_width' ];
-						
-					if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
-						$width = $attrib_width;
-						$height = $attrib_height;
-					} else {
-						if ( isset( $attrib_width ) ) {
-							$height = round( $height * ( $attrib_width / $width ) );
-							$width = $attrib_width;
-						}
-						
-						if ( isset( $attrib_height ) ) {
-							$width = round( $width * ( $attrib_height / $height ) );
-							$height = $attrib_height;
-						}
-					}
-					
-					if ( $width > $max_image_width ) {
-						$height = round( $height * ( $max_image_width / $width ) );
-						$width = $max_image_width;
-					}
-					
-					//Open the tag
-					if ( isset( $attrib_align ) ) {
-						switch ( $attrib_align ) {
-							case 'left';
-								$str_out = $str_out . '<p align="left">';
-								break;
-							case 'right';
-								$str_out = $str_out . '<p align="right">';
-								break;
-							case 'cemter';
-								$str_out = $str_out . '<p align="center">';
-								break;
-						}
-					}
-					
-					if ( isset( $attrib_popup ) ) {
-						if ( $attrib_popup == 'true' ) {
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0';
-						}
-						else {
-							$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height;
-						}
-					} else {
-						if ( $width != $img_size[0] || $height != $img_size[1] ) {
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0';
 						} else {
-							$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height;
+							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border=0 alt=\'\'></a>';	
 						}
+										
+						// Store sub_string after the tag.
+						$str = substr( $str, $str_offset + strlen( $tag_end ) );
+						// Search for next beginning tag.
+						$str_offset = strpos( $str, $tag_begin );
 					}
-					
-					if ( isset( $attrib_float ) ) {
-						switch ( $attrib_float ) {
-							case 'left';
-								$str_out = $str_out . ' id="img_float_left"';
-								break;
-							case 'right';
-								$str_out = $str_out . ' id="img_float_right"';
-								break;
-						}
-					}
-					
-					if ( isset( $attrib_valign ) ) {
-						switch ( $attrib_valign ) {
-							case 'top';
-								$str_out = $str_out . ' valign="top"';
-								break;
-							case 'bottom';
-								$str_out = $str_out . ' valign="bottom"';
-								break;
-							case 'middle';
-								$str_out = $str_out . ' valign="middle"';
-								break;
-						}
-					}
-
-					if ( isset( $attrib_alt ) ) {
-						$str_out = $str_out . ' alt="' . $attrib_alt . '"';
-					}
-
-					//Close the tag
-					if ( isset( $attrib_popup ) ) {
-						if ( $attrib_popup == 'true' ) {
-							$str_out = $str_out . '></a>';
-						}
-						else {
-							$str_out = $str_out . '>';
-						}
-					}
-					else {
-						if ( $width != $img_size[0] || $height != $img_size[1] ) {
-							$str_out = $str_out . '></a>';
-						}
-						else {
-							$str_out = $str_out . '>';
-						}
-					}
-					if ( isset( $attrib_align ) ) {
-						if ( $attrib_align =='center' ) {
-							$str_out = $str_out . '</p>';
-						}
-					}
-					// Store sub_string after the tag.
-					$str = substr( $str, $str_offset + strlen( $tag_end ) );
-					// Search for next beginning tag.
-					$str_offset = strpos( $str, $tag_begin );
 				}
 			}
 		}
@@ -582,127 +524,4 @@
 		
 		return ( $str );
 	}
-
-	function replace_php_tag( $str ) {
-		// Replacements for HTML tags. Sub-function of blog_to_html.
-		//
-		// This function decodes HTML entities that are located between
-		// HTML tags. Also, inserts <br />'s for new lines only if blocks
-		// are outside the HTML tags.
-		global $lang_string;
-
-		$str_out = NULL;
-		$tag_begin = '[php]';
-		$tag_end = '[/php]';
-		
-		// Search for the openning HTML tag. Tag could be either upper or
-		// lower case so we want to find the nearest one.
-		//
-		// Get initial $str_offset value.
-		ob_start( 'replace_php_tag_callback' );
-		$temp_lower = strpos( $str, strtolower( $tag_begin ) );
-		$temp_upper = strpos( $str, strtoupper( $tag_begin ) );
-		if ( $temp_lower === false ) {
-			if ( $temp_upper === false ) {
-				$str_offset = false;
-			} else {
-				$str_offset = $temp_upper;
-			}
-		} else {
-			if ( $temp_upper === false ) {
-				$str_offset = $temp_lower;
-			} else {
-				$str_offset = min( $temp_upper, $temp_lower );
-			}
-		}
-		
-		while ( $str_offset !== false ) {
-			// Store all the text BEFORE the openning HTML tag.
-			//
-			// Also, replace hard returns with '<br />' tags.
-			$temp_str = substr( $str, 0, $str_offset );
-			//$temp_str = str_replace( chr(10), '<br />', $temp_str );
-			$str_out = $str_out . $temp_str;
-			echo $str_out;
-			
-			// Store all text AFTER the tag
-			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
-		
-			// Search for the closing HTML tag. Find the nearest one.
-			$temp_lower = strpos( $str, strtolower( $tag_end ) );
-			$temp_upper = strpos( $str, strtoupper( $tag_end ) );
-			if ( $temp_lower === false ) {
-				if ( $temp_upper === false ) {
-					$str_offset = false;
-				} else {
-					$str_offset = $temp_upper;
-				}
-			} else {
-				if ( $temp_upper === false ) {
-					$str_offset = $temp_lower;
-				} else {
-					$str_offset = min( $temp_upper, $temp_lower );
-				}
-			}
-			
-			if ( $str_offset !== false ) {
-				// Store all the text BETWEEN the HTML tags.
-				//
-				// Also, decode HTML entities between the tags.
-				$temp_str = substr( $str, 0, $str_offset );
-				//$str_out = $str_out . $temp_str;
-				eval( html_entity_decode( $temp_str ) );
-
-				// Store sub_string after the tag.
-				$str = substr( $str, $str_offset + strlen( $tag_end ) );
-
-				// Search for openning HTML tag again.
-				$temp_lower = strpos( $str, strtolower( $tag_begin ) );
-				$temp_upper = strpos( $str, strtoupper( $tag_begin ) );
-				if ( $temp_lower === false ) {
-					if ( $temp_upper === false ) {
-						$str_offset = false;
-					} else {
-						$str_offset = $temp_upper;
-					}
-				} else {
-					if ( $temp_upper === false ) {
-						$str_offset = $temp_lower;
-					} else {
-						$str_offset = min( $temp_upper, $temp_lower );
-					}
-				}
-			}
-		}
-
-		// Append remainder of text.
-		//
-		// All this text will be outside of any HTML tags so
-		// we need to encode the line breaks.
-		//$str = $str_out . $str;
-		echo $str;
-		$str=ob_get_contents();
-		ob_end_clean();
-		return ( $str );
-	}
-
-	function replace_php_tag_callback ( $out )
-	{
-		return( $out );
-	}
-	
-	
-	function sb_parse_url ( $text )
-	{
-	    // Con espacios 
-	    $text = eregi_replace("([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=\\2]\\2[/url]", $text); //http
-	    $text = eregi_replace("([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=http://\\2]\\2[/url]", $text); // www.
-	    $text = eregi_replace("([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
-	    // Al principio de una cadena
-	    $text = eregi_replace("^((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=\\1]\\1[/url]", $text); //http
-	    $text = eregi_replace("^(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=http://\\1]\\1[/url]", $text); // www
-	    $text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","[url=mailto:\\1]\\1[/url]", $text); // mail
-	    return ( $text );
-	}
-
 ?>
