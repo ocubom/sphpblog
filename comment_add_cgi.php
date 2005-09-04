@@ -19,7 +19,7 @@
 		// user is not able to back-up a directory.
 		//
 		// Make sure the string lengths are correct.
-		if ( $_POST[ 'comment_capcha'] == $_SESSION[ 'capcha' ] ) {
+		if ($_POST['blog_text']!='' and $_POST['comment_name']!='' and $_SESSION[ 'capcha' ]!='' and  $_POST[ 'comment_capcha'] == $_SESSION[ 'capcha' ] ) {
 			if ( strpos( $_POST[ "y" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_POST["y"] ) == 2 &&
 					strpos( $_POST[ "m" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_POST["m"] ) == 2 &&
 					strpos( $_POST[ "entry" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_POST["entry"] ) == 18 ) {
