@@ -3,8 +3,11 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	$ok = create_password( stripslashes( $_POST['user'] ), stripslashes( $_POST['pass'] ) );
-	$logged_in = $ok;
+	$ok = false;
+	if ( $logged_in && array_key_exists( 'user', $_POST ) && array_key_exists( 'pass', $_POST ) ) {
+		$ok = create_password( stripslashes( $_POST['user'] ), stripslashes( $_POST['pass'] ) );
+		$logged_in = $ok;
+	}
 	
 	read_config();
 	
