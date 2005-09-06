@@ -3,8 +3,8 @@
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
-	$ok = create_password( stripslashes( $_POST['user'] ), stripslashes( $_POST['pass'] ) );
-	$logged_in = $ok;
+	// $ok = create_password( stripslashes( $_POST['user'] ), stripslashes( $_POST['pass'] ) );
+	// $logged_in = $ok;
 	
 	read_config();
 	
@@ -14,7 +14,7 @@
 	}
 	
 	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
-	sb_language( 'install03' );
+	sb_language( 'install04' );
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,14 +30,27 @@
 	function page_content() {
 		global $lang_string, $user_colors, $ok, $blog_config;
 		
-		if ( $ok === true ) {
-			echo( $lang_string['success'] );
-			echo( '<a href="setup.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['btn_setup'] . '</a><br /><br />' );
-		} else {
-			echo( $lang_string['wrong_password'] );
-		}
+		$hashedUser = crypt(  stripslashes( $_POST['user'] ) );
+		$hashedPass = crypt( stripslashes( $_POST['pass'] ) );
+		?>
 		
-		// echo( '<hr noshade size="1" color=#' . $user_colors['inner_border_color'] . '>' );
+		<h2><?php echo( $lang_string['title'] ); ?></h2>
+		<?php echo( $lang_string['instructions'] ); ?><p />
+		
+		<label for="phpfile"><?php echo( $lang_string['code'] ); ?></label><br />
+<textarea name="phpfile" rows="6" cols="40">
+&lt;?php
+	$username = '<?php echo( $hashedUser ); ?>';
+	$password = '<?php echo( $hashedPass ); ?>';
+?&gt;
+</textarea>
+		
+		<?php 
+		echo( '<p />' );
+		echo( '<a href="install05.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['continue'] . '</a><p />' );
+		echo( $lang_string['information'] );
+		echo( '<p />' );
+		
 	}
 ?>
 <?php 

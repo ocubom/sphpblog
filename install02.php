@@ -38,8 +38,8 @@
 		$result = $result + create_folder( 'content' );
 		$result = $result + create_folder( 'images' );
 
-// Create a .htaccess file as part of the install process...
-$htaccess_str = "IndexIgnore *
+		// Create a .htaccess file as part of the install process...
+		$htaccess_str = "IndexIgnore *
 
 <Files .htaccess>
 order allow,deny
@@ -56,6 +56,7 @@ deny from all
 		sb_write_file( "images/.htaccess", $htaccess_str );
 		
 		echo( '<hr noshade size="1" color=#' . $user_colors['inner_border_color'] . '>' );
+		echo( '<br />' );
 		
 		if ( $result < 0 ) {
 			echo( $lang_string['help'] . '<p />' );
@@ -69,28 +70,28 @@ deny from all
 	function create_folder( $dir ) {
 		global $lang_string;
 		
-		echo( '<b>' . $dir . '</b> - ' );
+		echo( 'Making <b>' . $dir . '</b> folder: ' );
 		
 		if ( !file_exists( $dir ) ) {
 			// Creating Folder
 			$oldumask = umask( 0 );
-			$ok = @mkdir( $dir, 0777 );
+			$ok = mkdir( $dir, 0777 );
 			umask( $oldumask );
 			
 			if ( !file_exists( $dir ) ) {
 				// Failed
-				echo( $lang_string['folder_failed'] . '<br />' );
+				echo( '<b style="color: red;">' . $lang_string['folder_failed'] . '</b><br />' );
 				return( -1 );
 				
 			} else {
 				// Worked
-				echo( $lang_string['folder_success'] . '<br />' );
+				echo( '<b style="color: green;">' . $lang_string['folder_success'] . '</b><br />' );
 				return( 0 );
 			}
 			
 		} else {
 			// Folder Already Exists
-			echo( $lang_string['folder_exists'] . '<br />' );
+				echo( '<b style="color: green;">' . $lang_string['folder_exists'] . '</b><br />' );
 			return( 0 );
 		}
 	}

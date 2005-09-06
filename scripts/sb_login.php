@@ -25,7 +25,7 @@
 			// ini_set( 'session.use_trans_sid', '0' );
 			
 			// Init the session.
-			session_set_cookie_params(time()+60*60*24*7);
+			session_set_cookie_params(time()+60*60*24*5);
 			session_id($my_id);
 			session_start ();
 			
@@ -39,8 +39,18 @@
 		
 		// Special Case:
 		// If there's no password file then need to redirect them.
-		$passFile = 'config/password.txt';
-		if ( !file_exists( $passFile ) ) {
+		
+		$username = null;
+		$password = null;
+		
+		@include('config/password.php');
+		
+		if ( $username == null || $password == null ) {
+		
+			// Clear variables (why not...)
+			$username = null;
+			$password = null;
+			
 			if ( $redirect_to_setup ) {
 				redirect_to_url( "install00.php" );
 				
@@ -49,6 +59,10 @@
 				return ( -1 );
 			}
 		}
+		
+		// Clear variables (why not...)
+		$username = null;
+		$password = null;
 		
 		if ( $redirect_to_login ) {
 			redirect_to_url( "index.php" );
@@ -70,7 +84,7 @@
 			// ini_set( 'session.use_trans_sid', '0' );
 			
 			// Init the session.
-			session_set_cookie_params(time()+60*60*24*7);
+			session_set_cookie_params(time()+60*60*24*5);
 			session_id($my_id);
 			session_start();
 			session_unset($_SESSION['logged_in']);
@@ -79,6 +93,7 @@
 		}
 	}
 	
+	/*
 	function create_password ( $user, $pass ) {
 		// Generate and store password hash and log the user in.
 		//
@@ -132,6 +147,47 @@
 		} else { 
 			return ( false );
 		}
+	}
+	*/
+	
+	function check_password ( $user, $pass ) {
+		// Check password against hashed password file
+		//
+		$username = null;
+		$password = null;
+		
+		@include('config/password.php');
+		
+		if ( $username == null || $password == null ) {
+			// Missing password.php file...
+		} else {
+			// Verify Username
+			if ( crypt( $user, $username ) === $username ) {
+				if ( crypt( $pass, $password ) === $password ) {
+					// Start Session and Set Cookie
+					// ini_set( 'session.use_trans_sid', '0' );
+					session_set_cookie_params(time()+60*60*24*5);
+					@session_start();
+					
+					// Support for PHP >= 4.1.0
+					$_SESSION['logged_in'] = 'yes';
+					$_SESSION['site_path'] = dirname($_SERVER['PHP_SELF']);
+					setcookie('my_id',session_id(),time()+60*60*24*5);
+					
+					// Clear variables (why not...)
+					$username = null;
+					$password = null;
+					
+					return ( true );
+				}
+			}
+		}
+		
+		// Clear variables (why not...)
+		$username = null;
+		$password = null;
+		
+		return ( false );
 	}
 	
 	function redirect_to_url( $relative_url = "index.php" ) {
