@@ -1,7 +1,7 @@
 <?php 
 	require('scripts/sb_functions.php');
 	global $logged_in;
-	$logged_in = logged_in( false, true );
+	$logged_in = logged_in( true, true );
 	
 	read_config();
 	
