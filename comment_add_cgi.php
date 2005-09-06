@@ -6,7 +6,6 @@
 		session_start();
 	}
 	
-	
 	read_config();
 	
 	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');

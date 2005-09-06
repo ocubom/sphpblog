@@ -80,7 +80,7 @@
 	}
 	
 	function create_password ( $user, $pass ) {
-		// Generate and store password hash
+		// Generate and store password hash and log the user in.
 		//
 		$mypasswd = $user.$pass;
 		$hashed = crypt($mypasswd); 

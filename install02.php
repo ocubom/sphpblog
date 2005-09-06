@@ -37,6 +37,23 @@
 		$result = create_folder( 'config' );
 		$result = $result + create_folder( 'content' );
 		$result = $result + create_folder( 'images' );
+
+// Create a .htaccess file as part of the install process...
+$htaccess_str = "IndexIgnore *
+
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+<Files *.txt>
+order allow,deny
+deny from all
+</Files>";
+
+		sb_write_file( "config/.htaccess", $htaccess_str );
+		sb_write_file( "content/.htaccess", $htaccess_str );
+		sb_write_file( "images/.htaccess", $htaccess_str );
 		
 		echo( '<hr noshade size="1" color=#' . $user_colors['inner_border_color'] . '>' );
 		

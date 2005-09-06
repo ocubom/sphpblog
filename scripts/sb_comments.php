@@ -117,7 +117,7 @@
 				// Author
 				if ( $logged_in ) {
 					$entry_array["delete"]["name"] = $lang_string["delete_btn"];
-					$entry_array["delete"]["url"] = "comment_delete_cgi.php?y=".$y."&m=".$m."&entry=".$entry."&comment=".$dir.( $contents[$i]["entry"] );
+					$entry_array["delete"]["url"] = "comment_delete_cgi.php?y=".$y."&m=".$m."&entry=".$entry."&comment=".$contents[$i]["entry"];
 				}
 				
 				$entry_array["count"] = $i;
