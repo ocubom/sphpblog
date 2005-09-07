@@ -327,44 +327,46 @@
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
 				break;
-			case 'install00': // <-- New
+			case 'install00':
 				$lang_string['title'] = "Welcome";
-				$lang_string['instructions'] = "
-				Thank you for choosing Simple PHP Blog!";
+				$lang_string['instructions'] = "Thank you for choosing Simple PHP Blog!";
 				$lang_string['blog_choose_language'] = "Choose Language:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				break;
-			case 'install01': // <-- New
+			case 'install01':
 				$lang_string['title'] = "Welcome";
 				$lang_string['instructions'] = "
 				Thank you for choosing Simple PHP Blog!<br /><br />Simple PHP Blog is a light-weight blogging system. It requires PHP 4.1 or greater, and write-permissions on the server. All information is stored in flat-files, so no database is required.<br /><br />
-				In order to begin, Simple PHP Blog needs to create three folders ('config', 'content', and 'images') in which to store your information.<br /><br />
+				In order to begin, Simple PHP Blog needs to create three folders (<b>config</b>, <b>content</b>, and <b>images</b>) in which to store your information. After that, you will create your password and then you can start blogging.<br /><br />
 				<b>Click below to begin setup:</b>";
 				$lang_string['begin'] = "[ Begin Setup ]";
 				break;
-			case 'install02': // <-- New
+			case 'install02':
 				$lang_string['title'] = "Setup";
-				$lang_string['instructions'] = "Trying to create 'config', 'content', and 'images' folders:";
+				$lang_string['instructions'] = "Trying to create <b>config</b>, <b>content</b>, and <b>images</b> folders:";
 				$lang_string['folder_exists'] = "Okay! Folder already exists. No changes made...";
 				$lang_string['folder_failed'] = "Whoops! Could not create folder...";
 				$lang_string['folder_success'] = "Success! Folder created...";
 				// Help
 				$lang_string['help'] = "
 				<h2>Whoops!</h2>
-				Could not create one or more folders! This is most likely due to:<br>
-				<i>1) <b>Write Permissions</b> aren't set to allow <b>Read/Write</b> access.</i><br>
-				<i>2) The <b>UID</b>'s (user ID's) of all files and folder must match.</i><p />
-				
-				Follow the trouble-shooting instructions below and please try again:<p />				
-				1) Manually create the following folders: <b>config</b>, <b>content</b>, and <b>images</b>.<p />
-				2) Enabled <b>Write Permissions</b> on the folders. In your FTP program, Owner, User, and World should have <b>Read</b> and <b>Write</b> access. <i>(You may need to contact your service provider to change these...)</i><p />
-				3) Make sure the UID's of all your files and folders are the same. <i>(You may need to contact your service provider to change these...)</i>";
+				Could not create one or more folders!<br /><br />This is most likely because:<br />
+				<ol>
+				<li><b>Write Permissions</b> aren't set to allow <b>Read/Write</b> access.</li>
+				<li>The <b>UID</b>'s (user ID's) of all files and folder must match.</li>
+				</ol>
+				Follow the trouble-shooting instructions below and click <b>Try Again</b>:<br />
+				<ol>
+				<li>Manually create the following folders: <b>config</b>, <b>content</b>, and <b>images</b>.</li>
+				<li>Enabled <b>Write Permissions</b> on the folders: In your FTP program, Owner, User, and World should have <b>Read</b> and <b>Write</b> access. <i>(You may need to contact your service provider to change these...)</i></li>
+				<li>Make sure the UID's of all your files and folders are the same. <i>(You may need to contact your service provider to change these...)</i></li>
+				</ol>";
 				$lang_string['try_again'] = "[ Try Again ]";
 				// Success
 				$lang_string['success'] = "<h2>Success!</h2>Folders created successfully!<p /><b>Click below to continue:</b>";
 				$lang_string['continue'] = "[ Continue ]";
 				break;
-			case 'install03': // <-- New
+			case 'install03':
 				$lang_string['title'] = "Create Username &amp; Password";
 				$lang_string['instructions'] = "Use the form below to Create a Username and Password.";
 				$lang_string['username'] = "Username:";
@@ -376,6 +378,41 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				break;
+			case 'install04':
+				$lang_string['title'] = "Create Password File";
+				$lang_string['instructions'] = "Here's the tricky part:<br />
+				<ol>
+				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
+				<li>Create a New Text Document.</li>
+				<li>Copy and paste the code in the box below into your document.</li>
+				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
+				<li>Open a FTP application.</li>
+				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
+				<li>Delete the <b>password.php</b> from your hard drive.</li>
+				</ol>
+				";
+				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
+				$lang_string['code'] = "Code for <b>password.php</b> file:";
+				$lang_string['continue'] = "[ Continue ]";
+				break;
+			case 'install05':
+			case 'install06':
+				$lang_string['title'] = "Login";
+				$lang_string['instructions'] = "Please enter your Username and Password below";
+				$lang_string['username'] = "Username:";
+				$lang_string['password'] = "Password";
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				// Success
+				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
+				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
+				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+				// Wrong Password
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
+				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				// Success
+				$lang_string['btn_setup'] = "[ Setup ]";
+				$lang_string['btn_try_again'] = "[ Try Again ]";
 				break;
 			case 'setup':
 				$lang_string['title'] = "Installation";

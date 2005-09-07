@@ -372,6 +372,41 @@ $lang_string['btn_setup'] = "[ ÀßÄê¤Ë¿Ê¤à ]";
 	$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 $lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ¤¯¤À¤µ¤¤¡£";
 				break;
+			case 'install04':
+				$lang_string['title'] = "Create Password File";
+				$lang_string['instructions'] = "Here's the tricky part:<br />
+				<ol>
+				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
+				<li>Create a New Text Document.</li>
+				<li>Copy and paste the code in the box below into your document.</li>
+				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
+				<li>Open a FTP application.</li>
+				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
+				<li>Delete the <b>password.php</b> from your hard drive.</li>
+				</ol>
+				";
+				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
+				$lang_string['code'] = "Code for <b>password.php</b> file:";
+				$lang_string['continue'] = "[ Continue ]";
+				break;
+			case 'install05':
+			case 'install06':
+				$lang_string['title'] = "Login";
+				$lang_string['instructions'] = "Please enter your Username and Password below";
+				$lang_string['username'] = "Username:";
+				$lang_string['password'] = "Password";
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				// Success
+				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
+				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
+				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+				// Wrong Password
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
+				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				// Success
+				$lang_string['btn_setup'] = "[ Setup ]";
+				$lang_string['btn_try_again'] = "[ Try Again ]";
+				break;
 	case 'setup':
 	$lang_string['title'] = "ÀßÄê";
 	$lang_string['instructions'] = "blog¤ÎÀßÄê¤È´ÉÍý¼Ô¾ðÊó¤òÀßÄê¤·¤Þ¤¹¡£";

@@ -325,15 +325,13 @@
 				break;
 			case 'install00':
 				$lang_string['title'] = "»¶Ó­";
-				$lang_string['instructions'] = "¸ÐÐ»ÄúÑ¡ÓÃ Simple PHP Blog£¡";
-				
+				$lang_string['instructions'] = "¸ÐÐ»ÄúÑ¡ÓÃ Simple PHP Blog£¡";				
 				$lang_string['blog_choose_language'] = "ÇëÑ¡ÔñÓïÑÔ£º";
 				$lang_string['submit_btn'] = "&nbsp;Ìá½»&nbsp;";
 				break;
 			case 'install01':
 				$lang_string['title'] = "»¶Ó­";
 				$lang_string['instructions'] = "¸ÐÐ»ÄúÑ¡ÓÃ Simple PHP Blog£¡<br /><br />Simple PHP BlogÊÇÒ»¸öÇá±ãµÄblogÏµÍ³¡£ËüÐèÒªPHP 4.1»ò¸ü¸ß°æ±¾£¬ÒÔ¼°·þÎñÆ÷¶ÎµÄÐ´È¨ÏÞ¡£ËùÓÐÐÅÏ¢±£´æÔÚÎÄ¼þÀï£¬ËùÒÔ²»ÐèÒªÊý¾Ý¿â¡£<br /><br />ÔÚ¿ªÊ¼Ê±£¬ Simple PHP BlogÐèÒª´´½¨Èý¸öÄ¿Â¼('config'¡¢'content'¡¢'images')À´´æ·ÅÐÅÏ¢¡£<br /><br /><b>°´ÏÂÃæµÄ°´Å¥À´¿ªÊ¼°²×°£º</b>";
-
 				$lang_string['begin'] = "[ ¿ªÊ¼°²×° ]";
 				break;
 			case 'install02':
@@ -344,15 +342,6 @@
 				$lang_string['folder_success'] = "³É¹¦ÁË£¡Ä¿Â¼ÒÑ´´½¨¡­¡­";
 				// Help
 				$lang_string['help'] = "<h2>ÍÛ£¡</h2>²»ÄÜ´´½¨Ò»¸ö»ò¸ü¶àÄ¿Â¼£¡ÕâºÜ¿ÉÄÜÊÇÒòÎª£º<br><i>1) <b>Ð´È¨ÏÞ</b>²»±»ÔÊÐí¡£</i><br><i>2)ÎÄ¼þºÍÄ¿Â¼µÄ<b>UID</b>²»Æ¥Åä¡£</i><p />Çë°´ÕÕÏÂÃæµÄÒÉÄÑ½â´ðÔÙÊÔÒ»´Î£º<p />1) ÊÖ¹¤´´½¨Ä¿Â¼£º<b>config</b>¡¢<b>content</b>¡¢<b>images</b>¡£<p />2) ÔÊÐíÄ¿Â¼µÄ<b>Ð´È¨ÏÞ</b>¡£ÔÚFTP³ÌÐòÀïOwner¡¢UserºÍWorldÓ¦¸ÃÔÊÐí<b>¶Á</b>ºÍ<b>Ð´</b>·ÃÎÊ¡£<i>(Äã¿ÉÄÜÐèÒªÁªÏµÄãµÄ·þÎñÌá¹©ÉÌÀ´×öÕâÐ©¸Ä¶¯¡­¡­)</i><p />3) È·ÈÏÄãµÄÎÄ¼þºÍÄ¿Â¼µÄUID¶¼ÏàÍ¬¡£<i>(Äã¿ÉÄÜÐèÒªÁªÏµÄãµÄ·þÎñÌá¹©ÉÌÀ´×öÕâÐ©¸Ä¶¯¡­¡­)</i>";
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				$lang_string['try_again'] = "[ ÔÙÊÔÒ»´Î ]";
 				// Success
 				$lang_string['success'] = "<h2>³É¹¦ÁË£¡</h2>Ä¿Â¼´´½¨³É¹¦£¡<p /><b>µã»÷ÏÂÃæµÄ°´Å¥¼ÌÐø£º</b>";
@@ -370,6 +359,41 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>ÍÛ£¡</h2>ÐÅÏ¢Ã»ÓÐ±£´æ¡£ÔÚ±£´æÓÃ»§ÃûºÍÃÜÂëÊ±Óöµ½ÁËÒ»¸öÎÊÌâ¡£<br /><br />·þÎñÆ÷±¨¸æ£º<br />";
 				$lang_string['form_error'] = "ÇëÍêÕûÌîÐ´ÄãµÄÓÃ»§ÃûºÍÃÜÂë¡£";
+				break;
+			case 'install04':
+				$lang_string['title'] = "Create Password File";
+				$lang_string['instructions'] = "Here's the tricky part:<br />
+				<ol>
+				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
+				<li>Create a New Text Document.</li>
+				<li>Copy and paste the code in the box below into your document.</li>
+				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
+				<li>Open a FTP application.</li>
+				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
+				<li>Delete the <b>password.php</b> from your hard drive.</li>
+				</ol>
+				";
+				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
+				$lang_string['code'] = "Code for <b>password.php</b> file:";
+				$lang_string['continue'] = "[ Continue ]";
+				break;
+			case 'install05':
+			case 'install06':
+				$lang_string['title'] = "Login";
+				$lang_string['instructions'] = "Please enter your Username and Password below";
+				$lang_string['username'] = "Username:";
+				$lang_string['password'] = "Password";
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				// Success
+				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
+				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
+				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+				// Wrong Password
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
+				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				// Success
+				$lang_string['btn_setup'] = "[ Setup ]";
+				$lang_string['btn_try_again'] = "[ Try Again ]";
 				break;
 			case 'setup':
 				$lang_string['title'] = "ÉèÖÃ";
