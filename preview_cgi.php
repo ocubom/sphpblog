@@ -43,9 +43,9 @@
 				}
 				
 				if ( $selected == true ) {
-					$str = $str . "<option label=\"$label\" value=\"$id_number\" selected>$label</option>\n";
+					$str = $str . "<option label=" . $label . " value=" . $id_number . " selected>" . $label . "</option>\n";
 				} else {
-					$str = $str . "<option label=\"$label\" value=\"$id_number\">$label</option>\n";
+					$str = $str . "<option label=" . $label . " value=" . $id_number . ">" . $label . "</option>\n";
 				}
 				
 			}
