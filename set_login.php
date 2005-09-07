@@ -37,22 +37,12 @@
 		?>
 		
 		<h2><?php echo( $lang_string['title'] ); ?></h2>
-		<?php echo( $lang_string['instructions'] ); ?><p />
-		
-		<hr noshade size="1" color=#<?php echo( $user_colors['inner_border_color'] ); ?>>
-		
-		<form action="set_login_cgi.php" method="POST" onSubmit="return validate(this)">
-			<label for="user"><?php echo( $lang_string['username'] ); ?></label><br />
-			<input type="text" name="user" autocomplete="OFF" size="40"><br /><br />
-			
-			<label for="pass"><?php echo( $lang_string['password'] ); ?></label><br />
-			<input type="password" name="pass" autocomplete="OFF" size="40"><br />
-			
-			<hr noshade size="1" color=#<?php echo( $user_colors['inner_border_color'] ); ?>>
-			
-			<input type="submit" name="submit" value="<?php echo( $lang_string['submit_btn'] ); ?>" />
-		</form>
-		
+
+		<br />
+		<?php echo("In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site." ); ?><p />
 		<?php 
 	}
 ?>
