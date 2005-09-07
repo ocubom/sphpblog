@@ -488,7 +488,8 @@
 				$lang_string['instructions'] = "Search results for <b>%string</b>:";
 				$lang_string['not_found'] = "No results found";
 				break;
-			case 'contact': // <-- New 0.3.8
+			case 'contact':
+				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Contact Me";
 				$lang_string['instructions'] = "Fill in the form:";
 				$lang_string['form_error'] = "Please complete the Subject and Comment fields.";
@@ -498,6 +499,7 @@
 				$lang_string['comment'] = "Comment:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
+				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistics</h2>";

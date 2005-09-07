@@ -502,6 +502,8 @@
 				$lang_string['comment'] = "Kommentar:";
 				$lang_string['submit_btn'] = "&nbsp;Afsend&nbsp;";
 				$lang_string['success'] = "<h2>Success!</h2>Din kommentar er blevet sendt.<p />";
+				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistics</h2>";

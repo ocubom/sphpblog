@@ -495,14 +495,16 @@
 				break;
 			case 'contact': // <-- New 0.3.8
 				$lang_string['title'] = "Contact Me";
-				$lang_string['instructions'] = "Fill in the form:";
-				$lang_string['form_error'] = "Please complete the Subject and Comment fields.";
-				$lang_string['name'] = "Name:";
+				$lang_string['instructions'] = "Vul de vorm in:";
+				$lang_string['form_error'] = "Gelieve te voltooien de gebieden van het Onderwerp en van de Commentaar.";
+				$lang_string['name'] = "Naam:";
 				$lang_string['email'] = "Email:";
-				$lang_string['subject'] = "Subject:";
-				$lang_string['comment'] = "Comment:";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
-				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
+				$lang_string['subject'] = "Onderwerp:";
+				$lang_string['comment'] = "Commentaar:";
+				$lang_string['submit_btn'] = "&nbsp;Leg voor&nbsp;";
+				$lang_string['success'] = "<h2>Succes!</h2>Uw bericht is verzonden.<p />";
+				$lang_string['failure'] = "<h2>Fout!</h2>Uw bericht is niet verzonden. Waarschijnlijkst was Antispam niet behoorlijk ingegaan.<p />";
+				$lang_string['contact_capcha'] = "Anti-Spam: Ga binnen <b>%s</b>"; // 0.4.2
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistics</h2>";

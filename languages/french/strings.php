@@ -401,12 +401,13 @@
 				$lang_string['blog_max_entries'] = "Maximum Entries to Display:"; // <-- New 0.3.6
 				$lang_string['blog_comment_tags'] = "Tags to Allow in Comments:"; // <-- New 0.3.6
 				$lang_string['blog_gzip_about'] = "
-					Since PHP 4.0.4, PHP has had the ability to read and write gzip (.gz) compressed files, 
-					thus saving disk-space. It can also transparently compress pages that are sent to browsers 
-					which support gzip compression, thus saving bandwidth.<br />
+					Depuis PHP 4.0.4, PHP a eu la capacité de lire et écrire les dossiers de gzip (gz), 
+					ainsi l'disque-espace comprimés d'économie. Il peut également d'une manière transparente 
+					comprimer les pages qui sont envoyées aux navigateurs qui soutiennent la compression de 
+					gzip, ainsi largeur de bande d'économie.<br />
 					<br />
-					Zlib support in PHP is not enabled by default. If the checkboxes are disabled, then your 
-					installation of PHP does not support the Zlib extension."; // <-- New 0.3.7
+					L'appui de Zlib dans PHP n'est pas permis par défaut. Si les checkboxes sont handicapés, 
+					alors votre installation de PHP ne soutient pas la prolongation de Zlib."; // <-- New 0.3.7
 				$lang_string['blog_enable_gzip_txt'] = "Enable GZIP Compression for Database Files"; // <-- New 0.3.7
 				$lang_string['blog_enable_gzip_output'] = "Enable GZIP Compression for HTTP Output"; // <-- New 0.3.7
 				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
@@ -472,12 +473,12 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Sauvegarde des paramètres de configuration impossibles. Problème recontré durant l'éxecution du script.<br /><br />Le Serveur a reporté :<br />";
 				break;
 			case 'themes':
-				$lang_string['title'] = "Themes";
-				$lang_string['instructions'] = "Use the drop-down menu to select a different theme.";
+				$lang_string['title'] = "Thèmes";
+				$lang_string['instructions'] = "Employez le menu drop-down pour choisir un thème différent.";
 				// Themes
-				$lang_string['choose_theme'] = "Themes:";
+				$lang_string['choose_theme'] = "Thèmes:";
 				// Buttons
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				break;
@@ -490,34 +491,36 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Upload d'image impossible. Voici quelques informations : <br /><br />Le Serveur a reporté :<br />";
 				break;
 			case 'search': // <-- New 0.3.7
-				$lang_string['title'] = "Search Results";
-				$lang_string['instructions'] = "Search results for <b>%string</b>:";
-				$lang_string['not_found'] = "No results found";
+				$lang_string['title'] = "Résultats De Recherche";
+				$lang_string['instructions'] = "Résultats de recherche pour <b>%string</b>:";
+				$lang_string['not_found'] = "Résultat n'a pas trouvé";
 				break;
 			case 'contact': // <-- New 0.3.8
-				$lang_string['title'] = "Contact Me";
-				$lang_string['instructions'] = "Fill in the form:";
-				$lang_string['form_error'] = "Please complete the Subject and Comment fields.";
-				$lang_string['name'] = "Name:";
+				$lang_string['title'] = "Contactez-Moi";
+				$lang_string['instructions'] = "Complétez la forme :";
+				$lang_string['form_error'] = "Veuillez accomplir les champs de sujet et de commentaire.";
+				$lang_string['name'] = "Nom:";
 				$lang_string['email'] = "Email:";
-				$lang_string['subject'] = "Subject:";
-				$lang_string['comment'] = "Comment:";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
-				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
+				$lang_string['subject'] = "Sujet:";
+				$lang_string['comment'] = "Commentaire:";
+				$lang_string['submit_btn'] = "&nbsp;Soumettez&nbsp;";
+				$lang_string['success'] = "<h2>Succès !</h2>Votre message a été envoyé.<p />";
+				$lang_string['contact_capcha'] = "Anti-Spam: Entrez <b>%s</b>"; // 0.4.2
+				$lang_string['failure'] = "<h2>Erreur !</h2>Votre message n'a pas été envoyé. Très probablement anti le Spam n'a pas été écrit correctement.<p />";
 				break;
 			case 'stats':
-				$lang_string['title'] = "<h2>Statistics</h2>";
-				$lang_string['general'] = "<h3>General</h3>";
-				$lang_string['entry_info'] = "<b>%s</b> entries using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['comment_info'] = "<b>%s</b> comments using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['trackback_info'] = "<b>%s</b> trackbacks stored in <b>%s</b> bytes";
-				$lang_string['static_info'] = "<b>%s</b> static pages using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "<h3>10 Most viewed entries</h3>";
-				$lang_string['most_commented_entries'] = "<h3>10 Most commented entries</h3>";
-				$lang_string['most_trackbacked_entries'] = "<h3>10 Most trackbacked entries</h3>";
-				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
-				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				$lang_string['title'] = "<h2>Statistiques</h2>";
+				$lang_string['general'] = "<h3>Généralités</h3>";
+				$lang_string['entry_info'] = "<b>%s</b> employer d'entrées <b>%s</b> mots stockés dedans <b>%s</b> bytes";
+				$lang_string['comment_info'] = "<b>%s</b> employer de commentaires <b>%s</b> mots stockés dedans <b>%s</b> bytes";
+				$lang_string['trackback_info'] = "<b>%s</b> trackbacks stockés dedans <b>%s</b> bytes";
+				$lang_string['static_info'] = "<b>%s</b> employer statique de pages <b>%s</b> mots stockés dedans <b>%s</b> bytes";
+				$lang_string['most_viewed_entries'] = "<h3>10 entrées les plus vues</h3>";
+				$lang_string['most_commented_entries'] = "<h3>10 entrées les plus commentées</h3>";
+				$lang_string['most_trackbacked_entries'] = "<h3>10 trackbacked plus des entrées</h3>";
+				$lang_string['vote_info'] = "<b>%s</b> voix stockées dedans <b>%s</b> bytes"; // 0.4.1
+				$lang_string["most_voted_entries"] = "<h3>10 entrées les plus votées</h3>"; // 0.4.1
+				$lang_string["most_rated_entries"] = "<h3>La plupart des entrées évaluées</h3>"; // 0.4.1
 				break;
 			default:
 				break;

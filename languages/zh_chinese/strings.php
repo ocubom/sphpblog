@@ -502,6 +502,8 @@
 				$lang_string['comment'] = "內容:";
 				$lang_string['submit_btn'] = "&nbsp;發送&nbsp;";
 				$lang_string['success'] = "<h2>發送成功!</h2>你的訊息已經寄出摟.<p />";
+				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
+				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
 				break;	
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistics</h2>";

@@ -496,6 +496,8 @@
 				$lang_string['comment'] = "Commento:";
 				$lang_string['submit_btn'] = "&nbsp;Invia&nbsp;";
 				$lang_string['success'] = "<h2>Ok!</h2>Messaggio inviato correttamente!<p />";
+				$lang_string['failure'] = "<h2>Errore!</h2>Il vostro messaggio non è stato trasmesso. Anti lo Spam non è stato inserito molto probabilmente correttamente.<p />";
+				$lang_string['contact_capcha'] = "Anti-Spam: Entri <b>%s</b>"; // 0.4.2
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistiche</h2>";
