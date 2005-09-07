@@ -18,14 +18,16 @@
 		$uploaddir = 'images/';
 		$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name']);
 		
-		$no = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp", "cgi", "html", "htm" );
-		// As proposed by Joel Alexandre Sept 3, 2005
-		for( $i = 0; $i < 10; $i++ ) {
-  			if( strpos( $uploadfile, $no[$i] ) >= 0 ) {
-    			echo "That filetype is not allowed";
-    			exit;
-   			}
- 		}
+		// New code for limiting the files that can be uploaded - provided by joel alexandre
+		// Sept 7, 2005
+		$upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
+  		$extension = strtolower(substr(strrchr($uploadfile, "."), 1));
+   		foreach ($upload_denied_extentions AS $denied_extention) {
+       		if($denied_extention == $extension) {
+           		echo('That filetype is not allowed');
+           		exit;
+       		}    
+		}		
 
 		if ( move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile ) ) {
 			$ok = true;
