@@ -85,7 +85,7 @@
 			}
 			else
 			{
-				$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+7)%7, 1990 ) ) ) . '</td>';
+				$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+8)%7, 1990 ) ) ) . '</td>';
 			}
 		}
 		
