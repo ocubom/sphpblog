@@ -19,10 +19,13 @@
 			$ok = mkdir('images', 0777 );
 			umask($oldumask);
 		}
-			
+		
+		// Changed this to only display Image files. This function
+		// is used in comment.php if the blog owner has img tag
+		// enabled for comments. (09/08/05 - alex)
 		$dir = 'images/';
-		// $contents = sb_folder_listing( $dir, array( '.jpg', '.gif', '.png' ) );
-		$contents = sb_folder_listing( $dir, array() );
+		$contents = sb_folder_listing( $dir, array( '.jpg', '.jpeg', '.gif', '.png' ) );
+		// $contents = sb_folder_listing( $dir, array() );
 		
 		$str = NULL;
 		if ($contents) {
@@ -39,9 +42,12 @@
 		//
 		global $theme_vars;
 		
+		// Changed this to only display Image files. This function
+		// is used in comment.php if the blog owner has img tag
+		// enabled for comments. (09/08/05 - alex)
 		$dir = 'images/';
-		// $contents = sb_folder_listing( $dir, array( '.jpg', '.gif', '.png' ) );
-		$contents = sb_folder_listing( $dir, array() );
+		$contents = sb_folder_listing( $dir, array( '.jpg', '.jpeg', '.gif', '.png' ) );
+		// $contents = sb_folder_listing( $dir, array() );
 		
 		$str = NULL;
 		if ($contents) {
