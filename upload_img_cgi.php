@@ -18,8 +18,8 @@
 		$uploaddir = 'images/';
 		$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name']);
 		
-		// New code for limiting the files that can be uploaded - provided by joel alexandre
-		// Sept 7, 2005
+		// New code for limiting the files that can be uploaded - provided by ReZEN (rezen@xorcrew.net)
+		// before Sept 7, 2005 (...are ya happy now ReZEN? -- alex)
 		$upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
   		$extension = strtolower(substr(strrchr($uploadfile, "."), 1));
    		foreach ($upload_denied_extentions AS $denied_extention) {
