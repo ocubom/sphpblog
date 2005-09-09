@@ -38,7 +38,7 @@
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in;
-		$client_ip_local = GetIP();
+		$client_ip_local = getIP();
 		?>
 		
 		<h2><?php echo( $lang_string['title'] ); ?></h2>

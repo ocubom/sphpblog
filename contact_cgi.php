@@ -6,7 +6,7 @@
 		session_start();
 	}
 	
-	$client_ip_local = GetIP();
+	$client_ip_local = getIP();
 	
 	read_config();
 	
