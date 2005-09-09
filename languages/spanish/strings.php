@@ -2,8 +2,11 @@
 	// Spanish Language File
 	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com
 	//
-	// Simple PHP Version: 0.3.7
-	// Language Version:   0.3.7.1
+	// Reviewed by Ridgarou, ridgarou <at> gmail <dot> com
+	//
+	// Simple PHP Version: 0.4.5
+	// Language Version:   0.4.5.1
+
 	
 	
 	function sb_language( $page ) {
@@ -17,6 +20,7 @@
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		
+
 		setlocale( LC_TIME, $lang_string['locale'] );
 		
 		// Some Global Strings
@@ -43,10 +47,9 @@
 		$lang_string['menu_most_recent'] = "Últimos Comentarios";
 		$lang_string['menu_most_recent_entries'] = "Últimos Artículos";
 		$lang_string['menu_most_recent_trackback'] = "Últimos Trackbacks"; // <-- New 0.3.8
-		// DATOH_ADD
+
 		$lang_string['menu_add_block'] = "Bloques";
-		// DATOH_END
-		
+
 		// Other
 		$lang_string['home'] = 'Página Principal';
 		$lang_string['nav_next'] = 'Siguiente'; // <-- New 0.3.7
@@ -66,7 +69,9 @@
 		$lang_string['sb_permalink'] = 'enlace permanente'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
 		
-		$lang_string['sb_add_comment_btn'] = 'agregar comentario';
+
+		$lang_string['sb_add_comment_btn'] = 'añadir comentario';
+
 		$lang_string['sb_comment_btn_number_first'] = true;
 		$lang_string['sb_comment_btn'] = 'comentario';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
@@ -79,9 +84,9 @@
 		$lang_string['sb_view_counter_plural_pre'] = '';
 		$lang_string['sb_view_counter_plural_post'] = ' visualizaciones';
 		
-		$lang_string['sb_add_link_btn'] = 'Agregar Enlaces';
+		$lang_string['sb_add_link_btn'] = 'Añadir Enlaces';
 		
-		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';
+		$lang_string['sb_rate_entry_btn'] = 'Haga clic para valorar la entrada';
 		
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
@@ -95,30 +100,34 @@
 				$lang_string['label_entry'] = "Texto:";
 				$lang_string['btn_preview'] = "&nbsp;Previsualizar&nbsp;";
 				$lang_string['btn_post'] = "&nbsp;Publicar&nbsp;";
-				$lang_string['file_name'] = "Static File Name: (no spaces or file extensions)"; // <-- New 0.3.8
+				$lang_string['file_name'] = "Nombre de fichero estático: (sin espacios ni extensiones de fichero)"; // <-- New 0.3.8
 				// Javascript Strings
-				$lang_string['insert_styles'] = "Ingrese el texto";
-				$lang_string['insert_image'] = "Ingrese la dirección URL para la imagen";
-				$lang_string['insert_url1'] = "Ingrese el texto a ser mostrado con el enlace (opcional)";
-				$lang_string['insert_url2'] = "Ingrese la dirección web completa para el enlace";
+				$lang_string['insert_styles'] = "Introduzca el texto";
+				$lang_string['insert_image'] = "Introduzca la dirección URL para la imagen";
+				$lang_string['insert_url1'] = "Introduzca el texto a ser mostrado con el enlace (opcional)";
+				$lang_string['insert_url2'] = "Introduzca la dirección web completa para el enlace";
 				$lang_string['insert_url3'] = "Abrir URL en una nueva ventana (Opcional):"; // <-- New 0.3.6
-				$lang_string['form_error'] = "Por favor complete los campos Título y Texto.";
+				$lang_string['form_error'] = "Por favor rellene los campos Título y Texto.";
 				// More Javascript Strings <-- New 0.3.6
 				$lang_string['insert_image_optional'] = 'Opcional:';
 				$lang_string['insert_image_width'] = 'Ancho (Opcional):';
 				$lang_string['insert_image_height'] = 'Alto (Opcional):';
 				$lang_string['insert_image_popup'] = 'Ver en una ventana emergente al hacer clic (Opcional):';
 				$lang_string['insert_image_float'] = 'Flotar (Opcional):';
+				$lang_string['insert_image_align'] = 'Alineación horizontal (Opcional):';	//0.4.4
+				$lang_string['insert_image_valign'] = 'Alineación vertical (Opcional):';	//0.4.4
+				$lang_string['insert_image_alt'] = 'Texto alternativo (Opcional):';	//0.4.4
+
 		}
 	
 		switch ($page) {
 			case 'add':
 				// Add Entry
-				$lang_string['title'] = "Agregar Entrada";
+				$lang_string['title'] = "Añadir Entrada";
 				$lang_string['instructions'] = "Para colocar una entrada llene los campos que se encuentran debajo, puede previsualizar la entrada antes de publicarla.";
 				$lang_string['title_ad'] = "Confirm Trackback Pings"; // <-- New 0.3.8
-				$lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all."; // <-- New 0.3.8
-				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
+				$lang_string['instructions_ad'] = "Éstos son los Auto-Discovered URIs sobre los que hará ping. Si no quiere hacer ping a un cierto URI, deschequee. Entonces pulse 'OK' para hacer ping sobre las URIs chequeadas o pulse 'Cancel' para no realizar ningun ping."; // <-- New 0.3.8
+				$lang_string['label_tb_ping'] = "Trackback ping(s) a enviar (separados por comas)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Previsualizar / Editar entrada";
@@ -126,9 +135,9 @@
 				$lang_string['title_update'] = "Actualizar entrada";
 				$lang_string['instructions_update'] = "Puede cambiar su entrada utilizando el formulario que se encuentra debajo.";
 				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;"; // <-- New 0.3.8
-				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;"; // <-- New 0.3.8
+				$lang_string['cancel_btn'] = "&nbsp;Cancelar&nbsp;"; // <-- New 0.3.8
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La entrada no pudo ser guardada. Se encontró un problema mientras se almacenaba la entrada.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La entrada no pudo ser guardada. Se encontró un problema mientras se almacenaba la entrada.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'add_static':
 				// Add Entry
@@ -141,7 +150,7 @@
 				$lang_string['instructions_update'] = "Puedes cambiar la entrada usando el formulario que se encuentra debajo. Presiona 'Previsualizar' o 'Publicar' cuando estes listo.";
 				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";	
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La entrada no pudo ser guardada. Se encontró un problema mientras se almacenaba la entrada.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La entrada no pudo ser guardada. Se encontró un problema mientras se almacenaba la entrada.<br /><br />Respuesta del servidor:<br />";
 				break;
 			// DATOH_ADD
 			case 'add_block':
@@ -230,7 +239,7 @@
 				$lang_string['save_btn'] = "&nbsp;Save&nbsp;";
 				$lang_string['submit_btn'] = "&nbsp;Visitar&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'comments':
 				// Comments
@@ -256,7 +265,7 @@
 				$lang_string['ok_btn'] = "&nbsp;Borrar&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Cancelar&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>No se pudo borrar la entrada.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>No se pudo borrar la entrada.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'delete_static':
 				$lang_string['title'] = "Borrar Página Estática";
@@ -264,7 +273,7 @@
 				$lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>No se pudo borrar la entrada.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>No se pudo borrar la entrada.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'image_list':
 				$lang_string['title'] = "Lista de imágenes";
@@ -278,7 +287,7 @@
 				$lang_string['info_copyright'] = "Derechos: (Información de copyright o un enlace a la página que la contiene.)";
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				$lang_string['form_error'] = "Por favor complete los campos Título y Autor.";
 				break;
 			case 'index':
@@ -288,7 +297,7 @@
 				// Index
 				break;
 			case 'rating': // New 0.3.8
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				break;			
 			case 'login':
 				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
@@ -313,7 +322,7 @@
 				$lang_string['title'] = "";
 				$lang_string['instructions'] = "";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'set_login':
 				$lang_string['title'] = "Cambiar Usuario y Contraseña";
@@ -324,7 +333,7 @@
 				// Success
 				$lang_string['success'] = "<h2>¡Listo!</h2>Su nuevo nombre de usuario y/o contraseña esta activo desde ahora.<p />";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>Información no guardada. Hubo un error mientras se guardaba su nombre de usuario y contraseña .<br /><br />El servidor reportó:<br />";
+				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>Información no guardada. Hubo un error mientras se guardaba su nombre de usuario y contraseña .<br /><br />Respuesta del servidor:<br />";
 				$lang_string['form_error'] = "Por favor complete los campos Usuario y Contraseña.";
 				break;
 			case 'install00':
@@ -372,7 +381,7 @@
 				$lang_string['success'] = "<h2>¡Felicitaciones!</h2>Esta ahora conectado. Haga clic debajo para visitar la página de configuración y cambiar las opciones de su bitácora.<p />";
 				$lang_string['btn_setup'] = "[ Configuración ]";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>Información no guardada. Hubo un error mientras se guardaba su nombre de usuario y contraseña .<br /><br />El servidor reportó:<br />";
+				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>Información no guardada. Hubo un error mientras se guardaba su nombre de usuario y contraseña .<br /><br />Respuesta del servidor:<br />";
 				$lang_string['form_error'] = "Por favor, rellene los campos Usuario y Contraseña";
 				break;
 			case 'install04':
@@ -440,7 +449,7 @@
 				$lang_string['blog_enable_gzip_output'] = "Activar compresión GZIP para la salida HTTP"; // <-- New 0.3.7
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				$lang_string['form_error'] = "Por favor complete los campos Título y Autor.";
 				$lang_string['label_entry_order'] = "Orden de Artículos:";
 				$lang_string['select_new_to_old'] = "Primero los Nuevos";
@@ -498,7 +507,7 @@
 				// Buttons
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'themes':
 				$lang_string['title'] = "Temas";
@@ -508,7 +517,7 @@
 				// Buttons
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'upload_img':
 				$lang_string['title'] = "Subir imagen";
@@ -516,7 +525,7 @@
 				$lang_string['select_file'] = "Seleccionar archivo:";
 				$lang_string['upload_btn'] = "Subir";
 				// Error Response
-				$lang_string['error'] = "<h2>¡Ups!</h2>Fue imposible subir la imagen. Aquí hay mas información:<br /><br />El servidor reportó:<br />";
+				$lang_string['error'] = "<h2>¡Ups!</h2>Fue imposible subir la imagen. Aquí hay mas información:<br /><br />Respuesta del servidor:<br />";
 				break;
 			case 'search':
 				$lang_string['title'] = "Resultados de la búsqueda";
