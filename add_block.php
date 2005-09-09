@@ -1,4 +1,13 @@
 <?php 
+	// -------------------------------
+	// Simple PHP Blog Add Blocks File
+	// -------------------------------
+	//
+	// Name: Modern Theme v2
+	// Author: Alexander Palmo
+	// Version: 0.4.5b
+	// Revised by Ridgarou
+
 	require('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
