@@ -13,19 +13,27 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'contact' );
 	
-	$subject="Contact sent through " . $blog_config[ 'blog_title' ];
-	$body="<b>Name:</b> " . $_POST[ 'name' ] . "<br />\n";
-	$body=$body . "<b>IP Address:</b> " . $client_ip_local . "(" . gethostbyaddr($client_ip_local) .")<br />\n";
-	$body=$body . "<b>Email:</b> " . $_POST[ 'email' ] . "<br />\n";
-	$body=$body . "<b>Subject:</b> " . $_POST[ 'subject' ] . "<br />\n<br />\n";
-	$body=$body . "<b>Comment:</b><br />\n";
+	if (!isset($_SESSION['cookies_enabled'])) {
+		header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage-nocookies.php');
+		}
+	
+	$subject=$lang_string['contactsent'] . $blog_config[ 'blog_title' ];
+	$body='<b>' . $lang_string[ 'name' ] . '</b> ' . $_POST[ 'name' ] . '<br />';
+	$body=$body . '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . '(' . gethostbyaddr($client_ip_local) .')<br />';
+	$body=$body . '<b>' . $lang_string[ 'email' ] . '</b> ' . $_POST[ 'email' ] . '<br />';
+	$body=$body . '<b>' . $lang_string[ 'subject' ] . '</b> ' . $_POST[ 'subject' ] . '<br /><br />';
+	$body=$body . '<b>' . $lang_string[ 'comment' ] . '</b><br />';
 	
 	// Replace hard returns with '<br />' tags.
 	$body=$body . str_replace( chr(10), '<br />', $_POST[ 'comment' ] );
-
+	
 	$ok=false;
-	if ( $_POST[ 'capcha' ] == $_SESSION[ 'capcha_contact' ] ) {
+	if ($_POST[ 'capcha_contact' ] == $_SESSION[ 'capcha_contact' ] AND $_SESSION[ 'capcha_contact' ] != '' ) {
 		$ok=sb_mail( $_POST[ 'email' ], $blog_config[ 'blog_email' ], $subject, $body, false );
+	} else {
+		$_SESSION['errornum'] = '403.8';
+		$_SESSION['errortype'] = 'error_emailnotsentcapcha';
+		header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
 	}
 	@session_unregister( 'capcha_contact' );
 ?>
@@ -41,14 +49,15 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $ok;
+		global $lang_string, $user_colors, $ok;	
 		
 		if ( $ok == true ) { 
 			echo( $lang_string[ 'success' ] );
 		} else {
-			echo( $lang_string[ 'error' ] );
+			$_SESSION['errornum'] = '403.8';
+			$_SESSION['errortype'] = 'error_emailnotsent';
+			header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
 		}
-		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}
 ?>
