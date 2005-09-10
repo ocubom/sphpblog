@@ -1,8 +1,11 @@
 <?php
+
 	// Captcha image system for Simple PHP Blog
+
 	if ( !session_id() ) {
 		session_start();
 	}
+
 	if ( !isset( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ) {
 		exit;
 	}
@@ -18,7 +21,6 @@
 		$color[ 'r' ] = 0.299 * $rgb[ 'r' ] + 0.587 * $rgb[ 'g' ] + 0.114 * $rgb[ 'b' ];
 		$color[ 'g' ] = 0.299 * $rgb[ 'r' ] + 0.587 * $rgb[ 'g' ] + 0.114 * $rgb[ 'b' ];
 		$color[ 'b' ] = 0.299 * $rgb[ 'r' ] + 0.587 * $rgb[ 'g' ] + 0.114 * $rgb[ 'b' ];
-
 		return $color;
 	}
 
@@ -26,7 +28,6 @@
 		$color[ 'r' ] = 255 - $rgb[ 'r' ];
 		$color[ 'g' ] = 255 - $rgb[ 'g' ];
 		$color[ 'b' ] = 255 - $rgb[ 'b' ];
-
 		return $color;
 	}
 
@@ -34,7 +35,6 @@
 		$color[ 'r' ] = rand( $min, $max );
 		$color[ 'g' ] = rand( $min, $max );
 		$color[ 'b' ] = rand( $min, $max );
-
 		return $color;
 	}
 
@@ -42,7 +42,6 @@
 		$color[ 'r' ] = $r;
 		$color[ 'g' ] = $g;
 		$color[ 'b' ] = $b;
-
 		return $color;
 	}
 
@@ -50,7 +49,6 @@
 		$color[ 'r' ] = ( $lhs[ 'r' ] + $rhs[ 'r' ] ) >> 1;
 		$color[ 'g' ] = ( $lhs[ 'g' ] + $rhs[ 'g' ] ) >> 1;
 		$color[ 'b' ] = ( $lhs[ 'b' ] + $rhs[ 'b' ] ) >> 1;
-
 		return $color;
 	}
 
@@ -59,6 +57,7 @@
 
 	// Creates a simple image
 	$image = imagecreate($CONFIG[ 'width' ], $CONFIG[ 'height' ]);
+
 	// Create random colors
 	$rgb = array();
 	$rgb[ 'background' ] = rgb_rand( 0, 255 );
@@ -94,6 +93,7 @@
 	// Center the real captcha text
 	$x  = ( $CONFIG[ 'width' ] - ( ImageFontWidth($CONFIG[ 'font_id' ] ) * strlen($text) ) ) >> 1;
 	$y  = ( $CONFIG[ 'height' ] - ImageFontHeight($CONFIG[ 'font_id' ] ) ) >> 1;
+	
 	// Write the captcha text with shadow (improves the human vision in some cases)
 	imagestring( $image, $CONFIG[ 'font_id' ], $x + 1, $y + 1, $text, $color[ 'shadow' ] );
 	imagestring( $image, $CONFIG[ 'font_id' ], $x, $y, $text, $color[ 'foreground' ] );
@@ -101,11 +101,10 @@
 	// Returns the image
 	header( 'Content-type: image/png' );
 	imagepng( $image );
-
+	
 	// Free resources
 	foreach($color as $name => $value) {
 		imagecolordeallocate( $image, $value );
 	} // foreach
 	imagedestroy( $image );
 ?> 
-
