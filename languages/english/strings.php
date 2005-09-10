@@ -529,17 +529,19 @@
 				$lang_string['not_found'] = "No results found";
 				break;
 			case 'contact':
-				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['contact_capcha'] = "Anti-Spam: Enter "; // 0.4.2
 				$lang_string['title'] = "Contact Me";
 				$lang_string['instructions'] = "Fill in the form:";
 				$lang_string['form_error'] = "Please complete the Subject and Comment fields.";
 				$lang_string['name'] = "Name:";
 				$lang_string['email'] = "Email:";
+				$lang_string['IPAddress'] = "IP Address:";
 				$lang_string['subject'] = "Subject:";
 				$lang_string['comment'] = "Comment:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
+				$lang_string['contactsent'] = "Contact sent through: ";
 				break;
 			case 'stats':
 				$lang_string["title"] = "<h2>Statistics</h2>";
@@ -554,6 +556,21 @@
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
 				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
 				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				break;
+			case 'errorpage-nocookies':
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			default:
 				break;
