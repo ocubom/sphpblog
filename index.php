@@ -2,7 +2,10 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
-	
+	if ( !session_id() ) {
+		session_start();
+	}
+	$_SESSION['cookies_enabled'] = '1';
 	read_config();
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
