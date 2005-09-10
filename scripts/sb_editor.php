@@ -3,7 +3,7 @@
 		// Insert Style Tags
 		function ins_styles(theform,sb_code,prompt_text,tag_prompt) {
 			// insert [x]yyy[/x] style markup
-			inserttext = prompt( '<?php echo( $lang_string['insert_styles'] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", prompt_text);
+			inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", prompt_text);
 			if ( (inserttext != null) ) {
 				theform.value += " ["+sb_code+"]"+inserttext+"[/"+sb_code+"]";
 				theform.focus();
@@ -26,7 +26,7 @@
 		// Insert Image Tag
 		function ins_image(theform,prompt_text) {
 			// insert [x]yyy[/x] style markup
-			inserttext = prompt('<?php echo( $lang_string['insert_image'] ); ?>'+"\n[img="+prompt_text+"xxx]",prompt_text);
+			inserttext = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+"\n[img="+prompt_text+"xxx]",prompt_text);
 			if ((inserttext != null) && (inserttext != "")) {
 				theform.value += "[img="+inserttext+"] ";
 			}
@@ -35,13 +35,13 @@
 		
 		// Insert Image Tag
 		function ins_image_v2(theform) {
-			image_url = prompt('<?php echo( $lang_string['insert_image'] ); ?>'+'\n[img=http://xxx] or [img=xxx]\n\n<?php echo( $lang_string['insert_image_optional'] ); ?>\nwidth=xxx height=xxx popup=true/false float=left/right','http://');
+			image_url = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+'\n[img=http://xxx] or [img=xxx]\n\n<?php echo( $lang_string[ 'insert_image_optional' ] ); ?>\nwidth=xxx height=xxx popup=true/false float=left/right','http://');
 			if ((image_url != null) && (image_url != '')) {
 				// Optional
-				image_width = prompt('<?php echo( $lang_string['insert_image_width'] ); ?>'+'\n[img=xxx width=xxx]','');
-				image_height = prompt('<?php echo( $lang_string['insert_image_height'] ); ?>'+'\n[img=xxx height=xxx]','');
-				image_popup = prompt('<?php echo( $lang_string['insert_image_popup'] ); ?>'+'\n[img=xxx popup=true/false]', '');
-				image_float = prompt('<?php echo( $lang_string['insert_image_float'] ); ?>'+'\n[img=xxx float=left/right]','');
+				image_width = prompt('<?php echo( $lang_string[ 'insert_image_width' ] ); ?>'+'\n[img=xxx width=xxx]','');
+				image_height = prompt('<?php echo( $lang_string[ 'insert_image_height' ] ); ?>'+'\n[img=xxx height=xxx]','');
+				image_popup = prompt('<?php echo( $lang_string[ 'insert_image_popup' ] ); ?>'+'\n[img=xxx popup=true/false]', '');
+				image_float = prompt('<?php echo( $lang_string[ 'insert_image_float' ] ); ?>'+'\n[img=xxx float=left/right]','');
 				
 				str = '[img='+image_url;
 				if ((image_width != null) && (image_width != '')) {
@@ -81,13 +81,13 @@
 		// Insert URL Tag
 		function ins_url(theform) {
 			// inserts named url link - [url=mylink new=true]text[/url]
-			link_url = prompt('<?php echo( $lang_string['insert_url2'] ); ?>'+'\n[url=xxx][/url]',"http://");
+			link_url = prompt('<?php echo( $lang_string[ 'insert_url2' ] ); ?>'+'\n[url=xxx][/url]',"http://");
 			if ( (link_url != null) ) {
-				link_text = prompt('<?php echo( $lang_string['insert_url1'] ); ?>'+'\n[url=]xxx[/url]',"");
+				link_text = prompt('<?php echo( $lang_string[ 'insert_url1' ] ); ?>'+'\n[url=]xxx[/url]',"");
 				if ( (link_text == null) || (link_text == '') ) {
 					link_text = link_url;
 				}
-				link_target = prompt('<?php echo( $lang_string['insert_url3'] ); ?>'+'\n[url= new=true/false][/url]','');
+				link_target = prompt('<?php echo( $lang_string[ 'insert_url3' ] ); ?>'+'\n[url= new=true/false][/url]','');
 				str = '[url='+link_url;
 				if ((link_target != null) && (link_target != '')) {
 					link_target.toLowerCase;
@@ -106,9 +106,9 @@
 		// Insert URL Tag
 		function ins_url_no_options(theform) {
 			// inserts named url link - [url=mylink new=true]text[/url]
-			link_url = prompt('<?php echo( $lang_string['insert_url2'] ); ?>'+'\n[url=xxx][/url]',"http://");
+			link_url = prompt('<?php echo( $lang_string[ 'insert_url2' ] ); ?>'+'\n[url=xxx][/url]',"http://");
 			if ( (link_url != null) ) {
-				link_text = prompt('<?php echo( $lang_string['insert_url1'] ); ?>'+'\n[url=]xxx[/url]',"");
+				link_text = prompt('<?php echo( $lang_string[ 'insert_url1' ] ); ?>'+'\n[url=]xxx[/url]',"");
 				if ( (link_text == null) || (link_text == '') ) {
 					link_text = link_url;
 				}
@@ -122,7 +122,7 @@
 		// Validate the Form
 		function validate(theform) {
 			if (theform.blog_text.value=="" || theform.blog_subject.value=="") {
-				alert("<?php echo( $lang_string['form_error'] ); ?>");
+				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
 				return false;
 			} else {
 				return true;
@@ -132,7 +132,7 @@
 		// Validate the Form
 		function validate_static(theform) {
 			if (theform.blog_text.value=="" || theform.blog_subject.value=="" || theform.file_name.value=="" ) {
-				alert("<?php echo( $lang_string['form_error'] ); ?>");
+				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
 				return false;
 			} else {
 				return true;

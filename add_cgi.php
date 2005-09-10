@@ -83,7 +83,7 @@
 			
 			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
 			
-			<form action='add_cgi.php' method="POST">
+			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_cgi.php' method="POST">
 			
    			<?php
    	         if ( is_array( $ad_array ) ) {

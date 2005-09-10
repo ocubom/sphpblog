@@ -1,5 +1,5 @@
 <?php 
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, false );
 	
@@ -10,17 +10,17 @@
 		$blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
 	}
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install05' );
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
-	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	<!--
 	function validate(theform) {
@@ -46,7 +46,7 @@
 		
 		<hr noshade size="1" color=#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>>
 		
-		<form action="install06.php?blog_language=<?php echo( $blog_config[ 'blog_language' ] ); ?>" method="POST" onSubmit="return validate(this)">
+		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="install06.php?blog_language=<?php echo( $blog_config[ 'blog_language' ] ); ?>" method="POST" onSubmit="return validate(this)">
 			<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />
 			<input type="text" name="user" autocomplete="OFF" size="40"><p />
 			

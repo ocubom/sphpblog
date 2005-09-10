@@ -20,8 +20,8 @@
 		// This makes entries safe for saving to a file (since the data
 		// format is pipe delimited.)
 		global $lang_string;
-		$str = str_replace( '|', ':', $str );
-		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string['php_charset'] );
+		$str = str_replace( '|', '&#124;', $str );
+		$str = @htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 
 		return ( $str );
 	}
@@ -34,6 +34,7 @@
 		//
 		// ( Could use str_ireplace() but it's only supported in PHP 5. )
 		global $blog_config;
+		
 		
 		if ( $comment_mode ) {
 			$tag_arr = array();
@@ -162,6 +163,7 @@
 			}
 		}
 		
+		$str = str_replace( '&amp;#124;', '|', $str );
 		return ( $str );
 	}
 	
@@ -231,7 +233,7 @@
 				// Also, decode HTML entities between the tags.
 				$temp_str = substr( $str, 0, $str_offset );
 				if ( $strip_tags === false ) {
-					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string['php_charset'] );
+					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 				}
 				$str_out = $str_out . $temp_str;
 				
@@ -435,7 +437,7 @@
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
-						$max_image_width = $theme_vars['max_image_width'];
+						$max_image_width = $theme_vars[ 'max_image_width' ];
 						
 						if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
 								$width = $attrib_width;
@@ -524,4 +526,18 @@
 		
 		return ( $str );
 	}
+	
+	function sb_parse_url ( $text )
+	{
+	    // Con espacios 
+	    $text = eregi_replace("([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=\\2]\\2[/url]", $text); //http
+	    $text = eregi_replace("([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=http://\\2]\\2[/url]", $text); // www.
+	    $text = eregi_replace("([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
+	    // Al principio de una cadena
+	    $text = eregi_replace("^((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=\\1]\\1[/url]", $text); //http
+	    $text = eregi_replace("^(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=http://\\1]\\1[/url]", $text); // www
+	    $text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","[url=mailto:\\1]\\1[/url]", $text); // mail
+	    return ( $text );
+	}
+
 ?>

@@ -60,7 +60,7 @@
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
-						$max_image_width = $theme_vars['max_image_width'];
+						$max_image_width = $theme_vars[ 'max_image_width' ];
 						if ( $width > $max_image_width ) {
 							$height_resized = round( $height * ( $max_image_width / $width ) );
 							$width_resized = $max_image_width;
@@ -69,7 +69,7 @@
 							$str = $str . '<option label="'.$contents[$i].' - '.$width.' x '.$height.'" value="[img='.$dir.$contents[$i].' popup=false]">'.$contents[$i].'</option>';
 						}
 					} else {
-						$str = $str . '<option label="'.$contents[$i].'" value="[img='.$dir.$contents[$i].']">'.$contents[$i].'</option>';
+						$str = $str . '<option label="'.$contents[$i].'" value="[img='.$dir.$contents[$i].' ]">'.$contents[$i].'</option>';
 					}
 				}
 				$str = $str . '</select>';

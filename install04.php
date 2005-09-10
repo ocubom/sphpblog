@@ -1,5 +1,5 @@
 <?php 
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
@@ -9,22 +9,22 @@
 	read_config();
 	
 	global $blog_config;
-	if ( isset( $_GET['blog_language'] ) ) {	
+	if ( array_key_exists( 'blog_language', $_GET ) ) {	
 		$blog_config[ 'blog_language' ] = $_GET['blog_language'];
 	}
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install04' );
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
-	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string['title'] ); ?></title>
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
 	function page_content() {
@@ -34,8 +34,8 @@
 		$hashedPass = crypt( stripslashes( $_POST['pass'] ) );
 		?>
 		
-		<h2><?php echo( $lang_string['title'] ); ?></h2>
-		<?php echo( $lang_string['instructions'] ); ?><p />
+		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<label for="phpfile"><?php echo( $lang_string['code'] ); ?></label><br />
 <textarea name="phpfile" rows="6" cols="40">

@@ -62,9 +62,9 @@
 		$save_data = array();
 		$save_data[ 'VERSION' ] = $sb_info[ 'version' ];
 		$save_data[ 'SUBJECT' ] = clean_post_text( $blog_subject );
-		$save_data[ 'CONTENT' ] = clean_post_text( $blog_text );
+		$save_data[ 'CONTENT' ] = sb_parse_url( clean_post_text( $blog_text ) );
 		if ( count( $blog_categories ) > 0 ) {
-			$save_data[ 'CATEGORIES' ] = implode( ",", $blog_categories );
+			$save_data[ 'CATEGORIES' ] = implode( ',', $blog_categories );
 		}
 		if ( $tb_ping !== '' ) {
 			$save_data[ 'TB_PING' ] = clean_post_text( $tb_ping );
@@ -84,7 +84,7 @@
 			$save_data[ 'DATE' ] = $oldEntryArray[ 'DATE' ];
 			$y = date('y', $save_data[ 'DATE' ] );
 			$m = date('m', $save_data[ 'DATE' ] );
-			$permalink = 'index.php?y='.$y.'&m='.$m.'&entry='.substr($updateFile,strrpos($updateFile,'/')+1);
+			$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry='.substr($updateFile,strrpos($updateFile,'/')+1);
 			
 			// Delete the old file
 			if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
@@ -145,7 +145,7 @@
 				$entryFile = $dir.$y.'/'.$m.'/'.'entry'.$stamp.'.txt';
 			}
 			
-			$permalink = 'index.php?y='.$y.'&m='.$m.'&entry=entry'.$stamp;
+			$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry=entry'.$stamp;
 		}
 		
 		// Implode the array
@@ -165,10 +165,9 @@
 			}
 			
 			// Trackback pings?
-   	   if ( $blog_config[ 'blog_trackback_enabled' ] ) {
-   	      trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
-   	   }
-   	   
+		   if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+			  trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
+		   }
 			return ( true );
 		} else {
 			// Error:

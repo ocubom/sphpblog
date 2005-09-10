@@ -18,8 +18,8 @@
 
 		// Support for PHP >= 4.1.0
 		// Check if the user has a client-side cookie.
-		if ( isset( $_COOKIE['my_id'] ) ) {
-			$my_id = $_COOKIE['my_id'];
+		if ( isset( $_COOKIE[ 'my_id' ] ) ) {
+			$my_id = $_COOKIE[ 'my_id' ];
 			
 			// Turn off URL SIDs.
 			// ini_set( 'session.use_trans_sid', '0' );
@@ -30,8 +30,8 @@
 			session_start ();
 			
 			// Check if they're logged in.
-			if ( isset( $_SESSION['logged_in'] ) && $_SESSION['logged_in'] == 'yes' ) {
-				if ( $_SESSION['site_path'] === dirname($_SERVER['PHP_SELF']) ) {
+			if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
+				if ( $_SESSION[ 'site_path' ] === dirname($_SERVER[ 'PHP_SELF' ]) ) {
 					return ( true );
 				}
 			}
@@ -52,7 +52,7 @@
 			$password = null;
 			
 			if ( $redirect_to_setup ) {
-				redirect_to_url( "install00.php" );
+				redirect_to_url( 'install00.php' );
 				
 				exit;
 			} else {
@@ -65,7 +65,7 @@
 		$password = null;
 		
 		if ( $redirect_to_login ) {
-			redirect_to_url( "index.php" );
+			redirect_to_url( 'index.php' );
 			
 			exit;
 		} else {
@@ -77,8 +77,8 @@
 		// Log Out
 		//
 		// Support for PHP >= 4.1.0
-		if ( isset( $_COOKIE['my_id'] ) ) {
-			$my_id = $_COOKIE['my_id'];
+		if ( isset( $_COOKIE[ 'my_id' ] ) ) {
+			$my_id = $_COOKIE[ 'my_id' ];
 			
 			// Turn off URL SIDs.
 			// ini_set( 'session.use_trans_sid', '0' );
@@ -87,8 +87,8 @@
 			session_set_cookie_params(time()+60*60*24*5);
 			session_id($my_id);
 			session_start();
-			session_unset($_SESSION['logged_in']);
-			session_unset($_SESSION['site_path']);
+			session_unset($_SESSION[ 'logged_in' ]);
+			session_unset($_SESSION[ 'site_path' ]);
 			session_destroy();
 		}
 	}
@@ -107,12 +107,12 @@
 		if ( $result ) {
 			// Start Session and Set Cookie
 			// ini_set( 'session.use_trans_sid', '0' );
-			session_set_cookie_params(time()+60*60*24*7);
+			session_set_cookie_params(time()+60*60*24*5);
 			@session_start();
 			
 			// Support for PHP >= 4.1.0
-			$_SESSION['logged_in'] = 'yes';
-			$_SESSION['site_path'] = dirname($_SERVER['PHP_SELF']);
+			$_SESSION[ 'logged_in' ] = 'yes';
+			$_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
 			setcookie('my_id',session_id(),time()+60*60*24*7);
 			
 			return ( true );
@@ -139,8 +139,8 @@
 			@session_start();
 			
 			// Support for PHP >= 4.1.0
-			$_SESSION['logged_in'] = 'yes';
-			$_SESSION['site_path'] = dirname($_SERVER['PHP_SELF']);
+			$_SESSION[ 'logged_in' ] = 'yes';
+			$_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
 			setcookie('my_id',session_id(),time()+60*60*24*7);
 			
 			return ( true );
@@ -170,8 +170,8 @@
 					@session_start();
 					
 					// Support for PHP >= 4.1.0
-					$_SESSION['logged_in'] = 'yes';
-					$_SESSION['site_path'] = dirname($_SERVER['PHP_SELF']);
+					$_SESSION[ 'logged_in' ] = 'yes';
+					$_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
 					setcookie('my_id',session_id(),time()+60*60*24*5);
 					
 					// Clear variables (why not...)
@@ -191,12 +191,12 @@
 	}
 	
 	function redirect_to_url( $relative_url = "index.php" ) {
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			header('Location: http://'.$_SERVER['HTTP_HOST'].'/'.$relative_url);
+			header('Location: http://'.$_SERVER[ 'HTTP_HOST' ].'/'.$relative_url);
 		} else {
 			// Hosted in sub-directory.
-			header('Location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/'.$relative_url);
+			header('Location: http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/'.$relative_url);
 		}
 		exit;
 	}

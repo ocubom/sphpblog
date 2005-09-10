@@ -16,7 +16,7 @@
 	{
 		// Contributed by: Javier Gutierrez, guti <at> ya <dot> com
 		//
-	  	if ( ( ini_get( 'zlib.output_compression' ) != '0' ) && ( ini_get("zlib.output_compression" ) != 'On' ) && ( extension_loaded('zlib') ) )
+	  	if ( ( ini_get( 'zlib.output_compression' ) != '0' ) && ( ini_get('zlib.output_compression' ) != 'On' ) && ( extension_loaded('zlib') ) )
 		{
 			ini_set( 'zlib.output_compression_level', 9);
 			ob_start( 'ob_gzhandler' );
@@ -334,7 +334,7 @@
 																						rename( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/'.$comment_filename, $dir.$year_dir.'/'.$month_dir.'/'.$entry_filename.'/'.$comment_filename);
 																						
 																						// Can we clean up the comments/ subdir?
-																						$file_array = sb_folder_listing( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/', array( ".txt", ".gz" ) );
+																						$file_array = sb_folder_listing( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/', array( '.txt', '.gz' ) );
 																						if ( count( $file_array ) == 0 ) {
 																							sb_delete_directory( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir );
 																						}
@@ -396,12 +396,12 @@
 																	if ( $trackbacks_dir_handle = @opendir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/' ) ) {
 																		while ( ( $trackback_filename = readdir( $trackbacks_dir_handle ) ) !== false ) {
 																			if ( ( is_file( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/'.$trackback_filename ) ) && ( strpos($trackback_filename, 'trackback') !== false ) ) {
-																				echo $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/'.$trackback_filename."<br />";
+																				echo $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/'.$trackback_filename.'<br />';
 																				sb_delete_file( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/'.$trackback_filename );
 																				$count++;
 																				
 																				// Can we clean up the trackbacks/ subdir?
-																				$file_array = sb_folder_listing( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/', array( ".txt", ".gz" ) );
+																				$file_array = sb_folder_listing( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/', array( '.txt', '.gz' ) );
 																				if ( count( $file_array ) == 0 ) {
 																					sb_delete_directory( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir );
 																				}

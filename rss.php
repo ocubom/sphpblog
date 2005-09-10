@@ -6,13 +6,13 @@
 	// RSS Version:   0.3.7b
 	
 	// Include Required Functions
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	
 	read_config();
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
 	// Output Page
-	generate_rss( @$_GET['n'] );
+	generate_rss( @$_GET[ 'n' ] );
 ?>

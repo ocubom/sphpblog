@@ -9,8 +9,17 @@
 	// ------------------------
 	// "Archive Menu" Functions
 	// ------------------------
+	
+	/**************************************************************************
+	MODIFICACIONES PARA LA GESTION DE LOS BLOQUES FIJOS DEL SPHPBLOG
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* Se ha modificado la funcion "read_blocks" para que diferencie entre los
+	  bloques por defecto (#) y los definidos por el usuario, y en el caso de
+	  los primeros llame a la funcion correspondiente. (Lineas 419 a 427)
+	**************************************************************************/
+	
 	function read_menus_calendar ( $m, $y, $d ) {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $blog_config;
 		
 		if ( !isset( $m ) ) {
 			$m = date( 'm' );
@@ -20,25 +29,6 @@
 		}
 		if ( !isset( $d ) ) {
 			$d = date( 'd' );
-		}
-		
-		$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
-		// Loop Through Days
-		for ( $i = 0; $i < count( $entries ); $i++ ) {
-			$temp_index = substr( $entries[$i], 9, 2 )-1;
-			$temp_entry = substr( $entries[$i], 0, 11 );
-
-			// Count the number of entries on this day
-			$counts[$temp_index] = 1;
-			for ( $j = $i + 1; $j < count( $entries ); $j++ ) {
-				if ( $temp_entry == substr( $entries[$j], 0, 11 ) ) {
-					$counts[$temp_index]++;
-				} 
-				else {
-					break;
-				}
-			}
-			$i = $j - 1;
 		}
 		
 		$date_string = mktime(0, 0, 0, $m, 1, $y ); //The date string we need for some info... saves space ^_^
@@ -68,13 +58,70 @@
 			$previous_year = $y - 1;
 			$previous_month = 12;
 		}
+		
+		//$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
+		$entries = blog_entry_listing();
+		if ( $blog_config[ 'blog_entry_order' ] != 'old_to_new' )
+		{
+			sort ( $entries );
+		}
+
+		//Remove not current month/day entries
+		$temp_entries=array();
+		for ( $i = 0; $i < count( $entries ); $i++ ) {
+			if ( ( substr( $entries[ $i ], 5, 2 ) == $y ) && ( substr( $entries[ $i ], 7, 2 ) == $m ) ) {
+				array_push( $temp_entries, $entries[ $i ] );
+			}
+		}
+
+		//Don't let go before the first article
+		if ( substr( $entries[ 0 ], 7, 2 ) + ( substr( $entries[ 0 ], 5, 2 ) * 12 ) >=
+			$y*12+$m ) {
+			$previous_year = $y+2000;
+			$previous_month = $m;
+		}
+		//Don't let go past now
+		if ( date( 'm' ) + ( date( 'y' ) * 12 ) <=
+			$y*12+$m ) {
+			$next_year = $y+2000;
+			$next_month = $m;
+		}
+
+		$entries=$temp_entries;
+		unset( $temp_entries );
+
+		// Loop Through Days
+		for ( $i = 0; $i < count( $entries ); $i++ ) {
+			$temp_index = substr( $entries[$i], 9, 2 )-1;
+			$temp_entry = substr( $entries[$i], 0, 11 );
+
+			// Count the number of entries on this day
+			$counts[$temp_index] = 1;
+			for ( $j = $i + 1; $j < count( $entries ); $j++ ) {
+				if ( $temp_entry == substr( $entries[$j], 0, 11 ) ) {
+					$counts[$temp_index]++;
+				} 
+				else {
+					break;
+				}
+			}
+			$i = $j - 1;
+		}
 
 		$str = '
 		<table border="0" cellpadding="0" cellspacing="0" align="center" class="calendar">
 		<tr>
-		<td align="center"><a href="' . $_SERVER['PHP_SELF'] . '?y=' . sprintf( '%02d', $previous_year % 100 ) . '&m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a></td>
+		<td align="center">';
+		if ( ( ( $previous_year%100 )!=$y ) || ( $previous_month!=$m ) ) {
+			$str.='<a href="index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&amp;m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
+		}
+		$str.='</td>
 		<td align="center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
-		<td align="center"><a href="' . $_SERVER['PHP_SELF'] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a></td>
+		<td align="center">';
+		if ( ( ( $next_year%100 )!=$y ) || ( $next_month!=$m ) ) {
+			$str.='<a href="' . $_SERVER[ 'PHP_SELF' ] . '?y=' . sprintf( '%02d', $next_year % 100 ) . '&amp;m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
+		}
+		$str.='</td>
 		</tr>
 		<tr>';
 		for ( $i=0; $i<7; $i++ )
@@ -85,7 +132,7 @@
 			}
 			else
 			{
-				$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+8)%7, 1990 ) ) ) . '</td>';
+				$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+7)%7, 1990 ) ) ) . '</td>';
 			}
 		}
 		
@@ -112,7 +159,7 @@
 			}
 			if ( $counts[$i-1] > 0 )
 			{
-				$str = $str . '<a href="index.php?d=' . sprintf( '%02d', $i) . '&m=' . sprintf( '%02d', $m ) . '&y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
+				$str = $str . '<a href="index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
 			}
 			else
 			{
@@ -143,7 +190,7 @@
 			$str = $str . '<td></td>';
 		}
 		$str = $str . '</tr><tr>';
-		$str = $str . '<td colspan=7 align="center">' . strftime( '<a href="index.php?y=%y&m=%m&d=%d">%x') . '</a></td></tr></table>'; // Close the table
+		$str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">%x') . '</a></td></tr></table>'; // Close the table
 		return( $str );
 	}
 	
@@ -156,7 +203,7 @@
 		$str = NULL;
 		$basedir = 'content/';
 		
-		$months = $lang_string['sb_months'];
+		$months = $lang_string[ 'sb_months' ];
 		
 		// Open Base Directory
 		// (The '@' before the call is to suppress the error if the directory is not found.)
@@ -218,19 +265,19 @@
 												} else {
 													if ( $default_view != 2) {
 														// Non-Selected Days
-														$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&d='.$temp_day.'">&nbsp;&nbsp;&nbsp;' . $temp_date  . ' ( ' . $temp_count . ' )' . '</a><br />' . $str_month;
+														$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;d='.$temp_day.'">&nbsp;&nbsp;&nbsp;' . $temp_date  . ' ( ' . $temp_count . ' )' . '</a><br />' . $str_month;
 													}
 												}
 											}
 											
-											$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&default_view=1">' . $months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
+											$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;default_view=1">' . $months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
 										} else {
 											// Non-Selected Months
 											if ( count( $entries ) > 0 ) {
 												$latest_d = substr( $entries[ count( $entries ) - 1 ], 9, 2 );
-												$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&d='.$latest_d.'&default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
+												$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;d='.$latest_d.'&amp;default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
 											} else {
-												$str_month = '<a href="index.php?m='.$subdirname.'&y='.$dirname.'&default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
+												$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
 											}
 										}
 									}
@@ -282,7 +329,7 @@
 		}
 		
 		if ( $logged_in === true ) {
-			$str = $str . '<a href="add_link.php">[ ' . $lang_string['sb_add_link_btn']  . ' ]</a><br />';
+			$str = $str . '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
 		}
 		
 		return ( $str );
@@ -297,7 +344,7 @@
 		// Clean up link name and make safe for HTML and text database storage.
 		global $lang_string;
 		$link_name = str_replace( '|', ':', $link_name );
-		$link_name = htmlspecialchars( $link_name, ENT_QUOTES, $lang_string['php_charset'] );
+		$link_name = htmlspecialchars( $link_name, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		// Clean up link url and make safe text database storage.
 		$link_url = str_replace( '|', ':', $link_url );
@@ -386,7 +433,6 @@
 		}
 	}
 	
-	// DATOH_ADD
 	// ----------------------------
 	// "Blocks" Functions
 	// ----------------------------
@@ -422,7 +468,7 @@
 		// Clean up block name and make safe for HTML and text database storage.
 		global $lang_string;
 		$block_name = str_replace( '|', ':', $block_name );
-		$block_name = htmlspecialchars( $block_name, ENT_QUOTES, $lang_string['php_charset'] );
+		$block_name = htmlspecialchars( $block_name, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		// Clean up block url and make safe text database storage.
 		$block_content = clean_post_text(str_replace( '|', ':', $block_content ));
@@ -435,7 +481,7 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			
-			if ( $block_id !== "" ) {
+			if ( $block_id !== '' ) {
 				array_splice( $array, $block_id, 2 );
 				array_splice( $array, $block_id, 0, array( $block_name, $block_content ) );
 			} else {
@@ -471,24 +517,24 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			
-			if ( $action === "up" ) {
+			if ( $action === 'up' ) {
 				if ( count( $array ) > 2 && $block_id != 0 ) {
 					$pop_array = array_splice( $array, $block_id, 2 );
 					array_splice( $array, $block_id-2, 0, $pop_array );
 				}
 			}
-			if ( $action === "down" ) {
+			if ( $action === 'down' ) {
 				if ( count( $array ) > 2 && $block_id < ( count( $array ) - 3 ) ) {
 					$pop_array = array_splice( $array, $block_id, 2 );
 					array_splice( $array, $block_id+2, 0, $pop_array );
 				}
 			}
-			if ( $action === "delete" ) {
+			if ( $action === 'delete' ) {
 				if ( $block_id <= ( count( $array ) - 1 ) ) {
 					array_splice( $array, $block_id, 2 );
 				}
 			}
-			if ( $action === "delete_static" ) {
+			if ( $action === 'delete_static' ) {
 				for ( $i = 0; $i < count( $array ); $i++ ) {
 					if ( $block_id == $array[$i] ) {
 						array_splice( $array, $i-1, 2 );
@@ -517,6 +563,8 @@
 	// ----------------------------
 	
 	function add_most_recent ( $comment_id, $y, $m, $blog_entry_id ) {
+		global $blog_config;
+		
 		// Add an item to the 'Last Updated' List
 		//
 		
@@ -532,7 +580,7 @@
 			$array = array( $blog_entry_id, $m, $y, $comment_id );
 		}
 		
-		$max_comments = 5;
+		$max_comments = $blog_config[ 'blog_max_entries' ];
 		if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
 			// $array = array_reverse( $array );
 			$array = array_slice( $array, $max_comments * -4, $max_comments * 4);
@@ -608,9 +656,9 @@
 				if ( $comment_entry_data !== false) {
 					global $blog_config;
 					
-					$comment_name = $comment_entry_data["NAME"];
-					$comment_date = $comment_entry_data["DATE"];
-					$comment_text = $comment_entry_data["CONTENT"];
+					$comment_name = $comment_entry_data[ 'NAME' ];
+					$comment_date = $comment_entry_data[ 'DATE' ];
+					$comment_text = $comment_entry_data[ 'CONTENT' ];
 					
 					$comment_text = blog_to_html( $comment_text, false, true );
 					
@@ -626,9 +674,9 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'\','.$theme_vars['popup_window']['width'].','.$theme_vars['popup_window']['height'].',true)">'.$comment_name.'</a><br />';
+						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
 					} else {
-						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
+						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
 					}
 					
 					// $str_comments = $str_comments . format_date_menu( $comment_date ) . '<br />';
@@ -642,6 +690,8 @@
 	}
 	
 	function add_most_recent_trackback ( $trackback_id, $y, $m, $blog_entry_id ) {
+		global $blog_config;
+		
 		// Add an item to the 'Last Updated' List
 		//
 		
@@ -657,7 +707,7 @@
 			$array = array( $blog_entry_id, $m, $y, $trackback_id );
 		}
 		
-		$max_comments = 5;
+		$max_comments = $blog_config[ 'blog_max_entries' ];
 		if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
 			// $array = array_reverse( $array );
 			$array = array_slice( $array, $max_comments * -4, $max_comments * 4);
@@ -730,9 +780,9 @@
 				
 				$trackback_entry_data = comment_to_array( $trackback_file );
 				if ( $trackback_entry_data !== false) {
-					$trackback_date = $trackback_entry_data["DATE"];
-					$trackback_title = $trackback_entry_data["TITLE"];
-					$trackback_blogname = $trackback_entry_data["BLOGNAME"];
+					$trackback_date = $trackback_entry_data[ 'DATE' ];
+					$trackback_title = $trackback_entry_data[ 'TITLE' ];
+					$trackback_blogname = $trackback_entry_data[ 'BLOGNAME' ];
 					
 					if ( strlen( $trackback_title ) > 40 ) {
 						$trackback_title = substr( $trackback_title, 0, 40 );
@@ -746,9 +796,9 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html\','.$theme_vars['popup_window']['width'].','.$theme_vars['popup_window']['height'].',true)">'.$trackback_title.'</a><br />';
+						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
 					} else {
-						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&m='.$m.'&entry='.$blog_entry_id.'&__mode=html">'.$trackback_title.'</a><br />';
+						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
 					}
 					
 					$str_trackbacks = $str_trackbacks . format_date_menu( $trackback_date ) . '<br />';

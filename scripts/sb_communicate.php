@@ -70,16 +70,16 @@
 		$xml=$xml . "\t<params>\n";
 		$xml=$xml . "\t\t<param><value>" . htmlspecialchars( strip_tags( $blog_config[ 'blog_title' ] ) ) . "</value></param>\n";
 		// Use external name (SERVER_NAME) for pings to the outside world!!
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
-		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER['SERVER_NAME'] . "/</value></param>\n";
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER[ 'SERVER_NAME' ] . "/</value></param>\n";
 		} else {
-		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER['SERVER_NAME'] . dirname( $_SERVER['PHP_SELF'] ) . "/</value></param>\n";
+		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . "/</value></param>\n";
 		}
 		$xml=$xml . "\t</params>\n";
 		$xml=$xml . "</methodCall>\n";
-		$socket = fsockopen( $url['host'], 80, $errno, $errstr, 30);
+		$socket = @fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
 		if ( $socket ) { 
-			fwrite( $socket, 'POST ' . $url['scheme'] . '://' . $url['host'] . $url['path'] . " HTTP/1.0\nHost: " . $url['host'] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: text/xml\nContent-Length: " . strlen ( $xml ) . "\n\n" . $xml . "\n" );
+			fwrite( $socket, 'POST ' . $url[ 'scheme' ] . '://' . $url[ 'host' ] . $url[ 'path' ] . " HTTP/1.0\nHost: " . $url[ 'host' ] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: text/xml\nContent-Length: " . strlen ( $xml ) . "\n\n" . $xml . "\n" );
 			$result = fread( $socket, 8192 );
 			fclose ( $socket );
 			return( strpos( $result, 'fault' )===false );
@@ -105,21 +105,21 @@
 		$user_agent = 'SPHPBLOG ping script/' . $sb_info[ 'version' ];
 		$url = parse_url($url);
 		
-		$data = "";
-		$data = $data . "title=" . urlencode( strip_tags( $title ) );
+		$data = '';
+		$data = $data . 'title=' . urlencode( strip_tags( $title ) );
 		// Use external name (SERVER_NAME) for pings to the outside world!!
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
-		   $data = $data . "&url=http://" . $_SERVER['SERVER_NAME'] . "/" . urlencode( strip_tags( $permalink ) );
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+		   $data = $data . '&amp;url=http://' . $_SERVER[ 'SERVER_NAME' ] . '/' . urlencode( strip_tags( $permalink ) );
 		} else {
-		   $data = $data . "&url=http://" . $_SERVER['SERVER_NAME'] . dirname( $_SERVER['PHP_SELF'] ) . "/" . urlencode( strip_tags( $permalink ) );
+		   $data = $data . '&amp;url=http://' . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . '/' . urlencode( strip_tags( $permalink ) );
 		}
-		$data = $data . "&excerpt=" . urlencode( strip_tags( $excerpt ) );
-		$data = $data . "&blog_name=" . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
+		$data = $data . '&amp;excerpt=' . urlencode( strip_tags( $excerpt ) );
+		$data = $data . '&amp;blog_name=' . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
 
-		// $socket = fsockopen( $url['host'], 80, $errno, $errstr, 30);
-		$socket = fsockopen( ( $url['host'] === $_SERVER['HTTP_HOST'] ? $_SERVER['SERVER_ADDR'] : $url['host'] ), 80, $errno, $errstr, 30);
+		// $socket = fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
+		$socket = fsockopen( ( $url[ 'host' ] === $_SERVER[ 'HTTP_HOST' ] ? $_SERVER[ 'SERVER_ADDR' ] : $url[ 'host' ] ), 80, $errno, $errstr, 30);
 		if ( $socket ) { 
-			fwrite( $socket, 'POST ' . $url['scheme'] . '://' . $url['host'] . $url['path'] . '?' . $url['query'] . " HTTP/1.0\nHost: " . $url['host'] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: application/x-www-form-urlencoded\nContent-Length: " . strlen ( $data ) . "\n\n" . $data . "\n" );
+			fwrite( $socket, 'POST ' . $url[ 'scheme' ] . '://' . $url[ 'host' ] . $url[ 'path' ] . '?' . $url[ 'query' ] . " HTTP/1.0\nHost: " . $url[ 'host' ] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: application/x-www-form-urlencoded\nContent-Length: " . strlen ( $data ) . "\n\n" . $data . "\n" );
 			$result = fread( $socket, 8192 );
 			fclose ( $socket );
 			return( strpos( $result, '<error>0</error>' ) );
@@ -128,4 +128,5 @@
 			return( false );
 		}
 	}
+	
 ?>

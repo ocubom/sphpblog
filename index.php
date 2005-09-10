@@ -1,37 +1,37 @@
 <?php 
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 	
 	read_config();
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
 		
 	// Verify information being passed
 	$temp_year = NULL;
-	if ( array_key_exists( "y", $_GET ) ) {
-		if ( strpos( $_GET[ "y" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["y"] ) == 2 ) {
-			$temp_year = $_GET[ "y" ];
+	if ( array_key_exists( 'y', $_GET ) ) {
+		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 ) {
+			$temp_year = $_GET[ 'y' ];
 		}
 	}
 	$temp_month = NULL;
-	if ( array_key_exists( "m", $_GET ) ) {
-		if ( strpos( $_GET[ "m" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["m"] ) == 2 ) {
-			$temp_month = $_GET[ "m" ];
+	if ( array_key_exists( 'm', $_GET ) ) {
+		if ( strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'm' ] ) == 2 ) {
+			$temp_month = $_GET[ 'm' ];
 		}
 	}
 	$temp_day = NULL;
-	if ( array_key_exists( "d", $_GET ) ) {
-		if ( strpos( $_GET[ "d" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["d"] ) == 2 ) {
-			$temp_day = $_GET[ "d" ];
+	if ( array_key_exists( 'd', $_GET ) ) {
+		if ( strpos( $_GET[ 'd' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'd' ] ) == 2 ) {
+			$temp_day = $_GET[ 'd' ];
 		}
 	}
 	$temp_entry = NULL;
-	if ( array_key_exists( "entry", $_GET ) ) {
-		if ( strpos( $_GET[ "entry" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["entry"] ) == 18 ) {
-			$temp_entry = $_GET[ "entry" ];
+	if ( array_key_exists( 'entry', $_GET ) ) {
+		if ( strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
+			$temp_entry = $_GET[ 'entry' ];
 		}
 	}
 	
@@ -55,18 +55,18 @@
 		$entry = $temp_entry;
 	}
 	
-	if ( array_key_exists( "category", $_GET ) ) {
+	if ( array_key_exists( 'category', $_GET ) ) {
 		global $category;
-		$category = $_GET["category"];
+		$category = $_GET[ 'category' ];
 	}
 	
 	global $lang_string, $sb_info, $blog_config;
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	 
 	<!-- Meta Data -->
 	<?php global $lang_string, $sb_info, $blog_config; ?>
@@ -88,8 +88,8 @@
 	<meta name="dc.type"        content="blog" />
 	<meta name="resource-type"  content="document" />
 	<meta name="dc.format"      scheme="IMT" content="text/html" />
-	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) { echo( 'http://'.$_SERVER['HTTP_HOST'].'/index.php' ); } else { echo( 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php' ); } ?>" />
-	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string['locale']) ); ?>" />
+	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php' ); } else { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php' ); } ?>" />
+	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string[ 'locale' ]) ); ?>" />
 	<meta name="dc.coverage"    content="global" />
 	<meta name="distribution"   content="GLOBAL" /> 
 	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
@@ -103,8 +103,8 @@
 	<link rel="shortcut icon" href="interface/favicon.ico" />
 	
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
-	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
 <?php 

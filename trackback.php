@@ -1,11 +1,11 @@
 <?php
-	require('scripts/sb_functions.php');
+	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );	
 	
 	read_config();
 	
-	require('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'trackbacks' );
 
    function trackback_response( $val, $msg ) {
@@ -19,21 +19,21 @@
       exit;
    }
 	
-	if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 		// Hosted at root.
-		$base_url = '://' . $_SERVER['HTTP_HOST'];
+		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ];
 	} else {
 		// Hosted in sub-directory.
-		$base_url = '://' . $_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]);
 	}
 	
    // trackback ping contains entry in the URI
 	$redirect = true;
-	if ( isset( $_GET['y'] ) && isset( $_GET['m'] ) && isset( $_GET['entry'] ) ) {
-		$entry_id = 'content/'.$_GET['y'].'/'.$_GET['m'].'/'.$_GET['entry'];
-      $entry = $_GET['entry'];
-		$year = $_GET['y'];
-		$month = $_GET['m'];
+	if ( isset( $_GET[ 'y' ] ) && isset( $_GET[ 'm' ] ) && isset( $_GET[ 'entry' ] ) ) {
+		$entry_id = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
+      $entry = $_GET[ 'entry' ];
+		$year = $_GET[ 'y' ];
+		$month = $_GET[ 'm' ];
 		if ( file_exists( $entry_id . '.txt' ) ) {
 			$redirect = false;
 		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
@@ -42,14 +42,14 @@
 	}
 
    // trackback is done by a POST
-   $tb_url = $_POST['url'];
-   $title = $_POST['title'];
-   $excerpt = $_POST['excerpt'];
-   $blog_name = $_POST['blog_name'];
+   $tb_url = $_POST[ 'url' ];
+   $title = $_POST[ 'title' ];
+   $excerpt = $_POST[ 'excerpt' ];
+   $blog_name = $_POST[ 'blog_name' ];
 
 	// No such entry exists OR trackback is disabled
 	if ( ($redirect === true ) || ( !$blog_config[ 'blog_trackback_enabled' ] ) ) {
-		redirect_to_url( "index.php" );
+		redirect_to_url( 'index.php' );
 	}
 	
 
@@ -64,28 +64,28 @@
       $blog_name = htmlspecialchars($blog_name);
       $blog_name = ( strlen($blog_name) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
       
-      $user_ip = $HTTP_SERVER_VARS['REMOTE_ADDR'];
+      $user_ip = $HTTP_SERVER_VARS[ 'REMOTE_ADDR' ];
       $user_domain = gethostbyaddr($user_ip);
       
-      $ok = write_trackback( $_GET['y'], $_GET['m'], $entry = $_GET['entry'], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
+      $ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
       
       if (!$ok) {
-         trackback_response(1, $lang_string['error_add'] );
+         trackback_response(1, $lang_string[ 'error_add' ] );
       } else {
-         trackback_response(0, "");
+         trackback_response(0, '');
       }
 
-   } else if( $_GET['__mode'] === "html" ) {
+   } else if( $_GET[ '__mode' ] === 'html' ) {
       //
       // Mode HTML: display in the style of the sphpblog
       //
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string['html_charset'] ); ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	 
 	<!-- Meta Data -->
 	<?php global $lang_string, $sb_info, $blog_config; ?>
@@ -105,8 +105,8 @@
 	<meta name="dc.type"        content="blog">
 	<meta name="resource-type"  content="document"> 
 	<meta name="dc.format"      scheme="IMT" content="text/html">
-	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) { echo( 'http://'.$_SERVER['HTTP_HOST'].'/index.php' ); } else { echo( 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php' ); } ?>">
-	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string['locale']) ); ?>" >
+	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php' ); } else { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php' ); } ?>">
+	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string[ 'locale' ]) ); ?>" >
 	<meta name="dc.coverage"    content="global">
 	<meta name="distribution"   content="GLOBAL"> 
 	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
@@ -120,29 +120,29 @@
 	<link rel="shortcut icon" href="interface/favicon.ico">
 	
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require('themes/' . $blog_theme . '/user_style.php'); ?>
-	<script language="JavaScript" src="scripts/sb_javascript.js"></script>
-	<?php require('scripts/sb_editor.php'); ?>
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	<?php require_once('scripts/sb_editor.php'); ?>
 
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string['title'] ); ?></title>
+	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars;
 		
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 		}
 		
-		$tb['subject'] = $lang_string['title'];
-		$tb['entry'] = $lang_string['header'] . "<br />" . '<input type="text" style="width: ' . $theme_vars['max_image_width'] . 'px;" OnMouseOver=this.select() value="'.$base_url.'trackback.php?y='.$_GET['y'].'&m='.$_GET['m'].'&entry='.$_GET['entry'] . '">' . "<p />\n";
+		$tb[ 'subject' ] = $lang_string[ 'title' ];
+		$tb[ 'entry' ] = $lang_string[ 'header' ] . '<br />' . '<input type="text" style="width: ' . $theme_vars[ 'max_image_width' ] . 'px;" OnMouseOver=this.select() value="'.$base_url.'trackback.php?y='.$_GET[ 'y' ].'&m='.$_GET[ 'm' ].'&entry='.$_GET[ 'entry' ] . '">' . "<p />\n";
 		echo ( theme_blogentry( $tb ) );
 		
-      echo ( read_trackbacks ( $_GET['y'], $_GET['m'], $_GET['entry'], $logged_in, true ) );
+      echo ( read_trackbacks ( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in, true ) );
       echo "<p />\n";
 	}
 
@@ -161,12 +161,12 @@
       // Default XML output
       //
 
-		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
+		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 		}
 
 		header('Content-type: application/xml');
@@ -178,15 +178,15 @@
       echo "<title>" . $blog_config[ 'blog_title' ] . "</title>\n";
       echo "<link>" . $base_url . "index.php</link>\n";
       echo "<description>". $blog_config[ 'blog_footer' ] . "</description>\n";
-      echo "<language>" . str_replace( '_', '-', $lang_string['locale'] ) . "</language>\n";
+      echo "<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
 
       $results = read_trackbacks ( $year, $month, $entry, $logged_in, false );
       
       for ( $i = 0; $i <= count( $results ) - 1; $i++ ) {
          echo "<item>\n";
-         echo "<title>" . $results[$i]["title"] . "</title>\n";
-         echo "<link>" . $results[$i]["url"] . "</link>\n";
-         echo "<description>" . $results[$i]["excerpt"] . "</description>\n";
+         echo "<title>" . $results[$i][ 'title' ] . "</title>\n";
+         echo "<link>" . $results[$i][ 'url' ] . "</link>\n";
+         echo "<description>" . $results[$i][ 'excerpt' ] . "</description>\n";
          echo "</item>\n";
       }
       

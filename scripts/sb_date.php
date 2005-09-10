@@ -36,60 +36,60 @@
 	function read_dateFormat () {
 		
 		$dateArray = array();
-		$dateArray['lDate_slotOne'] = 'weekday';
-		$dateArray['lDate_slotOneSeparator'] = ', ';
-		$dateArray['lDate_slotTwo'] = 'month';
-		$dateArray['lDate_slotTwoSeparator'] = ' ';
-		$dateArray['lDate_slotThree'] = 'day';
-		$dateArray['lDate_slotThreeSeparator'] = ', ';
-		$dateArray['lDate_slotFour'] = 'year';
-		$dateArray['lDate_slotFourSeparator'] = '';
-		$dateArray['lDate_leadZeroDay'] = '';
-		$dateArray['sDate_order'] = 'Month/Day/Year';
-		$dateArray['sDate_separator'] = '/';
-		$dateArray['sDate_leadZeroDay'] = '';
-		$dateArray['sDate_leadZeroMonth'] = '';
-		$dateArray['sDate_fullYear'] = '';
-		$dateArray['time_clockFormat'] = '12';
-		$dateArray['time_leadZeroHour'] = 'on';
-		$dateArray['time_AM'] = ' AM';
-		$dateArray['time_PM'] = ' PM';
-		$dateArray['time_separator'] = ':';
-		$dateArray['eFormat_slotOne'] = 'long';
-		$dateArray['eFormat_separator'] = ', ';
-		$dateArray['eFormat_slotTwo'] = 'time';
-		$dateArray['server_offset'] = '0';
-		$dateArray['mFormat'] = 'short';
+		$dateArray[ 'lDate_slotOne' ] = 'weekday';
+		$dateArray[ 'lDate_slotOneSeparator' ] = ', ';
+		$dateArray[ 'lDate_slotTwo' ] = 'month';
+		$dateArray[ 'lDate_slotTwoSeparator' ] = ' ';
+		$dateArray[ 'lDate_slotThree' ] = 'day';
+		$dateArray[ 'lDate_slotThreeSeparator' ] = ', ';
+		$dateArray[ 'lDate_slotFour' ] = 'year';
+		$dateArray[ 'lDate_slotFourSeparator' ] = '';
+		$dateArray[ 'lDate_leadZeroDay' ] = '';
+		$dateArray[ 'sDate_order' ] = 'Month/Day/Year';
+		$dateArray[ 'sDate_separator' ] = '/';
+		$dateArray[ 'sDate_leadZeroDay' ] = '';
+		$dateArray[ 'sDate_leadZeroMonth' ] = '';
+		$dateArray[ 'sDate_fullYear' ] = '';
+		$dateArray[ 'time_clockFormat' ] = '12';
+		$dateArray[ 'time_leadZeroHour' ] = 'on';
+		$dateArray[ 'time_AM' ] = ' AM';
+		$dateArray[ 'time_PM' ] = ' PM';
+		$dateArray[ 'time_separator' ] = ':';
+		$dateArray[ 'eFormat_slotOne' ] = 'long';
+		$dateArray[ 'eFormat_separator' ] = ', ';
+		$dateArray[ 'eFormat_slotTwo' ] = 'time';
+		$dateArray[ 'server_offset' ] = '0';
+		$dateArray[ 'mFormat' ] = 'short';
 		
 		$contents = sb_read_file( 'config/date_format.txt' );
 			
 		if ( $contents ) {
 			$array = explode('|', $contents);
 			
-			$dateArray['lDate_slotOne'] = $array[ 0 ];
-			$dateArray['lDate_slotOneSeparator'] = $array[ 1 ];
-			$dateArray['lDate_slotTwo'] = $array[ 2 ];
-			$dateArray['lDate_slotTwoSeparator'] = $array[ 3 ];
-			$dateArray['lDate_slotThree'] = $array[ 4 ];
-			$dateArray['lDate_slotThreeSeparator'] = $array[ 5 ];
-			$dateArray['lDate_slotFour'] = $array[ 6 ];
-			$dateArray['lDate_slotFourSeparator'] = $array[ 7 ];
-			$dateArray['lDate_leadZeroDay'] = $array[ 8 ];
-			$dateArray['sDate_order'] = $array[ 9 ];
-			$dateArray['sDate_separator'] = $array[ 10 ];
-			$dateArray['sDate_leadZeroDay'] = $array[ 11 ];
-			$dateArray['sDate_leadZeroMonth'] = $array[ 12 ];
-			$dateArray['sDate_fullYear'] = $array[ 13 ];
-			$dateArray['time_clockFormat'] = $array[ 14 ];
-			$dateArray['time_leadZeroHour'] = $array[ 15 ];
-			$dateArray['time_AM'] = $array[ 16 ];
-			$dateArray['time_PM'] = $array[ 17 ];
-			$dateArray['time_separator'] = $array[ 18 ];
-			$dateArray['eFormat_slotOne'] = $array[ 19 ];
-			$dateArray['eFormat_separator'] = $array[ 20 ];
-			$dateArray['eFormat_slotTwo'] = $array[ 21 ];
-			$dateArray['server_offset'] = $array[ 22 ];
-			$dateArray['mFormat'] = $array[ 23 ];
+			$dateArray[ 'lDate_slotOne' ] = $array[ 0 ];
+			$dateArray[ 'lDate_slotOneSeparator' ] = $array[ 1 ];
+			$dateArray[ 'lDate_slotTwo' ] = $array[ 2 ];
+			$dateArray[ 'lDate_slotTwoSeparator' ] = $array[ 3 ];
+			$dateArray[ 'lDate_slotThree' ] = $array[ 4 ];
+			$dateArray[ 'lDate_slotThreeSeparator' ] = $array[ 5 ];
+			$dateArray[ 'lDate_slotFour' ] = $array[ 6 ];
+			$dateArray[ 'lDate_slotFourSeparator' ] = $array[ 7 ];
+			$dateArray[ 'lDate_leadZeroDay' ] = $array[ 8 ];
+			$dateArray[ 'sDate_order' ] = $array[ 9 ];
+			$dateArray[ 'sDate_separator' ] = $array[ 10 ];
+			$dateArray[ 'sDate_leadZeroDay' ] = $array[ 11 ];
+			$dateArray[ 'sDate_leadZeroMonth' ] = $array[ 12 ];
+			$dateArray[ 'sDate_fullYear' ] = $array[ 13 ];
+			$dateArray[ 'time_clockFormat' ] = $array[ 14 ];
+			$dateArray[ 'time_leadZeroHour' ] = $array[ 15 ];
+			$dateArray[ 'time_AM' ] = $array[ 16 ];
+			$dateArray[ 'time_PM' ] = $array[ 17 ];
+			$dateArray[ 'time_separator' ] = $array[ 18 ];
+			$dateArray[ 'eFormat_slotOne' ] = $array[ 19 ];
+			$dateArray[ 'eFormat_separator' ] = $array[ 20 ];
+			$dateArray[ 'eFormat_slotTwo' ] = $array[ 21 ];
+			$dateArray[ 'server_offset' ] = $array[ 22 ];
+			$dateArray[ 'mFormat' ] = $array[ 23 ];
 		}
 		
 		return ( $dateArray );	
@@ -112,26 +112,26 @@
 		
 		$dateArray = read_dateFormat();
 		
-		$time_stamp = $time_stamp + ( intval( $dateArray['server_offset'] ) * 60 * 60);
+		$time_stamp = $time_stamp + ( intval( $dateArray[ 'server_offset' ] ) * 60 * 60);
 		
 		// Long Date
 		$date_long = '';
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotOne'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotOneSeparator'];
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotTwo'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotTwoSeparator'];
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotThree'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotThreeSeparator'];
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotFour'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotFourSeparator'];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotOneSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotTwoSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
 		
 		// Short Date
 		$date_short = '';
-		$separator = $dateArray['sDate_separator'];
-		$leading_zero_day = $dateArray['sDate_leadZeroDay'];
-		$leading_zero_month = $dateArray['sDate_leadZeroMonth'];
-		$full_century = $dateArray['sDate_fullYear'];
-		switch ( $dateArray['sDate_order'] ) {
+		$separator = $dateArray[ 'sDate_separator' ];
+		$leading_zero_day = $dateArray[ 'sDate_leadZeroDay' ];
+		$leading_zero_month = $dateArray[ 'sDate_leadZeroMonth' ];
+		$full_century = $dateArray[ 'sDate_fullYear' ];
+		switch ( $dateArray[ 'sDate_order' ] ) {
 			case 'Month/Day/Year':
 				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				$date_short = $date_short . $separator;
@@ -185,11 +185,11 @@
 		
 		// Time View
 		$time_str = '';
-		$time_clockFormat = $dateArray['time_clockFormat'];
-		$leading_zero_hour = $dateArray['time_leadZeroHour'];
-		$before_noon = $dateArray['time_AM'];
-		$after_noon = $dateArray['time_PM'];
-		$separator = $dateArray['time_separator'];
+		$time_clockFormat = $dateArray[ 'time_clockFormat' ];
+		$leading_zero_hour = $dateArray[ 'time_leadZeroHour' ];
+		$before_noon = $dateArray[ 'time_AM' ];
+		$after_noon = $dateArray[ 'time_PM' ];
+		$separator = $dateArray[ 'time_separator' ];
 		
 		if ( $time_clockFormat == '24' ) {
 			if ( $leading_zero_hour == 'on' ) {
@@ -217,7 +217,7 @@
 		
 		// Put it all together...
 		$str = '';
-		switch ( $dateArray['eFormat_slotOne'] ) {
+		switch ( $dateArray[ 'eFormat_slotOne' ] ) {
 			case 'long':
 				$str = $str . $date_long;
 				break;
@@ -231,9 +231,9 @@
 				break;
 		}
 					
-		$str = $str . $dateArray['eFormat_separator'];
+		$str = $str . $dateArray[ 'eFormat_separator' ];
 		
-		switch ( $dateArray['eFormat_slotTwo'] ) {
+		switch ( $dateArray[ 'eFormat_slotTwo' ] ) {
 			case 'long':
 				$str = $str . $date_long;
 				break;
@@ -267,26 +267,26 @@
 		
 		$dateArray = read_dateFormat();
 		
-		$time_stamp = $time_stamp + ( intval( $dateArray['server_offset'] ) * 60 * 60);
+		$time_stamp = $time_stamp + ( intval( $dateArray[ 'server_offset' ] ) * 60 * 60);
 		
 		// Long Date
 		$date_long = '';
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotOne'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotOneSeparator'];
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotTwo'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotTwoSeparator'];
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotThree'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotThreeSeparator'];
-		$date_long = $date_long . date_convert( $dateArray['lDate_slotFour'], $dateArray['lDate_leadZeroDay'], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray['lDate_slotFourSeparator'];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotOneSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotTwoSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
 		
 		// Short Date
 		$date_short = '';
-		$separator = $dateArray['sDate_separator'];
-		$leading_zero_day = $dateArray['sDate_leadZeroDay'];
-		$leading_zero_month = $dateArray['sDate_leadZeroMonth'];
-		$full_century = $dateArray['sDate_fullYear'];
-		switch ( $dateArray['sDate_order'] ) {
+		$separator = $dateArray[ 'sDate_separator' ];
+		$leading_zero_day = $dateArray[ 'sDate_leadZeroDay' ];
+		$leading_zero_month = $dateArray[ 'sDate_leadZeroMonth' ];
+		$full_century = $dateArray[ 'sDate_fullYear' ];
+		switch ( $dateArray[ 'sDate_order' ] ) {
 			case 'Month/Day/Year':
 				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				$date_short = $date_short . $separator;
@@ -340,11 +340,11 @@
 		
 		// Time View
 		$time_str = '';
-		$time_clockFormat = $dateArray['time_clockFormat'];
-		$leading_zero_hour = $dateArray['time_leadZeroHour'];
-		$before_noon = $dateArray['time_AM'];
-		$after_noon = $dateArray['time_PM'];
-		$separator = $dateArray['time_separator'];
+		$time_clockFormat = $dateArray[ 'time_clockFormat' ];
+		$leading_zero_hour = $dateArray[ 'time_leadZeroHour' ];
+		$before_noon = $dateArray[ 'time_AM' ];
+		$after_noon = $dateArray[ 'time_PM' ];
+		$separator = $dateArray[ 'time_separator' ];
 		
 		if ( $time_clockFormat == '24' ) {
 			if ( $leading_zero_hour == 'on' ) {
@@ -372,7 +372,7 @@
 		
 		// Put it all together...
 		$str = '';
-		switch ( $dateArray['mFormat'] ) {
+		switch ( $dateArray[ 'mFormat' ] ) {
 			case 'long':
 				$str = $str . $date_long;
 				break;
