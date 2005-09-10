@@ -374,8 +374,7 @@
 			$GLOBALS[ 'month' ] = substr($entry_array[0], 7, 2);
 			$GLOBALS[ 'day' ] = substr($entry_array[0], 9, 2);
 		}
-	}
-	
+	}	
 	
 	function blog_entry_listing ( ) {
 		global $blog_config;
@@ -450,9 +449,12 @@
 				rsort( $entry_array );
 			}
 			
-			// Do not create cache if empty
-			if ( count( $entry_array )>0 ) {
-				sb_write_file( $filename, serialize( $entry_array ) );
+			// Check the option first to see if we use the cache
+			if ( $blog_config[ 'blog_enable_cache' ] == true ) {
+				// Do not create cache if empty
+				if ( count( $entry_array )>0 ) {
+					sb_write_file( $filename, serialize( $entry_array ) );
+				}
 			}
 		}
 		return( $entry_array );
