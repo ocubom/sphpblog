@@ -33,7 +33,9 @@
 			// echo("Uh, you should type something first...");
 			return false;
 		} else {
+			
 			// Define the return character
+			$return_char = null;
 			if ( strstr( $str, urldecode( '%0D%0A') ) !== false ) {
 				// Windows
 				$return_char = urldecode( '%0D%0A' );
@@ -45,12 +47,18 @@
 				$return_char = urldecode( '%0D' );
 			}
 			
+			
 			// Split input into an array
-			$input_arr = explode( $return_char, $str );
-			if ( is_array( $input_arr ) == false ) {
-				$input_arr = array( $str );
-			}
+			$input_arr = Array();
 			$valid_arr = Array();
+			if ( $return_char == null ) {
+				array_push( $input_arr, $str );
+			} else {
+				$input_arr = explode( $return_char, $str );
+				if ( is_array( $input_arr ) == false ) {
+					$input_arr = array( $str );
+				}
+			}
 			
 			// Loop through the array, validate input.
 			for ( $i=0; $i< count( $input_arr ); $i++ ) {
