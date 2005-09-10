@@ -50,8 +50,6 @@
 		
 		$str = $str . read_links( $logged_in );
 		
-		$str = $str . "<br />" . menu_display_login();
-		
 		$result = array();
 		$result[ 'title' ] = $lang_string[ 'menu_links' ];
 		$result[ 'content' ] = $str;
