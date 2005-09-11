@@ -288,16 +288,19 @@ $lang_string['instructions'] = "°Ê²¼¤Î¥Õ¥©¡¼¥à¤ò»ÈÍÑ¤·¤Æ
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				break;
 case 'login':
-$lang_string['title'] = "¥í¥°¥¤¥ó";
-$lang_string['instructions'] = "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
-$lang_string['username'] = "¥æ¡¼¥¶¡¼Ì¾:";
-$lang_string['password'] = "¥Ñ¥¹¥ï¡¼¥É";
-$lang_string['submit_btn'] = "&nbsp;¥í¥°¥¤¥ó&nbsp;";
-// Success
-$lang_string['success'] = "<h2>Success!</h2>¥í¥°¥¤¥ó¤·¤Þ¤·¤¿¡£¤½¤ì¤Ç¤Ï¤ª³Ú¤·¤ß²¼¤µ¤¤!<p />";
-// Wrong Password
-$lang_string['wrong_password'] = "<h2>Whoops!</h2>¥í¥°¥¤¥ó¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£Àµ¤·¤¤¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òºÆµ­Æþ¤·¤Æ²¼¤µ¤¤¡£<p />";
-$lang_string['form_error'] = "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
+				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
+				$lang_string['upgrade_count'] = "%n comment files need to be upgraded:"; // New 0.3.8
+				$lang_string['upgrade_url'] = "Upgrade Comments"; // New 0.3.8
+				$lang_string['title'] = "¥í¥°¥¤¥ó";
+				$lang_string['instructions'] = "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
+				$lang_string['username'] = "¥æ¡¼¥¶¡¼Ì¾:";
+				$lang_string['password'] = "¥Ñ¥¹¥ï¡¼¥É";
+				$lang_string['submit_btn'] = "&nbsp;¥í¥°¥¤¥ó&nbsp;";
+				// Success
+				$lang_string['success'] = "<h2>Success!</h2>¥í¥°¥¤¥ó¤·¤Þ¤·¤¿¡£¤½¤ì¤Ç¤Ï¤ª³Ú¤·¤ß²¼¤µ¤¤!<p />";
+				// Wrong Password
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>¥í¥°¥¤¥ó¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£Àµ¤·¤¤¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òºÆµ­Æþ¤·¤Æ²¼¤µ¤¤¡£<p />";
+				$lang_string['form_error'] = "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
 				break;
 case 'logout':
 	$lang_string['title'] = "¥í¥°¥¢¥¦¥È";
