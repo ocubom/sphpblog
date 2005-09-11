@@ -33,9 +33,7 @@
 			// echo("Uh, you should type something first...");
 			return false;
 		} else {
-			
 			// Define the return character
-			$return_char = null;
 			if ( strstr( $str, urldecode( '%0D%0A') ) !== false ) {
 				// Windows
 				$return_char = urldecode( '%0D%0A' );
@@ -47,18 +45,12 @@
 				$return_char = urldecode( '%0D' );
 			}
 			
-			
 			// Split input into an array
-			$input_arr = Array();
-			$valid_arr = Array();
-			if ( $return_char == null ) {
-				array_push( $input_arr, $str );
-			} else {
-				$input_arr = explode( $return_char, $str );
-				if ( is_array( $input_arr ) == false ) {
-					$input_arr = array( $str );
-				}
+			$input_arr = explode( $return_char, $str );
+			if ( is_array( $input_arr ) == false ) {
+				$input_arr = array( $str );
 			}
+			$valid_arr = Array();
 			
 			// Loop through the array, validate input.
 			for ( $i=0; $i< count( $input_arr ); $i++ ) {
@@ -234,15 +226,14 @@
 				echo( $lang_string[ 'error' ] . $ok . '<p />' );
 			}
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
-		} else {
-			?>
-			
-			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
-	
-			<?php echo( $lang_string[ 'current_categories' ] ); ?><br />
+		} else {			
+			$entry_array = array();
+			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			$entry_array[ 'entry' ] = $lang_string[ 'instructions' ] . '<p />';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . ' />';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'current_categories' ] . '<br />';
+			echo( theme_staticentry( $entry_array ) );
+			?>			
 			
 			<?php
 				$catArray = get_category_array();
