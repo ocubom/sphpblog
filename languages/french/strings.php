@@ -543,6 +543,7 @@
 				$lang_string['failure'] = "<h2>Erreur !</h2>Votre message n'a pas été envoyé. Très probablement anti le Spam n'a pas été écrit correctement.<p />";
 				$lang_string['contactsent'] = "Contact envoyé à travers: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				break;
 			case 'stats':
 				$lang_string['title'] = "Statistiques";

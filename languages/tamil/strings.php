@@ -534,6 +534,7 @@
 				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				break;
 			case 'stats':
 				$lang_string['title'] = "Statistics";

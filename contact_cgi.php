@@ -20,6 +20,7 @@
 	$subject=$lang_string['contactsent'] . $blog_config[ 'blog_title' ];
 	$body='<b>' . $lang_string[ 'name' ] . '</b> ' . $_POST[ 'name' ] . '<br />';
 	$body=$body . '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . '(' . gethostbyaddr($client_ip_local) .')<br />';
+	$body=$body . '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
 	$body=$body . '<b>' . $lang_string[ 'email' ] . '</b> ' . $_POST[ 'email' ] . '<br />';
 	$body=$body . '<b>' . $lang_string[ 'subject' ] . '</b> ' . $_POST[ 'subject' ] . '<br /><br />';
 	$body=$body . '<b>' . $lang_string[ 'comment' ] . '</b><br />';

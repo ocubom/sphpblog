@@ -530,6 +530,7 @@
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				break;
 			case 'stats':
