@@ -75,7 +75,7 @@
 		<h2><?php echo( $lang_string[ 'title_preview' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 
 		<?php
 			global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry, $temp_tb_ping, $temp_categories;
@@ -119,7 +119,7 @@
 		<h2><?php echo( $lang_string[ 'title_update' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions_update' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		

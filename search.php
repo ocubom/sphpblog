@@ -28,7 +28,7 @@
 		echo ( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
 		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $lang_string[ 'php_charset' ] ), $lang_string[ 'instructions' ] ) . '<br />' );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 			
 		$output = search( $search_string, @$_GET[ 'n' ] );
 		

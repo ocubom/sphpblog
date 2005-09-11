@@ -32,7 +32,7 @@
 		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		
 		$result = create_folder( 'config' );
 		$result = $result + create_folder( 'content' );
@@ -55,7 +55,7 @@ deny from all
 		sb_write_file( "content/.htaccess", $htaccess_str );
 		sb_write_file( "images/.htaccess", $htaccess_str );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		echo( '<br />' );
 		
 		if ( $result < 0 ) {

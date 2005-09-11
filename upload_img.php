@@ -27,13 +27,11 @@
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">
-			<?php echo( $lang_string[ 'select_file' ] ); ?><br /><br />
-			<input name="userfile" type="file"><br />
-			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<?php echo( $lang_string[ 'select_file' ] ); ?><p />
+			<input name="userfile" type="file"><p />
 			
 			<input type="submit" value="<?php echo( $lang_string[ 'upload_btn' ] ); ?>">
 		</form>

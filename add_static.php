@@ -25,7 +25,7 @@
 		
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-		$entry_array[ 'entry' ] = $lang_string[ 'instructions' ] . '<p />';
+		$entry_array[ 'entry' ] = $lang_string[ 'instructions' ] . '<p /><hr />';
     	$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<form accept-charset="' . $lang_string[ 'html_charset' ] . ',iso-8859-1,utf-8" action="add_static_cgi.php" method="POST" name="editor" id="editor" onSubmit="return validate_static(this)">';
 		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<label for="blog_subject">' . $lang_string[ 'label_subject' ] . '</label><br />';
 		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="text" name="blog_subject" autocomplete="OFF" value="" size="40"><br /><br />';

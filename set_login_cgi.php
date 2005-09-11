@@ -34,7 +34,7 @@
 			echo( $lang_string[ 'wrong_password' ] );
 		}
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}
 ?>

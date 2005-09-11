@@ -27,7 +27,7 @@
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<?php 
 			echo image_list();

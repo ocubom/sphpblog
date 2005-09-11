@@ -230,7 +230,7 @@
 			$entry_array = array();
 			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 			$entry_array[ 'entry' ] = $lang_string[ 'instructions' ] . '<p />';
-			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . ' />';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<hr />';
 			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'current_categories' ] . '<br />';
 			echo( theme_staticentry( $entry_array ) );
 			?>			
@@ -253,7 +253,7 @@
 					echo( $lang_string[ 'no_categories_found' ] . '<br />' );
 				}
 			?>
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
 			<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
@@ -276,7 +276,7 @@
 				<br />
 				<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" /><br />
 				
-				<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+				<hr />
 				
 				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 			</form>

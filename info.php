@@ -62,7 +62,7 @@
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="info.php" method="POST" name="info" name="info">
 				
@@ -75,7 +75,7 @@
 				<label for="info_copyright"><?php echo( $lang_string[ 'info_copyright' ] ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_copyright" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'info_copyright' ]); ?></textarea><br />
 			
-				<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+				<hr />
 				
 				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 			</form>

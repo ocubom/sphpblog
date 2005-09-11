@@ -58,7 +58,7 @@
 		$str = NULL;
 		if ( $result ) {
 			
-			echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo $lang_string[ 'instructions_modify' ] . '<p />';
 	
 			$block_content = '';
@@ -92,7 +92,7 @@
 		
 		echo( $str );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		
 		?>
 		

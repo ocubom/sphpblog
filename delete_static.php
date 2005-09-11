@@ -60,14 +60,14 @@
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 	
 			<?php
 				$blog_content = get_static_entry_by_file( $_GET[ 'entry' ] );
 				echo( $blog_content );
 			?>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='delete_static.php' method="POST">
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">

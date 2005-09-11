@@ -194,7 +194,7 @@
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="options_cgi.php" method="POST" name="setup" id="setup" onSubmit="return validate(this)">
 			
@@ -247,7 +247,7 @@
 				</tr>
 			</table>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<?php echo( $lang_string[ 'sdate_title' ] ); ?><br /><br />
 			<table border="0" cellspacing="0" cellpadding="0">
@@ -283,7 +283,7 @@
 				</tr>
 			</table>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<?php echo( $lang_string[ 'time_title' ] ); ?><br /><br />
 			<table border="0" cellspacing="0" cellpadding="0">
@@ -304,7 +304,7 @@
 				</tr>
 			</table>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<?php echo( $lang_string[ 'date_title' ] ); ?><br />
 			<select name="eFormat_slotOne" id="eFormat_slotOne">
@@ -327,12 +327,12 @@
 				<option label="<?php echo( $lang_string[ 'short_date' ] ); ?>" value="short"<?php if ( $dateArray[ 'mFormat' ] == 'short') { echo ( ' selected'); } ?>><?php echo( $lang_string[ 'short_date' ] ); ?></option>
 			</select>
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 													
 			<?php echo( $lang_string[ 'server_offset' ] . ' ' . strftime( '%R ( %r )' ) ); ?><br />
 			<input type="text" id="server_offset" name="server_offset" value="<?php echo ( $dateArray[ 'server_offset' ] ); ?>" autocomplete="OFF" size="6">
 			
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 			
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 		</form>

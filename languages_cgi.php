@@ -72,7 +72,7 @@
 		echo( $lang_string[ 'instructions' ] . "<p />" );
 		
 		?>
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<?php 
 		if ( array_key_exists( "display_results", $_GET ) ) {

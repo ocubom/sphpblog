@@ -44,7 +44,7 @@
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color=#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>>
+		<hr />
 		
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="install06.php?blog_language=<?php echo( $blog_config[ 'blog_language' ] ); ?>" method="POST" onSubmit="return validate(this)">
 			<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />

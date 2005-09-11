@@ -38,7 +38,7 @@
 			echo( '<a href="install05.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string[ 'btn_try_again' ] . '</a><br /><br />' );
 		}
 		
-		// echo( '<hr noshade size="1" color=#' . $user_colors[ 'inner_border_color' ] . '>' );
+		// echo( '<hr />' );
 	}
 ?>
 <?php 

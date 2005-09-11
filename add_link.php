@@ -67,7 +67,7 @@
 		$str = NULL;
 		if ( $result ) {
 			
-			echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo $lang_string[ 'instructions_modify' ] . '<p />';
 	
 			$array = explode('|', $result);
@@ -104,7 +104,7 @@
 		
 		echo( $str );
 		
-		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		
 		if ( isset( $link_id ) == true ) {
 			echo $lang_string[ 'instructions_edit' ] . '<br /><br />';

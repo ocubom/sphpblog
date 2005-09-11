@@ -36,7 +36,8 @@
 		
 		$upgrade_count = move_all_comment_files( true, true );
 		if ( $upgrade_count > 0 ) {
-			echo( "<hr noshade size=\"1\" color=\"#" . $user_colors[ 'inner_border_color' ] . "\" /><br />" );
+			echo( "<hr />" );
+			echo( "<br />" );
 			echo( $lang_string[ 'upgrade' ] );
 			$str = str_replace ( '%n', $upgrade_count, $lang_string[ 'upgrade_count' ] );
 			echo( $str . "<br /><br />" );

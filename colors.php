@@ -159,7 +159,7 @@
 				echo ('</table><p />' . "\n");
 			
 				echo ('<input type="submit" name="submit" value="' . $lang_string[ 'submit_btn' ] . '"/>' );
-				echo ('<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' . "\n");
+				echo( '<hr />' . "\n" );
 				
 				// Preset Color Dropdown
 				echo ('<label for="presets">' . $lang_string[ 'color_preset' ] . '</label><br />' . "\n");

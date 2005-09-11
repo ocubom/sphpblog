@@ -39,7 +39,7 @@
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="login_cgi.php" method="POST" onSubmit="return validate(this)">
 		
@@ -49,7 +49,7 @@
 		<label for="pass"><?php echo( $lang_string[ 'password' ] ); ?></label><br />
 		<input type="password" name="pass" size="40"><br />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 		</form>
