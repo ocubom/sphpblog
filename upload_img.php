@@ -22,21 +22,22 @@
 	function page_content() {
 		global $lang_string, $user_colors;
 		
-		?>
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			
+		ob_start(); ?>
 		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr />
-		
 		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">
-			<?php echo( $lang_string[ 'select_file' ] ); ?><p />
-			<input name="userfile" type="file"><p />
-			
+			<?php echo( $lang_string[ 'select_file' ] ); ?><br /><br />
+			<input name="userfile" type="file">			
 			<input type="submit" value="<?php echo( $lang_string[ 'upload_btn' ] ); ?>">
 		</form>
-		
-		<?php 
+		<?php
+		$entry_array[ 'entry' ] = ob_get_contents();
+		ob_end_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 
