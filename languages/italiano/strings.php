@@ -1,10 +1,6 @@
 <?php
-	// Italian Language File
-	// (c) 2004 Porro Luciano (alias drudo), drudo3 <at> jumpy <dot> it, http://drudo.altervista.org/blog/
-	// last update 26.01.2005
-	//
-	// Simple PHP Version: 0.4.0
-	// Language Version:   0.4.0.1
+	// Italian Language Translation(s)
+	// (c) 2004 Porro Luciano (alias drudo), drudo3 <at> jumpy <dot> it, http://drudo.altervista.org/blog/ (0.4.0)
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -322,6 +318,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>Ops!</h2>Informazioni non salvate! Si &egrave; verificato un problema durante il salvataggio delle informazioni.<br /><br />Il server ha risposto:<br />";
 				$lang_string['form_error'] = "E' necessario compilare i campi Username e Password.";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "Benvenuto";
@@ -416,6 +416,7 @@
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
 				$lang_string['blog_footer'] = "Pi&egrave; di pagina:";
 				$lang_string['blog_choose_language'] = "Cambia lingua:";
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_enable_comments'] = "Abilita i commenti da parte degli utenti"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "Apri i commenti in una nuova finestra"; // <-- New 0.3.6
 				$lang_string['blog_enable_voting'] = "Consenti agli utenti di votare le notizie"; // <-- New 0.3.8
@@ -533,6 +534,8 @@
 				$lang_string['success'] = "<h2>Ok!</h2>Messaggio inviato correttamente!<p />";
 				$lang_string['failure'] = "<h2>Errore!</h2>Il vostro messaggio non è stato trasmesso. Anti lo Spam non è stato inserito molto probabilmente correttamente.<p />";
 				$lang_string['contact_capcha'] = "Anti-Spam: Entri <b>%s</b>"; // 0.4.2
+				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistiche</h2>";
@@ -547,6 +550,21 @@
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
 				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
 				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				break;
+			case 'errorpage-nocookies':  // New for 0.4.6
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':  // New for 0.4.6
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			default:
 				break;

@@ -1,10 +1,6 @@
 <?php
-	// Translation File
-	// (c) 2004 Thibaud Chon, thibaud <dot> chone <at> insa-lyon <dot> fr
-	//
-	// Simple PHP Version: 0.3.7
-	// Language Version:   0.3.7.1
-	
+	// Translation(s)
+	// (c) 2004 Thibaud Chon, thibaud <dot> chone <at> insa-lyon <dot> fr (0.3.7)
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -326,6 +322,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "Welcome";
@@ -427,6 +427,7 @@
 				$lang_string['blog_enable_voting'] = "Enable Users to Rate Entries"; // <-- New 0.3.8
 				$lang_string['blog_email_notification'] = "Send email notification when comments are posted"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;"; // <-- New 0.3.7
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)"; // <-- New 0.3.7
 				$lang_string['blog_trackback_about'] = "Trackback provides a method of notification between blogs. Let another
 					blog know that you are linking to them by sending them a trackback ping. See who is linking to 
@@ -544,6 +545,8 @@
 				$lang_string['success'] = "<h2>Succès !</h2>Votre message a été envoyé.<p />";
 				$lang_string['contact_capcha'] = "Anti-Spam: Entrez <b>%s</b>"; // 0.4.2
 				$lang_string['failure'] = "<h2>Erreur !</h2>Votre message n'a pas été envoyé. Très probablement anti le Spam n'a pas été écrit correctement.<p />";
+				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistiques</h2>";
@@ -558,6 +561,21 @@
 				$lang_string['vote_info'] = "<b>%s</b> voix stockées dedans <b>%s</b> bytes"; // 0.4.1
 				$lang_string["most_voted_entries"] = "<h3>10 entrées les plus votées</h3>"; // 0.4.1
 				$lang_string["most_rated_entries"] = "<h3>La plupart des entrées évaluées</h3>"; // 0.4.1
+				break;
+			case 'errorpage-nocookies':  // New for 0.4.6
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':  // New for 0.4.6
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			default:
 				break;

@@ -322,6 +322,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>喔喔！</h2>剛才的資訊沒有儲存。在儲存使用者名稱以及密碼的時候遇到一些問題。<br /><br />伺服器報告：<br />";
 				$lang_string['form_error'] = "使用者名稱以及密碼欄不能留白。";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "歡迎光臨";
@@ -423,6 +427,7 @@
 				$lang_string['blog_enable_comments'] = "准許回應"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "在新視窗開啟回應"; // <-- New 0.3.6
 				$lang_string['blog_enable_voting'] = "准許觀眾對文章評分"; // <-- New 0.3.8
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_email_notification'] = "有新的回應時用 Email 通知你"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "送出網誌的 &quot;pings&quot;"; // <-- New 0.3.7 //　不知道這是啥 -_-|||
 				$lang_string['blog_ping_urls'] = "輸入你的 &quot;ping&quot; 服務的完整網址。(像是 http://rpc.weblogs.com/RPC2)<br />(如果有多個網址，可用逗號分開。)"; // <-- New 0.3.7
@@ -539,6 +544,8 @@
 				$lang_string['success'] = "<h2>發送成功!</h2>你的訊息已經寄出摟.<p />";
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
+				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;	
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistics</h2>";
@@ -553,6 +560,21 @@
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
 				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
 				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				break;
+			case 'errorpage-nocookies':  // New for 0.4.6
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':  // New for 0.4.6
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			default:
 				break;

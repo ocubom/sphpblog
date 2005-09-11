@@ -1,13 +1,6 @@
 <?php
-	// Spanish Language File
-	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com
-	//
-	// Reviewed by Ridgarou, ridgarou <at> gmail <dot> com
-	//
-	// Simple PHP Version: 0.4.5
-	// Language Version:   0.4.5.1
-
-	
+	// Spanish Language Translation(s)
+	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com (0.4.5)
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -372,6 +365,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>Información no guardada. Hubo un error mientras se guardaba su nombre de usuario y contraseña .<br /><br />Respuesta del servidor:<br />";
 				$lang_string['form_error'] = "Por favor complete los campos Usuario y Contraseña.";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 
 			case 'install00':
@@ -478,6 +475,7 @@
 				$lang_string['blog_choose_language'] = "Elegir Idioma:";
 				$lang_string['blog_enable_comments'] = "Permitir Comentarios de Usuarios"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "Abrir comentarios en Ventanas Emergentes"; // <-- New 0.3.6
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_enable_voting'] = "Permitir a los Usuarios Votar Artículos"; // <-- New 0.3.8
 				$lang_string['blog_email_notification'] = "Enviar email cuando se publique un comentario"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "Enviar &quot;pings&quot;"; // <-- New 0.3.7
@@ -621,6 +619,8 @@
 				$lang_string['success'] = "<h2>¡Listo!</h2>Su mensaje ha sido enviado.<p />";
 				$lang_string['failure'] = "<h2>¡Ups!</h2>Su mensaje no se ha enviado. Contra el Spam no fue incorporado muy probablemente correctamente.<p />";
 				$lang_string['contact_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2	
+				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;
 
 			case 'stats':
@@ -637,6 +637,22 @@
 				$lang_string['vote_info'] = "<b>%s</b> votos ocupando <b>%s</b> bytes"; // 0.4.1
 				$lang_string['most_voted_entries'] = "<h3>10 Artículos más votados</h3>"; //0.4.1
 				$lang_string['most_rated_entries'] = "<h3>10 Artículos mejor valorados</h3>"; //0.4.1
+				break;
+				
+			case 'errorpage-nocookies':  // New for 0.4.6
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':  // New for 0.4.6
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 
 			default:

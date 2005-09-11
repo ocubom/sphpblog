@@ -1,10 +1,6 @@
 <?php
-	// Portuguese Language File
-	// (c) 2004 Nuno Cardoso, nuno.cardoso@tugamail.com
-	//
-	// Simple PHP Version: 0.3.7
-	// Language Version:   0.3.7.1
-	
+	// Portuguese Language Translation(s)
+	// (c) 2004 Nuno Cardoso, nuno.cardoso@tugamail.com (0.3.7)
 
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -322,6 +318,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Informação não gravada. Encontrei um problema enquanto gravava o Utilizador e a Senha.<br /><br />O Servidor Reportou:<br />";
 				$lang_string['form_error'] = "Por favor complete os campos Utilizador e Senha.";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "Benvindo";
@@ -419,6 +419,7 @@
 				$lang_string['blog_enable_comments'] = "Enable User Comments"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "Open Comments in Popup Window"; // <-- New 0.3.6
 				$lang_string['blog_enable_voting'] = "Enable Users to Rate Entries"; // <-- New 0.3.8
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_email_notification'] = "Send email notification when comments are posted"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;"; // <-- New 0.3.7
 				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)"; // <-- New 0.3.7
@@ -537,6 +538,8 @@
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
+				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;
 			case 'stats':
 				$lang_string['title'] = "<h2>Statistics</h2>";
@@ -551,6 +554,21 @@
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
 				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
 				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				break;
+			case 'errorpage-nocookies':  // New for 0.4.6
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':  // New for 0.4.6
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			default:
 				break;

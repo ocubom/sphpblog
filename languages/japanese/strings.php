@@ -1,10 +1,6 @@
 <?php
-	// Japanese Language File
-	// (c) 2004-2005 Sanshiro Akiyama
-	//
-	// Simple PHP Version: 0.3.7
-	// Language Version:   0.3.7.1
-	
+	// Japanese Language Translations
+	// (c) 2004 Sanshiro Akiyama (0.3.7)
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -314,16 +310,20 @@ case 'logout':
 	$lang_string['error'] = "<h2>Whoops!</h2>ÊÝÂ¸¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£<br /><br />Server Reported:<br />";
 				break;
 			case 'set_login':
-	$lang_string['title'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÊÑ¹¹";
-	$lang_string['instructions'] = "¤¢¤Ê¤¿¤Î¥æ¡¼¥¶¡¼Ì¾¤Þ¤¿¤Ï¥Ñ¥¹¥ï¡¼¥É¤òÊÑ¹¹¤·¤Þ¤¹¡£<br />¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤ª¤è¤Ó¥Ñ¥¹¥ï¡¼¥É¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£";
-	$lang_string['username'] = "¥æ¡¼¥¶¡¼Ì¾:";
-	$lang_string['password'] = "¥Ñ¥¹¥ï¡¼¥É:";
-	$lang_string['submit_btn'] = "&nbsp;·èÄê&nbsp;";
-	// Success
-	$lang_string['success'] = "<h2>Success!</h2>¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤¬Í­¸ú¤Ë¤Ê¤ê¤Þ¤·¤¿¡£<p />";
-	// Wrong Password
-	$lang_string['wrong_password'] = "<h2>Whoops!</h2>¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÅÐÏ¿¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£<br /><br />Server Reported:<br />";
-	$lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
+				$lang_string['title'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÊÑ¹¹";
+				$lang_string['instructions'] = "¤¢¤Ê¤¿¤Î¥æ¡¼¥¶¡¼Ì¾¤Þ¤¿¤Ï¥Ñ¥¹¥ï¡¼¥É¤òÊÑ¹¹¤·¤Þ¤¹¡£<br />¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤ª¤è¤Ó¥Ñ¥¹¥ï¡¼¥É¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£";
+				$lang_string['username'] = "¥æ¡¼¥¶¡¼Ì¾:";
+				$lang_string['password'] = "¥Ñ¥¹¥ï¡¼¥É:";
+				$lang_string['submit_btn'] = "&nbsp;·èÄê&nbsp;";
+				// Success
+				$lang_string['success'] = "<h2>Success!</h2>¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤¬Í­¸ú¤Ë¤Ê¤ê¤Þ¤·¤¿¡£<p />";
+				// Wrong Password
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÅÐÏ¿¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£<br /><br />Server Reported:<br />";
+				$lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "Welcome";
@@ -413,6 +413,7 @@ $lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ
 	$lang_string['blog_title'] = "¥Ö¥í¥°¥¿¥¤¥È¥ë";
 	$lang_string['blog_author'] = "´ÉÍý¼ÔÌ¾";
 	$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+	$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 	$lang_string['blog_footer'] = "¥Õ¥Ã¥¿¡¼";
 	$lang_string['blog_choose_language'] = "¸À¸ìÁªÂò";
 	$lang_string['blog_enable_comments'] = "¥³¥á¥ó¥Èµ¡Ç½¤ò»È¤¦"; 
@@ -532,21 +533,38 @@ $lang_string['comment'] = "¥á¥Ã¥»¡¼¥¸¤ò¤ª´ê¤¤¤·¤Þ¤¹¡£"
 $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
+				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6	
 				break;
-	case 'stats':
-	$lang_string['title'] = "<h2>Åý·×</h2>";
-	$lang_string['general'] = "<h3>Á´ÂÎ</h3>";
-	$lang_string['entry_info'] = "<b>%s</b> ¥¨¥ó¥È¥ê¡¼»ÈÍÑÍÆÎÌ <b>%s</b> words stored in <b>%s</b> bytes";
-	$lang_string['comment_info'] = "<b>%s</b> ¥³¥á¥ó¥È»ÈÍÑÎÌ <b>%s</b> words stored in <b>%s</b> bytes";
-	$lang_string['trackback_info'] = "<b>%s</b> ÊÝÂ¸¥È¥é¥Ã¥¯¥Ð¥Ã¥¯ <b>%s</b> bytes";
-	$lang_string['static_info'] = "<b>%s</b> ÀÅÅª¥Ú¡¼¥¸ <b>%s</b> words stored in <b>%s</b> bytes";
-	$lang_string['most_viewed_entries'] = "<h3>10 ¥¨¥ó¥È¥ê¡¼»²¾È¿ô</h3>";
-	$lang_string['most_commented_entries'] = "<h3>10 ¥¨¥ó¥È¥ê¡¼É¾²Á</h3>";
-	$lang_string['most_trackbacked_entries'] = "<h3>10 ¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¿ô</h3>";
+			case 'stats':
+				$lang_string['title'] = "<h2>Åý·×</h2>";
+				$lang_string['general'] = "<h3>Á´ÂÎ</h3>";
+				$lang_string['entry_info'] = "<b>%s</b> ¥¨¥ó¥È¥ê¡¼»ÈÍÑÍÆÎÌ <b>%s</b> words stored in <b>%s</b> bytes";
+				$lang_string['comment_info'] = "<b>%s</b> ¥³¥á¥ó¥È»ÈÍÑÎÌ <b>%s</b> words stored in <b>%s</b> bytes";
+				$lang_string['trackback_info'] = "<b>%s</b> ÊÝÂ¸¥È¥é¥Ã¥¯¥Ð¥Ã¥¯ <b>%s</b> bytes";
+				$lang_string['static_info'] = "<b>%s</b> ÀÅÅª¥Ú¡¼¥¸ <b>%s</b> words stored in <b>%s</b> bytes";
+				$lang_string['most_viewed_entries'] = "<h3>10 ¥¨¥ó¥È¥ê¡¼»²¾È¿ô</h3>";
+				$lang_string['most_commented_entries'] = "<h3>10 ¥¨¥ó¥È¥ê¡¼É¾²Á</h3>";
+				$lang_string['most_trackbacked_entries'] = "<h3>10 ¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¿ô</h3>";
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
 				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
 				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				break;
+			case 'errorpage-nocookies':  // New for 0.4.6
+				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
+				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
+				$lang_string["clientid"] = 'Client ID: ';
+				break;
+			case 'errorpage':  // New for 0.4.6
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
+				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
+				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
+				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
+				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
+				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
+				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			default:
 				break;
