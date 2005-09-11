@@ -96,12 +96,14 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $logged_in;
-		
+		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;		
 		?>
-		
 		<?php echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) ); ?><p />
-						
+						<?php
+			$entry_array = array();
+				$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			
+				ob_start(); ?>
 		<h2><?php echo( $lang_string[ 'header' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?></p>
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='comment_add_cgi.php' method="POST" name="vbform" onSubmit="return validate_comment(this)">
@@ -119,9 +121,11 @@
 			
 			<!-- NEW -->
 			
+			
 			<?php echo( $lang_string[ 'label_insert' ] ); ?><br />
 			<?php
 				global $blog_config;
+				
 			
 				if ( in_array( 'b', $blog_config[ 'comment_tags_allowed' ] ) ) {
 					?><input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" /><?php
@@ -207,7 +211,10 @@
 			
 		</form>
 		
-		<?php 
+		<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 
