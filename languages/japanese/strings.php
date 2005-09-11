@@ -541,18 +541,18 @@ $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6	
 				break;
 			case 'stats':
-				$lang_string['title'] = "<h2>Åý·×</h2>";
-				$lang_string['general'] = "<h3>Á´ÂÎ</h3>";
+				$lang_string['title'] = "Åý·×";
+				$lang_string['general'] = "Á´ÂÎ";
 				$lang_string['entry_info'] = "<b>%s</b> ¥¨¥ó¥È¥ê¡¼»ÈÍÑÍÆÎÌ <b>%s</b> words stored in <b>%s</b> bytes";
 				$lang_string['comment_info'] = "<b>%s</b> ¥³¥á¥ó¥È»ÈÍÑÎÌ <b>%s</b> words stored in <b>%s</b> bytes";
 				$lang_string['trackback_info'] = "<b>%s</b> ÊÝÂ¸¥È¥é¥Ã¥¯¥Ð¥Ã¥¯ <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> ÀÅÅª¥Ú¡¼¥¸ <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "<h3>10 ¥¨¥ó¥È¥ê¡¼»²¾È¿ô</h3>";
-				$lang_string['most_commented_entries'] = "<h3>10 ¥¨¥ó¥È¥ê¡¼É¾²Á</h3>";
-				$lang_string['most_trackbacked_entries'] = "<h3>10 ¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¿ô</h3>";
+				$lang_string['most_viewed_entries'] = "10 ¥¨¥ó¥È¥ê¡¼»²¾È¿ô";
+				$lang_string['most_commented_entries'] = "10 ¥¨¥ó¥È¥ê¡¼É¾²Á";
+				$lang_string['most_trackbacked_entries'] = "10 ¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¿ô";
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
-				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				$lang_string["most_voted_entries"] = "10 Most voted entries"; // 0.4.1
+				$lang_string["most_rated_entries"] = "10 Most rated entries"; // 0.4.1
 				break;
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';

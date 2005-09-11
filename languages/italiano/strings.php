@@ -538,18 +538,18 @@
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;
 			case 'stats':
-				$lang_string['title'] = "<h2>Statistiche</h2>";
-				$lang_string['general'] = "<h3>Generale</h3>";
+				$lang_string['title'] = "Statistiche";
+				$lang_string['general'] = "Generale";
 				$lang_string['entry_info'] = "<b>%s</b> notizie / <b>%s</b> parole / <b>%s</b> bytes";
 				$lang_string['comment_info'] = "<b>%s</b> commenti / <b>%s</b> parole / <b>%s</b> bytes";
 				$lang_string['trackback_info'] = "<b>%s</b> trackbacks / <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> pagine statiche / <b>%s</b> parole / <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "<h3>Le 10 notizie più visitate:</h3>";
-				$lang_string['most_commented_entries'] = "<h3>La 10 notizie pi&ugrave; commentate:</h3>";
-				$lang_string['most_trackbacked_entries'] = "<h3>Le 10 notizie con maggior numero di trackback:</h3>";
+				$lang_string['most_viewed_entries'] = "Le 10 notizie più visitate:";
+				$lang_string['most_commented_entries'] = "La 10 notizie pi&ugrave; commentate:";
+				$lang_string['most_trackbacked_entries'] = "Le 10 notizie con maggior numero di trackback:";
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
-				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
+				$lang_string["most_voted_entries"] = "10 Most voted entries"; // 0.4.1
+				$lang_string["most_rated_entries"] = "10 Most rated entries"; // 0.4.1
 				break;
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';

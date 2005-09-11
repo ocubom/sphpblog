@@ -545,18 +545,18 @@
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				break;
 			case 'stats':
-				$lang_string['title'] = "<h2>Statistiques</h2>";
-				$lang_string['general'] = "<h3>Généralités</h3>";
+				$lang_string['title'] = "Statistiques";
+				$lang_string['general'] = "Généralités";
 				$lang_string['entry_info'] = "<b>%s</b> employer d'entrées <b>%s</b> mots stockés dedans <b>%s</b> bytes";
 				$lang_string['comment_info'] = "<b>%s</b> employer de commentaires <b>%s</b> mots stockés dedans <b>%s</b> bytes";
 				$lang_string['trackback_info'] = "<b>%s</b> trackbacks stockés dedans <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> employer statique de pages <b>%s</b> mots stockés dedans <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "<h3>10 entrées les plus vues</h3>";
-				$lang_string['most_commented_entries'] = "<h3>10 entrées les plus commentées</h3>";
-				$lang_string['most_trackbacked_entries'] = "<h3>10 trackbacked plus des entrées</h3>";
+				$lang_string['most_viewed_entries'] = "10 entrées les plus vues";
+				$lang_string['most_commented_entries'] = "10 entrées les plus commentées";
+				$lang_string['most_trackbacked_entries'] = "10 trackbacked plus des entrées";
 				$lang_string['vote_info'] = "<b>%s</b> voix stockées dedans <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "<h3>10 entrées les plus votées</h3>"; // 0.4.1
-				$lang_string["most_rated_entries"] = "<h3>La plupart des entrées évaluées</h3>"; // 0.4.1
+				$lang_string["most_voted_entries"] = "10 entrées les plus votées"; // 0.4.1
+				$lang_string["most_rated_entries"] = "La plupart des entrées évaluées"; // 0.4.1
 				break;
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP Error 403.8 - Accès De Page/Function Nié';

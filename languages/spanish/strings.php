@@ -624,19 +624,19 @@
 				break;
 
 			case 'stats':
-				$lang_string['title'] = "<h2>Estadísticas</h2>";
-				$lang_string['general'] = "<h3>General</h3>";
+				$lang_string['title'] = "Estadísticas";
+				$lang_string['general'] = "General";
 				$lang_string['entry_info'] = "<b>%s</b> artículos usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
 				$lang_string['upload_info']="<b>%s</b> archivos subidos ocupando <b>%s</b> bytes";		//0.4.4
 				$lang_string['comment_info'] = "<b>%s</b> comentarios usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
 				$lang_string['trackback_info'] = "<b>%s</b> trackbacks ocupando <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> páginas estáticas usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "<h3>10 Artículos más vistos</h3>";
-				$lang_string['most_commented_entries'] = "<h3>10 Artículos más comentados</h3>";
-				$lang_string['most_trackbacked_entries'] = "<h3>10 Artículos con más trackbacks</h3>";
+				$lang_string['most_viewed_entries'] = "10 Artículos más vistos";
+				$lang_string['most_commented_entries'] = "10 Artículos más comentados";
+				$lang_string['most_trackbacked_entries'] = "10 Artículos con más trackbacks";
 				$lang_string['vote_info'] = "<b>%s</b> votos ocupando <b>%s</b> bytes"; // 0.4.1
-				$lang_string['most_voted_entries'] = "<h3>10 Artículos más votados</h3>"; //0.4.1
-				$lang_string['most_rated_entries'] = "<h3>10 Artículos mejor valorados</h3>"; //0.4.1
+				$lang_string['most_voted_entries'] = "10 Artículos más votados"; //0.4.1
+				$lang_string['most_rated_entries'] = "10 Artículos mejor valorados"; //0.4.1
 				break;
 				
 			case 'errorpage-nocookies':  // New for 0.4.6
