@@ -229,13 +229,12 @@
 		} else {			
 			$entry_array = array();
 			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			$entry_array[ 'entry' ] = $lang_string[ 'instructions' ] . '<p />';
-			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<hr />';
-			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'current_categories' ] . '<br />';
-			echo( theme_staticentry( $entry_array ) );
-			?>			
+			ob_start(); ?>	
 			
 			<?php
+				echo ( $lang_string[ 'instructions' ] . '<p />');
+				echo ( '<b>' . $lang_string[ 'current_categories' ] . '</b><br />');
+				
 				$catArray = get_category_array();
 				if ( count($catArray) > 0) {
 					$str = '';
@@ -253,7 +252,7 @@
 					echo( $lang_string[ 'no_categories_found' ] . '<br />' );
 				}
 			?>
-			<hr />
+			
 			
 			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
 			<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
@@ -274,14 +273,14 @@
 				}
 			?></textarea><br />
 				<br />
-				<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" /><br />
-				
-				<hr />
-				
-				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
+				<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" />
+				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 			</form>
 			
-			<?php 
+			<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );
 		}
 	}
 ?>
