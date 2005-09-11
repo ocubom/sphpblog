@@ -3,9 +3,9 @@
 	// Simple PHP Blog Theme File
 	// --------------------------
 	//
-	// Name: Classic Theme
+	// Name: Default/Classic Theme
 	// Author: Alexander Palmo
-	// Version: 0.3.7.1
+	// Version: 0.4.5
 	//
 	// Description:
 	// This the is default theme for Simple PHP Blog. You can use
@@ -153,7 +153,7 @@
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;' . $entry_array[ 'stars' ];
 		}
 		
-		$blog_content = $blog_content . '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' . "\n";
+		$blog_content = $blog_content . '<hr />' . "\n";
 		
 		return $blog_content;
 	}
@@ -191,7 +191,7 @@
 		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'">[ ' . $entry_array[ 'url' ] . " ]</a><p>\n";
 		}
 		
-		$blog_content = $blog_content . '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' . "\n";
+		$blog_content = $blog_content . '<hr />' . "\n";
 
 		return $blog_content;
 	}
@@ -387,17 +387,17 @@
 		echo( $result[ 'content' ] . '' );
 		
 		
-		echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		echo( menu_display_login() );
 		
 		$array = read_blocks($logged_in);
 		for($i=0 ; $i<count($array) ; $i+=2) {
-			echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo( '<span class="menu_title">' . $array[$i] . '</span><br/>' );
 			echo( $array[$i+1] . '' );
 		}
 		
-		echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		
 		$result = menu_display_blognav();
 		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
@@ -405,34 +405,34 @@
 		
 		$result = menu_display_categories();
 		if ( $result[ 'content' ] != '' ) {			
-			echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 			echo( $result[ 'content' ] . '' );
 		}
 		
 		// Search Box - Added in 0.3.7
 		$result = menu_search_field();
-		echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 		echo( $result[ 'content' ] . '' );
 		
 		$result = menu_display_user();
 		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 			echo( $result[ 'content' ] . '' );
 		}
 		
 		$result = menu_display_setup();
 		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 			echo( $result[ 'content' ] . '' );
 		}
 		
 		$result = menu_most_recent_comments();
 		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 			echo( $result[ 'content' ] . '' );
 		}
@@ -440,7 +440,7 @@
 		if( $blog_config[ 'blog_trackback_enabled' ] ) {
 			$result = menu_most_recent_trackbacks();
 			if ( $result[ 'content' ] != '' ) {
-				echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+				echo( '<hr />' );
 				echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 				echo( $result[ 'content' ] . '' );
 			}
@@ -448,21 +448,21 @@
 		
 		$result = menu_most_recent_entries();
 		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+			echo( '<hr />' );
 			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 			echo( $result[ 'content' ] . '' );
 		}
 		
-		echo( '<hr class="divider" noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
+		echo( '<hr />' );
 	
 		// Web Badges - Changed in 0.4.4
 		echo( '<div align="center">' );
-		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" title="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" border="0"></a> ' );
-		echo( '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0"></a><br />' );
-		echo( '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0"></a> ' );
-		echo( '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0"></a><br />' );
-		echo( '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0"> ' );
-		echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0"></a><br />' );
+		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" title="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" border="0" /></a> ' );
+		echo( '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0" /></a><br />' );
+		echo( '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0" /></a> ' );
+		echo( '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0" /></a><br />' );
+		echo( '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0" /> ' );
+		echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />' );
 		echo( '</div>' );
 	}
 	

@@ -3,9 +3,9 @@
 	// Simple PHP Blog Theme File
 	// --------------------------
 	//
-	// Name: Classic Theme
+	// Name: Modern Theme
 	// Author: Alexander Palmo
-	// Version: 0.3.8
+	// Version: 0.4.5
 	//
 	// Description:
 	// This the is default theme for Simple PHP Blog. You can use
@@ -645,12 +645,12 @@
 		
 		// Web Badges - Changed in 0.4.4
 		echo( '<div align="center">' );
-		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" title="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" border="0"></a> ' );
-		echo( '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0"></a><br />' );
-		echo( '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0"></a> ' );
-		echo( '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0"></a><br />' );
-		echo( '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0"> ' );
-		echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0"></a><br />' );
+		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" title="Powered by Simple PHP Blog ' .  $sb_info[ 'version' ] . '" border="0" /></a> ' );
+		echo( '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0" /></a><br />' );
+		echo( '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0" /></a> ' );
+		echo( '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0" /></a><br />' );
+		echo( '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0" /> ' );
+		echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />' );
 		echo( '</div>' );
 	}
 	

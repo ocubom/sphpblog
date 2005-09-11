@@ -3,7 +3,13 @@
 		background-color: #<?php echo( $user_colors[ 'bg_color' ] ); ?>;
 		color: #<?php echo( $user_colors[ 'txt_color' ] ); ?>;
 	}
-	
+
+	hr	
+	{
+		color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
+		background-color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
+	}
+
 	#header_image {
 		border-color: #<?php echo( $user_colors[ 'border_color' ] ); ?>;
 	}
