@@ -36,12 +36,10 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
-		
-		global $blog_config;
-		?>
-		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;	
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];		
+		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<hr />
@@ -173,10 +171,13 @@
 			
 			<hr />
 			
-			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
+			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 		</form>
 		
-		<?php 
+		<?php
+		$entry_array[ 'entry' ] = ob_get_contents();
+		ob_end_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 
