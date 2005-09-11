@@ -33,17 +33,11 @@
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors;
-		
-		?>
-		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-
-		<br />
-		<?php echo("In recent versions, our password structure has changed.  There is no longer a way to update passwords
-					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
-					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
-					to generate your password as you did when originally creating the blog site." ); ?><p />
-		<?php 
+		$entry_array = array();
+			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			$entry_array[ 'entry' ] = $lang_string['explanation'];
+			
+			echo( theme_staticentry( $entry_array ) );		
 	}
 ?>
 <?php 

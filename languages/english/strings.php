@@ -322,6 +322,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
+					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
+					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
+					to generate your password as you did when originally creating the blog site.";
 				break;
 			case 'install00':
 				$lang_string['title'] = "Welcome";
