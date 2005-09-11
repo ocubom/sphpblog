@@ -45,26 +45,26 @@
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<?php	
-		echo('<b>Your web server supports the following encryption schemes:</b><br />');
-		echo('Standard DES Encryption: ' . ( CRYPT_STD_DES == 1 ? '<b style="color: green;">enabled</b>' : '<b style="color: red;">disabled</b>' ) . '<br />');
-		echo('Extended DES Encryption: ' . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">enabled</b>' : '<b style="color: red;">disabled</b>' ) . '<br />');
-		echo('MD5 Encryption: ' . ( CRYPT_EXT_DES == 1 ?'<b style="color: green;">enabled</b>' : '<b style="color: red;">disabled</b>' ) . '<br />');
-		echo('Blowfish Encryption: ' . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">enabled</b>' : '<b style="color: red;">disabled</b>' ) . '<br />');
+		echo( $lang_string[ 'supported' ]. '<br />');
+		echo( $lang_string[ 'standard' ] . ( CRYPT_STD_DES == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
+		echo( $lang_string[ 'extended' ] . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
+		echo( $lang_string[ 'MD5' ] . ( CRYPT_EXT_DES == 1 ?'<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
+		echo( $lang_string[ 'blowfish' ] . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
 		echo('<br />');
 	
 		$hashtest = crypt('test');
 		if ( strlen( $hashtest ) <= 13 ) {
-			echo('<b>Using Standard DES Encryption...</b>');
+			echo( $lang_string[ 'using_standard' ] );
 		} else if ( strlen( $hashtest ) <= 20 ) {
-			echo('<b>Using Extended DES Encryption...</b>');
+			echo( $lang_string[ 'using_extended' ] );
 		} else if ( substr( $hashtest, 0, 3 ) == '\$1\$' ) {
-			echo('<b style="color: green;">Using MD5 Encryption...</b>');
+			echo( $lang_string[ 'using_MD5' ] );
 		} else if ( substr( $hashtest, 0, 3 ) == '\$2\$' || substr( $hashtest, 0, 4 ) == '\$2a\$' ) {
-			echo('<b style="color: green;">Using Blowfish Encryption...</b>');
+			echo( $lang_string[ 'using_blowfish' ] );
 		} else {
-			echo('<b>Using Unknown Encryption...</b>');
+			echo( $lang_string[ 'using_unknown' ] );
 		}
-		echo(' <i>(Salt Length = '.CRYPT_SALT_LENGTH.')</i><br />');
+		echo( str_replace( '%string', CRYPT_SALT_LENGTH, $lang_string[ 'salt_length' ] ) );
 		?>
 		
 		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />

@@ -355,7 +355,20 @@
 				$lang_string['success'] = "<h2>Katalogerna skapade!</h2><p /><b>Klicka nedan för att fortsätta:</b>";
 				$lang_string['continue'] = "[ Fortsätt ]";
 				break;
-			case 'install03': // <-- New
+			case 'install03':
+				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
+				$lang_string['standard'] = "Standard DES Encryption: ";
+				$lang_string['extended'] = "Extended DES Encryption: ";
+				$lang_string['MD5'] = "MD5 Encryption: ";
+				$lang_string['blowfish'] = "Blowfish Encryption: ";
+				$lang_string['enabled'] = "enabled";
+				$lang_string['disabled'] = "disabled";
+				$lang_string['using_standard'] = "<b>Using Standard DES Encryption...</b>";
+				$lang_string['using_extended'] = "<b>Using Extended DES Encryption...</b>";
+				$lang_string['using_MD5'] = "<b style=\"color: green;\">Using MD5 Encryption...</b>";
+				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Using Blowfish Encryption...</b>";
+				$lang_string['using_unknown'] = "<b>Using Unknown Encryption...</b>";
+				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />"; // <-- New
 				$lang_string['title'] = "Skapa användarnamn och lösenord";
 				$lang_string['instructions'] = "Använd formuläret nedan för att ange det användarnamn och lösenord du vill använda för att administrera din sajt.";
 				$lang_string['username'] = "Användarnamn:";

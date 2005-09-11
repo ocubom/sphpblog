@@ -352,6 +352,19 @@
 				$lang_string['continue'] = "[ ¼ÌÐø ]";
 				break;
 			case 'install03':
+				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
+				$lang_string['standard'] = "Standard DES Encryption: ";
+				$lang_string['extended'] = "Extended DES Encryption: ";
+				$lang_string['MD5'] = "MD5 Encryption: ";
+				$lang_string['blowfish'] = "Blowfish Encryption: ";
+				$lang_string['enabled'] = "enabled";
+				$lang_string['disabled'] = "disabled";
+				$lang_string['using_standard'] = "<b>Using Standard DES Encryption...</b>";
+				$lang_string['using_extended'] = "<b>Using Extended DES Encryption...</b>";
+				$lang_string['using_MD5'] = "<b style=\"color: green;\">Using MD5 Encryption...</b>";
+				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Using Blowfish Encryption...</b>";
+				$lang_string['using_unknown'] = "<b>Using Unknown Encryption...</b>";
+				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />";
 				$lang_string['title'] = "´´½¨ÓÃ»§Ãû &amp; ÃÜÂë";
 				$lang_string['instructions'] = "Ê¹ÓÃÏÂÃæµÄ±íµ¥À´´´½¨Ò»¸öÓÃ»§ÃûºÍÃÜÂë¡£";
 				$lang_string['username'] = "ÓÃ»§Ãû£º";

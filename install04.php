@@ -38,12 +38,10 @@
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<label for="phpfile"><?php echo( $lang_string['code'] ); ?></label><br />
-<textarea name="phpfile" rows="6" cols="40">
-&lt;?php
+<textarea name="phpfile" rows="6" cols="40">&lt;?php
 	$username = '<?php echo( $hashedUser ); ?>';
 	$password = '<?php echo( $hashedPass ); ?>';
-?&gt;
-</textarea>
+?&gt;</textarea>
 		
 		<?php 
 		echo( '<p />' );
