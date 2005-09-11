@@ -26,7 +26,7 @@
 		global $lang_string, $user_colors, $search_string;
 		
 		echo ( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
-		echo ( str_replace( '%string', $search_string, $lang_string[ 'instructions' ] ) . '<br />' );
+		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $lang_string[ 'php_charset' ] ), $lang_string[ 'instructions' ] ) . '<br />' );
 		
 		echo( '<hr noshade size="1" color="#' . $user_colors[ 'inner_border_color' ] . '" />' );
 			
