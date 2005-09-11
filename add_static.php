@@ -23,56 +23,51 @@
 	function page_content() {
 		global $lang_string, $user_colors, $theme_vars;
 		
-		?>
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		$entry_array[ 'entry' ] = $lang_string[ 'instructions' ] . '<p />';
+    	$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<form accept-charset="' . $lang_string[ 'html_charset' ] . ',iso-8859-1,utf-8" action="add_static_cgi.php" method="POST" name="editor" id="editor" onSubmit="return validate_static(this)">';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<label for="blog_subject">' . $lang_string[ 'label_subject' ] . '</label><br />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="text" name="blog_subject" autocomplete="OFF" value="" size="40"><br /><br />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'label_insert' ] . '<br />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="button" class="bginput" value="' . $lang_string[ 'btn_bold' ] . '" onclick="ins_styles(this.form.blog_text,&quot;b&quot;,&quot;&quot;);" />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="button" class="bginput" value="' . $lang_string[ 'btn_italic' ] . '" onclick="ins_styles(this.form.blog_text,&quot;i&quot;,&quot;&quot;);" />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="button" class="bginput" value="' . $lang_string[ 'btn_url' ] . '" onclick="ins_url(this.form.blog_text);" />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="button" class="bginput" value="' . $lang_string[ 'btn_image' ] . '" onclick="ins_image_v2(this.form.blog_text);"/>';
 		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<select name="style_dropdown" onchange="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);">';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="--" value="--">--</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[blockquote]xxx[/blockquote]" value="blockquote">[blockquote]xxx[/blockquote]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[pre]xxx[/pre]" value="pre">[pre]xxx[/pre]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[code]xxx[/code]" value="code">[code]xxx[/code]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[strong]xxx[/strong]" value="strong">[strong]xxx[/strong]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[b]xxx[/b]" value="b">[b]xxx[/b]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[em]xxx[/em]" value="em">[em]xxx[/em]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[i]xxx[/i]" value="i">[i]xxx[/i]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[h?]xxx[/h?] (?=1-6)" value="h?">[h?]xxx[/h?] (?=1-6)</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[html]xxx[/html]" value="html">[html]xxx[/html]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[del]xxx[/del]" value="del">[del]xxx[/del]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[ins]xxx[/ins]" value="ins">[ins]xxx[/ins]</option>';
+			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option>';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'</select>';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><br /><br />';
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] .'<a href="javascript:openpopup(&quot;image_list.php&quot;,' . $theme_vars[ 'popup_window' ][ 'width' ] . ',' . $theme_vars[ 'popup_window' ][ 'height' ] . ',true);">' . $lang_string[ 'view_images' ] . '</a><br />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . image_dropdown() . '<br />';
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_static_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate_static(this)">
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<label for="blog_text">' . $lang_string[ 'label_entry' ] . '</label><br />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<textarea style="width: ' . $theme_vars[ 'max_image_width' ] . 'px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />';
 		
-			<label for="blog_subject"><?php echo( $lang_string[ 'label_subject' ] ); ?></label><br />
-			<input type="text" name="blog_subject" autocomplete="OFF" value="" size="40"><br /><br />
-			
-			<?php echo( $lang_string[ 'label_insert' ] ); ?><br />
-			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
-			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_italic' ] ); ?>" onclick="ins_styles(this.form.blog_text,'i','');" />
-			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_url' ] ); ?>" onclick="ins_url(this.form.blog_text);" />
-			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/>
-			
-			<select name="style_dropdown" onchange="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);">
-				<option label="--" value="--">--</option>
-				<option label="[blockquote]xxx[/blockquote]" value="blockquote">[blockquote]xxx[/blockquote]</option>
-				<option label="[pre]xxx[/pre]" value="pre">[pre]xxx[/pre]</option>
-				<option label="[code]xxx[/code]" value="code">[code]xxx[/code]</option>
-				<option label="[strong]xxx[/strong]" value="strong">[strong]xxx[/strong]</option>
-				<option label="[b]xxx[/b]" value="b">[b]xxx[/b]</option>
-				<option label="[em]xxx[/em]" value="em">[em]xxx[/em]</option>
-				<option label="[i]xxx[/i]" value="i">[i]xxx[/i]</option>
-				<option label="[h?]xxx[/h?] (?=1-6)" value="h?">[h?]xxx[/h?] (?=1-6)</option>
-				<option label="[html]xxx[/html]" value="html">[html]xxx[/html]</option>
-				<option label="[del]xxx[/del]" value="del">[del]xxx[/del]</option>
-				<option label="[ins]xxx[/ins]" value="ins">[ins]xxx[/ins]</option>
-				<option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option>
-			</select>
-			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><br /><br />
-			
-			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
-			<?php echo image_dropdown(); ?><br /><br />
-			
-			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
-			
-			<label for="file_name"><?php echo( $lang_string[ 'file_name' ] ); ?></label><br/>
-			<input type="text" name="file_name" autocomplete="OFF" size="40" value="static<?php echo date('ymd-His'); ?>"><br /><br />
-			
-			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='preview_static_cgi.php';" />
-			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='add_static_cgi.php';" />
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<label for="file_name">' . $lang_string[ 'file_name' ] . '</label><br/>';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<input type="text" name="file_name" autocomplete="OFF" size="40" value="static' . date('ymd-His') . '"><br /><br />';
 		
-		</form>
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<input type="submit" name="preview" value="' . $lang_string[ 'btn_preview' ] . '" onclick="this.form.action="preview_static_cgi.php";" />';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<input type="submit" name="submit" value="' . $lang_string[ 'btn_post' ] . '" onclick="this.form.action="add_static_cgi.php";" />';
 		
-		<?php 
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '</form>';
+		
+		echo( theme_staticentry( $entry_array ) );
+		
 	}
 ?>
 <?php 
