@@ -9,7 +9,7 @@
 	// sb_language( 'index' );
 	
 	// CGI Functions
-	$pages = array( 'add', 'add_static', 'add_block', 'add_link', 'categories', 'colors', 'comments', 'delete', 'delete_static', 'image_list', 'info', 'index', 'static', 'rating', 'login', 'logout', 'forms', 'set_login', 'install00', 'install01', 'install02', 'install03', 'install04', 'install05', 'install06', 'setup', 'trackbacks ', 'options', 'themes', 'upload_img', 'search', 'contact', 'stats','errorpage-nocookie','errorpage' );
+	$pages = array( 'add', 'add_static', 'add_block', 'add_link', 'categories', 'colors', 'comments', 'delete', 'delete_static', 'image_list', 'info', 'index', 'static', 'rating', 'login', 'logout', 'forms', 'set_login', 'install00', 'install01', 'install02', 'install03', 'install04', 'install05', 'install06', 'setup', 'trackbacks ', 'options', 'themes', 'upload_img', 'search', 'contact', 'stats','errorpage-nocookies','errorpage' );
 	if ( array_key_exists( 'blog_language1', $_POST ) ) {
 	
 		// Store all the data from language 1
@@ -84,7 +84,7 @@
 			$lang1_array = explode( "|", $lang1_string );
 			$lang2_array = explode( "|", $lang2_string );
 			
-			$pages = array( 'add', 'add_static', 'add_block', 'add_link', 'categories', 'colors', 'comments', 'delete', 'delete_static', 'image_list', 'info', 'index', 'static', 'rating', 'login', 'logout', 'forms', 'set_login', 'install00', 'install01', 'install02', 'install03', 'install04', 'install05', 'install06', 'setup', 'trackbacks ', 'options', 'themes', 'upload_img', 'search', 'contact', 'stats','errorpage-nocookie','errorpage' );
+			$pages = array( 'add', 'add_static', 'add_block', 'add_link', 'categories', 'colors', 'comments', 'delete', 'delete_static', 'image_list', 'info', 'index', 'static', 'rating', 'login', 'logout', 'forms', 'set_login', 'install00', 'install01', 'install02', 'install03', 'install04', 'install05', 'install06', 'setup', 'trackbacks ', 'options', 'themes', 'upload_img', 'search', 'contact', 'stats','errorpage-nocookies','errorpage' );
 			// Compare
 			for ( $i = 0; $i < count( $pages ); $i++ ) {
 				$lang1_keys = explode( ",", $lang1_array[ $i ] );
