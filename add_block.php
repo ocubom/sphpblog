@@ -47,8 +47,11 @@
 	function page_content() {
 		global $block_id, $block_name, $block_content, $action, $lang_string, $user_colors, $theme_vars;
 		
-		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
-		echo( $lang_string[ 'instructions' ] . '<p />' );
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];			
+			ob_start(); ?>
+		<?php
+		
 		
 		// Read blocks file.
 		$filename = 'config/blocks.txt';
@@ -56,9 +59,8 @@
 		
 		// Create array.
 		$str = NULL;
-		if ( $result ) {
+		if ( $result ) {			
 			
-			echo( '<hr />' );
 			echo $lang_string[ 'instructions_modify' ] . '<p />';
 	
 			$block_content = '';
@@ -136,7 +138,10 @@
 			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $block_id ) && $action === 'edit' ) { echo $lang_string[ 'submit_btn_edit' ]; } else { echo $lang_string[ 'submit_btn_add' ]; } ?>&nbsp;" onclick="this.form.action='add_block.php';" />
 		</form>
 		
-		<?php 
+		<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 
