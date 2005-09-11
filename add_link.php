@@ -53,10 +53,14 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $theme_vars, $blog_theme;
 		global $link_id, $link_name, $link_url;
 		
-		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>
+		
+		<?php		
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
 		// Read links file.
@@ -146,7 +150,10 @@
 			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $link_id ) ) { echo $lang_string[ 'submit_btn_edit' ]; } else { echo $lang_string[ 'submit_btn_add' ]; } ?>&nbsp;" onclick="this.form.action='add_link.php';" />
 		</form>
 		
-		<?php 
+		<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

@@ -70,10 +70,10 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $blog_theme;
-		
-		?>
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+		global $lang_string, $user_colors, $theme_vars, $blog_theme;
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<?php 
@@ -219,11 +219,14 @@
 			<input type="text" name="scheme_name" id="scheme_name" autocomplete=OFF value="" size="40"><br /><br />
 			
 			<label for="scheme_file"><?php echo( $lang_string[ 'scheme_file' ] ); ?></label><br />
-			<input type="text" name="scheme_file" id="scheme_file" autocomplete=OFF value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" /><br />
+			<input type="text" name="scheme_file" id="scheme_file" autocomplete=OFF value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" />
 		
 		</form>
 		
-		<?php 
+		<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

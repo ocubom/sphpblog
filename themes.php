@@ -29,7 +29,7 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $blog_theme;
+		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
 		
 		if ( array_key_exists( 'blog_theme', $_POST ) ) {
 			// Check to see if we're posting data...
@@ -39,8 +39,10 @@
 			}
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 		} else {
-			// Display theme selection page
-			?>
+			$entry_array = array();
+			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			
+			ob_start(); ?>
 			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
@@ -82,10 +84,13 @@
 				
 				<hr />
 				
-				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
+				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 			</form>
 			
-			<?php 
+			<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	 
 		}
 	}
 ?>

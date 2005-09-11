@@ -20,20 +20,19 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $theme_vars, $blog_theme;
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>
 		
-		?>
-		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-		
-		<hr />
-		
-		<?php 
-			echo image_list();
-		?>
+		<?php echo( $lang_string[ 'instructions' ] ); ?><p />		
+		<hr />		
+		<?php echo image_list(); ?>
 			
-		<?php 
+		<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

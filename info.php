@@ -47,7 +47,7 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $blog_config;
+		global $lang_string, $user_colors, $blog_config, $theme_vars, $blog_theme;
 		
 		if ( array_key_exists( "info_keywords", $_POST ) && array_key_exists( "info_description", $_POST ) && array_key_exists( "info_copyright", $_POST ) ) {	
 			// Check to see if we're posting data...
@@ -57,12 +57,12 @@
 			}
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 		} else {
-			?>
+			$entry_array = array();
+			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 			
-			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+			ob_start(); ?>
+			
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-			
-			<hr />
 			
 			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="info.php" method="POST" name="info" name="info">
 				
@@ -77,10 +77,13 @@
 			
 				<hr />
 				
-				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
+				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 			</form>
 			
-			<?php 
+			<?php
+			$entry_array[ 'entry' ] = ob_get_contents();
+			ob_end_clean();
+			echo( theme_staticentry( $entry_array ) );	
 		}
 	}
 ?>

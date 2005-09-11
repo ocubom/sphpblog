@@ -23,9 +23,11 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $search_string;
-		
-		echo ( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
+		global $lang_string, $user_colors, $search_string, $logged_in, $theme_vars, $blog_theme;
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>
+		<?php
 		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $lang_string[ 'php_charset' ] ), $lang_string[ 'instructions' ] ) . '<br />' );
 		
 		echo( '<hr />' );
@@ -37,6 +39,9 @@
 		} else {
 			echo( $lang_string[ 'not_found' ] );
 		}
+		$entry_array[ 'entry' ] = ob_get_contents();
+		ob_end_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

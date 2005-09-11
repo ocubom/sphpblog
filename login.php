@@ -32,14 +32,13 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			
+		ob_start(); ?>		
 		
-		?>
-		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-		
-		<hr />
 		
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="login_cgi.php" method="POST" onSubmit="return validate(this)">
 		
@@ -54,7 +53,10 @@
 		<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 		</form>
 		
-		<?php 
+		<?php
+		$entry_array[ 'entry' ] = ob_get_contents();
+		ob_end_clean();
+		echo( theme_staticentry( $entry_array ) );	 
 	}
 ?>
 <?php 
