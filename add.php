@@ -63,13 +63,14 @@
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $blog_config, $theme_vars;
-		
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start();
 		?>
 		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr />
+		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
 		
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
@@ -115,10 +116,13 @@
 			<?php echo( category_selection_box() ); ?><br /><br />
 			
 			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='preview_cgi.php';" />
-			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='add_cgi.php';" /><br /><br />
+			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='add_cgi.php';" /><br />
 		</form>
 		
 		<?php 
+		$entry_array[ 'entry' ] = ob_get_contents();
+		ob_end_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 
