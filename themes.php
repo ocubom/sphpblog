@@ -43,7 +43,7 @@
 			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 			
 			ob_start(); ?>
-			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
+			
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
 			<hr />
@@ -88,8 +88,7 @@
 			</form>
 			
 			<?php
-			$entry_array[ 'entry' ] = ob_get_contents();
-			ob_end_clean();
+			$entry_array[ 'entry' ] = ob_get_clean();
 			echo( theme_staticentry( $entry_array ) );	 
 		}
 	}

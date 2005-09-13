@@ -54,8 +54,7 @@
 		</form>
 		
 		<?php
-		$entry_array[ 'entry' ] = ob_get_contents();
-		ob_end_clean();
+		$entry_array[ 'entry' ] = ob_get_clean();
 		echo( theme_staticentry( $entry_array ) );	 
 	}
 ?>

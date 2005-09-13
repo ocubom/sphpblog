@@ -151,6 +151,13 @@ input, select, option, textarea
 	font-size: 9px;
 	margin: 2px 0px 10px 0px;
 }
+#maincontent .blog_categories
+{
+	font-weight: normal;
+	color: #999;
+	font-size: 9px;
+	margin: 2px 0px 10px 0px;
+}
 
 #footer
 {

@@ -70,53 +70,47 @@
 	function page_content() {
 		global $lang_string, $user_colors, $blog_config, $theme_vars;
 		
-		?>
-		
-		<h2><?php echo( $lang_string[ 'title_preview' ] ); ?></h2>
-		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
-		
-		<hr />
-
-		<?php
-			global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry, $temp_tb_ping, $temp_categories;
+		global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry, $temp_tb_ping, $temp_categories;
+		if ( isset( $_GET[ 'entry' ] ) ) {
+			$entry = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
 			
-			if ( isset( $_GET[ 'entry' ] ) ) {
-				$entry = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
-				
-				$blog_content = read_entry_from_file( $entry );
-				
-				if ( file_exists( $entry . ".txt" ) ) {
-					$filename = $entry . ".txt";
-				} elseif ( file_exists( $entry . ".txt.gz" ) ) {
-					$filename = $entry . ".txt.gz";
-				}
-				$blog_entry_data = blog_entry_to_array( $filename );
-				
-				$temp_subject = $blog_entry_data[ 'SUBJECT' ];
-				$temp_text = $blog_entry_data[ 'CONTENT' ];
-				$temp_tb_ping = $blog_entry_data[ 'TB_PING' ];
-				if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
-					$temp_categories = $blog_entry_data[ 'CATEGORIES' ];
-				}
-				
-				echo( $blog_content );
-			} else {
-				$entry = NULL;
-				if ( isset( $_POST[ 'entry' ] ) ) {
-					$entry = $_POST[ 'entry' ];
-				}
-				
-				$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
-				$temp_text = stripslashes( $_POST[ 'blog_text' ] );
-				$temp_tb_ping = stripslashes( $_POST[ 'tb_ping' ] );
-				
-				$blog_content = preview_entry( $temp_subject, $temp_text, $temp_tb_ping );		
-				
-				echo( $blog_content );
+			$blog_content = read_entry_from_file( $entry );
+			
+			if ( file_exists( $entry . ".txt" ) ) {
+				$filename = $entry . ".txt";
+			} elseif ( file_exists( $entry . ".txt.gz" ) ) {
+				$filename = $entry . ".txt.gz";
 			}
+			$blog_entry_data = blog_entry_to_array( $filename );
+			
+			$temp_subject = $blog_entry_data[ 'SUBJECT' ];
+			$temp_text = $blog_entry_data[ 'CONTENT' ];
+			$temp_tb_ping = $blog_entry_data[ 'TB_PING' ];
+			if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
+				$temp_categories = $blog_entry_data[ 'CATEGORIES' ];
+			}
+			
+			echo( $blog_content );
+		} else {
+			$entry = NULL;
+			if ( isset( $_POST[ 'entry' ] ) ) {
+				$entry = $_POST[ 'entry' ];
+			}
+			
+			$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
+			$temp_text = stripslashes( $_POST[ 'blog_text' ] );
+			$temp_tb_ping = stripslashes( $_POST[ 'tb_ping' ] );
+			
+			$blog_content = preview_entry( $temp_subject, $temp_text, $temp_tb_ping );		
+			
+			echo( $blog_content );
+		}
+	
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title_preview' ];
+		ob_start();
 		?>
-		<p />
-		<h2><?php echo( $lang_string[ 'title_update' ] ); ?></h2>
+		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
 		<?php echo( $lang_string[ 'instructions_update' ] ); ?><p />
 		
 		<hr />
@@ -172,6 +166,8 @@
 		</form>
 		
 		<?php 
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

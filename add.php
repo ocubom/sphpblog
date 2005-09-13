@@ -63,6 +63,7 @@
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $blog_config, $theme_vars;
+		
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		ob_start();
@@ -120,8 +121,7 @@
 		</form>
 		
 		<?php 
-		$entry_array[ 'entry' ] = ob_get_contents();
-		ob_end_clean();
+		$entry_array[ 'entry' ] = ob_get_clean();
 		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
