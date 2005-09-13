@@ -48,5 +48,5 @@
 
 	a:active {
 		color: #<?php echo( $user_colors[ 'link_down_color' ] ); ?>;
-	}';	
+	}
 </style>
