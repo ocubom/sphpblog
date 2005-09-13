@@ -1,0 +1,1 @@
+name|Neutral - Classic|bg_color|CCCCAD|border_color|59594C|main_bg_color|F2F2F2|menu_bg_color|E6E6E6|inner_border_color|CCCCCC|link_reg_color|993333|link_hi_color|FF3333|link_down_color|3333FF|header_bg_color|A6A68D|header_txt_color|FFFFFF|footer_bg_color|EEEEEE|footer_txt_color|666666|txt_color|404030|headline_txt_color|66664D|date_txt_color|999999
