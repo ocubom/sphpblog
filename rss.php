@@ -14,5 +14,5 @@
 	sb_language( 'index' );
 	
 	// Output Page
-	generate_rss( @$_GET[ 'n' ] );
+	generate_rss( @$_GET[ 'n' ], @$_GET[ 'c' ] );
 ?>

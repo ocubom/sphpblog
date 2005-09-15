@@ -14,5 +14,5 @@
 	sb_language( 'index' );
 	
 	// Output Page
-	generate_rdf( @$_GET[ 'n' ] );
+	generate_rdf( @$_GET[ 'n' ], @$_GET[ 'c' ] );
 ?>
