@@ -13,6 +13,7 @@
 		// Safely read a file.
 		//
 		// Returns either the contents of the file or NULL on fail.
+		
 		if ( version_compare( phpversion(), '4.3.0' ) == -1 ) {
 			$result = NULL;
 			if ( file_exists( $filename ) ) {
@@ -41,7 +42,7 @@
 	function sb_write_file( $filename, $str ) {
 		// Safely write a file.
 		//
-		// Returns true or false.
+		// Returns the number of bytes written, or FALSE or 0 on error.
 
 		if ( ( strpos( $filename, '.gz' )!==false ) && ( extension_loaded( 'zlib' ) ) ) {
 			$str=gzencode( $str, 9 );

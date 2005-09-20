@@ -12,13 +12,13 @@
 	
 	function plugin_init () {
 		// This function loads all the plugin scripts
-		get_menu_plugins( true );
+		$plugin_array = get_menu_plugins( true );
 	}
 	
 	function get_menu_plugins ( $init=false ) {
 		// 1) Loop through all the folder in "plugins/menu/".
 		// 2) Include the "main.php" file (inside each plugin's folder.)
-		// 3) Call the "menu_plugin_PLUGINFOLDERNAME_init()" function.
+		// 3) Call the "MenuPlugin_FOLDERNAME_init()" function.
 		// 4) Return array of plugins.
 		
 		$dir = 'plugins/menu/';
@@ -44,10 +44,10 @@
 							require_once( $plugin[ 'PATH' ] . 'main.php' );
 							
 							// Call the plugin init function
-							$plugin[ 'FUNCTION' ] = 'menu_plugin_' . $plugin[ 'NAME' ] . '_';
+							$plugin[ 'FUNCTION' ] = 'MenuPlugin_' . $plugin[ 'NAME' ] . '_';
 							if ( function_exists( $plugin[ 'FUNCTION' ] . 'init' ) ) {
 								if ( $init == true ) {
-									call_user_func( $plugin[ 'FUNCTION' ] . 'init' );
+									call_user_func( $plugin[ 'FUNCTION' ] . 'init', $plugin );
 								}
 								
 								// Append to array

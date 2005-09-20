@@ -386,13 +386,18 @@
 		for ( $i = 0; $i < count( $plugin_array ); $i++ ) {
 			$plugin = $plugin_array[$i];
 			
-			if ( function_exists( $plugin[ 'FUNCTION' ] . 'display' ) ) {
-				$result = call_user_func( $plugin[ 'FUNCTION' ] . 'display' );
-				if ( $result[ 'content' ] != '' ) {
-					echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-					echo( $result[ 'content' ] . '' );
-					echo( '<hr />' );
-				}				
+			if ( function_exists( $plugin[ 'FUNCTION' ] . 'getStatus' ) ) {
+				$result = call_user_func( $plugin[ 'FUNCTION' ] . 'getStatus', $plugin );
+				if ( $result == 'enabled' ) {
+					if ( function_exists( $plugin[ 'FUNCTION' ] . 'display' ) ) {
+						$result = call_user_func( $plugin[ 'FUNCTION' ] . 'display', $plugin );
+						if ( $result[ 'content' ] != '' ) {
+							echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+							echo( $result[ 'content' ] . '' );
+							echo( '<hr />' );
+						}				
+					}				
+				}
 			}
 		}
 		
