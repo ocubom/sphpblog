@@ -69,7 +69,7 @@
 					echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
 				}
 			?></label><br />
-			<input type="text" name="capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />
+			<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />
 			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
 	
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
