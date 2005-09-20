@@ -382,12 +382,25 @@
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
-		$result = menu_display_links();
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
+		$plugin_array = get_menu_plugins();
+		for ( $i = 0; $i < count( $plugin_array ); $i++ ) {
+			$plugin = $plugin_array[$i];
+			
+			if ( function_exists( $plugin[ 'FUNCTION' ] . 'display' ) ) {
+				$result = call_user_func( $plugin[ 'FUNCTION' ] . 'display' );
+				if ( $result[ 'content' ] != '' ) {
+					echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+					echo( $result[ 'content' ] . '' );
+					echo( '<hr />' );
+				}				
+			}
+		}
 		
+		// $result = menu_display_links();
+		// echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+		// echo( $result[ 'content' ] . '' );
+		// echo( '<hr />' );
 		
-		echo( '<hr />' );
 		echo( menu_display_login() );
 		
 		$array = read_blocks($logged_in);

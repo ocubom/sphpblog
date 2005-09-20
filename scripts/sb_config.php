@@ -173,6 +173,9 @@
 		if ( $blog_config[ 'blog_enable_gzip_output' ] ) {
 			sb_gzoutput ();
 		}
+		
+		// Plugins
+		plugin_init();
 	}
 	
 	function write_config ( $blog_title, $blog_author, $blog_email, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache ) {
