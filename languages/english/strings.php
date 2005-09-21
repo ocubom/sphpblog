@@ -63,6 +63,7 @@
 		$lang_string['sb_delete'] = 'delete';
 		$lang_string['sb_permalink'] = 'permalink';
 		$lang_string['sb_trackback'] = 'trackbacks';
+		$lang_string['sb_readmore'] = 'read more';
 		
 		$lang_string['sb_add_comment_btn'] = 'add comment';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -118,6 +119,7 @@
 				$lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all.";
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)";
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery";
+				$lang_string['label_readmore'] = "Read More Link";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Preview / Edit Entry";
 				$lang_string['instructions_preview'] = "Here's how your entry looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
@@ -143,7 +145,7 @@
 				break;
 			case 'add_block':
 				// Add / Manage Blocks
-				$lang_string['title'] = "Add / Manage Links";
+				$lang_string['title'] = "Add / Manage Blocks";
 				$lang_string['instructions'] = "Add custom Blocks";
 				$lang_string['up'] = "up";
 				$lang_string['down'] = "down";
@@ -367,19 +369,6 @@
 				$lang_string['continue'] = "[ Continue ]";
 				break;
 			case 'install03':
-				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
-				$lang_string['standard'] = "Standard DES Encryption: ";
-				$lang_string['extended'] = "Extended DES Encryption: ";
-				$lang_string['MD5'] = "MD5 Encryption: ";
-				$lang_string['blowfish'] = "Blowfish Encryption: ";
-				$lang_string['enabled'] = "enabled";
-				$lang_string['disabled'] = "disabled";
-				$lang_string['using_standard'] = "<b>Using Standard DES Encryption...</b>";
-				$lang_string['using_extended'] = "<b>Using Extended DES Encryption...</b>";
-				$lang_string['using_MD5'] = "<b style=\"color: green;\">Using MD5 Encryption...</b>";
-				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Using Blowfish Encryption...</b>";
-				$lang_string['using_unknown'] = "<b>Using Unknown Encryption...</b>";
-				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />";
 				$lang_string['title'] = "Create Username &amp; Password";
 				$lang_string['instructions'] = "Use the form below to Create a Username and Password.";
 				$lang_string['username'] = "Username:";
@@ -559,7 +548,6 @@
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
-				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				break;
 			case 'stats':
 				$lang_string["title"] = "Statistics";

@@ -27,6 +27,7 @@
 				$blog_entry_data[ 'SUBJECT' ]  = $exploded_array[0];
 				$blog_entry_data[ 'DATE' ]     = $exploded_array[1];
 				$blog_entry_data[ 'CONTENT' ]  = $exploded_array[2];
+				$blog_entry_data[ 'READMORE' ]  = $exploded_array[3];
 				
 			} else {
 				// New Format: key/value pairs
@@ -49,7 +50,7 @@
 		}
 	}
 	
-	function write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories ) {
+	function write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_readmore ) {
 		// Save new entry or update old entry
 		//
 		// $updateFile will either be NULL or the name of the file
@@ -68,6 +69,11 @@
 		}
 		if ( $tb_ping !== '' ) {
 			$save_data[ 'TB_PING' ] = clean_post_text( $tb_ping );
+		}
+		
+		// Read more link
+		if ( $blog_readmore !== '' ) {
+			$save_data[ 'READMORE' ] = clean_post_text( $blog_readmore );
 		}
 		
 		if ( $updateFile == true ) {

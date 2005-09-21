@@ -203,6 +203,10 @@
 					$entry_array[ 'categories' ] = $temp_cat_names;
 				}
 				
+				// Read More link
+				$entry_array[ 'readmore' ][ 'name' ] = $lang_string[ 'sb_readmore' ];
+				$entry_array[ 'readmore' ][ 'url' ] = $blog_entry_data[ 'READMORE' ];
+				
 				// Author edit and delete
 				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
 				$y = sb_strip_extension( $contents[$i][ 'year' ] );
