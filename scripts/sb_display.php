@@ -204,8 +204,8 @@
 				}
 				
 				// Read More link
-				$entry_array[ 'readmore' ][ 'name' ] = $lang_string[ 'sb_readmore' ];
-				$entry_array[ 'readmore' ][ 'url' ] = $blog_entry_data[ 'READMORE' ];
+				$entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
+				$entry_array[ 'relatedlink' ][ 'url' ] = $blog_entry_data[ 'relatedlink' ];
 				
 				// Author edit and delete
 				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
@@ -221,7 +221,11 @@
 				$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
 				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 				
+				if ( isset( $entry_array['relatedlink']['url'] ) ) {
+					$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . ' <a href="' . $blog_entry_data[ 'relatedlink' ] . '" >' . $lang_string[ 'sb_relatedlink' ] . '</a><br clear="all" />';}
+				else {
 				$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
+				}
 				
 				// Comments link and count
 				$comment_trackback_base = 'content/'.$y.'/'.$m.'/'.$entry.'/';

@@ -70,7 +70,7 @@
 	function page_content() {
 		global $lang_string, $user_colors, $blog_config, $theme_vars;
 		
-		global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry, $temp_tb_ping, $temp_categories, $temp_readmorelink;
+		global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry, $temp_tb_ping, $temp_categories, $temp_relatedlink;
 		if ( isset( $_GET[ 'entry' ] ) ) {
 			$entry = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
 			
@@ -89,7 +89,7 @@
 			if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
 				$temp_categories = $blog_entry_data[ 'CATEGORIES' ];
 			}
-			$temp_readmorelink = $blog_entry_data[ 'READMORE'];
+			$temp_relatedlink = $blog_entry_data[ 'relatedlink'];
 			
 			echo( $blog_content );
 		} else {
@@ -101,7 +101,7 @@
 			$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
 			$temp_text = stripslashes( $_POST[ 'blog_text' ] );
 			$temp_tb_ping = stripslashes( $_POST[ 'tb_ping' ] );
-			$temp_readmorelink = stripslashes( $_POST[ 'blog_readmore' ] );
+			$temp_relatedlink = stripslashes( $_POST[ 'blog_relatedlink' ] );
 			
 			$blog_content = preview_entry( $temp_subject, $temp_text, $temp_tb_ping );		
 			
@@ -153,8 +153,8 @@
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php global $temp_text; echo( $temp_text ); ?></textarea><br /><br />
 			
-			<label for="blog_readmore"><?php echo( $lang_string[ 'label_readmore' ] ); ?></label><br />
-			<input type="text" name="blog_readmore" autocomplete=OFF value="<?php global $temp_readmorelink; echo( $temp_readmorelink ); ?>" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
+			<label for="blog_relatedlink"><?php echo( $lang_string[ 'label_relatedlink' ] ); ?></label><br />
+			<input type="text" name="blog_relatedlink" autocomplete=OFF value="<?php global $temp_relatedlink; echo( $temp_relatedlink ); ?>" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
 			
 			<?php if ( $blog_config[ 'blog_trackback_enabled' ] ) { ?>
 		      <label for="tb_ping"><?php echo( $lang_string[ 'label_tb_ping' ] ); ?></label><br />

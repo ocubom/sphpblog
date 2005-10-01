@@ -63,7 +63,7 @@
 		$lang_string['sb_delete'] = 'delete';
 		$lang_string['sb_permalink'] = 'permalink';
 		$lang_string['sb_trackback'] = 'trackbacks';
-		$lang_string['sb_readmore'] = 'read more';
+		$lang_string['sb_relatedlink'] = 'Related Link.';
 		
 		$lang_string['sb_add_comment_btn'] = 'add comment';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -119,7 +119,7 @@
 				$lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all.";
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)";
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery";
-				$lang_string['label_readmore'] = "Read More Link";
+				$lang_string['label_relatedlink'] = "Related Link";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Preview / Edit Entry";
 				$lang_string['instructions_preview'] = "Here's how your entry looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";

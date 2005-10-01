@@ -107,8 +107,8 @@
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete=OFF></textarea><br /><br />
 			
-			<label for="blog_readmore"><?php echo( $lang_string[ 'label_readmore' ] ); ?></label><br />
-			<input type="text" name="blog_readmore" autocomplete=OFF value="" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
+			<label for="blog_relatedlink"><?php echo( $lang_string[ 'label_relatedlink' ] ); ?></label><br />
+			<input type="text" name="blog_relatedlink" autocomplete=OFF value="" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
 			
 			<?php if ( $blog_config[ 'blog_trackback_enabled' ] ) { ?>
 		      <label for="tb_ping"><?php echo( $lang_string[ 'label_tb_ping' ] ); ?></label><br />
