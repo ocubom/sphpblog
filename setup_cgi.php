@@ -42,7 +42,8 @@
 						( $_POST[ 'blog_enable_voting' ] == 'on' ),
 						( $_POST[ 'blog_trackback_enabled' ] == 'on' ),
 						( $_POST[ 'blog_trackback_auto_discovery' ] == 'on' ),
-						( $_POST[ 'blog_enable_cache' ] == 'on' ) );
+						( $_POST[ 'blog_enable_cache' ] == 'on' ),
+						( $_POST[ 'blog_enable_calendar' ] == 'on' ) );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );

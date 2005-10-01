@@ -428,6 +428,7 @@
 				$lang_string['blog_comments_popup'] = "Open Comments in Popup Window";
 				$lang_string['blog_enable_voting'] = "Enable Users to Rate Entries";
 				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				$lang_string['blog_email_notification'] = "Send email notification when comments are posted";
 				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;";
 				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)";
