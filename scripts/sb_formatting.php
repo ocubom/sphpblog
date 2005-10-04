@@ -233,7 +233,12 @@
 				// Also, decode HTML entities between the tags.
 				$temp_str = substr( $str, 0, $str_offset );
 				if ( $strip_tags === false ) {
-					$temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+					// $temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+					$trans_str = get_html_translation_table(HTML_ENTITIES);
+					foreach($trans_str as $k => $v){
+						$ttr[$v] = utf8_encode($k);
+					}
+					$temp_str = strtr($temp_str, $ttr);
 				}
 				$str_out = $str_out . $temp_str;
 				

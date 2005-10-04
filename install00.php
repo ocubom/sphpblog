@@ -20,47 +20,44 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $blog_config;
 		
 		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
 		?>
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="install01.php" method="POST">
-			
-			<label for="blog_language"><?php echo( $lang_string['blog_choose_language'] ); ?></label><br />
-			<select name="blog_language">
-				<?php
-					global $blog_config;
-					
-					$dir = 'languages/';	
-					
-					clearstatcache();
-					if ( is_dir($dir) ) {
-						$dhandle = opendir($dir);
-						if ( $dhandle ) {
-							$sub_dir = readdir( $dhandle );
-							while ( $sub_dir ) {
-								if ( is_dir( $dir . $sub_dir . '/' ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
-									$lang_dir = $sub_dir;
-									$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
-									if ( $lang_name ) {
-										$str = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
-										if ( $blog_config[ 'blog_language' ] == $lang_dir ) {
-											$str = $str . ' selected';
-										}
-										$str = $str . '>' . $lang_name . '</option>';
-										
-										echo( $str );
+			<?php
+				$arr = array();
+				$dir = 'languages/';
+				
+				clearstatcache();
+				if ( is_dir($dir) ) {
+					$dhandle = opendir($dir);
+					if ( $dhandle ) {
+						$sub_dir = readdir( $dhandle );
+						while ( $sub_dir ) {
+							if ( is_dir( $dir . $sub_dir . '/' ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
+								$lang_dir = $sub_dir;
+								$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
+								if ( $lang_name ) {
+									$item = array();
+									$item['label'] = $lang_name;
+									$item['value'] = $lang_dir;
+									if ( $blog_config[ 'blog_language' ] == $item['value'] ) {
+										$item['selected'] = true;
 									}
+									array_push( $arr, $item );
 								}
-								$sub_dir = readdir( $dhandle );
 							}
+							$sub_dir = readdir( $dhandle );
 						}
-						closedir( $dhandle );
 					}
-				?>
-			</select><p />
+					closedir( $dhandle );
+				}
+				echo( HTML_dropdown( $lang_string[ 'blog_choose_language' ], "blog_language", $arr ) );
+			?>
+			<p />
 			
 			<input type="submit" name="submit" value="<?php echo( $lang_string['submit_btn'] ); ?>" />
 		</form>

@@ -1,5 +1,4 @@
 <?php 
-
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
 	// You are free to use and modify the Simple PHP Blog. All changes 
@@ -7,6 +6,6 @@
 	// emailed to apalmo <at> bigevilbrain <dot> com
 
 	// ------------------
-	// File I/O Functions
+	// Functions
 	// ------------------
 ?>

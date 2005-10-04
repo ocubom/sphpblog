@@ -7,25 +7,3 @@ function openpopup(popurl, w, h, sizable) {
 	}
 	window.open(popurl,'',str);
 }
-
-/*
-window.onload=function() 
-{ 
-	status=document.title; 
-	defaultStatus=status; 
-	for (iForm=0; iForm<document.forms.length; iForm++) 
-	{ 
-		for (iField=0; iField<document.forms[iForm].length; iField++) 
-		{ 
-			if (((document.forms[iForm].elements[iField].type=='text') || 
-				(document.forms[iForm].elements[iField].type=='textarea')) && 
-				(!document.forms[iForm].elements[iField].disabled) && 
-				(!document.forms[iForm].elements[iField].readOnly)) 
-			{ 
-				document.forms[iForm].elements[iField].focus(); 
-				return; 
-			} 
-		} 
-	} 
-} 
-*/

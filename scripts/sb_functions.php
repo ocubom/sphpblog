@@ -68,6 +68,6 @@
 	require_once('scripts/sb_trackback.php');
 	require_once('scripts/sb_feed.php');
 	require_once('scripts/sb_categories.php');
-	require_once('scripts/sb_plugins.php');
+	require_once('scripts/sb_forms.php');
 	
 ?>

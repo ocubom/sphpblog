@@ -22,9 +22,9 @@
 				$ad_array = $_POST[ 'ad_array' ];
 				foreach ($_POST[ 'confirm' ] as $name => $value) {
 				sb_tb_ping ( $ad_array[$name], 
-						$_POST[ 'title' ], 
-						$_POST[ 'permalink' ], 
-						$_POST[ 'excerpt' ] );
+					$_POST[ 'title' ], 
+					$_POST[ 'permalink' ], 
+					$_POST[ 'excerpt' ] );
 				}
 				redirect_to_url( 'index.php' );
 			}
@@ -42,14 +42,14 @@
 				
 				// Is there anything to be confirmed?
 				if ( is_array( $ad_array ) ) {
-				   if( count( $ad_array ) === 0 ) {
-							redirect_to_url( 'index.php' );
+				   if ( count( $ad_array ) === 0 ) {
+						redirect_to_url( 'index.php' );
 				   }
 				} else {
-						redirect_to_url( 'index.php' );
+					redirect_to_url( 'index.php' );
 				}
 			 } else {
-					redirect_to_url( 'index.php' );
+				redirect_to_url( 'index.php' );
 			 }
 		}
    }
@@ -85,22 +85,22 @@
 			
 			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_cgi.php' method="POST">
 			
-   			<?php
-   	         if ( is_array( $ad_array ) ) {
-   	            echo "<table width=\"100%\">";
-   		         for ( $k = 0; $k < count( $ad_array ); $k++ ) {
-   		            echo "<tr><td><input type=\"checkbox\" name=\"confirm[$k]\" checked></td>\n";
-   		            echo "<td>" . $ad_array[$k];
-                     echo "<input type=\"hidden\" name=\"ad_array[$k]\" value=\"" . $ad_array[$k] . "\">\n";
-   		            echo "</td></tr>\n";
-   		         }
-   		         echo "</table><br />\n";
-   		      }
-   			?>
+				<?php
+				 if ( is_array( $ad_array ) ) {
+					echo "<table width=\"100%\">";
+					 for ( $k = 0; $k < count( $ad_array ); $k++ ) {
+						echo "<tr><td><input type=\"checkbox\" name=\"confirm[$k]\" checked></td>\n";
+						echo "<td>" . $ad_array[$k];
+						 echo "<input type=\"hidden\" name=\"ad_array[$k]\" value=\"" . $ad_array[$k] . "\">\n";
+						echo "</td></tr>\n";
+					 }
+					 echo "</table><br />\n";
+				  }
+				?>
    			
-            <input type="hidden" name="title" value="<?php echo( $auto_discovery_confirm[ 'title' ] ); ?>" />
-            <input type="hidden" name="permalink" value="<?php echo( $auto_discovery_confirm[ 'permalink' ] ); ?>" />
-            <input type="hidden" name="excerpt" value="<?php echo( $auto_discovery_confirm[ 'excerpt' ] ); ?>" />
+				<input type="hidden" name="title" value="<?php echo( $auto_discovery_confirm[ 'title' ] ); ?>" />
+				<input type="hidden" name="permalink" value="<?php echo( $auto_discovery_confirm[ 'permalink' ] ); ?>" />
+				<input type="hidden" name="excerpt" value="<?php echo( $auto_discovery_confirm[ 'excerpt' ] ); ?>" />
 				<input type="submit" name="yes" value="<?php echo( $lang_string[ 'ok_btn' ] ); ?>" />
 				<input type="submit" name="no" value="<?php echo( $lang_string[ 'cancel_btn' ] ); ?>" />
 			</form>

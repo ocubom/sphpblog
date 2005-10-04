@@ -49,9 +49,7 @@
 		
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];			
-			ob_start(); ?>
-		<?php
-		
+		ob_start();
 		
 		// Read blocks file.
 		$filename = 'config/blocks.txt';
@@ -95,9 +93,8 @@
 		echo( $str );
 		
 		echo( '<hr />' );
-		
-		?>
-		
+	?>
+	
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />

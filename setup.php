@@ -45,39 +45,36 @@
 		<hr />
 		
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="setup_cgi.php" method="POST" name="setup" name="setup" onSubmit="return validate(this)">
-			
-			<label for="blog_language"><?php echo( $lang_string[ 'blog_choose_language' ] ); ?></label><br />
-			<select name="blog_language">
-				<?php
-					$dir = 'languages/';
-					$installed_languages = array();
-					
-					clearstatcache();
-					if ( is_dir($dir) ) {
-						$dhandle = opendir($dir);
-						if ( $dhandle ) {
-							$sub_dir = readdir( $dhandle );
-							while ( $sub_dir ) {
-								if ( is_dir( $dir . $sub_dir . '/' ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
-									$lang_dir = $sub_dir;
-									$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
-									if ( $lang_name ) {
-										$str = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
-										if ( $blog_config[ 'blog_language' ] == $lang_dir ) {
-											$str = $str . ' selected';
-										}
-										$str = $str . '>' . $lang_name . '</option>';
-										
-										echo( $str );
+			<?php
+				$arr = array();
+				$dir = 'languages/';
+				
+				clearstatcache();
+				if ( is_dir($dir) ) {
+					$dhandle = opendir($dir);
+					if ( $dhandle ) {
+						$sub_dir = readdir( $dhandle );
+						while ( $sub_dir ) {
+							if ( is_dir( $dir . $sub_dir . '/' ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
+								$lang_dir = $sub_dir;
+								$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
+								if ( $lang_name ) {
+									$item = array();
+									$item['label'] = $lang_name;
+									$item['value'] = $lang_dir;
+									if ( $blog_config[ 'blog_language' ] == $item['value'] ) {
+										$item['selected'] = true;
 									}
+									array_push( $arr, $item );
 								}
-								$sub_dir = readdir( $dhandle );
 							}
+							$sub_dir = readdir( $dhandle );
 						}
-						closedir( $dhandle );
 					}
-				?>
-			</select><br />
+					closedir( $dhandle );
+				}
+				echo( HTML_dropdown( $lang_string[ 'blog_choose_language' ], "blog_language", $arr ) );
+			?>
 			
 			<hr />
 			
@@ -95,17 +92,23 @@
 		
 			<hr />
 			
-			<label for="blog_entry_order"><?php echo( $lang_string[ 'label_entry_order' ] ); ?></label><br />
-			<select name="blog_entry_order">
-				<option label="<?php echo( $lang_string[ 'select_new_to_old' ] ); ?>" value="new_to_old"<?php if ($blog_config[ 'blog_entry_order' ] == 'new_to_old') { echo ' selected'; } ?>><?php echo( $lang_string[ 'select_new_to_old' ] ); ?></option>
-				<option label="<?php echo( $lang_string[ 'select_old_to_new' ] ); ?>" value="old_to_new"<?php if ($blog_config[ 'blog_entry_order' ] == 'old_to_new') { echo ' selected'; } ?>><?php echo( $lang_string[ 'select_old_to_new' ] ); ?></option>
-			</select><br /><br />
+			<?php
+				// Entry Order Drop Down
+				$arr = array();
+				array_push( $arr, array( 'label' => $lang_string[ 'select_new_to_old' ], 'value' => 'new_to_old', 'selected' => $blog_config[ 'blog_entry_order' ] == 'new_to_old' ) );
+				array_push( $arr, array( 'label' => $lang_string[ 'select_old_to_new' ], 'value' => 'old_to_new', 'selected' => $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) );
+				echo( HTML_dropdown( $lang_string[ 'label_entry_order' ], "blog_entry_order", $arr ) );
+			?>
+			<br />
 			
-			<label for="blog_comment_order"><?php echo( $lang_string[ 'label_comment_order' ] ); ?></label><br /> 
-			<select name="blog_comment_order">
-				<option label="<?php echo( $lang_string[ 'select_new_to_old' ] ); ?>" value="new_to_old"<?php if ($blog_config[ 'blog_comment_order' ] == 'new_to_old') { echo ' selected'; } ?>><?php echo( $lang_string[ 'select_new_to_old' ] ); ?></option>
-				<option label="<?php echo( $lang_string[ 'select_old_to_new' ] ); ?>" value="old_to_new"<?php if ($blog_config[ 'blog_comment_order' ] == 'old_to_new') { echo ' selected'; } ?>><?php echo( $lang_string[ 'select_old_to_new' ] ); ?></option>
-			</select><br /><br />
+			<?php
+				// Comment Order Drop Down
+				$arr = array();
+				array_push( $arr, array( 'label' => $lang_string[ 'select_new_to_old' ], 'value' => 'new_to_old', 'selected' => $blog_config[ 'blog_comment_order' ] == 'new_to_old' ) );
+				array_push( $arr, array( 'label' => $lang_string[ 'select_old_to_new' ], 'value' => 'old_to_new', 'selected' => $blog_config[ 'blog_comment_order' ] == 'old_to_new' ) );
+				echo( HTML_dropdown( $lang_string[ 'label_comment_order' ], "blog_comment_order", $arr ) );
+			?>
+			<br />
 			
 			<label for="blog_max_entries"><?php echo( $lang_string[ 'blog_max_entries' ] ); ?></label><br />
 			<input type="text" name="blog_max_entries" value="<?php echo( $blog_config[ 'blog_max_entries' ] ); ?>" autocomplete="OFF" size="6">
