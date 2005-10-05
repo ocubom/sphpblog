@@ -398,9 +398,10 @@
 		
 		echo( '<hr />' );
 		
+		 if( $blog_config[ 'blog_enable_calendar' ] ) {
 		$result = menu_display_blognav();
 		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
+		echo( $result[ 'content' ] . '' ); }
 		
 		$result = menu_display_categories();
 		if ( $result[ 'content' ] != '' ) {			

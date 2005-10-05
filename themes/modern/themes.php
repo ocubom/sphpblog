@@ -586,12 +586,13 @@
 		//
 		// However, this function now displays a calendar
 		// rather then the "tree view"....
+		if( $blog_config[ 'blog_enable_calendar' ] ) {
 		echo( "\n<!-- ARCHIVE -->\n" );
-		$result = menu_display_blognav();
+		 $result = menu_display_blognav();
 		echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
 		echo( "<div class=\"menu_body\">\n" );
 		echo( $result[ 'content' ] . "\n" );
-		echo( "</div><br />\n" );
+		echo( "</div><br />\n" );}
 		
 		// New 0.3.8
 		$result = menu_display_categories();
