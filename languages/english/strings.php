@@ -471,6 +471,9 @@
 				$lang_string['select_new_to_old'] = "List Newest First";
 				$lang_string['select_old_to_new'] = "List Oldest First";
 				$lang_string['label_comment_order'] = "Comment Order:";
+				$lang_string['cal_sunday'] = "Sunday";
+				$lang_string['cal_monday'] = "Monday";
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day";
 				break;
 			case 'trackbacks':
 				// Trackbacks

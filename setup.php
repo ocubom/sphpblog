@@ -110,6 +110,12 @@
 			?>
 			<br />
 			
+			<label for="blog_calendar_start"><?php echo( $lang_string[ 'label_calendar_start' ] ); ?></label><br />
+			<select name="blog_calendar_start">
+				<option label="<?php echo( $lang_string[ 'cal_sunday' ] ); ?>" value="sunday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'sunday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_sunday' ] ); ?></option>
+				<option label="<?php echo( $lang_string[ 'cal_monday' ] ); ?>" value="monday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'monday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_monday' ] ); ?></option>
+			</select><br /><br />
+			
 			<label for="blog_max_entries"><?php echo( $lang_string[ 'blog_max_entries' ] ); ?></label><br />
 			<input type="text" name="blog_max_entries" value="<?php echo( $blog_config[ 'blog_max_entries' ] ); ?>" autocomplete="OFF" size="6">
 			

@@ -41,7 +41,8 @@
 									'blog_trackback_enabled',
 									'blog_trackback_auto_discovery',
 									'blog_enable_cache',
-									'blog_enable_calendar' );
+									'blog_enable_calendar',
+									'blog_calendar_start' );
 									
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -139,6 +140,11 @@
 			$blog_config[ 'blog_enable_calendar' ] = 1;
 		}
 		
+		//'blog_calendar_start'
+		if ( !isset( $blog_config[ 'blog_calendar_start' ] ) ) {
+			$blog_config[ 'blog_calendar_start' ] = 'sunday';
+		}		
+		
 		// READ META-DATA INFORMATION
 		$contents = sb_read_file( 'config/metainfo.txt' );
 		if ( $contents ) {
@@ -180,7 +186,7 @@
 		}
 	}
 	
-	function write_config ( $blog_title, $blog_author, $blog_email, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar ) {
+	function write_config ( $blog_title, $blog_author, $blog_email, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start ) {
 		// Save config information to file.
 		//
 		$array = array( clean_post_text( $blog_title ),
@@ -203,7 +209,8 @@
 			         	$blog_trackback_enabled,
 			         	$blog_trackback_auto_discovery,
 					 	$blog_enable_cache,
-						$blog_enable_calendar );
+						$blog_enable_calendar,
+						$blog_calendar_start );
 						
 		$str = implode('|', $array);
 		

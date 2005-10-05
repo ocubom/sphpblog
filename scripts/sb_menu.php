@@ -31,7 +31,11 @@
 			$d = date( 'd' );
 		}
 		
+		if( $blog_config[ 'blog_calendar_start' ] == 'sunday' ) {
+		$date_string = mktime(0, 0, 0, $m, 2, $y ); // Use this for starting the calendar on Sunday
+		} else {
 		$date_string = mktime(0, 0, 0, $m, 1, $y ); //The date string we need for some info... saves space ^_^
+		}
 		$day_start = date( 'w', $date_string ); //The number of the 1st day of the week
 		if ( strftime( '%w', mktime( 0, 0, 0, 1, 1, 2007 ) )!=0 )
 		{
@@ -124,15 +128,31 @@
 		$str.='</td>
 		</tr>
 		<tr>';
-		for ( $i=0; $i<7; $i++ )
-		{
-			if ( $day_start!=0 )
+		
+		if( $blog_config[ 'blog_calendar_start' ] == 'sunday' ) {		
+			// This is for the Sunday starting date
+			for ( $i=0; $i<7; $i++ )
 			{
-				$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+1)%7, 1990 ) ) ) . '</td>';
+				if ( $day_start!=0 )
+				{
+					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+0)%7, 1990 ) ) ) . '</td>';
+				}
+				else
+				{
+					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+7)%7, 1990 ) ) ) . '</td>';
+				}
 			}
-			else
+		} else {		
+			for ( $i=0; $i<7; $i++ )
 			{
-				$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+7)%7, 1990 ) ) ) . '</td>';
+				if ( $day_start!=0 )
+				{
+					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+1)%7, 1990 ) ) ) . '</td>';
+				}
+				else
+				{
+					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+8)%7, 1990 ) ) ) . '</td>';
+				}
 			}
 		}
 		
