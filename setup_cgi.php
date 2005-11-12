@@ -44,7 +44,9 @@
 						( $_POST[ 'blog_trackback_auto_discovery' ] == 'on' ),
 						( $_POST[ 'blog_enable_cache' ] == 'on' ),
 						( $_POST[ 'blog_enable_calendar' ] == 'on' ),
-						$_POST[ 'blog_calendar_start' ] );
+						$_POST[ 'blog_calendar_start' ],
+						( $_POST[ 'blog_enable_title' ] == 'on' ),
+						( $_POST[ 'blog_enable_permalink' ] == 'on' ));
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );

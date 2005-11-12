@@ -143,9 +143,11 @@
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">[ ' . $entry_array[ 'trackback' ][ 'name' ] . ' ]</a>' . "\n";;
 		}
 		
-		if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
-			// Show 'permalink' symbol
-			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
+		if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
+			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
+				// Show 'permalink' symbol
+				$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
+			}
 		}
 		
 		if ( isset( $entry_array['relatedlink']['url'] ) ) {
@@ -305,9 +307,12 @@
 				<tr align="left" valign="top">
 					<td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
 						<div id="header_image"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
-						<div id="header">
-							<?php echo($blog_config[ 'blog_title' ]); ?>
-						</div>
+						
+						<?php
+						if ( $blog_config['blog_enable_title']){// New for 0.4.6 
+						echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
+						}?>
+						
 						<div id="pagebody">
 							<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
 								<tr valign="top">
