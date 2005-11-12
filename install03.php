@@ -48,8 +48,8 @@
 		echo( $lang_string[ 'supported' ]. '<br />');
 		echo( $lang_string[ 'standard' ] . ( CRYPT_STD_DES == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
 		echo( $lang_string[ 'extended' ] . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
-		echo( $lang_string[ 'MD5' ] . ( CRYPT_EXT_DES == 1 ?'<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
-		echo( $lang_string[ 'blowfish' ] . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
+		echo( $lang_string[ 'MD5' ] . ( CRYPT_MD5 == 1 ?'<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
+		echo( $lang_string[ 'blowfish' ] . ( CRYPT_BLOWFISH == 1 ? '<b style="color: green;">' . $lang_string[ 'enabled' ] . '</b>' : '<b style="color: red;">' . $lang_string[ 'disabled' ] . '</b>' ) . '<br />');
 		echo('<br />');
 	
 		$hashtest = crypt('test');
@@ -57,9 +57,9 @@
 			echo( $lang_string[ 'using_standard' ] );
 		} else if ( strlen( $hashtest ) <= 20 ) {
 			echo( $lang_string[ 'using_extended' ] );
-		} else if ( substr( $hashtest, 0, 3 ) == '\$1\$' ) {
+		} else if ( substr( $hashtest, 0, 3 ) == '$1$' ) {
 			echo( $lang_string[ 'using_MD5' ] );
-		} else if ( substr( $hashtest, 0, 3 ) == '\$2\$' || substr( $hashtest, 0, 4 ) == '\$2a\$' ) {
+		} else if ( substr( $hashtest, 0, 3 ) == '$2$' || substr( $hashtest, 0, 4 ) == '$2a$' ) {
 			echo( $lang_string[ 'using_blowfish' ] );
 		} else {
 			echo( $lang_string[ 'using_unknown' ] );
