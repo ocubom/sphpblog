@@ -1,283 +1,287 @@
 <?php
-	// Dutch Language File
-	// (c) 2004 S. Klippert, klippy@users.sourceforge.net
+	// Danish Language File
+	// (c) 2004 Thomas Petersen, thomasp <at> nsd <dot> dk
+	// (c) 2005 Jan Normann Nielsen, spam <at> dubbekarl <dot> dk
 	//
-	// Simple PHP Version: 0.3.7
-	// Language Version:   0.3.7.1
+	// Simple PHP Version: 0.4.6
+	// Language Version:   0.4.5
 	
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
 			
-		// Language: English
-		$lang_string['language'] = 'dutch';
+		// Language: Danish
+		$lang_string['locale'] = 'da_DK';
+		$lang_string['language'] = 'dansk';
 		
-		// ISO Charset: ISO-8859-1
-		$lang_string['html_charset'] = 'ISO-8859-1';
-		$lang_string['php_charset'] = 'ISO-8859-1';
+		// ISO Charset: ISO-8859-1 -- http://us4.php.net/manual/en/function.htmlspecialchars.php
+		$lang_string['html_charset'] = 'ISO-8859-15';
+		$lang_string['php_charset'] = 'ISO-8859-15';
 		
-		$lang_string['locale'] = 'nl_NL'; // <-- New 0.3.7
-		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
+		setlocale(LC_TIME, $lang_string['locale'] );
 		
 		// Some Global Strings
 		
 		// Menu
 		$lang_string['menu_links'] = "Links";
-		$lang_string['menu_home'] = "Home";
-		$lang_string['menu_contact'] = "Contact Me"; // <-- New 0.3.8
-		$lang_string['menu_stats'] = "Stats"; // <-- New 0.3.7r
-		$lang_string['menu_archive'] = "Archives";
+		$lang_string['menu_home'] = "Forside";
+		$lang_string['menu_contact'] = "Kontakt mig";
+		$lang_string['menu_stats'] = "Statistik";
+		$lang_string['menu_archive'] = "Arkiv";
 		$lang_string['menu_menu'] = "Menu";
-		$lang_string['menu_add'] = "Bericht toevoegen";
-		$lang_string['menu_add_static'] = "Vaste pagina toevoegen";
-		$lang_string['menu_upload'] = "Afbeelding uploaden";
-		$lang_string['menu_setup'] = "Instellingen";
-		$lang_string['menu_categories'] = "Categories"; // 0.3.7q
-		$lang_string['menu_info'] = "Information"; // <-- New 0.3.7
-		$lang_string['menu_options'] = "Opties";
-		$lang_string['menu_themes'] = "Themes";
-		$lang_string['menu_colors'] = "Kleuren";
-		$lang_string['menu_change_login'] = "Login wijzigen";
-		$lang_string['menu_logout'] = "Uitloggen";
-		$lang_string['menu_login'] = "Inloggen";
-		$lang_string['menu_most_recent'] = "Nieuwste reacties";
-		$lang_string['menu_most_recent_entries'] = "Most Recent Entries";
-		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks"; // <-- New 0.3.8
-		$lang_string['menu_add_block'] = "Blocks";
+		$lang_string['menu_add'] = "Opret meddelelse";
+		$lang_string['menu_add_static'] = "Opret statisk side";
+		$lang_string['menu_upload'] = "Upload billede";
+		$lang_string['menu_setup'] = "Indstillinger";
+		$lang_string['menu_categories'] = "Kategorier";
+		$lang_string['menu_info'] = "Meta-tags";
+		$lang_string['menu_options'] = "Dato &amp; tid";
+		$lang_string['menu_themes'] = "Temaer";
+		$lang_string['menu_colors'] = "Farver";
+		$lang_string['menu_change_login'] = "Skift login";
+		$lang_string['menu_logout'] = "Log af";
+		$lang_string['menu_login'] = "Log på";
+		$lang_string['menu_most_recent'] = "Nyeste kommentarer";
+		$lang_string['menu_most_recent_entries'] = "Nyeste meddelelser";
+		$lang_string['menu_most_recent_trackback'] = "Nyeste trackbacks";
+		$lang_string['menu_add_block'] = "Blokke";
 		
 		// Other
-		$lang_string['home'] = "Terug naar startpagina";
-		$lang_string['nav_next'] = 'Next'; // <-- New 0.3.7
-		$lang_string['nav_back'] = 'Back'; // <-- New 0.3.7
-		$lang_string['search_title'] = 'Search:'; // <-- New 0.3.7
-		$lang_string['search_go'] = 'Go'; // <-- New 0.3.7
-		$lang_string['page_generated_in'] = 'Page Generated in %s seconds'; // <-- New 0.3.7
+		$lang_string['home'] = "Tilbage til forside";
+		$lang_string['nav_next'] = 'Næste';
+		$lang_string['nav_back'] = 'Tilbage';
+		$lang_string['search_title'] = 'Søg:';
+		$lang_string['search_go'] = 'Søg';
+		$lang_string['page_generated_in'] = 'Side genereret på %s sekunder';
 		
 		// SB Functions
-		$lang_string['sb_months'] = array( 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december' );
-		$lang_string['sb_default_title'] = 'Geen titel';
-		$lang_string['sb_default_author'] = 'Geen auteur';
-		$lang_string['sb_default_footer'] = 'Geen ondertitel';
+		$lang_string['sb_months'] = array( 'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December' );
+		$lang_string['sb_default_title'] = 'Ingen titel';
+		$lang_string['sb_default_author'] = 'Ingen forfatter';
+		$lang_string['sb_default_footer'] = 'Ingen sidefod';
 		
-		$lang_string['sb_edit'] = 'bewerk';
-		$lang_string['sb_delete'] = 'verwijder';
-		$lang_string['sb_permalink'] = 'permalink'; // <-- New 0.3.8
-		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
+		$lang_string['sb_edit'] = 'rediger';
+		$lang_string['sb_delete'] = 'slet';
+		$lang_string['sb_permalink'] = 'permalink';
+		$lang_string['sb_trackback'] = 'trackbacks';
 		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 		
-		$lang_string['sb_add_comment_btn'] = 'reactie toevoegen';
+		$lang_string['sb_add_comment_btn'] = 'tilføj kommentar';
 		$lang_string['sb_comment_btn_number_first'] = true;
-		$lang_string['sb_comment_btn'] = 'reactie';
+		$lang_string['sb_comment_btn'] = 'kommentar';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
-		$lang_string['sb_comments_plural_btn'] = 'reacties';
+		$lang_string['sb_comments_plural_btn'] = 'kommentarer';		
 		
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
-		$lang_string['sb_view_counter_post'] = ' keer bekeken';
+		$lang_string['sb_view_counter_post'] = ' visning';
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = '';
-		$lang_string['sb_view_counter_plural_post'] = ' keer bekeken';
+		$lang_string['sb_view_counter_plural_post'] = ' visninger';
 		
 		$lang_string['sb_add_link_btn'] = '+ link';
 		
-		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';
+		$lang_string['sb_rate_entry_btn'] = 'Klik for at vurdere meddelelsen';
 		
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
-				$lang_string['label_subject'] = "Onderwerp:";
-				$lang_string['label_insert'] = "Code invoegen:";
+				$lang_string['label_subject'] = "Emne:";
+				$lang_string['label_insert'] = "Indsæt special:";
 				$lang_string['btn_bold'] = " b ";
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
-				$lang_string['view_images'] = "Bekijk afbeeldingen";
-				$lang_string['label_entry'] = "Bericht:";
-				$lang_string['btn_preview'] = "&nbsp;Bekijk&nbsp;";
-				$lang_string['btn_post'] = "&nbsp;Verstuur&nbsp;";
-				$lang_string['file_name'] = "Static File Name: (no spaces or file extensions)"; // <-- New 0.3.8
-				// Javascript Strings <-- Need Translation
-				$lang_string['insert_styles'] = "Vul de tekst in die opgemaakt moet worden";
-				$lang_string['insert_image'] = "Vul de URL van de afbeelding in";
-				$lang_string['insert_url1'] = "Vul de tekst in die bij de link komt te staan (optioneel)";
-				$lang_string['insert_url2'] = "Vul de volledige URL van de lnik in";
-				$lang_string['insert_url3'] = "Open URL in new window (Optional):"; // <-- New 0.3.6
-				$lang_string['form_error'] = "Vul onderwerp en bericht in.";		
-				// More Javascript Strings <-- New 0.3.6
-				$lang_string['insert_image_optional'] = 'Optional:';
-				$lang_string['insert_image_width'] = 'Width (Optional):';
-				$lang_string['insert_image_height'] = 'Height (Optional):';
-				$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
-				$lang_string['insert_image_float'] = 'Float (Optional):';
+				$lang_string['view_images'] = "Vis uploadede billeder";
+				$lang_string['label_entry'] = "Tekst:";
+				$lang_string['btn_preview'] = "&nbsp;Gennemse&nbsp;";
+				$lang_string['btn_post'] = "&nbsp;Gem&nbsp;";
+				$lang_string['file_name'] = "Statisk filnavn: (ingen mellemrum eller filextension)";
+				// Javascript Strings 
+				$lang_string['insert_styles'] = "Indtast tekst der skal formateres";
+				$lang_string['insert_image'] = "Indtast URL til billedet";
+				$lang_string['insert_url1'] = "Indtast tekst til linket";
+				$lang_string['insert_url2'] = "Indtast fuld URL til linket";
+				$lang_string['insert_url3'] = "Åben URL i nyt vindue (Valgfrit):"; 
+				$lang_string['form_error'] = "Venligst udfyld emne og tekst felter.";
+				// More Javascript Strings 
+				$lang_string['insert_image_optional'] = 'Valgfrit:';
+				$lang_string['insert_image_width'] = 'Bredde (Valgfrit):';
+				$lang_string['insert_image_height'] = 'Højde (Valgfrit):';
+				$lang_string['insert_image_popup'] = 'Vis full-size i pop-up vindue (Valgfrit):';
+				$lang_string['insert_image_float'] = 'Flydende (Valgfrit):';
 		}
 	
 		switch ($page) {
 			case 'add':
 				// Add Entry
-				$lang_string['title'] = "Voeg bericht toe";
-				$lang_string['instructions'] = "Vul het formulier in klik op 'Bekijk' om te zien hoe het bericht geplaatst zal worden, of klik op 'Verstuur' om het bericht te plaatsen.";
-				$lang_string['title_ad'] = "Confirm Trackback Pings"; // <-- New 0.3.8
-				$lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all."; // <-- New 0.3.8
-				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
-				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
+				$lang_string['title'] = "Tilføj meddelelse";
+				$lang_string['instructions'] = "Er du klar til at blogge? Udfyld formularen herunder og klik 'Vis' for at se, hvordan din meddelelse ser ud, eller klik 'Godkend' for at gemme meddelelsen.";
+				$lang_string['title_ad'] = "Godkend Trackback-pings";
+				$lang_string['instructions_ad'] = "Dette er de auto-opdagede URI'er, som vil blive pinget. Hvis du ikke ønsker at pinge en bestemt URI, så fravælg den herunder. Klik på knappen 'OK' for at pinge de valgte URI'er, eller klik på 'Annuller' for ikke at pinge noget.";
+				$lang_string['label_tb_ping'] = "Trackback-ping(s), der skal sendes (adskilt af komma)";
+				$lang_string['label_tb_autodiscovery'] = "auto-opdagelse";
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Preview / Edit Entry
-				$lang_string['title_preview'] = "Bekijk / Wijzig bericht";
-				$lang_string['instructions_preview'] = "Het bericht zal als volgt uit komen te zien. Als je opmaakcodes of afbeeldingen gebruikt, vergeet dan niet de 'tags' te sluiten.";
-				$lang_string['title_update'] = "Wijzig bericht";
-				$lang_string['instructions_update'] = "Het bericht kan hieronder gewijzigd worden. Klik op 'Bekijk' of 'Verstuur' als het bericht klaar is.";
-				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;"; // <-- New 0.3.8
-				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;"; // <-- New 0.3.8
+				$lang_string['title_preview'] = "Vis/rediger meddelelse";
+				$lang_string['instructions_preview'] = "Sådan ser din meddelelse ud. Hvis du bruger tekstformatering eller inkluderer billeder, skal du huske at 'lukke' alle dine 'tags'.";
+				$lang_string['title_update'] = "Opdater meddelelse";
+				$lang_string['instructions_update'] = "Du kan ændre din meddelelse ved at udfylde formularen herunder. Klik på 'Vis' eller 'Godkend', når du er færdig.";
+				$lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
+				$lang_string['cancel_btn'] = "&nbsp;Annuller&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Bericht niet opgeslagen. Er is een probleem opgetreden bij het opslaan.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Posten blev ikke gemt. Der opstod  et problem med at gemme.<br /><br />Serveren reporterede:<br />";
 				break;
 			case 'add_static':
 				// Add Entry
-				$lang_string['title'] = "Voeg vaste pagina toe";
-				$lang_string['instructions'] = "Vul het formulier in om een vaste pagina te maken. Een vaste pagina verschijnt, in tegenstelling tot gewone berichten, als een link in het menu aan de rechterkant. Ze kunnen gebruikt worden voor pagina's die altijd toegankelijk moeten zijn, zoals: Info, Contact, Agenda, etc. Klik op 'Bekijk' om te zien hoe de pagina uit zal zien, of klik op 'Verstuur' om de pagina op te slaan.";
+				// Add Entry
+				$lang_string['title'] = "Tilføj statisk side";
+				$lang_string['instructions'] = "Udfyld formularen herunder for at lave en statisk side. I modsætning til en normal blog-meddelelse, optræder statiske sider som links i menuen til højre og bruges som sider, der altid skal være tilgængelige, fx Om Mig, Kontakt Os, Kalender osv. Klik på 'Vis' for at se, hvordan din side ser ud eller klik på 'Godkend' for at gemme siden.";
 				// Preview / Edit Entry
-				$lang_string['title_preview'] = "Bekijk / Wijzig vaste pagina";
-				$lang_string['instructions_preview'] = "De vaste pagina zal als volgt uit komen te zien. Als je opmaakcodes of afbeeldingen gebruikt, vergeet dan niet de 'tags' te sluiten.";
-				$lang_string['title_update'] = "Wijzig vaste pagina";
-				$lang_string['instructions_update'] = "De vaste pagina kan hieronder gewijzigd worden. Klik op 'Bekijk' of 'Verstuur' als de pagina klaar is.";
-				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";	
+				$lang_string['title_preview'] = "Vis/rediger statisk side";
+				$lang_string['instructions_preview'] = "Sådan ser din statiske side ud. Hvis du bruger tekstformatering eller inkluderer billeder, skal du huske at 'lukke' alle dine 'tags'.";
+				$lang_string['title_update'] = "Opdater statisk side";
+				$lang_string['instructions_update'] = "Du kan ændre din statiske side ved af udfylde formularen herunder. Klik på 'Vis' eller 'Godkend', når du er færdig.";
+				$lang_string['form_error'] = "Udfyld venligst emne-, meddelelses- og filnavn-felterne.";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Pagina niet opgeslagen. Er is een probleem opgetreden bij het opslaan.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Siden blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
+			// DATOH_ADD
 			case 'add_block':
 				// Add / Manage Blocks
-				$lang_string['title'] = "Add / Manage Links";
-				$lang_string['instructions'] = "Add custom Blocks";
-				$lang_string['up'] = "up";
-				$lang_string['down'] = "down";
-				$lang_string['edit'] = "edit";
-				$lang_string['delete'] = "delete";
-				$lang_string['block_name'] = "Block Name:";
-				$lang_string['block_content'] = "Block content:";
-				$lang_string['instructions_edit'] = "You are currently editing block:";
-				$lang_string['instructions_modify'] = "Click below to modify a block:";
-				$lang_string['submit_btn_edit'] = "Edit Block";
-				$lang_string['submit_btn_add'] = "Add Block";
-				$lang_string['form_error'] = "Please complete the Name field.";
+				$lang_string['title'] = "Tilføj/rediger blok";
+				$lang_string['instructions'] = "Tilføj speciel blok";
+				$lang_string['up'] = "op";
+				$lang_string['down'] = "ned";
+				$lang_string['edit'] = "rediger";
+				$lang_string['delete'] = "slet";
+				$lang_string['block_name'] = "Navn på blok:";
+				$lang_string['block_content'] = "Indhold af blok:";
+				$lang_string['instructions_edit'] = "Du redigerer lige nu blokken:";
+				$lang_string['instructions_modify'] = "Klik herunder for at redigere en blok:";
+				$lang_string['submit_btn_edit'] = "Rediger blok";
+				$lang_string['submit_btn_add'] = "Tilføj blok";
+				$lang_string['form_error'] = "Udfyld venligst navn-feltet.";
 				break;
+			// DATOH_END
 			case 'add_link':
-				$lang_string['static_pages'] = "Static Pages:";
+				$lang_string['static_pages'] = "Statiske sider:";
 				// Add / Manage Links
-				$lang_string['title'] = "Links toevoegen / beheren";
-				$lang_string['instructions'] = "Voeg links naar andere websites toe. Vul het formulier in en klik op 'Link toevoegen' om een link toe te voegen. Klik op de omhoog/omlaag knoppen om de volgorde van de links te veranderen. Klik op de wijzigen knop om een link aan te passen. Klik op verwijderen om een link te verwijderen";
-				$lang_string['up'] = "omhoog";
-				$lang_string['down'] = "omlaag";
-				$lang_string['edit'] = "wijzigen";
-				$lang_string['delete'] = "verwijderen";
-				$lang_string['link_name'] = "Link naam:";
-				$lang_string['link_url'] = "Link URL: (Optioneel. Leeglaten om een scheidingsteken te maken.)";
-				$lang_string['instructions_edit'] = "Je bewerkt deze link:";
-				$lang_string['instructions_modify'] = "Klik hieronder om een link te wijzigen:";
-				$lang_string['submit_btn_edit'] = "Wijzig Link";
-				$lang_string['submit_btn_add'] = "Link toevoegen";
-				$lang_string['form_error'] = "Vul een naam in.";
+				$lang_string['title'] = "Tilføj/rediger links";
+				$lang_string['instructions'] = "Her kan du tilføje links til andre sites. Udfyld formularen herunder og klik 'Tilføj link' for at tilføje et link. Klik på knapperne 'op' eller 'ned' for at ændre rækkefølgen. Klik på knappen 'rediger' for at redigere et link. Klik på knappen 'slet' for at slette et link.";
+				$lang_string['up'] = "op";
+				$lang_string['down'] = "ned";
+				$lang_string['edit'] = "rediger";
+				$lang_string['delete'] = "slet";
+				$lang_string['link_name'] = "Link-navn:";
+				$lang_string['link_url'] = "Link-URL: (valgfrit - efterlad tom for at lave en adskilning.)";
+				$lang_string['instructions_edit'] = "Du er ved at redigere linket:";
+				$lang_string['instructions_modify'] = "Klik herunder for at redigere et link:";
+				$lang_string['submit_btn_edit'] = "Rediger link";
+				$lang_string['submit_btn_add'] = "Tilføj link";
+				$lang_string['form_error'] = "Udfyld venligst navn-feltet.";
 				break;
 			case 'categories':
 				// Add / Manage Links
-				$lang_string['title'] = "Add / Manage Categories";
-				$lang_string['instructions'] = "Use the form below to add and edit your categories. Each category item should be in this format 'category name (id number)'. Indent items with spaces to create heirarchies.<br /><br /><b>Example:</b><br />General (1)<br />News (3)<br />&nbsp;&nbsp;Announcements (6)<br />&nbsp;&nbsp;Events (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Misc (7)<br />Technology (2)<br />";
-				$lang_string['error'] = "Error";
-				$lang_string['current_categories'] = "Current Categories";
-				$lang_string['no_categories_found'] = "No Categories Found";
-				$lang_string['category_list'] = "Category List:";
-				$lang_string['validate'] = "Validate";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['title'] = "Tilføj/rediger kategorier";
+				$lang_string['instructions'] = "Udfyld formularen herunder for at tilføje og redigere dine kategorier. Hver kategori skal være på følgende format: 'kategorinavn (id-nummer)'. Brug indrykning med mellemrum og at lave hierarkier med.<br /><br /><b>Eksempel:</b><br />Generelt (1)<br />Nyheder (3)<br />&nbsp;&nbsp;Opslag (6)<br />&nbsp;&nbsp;Events (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Forskelligt (7)<br />Teknologi(2)<br />";
+				$lang_string['error'] = "Fejl";
+				$lang_string['current_categories'] = "Nuværende kategorer";
+				$lang_string['no_categories_found'] = "Der er ingen kategorier";
+				$lang_string['category_list'] = "Liste over kategorier:";
+				$lang_string['validate'] = "Check";
+				$lang_string['submit_btn'] = "&nbsp;Godkend&nbsp;";
 				break;
 			case 'colors':
 				// Change Colors
-				$lang_string['title'] = "Kleuren wijzigen";
-				$lang_string['instructions'] = "Je kan de tekst- en achtergrondkleuren van je blog wijzigen. Gebruik de kleurkiezer om je kleur te wijzigen, of typ de HEX waarde in het veld.";
-				$lang_string['bg_color'] = "Pagina kleur";
-				$lang_string['main_bg_color'] = "Hoofdpagina kleur";
-				$lang_string['border_color'] = "Pagina rand";
-				$lang_string['inner_border_color'] = "Binnenste rand";
-				$lang_string['header_bg_color'] = "Titel achtergrond";
-				$lang_string['header_txt_color'] = "Titel tekst";
-				$lang_string['menu_bg_color'] = "Menu achtergrond";
-				$lang_string['footer_bg_color'] = "Ondertitel kleur";
-				$lang_string['txt_color'] = "Gewone tekst";
-				$lang_string['headline_txt_color'] = "Titel text";
-				$lang_string['date_txt_color'] = "Datum tekst";
-				$lang_string['footer_txt_color'] = "Ondertitel tekst";
-				$lang_string['link_reg_color'] = "Gewone link";
-				$lang_string['link_hi_color'] = "Actieve link";
-				$lang_string['link_down_color'] = "Bezochte link";
+				$lang_string['title'] = "Skift farver";
+				$lang_string['instructions'] = "Du kan ændre tekst- og baggrundsfarverne for din blog. Vælg et felt herunder og brug så farvevælgeren til at blande farven. Værdien ændres automatisk.";
+				$lang_string['bg_color'] = "Side-baggrund";
+				$lang_string['main_bg_color'] = "Hovedside-baggrund";
+				$lang_string['border_color'] = "Sidekant";
+				$lang_string['inner_border_color'] = "Indvendig kant";
+				$lang_string['header_bg_color'] = "Sidehoved-baggrund";
+				$lang_string['header_txt_color'] = "Sidehoved-tekst";
+				$lang_string['menu_bg_color'] = "Menu-baggrund";
+				$lang_string['footer_bg_color'] = "Sidefod-baggrund";
+				$lang_string['txt_color'] = "Brødtekst";
+				$lang_string['headline_txt_color'] = "Overskrift-tekst";
+				$lang_string['date_txt_color'] = "Dato-tekst";
+				$lang_string['footer_txt_color'] = "Sidefod-tekst";
+				$lang_string['link_reg_color'] = "Link (standard)";
+				$lang_string['link_hi_color'] = "Link (valgt)";
+				$lang_string['link_down_color'] = "Link (aktivt)";
 				// More Colors
-				$lang_string['entry_bg'] = "Entry BG";
-				$lang_string['entry_title_bg'] = "Entry Title BG";
-				$lang_string['entry_border'] = "Entry Border";
-				$lang_string['entry_title_text'] = "Entry Title Text";
-				$lang_string['entry_text'] = "Entry Text";
-				$lang_string['menu_bg'] = "Menu BG";
-				$lang_string['menu_title_bg'] = "Menu Title BG";
-				$lang_string['menu_border'] = "Menu Border";
-				$lang_string['menu_title_text'] = "Menu Title Text";
-				$lang_string['menu_text'] = "Menu Text";
-				$lang_string['menu_link_reg_color'] = "Menu Link Default";
-				$lang_string['menu_link_hi_color'] = "Menu Link Hover";
-				$lang_string['menu_link_down_color'] = "Menu Link Active";
+				$lang_string['entry_bg'] = "Meddelelse-baggrund";
+				$lang_string['entry_title_bg'] = "Meddelelsestitel-baggrund";
+				$lang_string['entry_border'] = "Meddelelse-kant";
+				$lang_string['entry_title_text'] = "Meddelelsestitel-tekst";
+				$lang_string['entry_text'] = "Meddelelse-tekst";
+				$lang_string['menu_bg'] = "Menu-baggrund";
+				$lang_string['menu_title_bg'] = "Menu-titel-baggrund";
+				$lang_string['menu_border'] = "Menu-kant";
+				$lang_string['menu_title_text'] = "Menutitel-tekst";
+				$lang_string['menu_text'] = "Menu-tekst";
+				$lang_string['menu_link_reg_color'] = "Menu-link(standard)";
+				$lang_string['menu_link_hi_color'] = "Menu-link (valgt)";
+				$lang_string['menu_link_down_color'] = "Menu-link (aktivt)";
 				// Submit
-				$lang_string['color_preset'] = "Color Schemes:"; // 0.3.7q
-				$lang_string['scheme_name'] = "Enter a custom color scheme name:"; // 0.3.7q
-				$lang_string['scheme_file'] = "Enter scheme file name: (no spaces or file extensions)"; // 0.3.7q
-				$lang_string['save_btn'] = "&nbsp;Save&nbsp;"; // 0.3.7q
-				$lang_string['form_error'] = "Please enter a name for your custom color scheme."; // 0.3.7q
-				$lang_string['submit_btn'] = "&nbsp;Verstuur&nbsp;";
+				$lang_string['color_preset'] = "Farveskemaer:";
+				$lang_string['scheme_name'] = "Indtast et bestemt navn til farveskemaet:";
+				$lang_string['scheme_file'] = "Indtast filnavnet for farveskemaet: (ingen mellemrum eller filendelser)";
+				$lang_string['save_btn'] = "&nbsp;Gem&nbsp;";
+				$lang_string['form_error'] = "Indtast venligst et navn til dit farveskema.";
+				$lang_string['submit_btn'] = "&nbsp;Godkend&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Instellingen niet opgeslagen. Er is een probleem opgetreden bij het opslaan.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'comments':
 				// Comments
 				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
-				$lang_string['title'] = "Reacties";
-				$lang_string['header'] = "Plaats reactie";
-				$lang_string['instructions'] = "Vul het formulier in om een reactie te plaatsen.";
-				$lang_string['comment_name'] = "Naam:";
-				$lang_string['comment_email'] = "Email:"; // 0.3.8
-				$lang_string['comment_url'] = "URL:"; // 0.3.8
-				$lang_string['comment_remember'] = "Remember me:"; // 0.3.8
-				$lang_string['comment_text'] = "Bericht:";
-				$lang_string['post_btn'] = "&nbsp;Reactie Versturen&nbsp;";
-				$lang_string['delete_btn'] = "verwijder";
+				$lang_string['title'] = "Kommentarer";
+				$lang_string['header'] = "Tilføj kommentar";
+				$lang_string['instructions'] = "Udfyld formularen herunder for at tilføje dine egne kommentarer.";
+				$lang_string['comment_name'] = "Dit navn:";
+				$lang_string['comment_email'] = "E-mail:";
+				$lang_string['comment_url'] = "URL:";
+				$lang_string['comment_remember'] = "Husk mig:";
+				$lang_string['comment_text'] = "Kommentar:";
+				$lang_string['post_btn'] = "&nbsp;Gem kommentar&nbsp;";
+				$lang_string['delete_btn'] = "slet";
 				// Error Response
-				$lang_string['error_add'] = "<h2>Oeps!</h2>Reactie niet geplaatst. De reactie kan helaas niet worden opgeslagen.<br /><br />Melding:<br />";
-				$lang_string['error_delete'] = "<h2>Oeps!</h2>Reactie niet verwijderd. De reactie kan helaas niet worden verwijderd.<br /><br />Melding:<br />";
-				$lang_string['form_error'] = "Vul een Naam en een Bericht in."; // <-- Need Translation
+				$lang_string['error_add'] = "<h2>Ups!</h2>Kommentaren blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
+				$lang_string['error_delete'] = "<h2>Ups!</h2>Kommentaren blev ikke slettet. Der opstod et problem med at slette.<br /><br />Serveren sagde:<br />";
+				$lang_string['form_error'] = "Udfyld venligst navn- og kommentar-felterne.";
 				break;
 			case 'delete':
-				$lang_string['title'] = "Verwijder bericht";
-				$lang_string['instructions'] = "Het onderstaande bericht wordt verwijderd. Dit bericht echt verwijderen? Dit kan niet ongedaan worden gemaakt...";
-				$lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
-				$lang_string['cancel_btn'] = "&nbsp;Annuleren&nbsp;";
+				$lang_string['title'] = "Slet meddelelse";
+				$lang_string['instructions'] = "Dette er den meddelelse, du er ved at slette. Er du helt sikker på at du vil slette den? Du kan ikke fortryde...";
+				$lang_string['ok_btn'] = "&nbsp;Slet&nbsp;";
+				$lang_string['cancel_btn'] = "&nbsp;Annuller&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Kan bericht niet verwijderen.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Meddelelsen blev ikke slettet.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'delete_static':
-				$lang_string['title'] = "Verwijder vaste pagina";
-				$lang_string['instructions'] = "De onderstaande vaste pagina wordt verwijderd. Deze pagina echt verwijderen? Dit kan niet ongedaan worden gemaakt...";
-				$lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
-				$lang_string['cancel_btn'] = "&nbsp;Annuleren&nbsp;";
+				$lang_string['title'] = "Slet statisk side";
+				$lang_string['instructions'] = "Dette er den statiske side, du er ved at slette. Er du helt sikker på at du vil slette den? Du kan ikke fortryde...";
+				$lang_string['ok_btn'] = "&nbsp;Slet&nbsp;";
+				$lang_string['cancel_btn'] = "&nbsp;Annuller&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Kan pagina niet verwijderen.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Siden blev ikke slettet.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'image_list':
-				$lang_string['title'] = "Afbeeldingen lijst";
-				$lang_string['instructions'] = "Klik op de links hieronder om afbeeldingen te bekijken.<br /><br />Om een afbeelding aan een bericht toe te voegen:<br />1) Control-klik op een link en kies 'Kopieer link naar klembord'.<br />2) Ga terug naar de 'Bericht toevoegen / verwijderen' pagina.<br />3) Klik op de 'img' knop en kopieer de URL in het venster.";
+				$lang_string['title'] = "Liste over billeder";
+				$lang_string['instructions'] = "Klik på links herunder for at se billederne.<br /><br />For at tilføje et billede til din meddelelse skal du:<br />1) Højreklik på et link og vælg 'Kopier genvej'.<br />2) Gå tilbage til siden 'Tilføj meddelelse' eller 'Rediger meddelelse'.<br />3) Klik på knappen 'bil'  og indsæt URL'en i vinduet.";
 				break;
-			case 'info': // New 0.3.7
-				$lang_string['title'] = "Meta-Data Information";
-				$lang_string['instructions'] = "The information below is used for &quot;meta-data&quot;, which helps search engines correctly find and identify your site. Information may also be used in RSS feeds.";
-				$lang_string['info_keywords'] = "Keywords: (List of keywords separated by commas.)";
-				$lang_string['info_description'] = "Description: (An abstract or a free-text description of your site.)";
-				$lang_string['info_copyright'] = "Rights: (Copyright statement, or link to document containing information.)";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+			case 'info':
+				$lang_string['title'] = "Informationer om meta-data";
+				$lang_string['instructions'] = "Informationerne herunder benyttes til &quot;meta-data&quot;, som hjælper søgemaskiner med at finde og identificere dit site. Informationerne kan også bruges i RSS-feeds.";
+				$lang_string['info_keywords'] = "Nøgleord: (Adskil flere nøgleord af kommaer.)";
+				$lang_string['info_description'] = "Beskrivelse: (En opsummering eller beskrivelse af dit site i fritekst.)";
+				$lang_string['info_copyright'] = "Rettigheder: (Copyright eller link til document, der indeholder den pågældende information.)";
+				$lang_string['submit_btn'] = "&nbsp;Gem&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
-				$lang_string['form_error'] = "Please complete the Title and Author fields.";
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
+				$lang_string['form_error'] = "Udfyld venligst nøgleord-, beskrivelse- og rettigheder-felterne.";
 				break;
 			case 'index':
 				// Index
@@ -285,88 +289,88 @@
 			case 'static':
 				// Index
 				break;
-			case 'rating': // New 0.3.8
-				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+			case 'rating':
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'login':
-				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
-				$lang_string['upgrade_count'] = "%n comment files need to be upgraded:"; // New 0.3.8
-				$lang_string['upgrade_url'] = "Upgrade Comments"; // New 0.3.8
-				$lang_string['title'] = "Inloggen";
-				$lang_string['instructions'] = "Vul gebruikersnaam en wachtwoord in:";
-				$lang_string['username'] = "Gebruikersnaam:";
-				$lang_string['password'] = "Wachtwoord";
-				$lang_string['submit_btn'] = "&nbsp;Verstuur&nbsp;";
+				$lang_string['upgrade'] = "<h2>Opgrader</h2>";
+				$lang_string['upgrade_count'] = "%n kommentarfiler skal opgraderes:";
+				$lang_string['upgrade_url'] = "Opgrader kommentarer";
+				$lang_string['title'] = "Log på";
+				$lang_string['instructions'] = "Indtast dit brugernavn og adgangskode herunder";
+				$lang_string['username'] = "Brugernavn:";
+				$lang_string['password'] = "Adgangskode";
+				$lang_string['submit_btn'] = "&nbsp;Log på&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>Gelukt!</h2>Je bent nu ingelogd<p />";
+				$lang_string['success'] = "<h2>Login lykkedes!</h2>Du er nu logget på. Held og lykke med din blogging!<p />";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>Oeps!</h2>Inloggen mislukt. Controleer gebruikersnaam en wachtwoord en probeer opnieuw.<p />";
-				$lang_string['form_error'] = "Vul gebruikersnaam en wachtwoord in."; // <-- Need Translation
+				$lang_string['wrong_password'] = "<h2>Ups!</h2>Du er ikke logget ind. Undersøg venligst, at du har skrevet brugernavn og adgangskode rigtigt, og prøv så igen.<p />";
+				$lang_string['form_error'] = "Udfyld venligst brugernavn- og adgangskode-felterne.";
 				break;
 			case 'logout':
-				$lang_string['title'] = "Uitloggen";
-				$lang_string['instructions'] = "<h2>Oeps!</h2>Uitloggen mislukt. Kan cookie niet verwijderen.<p />";
+				$lang_string['title'] = "Log af";
+				$lang_string['instructions'] = "<h2>Ups!</h2>Det lykkedes ikke at logge af. Cookie kunne ikke slettes. Hvorfor er du stadig logget på?<p />";
 				break;
 			case 'forms':
 				$lang_string['title'] = "";
 				$lang_string['instructions'] = "";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Instellingen niet opgeslagen. Er is een probleem opgetreden bij het opslaan.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
-			case 'set_login': // <-- New
-				$lang_string['title'] = "Change Username &amp; Password";
-				$lang_string['instructions'] = "Use the form below to change your Username and/or Password. Enter the Username and Password that you want to use.";
-				$lang_string['username'] = "Username:";
-				$lang_string['password'] = "Password:";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+			case 'set_login':
+				$lang_string['title'] = "Skift brugernavn &amp; adgangskode";
+				$lang_string['instructions'] = "Udfyld formularen herunder for at ændre brugernavn og adgangskode. Indtast det brugernavn og den adgangskode, du ønsker at benytte.";
+				$lang_string['username'] = "Brugernavn:";
+				$lang_string['password'] = "Adgangskode:";
+				$lang_string['submit_btn'] = "&nbsp;Gem&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>Success!</h2>Your Username and/or Password is active. Happy blogging!<p />";
+				$lang_string['success'] = "<h2>Brugernavn/adgangskode ændret!</h2>Dit nye brugernavn og/eller adgangskode er nu aktivt. Held og lykke med din blogging!<p />";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
-				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['wrong_password'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme dit brugernavn og/eller din adgangskode.<br /><br />Serveren sagde:<br />";
+				$lang_string['form_error'] = "Udfyld venligst brugernavn- og adgangskode-felterne.";
 				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
 					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
 					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
 					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
 			case 'install00':
-				$lang_string['title'] = "Welcome";
-				$lang_string['instructions'] = "Thank you for choosing Simple PHP Blog!";
-				$lang_string['blog_choose_language'] = "Choose Language:";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['title'] = "Velkommen";
+				$lang_string['instructions'] = "Tak fordi du har valgt Simple PHP Blog!";
+				$lang_string['blog_choose_language'] = "Vælg sprog:";
+				$lang_string['submit_btn'] = "&nbsp;Godkend&nbsp;";
 				break;
 			case 'install01':
-				$lang_string['title'] = "Welcome";
+				$lang_string['title'] = "Velkommen";
 				$lang_string['instructions'] = "
-				Thank you for choosing Simple PHP Blog!<br /><br />Simple PHP Blog is a light-weight blogging system. It requires PHP 4.1 or greater, and write-permissions on the server. All information is stored in flat-files, so no database is required.<br /><br />
-				In order to begin, Simple PHP Blog needs to create three folders (<b>config</b>, <b>content</b>, and <b>images</b>) in which to store your information. After that, you will create your password and then you can start blogging.<br /><br />
-				<b>Click below to begin setup:</b>";
-				$lang_string['begin'] = "[ Begin Setup ]";
+				Tak fordi du valgte Simple PHP Blog!<br /><br />Simple PHP Blog er et letvægts-blogging-system. Det kræver PHP 4.1 eller højere og skriverettigheder på serveren. Alle informationer lagres i flade filer, så der kræves ingen database.<br /><br />
+				For at komme i gang, skal Simple PHP Blog oprette tre mapper ('<b>config</b>', '<b>content</b>' og '<b>images</b>'), hvor dine informationer gemmes. Derefter skal du oprette din adgangskode og kan så starte med at blogge.<br /><br />
+				<b>Klik herunder for at begynde installation:</b>";
+				$lang_string['begin'] = "[ Begynd installation ]";
 				break;
 			case 'install02':
-				$lang_string['title'] = "Setup";
-				$lang_string['instructions'] = "Trying to create <b>config</b>, <b>content</b>, and <b>images</b> folders:";
-				$lang_string['folder_exists'] = "Okay! Folder already exists. No changes made...";
-				$lang_string['folder_failed'] = "Whoops! Could not create folder...";
-				$lang_string['folder_success'] = "Success! Folder created...";
+				$lang_string['title'] = "Installation";
+				$lang_string['instructions'] = "Forsøger at oprettet mapperne '<b>config</b>', '<b>content</b>', and '<b>images</b>':";
+				$lang_string['folder_exists'] = "Okay! Mapperne findes allerede. Der er ikke foretaget nogen ændringer...";
+				$lang_string['folder_failed'] = "Ups! Mappen kunne ikke oprettes...";
+				$lang_string['folder_success'] = "Mappen er nu blevet oprettet...";
 				// Help
 				$lang_string['help'] = "
-				<h2>Whoops!</h2>
-				Could not create one or more folders!<br /><br />This is most likely because:<br />
+				<h2>Ups!</h2>
+				Én eller flere mapper kunne ikke oprettes!<br /><br />Dette skyldes formodentlig:<br>
 				<ol>
-				<li><b>Write Permissions</b> aren't set to allow <b>Read/Write</b> access.</li>
-				<li>The <b>UID</b>'s (user ID's) of all files and folder must match.</li>
+				<li><b>Skriverettigheder</b> er ikke sat til at tillade <b>Læse/skrive</b>-adgang.</li>
+				<li><b>UID</b>'erne (bruger-ID'er) skal stemme overens for alle filer og mapper.</li>
 				</ol>
-				Follow the trouble-shooting instructions below and click <b>Try Again</b>:<br />
+				Følg instruktionerne herunder og <b>prøv igen</b>:<br />
 				<ol>
-				<li>Manually create the following folders: <b>config</b>, <b>content</b>, and <b>images</b>.</li>
-				<li>Enabled <b>Write Permissions</b> on the folders: In your FTP program, Owner, User, and World should have <b>Read</b> and <b>Write</b> access. <i>(You may need to contact your service provider to change these...)</i></li>
-				<li>Make sure the UID's of all your files and folders are the same. <i>(You may need to contact your service provider to change these...)</i></li>
+				<li>Opret manuelt de tre mapper: <b>config</b>, <b>content</b>, and <b>images</b>.</li>
+				<li>Giv <b>skriverettigheder</b> på mapperne. I dit FTP-program skal Owner, User og World have <b>Read</b> (læse-) og <b>Write</b> (skrive-)adgang. <i>(Du skal måske kontakte din udbyder for at ændre dette...)</i></li>
+				<li>Sørg for, at alle UID'er på alle dine mapper og filer er den samme. <i>(Du skal måske kontakte din udbyder for at ændre dette...)</i></li>
 				</ol>";
-				$lang_string['try_again'] = "[ Try Again ]";
+				$lang_string['try_again'] = "[ Prøv igen ]";
 				// Success
-				$lang_string['success'] = "<h2>Success!</h2>Folders created successfully!<p /><b>Click below to continue:</b>";
-				$lang_string['continue'] = "[ Continue ]";
+				$lang_string['success'] = "<h2>Mapper oprettet!</h2>Mapperne er nu blevet oprettet!<p /><b>Klik herunder for at fortsætte:</b>";
+				$lang_string['continue'] = "[ Fortsæt ]";
 				break;
 			case 'install03':
 				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
@@ -382,204 +386,204 @@
 				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Using Blowfish Encryption...</b>";
 				$lang_string['using_unknown'] = "<b>Using Unknown Encryption...</b>";
 				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />";
-				$lang_string['title'] = "Create Username &amp; Password";
-				$lang_string['instructions'] = "Use the form below to Create a Username and Password.";
-				$lang_string['username'] = "Username:";
-				$lang_string['password'] = "Password:";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['title'] = "Opret brugernavn &amp; adgangskode";
+				$lang_string['instructions'] = "Udfyld formularen herunder for at oprette brugernavn og adgangskode.";
+				$lang_string['username'] = "Brugernavn:";
+				$lang_string['password'] = "Adgangskode:";
+				$lang_string['submit_btn'] = "&nbsp;Godkend&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in. Click below to visit the Setup page, where you can name your blog. Happy blogging!<p />";
-				$lang_string['btn_setup'] = "[ Setup ]";
+				$lang_string['success'] = "<h2>Til lykke!</h2>Du er nu logget på. Klik herunder for at gå til opsætning, hvor du kan navngive din blog. Held og lykke med din blogging!<p />";
+				$lang_string['btn_setup'] = "[ Opsætning ]";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
-				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['wrong_password'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme dit brugernavn og/eller adgangskode.<br /><br />Serveren sagde:<br />";
+				$lang_string['form_error'] = "Udfyld venligst brugernavn- og adgangskode-felterne.";
 				break;
 			case 'install04':
-				$lang_string['title'] = "Create Password File";
-				$lang_string['instructions'] = "Here's the tricky part:<br />
+				$lang_string['title'] = "Opret adgangskodefil";
+				$lang_string['instructions'] = "Her er den svære del:<br />
 				<ol>
-				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
-				<li>Create a New Text Document.</li>
-				<li>Copy and paste the code in the box below into your document.</li>
-				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
-				<li>Open a FTP application.</li>
-				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
-				<li>Delete the <b>password.php</b> from your hard drive.</li>
+				<li>Åbn et tekstredigerings-program. <i>(Notesblok, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
+				<li>Opret et nyt tekstdokument.</li>
+				<li>Kopier og indsæt indholdet af boksen nedenfor i dokumentet.</li>
+				<li>Gem din fil under navnet <b>password.php</b> <i>(Sørg for at gemme den i <b>tekst-</b> eller <b>\"almindelig tekst\"</b>-format.)</i></li>
+				<li>Åbn et FTP-program.</li>
+				<li>Upload din nye fil <b>password.php</b> til <b>config</b>-mappen hørende til din hjemmeside.</li>
+				<li>Fjern filen <b>password.php</b> fra din harddisk.</li>
 				</ol>
 				";
-				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
-				$lang_string['code'] = "Code for <b>password.php</b> file:";
-				$lang_string['continue'] = "[ Continue ]";
+				$lang_string['information'] = "<i>Bemærk: Hvis vil nulstille brugernavn og adgangskode (for eksempel hvis du har glemt informationerne), skal du slette filen <b>password.php</b> i din mappe <b>config</b> hørende til din hjemmeside. Næste gang, du besøger din hjemmeside, vil du skulle gennemføre denne installationsproces igen...</i>";
+				$lang_string['code'] = "Indhold til filen <b>password.php</b>:";
+				$lang_string['continue'] = "[ Fortsæt ]";
 				break;
 			case 'install05':
 			case 'install06':
-				$lang_string['title'] = "Login";
-				$lang_string['instructions'] = "Please enter your Username and Password below";
-				$lang_string['username'] = "Username:";
-				$lang_string['password'] = "Password";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['title'] = "Log på";
+				$lang_string['instructions'] = "Indtast dit brugernavn og adgangskode nedenfor";
+				$lang_string['username'] = "Brugernavn:";
+				$lang_string['password'] = "Adgangskode";
+				$lang_string['submit_btn'] = "&nbsp;Send&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
-				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
-				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+				$lang_string['success'] = "<h2>Til lykke!</h2>Du er nu logget på.<p />
+				Klik nedenfor for at gå til siden <b>Opsætning</b>, hvor du kan gøre din blog personligt.<p />
+				<i>Bemærk: Da du nu har gennemgået installationsprocessen, anbefales det, at du sletter filerne <b>installXX.php</b> fra din hjemmeside. (dvs. filerne fra install00.php til install06.php)</i><p />";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
-				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['wrong_password'] = "<h2>Ups!</h2>Du er ikke logget på. Undersøg venligst, at du har skrevet dit brugernavn og adgangskode korrekt og prøv igen.<p />";
+				$lang_string['form_error'] = "Udfyld venligst brugernavn- og adgangskode-felterne.";
 				// Success
-				$lang_string['btn_setup'] = "[ Setup ]";
-				$lang_string['btn_try_again'] = "[ Try Again ]";
+				$lang_string['btn_setup'] = "[ Opsætning ]";
+				$lang_string['btn_try_again'] = "[ Prøv igen ]";
 				break;
 			case 'setup':
-				$lang_string['title'] = "Instellingen";
-				$lang_string['instructions'] = "Je kan de naam van je blog en andere informatie hier wijzigen.";
-				$lang_string['blog_title'] = "Blog naam:";
-				$lang_string['blog_author'] = "Auteur:";
-				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
-				$lang_string['blog_footer'] = "Ondertitel:";
-				$lang_string['blog_choose_language'] = "Kies taal:";
-				$lang_string['blog_enable_comments'] = "Enable User Comments"; // <-- New 0.3.6
-				$lang_string['blog_comments_popup'] = "Open Comments in Popup Window"; // <-- New 0.3.6
-				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
-				$lang_string['blog_enable_voting'] = "Enable Users to Rate Entries"; // <-- New 0.3.8
-				$lang_string['blog_email_notification'] = "Send email notification when comments are posted"; // <-- New 0.3.7
-				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;"; // <-- New 0.3.7
-				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)"; // <-- New 0.3.7
-				$lang_string['blog_trackback_about'] = "Trackback provides a method of notification between blogs. Let another
-					blog know that you are linking to them by sending them a trackback ping. See who is linking to 
-					your blog by receiving trackback pings.<br />
-				   You can either enter the URIs to ping manually, or try to do it automatically through 
-				   Auto-Discovery."; // <-- New 0.3.8
-				$lang_string['blog_trackback_enabled'] = "Enable trackback in my blog"; // <-- New 0.3.8
-				$lang_string['blog_trackback_auto_discovery'] = "Enable Auto-Discovery when submitting a post containing URLs"; // <-- New 0.?.?
-				$lang_string['blog_max_entries'] = "Maximum Entries to Display:"; // <-- New 0.3.6
-				$lang_string['blog_comment_tags'] = "Tags to Allow in Comments:"; // <-- New 0.3.6
+				$lang_string['title'] = "Opsætning";
+				$lang_string['instructions'] = "Du kan ændre navnet på din blog og dine personlige informationer herunder.";
+				$lang_string['blog_title'] = "Blog-navn:";
+				$lang_string['blog_author'] = "Forfatter:";
+				$lang_string['blog_email'] = "E-mail:";
+				$lang_string['blog_footer'] = "Sidefod:";
+				$lang_string['blog_choose_language'] = "Vælg sprog:";
+				$lang_string['blog_enable_comments'] = "Tillad brugerkommentarer";
+				$lang_string['blog_comments_popup'] = "Åbn kommentarer i pop-up-vindue";
+				$lang_string['blog_enable_voting'] = "Tillad brugere at vurdere meddelelser";
+				$lang_string['blog_email_notification'] = "Send e-mail, når der skrives kommentarer";
+				$lang_string['blog_send_pings'] = "Send weblog-&quot;pings&quot;";
+				$lang_string['blog_ping_urls'] = "Indtast den fulde URL (fx http://rpc.weblogs.com/RPC2) på den service, der skal &quot;pinges&quot;.<br />(Du kan indtaste mere end én adresse ved at adskille med kommaer.)";
+				$lang_string['blog_trackback_about'] = "Trackback sender beskeder mellem blogs. Du kan lade en anden 
+					blog vide, at du linker til den, ved at sende dem et trackback-ping, og du kan se hvem der linker til
+					din blog ved at modtage trackback-pings.<br />
+				   Du kan enten manuelt indtaste URI'erne, der skal pinges, eller gøre det automatisk ved
+				   auto-opdagelse.";
+				$lang_string['blog_trackback_enabled'] = "Slå trackback i min blog til";
+				$lang_string['blog_trackback_auto_discovery'] = "Slå auto-opdagelse ved oprettelse af meddelelse indeholdende URL'er til";
+				$lang_string['blog_max_entries'] = "Det maksimale antal meddelelser, der skal vises:";
+				$lang_string['blog_comment_tags'] = "Tags, der tillades i kommentarer:";
 				$lang_string['blog_gzip_about'] = "
-					Since PHP 4.0.4, PHP has had the ability to read and write gzip (.gz) compressed files, 
-					thus saving disk-space. It can also transparently compress pages that are sent to browsers 
-					which support gzip compression, thus saving bandwidth.<br />
+					Siden PHP 4.0.4 har PHP kunnet læse og skrive gzip'ede (.gz) komprimerede filer,
+					så der spares diskplads. PHP kan også komprimere sider, der sendes til browsere,
+					som understøtter gzip-kompression og derved spare båndbredde.<br />
 					<br />
-					Zlib support in PHP is not enabled by default. If the checkboxes are disabled, then your 
-					installation of PHP does not support the Zlib extension."; // <-- New 0.3.7
-				$lang_string['blog_enable_gzip_txt'] = "Enable GZIP Compression for Database Files"; // <-- New 0.3.7
-				$lang_string['blog_enable_gzip_output'] = "Enable GZIP Compression for HTTP Output"; // <-- New 0.3.7
-				$lang_string['submit_btn'] = "&nbsp;Verstuur&nbsp;";
+					Understøttelse af Zlib i PHP er ikke slået til som standard. Hvis nedenstående afkrydsningsfelter ikke virker,
+					understøtter dinPHP-installation ikke Zlib-udvidelsen";
+				$lang_string['blog_enable_gzip_txt'] = "Tillad GZIP-kompression af databasefiler";
+				$lang_string['blog_enable_gzip_output'] = "Tillad GZIP-kompression af HTTP-output";
+				$lang_string['submit_btn'] = "&nbsp;Gem&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Instellingen niet opgeslagen. Er is een probleem opgetreden bij het opslaan.<br /><br />Melding:<br />";
-				$lang_string['form_error'] = "Vul titel en auteur in:";
-				$lang_string['label_entry_order'] = "Bericht volgorde:";
-				$lang_string['select_new_to_old'] = "Nieuwste berichten bovenaan";
-				$lang_string['select_old_to_new'] = "Oudste berichten bovenaan";
-				$lang_string['label_comment_order'] = "Reactie volgorde:";
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
+				$lang_string['form_error'] = "Udfyld venligst titel- og forfatter-felterne.";
+				$lang_string['label_entry_order'] = "Rækkefølge for meddelelser:";
+				$lang_string['select_new_to_old'] = "Vis nyeste først";
+				$lang_string['select_old_to_new'] = "Vis ældste først";
+				$lang_string['label_comment_order'] = "Rækkefølge for kommentarer:";
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
 				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
-			case 'trackbacks':  // <-- New 0.3.8
+			case 'trackbacks':
 				// Trackbacks
 				$lang_string['title'] = "Trackbacks";
-				$lang_string['header'] = "Trackback URL for this entry:";
-				$lang_string['delete_btn'] = "delete";
+				$lang_string['header'] = "Trackback-URL for denne meddelelse:";
+				$lang_string['delete_btn'] = "slet";
 				// Error Response
-				$lang_string['error_add'] = "Error storing trackback data.";
+				$lang_string['error_add'] = "Trackback-data kunne ikke gemmes.";
 				break;
 			case 'options':
-				$lang_string['title'] = "Opties";
-				$lang_string['instructions'] = "Gebruik dit formulier om datum en tijd instellingen voor berichten te wijzigen. Je kan 12 of 24 urige tijdsaanduidingen gebruiken en kort of lang datum formaat. De <b>Voorbeeld</b> velden worden automatisch gewijzigd om de instellingen te bekijken.";
+				$lang_string['title'] = "Indstillinger";
+				$lang_string['instructions'] = "Udfyld formularen herunder for at indstille visning af dato og tidspunkter for meddelelser og kommentarer. Du kan vælge 12- eller 24-timers ur, og kort eller langt datoformat. <b>Eksempel</b>-områderne opdateres automatisk for at vise, hvordan formateringen ser ud.";
 				// Long Date
-				$lang_string['ldate_title'] = "Lange datum instelling:";
-				$lang_string['weekday'] = "Weekdag";
-				$lang_string['month'] = "Maand";
+				$lang_string['ldate_title'] = "Langt datoformat:";
+				$lang_string['weekday'] = "Ugedag";
+				$lang_string['month'] = "Måned";
 				$lang_string['day'] = "Dag";
-				$lang_string['year'] = "Jaar";
-				$lang_string['none'] = "Niks";
+				$lang_string['year'] = "År";
+				$lang_string['none'] = "Ingen";
 				// Short Date
-				$lang_string['sdate_title'] = "Korte Datum instelling:";
-				$lang_string['s_month'] = "Maand";
+				$lang_string['sdate_title'] = "Kort datoformat:";
+				$lang_string['s_month'] = "Måned";
 				$lang_string['s_mon'] = "MMM";
 				$lang_string['s_day'] = "Dag";
-				$lang_string['s_year'] = "Jaar";
-				$lang_string['zero_day'] = "Extra 0 voor de dag";
-				$lang_string['show_century'] = "Show century";
+				$lang_string['s_year'] = "År";
+				$lang_string['zero_day'] = "Foranstillet nul for dag";
+				$lang_string['show_century'] = "Vis århundrede";
 				// Time
-				$lang_string['time_title'] = "Tijd instelling:";
-				$lang_string['12hour'] = "12-urige klok";
-				$lang_string['24hour'] = "24-urige klok";
-				$lang_string['before_noon'] = "Voor de middag";
-				$lang_string['after_noon'] = "Na de middag";
+				$lang_string['time_title'] = "Tidsformat:";
+				$lang_string['12hour'] = "12-times ur";
+				$lang_string['24hour'] = "24-times ur";
+				$lang_string['before_noon'] = "Før middag";
+				$lang_string['after_noon'] = "Efter middag";
 				// Date
-				$lang_string['date_title'] = "Datum aanduiding:";
-				$lang_string['long_date'] = "Lange datum";
-				$lang_string['short_date'] = "Korte datum";
-				$lang_string['time'] = "Tijd";
+				$lang_string['date_title'] = "Format for datoer:";
+				$lang_string['long_date'] = "Lang dato";
+				$lang_string['short_date'] = "Kort dato";
+				$lang_string['time'] = "Tid";
 				// Menu
-				$lang_string['menu_title'] = "Menu Date Display Format:";
-				$lang_string['long_date'] = "Long Date";
-				$lang_string['short_date'] = "Short Date";
+				$lang_string['menu_title'] = "Format for menu-datoer:";
+				$lang_string['long_date'] = "Lang dato";
+				$lang_string['short_date'] = "Kort dato";
 				// Used in multiple places
-				$lang_string['zero_day'] = "Voorloop 0 voor de dag";
-				$lang_string['zero_month'] = "Voorloop 0 voor de maand";
-				$lang_string['zero_hour'] = "Voorloop 0 voor het uur";
-				$lang_string['separator'] = "Scheidingsteken:";
-				$lang_string['preview'] = "Voorbeeld:";
-				$lang_string['server_offset'] = "Server Offset:";
+				$lang_string['zero_day'] = "Foranstillet nul for dag";
+				$lang_string['zero_month'] = "Foranstillet nul for måned";
+				$lang_string['zero_hour'] = "Foranstillet nul for time";
+				$lang_string['separator'] = "Adskiller:";
+				$lang_string['preview'] = "Eksempel:";
+				$lang_string['server_offset'] = "Tidsforskel på server:";
 				// Buttons
-				$lang_string['submit_btn'] = "&nbsp;Verstuur&nbsp;";
+				$lang_string['submit_btn'] = "&nbsp;Gem&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Instellingen niet opgeslagen. Er is een probleem opgetreden bij het opslaan.<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'themes':
-				$lang_string['title'] = "Themes";
-				$lang_string['instructions'] = "Use the drop-down menu to select a different theme.";
+				$lang_string['title'] = "Temaer";
+				$lang_string['instructions'] = "Brug listen til at vælge andet tema.";
 				// Themes
-				$lang_string['choose_theme'] = "Themes:";
+				$lang_string['choose_theme'] = "Temaer:";
 				// Buttons
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['submit_btn'] = "&nbsp;Gem&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'upload_img':
-				$lang_string['title'] = "Afbeelding uploaden";
-				$lang_string['instructions'] = "Klik op de knop de afbeelding te selecteren.";
-				$lang_string['select_file'] = "Selecteer afbeelding:";
-				$lang_string['upload_btn'] = "Uploaden";
+				$lang_string['title'] = "Upload billede";
+				$lang_string['instructions'] = "Klik på knappen herunder for at vælge den fil, der skal uploades.";
+				$lang_string['select_file'] = "Vælg fil:";
+				$lang_string['upload_btn'] = "Upload";
 				// Error Response
-				$lang_string['error'] = "<h2>Oeps!</h2>Kan afbeelding niet uploaden. Extra informatie:<br /><br />Melding:<br />";
+				$lang_string['error'] = "<h2>Ups!</h2>Billedet kunne ikke uploades. Her er mere information:<br /><br />Serveren sagde:<br />";
 				break;
-			case 'search': // <-- New 0.3.7
-				$lang_string['title'] = "De Resultaten van het onderzoek";
-				$lang_string['instructions'] = "De resultaten van het onderzoek voor <b>%string</b>:";
-				$lang_string['not_found'] = "Geen gevonden resultaten";
+			case 'search':
+				$lang_string['title'] = "Søgeresultat";
+				$lang_string['instructions'] = "Resultat af søgning efter <b>%string</b>:";
+				$lang_string['not_found'] = "Ingen resultater";
 				break;
-			case 'contact': // <-- New 0.3.8
-				$lang_string['title'] = "Contact Me";
-				$lang_string['instructions'] = "Vul de vorm in:";
-				$lang_string['form_error'] = "Gelieve te voltooien de gebieden van het Onderwerp en van de Commentaar.";
-				$lang_string['name'] = "Naam:";
-				$lang_string['email'] = "Email:";
-				$lang_string['subject'] = "Onderwerp:";
-				$lang_string['comment'] = "Commentaar:";
-				$lang_string['submit_btn'] = "&nbsp;Leg voor&nbsp;";
-				$lang_string['success'] = "<h2>Succes!</h2>Uw bericht is verzonden.<p />";
-				$lang_string['failure'] = "<h2>Fout!</h2>Uw bericht is niet verzonden. Waarschijnlijkst was Antispam niet behoorlijk ingegaan.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Ga binnen <b>%s</b>"; // 0.4.2
+			case 'contact':
+				$lang_string['contact_capcha'] = "Anti-Spam: Indtast <b>%s</b>"; // 0.4.2
+				$lang_string['title'] = "Kontakt mig";
+				$lang_string['instructions'] = "Udfyld formularen:";
+				$lang_string['form_error'] = "Udfyld venligst emne- og kommentar-felterne.";
+				$lang_string['name'] = "Navn:";
+				$lang_string['email'] = "E-mail:";
+				$lang_string['subject'] = "Emne:";
+				$lang_string['comment'] = "Kommentar:";
+				$lang_string['submit_btn'] = "&nbsp;Send&nbsp;";
+				$lang_string['success'] = "<h2>Afsendt!</h2>Din kommentar er nu blevet sendt.<p />";
+				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				break;
 			case 'stats':
-				$lang_string['title'] = "Statistics";
-				$lang_string['general'] = "General";
-				$lang_string['entry_info'] = "<b>%s</b> entries using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['comment_info'] = "<b>%s</b> comments using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['trackback_info'] = "<b>%s</b> trackbacks stored in <b>%s</b> bytes";
-				$lang_string['static_info'] = "<b>%s</b> static pages using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "10 Most viewed entries";
-				$lang_string['most_commented_entries'] = "10 Most commented entries";
-				$lang_string['most_trackbacked_entries'] = "10 Most trackbacked entries";
+				$lang_string['title'] = "<h2>Statistikker</h2>";
+				$lang_string['general'] = "<h3>Generelt</h3>";
+				$lang_string['entry_info'] = "<b>%s</b> meddelelser med <b>%s</b> ord gemt i <b>%s</b> bytes";
+				$lang_string['comment_info'] = "<b>%s</b> kommentarer med <b>%s</b> ord gemt i <b>%s</b> bytes";
+				$lang_string['trackback_info'] = "<b>%s</b> trackbacks gemt i <b>%s</b> bytes";
+				$lang_string['static_info'] = "<b>%s</b> statiske sider med <b>%s</b> ord gemt i <b>%s</b> bytes";
+				$lang_string['most_viewed_entries'] = "<h3>10 mest viste meddelelser</h3>";
+				$lang_string['most_commented_entries'] = "<h3>10 mest kommenterede meddelelser</h3>";
+				$lang_string['most_trackbacked_entries'] = "<h3>10 Most trackback'ede meddelelser</h3>";
 				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "10 Most voted entries"; // 0.4.1
-				$lang_string["most_rated_entries"] = "10 Most rated entries"; // 0.4.1
+				$lang_string["most_voted_entries"] = "<h3>10 Most voted entries</h3>"; // 0.4.1
+				$lang_string["most_rated_entries"] = "<h3>10 Most rated entries</h3>"; // 0.4.1
 				break;
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
