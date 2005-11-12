@@ -471,6 +471,8 @@
 				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Jour De Début De Semaine De Calendrier"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Permettez Le Bloc De Calendrier/Archives"; // New for 0.4.6
+				$lang_string['blog_enable_title'] = "Permettez le bloc plat de titre des textes (checkbox clair si le titre est dans le graphique d'en-tête)"; // New for 0.4.6
+				$lang_string['blog_enable_permalink'] = "Permettez Permalink sur des entrées de Blog"; // New for 0.4.6
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

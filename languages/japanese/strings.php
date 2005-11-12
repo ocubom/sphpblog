@@ -466,6 +466,8 @@ $lang_string['blog_trackback_enabled'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯µ¡Ç½¤
 				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
+				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
+				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
 				break;
 	case 'trackbacks':  // <-- New 0.3.8
 	// Trackbacks
