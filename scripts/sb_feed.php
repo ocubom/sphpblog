@@ -61,7 +61,7 @@
 		}
 		//Optional channel fields
 		echo "\t\t<copyright>" . clean_rss_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
-		echo "\t\t<managingEditor>" . clean_rss_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
+		echo "\t\t<managingEditor>" . $blog_config[ 'blog_author' ] . "</managingEditor>\n";
 		echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
 		echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
@@ -96,7 +96,7 @@
 					}
 					echo "</category>\n";
 					echo "\t\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
-					echo "\t\t\t<author>" . clean_rss_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
+					echo "\t\t\t<author>" . $blog_config[ 'blog_author' ]  . "</author>\n";
 					echo "\t\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
 
 					// Only output if <comments> if they are enabled.
