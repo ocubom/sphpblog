@@ -59,6 +59,7 @@
 		$lang_string['sb_delete'] = 'cancella';
 		$lang_string['sb_permalink'] = 'permalink'; // <-- New 0.3.8 (non troduco)
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8 (non taduco)
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 		
 		$lang_string['sb_add_comment_btn'] = 'commenta';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -114,6 +115,7 @@
 				$lang_string['instructions_ad'] = "Questo &egrave; l'auto-segnalazione per inviare ping(s) Trackback. Se non vuoi inviare ping(s) ad un determinato URI, deseleziona il checkbox. Clicca 'Ok' per inviare un ping agli URIs oppure 'Annulla' per non effettuare alcun ping(s)."; // <-- New 0.3.8 (??)
 				$lang_string['label_tb_ping'] = "Trackback ping(s) da inviare (separa con una virgola)"; // <-- New 0.3.8 (??)
 				$lang_string['label_tb_autodiscovery'] = "auto-segnalazione"; // <-- New 0.3.8 (??)
+				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Anteprima / Modifica notizia";
 				$lang_string['instructions_preview'] = "Ecco come apparir&agrave; la notizia. Se stai usando i 'tag' per la formattazione del testo, ricordarti di chiuderli tutti.";
@@ -458,6 +460,10 @@
 				$lang_string['select_new_to_old'] = "Nuove in testa";
 				$lang_string['select_old_to_new'] = "Nuove in basso";
 				$lang_string['label_comment_order'] = "Ordine dei commenti:";
+								$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

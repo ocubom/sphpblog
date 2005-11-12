@@ -62,6 +62,7 @@
 		$lang_string['sb_delete'] = 'Supprimer';
 		$lang_string['sb_permalink'] = 'permalink'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
+		$lang_string['sb_relatedlink'] = 'lien relatif'; // <-- New in 0.4.6
 		
 		$lang_string['sb_add_comment_btn'] = 'ajout commentaire';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -119,6 +120,7 @@
 				$lang_string['instructions_ad'] = "Ce sont l'URIs Automobile-Découvert que vous êtes sur le point pour cingler. Si vous ne voulez pas cingler un certain URI, uncheck il ci-dessous. Appuyez sur alors le bouton 'OK 'pour cingler l'URIs vérifié ou pour serrer l''annulation 'pour ne pas cingler du tout."; // <-- New 0.3.8
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (la virgule a séparé)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
+				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Apercu / Edition de contenu";
 				$lang_string['instructions_preview'] = "Voici à quoi ressemble votre post. Si vous utilisez différents styles de texte ou si vous incluez des images, veillez à bien fermer toutes vos balises.";
@@ -465,6 +467,10 @@
 				$lang_string['select_new_to_old'] = "Plus recents en premier";
 				$lang_string['select_old_to_new'] = "Plus anciens en premier";
 				$lang_string['label_comment_order'] = "Ordre des Commentaires:";
+				$lang_string['cal_sunday'] = "Lundi"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Jour De Début De Semaine De Calendrier"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Permettez Le Bloc De Calendrier/Archives"; // New for 0.4.6
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

@@ -59,6 +59,7 @@
 		$lang_string['sb_delete'] = 'Löschen';
 		$lang_string['sb_permalink'] = 'Permalink';
 		$lang_string['sb_trackback'] = 'Trackbacks';
+		$lang_string['sb_relatedlink'] = 'Related Link'; // <-- New in 0.4.6
 
 		$lang_string['sb_add_comment_btn'] = 'Kommentar hinzufügen';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -114,6 +115,7 @@
 				$lang_string['instructions_ad'] = "<p>Dies sind die automatisch erkannten URLs, welche angepingt werden sollen. Unerwünschte URLs müssen unten abgewählt werden. Danach 'OK' drücken, um die angewählten URLs anzupingen oder 'Abbruch', um überhaupt keine anzupingen.</p>";
 				$lang_string['label_tb_ping'] = "Zu sendende Trackback Pings (durch Komma getrennt)";
 				$lang_string['label_tb_autodiscovery'] = "Auto-Erkennung";
+				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Eintrag Vorschau / Änderung";
 				$lang_string['instructions_preview'] = "<p>So sieht der Eintrag aus. Bei der Verwendung von Textformatierungen oder Bilder daran denken, die 'Tags' zu schließen.</p>";
@@ -471,6 +473,10 @@
 				$lang_string['select_new_to_old'] = "Neue Einträge zuerst";
 				$lang_string['select_old_to_new'] = "Alte Einträge zuerst";
 				$lang_string['label_comment_order'] = "Kommentar Reihenfolge:";
+				$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
 			case 'trackbacks':
 				// Trackbacks

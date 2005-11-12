@@ -63,7 +63,7 @@
 		$lang_string['sb_delete'] = 'delete';
 		$lang_string['sb_permalink'] = 'permalink';
 		$lang_string['sb_trackback'] = 'trackbacks';
-		$lang_string['sb_relatedlink'] = 'Related Link.';
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 		
 		$lang_string['sb_add_comment_btn'] = 'add comment';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -84,30 +84,30 @@
 		
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
-				$lang_string['label_subject'] = "Subject:";
-				$lang_string['label_insert'] = "Insert Special:";
-				$lang_string['btn_bold'] = " b ";
-				$lang_string['btn_italic'] = " i ";
-				$lang_string['btn_image'] = "img";
-				$lang_string['btn_url'] = "url";
-				$lang_string['view_images'] = "View Uploaded Images";
-				$lang_string['label_entry'] = "Entry:";
-				$lang_string['btn_preview'] = "&nbsp;Preview&nbsp;";
-				$lang_string['btn_post'] = "&nbsp;Post&nbsp;";
-				$lang_string['file_name'] = "Static File Name: (no spaces or file extensions)";
-				// Javascript Strings
-				$lang_string['insert_styles'] = "Enter the text to be formatted:";
-				$lang_string['insert_image'] = "Enter the URL for the image:";
-				$lang_string['insert_url1'] = "Enter the text to be displayed for the link (Optional):";
-				$lang_string['insert_url2'] = "Enter the full URL for the link:";
-				$lang_string['insert_url3'] = "Open URL in new window (Optional):";
-				$lang_string['form_error'] = "Please complete the Subject and Entry fields.";	
-				// More Javascript Strings
-				$lang_string['insert_image_optional'] = 'Optional:';
-				$lang_string['insert_image_width'] = 'Width (Optional):';
-				$lang_string['insert_image_height'] = 'Height (Optional):';
-				$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
-				$lang_string['insert_image_float'] = 'Float (Optional):';
+			$lang_string['label_subject'] = "Subject:";
+			$lang_string['label_insert'] = "Insert Special:";
+			$lang_string['btn_bold'] = " b ";
+			$lang_string['btn_italic'] = " i ";
+			$lang_string['btn_image'] = "img";
+			$lang_string['btn_url'] = "url";
+			$lang_string['view_images'] = "View Uploaded Images";
+			$lang_string['label_entry'] = "Entry:";
+			$lang_string['btn_preview'] = "&nbsp;Preview&nbsp;";
+			$lang_string['btn_post'] = "&nbsp;Post&nbsp;";
+			$lang_string['file_name'] = "Static File Name: (no spaces or file extensions)";
+			// Javascript Strings
+			$lang_string['insert_styles'] = "Enter the text to be formatted:";
+			$lang_string['insert_image'] = "Enter the URL for the image:";
+			$lang_string['insert_url1'] = "Enter the text to be displayed for the link (Optional):";
+			$lang_string['insert_url2'] = "Enter the full URL for the link:";
+			$lang_string['insert_url3'] = "Open URL in new window (Optional):";
+			$lang_string['form_error'] = "Please complete the Subject and Entry fields.";	
+			// More Javascript Strings
+			$lang_string['insert_image_optional'] = 'Optional:';
+			$lang_string['insert_image_width'] = 'Width (Optional):';
+			$lang_string['insert_image_height'] = 'Height (Optional):';
+			$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
+			$lang_string['insert_image_float'] = 'Float (Optional):';
 		}
 	
 		switch ($page) {

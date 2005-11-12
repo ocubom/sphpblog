@@ -63,6 +63,7 @@
 		$lang_string['sb_delete'] = '刪除';
 		$lang_string['sb_permalink'] = 'permalink'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = '引用'; // <-- New 0.3.8
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 		
 		$lang_string['sb_add_comment_btn'] = '發表回應';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -125,6 +126,7 @@
 				$lang_string['instructions_update'] = "在下面你可以更新你的文章，當完成後請按 \"預覽\" 或是 \"發表\"。";
 				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;"; // <-- New 0.3.8
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;"; // <-- New 0.3.8
+				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能儲存這篇文章。<br /><br />伺服器報告：<br />";
 				break;
@@ -468,6 +470,10 @@
 				$lang_string['select_new_to_old'] = "新的文章在前面";
 				$lang_string['select_old_to_new'] = "舊的文章在前面";
 				$lang_string['label_comment_order'] = "回應的順序：";
+								$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
 				case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

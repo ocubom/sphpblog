@@ -51,27 +51,28 @@
 		
 	// SB Functions
 	$lang_string['sb_months'] = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
-		$lang_string['sb_default_title'] = 'No Title';
-		$lang_string['sb_default_author'] = 'No Author';
-		$lang_string['sb_default_footer'] = 'No Footer';
+	$lang_string['sb_default_title'] = 'No Title';
+	$lang_string['sb_default_author'] = 'No Author';
+	$lang_string['sb_default_footer'] = 'No Footer';
 		
-		$lang_string['sb_edit'] = 'ÊÔ½¸';
-		$lang_string['sb_delete'] = 'ºï½ü';
+	$lang_string['sb_edit'] = 'ÊÔ½¸';
+	$lang_string['sb_delete'] = 'ºï½ü';
 	$lang_string['sb_permalink'] = '¤³¤Î¥¨¥ó¥È¥ê¡¼¤ÎURL'; // <-- New 0.3.8
 	$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
+	$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 		
-		$lang_string['sb_add_comment_btn'] = '¥³¥á¥ó¥È¤ò½ñ¤¯';
-		$lang_string['sb_comment_btn_number_first'] = true;
-		$lang_string['sb_comment_btn'] = 'comment';
-		$lang_string['sb_comments_plural_btn_number_first'] = true;
-		$lang_string['sb_comments_plural_btn'] = 'comments';
+	$lang_string['sb_add_comment_btn'] = '¥³¥á¥ó¥È¤ò½ñ¤¯';
+	$lang_string['sb_comment_btn_number_first'] = true;
+	$lang_string['sb_comment_btn'] = 'comment';
+	$lang_string['sb_comments_plural_btn_number_first'] = true;
+	$lang_string['sb_comments_plural_btn'] = 'comments';
 		
-		// ( 1 view )
-		$lang_string['sb_view_counter_pre'] = '';
-		$lang_string['sb_view_counter_post'] = ' view';
-		// ( 2 views )
-		$lang_string['sb_view_counter_plural_pre'] = '';
-		$lang_string['sb_view_counter_plural_post'] = ' views';
+	// ( 1 view )
+	$lang_string['sb_view_counter_pre'] = '';
+	$lang_string['sb_view_counter_post'] = ' view';
+	// ( 2 views )
+	$lang_string['sb_view_counter_plural_pre'] = '';
+	$lang_string['sb_view_counter_plural_post'] = ' views';
 		
 	$lang_string['sb_add_link_btn'] = '¥ê¥ó¥¯¤ÎÀßÄê¡¦ÄÉ²Ã';
 		
@@ -116,6 +117,7 @@
 	$lang_string['instructions_ad'] = "¼«Æ°Åª¤Ë¸¡½Ð¤µ¤ì¤¿URL¤Ç¤¹¡£¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤òµö²Ä¤¹¤ë¾ì¹ç¤Ï¡ÖOK¡×¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤¯¤À¤µ¤¤¡£"; // <-- New 0.3.8
 	$lang_string['label_tb_ping'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯Á÷¿® (¥«¥ó¥Þ¤Ç¶èÀÚ¤Ã¤ÆÊ£¿ô»ØÄê²ÄÇ½)"; // <-- New 0.3.8
 	$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
+	$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 	// Preview / Edit Entry
 	$lang_string['title_preview'] = "¥×¥ì¥Ó¥å¡¼ / ÊÔ½¸";
 	$lang_string['instructions_preview'] = "¥¨¥ó¥È¥ê¡¼¤ÎÊÔ½¸¤ò¹Ô¤¤¤Þ¤¹¡£¡Ê¥¿¥°¤ÏÉ¬¤ºÊÄ¤¸¤Æ²¼¤µ¤¤¡Ë'.";
@@ -460,6 +462,10 @@ $lang_string['blog_trackback_enabled'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯µ¡Ç½¤
 	$lang_string['select_new_to_old'] = "¿·¤·¤¤½ç¤ËÉ½¼¨";
 	$lang_string['select_old_to_new'] = "¸Å¤¤½ç¤ËÉ½¼¨";
 	$lang_string['label_comment_order'] = "¥³¥á¥ó¥È¤ÎÉ½¼¨";
+					$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
 	case 'trackbacks':  // <-- New 0.3.8
 	// Trackbacks

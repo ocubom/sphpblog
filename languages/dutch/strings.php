@@ -63,6 +63,7 @@
 		$lang_string['sb_delete'] = 'verwijder';
 		$lang_string['sb_permalink'] = 'permalink'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 		
 		$lang_string['sb_add_comment_btn'] = 'reactie toevoegen';
 		$lang_string['sb_comment_btn_number_first'] = true;
@@ -118,6 +119,7 @@
 				$lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all."; // <-- New 0.3.8
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
+				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Bekijk / Wijzig bericht";
 				$lang_string['instructions_preview'] = "Het bericht zal als volgt uit komen te zien. Als je opmaakcodes of afbeeldingen gebruikt, vergeet dan niet de 'tags' te sluiten.";
@@ -468,6 +470,10 @@
 				$lang_string['select_new_to_old'] = "Nieuwste berichten bovenaan";
 				$lang_string['select_old_to_new'] = "Oudste berichten bovenaan";
 				$lang_string['label_comment_order'] = "Reactie volgorde:";
+				$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

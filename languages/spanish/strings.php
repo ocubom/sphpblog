@@ -61,7 +61,7 @@
 		$lang_string['sb_delete'] = 'borrar';
 		$lang_string['sb_permalink'] = 'enlace permanente'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
-		
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 
 		$lang_string['sb_add_comment_btn'] = 'añadir comentario';
 
@@ -107,10 +107,6 @@
 				$lang_string['insert_image_height'] = 'Alto (Opcional):';
 				$lang_string['insert_image_popup'] = 'Ver en una ventana emergente al hacer clic (Opcional):';
 				$lang_string['insert_image_float'] = 'Flotar (Opcional):';
-				$lang_string['insert_image_align'] = 'Alineación horizontal (Opcional):';	//0.4.4
-				$lang_string['insert_image_valign'] = 'Alineación vertical (Opcional):';	//0.4.4
-				$lang_string['insert_image_alt'] = 'Texto alternativo (Opcional):';	//0.4.4
-
 		}
 	
 		switch ($page) {
@@ -122,6 +118,7 @@
 				$lang_string['instructions_ad'] = "Éstos son los Auto-Discovered URIs sobre los que hará ping. Si no quiere hacer ping a un cierto URI, deschequee. Entonces pulse 'OK' para hacer ping sobre las URIs chequeadas o pulse 'Cancel' para no realizar ningun ping."; // <-- New 0.3.8
 				$lang_string['label_tb_ping'] = "Trackback ping(s) a enviar (separados por comas)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
+				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Previsualizar / Editar entrada";
 				$lang_string['instructions_preview'] = "Así es como se ve su entrada";
@@ -155,23 +152,8 @@
 				$lang_string['down'] = "Abajo";
 				$lang_string['edit'] = "Editar";
 				$lang_string['delete'] = "Borrar";
-
-				$lang_string['enable'] = "Habilitar";  // <-- New 0.4.4
-				$lang_string['disable'] = "Deshabilitar"; // <-- New 0.4.4
-
 				$lang_string['block_name'] = "Nombre del Bloque:";
 				$lang_string['block_content'] = "Contenido del Bloque:";   
-				$lang_string['block_scope_pri'] = "Privado"; // <-- New 0.4.4
-				$lang_string['block_scope_pub'] = "Público"; // <-- New 0.4.4
-				$lang_string['block_status_ena'] = "Habilitado";	// <-- New 0.4.4
-				$lang_string['block_status_dis'] = "Deshabilitado";	// <-- New 0.4.4
-				$lang_string['block_position'] = "Posición ";	     // <-- New 0.4.4
-				$lang_string['block_position_top'] = "Arriba";	 // <-- New 0.4.4
-				$lang_string['block_position_left'] = "Izquierda"; // <-- New 0.4.4
-				$lang_string['block_position_center'] = "Centro";  // <-- New 0.4.4
-				$lang_string['block_position_right'] = "Derecha";  // <-- New 0.4.4
-				$lang_string['block_position_botton'] = "Abajo";   // <-- New 0.4.4				
-
 				$lang_string['instructions_edit'] = "Estás editando un Bloque:";
 				$lang_string['instructions_modify'] = "Haga clic debajo en <b>Editar</b> para modificar el Bloque:";
 				$lang_string['submit_btn_edit'] = "Editar Bloque";
@@ -516,6 +498,10 @@
 				$lang_string['select_new_to_old'] = "Primero los Nuevos";
 				$lang_string['select_old_to_new'] = "Primero los Antiguos";
 				$lang_string['label_comment_order'] = "Orden de Comentarios:";
+								$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				break;
 
 			case 'trackbacks':  // <-- New 0.3.8
@@ -601,7 +587,6 @@
 				$lang_string['title'] = "Subir imagen";
 				$lang_string['instructions'] = "Haga clic debajo para subir una imagen.";
 				$lang_string['select_file'] = "Seleccionar archivo:";
-				$lang_string['stats']="Actualmente tienes subidos <b>%s</b> archivo(s) usando <b>%s</b> bytes.";		//0.4.4
 				$lang_string['upload_btn'] = "Subir";
 
 				// Error Response
@@ -641,7 +626,6 @@
 				$lang_string['title'] = "Estadísticas";
 				$lang_string['general'] = "General";
 				$lang_string['entry_info'] = "<b>%s</b> artículos usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
-				$lang_string['upload_info']="<b>%s</b> archivos subidos ocupando <b>%s</b> bytes";		//0.4.4
 				$lang_string['comment_info'] = "<b>%s</b> comentarios usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
 				$lang_string['trackback_info'] = "<b>%s</b> trackbacks ocupando <b>%s</b> bytes";
 				$lang_string['static_info'] = "<b>%s</b> páginas estáticas usando <b>%s</b> palabras ocupando <b>%s</b> bytes";
