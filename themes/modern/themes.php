@@ -164,7 +164,7 @@
 		$comment_area = "";
 		if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
 			// Show "add comment" button if set...
-			$comment_area = $comment_area . '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="' . $entry_array[ 'comment' ][ 'name' ] . '" width="14" height="14" align="top" /> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
+			$comment_area = $comment_area . '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '">' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
 		}
 		
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
@@ -180,6 +180,11 @@
 		if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
 			// Show 'permalink' string...
 			$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
+		}
+		
+		if ( isset( $entry_array['relatedlink']['url'] ) ) {
+			// Show 'relatedlink' symbol - New to 0.4.6
+			$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";
 		}
 		
 		if ( isset( $entry_array[ 'stars' ] ) ) {

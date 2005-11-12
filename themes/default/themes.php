@@ -148,6 +148,11 @@
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
 		}
 		
+		if ( isset( $entry_array['relatedlink']['url'] ) ) {
+			// Show 'relatedlink' symbol - New to 0.4.6
+			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>';
+		}
+		
 		if ( isset( $entry_array[ 'stars' ] ) ) {
 			// Show 'permalink' symbol
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;' . $entry_array[ 'stars' ];
