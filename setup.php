@@ -44,7 +44,7 @@
 		
 		<hr />
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="setup_cgi.php" method="POST" name="setup" name="setup" onSubmit="return validate(this)">
+		<form action="setup_cgi.php" method="POST" name="setup" name="setup" onSubmit="return validate(this)">
 			<?php
 				$arr = array();
 				$dir = 'languages/';

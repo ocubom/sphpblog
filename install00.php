@@ -26,7 +26,7 @@
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
 		?>
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="install01.php" method="POST">
+		<form action="install01.php" method="POST">
 			<?php
 				$arr = array();
 				$dir = 'languages/';

@@ -254,7 +254,7 @@
 			?>
 			
 			
-			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
+			<form action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
 			<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete=OFF><?php
 				$catArray = get_category_array();

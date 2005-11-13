@@ -40,7 +40,7 @@
 		
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="login_cgi.php" method="POST" onSubmit="return validate(this)">
+		<form action="login_cgi.php" method="POST" onSubmit="return validate(this)">
 		
 		<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />
 		<input type="text" name="user" size="40"><br /><br />

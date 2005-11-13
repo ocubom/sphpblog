@@ -33,7 +33,7 @@
 		?>
 		<hr />
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="languages_cgi.php" method="POST">
+		<form action="languages_cgi.php" method="POST">
 			
 			<label for="blog_language1"><?php echo( $lang_string[ 'blog_choose_language' ] ); ?></label><br />
 			<select name="blog_language1">

@@ -27,7 +27,7 @@
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		
 		ob_start(); ?>		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_static_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate_static(this)">
+		<form action='add_static_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate_static(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'label_subject' ] ); ?></label><br />
 			<input type="text" name="blog_subject" autocomplete="OFF" value="" size="40"><br /><br />

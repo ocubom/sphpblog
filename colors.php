@@ -111,7 +111,7 @@
 			</embed>
 		</object><p />
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" method="post" name="colors" id="colors" action="colors_cgi.php">
+		<form method="post" name="colors" id="colors" action="colors_cgi.php">
 			<?php
 				global $user_colors, $theme_vars;
 				$color_def = theme_default_colors();

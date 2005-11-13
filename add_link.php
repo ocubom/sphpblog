@@ -116,7 +116,7 @@
 		}
 		?>
 		
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_link.php' method="POST" name="addlink" id="addlink"  onSubmit="return validate_link(this)">
+		<form action='add_link.php' method="POST" name="addlink" id="addlink"  onSubmit="return validate_link(this)">
 			<input type="hidden" name="link_id" value="<?php if ( isset( $link_id ) ) { echo( $link_id ); } ?>">
 			
 			<?php

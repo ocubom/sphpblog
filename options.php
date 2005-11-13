@@ -195,7 +195,7 @@
 		
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />		
 
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="options_cgi.php" method="POST" name="setup" id="setup" onSubmit="return validate(this)">
+		<form action="options_cgi.php" method="POST" name="setup" id="setup" onSubmit="return validate(this)">
 			
 			<?php echo( $lang_string[ 'ldate_title' ] ); ?><br /><br />
 			<table border="0" cellspacing="0" cellpadding="0">
