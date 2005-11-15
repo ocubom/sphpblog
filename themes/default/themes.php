@@ -406,9 +406,8 @@
 			echo( $array[$i+1] . '' );
 		}
 		
-		echo( '<hr />' );
-		
 		 if( $blog_config[ 'blog_enable_calendar' ] ) {
+		echo( '<hr />' );		
 		$result = menu_display_blognav();
 		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 		echo( $result[ 'content' ] . '' ); }
