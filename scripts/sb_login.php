@@ -191,12 +191,17 @@
 	}
 	
 	function redirect_to_url( $relative_url = "index.php" ) {
-		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+	 	$port=':' . $_SERVER[ 'SERVER_PORT'];
+		if ($port == ':80') {
+			$port = '';
+		}
+	
+ 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			header('Location: http://'.$_SERVER[ 'HTTP_HOST' ].'/'.$relative_url);
-		} else {
+			header('Location: http://'.$_SERVER['HTTP_HOST' ].$port.'/'.$relative_url);
+			} else {
 			// Hosted in sub-directory.
-			header('Location: http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/'.$relative_url);
+			header('Location: http://'.$_SERVER['HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF']).'/'.$relative_url);
 		}
 		exit;
 	}
