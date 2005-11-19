@@ -228,6 +228,7 @@
 				$lang_string['save_btn'] = "&nbsp;Save&nbsp;"; // 0.3.7q
 				$lang_string['form_error'] = "Veuillez écrire un nom pour votre arrangement de couleur fait sur commande."; // 0.3.7q
 				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'Le thème actuellement choisi ne tient pas compte des couleurs faites sur commande.';
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Paramètres de configuration non sauvegardés. Problème rencontré durant l opération de sauvegarde.<br /><br />le Serveur a reporté :<br />";
 				break;

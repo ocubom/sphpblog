@@ -227,6 +227,7 @@
 				$lang_string['save_btn'] = "&nbsp;Save&nbsp;";
 				$lang_string['form_error'] = "Please enter a name for your custom color scheme.";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;

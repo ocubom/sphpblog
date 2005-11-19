@@ -231,6 +231,7 @@
 				$lang_string['save_btn'] = "&nbsp;Gem&nbsp;";
 				$lang_string['form_error'] = "Indtast venligst et navn til dit farveskema.";
 				$lang_string['submit_btn'] = "&nbsp;Godkend&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 				// Error Response
 				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;

@@ -223,6 +223,7 @@
 				$lang_string['save_btn'] = "&nbsp;Save&nbsp;"; // 0.3.7q
 				$lang_string['form_error'] = "Please enter a name for your custom color scheme."; // 0.3.7q
 				$lang_string['submit_btn'] = "&nbsp;Visitar&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Informação não guardada. Encontrei um problema enquando guardava a sua entrada.<br /><br />O Servidor reportou:<br />";
 				break;

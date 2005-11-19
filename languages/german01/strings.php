@@ -219,6 +219,7 @@
 				$lang_string['menu_link_reg_color'] = "Menü Link Standard";
 				$lang_string['menu_link_hi_color'] = "Menü Link Hervorgehoben";
 				$lang_string['menu_link_down_color'] = "Menü Link Aktiv";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 				// Submit
 				$lang_string['color_preset'] = "Farbschema laden:";
 				$lang_string['scheme_name'] = "Name für das Farbschema:";

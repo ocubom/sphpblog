@@ -232,6 +232,7 @@
 				$lang_string['form_error'] = "Por favor, introduzca un nombre para suEsquema de Color Personalizado.";
 				$lang_string['save_btn'] = "&nbsp;Guardar&nbsp;";
 				$lang_string['submit_btn'] = "&nbsp;Aceptar&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";

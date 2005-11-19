@@ -175,12 +175,15 @@
 				}
 				if ( isset( $theme_vars[ 'popup_window' ][ 'height' ] ) === false ) {
 					$theme_vars[ 'popup_window' ][ 'height' ] = 500;	
-				}	
-			
+				}
+				if ( isset( $theme_vars[ 'options'][ 'disallow_colors' ] ) === false ) {
+					$theme_vars[ 'options'][ 'disallow_colors' ] = 0;		
+				}
 			} else {
 				$theme_vars = array();
 				$theme_vars[ 'popup_window' ][ 'width' ] = 500;
-				$theme_vars[ 'popup_window' ][ 'height' ] = 500;			
+				$theme_vars[ 'popup_window' ][ 'height' ] = 500;
+				$theme_vars[ 'options'][ 'disallow_colors' ] = 0;	
 			}
 			
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {

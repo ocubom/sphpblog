@@ -227,6 +227,7 @@
 				$lang_string['form_error'] = "配色名稱或檔名不可以留白.";
 				$lang_string['save_btn'] = "&nbsp;儲存配色&nbsp;";
 				$lang_string['submit_btn'] = "&nbsp;確定&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能儲存剛才的資訊。<br /><br />伺服器報告：<br />";
 				break;

@@ -223,6 +223,7 @@
 				$lang_string['save_btn'] = "&nbsp;Save&nbsp;";
 				$lang_string['form_error'] = "Please enter a name for your custom color scheme.";
 				$lang_string['submit_btn'] = "&nbsp;Êáôá÷þñçóç&nbsp;";
+				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 				// Error Response
 				$lang_string['error'] = "<h2>Ïõðò!</h2>Ç ðëçñïöïñßá äåí êáôá÷ùñÞèçêå. Åìöáíßóôçêå ôï åîÞò ðñüâëçìá:<br /><br />ÌÞíõìá Server:<br />";
 				break;
