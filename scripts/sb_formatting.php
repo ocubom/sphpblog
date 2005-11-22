@@ -444,26 +444,34 @@
 						$height = $img_size[1];
 						$max_image_width = $theme_vars[ 'max_image_width' ];
 						
+						$auto_resize = true;
 						if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
-								$width = $attrib_width;
-								$height = $attrib_height;
+							// Both width and height are set.
+							$width = $attrib_width;
+							$height = $attrib_height;
+							$auto_resize = false;
 						} else {
 							if ( isset( $attrib_width ) ) {
+								// Only width is set. Calculate relative height.
 								$height = round( $height * ( $attrib_width / $width ) );
 								$width = $attrib_width;
+								$auto_resize = false;
 							}
 							
 							if ( isset( $attrib_height ) ) {
+								// Only height is set. Calculate relative width.
 								$width = round( $width * ( $attrib_height / $height ) );
 								$height = $attrib_height;
+								$auto_resize = false;
 							}
 						}
 						
-						if ( $width > $max_image_width ) {
-							$height = round( $height * ( $max_image_width / $width ) );
-							$width = $max_image_width;
+						if ( $auto_resize == true ) {
+							if ( $width > $max_image_width ) {
+								$height = round( $height * ( $max_image_width / $width ) );
+								$width = $max_image_width;
+							}
 						}
-						
 						
 						if ( isset( $attrib_popup ) ) {
 							if ( $attrib_popup == 'true' ) {
