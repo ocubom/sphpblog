@@ -272,6 +272,7 @@
 						}
 						$str = $str . '<a href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="" border="0" /></a>';
 					}
+					$entry_array[ 'stars_nototals' ] = $str;
 					$str = $str . ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
 					$entry_array[ 'stars' ] = $str;
 				}
