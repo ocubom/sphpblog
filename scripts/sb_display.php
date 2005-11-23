@@ -303,6 +303,8 @@
 							$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_comments_plural_btn' ] . ' ' . $comment_count;
 						}
 					}
+
+					$entry_array[ 'comment' ][ 'comment_count' ] = $comment_count;
 					
 					// Add view counter
 					if ( $view_counter > 0 ) {
