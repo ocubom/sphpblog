@@ -2,8 +2,8 @@
 	// Traditional Chinese UTF-8 Language File
 	// (c) 2004 Markmcm, mcha226 <at> hotmail <dot> com
 	// (c) 2004 Judge Hu, judgehou <at> gmail <dot> com
-	// Simple PHP Version: 0.3.7
-	// Language Version:   0.3.7.1
+	// Simple PHP Version: 0.4.6
+	// Language Version:   0.4.1.1
 	
 	
 	function sb_language( $page ) {
@@ -160,7 +160,7 @@
 				$lang_string['form_error'] = "區塊名稱請勿空白.";
 				break;
 			case 'add_link':
-				$lang_string['static_pages'] = "Static Pages:";
+				$lang_string['static_pages'] = "靜態頁面:";
 				// Add / Manage Links
 				$lang_string['title'] = "新增/管理連結";
 				$lang_string['instructions'] = "新增自訂的網站連結。填寫下面以後按 \"新增\" 來新增連結。按 \"向上移位\" \"向下移位\" 來改變連結的順序。按 \"編輯\" 來改變連結的資訊。按 \"刪除\" 來刪除連結。";
@@ -233,7 +233,7 @@
 				break;
 			case 'comments':
 				// Comments
-				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "防止垃圾留言驗證碼 <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "回應";
 				$lang_string['header'] = "發表回應";
 				$lang_string['instructions'] = "填寫下面來發表回應。";
@@ -290,9 +290,9 @@
 				$lang_string['error'] = "<h2>喔喔! </h2>因為發生了某些問題，所以不能儲存剛才的評分。<br /><br />伺服器報告：<br />";
 				break;
 			case 'login':
-				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
-				$lang_string['upgrade_count'] = "%n comment files need to be upgraded:"; // New 0.3.8
-				$lang_string['upgrade_url'] = "Upgrade Comments"; // New 0.3.8
+				$lang_string['upgrade'] = "<h2>更新</h2>"; // New 0.3.8
+				$lang_string['upgrade_count'] = "%n 個留言檔案需要更新:"; // New 0.3.8
+				$lang_string['upgrade_url'] = "更新留言"; // New 0.3.8
 				$lang_string['title'] = "登入";
 				$lang_string['instructions'] = "請在下面輸入你的使用者名稱以及密碼。";
 				$lang_string['username'] = "使用者名稱";
@@ -325,10 +325,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>喔喔！</h2>剛才的資訊沒有儲存。在儲存使用者名稱以及密碼的時候遇到一些問題。<br /><br />伺服器報告：<br />";
 				$lang_string['form_error'] = "使用者名稱以及密碼欄不能留白。";
-				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
-					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
-					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
-					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
+				$lang_string['explanation'] = "在本版本中改變了更改密碼的方式.現在開始你無法直接改變blog密碼
+					或是在沒有密碼檔時可讓人任意進行設定.  如果你要改變密碼, 刪除 /config/password.php 然後重新上傳安裝程序 (install01.php到install06.php)
+					到你網站裡的sphpblog資料夾.  這些步驟做完後進入網站(或登出).  就會進入安裝程序
+					再一次將你的新密碼設定到你的blog裡即可.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "歡迎光臨";
@@ -367,18 +367,18 @@
 				$lang_string['continue'] = "[ 繼續 ]";
 				break;
 			case 'install03':
-				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
-				$lang_string['standard'] = "Standard DES Encryption: ";
-				$lang_string['extended'] = "Extended DES Encryption: ";
-				$lang_string['MD5'] = "MD5 Encryption: ";
-				$lang_string['blowfish'] = "Blowfish Encryption: ";
-				$lang_string['enabled'] = "enabled";
-				$lang_string['disabled'] = "disabled";
-				$lang_string['using_standard'] = "<b>Using Standard DES Encryption...</b>";
-				$lang_string['using_extended'] = "<b>Using Extended DES Encryption...</b>";
-				$lang_string['using_MD5'] = "<b style=\"color: green;\">Using MD5 Encryption...</b>";
-				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Using Blowfish Encryption...</b>";
-				$lang_string['using_unknown'] = "<b>Using Unknown Encryption...</b>";
+				$lang_string['supported'] = "<b>檢驗你的網頁伺服器是否有支援以下的加密技術:</b>";
+				$lang_string['standard'] = "DES (Data Encryption Standard) 資料加密標準 : ";
+				$lang_string['extended'] = "Extended DES (Data Encryption Standard) 延伸資料加密標準: ";
+				$lang_string['MD5'] = "MD5 (Message-Digest algorithm 5) 雜湊演算法: ";
+				$lang_string['blowfish'] = "Blowfish 加密法: ";
+				$lang_string['enabled'] = "支援";
+				$lang_string['disabled'] = "不支援";
+				$lang_string['using_standard'] = "<b>使用 DES (Data Encryption Standard) 資料加密標準...</b>";
+				$lang_string['using_extended'] = "<b>使用 Extended DES (Data Encryption Standard) 延伸資料加密標準...</b>";
+				$lang_string['using_MD5'] = "<b style=\"color: green;\">使用 MD5 (Message-Digest algorithm 5) 雜湊演算法...</b>";
+				$lang_string['using_blowfish'] = "<b style=\"color: green;\">使用 Blowfish 加密法...</b>";
+				$lang_string['using_unknown'] = "<b>使用 Unknown Encryption...</b>";
 				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />";
 				$lang_string['title'] = "建立使用者名稱以及密碼";
 				$lang_string['instructions'] = "在下面建立使用者名稱以及密碼。";
@@ -398,39 +398,39 @@
 				$lang_string['form_error'] = "使用者名稱以及密碼欄不能留白。";
 				break;
 			case 'install04':
-				$lang_string['title'] = "Create Password File";
-				$lang_string['instructions'] = "Here's the tricky part:<br />
+				$lang_string['title'] = "製作你的密碼檔";
+				$lang_string['instructions'] = "請進行以下步驟:<br />
 				<ol>
-				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
-				<li>Create a New Text Document.</li>
-				<li>Copy and paste the code in the box below into your document.</li>
-				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
-				<li>Open a FTP application.</li>
-				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
-				<li>Delete the <b>password.php</b> from your hard drive.</li>
+				<li>打開你電腦上的文字編輯器 <i>(像記事本, 小作家, Word, BBEdit, Pico, VIM之類的,你要用Dreamweaver,Front page,Nvu等也可以)</i></li>
+				<li>新增空白檔案</li>
+				<li>將下面文字方格裡的代碼複製貼上到你的文字編輯器裡(Dreamweaver,Front page,Nvu之類的請在程式碼模式貼上)</li>
+				<li>將檔案「另存新檔」成<b>password.php</b> <i>(不是password.txt或password.php.txt喔！另外請確定檔案是<b>text</b> or <b>plain text</b> 格式.)</i></li>
+				<li>開啟你的FTP上傳程式 .</li>
+				<li>將你的<b>password.php</b> 檔上傳到你網站sphpblog資料夾裏的 <b>config</b> 資料夾中.</li>
+				<li>刪除在你電腦上的 <b>password.php</b> 檔.</li>
 				</ol>
 				";
-				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
-				$lang_string['code'] = "Code for <b>password.php</b> file:";
-				$lang_string['continue'] = "[ Continue ]";
+				$lang_string['information'] = "<i>注意:如果你忘記了密碼想要重設它時, 請刪除網站 <b>config</b>資料夾裏的<b>password.php</b> 檔.然後進入你網站,會重新開始進行安裝程序‧‧‧</i>";
+				$lang_string['code'] = "<b>password.php</b>檔代碼:";
+				$lang_string['continue'] = "[ 繼續 ]";
 				break;
 			case 'install05':
 			case 'install06':
-				$lang_string['title'] = "Login";
-				$lang_string['instructions'] = "Please enter your Username and Password below";
-				$lang_string['username'] = "Username:";
-				$lang_string['password'] = "Password";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['title'] = "登入";
+				$lang_string['instructions'] = "請在下面輸入你的使用者名稱以及密碼";
+				$lang_string['username'] = "使用者名稱:";
+				$lang_string['password'] = "密碼";
+				$lang_string['submit_btn'] = "&nbsp;確定&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
-				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
-				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+				$lang_string['success'] = "<h2>恭喜!</h2>你已經登入了.<p />
+				現在你可以進入<b>設定</b>頁面, 開始對你的blog進行設定.<p />
+				<i>注意:你已經安裝完畢了, 我們建議你刪除在網站資料夾中的所有安裝檔<b>installXX.php</b>等. (從install00.php到 install06.php)</i><p />";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
-				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['wrong_password'] = "<h2>喔喔！</h2>你不能登入。請確認你有使用正確的使用者名稱以及密碼，並且再試一次。<p />";
+				$lang_string['form_error'] = "使用者名稱以及密碼欄不能留白.";
 				// Success
-				$lang_string['btn_setup'] = "[ Setup ]";
-				$lang_string['btn_try_again'] = "[ Try Again ]";
+				$lang_string['btn_setup'] = "[ 設定 ]";
+				$lang_string['btn_try_again'] = "[ 重試 ]";
 				break;
 			case 'setup':
 				$lang_string['title'] = "設定";
@@ -443,7 +443,7 @@
 				$lang_string['blog_enable_comments'] = "准許回應"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "在新視窗開啟回應"; // <-- New 0.3.6
 				$lang_string['blog_enable_voting'] = "准許觀眾對文章評分"; // <-- New 0.3.8
-				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
+				$lang_string['blog_enable_cache'] = "開啟文章內容快取 (需要較強大的伺服器)"; // New for 0.4.6
 				$lang_string['blog_email_notification'] = "有新的回應時用 Email 通知你"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "送出網誌的 &quot;pings&quot;"; // <-- New 0.3.7 //　不知道這是啥 -_-|||
 				$lang_string['blog_ping_urls'] = "輸入你的 &quot;ping&quot; 服務的完整網址。(像是 http://rpc.weblogs.com/RPC2)<br />(如果有多個網址，可用逗號分開。)"; // <-- New 0.3.7
@@ -471,12 +471,12 @@
 				$lang_string['select_new_to_old'] = "新的文章在前面";
 				$lang_string['select_old_to_new'] = "舊的文章在前面";
 				$lang_string['label_comment_order'] = "回應的順序：";
-								$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
-				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
-				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
-				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
-				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
-				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+								$lang_string['cal_sunday'] = "周日"; // New for 0.4.6
+				$lang_string['cal_monday'] = "週一"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "日曆的每週第一天"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "顯示日曆/舊文章區塊"; // New for 0.4.6
+				$lang_string['blog_enable_title'] = "顯示網站標題 (不選只會出現標題圖片)"; // New for 0.4.6
+				$lang_string['blog_enable_permalink'] = "顯示文章獨立網址連接"; // New for 0.4.6
 				break;
 				case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks
@@ -564,40 +564,40 @@
 				$lang_string['comment'] = "內容:";
 				$lang_string['submit_btn'] = "&nbsp;發送&nbsp;";
 				$lang_string['success'] = "<h2>發送成功!</h2>你的訊息已經寄出摟.<p />";
-				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
-				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
-				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
-				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
+				$lang_string['failure'] = "<h2>錯誤!</h2>你的訊息沒有被送出. 請檢查你是否有填入防止垃圾信驗證碼.<p />";
+				$lang_string['contact_capcha'] = "防止垃圾信驗證碼: <b>%s</b>"; // 0.4.2	
+				$lang_string['contactsent'] = "信件傳送過程: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP 位址:";  // New for 0.4.6
+				$lang_string['useragent'] = "使用者來源身份:";  // New for 0.4.6
 				break;	
 			case 'stats':
-				$lang_string["title"] = "Statistics";
-				$lang_string["general"] = "General";
-				$lang_string["entry_info"] = "<b>%s</b> entries using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string["comment_info"] = "<b>%s</b> comments using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string["trackback_info"] = "<b>%s</b> trackbacks stored in <b>%s</b> bytes";
-				$lang_string["static_info"] = "<b>%s</b> static pages using <b>%s</b> words stored in <b>%s</b> bytes";
-				$lang_string["most_viewed_entries"] = "10 Most viewed entries";
-				$lang_string["most_commented_entries"] = "10 Most commented entries";
-				$lang_string["most_trackbacked_entries"] = "10 Most trackbacked entries";
-				$lang_string['vote_info'] = "<b>%s</b> votes stored in <b>%s</b> bytes"; // 0.4.1
-				$lang_string["most_voted_entries"] = "10 Most voted entries"; // 0.4.1
-				$lang_string["most_rated_entries"] = "10 Most rated entries"; // 0.4.1
+				$lang_string['title'] = "<h2>統計資料</h2>";
+				$lang_string['general'] = "<h3>基本統計</h3>";
+				$lang_string['entry_info'] = "<b>%s</b>篇文章,使用了 <b>%s</b>個字,一共佔了<b>%s</b> bytes大小";
+				$lang_string['comment_info'] = "<b>%s</b>篇迴響,使用了<b>%s</b> 個字,一共佔了 <b>%s</b> bytes大小";
+				$lang_string['trackback_info'] = "<b>%s</b> 個引用通告，共佔了 <b>%s</b> bytes大小";
+				$lang_string['static_info'] = "<b>%s</b> 篇靜態文章,使用了 <b>%s</b> 個字,共佔了<b>%s</b> bytes大小";
+				$lang_string['most_viewed_entries'] = "<h3>最多人觀看文章前10名</h3>";
+				$lang_string['most_commented_entries'] = "<h3>最多人迴響文章前10名</h3>";
+				$lang_string['most_trackbacked_entries'] = "<h3>最多引用通告前10名</h3>";
+				$lang_string['vote_info'] = "<b>%s</b>個投票,一共佔了 <b>%s</b> bytes大小"; // 0.4.1
+				$lang_string["most_voted_entries"] = "<h3>最多人投票前10名</h3>"; // 0.4.1
+				$lang_string["most_rated_entries"] = "<h3>評分最高前10名</h3>"; // 0.4.1
 				break;
 			case 'errorpage-nocookies':  // New for 0.4.6
-				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
-				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
-				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
-				$lang_string["clientid"] = 'Client ID: ';
+				$lang_string["title"] = 'HTTP Error 403.8 -  本站此頁面拒絕存取';
+				$lang_string["errorline1"] = '你嘗試瀏覽的這頁需要使用cookie.';
+				$lang_string["errorline2"] = '在你的瀏覽器設定裡開啟cookie功能後再試一次.';
+				$lang_string["clientid"] = '使用端 ID: ';
 				break;
 			case 'errorpage':  // New for 0.4.6
-				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
-				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
-				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
-				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
-				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
-				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
-				$lang_string["clientid"] = 'Client ID: ';
+				$lang_string["403.8"] = 'HTTP Error 403.8 - 本站此頁面拒絕存取';
+				$lang_string["404"] = 'HTTP Error 404 - 本站此內仍不存在';
+				$lang_string["error_404"] = '你要看的這頁面不存在.';
+				$lang_string["error_javascript"] = '你所瀏覽的這頁使用了javascript，我們建議你開啟瀏覽器的支援javascript功能.';
+				$lang_string["error_emailnotsent"] = '你嘗試寄出的訊息沒有寄出成功.';
+				$lang_string["error_emailnotsentcapcha"] = '你嘗試寄出的訊息沒有寄出成功,可能是你忘了填上或填錯防止垃圾信件驗證碼.';
+				$lang_string["clientid"] = '使用端 ID: ';
 				break;
 			default:
 				break;
