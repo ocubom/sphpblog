@@ -65,7 +65,7 @@
       $blog_name = ( strlen($blog_name) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
       
       $user_ip = $HTTP_SERVER_VARS[ 'REMOTE_ADDR' ];
-      $user_domain = gethostbyaddr($user_ip);
+      $user_domain = @gethostbyaddr($user_ip);
       
       $ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
       

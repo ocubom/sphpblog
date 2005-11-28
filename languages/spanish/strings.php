@@ -114,7 +114,7 @@
 				// Add Entry
 				$lang_string['title'] = "Añadir Entrada";
 				$lang_string['instructions'] = "Para colocar una entrada llene los campos que se encuentran debajo, puede previsualizar la entrada antes de publicarla.";
-				$lang_string['title_ad'] = "Confirm Trackback Pings"; // <-- New 0.3.8
+				$lang_string['title_ad'] = "Confirmar Pings de Trackback"; // <-- New 0.3.8
 				$lang_string['instructions_ad'] = "Éstos son los Auto-Discovered URIs sobre los que hará ping. Si no quiere hacer ping a un cierto URI, deschequee. Entonces pulse 'OK' para hacer ping sobre las URIs chequeadas o pulse 'Cancel' para no realizar ningun ping."; // <-- New 0.3.8
 				$lang_string['label_tb_ping'] = "Trackback ping(s) a enviar (separados por comas)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
@@ -240,11 +240,18 @@
 
 			case 'comments':
 				// Comments
+				$lang_string['name'] = "Nombre:"; //New in 0.4.6.2
+				$lang_string['email'] = "Email:"; //New in 0.4.6.2
+				$lang_string['homepage'] = "P&aacute;gina:"; //New in 0.4.6.2
+				$lang_string['comment'] = "Comentario:"; //New in 0.4.6.2
 				$lang_string['title'] = "Comentarios";
 				$lang_string['header'] = "Agregar comentario";
 				$lang_string['instructions'] = "Rellene los campos de abajo para dejar su comentario.";
 				$lang_string['comment_name'] = "Nombre:";
 				$lang_string['comment_email'] = "Email:"; // 0.3.8
+				$lang_string['commentposted'] = "Nuevo comentario publicado en: ";  // New for 0.4.6.2
+				$lang_string['IPAddress'] = "Direcci&oacute;n IP:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['comment_url'] = "Web:"; // 0.3.8
 				$lang_string['comment_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2
 				$lang_string['form_error'] = "Por favor rellene los campos Nombre, Comentario y el campo Anti-Spam."; //0.4.2
@@ -252,6 +259,7 @@
 				$lang_string['comment_text'] = "Comentario:";
 				$lang_string['post_btn'] = "&nbsp;Publicar comentario&nbsp;";
 				$lang_string['delete_btn'] = "Borrar";
+				$lang_string['wrote'] = "<i>El %s, %s escribi&oacute;:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comentario no grabado. Ocurrió un problema mientras se guardaba su comentario.<br /><br />Respuesta del servidor:<br />";
@@ -499,10 +507,10 @@
 				$lang_string['select_new_to_old'] = "Primero los Nuevos";
 				$lang_string['select_old_to_new'] = "Primero los Antiguos";
 				$lang_string['label_comment_order'] = "Orden de Comentarios:";
-								$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
-				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
-				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
-				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
+				$lang_string['cal_sunday'] = "Domingo"; // New for 0.4.6
+				$lang_string['cal_monday'] = "Lunes"; // New for 0.4.6
+				$lang_string['label_calendar_start'] = "D&iacute;a de la semana de inicio"; // New for 0.4.6
+				$lang_string['blog_enable_calendar'] = "Activar calendario / Bloque de archivo"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
 				break;
@@ -620,9 +628,10 @@
 				$lang_string['success'] = "<h2>¡Listo!</h2>Su mensaje ha sido enviado.<p />";
 				$lang_string['failure'] = "<h2>¡Ups!</h2>Su mensaje no se ha enviado. Contra el Spam no fue incorporado muy probablemente correctamente.<p />";
 				$lang_string['contact_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2	
-				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
-				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
+				$lang_string['contactsent'] = "Contacto enviado desde: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "Direcci&oacute;n IP:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
+				$lang_string['wrote'] = "<i>El %s, %s escribi&oacute;:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;
 
 			case 'stats':

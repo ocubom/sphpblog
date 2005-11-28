@@ -167,7 +167,7 @@
 	function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_remember, $comment_text ) {
 		// Save new entry or update old entry
 		//
-		global $blog_config, $sb_info;
+		global $blog_config, $sb_info, $lang_string;
 		
 		//clearstatcache();
 		
@@ -247,16 +247,20 @@
 	 		if ( $blog_config[ 'blog_email_notification' ] ) {
 				// Send Email Notification:
 				
-				$subject='New comment posted at ' . $blog_config[ 'blog_title' ];
-				$body='<b>Name:</b> ' . $save_data[ 'NAME' ] . '<br />\n';
+				$client_ip_local = getIP();
+				
+				$subject=$lang_string[ 'commentposted' ] . ' ' . $blog_config[ 'blog_title' ];
+				$body='<b>' . $lang_string[ 'name' ] . '</b> ' . $save_data[ 'NAME' ] . '<br />';
+				$body=$body . '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
+				$body=$body . '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
 				if ( array_key_exists( 'EMAIL', $save_data ) ) {
-					$body=$body . "<b>Email:</b> <a href=\"mailto:" . $save_data[ "EMAIL" ] . "\">" . $save_data[ "EMAIL" ] . "</a><br />\n";
+					$body=$body . "<b>" . $lang_string[ 'email' ] . "</b> <a href=\"mailto:" . $save_data[ "EMAIL" ] . "\">" . $save_data[ "EMAIL" ] . "</a><br />\n";
 				}
 				if ( array_key_exists( 'URL', $save_data ) ) {
-					$body=$body . "<b>Homepage:</b> <a href=\"" . $save_data[ "URL" ] . "\">" . $save_data[ "URL" ] . "</a><br />\n";
+					$body=$body . "<b>" . $lang_string[ 'homepage' ] . "</b> <a href=\"" . $save_data[ "URL" ] . "\">" . $save_data[ "URL" ] . "</a><br />\n";
 				}
 				$body=$body . "<br />\n";
-				$body=$body . "<b>Comment:</b><br />\n";
+				$body=$body . "<b>" . $lang_string[ 'comment' ] . "</b><br />\n";
 				
 				if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 					// Hosted at root.
@@ -267,7 +271,7 @@
 				}
 				
 				$body = $body . '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";
-				$body = $body . '<i>On ' . format_date( $comment_date ) . ', ' . $comment_name . " wrote:</i><br />\n<br />\n" . blog_to_html( $comment_text, true, false );
+				$body = $body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
 				
 				// Send the Email
 				if ( array_key_exists( 'EMAIL', $save_data ) ) {

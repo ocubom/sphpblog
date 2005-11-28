@@ -233,6 +233,10 @@
 				break;
 			case 'comments':
 				// Comments
+				$lang_string['name'] = "Name:"; //New in 0.4.6.2
+				$lang_string['email'] = "Email:"; //New in 0.4.6.2
+				$lang_string['homepage'] = "Homepage:"; //New in 0.4.6.2
+				$lang_string['comment'] = "Comment:"; //New in 0.4.6.2
 				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Comments";
 				$lang_string['header'] = "Add Comment";
@@ -240,10 +244,14 @@
 				$lang_string['comment_name'] = "Your Name:";
 				$lang_string['comment_email'] = "Email:";
 				$lang_string['comment_url'] = "URL:";
+				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['comment_remember'] = "Remember me:";
 				$lang_string['comment_text'] = "Comment:";
 				$lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
 				$lang_string['delete_btn'] = "delete";
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
@@ -569,6 +577,7 @@
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;
 			case 'stats':
 				$lang_string["title"] = "Statistics";
