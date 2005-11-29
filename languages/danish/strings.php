@@ -234,6 +234,14 @@
 				break;
 			case 'comments':
 				// Comments
+				$lang_string['name'] = "Name:"; //New in 0.4.6.2
+				$lang_string['email'] = "Email:"; //New in 0.4.6.2
+				$lang_string['homepage'] = "Homepage:"; //New in 0.4.6.2
+				$lang_string['comment'] = "Comment:"; //New in 0.4.6.2
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
 				$lang_string['comment_capcha'] = "Anti-spam: Indtast <b>%s</b>";
 				$lang_string['title'] = "Kommentarer";
 				$lang_string['header'] = "Tilføj kommentar";
@@ -569,7 +577,8 @@
 				$lang_string['failure'] = "<h2>Fejl!</h2>Din meddelelse er ikke blevet sendt. Det er mest sandsynligt, at Anti-spam-koden ikke blev indtastet korrekt.<p />";
 				$lang_string['contactsent'] = "Kontakt sendt gennem: ";
 				$lang_string['IPAddress'] = "IP-address:"; 
-				$lang_string['useragent'] = "User agent:"; 
+				$lang_string['useragent'] = "User agent:";
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2 
 				break;
 			case 'stats':
 				$lang_string['title'] = "Statistikker";

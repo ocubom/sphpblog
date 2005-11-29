@@ -229,6 +229,14 @@
 				break;
 			case 'comments':
 				// Comments
+				$lang_string['name'] = "Name:"; //New in 0.4.6.2
+				$lang_string['email'] = "Email:"; //New in 0.4.6.2
+				$lang_string['homepage'] = "Homepage:"; //New in 0.4.6.2
+				$lang_string['comment'] = "Comment:"; //New in 0.4.6.2
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
 				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Ó÷üëéá";
 				$lang_string['header'] = "ÐñïóèÞêç Ó÷üëéïõ";
@@ -562,6 +570,7 @@
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;
 			case 'stats':
 				$lang_string["title"] = "Statistics";

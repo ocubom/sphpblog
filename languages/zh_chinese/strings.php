@@ -233,6 +233,14 @@
 				break;
 			case 'comments':
 				// Comments
+				$lang_string['name'] = "Name:"; //New in 0.4.6.2
+				$lang_string['email'] = "Email:"; //New in 0.4.6.2
+				$lang_string['homepage'] = "Homepage:"; //New in 0.4.6.2
+				$lang_string['comment'] = "Comment:"; //New in 0.4.6.2
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
 				$lang_string['comment_capcha'] = "防止垃圾留言驗證碼 <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "回應";
 				$lang_string['header'] = "發表回應";
@@ -569,6 +577,7 @@
 				$lang_string['contactsent'] = "信件傳送過程: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP 位址:";  // New for 0.4.6
 				$lang_string['useragent'] = "使用者來源身份:";  // New for 0.4.6
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;	
 			case 'stats':
 				$lang_string['title'] = "<h2>統計資料</h2>";

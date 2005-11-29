@@ -1,26 +1,28 @@
 <?php
+
 	// English Language File
 	// (c) 2004 Alexander Palmo, apalmo <at> bigevilbrain <dot> com
 	//
+
 	// Simple PHP Version: 0.4.1
 	// Language Version:   0.4.1.0
 	
-	
+
 	function sb_language( $page ) {
-		global $language, $html_charset, $php_charset, $lang_string;
-			
+		global $language, $html_charset, $php_charset, $lang_string;			
+
 		// Language: English
 		$lang_string['locale'] = 'en_US';
-		$lang_string['language'] = 'english';
-		
+		$lang_string['language'] = 'english';		
+
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
-		$lang_string['php_charset'] = 'ISO-8859-1';
-		
-		setlocale( LC_TIME, $lang_string['locale'] );
-		
-		// Some Global Strings
-		
+		$lang_string['php_charset'] = 'ISO-8859-1';		
+
+		setlocale( LC_TIME, $lang_string['locale'] );		
+
+		// Some Global Strings		
+
 		// Menu
 		$lang_string['menu_links'] = "Links";
 		$lang_string['menu_home'] = "Home";
@@ -43,45 +45,45 @@
 		$lang_string['menu_most_recent'] = "Most Recent Comments";
 		$lang_string['menu_most_recent_entries'] = "Most Recent Entries";
 		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks";
-		$lang_string['menu_add_block'] = "Blocks";
-		
+		$lang_string['menu_add_block'] = "Blocks";		
+
 		// Other
 		$lang_string['home'] = 'Return to Home';
 		$lang_string['nav_next'] = 'Next';
 		$lang_string['nav_back'] = 'Back';
 		$lang_string['search_title'] = 'Search:';
 		$lang_string['search_go'] = 'Go';
-		$lang_string['page_generated_in'] = 'Page Generated in %s seconds';
-		
+		$lang_string['page_generated_in'] = 'Page Generated in %s seconds';		
+
 		// SB Functions
 		$lang_string['sb_months'] = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
 		$lang_string['sb_default_title'] = 'No Title';
 		$lang_string['sb_default_author'] = 'No Author';
 		$lang_string['sb_default_footer'] = 'No Footer';
-		
+
 		$lang_string['sb_edit'] = 'edit';
 		$lang_string['sb_delete'] = 'delete';
 		$lang_string['sb_permalink'] = 'permalink';
 		$lang_string['sb_trackback'] = 'trackbacks';
-		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
-		
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6		
+
 		$lang_string['sb_add_comment_btn'] = 'add comment';
 		$lang_string['sb_comment_btn_number_first'] = true;
 		$lang_string['sb_comment_btn'] = 'comment';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
-		$lang_string['sb_comments_plural_btn'] = 'comments';
-		
+		$lang_string['sb_comments_plural_btn'] = 'comments';		
+
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
 		$lang_string['sb_view_counter_post'] = ' view';
+
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = '';
-		$lang_string['sb_view_counter_plural_post'] = ' views';
-		
+		$lang_string['sb_view_counter_plural_post'] = ' views';		
+
 		$lang_string['sb_add_link_btn'] = '+ link';
-		
-		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';
-		
+		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';		
+
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
 			$lang_string['label_subject'] = "Subject:";
@@ -95,6 +97,7 @@
 			$lang_string['btn_preview'] = "&nbsp;Preview&nbsp;";
 			$lang_string['btn_post'] = "&nbsp;Post&nbsp;";
 			$lang_string['file_name'] = "Static File Name: (no spaces or file extensions)";
+
 			// Javascript Strings
 			$lang_string['insert_styles'] = "Enter the text to be formatted:";
 			$lang_string['insert_image'] = "Enter the URL for the image:";
@@ -102,14 +105,15 @@
 			$lang_string['insert_url2'] = "Enter the full URL for the link:";
 			$lang_string['insert_url3'] = "Open URL in new window (Optional):";
 			$lang_string['form_error'] = "Please complete the Subject and Entry fields.";	
+
 			// More Javascript Strings
 			$lang_string['insert_image_optional'] = 'Optional:';
 			$lang_string['insert_image_width'] = 'Width (Optional):';
 			$lang_string['insert_image_height'] = 'Height (Optional):';
 			$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
 			$lang_string['insert_image_float'] = 'Float (Optional):';
-		}
-	
+		}	
+
 		switch ($page) {
 			case 'add':
 				// Add Entry
@@ -120,6 +124,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)";
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery";
 				$lang_string['label_relatedlink'] = "Related Link";
+
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Preview / Edit Entry";
 				$lang_string['instructions_preview'] = "Here's how your entry looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
@@ -127,6 +132,7 @@
 				$lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
 				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
+
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
@@ -134,16 +140,19 @@
 				// Add Entry
 				$lang_string['title'] = "Add Static Page";
 				$lang_string['instructions'] = "Fill out the form below to create a Static Page. Unlike a regular Blog Entry, Static Entries appear as a links in the right-hand menu. They are for pages that you always want available such as: About Me, Contact Us, Schedule, etc. Click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
+
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Preview / Edit Static Page";
 				$lang_string['instructions_preview'] = "Here's how your Static Page looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
 				$lang_string['title_update'] = "Update Static Page";
 				$lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
 				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";	
+
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
 			case 'add_block':
+
 				// Add / Manage Blocks
 				$lang_string['title'] = "Add / Manage Blocks";
 				$lang_string['instructions'] = "Add custom Blocks";
@@ -161,6 +170,7 @@
 				break;
 			case 'add_link':
 				$lang_string['static_pages'] = "Static Pages:";
+
 				// Add / Manage Links
 				$lang_string['title'] = "Add / Manage Links";
 				$lang_string['instructions'] = "Add custom links to other sites. Fill out the form below and click 'Add Link' to add a link. Click the up or down buttons to change the order of the links. Click the edit button to modify a link. Click the delete button to remove a link";
@@ -177,6 +187,7 @@
 				$lang_string['form_error'] = "Please complete the Name field.";
 				break;
 			case 'categories':
+
 				// Add / Manage Links
 				$lang_string['title'] = "Add / Manage Categories";
 				$lang_string['instructions'] = "Use the form below to add and edit your categories. Each category item should be in this format 'category name (id number)'. Indent items with spaces to create heirarchies.<br /><br /><b>Example:</b><br />General (1)<br />News (3)<br />&nbsp;&nbsp;Announcements (6)<br />&nbsp;&nbsp;Events (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Misc (7)<br />Technology (2)<br />";
@@ -206,6 +217,7 @@
 				$lang_string['link_reg_color'] = "Link Default";
 				$lang_string['link_hi_color'] = "Link Hover";
 				$lang_string['link_down_color'] = "Link Active";
+
 				// More Colors
 				$lang_string['entry_bg'] = "Entry BG";
 				$lang_string['entry_title_bg'] = "Entry Title BG";
@@ -220,6 +232,7 @@
 				$lang_string['menu_link_reg_color'] = "Menu Link Default";
 				$lang_string['menu_link_hi_color'] = "Menu Link Hover";
 				$lang_string['menu_link_down_color'] = "Menu Link Active";
+
 				// Submit
 				$lang_string['color_preset'] = "Color Schemes:";
 				$lang_string['scheme_name'] = "Enter a custom color scheme name:";
@@ -228,6 +241,7 @@
 				$lang_string['form_error'] = "Please enter a name for your custom color scheme.";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
+
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
@@ -237,6 +251,10 @@
 				$lang_string['email'] = "Email:"; //New in 0.4.6.2
 				$lang_string['homepage'] = "Homepage:"; //New in 0.4.6.2
 				$lang_string['comment'] = "Comment:"; //New in 0.4.6.2
+				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				
 				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Comments";
 				$lang_string['header'] = "Add Comment";
@@ -244,19 +262,18 @@
 				$lang_string['comment_name'] = "Your Name:";
 				$lang_string['comment_email'] = "Email:";
 				$lang_string['comment_url'] = "URL:";
-				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6
-				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
-				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
 				$lang_string['comment_remember'] = "Remember me:";
 				$lang_string['comment_text'] = "Comment:";
 				$lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
 				$lang_string['delete_btn'] = "delete";
-				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Name, Comment and Anti-Spam fields.";
 				break;
+
 			case 'delete':
 				$lang_string['title'] = "Delete Entry";
 				$lang_string['instructions'] = "This is the entry you are about to delete. Please make sure you really want to get rid of it, there's no undo...";
@@ -611,7 +628,5 @@
 			default:
 				break;
 		}
-
 	}
-		
 ?>
