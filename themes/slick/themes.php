@@ -42,6 +42,7 @@
 		// "popup_window" "width" and "height" are used to determine
 		// the size of window to open for the comment view.
 		$theme_vars[ 'popup_window' ][ 'height' ] = 600;
+		$theme_vars[ 'popup_window' ][ 'width' ] = 600;
 	}
 	
 	function theme_blogentry ( $entry_array ) {
