@@ -25,7 +25,7 @@
 			// ini_set( 'session.use_trans_sid', '0' );
 			
 			// Init the session.
-			session_set_cookie_params(time()+60*60*24*5);
+			session_set_cookie_params(60*60*24*5);
 			session_id($my_id);
 			session_start ();
 			
@@ -84,7 +84,7 @@
 			// ini_set( 'session.use_trans_sid', '0' );
 			
 			// Init the session.
-			session_set_cookie_params(time()+60*60*24*5);
+			session_set_cookie_params(60*60*24*5);
 			session_id($my_id);
 			session_start();
 			session_unset($_SESSION[ 'logged_in' ]);
@@ -107,7 +107,7 @@
 		if ( $result ) {
 			// Start Session and Set Cookie
 			// ini_set( 'session.use_trans_sid', '0' );
-			session_set_cookie_params(time()+60*60*24*5);
+			session_set_cookie_params(60*60*24*5);
 			@session_start();
 			
 			// Support for PHP >= 4.1.0
@@ -135,7 +135,7 @@
 		if ($hashed === $chkpass) { 
 			// Start Session and Set Cookie
 			// ini_set( 'session.use_trans_sid', '0' );
-			session_set_cookie_params(time()+60*60*24*7);
+			session_set_cookie_params(60*60*24*7);
 			@session_start();
 			
 			// Support for PHP >= 4.1.0
@@ -166,7 +166,7 @@
 				if ( crypt( $pass, $password ) === $password ) {
 					// Start Session and Set Cookie
 					// ini_set( 'session.use_trans_sid', '0' );
-					session_set_cookie_params(time()+60*60*24*5);
+					session_set_cookie_params(60*60*24*5);
 					@session_start();
 					
 					// Support for PHP >= 4.1.0
