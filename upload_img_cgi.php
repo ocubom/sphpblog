@@ -11,7 +11,7 @@
 	if ( $_FILES[ 'userfile' ][ 'error' ] == 0 ) {
 		if (!file_exists('images')) {
 			$oldumask = umask(0);
-			$ok = mkdir('images', 0777 );
+			$ok = mkdir('images', 0755 );
 			umask($oldumask);
 		}
 					
@@ -30,6 +30,7 @@
 		}		
 
 		if ( move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile ) ) {
+			chmod( $uploadfile, 0755 );
 			$ok = true;
 		} else {
 			$ok = false;
