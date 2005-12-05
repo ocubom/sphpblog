@@ -411,7 +411,7 @@
 			if ( is_dir( $dir ) ) {
 				if ( $year_dir_handle = @opendir( $dir ) ) {
 					while ( ( $year_dir = readdir( $year_dir_handle ) ) !== false ) {
-						if ( is_dir( $dir . $year_dir . '/' ) ) {
+						if ( @is_dir( $dir . $year_dir . '/' ) ) {
 							if ( $year_dir != '.' && $year_dir != '..' && $year_dir != 'static' ) {
 							
 								// MONTH directories
