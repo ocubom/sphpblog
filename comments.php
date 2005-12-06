@@ -49,30 +49,30 @@
 	
 	<!-- Meta Data -->
 	<!-- http://dublincore.org/documents/dces/ -->
-	<meta name="dc.title"       content="<?php echo( $blog_config[ 'blog_title' ] ); ?>">
-	<meta name="author"         content="<?php echo( $blog_config[ 'blog_author' ] ); ?>">
-	<meta name="dc.creator"     content="<?php echo( $blog_config[ 'blog_author' ] ); ?>">
-	<meta name="dc.subject"     content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>">
-	<meta name="keywords"       content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>">
-	<meta name="dc.description" content="<?php echo( $blog_config[ 'info_description' ] ); ?>">
-	<meta name="description"    content="<?php echo( $blog_config[ 'info_description' ] ); ?>">
-	<meta name="dc.type"        content="weblog">
-	<meta name="dc.type"        content="blog">
-	<meta name="resource-type"  content="document"> 
-	<meta name="dc.format"      scheme="IMT" content="text/html">
-	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php' ); } else { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php' ); } ?>">
-	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string[ 'locale' ]) ); ?>" >
-	<meta name="dc.coverage"    content="global">
-	<meta name="distribution"   content="GLOBAL"> 
-	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
-	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>">
+	<meta name="dc.title"       content="<?php echo( $blog_config[ 'blog_title' ] ); ?>" />
+	<meta name="author"         content="<?php echo( $blog_config[ 'blog_author' ] ); ?>" />
+	<meta name="dc.creator"     content="<?php echo( $blog_config[ 'blog_author' ] ); ?>" />
+	<meta name="dc.subject"     content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>" />
+	<meta name="keywords"       content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>" />
+	<meta name="dc.description" content="<?php echo( $blog_config[ 'info_description' ] ); ?>" />
+	<meta name="description"    content="<?php echo( $blog_config[ 'info_description' ] ); ?>" />
+	<meta name="dc.type"        content="weblog" />
+	<meta name="dc.type"        content="blog" />
+	<meta name="resource-type"  content="document" />
+	<meta name="dc.format"      scheme="IMT" content="text/html" />
+	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php' ); } else { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php' ); } ?>" />
+	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string[ 'locale' ]) ); ?>" />
+	<meta name="dc.coverage"    content="global" />
+	<meta name="distribution"   content="GLOBAL" /> 
+	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
+	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
 	
 	<!-- Robots -->
-	<meta name="robots" content="ALL,INDEX,FOLLOW,ARCHIVE"> 
-	<meta name="revisit-after" content="7 days"> 
+	<meta name="robots" content="ALL,INDEX,FOLLOW,ARCHIVE" />
+	<meta name="revisit-after" content="7 days" />
 	
 	<!-- Fav Icon -->
-	<link rel="shortcut icon" href="interface/favicon.ico">
+	<link rel="shortcut icon" href="interface/favicon.ico" />
 	
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
