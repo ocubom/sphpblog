@@ -72,6 +72,37 @@
 			}
 		}
 		
+		// Special QUOTE shortcut to BLOCKQUOTE tag.
+		if ( $comment_mode ) {
+			if ( in_array( 'blockquote', $blog_config[ 'comment_tags_allowed' ] ) ) {
+				array_push( $search_arr, '[quote]', '[QUOTE]' );
+				if ( $strip_all_tags ) {
+					array_push( $replace_arr, '',  '' );
+				} else {
+					array_push( $replace_arr, '<blockquote>', '<BLOCKQUOTE>' );
+				}
+				array_push( $search_arr, '[/quote]', '[/QUOTE]' );
+				if ( $strip_all_tags ) {
+					array_push( $replace_arr, '',  '' );
+				} else {
+					array_push( $replace_arr, '</blockquote>', '</BLOCKQUOTE>' );
+				}
+			}
+		} else {
+				array_push( $search_arr, '[quote]', '[QUOTE]' );
+				if ( $strip_all_tags ) {
+					array_push( $replace_arr, '',  '' );
+				} else {
+					array_push( $replace_arr, '<blockquote>', '<BLOCKQUOTE>' );
+				}
+				array_push( $search_arr, '[/quote]', '[/QUOTE]' );
+				if ( $strip_all_tags ) {
+					array_push( $replace_arr, '',  '' );
+				} else {
+					array_push( $replace_arr, '</blockquote>', '</BLOCKQUOTE>' );
+				}
+		}
+		
 		// Do str_replace() replacement.
 		$str = str_replace( $search_arr, $replace_arr, $str);
 		
