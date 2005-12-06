@@ -95,7 +95,7 @@
 						}
 					}
 					echo "</category>\n";
-					echo "\t\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
+					echo "\t\t\t<guid isPermaLink=\"true\">" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
 					echo "\t\t\t<author>" . $blog_config[ 'blog_author' ]  . "</author>\n";
 					echo "\t\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
 
@@ -149,7 +149,7 @@
 		header('Content-type: application/xml');
 		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
 		echo '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ref="http://purl.org/rss/1.0/modules/reference/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://purl.org/rss/1.0/">' . "\n";
-		echo "\t<channel rdf:about=\"" . $base_url . "/rss.rdf\">\n";
+		echo "\t<channel rdf:about=\"" . $base_url . "rss.rdf\">\n";
 		//Required channel fields
 		echo "\t\t<title>" . clean_rdf_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
 		echo "\t\t<link>" . $base_url . "index.php</link>\n";
@@ -177,7 +177,7 @@
 		for ( $i = 0; $i < $max_entries; $i++ ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			//Required item fields
-			echo "\t\t\t\t<rdf:li resource=\"" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "\" />\n";
+			echo "\t\t\t\t<rdf:li resource=\"" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "\" />\n";
 		}
 		echo "\t\t\t</rdf:Seq>\n";
 		echo "\t\t</items>\n";
@@ -186,13 +186,13 @@
 		for ( $i = 0; $i < $max_entries; $i++ ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-			echo "\t<item rdf:about=\"" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "\">\n";
+			echo "\t<item rdf:about=\"" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "\">\n";
 			//Required item fields
 			echo "\t\t<title>" . clean_rdf_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
 			echo "\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
 			echo "\t\t<description><![CDATA[" . clean_rdf_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
 			//Optional item fields
-			//echo "\t\t<guid isPermaLink=\"true\">" . $base_url . '?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
+			//echo "\t\t<guid isPermaLink=\"true\">" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
 			//echo "\t\t<author>" . clean_rdf_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
 			//echo "\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
 			echo "\t</item>\n";
@@ -203,7 +203,7 @@
 	function clean_atom_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		$str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		// $str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 
 		return( $str );
