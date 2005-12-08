@@ -27,8 +27,8 @@
 	
 	// Error reporting should be set to 0 in production environments.
 	//
-	//error_reporting( E_ALL ^ E_NOTICE );
-	error_reporting( 0 );
+	error_reporting( E_ALL ^ E_NOTICE );
+	// error_reporting( 0 );
 	
 	//Remove timeout limit
 	@set_time_limit( 0 );
@@ -54,6 +54,7 @@
 	require_once('scripts/sb_login.php');
 	require_once('scripts/sb_theme.php');
 	require_once('scripts/sb_formatting.php');
+	require_once('scripts/sb_emoticons.php');
 	require_once('scripts/sb_date.php');
 	require_once('scripts/sb_communicate.php');
 	require_once('scripts/sb_comments.php');

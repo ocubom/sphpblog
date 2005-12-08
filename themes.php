@@ -94,5 +94,4 @@
 <?php 
 	theme_pagelayout();
 ?>
-
 </html>

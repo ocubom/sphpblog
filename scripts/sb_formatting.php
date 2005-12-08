@@ -35,7 +35,6 @@
 		// ( Could use str_ireplace() but it's only supported in PHP 5. )
 		global $blog_config;
 		
-		
 		if ( $comment_mode ) {
 			$tag_arr = array();
 			if ( in_array( 'i', $blog_config[ 'comment_tags_allowed' ] ) ) { array_push( $tag_arr, 'i' ); }
@@ -103,7 +102,22 @@
 				}
 		}
 		
-		// Do str_replace() replacement.
+		// Emoticons
+		if ( !$strip_all_tags ) {
+			$emote_arr = emoticons_load_tags();
+			
+			for ( $i = 0; $i < count($emote_arr); $i++) {
+			
+				$emotetag_arr = explode( ' ', $emote_arr[$i]['TAGS'] );
+				for ( $j = 0; $j < count( $emotetag_arr ); $j++ ) {
+					$html_safe_tag = @htmlspecialchars( $emotetag_arr[$j], ENT_QUOTES, $lang_string[ 'php_charset' ] );
+					
+					array_push( $search_arr, $emotetag_arr[$j] );
+					array_push( $replace_arr, '<img src="' . $emote_arr[$i]['PATH'] . '" alt="' . $html_safe_tag . '" />' );
+				}
+			}
+		}
+		
 		$str = str_replace( $search_arr, $replace_arr, $str);
 		
 		// Replace [url] Tags:
@@ -159,25 +173,6 @@
 			}
 		}
 		
-		// Emoticons
-		// $smile_arr = array()
-		// array_push( $smile_arr, array( ':)',  'smile.png') );
-		// array_push( $smile_arr, array( ':-)', 'smile.png') );
-		// array_push( $smile_arr, array( ':(',  'frown.png') );
-		// array_push( $smile_arr, array( ':-(', 'frown.png') );
-		// array_push( $smile_arr, array( ':o',  'surprised.png') );
-		// array_push( $smile_arr, array( ':-o', 'surprised.png') );
-		// array_push( $smile_arr, array( ':O',  'surprised.png') );
-		// array_push( $smile_arr, array( ':-O', 'surprised.png') );
-		// array_push( $smile_arr, array( ':p',  'sticking_out_tongue.png') );
-		// array_push( $smile_arr, array( ':-p', 'sticking_out_tongue.png') );
-		// array_push( $smile_arr, array( ':P',  'sticking_out_tongue.png') );
-		// array_push( $smile_arr, array( ':-P', 'sticking_out_tongue.png') );
-		// array_push( $smile_arr, array( ':D',  'laughing.png') );
-		// array_push( $smile_arr, array( ':-D', 'laughing.png') );
-		// for ( $i = 0; $i < count( $smile_arr ); $i++ ) {
-		// 	$str = str_replace( $smile_arr[$i][0], '<img src="interface/emoticons/'.$smile_arr[$i][1].'" alt="$smile_arr[$i][0]">', $str );
-		// }
 		
 		// Selectively replace line breaks and/or decode html entities.
 		if ( $comment_mode ) {		

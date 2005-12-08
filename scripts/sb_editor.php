@@ -119,6 +119,12 @@
 			}
 		}
 		
+		//Insert Emoticon
+		function ins_emoticon(theform, emoticon) {
+			theform.value += " " + emoticon + " ";
+			theform.focus();
+		}
+		
 		// Validate the Form
 		function validate(theform) {
 			if (theform.blog_text.value=="" || theform.blog_subject.value=="") {

@@ -182,22 +182,22 @@
 		}
 	}
 	
-	function implode_with_keys( $array ) {
+	function implode_with_keys( $array, $separator = '|' ) {
 		// Implode an associative array
 		$str = '';
 		$keys = array_keys( $array );
 		for ( $i = 0; $i < count( $keys ); $i++ ) {
 			$key = $keys[ $i ];
 			if ( $i > 0 ) {
-				$str = $str . '|';
+				$str = $str . $separator;
 			}
-			$str = $str . $key . '|' . $array[ $key ];
+			$str = $str . $key . $separator . $array[ $key ];
 		}
 		
 		return ( $str );
 	} 
 	
-	function explode_with_keys( $str ) {
+	function explode_with_keys( $str, $separator = '|' ) {
 		// Explode an associative array
 		//
 		// For historical reasons, accepts either
@@ -206,7 +206,7 @@
 		if ( is_array( $str ) ) {
 			$array = $str;
 		} else {
-			$array = explode( '|', $str );
+			$array = explode( $separator, $str );
 		}
 		
 		for ( $i = 0; $i < count( $array ); $i = $i + 2 ) {

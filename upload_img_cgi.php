@@ -11,15 +11,20 @@
 	if ( $_FILES[ 'userfile' ][ 'error' ] == 0 ) {
 		if (!file_exists('images')) {
 			$oldumask = umask(0);
-			$ok = mkdir('images', 0755 );
-			umask($oldumask);
+			@mkdir('images', 0777 );
+			@umask($oldumask);
 		}
 					
 		$uploaddir = 'images/';
 		$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name']);
 		
+		if ( @getimagesize($_FILES['userfile']['tmp_name']) == FALSE ){
+			echo('Image is not valid or not an image file.');
+			exit;
+			// redirect_to_url( 'upload_img.php' );
+		}
+		
 		// New code for limiting the files that can be uploaded - provided by ReZEN (rezen@xorcrew.net)
-		// before Sept 7, 2005 (...are ya happy now ReZEN? -- alex)
 		$upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
   		$extension = strtolower(substr(strrchr($uploadfile, "."), 1));
    		foreach ($upload_denied_extentions AS $denied_extention) {
@@ -30,7 +35,7 @@
 		}		
 
 		if ( move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile ) ) {
-			chmod( $uploadfile, 0755 );
+			chmod( $uploadfile, 0777 );
 			$ok = true;
 		} else {
 			$ok = false;

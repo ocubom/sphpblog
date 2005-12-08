@@ -71,7 +71,7 @@
 		
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+		<hr />
 		
 		<form action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
@@ -100,7 +100,7 @@
 				<option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option>
 			</select>
 			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><br /><br />
-			
+			<?php emoticons_show(); ?>
 			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
 			<?php echo image_dropdown(); ?><br /><br />
 			

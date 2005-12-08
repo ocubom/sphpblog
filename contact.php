@@ -70,7 +70,7 @@
 				}
 			?></label><br />
 			<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />
-			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+			<hr />
 	
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 			</form>
