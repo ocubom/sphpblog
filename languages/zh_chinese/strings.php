@@ -44,6 +44,7 @@
 		$lang_string['menu_most_recent_entries'] = "最新文章";
 		$lang_string['menu_most_recent_trackback'] = "最新 Trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "自定區塊";
+		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "返回首頁";
@@ -607,6 +608,26 @@
 				$lang_string["error_emailnotsent"] = '你嘗試寄出的訊息沒有寄出成功.';
 				$lang_string["error_emailnotsentcapcha"] = '你嘗試寄出的訊息沒有寄出成功,可能是你忘了填上或填錯防止垃圾信件驗證碼.';
 				$lang_string["clientid"] = '使用端 ID: ';
+				break;
+			case 'emoticons':  // New for 0.4.7
+				$lang_string['title'] = "Admin Emoticons";
+				$lang_string['instructions'] = "
+					Check the emoticons you want to use. Write in the box the Tags you want 
+					to be replaced by the image. Multiple tags may be used, just separated them 
+					by spaces.<br /><br />
+		
+					For instance:<br />
+					:) :-) :SMILE: :HAPPY:<br /><br />
+					
+					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
+					otherwise unexpected substitutions may occur.)</i>";
+				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
+				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
+				$lang_string["upload_error"] = 'Error! Image was not uploaded.';
+				$lang_string["upload_invalid"] = 'Error! Invalid image file. Image must be a png, jpg, or gif.';
+				$lang_string["save_success"] = 'Emoticon preferences saved successfully!';
+				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
+				$lang_string["save_button"] = 'Save Emoticons';
 				break;
 			default:
 				break;

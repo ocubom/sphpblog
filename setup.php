@@ -38,7 +38,7 @@
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;	
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];		
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		

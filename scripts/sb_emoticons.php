@@ -64,22 +64,16 @@
 	}
 	
 	function emoticons_show () {
-		$smile_path = emoticons_load();
-		require $smile_path;
+		$emote_arr = emoticons_load_tags();
 		
-		$str_out =  '<script language="javascript">//Insert Emoticon
-			    function ins_emoticon(theform, emoticon) {
-			    theform.value += " " + emoticon + " ";
-			    theform.focus();
-			    }
-			</script>';
-		$str_out .=  "\n<div>\n";
-		for ( $n = 0; $n < count( $smile_arr ); $n++ ) {
-			if ($smile_arr[$n][1]<>$smile_arr[$n-1][1]) {
-				$str_out .=  '<span style="Cursor: hand;" onclick="Javascript:ins_emoticon(document.getElementById(\'text\'), \'' . $smile_arr[$n][0] . '\');">' ."\n";
-				$str_out .=  '<img border="0" src="' . dirname($smile_path) . "/" . $smile_arr[$n][1].'" alt="'.$smile_arr[$n][0].'"title="'.$smile_arr[$n][0].'"  />' ."\n";
-				$str_out .=  '</span>' ."\n";
-			}			
+		$str_out =  "<div>\n";
+		for ( $n = 0; $n < count( $emote_arr ); $n++ ) {
+			$path = $emote_arr[ $n ][ 'PATH' ];
+			$tags_str = $emote_arr[ $n ][ 'TAGS' ];
+			$tags_arr = explode( ' ', $tags_str );
+			$str_out .=  '<span style="Cursor: hand;" onclick="Javascript:ins_emoticon(document.getElementById(\'text\'), \'' . $tags_arr[0] . '\');">' ."\n";
+			$str_out .=  '<img border="0" src="' . $path . '" alt="'.$tags_str.'"title="'.$tags_str.'"  />' ."\n";
+			$str_out .=  '</span>' ."\n";
 		}
 		$str_out .=  "</div>";
 		$str_out .=  "<br />";

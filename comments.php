@@ -25,6 +25,11 @@
 			// Verify that the file exists.
 			if ( entry_exists ( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ] ) ) {
 				$_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] = sb_get_capcha();
+				
+				$GLOBALS[ 'year' ] = substr($_GET[ 'entry' ], 5, 2);
+				$GLOBALS[ 'month' ] = substr($_GET[ 'entry' ], 7, 2);
+				$GLOBALS[ 'day' ] = substr($_GET[ 'entry' ], 9, 2);
+			
 				$redirect = false;
 			}
 		}
@@ -183,6 +188,8 @@
 				?>				
 			</select>
 			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><br /><br />
+			
+			<?php emoticons_show(); ?>
 			
 			<?php
 				if ( in_array( 'img', $blog_config[ 'comment_tags_allowed' ] ) ) {

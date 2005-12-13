@@ -23,47 +23,42 @@
 	function page_content() {
 		global $lang_string, $user_colors, $theme_vars;
 		
-		?>
+		global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry;
 		
-		<h2><?php echo( $lang_string[ 'title_preview' ] ); ?></h2>
-		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
-		
-		<hr />
-
-		<?php
-			global $blog_subject, $blog_text, $temp_subject, $temp_text, $entry;
-			
-			if ( isset( $_GET[ 'entry' ] ) ) {
-				$entry = $_GET[ 'entry' ];
-		
-				if ( file_exists( 'content/static/' . $entry . '.txt' ) ) {
-					$filename = 'content/static/' . $entry . '.txt';
-				} elseif ( file_exists( 'content/static/' . $entry . '.txt.gz' ) ) {
-					$filename = 'content/static/' . $entry . '.txt.gz';
-				}
-				$blog_entry_data = static_entry_to_array( $filename )
-				;
-				$temp_subject = $blog_entry_data[ 'SUBJECT' ];
-				$temp_text = $blog_entry_data[ 'CONTENT' ];
-				$temp_file_name = $entry;
-				
-				$blog_content = get_static_entry_by_file( $entry );
-				echo( $blog_content );
-			} else {
-				$entry = NULL;
-				if ( isset( $_POST[ 'entry' ] ) ) {
-					$entry = $_POST[ 'entry' ];
-				}
-				
-				$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
-				$temp_text = stripslashes( $_POST[ 'blog_text' ] );
-				$blog_content = preview_static_entry( $temp_subject, $temp_text );
-				$temp_file_name = stripslashes( $_POST[ 'file_name' ] );
-				echo( $blog_content );
+		if ( isset( $_GET[ 'entry' ] ) ) {
+			$entry = $_GET[ 'entry' ];
+	
+			if ( file_exists( 'content/static/' . $entry . '.txt' ) ) {
+				$filename = 'content/static/' . $entry . '.txt';
+			} elseif ( file_exists( 'content/static/' . $entry . '.txt.gz' ) ) {
+				$filename = 'content/static/' . $entry . '.txt.gz';
 			}
+			$blog_entry_data = static_entry_to_array( $filename );
+			
+			$temp_subject = $blog_entry_data[ 'SUBJECT' ];
+			$temp_text = $blog_entry_data[ 'CONTENT' ];
+			$temp_file_name = $entry;
+			
+			$blog_content = get_static_entry_by_file( $entry );
+			echo( $blog_content );
+		} else {
+			$entry = NULL;
+			if ( isset( $_POST[ 'entry' ] ) ) {
+				$entry = $_POST[ 'entry' ];
+			}
+			
+			$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
+			$temp_text = stripslashes( $_POST[ 'blog_text' ] );
+			$blog_content = preview_static_entry( $temp_subject, $temp_text );
+			$temp_file_name = stripslashes( $_POST[ 'file_name' ] );
+			echo( $blog_content );
+		}
+			
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title_preview' ];
+		ob_start();
 		?>
-		<p />
-		<h2><?php echo( $lang_string[ 'title_update' ] ); ?></h2>
+		<?php echo( $lang_string[ 'instructions_preview' ] ); ?><p />
 		<?php echo( $lang_string[ 'instructions_update' ] ); ?><p />
 		
 		<hr />
@@ -98,6 +93,8 @@
 			</select>
 			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><br /><br />
 			
+			<?php emoticons_show(); ?>
+			
 			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $lang_string[ 'view_images' ] ); ?></a><br />
 			<?php echo image_dropdown(); ?><br /><br />
 			
@@ -112,6 +109,8 @@
 		</form>
 		
 		<?php 
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

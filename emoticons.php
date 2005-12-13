@@ -6,7 +6,7 @@
 	read_config();
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
-	sb_language( 'upload_img' );
+	sb_language( 'emoticons' );
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,8 +23,16 @@
 		global $lang_string, $user_colors;
 		
 		// -------------------------------
-		// Emoticon code by NoWhereMan and Hydra.
+		// Emoticon code by NoWhereMan and Hydra
 		// -------------------------------
+		//
+		// Authors:
+		// NoWhereMan - http://www.nowhereland.it.pn/
+		// Hydra - http://samyweb.altervista.org/
+		//
+		// Additional Thanks to:
+		// Drudo - http://drudo.altervista.org/
+		// SPBItalia Forum - http://spbitalia.altervista.org/
 
 		function upload_emoticons() {
 			// Emoticon upload form results
@@ -56,12 +64,12 @@
 		}
 
 		function emoticons_admin_display() {
-			global $theme_vars;
+			global $theme_vars, $lang_string;
 			// Emoticon table
 			$emo = emoticons_load();
 			
 			
-			$str_out = '<form enctype="multipart/form-data" name="emoticons" method="post" action="admin_emotes.php">';
+			$str_out = '<form enctype="multipart/form-data" name="emoticons" method="post" action="emoticons.php">';
 			$str_out .= "\n\t<table width=\"". $theme_vars[ 'max_image_width' ] . "\">\n";
 			
 			for ( $i = 0; $i < count ($emo); $i++) {
@@ -85,7 +93,7 @@
 			$str_out .=  "\t</table>\n\t";
 			
 			$str_out .=  '<hr />';
-			$str_out .=  "\t<input type=\"submit\" value=\"Save Emoticons\" />\n";
+			$str_out .=  "\t<input type=\"submit\" value=\"".$lang_string["save_button"]."\" />\n";
 			$str_out .=  "</form>\n";
 			
 			return $str_out;
@@ -133,23 +141,17 @@
 			
 			return sb_write_file( 'config/emoticons.txt', $str );
 		}
-	
-		?>
-		<h2>Admin Emoticons</h2>
-		Check the emoticons you want to use. Write in the box the Tags you want to be replaced by the image.
-		Multiple tags may be used, just separated them by spaces.<p />
 		
-		For instance:<br />
-		:) :-) :SMILE: :HAPPY:<p />
-		
-		<i>(It is highly recommended that you make the Tags longer than 2 characters, otherwise unexpected
-		substitutions may occur.)</i><p />
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>
+		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<hr />
 		
 		<!-- Upload New Emoticon Form -->
-		<form enctype="multipart/form-data" name="emoticons_up" method="post" action="admin_emotes.php">
-			Upload New Emoticon: <input name="user_emot" type="file" /><input type="submit" value="Upload" />
+		<form enctype="multipart/form-data" name="emoticons_up" method="post" action="emoticons.php">
+			<?php echo( $lang_string['upload_instructions'] ); ?> <input name="user_emot" type="file" /><input type="submit" value="Upload" />
 		</form>
 		<!-- Upload New Emoticon Form -->
 		
@@ -160,13 +162,13 @@
 			$ok = upload_emoticons();
 			switch( $ok ) {
 				case true:
-					echo( 'Success! Image uploaded successfully!' );
+					echo( $lang_string["upload_success"] );
 					break;
 				case false:
-					echo( 'Error! Image was not uploaded.' );
+					echo( $lang_string["upload_error"] );
 					break;
 				case -1:
-					echo( 'Error! Invalid image file. Image must be a png, jpg, or gif.' );
+					echo( $lang_string["upload_invalid"] );
 					break;
 			}
 		}
@@ -178,13 +180,14 @@
 			// User is updating emoticon preferences.
 			$form_arr = emoticons_getform();
 			if ( emoticons_save($form_arr) ) {
-				echo "Emoticon preferences saved successfully!";
+				echo( $lang_string["save_success"] );
 			} else {
-				echo "Error! Emoticon preferences not saved.";
+				echo( $lang_string["save_error"] );
 			}
 		}
 
-		echo '<hr />';
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

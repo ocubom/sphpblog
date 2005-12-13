@@ -22,16 +22,16 @@
 		function page_content() {
 			$entry_array = array();
 			$entry_array[ 'subject' ] = 'Subject Line';
-			$entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
+			// $entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
 			
-			echo( theme_staticentry( $entry_array ) );
-			
+			ob_start();
 			?>
-				Here is some raw HTML content...<br /><br />-- Alex.
-			<?php 
-			
-		}
+			Body Content
 		
+			<?php 
+			$entry_array[ 'entry' ] = ob_get_clean();
+			echo( theme_staticentry( $entry_array ) );
+		}
 		theme_pagelayout();
 	?>
 </html>

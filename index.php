@@ -11,7 +11,6 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
-		
 	// Verify information being passed
 	$temp_year = NULL;
 	if ( array_key_exists( 'y', $_GET ) ) {

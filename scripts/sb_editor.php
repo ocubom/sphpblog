@@ -28,7 +28,7 @@
 			// insert [x]yyy[/x] style markup
 			inserttext = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+"\n[img="+prompt_text+"xxx]",prompt_text);
 			if ((inserttext != null) && (inserttext != "")) {
-				theform.value += "[img="+inserttext+"] ";
+				theform.value += " [img="+inserttext+"]";
 			}
 			theform.focus();
 		}
@@ -43,7 +43,7 @@
 				image_popup = prompt('<?php echo( $lang_string[ 'insert_image_popup' ] ); ?>'+'\n[img=xxx popup=true/false]', '');
 				image_float = prompt('<?php echo( $lang_string[ 'insert_image_float' ] ); ?>'+'\n[img=xxx float=left/right]','');
 				
-				str = '[img='+image_url;
+				str = ' [img='+image_url;
 				if ((image_width != null) && (image_width != '')) {
 					str += ' width='+image_width;
 				}
@@ -88,7 +88,7 @@
 					link_text = link_url;
 				}
 				link_target = prompt('<?php echo( $lang_string[ 'insert_url3' ] ); ?>'+'\n[url= new=true/false][/url]','');
-				str = '[url='+link_url;
+				str = ' [url='+link_url;
 				if ((link_target != null) && (link_target != '')) {
 					link_target.toLowerCase;
 					if ( link_target == 'true' || link_target == 'false' ) {
@@ -96,7 +96,7 @@
 						
 					}
 				}
-				str += ']'+link_text+'[/url] ';
+				str += ']'+link_text+'[/url]';
 				
 				theform.value += str;
 				theform.focus();
@@ -112,7 +112,7 @@
 				if ( (link_text == null) || (link_text == '') ) {
 					link_text = link_url;
 				}
-				str = '[url='+link_url+']'+link_text+'[/url] ';
+				str = ' [url='+link_url+']'+link_text+'[/url]';
 				
 				theform.value += str;
 				theform.focus();
@@ -121,7 +121,7 @@
 		
 		//Insert Emoticon
 		function ins_emoticon(theform, emoticon) {
-			theform.value += " " + emoticon + " ";
+			theform.value += ' ' + emoticon;
 			theform.focus();
 		}
 		

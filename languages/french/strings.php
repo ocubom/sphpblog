@@ -40,9 +40,8 @@
 		$lang_string['menu_most_recent'] = "Derniers Commentaires";
 		$lang_string['menu_most_recent_entries'] = "La plupart des Entrées Récentes";
 		$lang_string['menu_most_recent_trackback'] = "La plupart De Trackbacks Récent"; // <-- New 0.3.8
-		// DATOH_ADD
 		$lang_string['menu_add_block'] = "Blocs";
-		// DATOH_END
+		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "Retour Accueil";
@@ -604,6 +603,26 @@
 				$lang_string["error_emailnotsent"] = "Le message que vous avez essayé d'envoyer a échoué.";
 				$lang_string["error_emailnotsentcapcha"] = "Le message que vous avez essayé d'envoyer a échoué parce que l'entrée anti-Spam était incorrecte ou des disparus.";
 				$lang_string["clientid"] = 'Identification De Client: ';
+				break;
+			case 'emoticons':  // New for 0.4.7
+				$lang_string['title'] = "Admin Emoticons";
+				$lang_string['instructions'] = "
+					Check the emoticons you want to use. Write in the box the Tags you want 
+					to be replaced by the image. Multiple tags may be used, just separated them 
+					by spaces.<br /><br />
+		
+					For instance:<br />
+					:) :-) :SMILE: :HAPPY:<br /><br />
+					
+					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
+					otherwise unexpected substitutions may occur.)</i>";
+				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
+				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
+				$lang_string["upload_error"] = 'Error! Image was not uploaded.';
+				$lang_string["upload_invalid"] = 'Error! Invalid image file. Image must be a png, jpg, or gif.';
+				$lang_string["save_success"] = 'Emoticon preferences saved successfully!';
+				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
+				$lang_string["save_button"] = 'Save Emoticons';
 				break;
 			default:
 				break;

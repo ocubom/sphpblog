@@ -59,8 +59,10 @@
 	
 	function menu_display_blognav () {
 		// Returns the blog entry navigation calendar as HTML.
+		//
 		global $month, $year, $day, $lang_string;
 
+		// The "read_menus_calendar()" function is located in "scripts/sb_theme.php"
 		$str = read_menus_calendar( $month, $year, $day );
 
 		$result = array();
@@ -81,7 +83,8 @@
 		//
 		global $month, $year, $day, $lang_string;
 
-		$str = read_menus_tree ( $m, $y, $d );
+		// The "read_menus_tree()" function is located in "scripts/sb_theme.php"
+		$str = read_menus_tree( $month, $year, $day );
 
 		$result = array();
 		$result[ 'title' ] = $lang_string[ 'menu_archive' ];
@@ -226,6 +229,7 @@
 			$str = $str . '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
 			$str = $str . '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
 			$str = $str . '<a href="setup.php">' . $lang_string[ 'menu_setup' ] . '</a><br />';
+			$str = $str . '<a href="emoticons.php">' . $lang_string[ 'menu_emoticons' ] . '</a><br />';
 			$str = $str . '<a href="themes.php">' . $lang_string[ 'menu_themes' ] . '</a><br />';
 			$str = $str . '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
 			$str = $str . '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';

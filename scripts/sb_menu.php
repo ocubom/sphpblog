@@ -213,112 +213,106 @@
 		$str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">%x') . '</a></td></tr></table>'; // Close the table
 		return( $str );
 	}
-	
 
-	function read_menus_tree ( $m, $y, $d ) {
+	function read_menus_tree ( $m, $y, $d, $max_chars = 75, $base_url = 'index.php') {
 		// Create the right-hand navigation menu. Return HTML
 		//
-		global $lang_string, $default_view;
+		global $lang_string;
 		
-		$str = NULL;
-		$basedir = 'content/';
+		$entry_array = blog_entry_listing( "new_to_old" );
+		// $entry_array[$i] = implode( '|', array( $entry_filename, $year_dir, $month_dir ) ) );
 		
-		$months = $lang_string[ 'sb_months' ];
-		
-		// Open Base Directory
-		// (The '@' before the call is to suppress the error if the directory is not found.)
-		$dhandle = @opendir($basedir);
-		if ($dhandle != false) {
-			// Loop Through Files in Directory
-			$dirname = readdir($dhandle);
-			while ($dirname != false) {
-				if ( $dirname != '.' && $dirname != '..' && $dirname != 'static') { 
+		$str = '';
+		if ( count( $entry_array ) > 0 ) {
+			$str_year = '';
+			$str_month = '';
+			$str_day = '';
+			
+			list( $last_filename, $last_y, $last_m ) = explode( '|', $entry_array[ 0 ] );
+			$last_d = substr($last_filename, 9, 2);
+			
+			$str = '
+<style type="text/css" media="screen">
+<!--
+	#archive_tree_menu ul	
+	{
+		list-style: none inside;
+		padding: 0px 0px 0px 10px;
+		margin: 0px;
+	}
+	#archive_tree_menu li	
+	{
+		margin: 0px;
+		padding: 4px 0px 0px 0px;
+		/* border: 1px #F00 solid; */
+	}
+-->
+</style>';
+			$str.= '<div id="archive_tree_menu"><ul>';
+			for ( $n = 0; $n < count( $entry_array ); $n++ ) {
+				list( $curr_filename, $curr_y, $curr_m ) = explode( '|', $entry_array[ $n ] );
+				$curr_d = substr($curr_filename, 9, 2);
 				
-					// Year Folder
-					if (is_dir( $basedir . $dirname )) {
-						
-						// Store Year Text
-						$str_year = '20' . $dirname . '<br />';
-						
-						// Open Year Folder
-						$subdhandle = opendir($basedir . $dirname . '/' );
-						if ($subdhandle != false) {
-												
-							// Loop Through Files in Directory
-							$subdirname = readdir($subdhandle);
-							$str_month = NULL;
-							
-							while ($subdirname != false) {
-								if ( $subdirname != '.' && $subdirname != '..' ) { 
-								
-									// Month Folder
-									if ( is_dir( $basedir.$dirname.'/'.$subdirname ) ) {
-										$entries = sb_folder_listing( $basedir.$dirname.'/'.$subdirname.'/', array( '.txt', '.gz' ) );
-										
-										if ( intval( $subdirname ) == $m && intval( $dirname ) == $y ) {
-											// Currently Selected Month 
-											
-											// Loop Through Days
-											for ( $i = 0; $i < count( $entries ); $i++ ) {
-												$temp_day = substr( $entries[$i], 9, 2 );
-												$temp_month = substr( $entries[$i], 7, 2 );
-												$temp_year = substr( $entries[$i], 5, 2 );
-												$stamp = strtotime( $temp_month . '/' . $temp_day . '/' . $temp_year );
-												$temp_date = format_date_menu( $stamp );
-												
-												// Count the number of entries on this day
-												$temp_count = 1;
-												for ( $j = $i + 1; $j < count( $entries ); $j++ ) {
-													if ( $temp_day == substr( $entries[$j], 9, 2 ) &&
-														 $temp_month == substr( $entries[$j], 7, 2 ) &&
-														 $temp_year == substr( $entries[$j], 5, 2 ) ) {
-														$temp_count++;
-													} else {
-														break;
-													}
-												}
-												$i = $j - 1;
-													
-												if ( $temp_day == $d && $default_view == false ) {
-													// Currently Selected Day
-													$str_month = '&nbsp;&nbsp;&nbsp;' . $temp_date . ' ( ' . $temp_count . ' )' . '<br />' . $str_month;
-												} else {
-													if ( $default_view != 2) {
-														// Non-Selected Days
-														$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;d='.$temp_day.'">&nbsp;&nbsp;&nbsp;' . $temp_date  . ' ( ' . $temp_count . ' )' . '</a><br />' . $str_month;
-													}
-												}
-											}
-											
-											$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;default_view=1">' . $months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
-										} else {
-											// Non-Selected Months
-											if ( count( $entries ) > 0 ) {
-												$latest_d = substr( $entries[ count( $entries ) - 1 ], 9, 2 );
-												$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;d='.$latest_d.'&amp;default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
-											} else {
-												$str_month = '<a href="index.php?m='.$subdirname.'&amp;y='.$dirname.'&amp;default_view=1">'.$months[ intval($subdirname) - 1 ].' ( '.count( $entries ).' )</a><br />' . $str_month;
-											}
-										}
-									}
-								}
-								
-								$subdirname = readdir($subdhandle);
-							}
-							
-							$str_year = $str_year.$str_month;
-							$str = $str_year . $str;
-							
-						}
-						closedir($subdhandle);
-					}
+				// Month
+				if ( $last_m != $curr_m || $last_y != $curr_y || $n == count( $entry_array ) - 1 ) {
+					// Build Month List
+					$str_month .= '<li>' . "\n";
+					$temp_str = ( strftime( '%B', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
+					$str_month .= '<a href="' . $base_url . '?m=' . $last_m . '&amp;y=' . $last_y . '">' . $temp_str . '</a><br />' . "\n";
+					$str_month .= '<ul>' . "\n";
+					$str_month .= $str_day . "\n";
+					$str_month .= '</ul>' . "\n";
+					$str_month .= '</li>' . "\n";
+					
+					$str_day = '';
+					$last_m = $curr_m;
 				}
-				$dirname = readdir($dhandle);
+				
+				// Year
+				if ( $last_y != $curr_y || $n == count( $entry_array ) - 1 ) {
+					// Build Year List
+					$temp_str = ( strftime( '%Y', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
+					$str_year .= '<li>' . "\n";
+					$str_year .= $temp_str . '<br />' . "\n";
+					$str_year .= '<ul>' . "\n";
+					$str_year .= $str_month . "\n";
+					$str_year .= '</ul>' . "\n";
+					$str_year .= '</li>' . "\n";
+					$str .= $str_year;
+					
+					$str_year = '';
+					$str_month = '';
+					$str_day = '';
+					
+					$last_y = $curr_y;
+				}
+				
+				// Day
+				if ( $curr_y == $y && $curr_m == $m ) {
+					// Build Day List
+					$blog_entry_data = blog_entry_to_array( 'content/' . $curr_y . '/' . $curr_m . '/' . $curr_filename );
+					
+					$curr_array = Array();
+					$curr_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, true );
+					$curr_array[ 'date' ] = ( strftime( '%x', mktime(0, 0, 0, $curr_m, $curr_d, $curr_y ) ) );
+					$curr_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, true );
+					
+					$str_day .= '<li>' . "\n";
+					$str_day .= '<a href="index.php?m=' . $curr_m . '&amp;y=' . $curr_y . '&amp;entry=' . sb_strip_extension( $curr_filename ) . '">' . $curr_array[ 'subject' ] . '</a><br />' . "\n";
+					$str_day .= '<b>' . $curr_array[ 'date' ] . '</b>';
+					if ( $max_chars == 0) {
+						// Don't show any of the entry...
+					} else if ( strlen( $curr_array[ 'entry' ] ) > $max_chars ) {
+						// Truncate...
+						$str_day .= "<br />\n";
+						$str_day .= substr( $curr_array[ 'entry' ], 0, $max_chars) . "\n";
+					}
+					$str_day .= '</li>' . "\n";
+				}
 			}
-			closedir($dhandle);
-		}
-		
-		return ( $str );
+			$str .= '</ul></div>';
+		}				
+		return( $str );
 	}
 
 	// ----------------------

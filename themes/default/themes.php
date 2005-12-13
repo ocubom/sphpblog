@@ -407,10 +407,18 @@
 		}
 		
 		 if( $blog_config[ 'blog_enable_calendar' ] ) {
-		echo( '<hr />' );		
-		$result = menu_display_blognav();
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' ); }
+			echo( '<hr />' );		
+			$result = menu_display_blognav();
+			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+			echo( $result[ 'content' ] . '' );
+		}
+		
+		$result = menu_display_blognav_tree();
+		if ( $result[ 'content' ] != '' ) {			
+			echo( '<hr />' );
+			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+			echo( $result[ 'content' ] . '' );
+		}
 		
 		$result = menu_display_categories();
 		if ( $result[ 'content' ] != '' ) {			

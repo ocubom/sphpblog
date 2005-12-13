@@ -386,8 +386,12 @@
 		}
 	}	
 	
-	function blog_entry_listing ( ) {
+	function blog_entry_listing ( $sort = NULL ) {
 		global $blog_config;
+		
+		// Valid $sort values:
+		// "new_to_old", "newest"
+		// "old_to_new", "oldest"
 		
 		// Return listing of all the blog entries in order
 		// of newest to oldest.
@@ -397,12 +401,9 @@
 		// an entry.
 		$filename='config/~blog_entry_listing.tmp';
 		$entry_array=sb_read_file( $filename );
-		if ( $entry_array!=NULL )
-		{
+		if ( $entry_array!=NULL ) {
 			$entry_array=unserialize( $entry_array );
-		}
-		else
-		{
+		} else {
 			$basedir = 'content/';
 			
 			// YEAR directories
@@ -451,12 +452,26 @@
 					}
 				}
 			}
+			
 			// Flip entry order
-			if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-				sort( $entry_array );
-			}
-			else {
-				rsort( $entry_array );
+			if ( isset( $sort ) ) {
+				// Passing a $sort value will over-ride the default preference. This is used in the Archive Tree view.
+				switch( $sort ) {
+					case "new_to_old":
+					case "newest":
+						rsort( $entry_array );
+						break;
+					case "old_to_new":
+					case "oldest";
+						sort( $entry_array );
+						break;
+				}
+			} else {
+				if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
+					sort( $entry_array );
+				} else {
+					rsort( $entry_array );
+				}
 			}
 			
 			// Check the option first to see if we use the cache
