@@ -88,7 +88,7 @@
 
 		$result = array();
 		$result[ 'title' ] = $lang_string[ 'menu_archive' ];
-		$result[ 'content' ] = $str;
+		$result[ 'content' ] = '<a href="archives.php">View Archives</a><br />' . "\n" . $str;
 		
 		return ( $result );
 	}

@@ -258,7 +258,7 @@
 					// Build Month List
 					$str_month .= '<li>' . "\n";
 					$temp_str = ( strftime( '%B', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
-					$str_month .= '<a href="' . $base_url . '?m=' . $last_m . '&amp;y=' . $last_y . '">' . $temp_str . '</a><br />' . "\n";
+					$str_month .= '<a href="' . $base_url . '?m=' . $last_m . '&amp;y=' . $last_y . '">' . $temp_str . '</a>' . "\n";
 					$str_month .= '<ul>' . "\n";
 					$str_month .= $str_day . "\n";
 					$str_month .= '</ul>' . "\n";
@@ -273,7 +273,7 @@
 					// Build Year List
 					$temp_str = ( strftime( '%Y', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
 					$str_year .= '<li>' . "\n";
-					$str_year .= $temp_str . '<br />' . "\n";
+					$str_year .= $temp_str . "\n";
 					$str_year .= '<ul>' . "\n";
 					$str_year .= $str_month . "\n";
 					$str_year .= '</ul>' . "\n";
@@ -305,7 +305,7 @@
 					} else if ( strlen( $curr_array[ 'entry' ] ) > $max_chars ) {
 						// Truncate...
 						$str_day .= "<br />\n";
-						$str_day .= substr( $curr_array[ 'entry' ], 0, $max_chars) . "\n";
+						$str_day .= substr( $curr_array[ 'entry' ], 0, $max_chars) . "<p />\n";
 					}
 					$str_day .= '</li>' . "\n";
 				}
