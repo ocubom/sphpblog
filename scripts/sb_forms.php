@@ -15,14 +15,18 @@
 	// ------------------
 	// HTML Markup Functions
 	// ------------------
-	function HTML_dropdown( $label=false, $id, $itemArray, $width=0, $size=0, $multiple=false, $disabled=false ) {
+	function HTML_dropdown( $label=false, $id, $itemArray, $add_returns=true, $onchange=null, $width=0, $size=0, $multiple=false, $disabled=false ) {
 		// This function creates a standard HTML select form.
 		// Can be used for drop-downs, or selection boxes.
 		
 		$str = '';
 		// <label for="$id">$label</label><br />
 		if ( isset( $label ) && $label !== false ) {
-			$str .= '<label for="'.$id.'">'.$label.'</label><br />' . "\n";
+			$str .= '<label for="'.$id.'">'.$label.'</label>';
+			if ( $add_returns ) {
+				$str .= '<br />';
+			}
+			$str .= "\n";
 		}
 		
 		// <select id="$id" name="$id" size="$size" multiple disabled style="width: 100px;">
@@ -38,6 +42,9 @@
 		}
 		if ( $width > 0) {
 			$str .= ' style="width: '.$width.'px;"';
+		}
+		if ( isset( $onchange ) ) {
+			$str .= ' onchange="'.$onchange.'"';
 		}
 		$str .= '>' . "\n";
 		
@@ -59,7 +66,51 @@
 				$str .= '>'.$item['label'].'</option>' . "\n";
 			}
 		}
-		$str .= '</select><br />' . "\n";
+		$str .= '</select>';
+		if ( $add_returns ) {
+			$str .= '<br />';
+		}
+		$str .= "\n";
+		
+		return $str;
+	}
+	
+	function HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false ) {
+		// This function creates a standard HTML input form.
+		
+		$str = '';
+		if ( isset( $label ) && $label !== false ) {
+			$str .= '<label for="'.$id.'">'.$label.'</label>';
+			if ( $add_returns ) {			$str .= '<br />'; }
+			$str .= "\n";
+		}
+		
+		// <input name="name" id="id" type="text" value="value" size="2" maxlength="2" onchange="" disabled>
+		$str .= '<input name="'.$id.'" id="'.$id.'" type="'.$type.'"';
+		if ( $value > 0 ) {
+			$str .= ' value="'.$value.'"';
+		}
+		if ( $size > 0 ) {
+			$str .= ' size="'.$size.'"';
+		}
+		if ( $maxlength > 0 ) {
+			$str .= ' maxlength="'.$maxlength.'"';
+		}
+		if ( isset( $onchange ) ) {
+			$str .= ' onchange="'.$onchange.'"';
+		}
+		if ( $width > 0) {
+			$str .= ' style="width: '.$width.'px;"';
+		}
+		if ( $disabled == true ) {
+			$str .= ' disabled';
+		}
+		$str .= '>' . "\n";
+		
+		if ( $add_returns ) {
+			$str .= '<br />';
+		}
+		$str .= "\n";
 		
 		return $str;
 	}

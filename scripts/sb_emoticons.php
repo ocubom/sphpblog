@@ -75,8 +75,7 @@
 			$str_out .=  '<img border="0" src="' . $path . '" alt="'.$tags_str.'"title="'.$tags_str.'"  />' ."\n";
 			$str_out .=  '</span>' ."\n";
 		}
-		$str_out .=  "</div>";
-		$str_out .=  "<br />";
+		$str_out .=  "</div>\n";
 				
 		echo $str_out;
 		return $str_out;

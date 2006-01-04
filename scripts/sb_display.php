@@ -506,16 +506,19 @@
 	// Preview Functions
 	// -----------------
 	
-	function preview_entry ( $blog_subject, $blog_text, $tb_ping ) {
+	function preview_entry ( $blog_subject, $blog_text, $tb_ping, $temp_relatedlink, $timestamp ) {
 		// Function to preview an entry before saving it to disk
 		//
 		// Just going through the motions...
-		global $blog_content, $user_colors, $logged_in;
-		
-		$array = array( clean_post_text( $blog_subject ), time(), clean_post_text( $blog_text ), clean_post_text( $tb_ping ) );
+		global $blog_content, $user_colors, $lang_string, $logged_in;
+	
+		if ( !isset( $timestamp ) ) {
+			$timestamp = time();
+		}
+		$array = array( clean_post_text( $blog_subject ), $timestamp, clean_post_text( $blog_text ), clean_post_text( $tb_ping ), clean_post_text( $temp_relatedlink ) );
 		$str = implode('|', $array);
 		
-		list( $blog_subject, $blog_date, $blog_text, $tb_ping ) = explode( '|', $str );
+		list( $blog_subject, $blog_date, $blog_text, $tb_ping, $relatedlink ) = explode( '|', $str );
 		
 		$entry_array = array();
 		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false );
@@ -523,6 +526,10 @@
 		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
 		if ( $tb_ping !== '' ) {
 			$entry_array[ 'tb_ping' ] = blog_to_html( $tb_ping, false, false );
+		}
+		if ( $temp_relatedlink !== '' ) {		
+			$entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
+			$entry_array[ 'relatedlink' ][ 'url' ] = blog_to_html( $relatedlink, false, false );
 		}
 		
 		$blog_content = theme_blogentry( $entry_array );

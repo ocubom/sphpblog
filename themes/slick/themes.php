@@ -250,10 +250,10 @@
 		// Backgrounds
 		array_push( $color_def, array( 'id' => 'bg_color',
 								'string' => $lang_string[ 'bg_color' ],
-								'default' => 'FFFFFF' ) );
+								'default' => '000000' ) );
 		array_push( $color_def, array( 'id' => 'header_bg_color',
 								'string' => $lang_string[ 'header_bg_color' ],
-								'default' => 'FFFFFF' ) );
+								'default' => '000000' ) );
 		array_push( $color_def, array( 'id' => 'footer_bg_color',
 								'string' => $lang_string[ 'footer_bg_color' ],
 								'default' => 'FFFFFF' ) );

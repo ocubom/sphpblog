@@ -50,7 +50,7 @@
 		}
 	}
 	
-	function write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_relatedlink ) {
+	function write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_relatedlink, $blog_date=NULL ) {
 		// Save new entry or update old entry
 		//
 		// $updateFile will either be NULL or the name of the file
@@ -115,7 +115,10 @@
 			// The directory and file structure is:
 			// 'content/YY/MM/entryYYMMDD-HHMMSS.txt'
 			// 'F j, Y, g:i a'
-			$blog_date = time();
+			if (!$blog_date) {
+				$blog_date = time();
+			}
+			
 			$save_data[ 'DATE' ] = $blog_date;
 			
 			if (!file_exists('content')) {
@@ -125,7 +128,7 @@
 			}
 			
 			$dir = 'content/';
-			$y = date('y');
+			$y = date('y', $blog_date);
 			if (!file_exists($dir.$y)) {
 				$oldumask = umask(0);
 				$ok = mkdir($dir.$y, 0777 );
@@ -134,7 +137,7 @@
 					return ( 'Couldn\'t creating directory: '.$dir.$y );
 				}
 			}
-			$m = date('m');
+			$m = date('m', $blog_date);
 			if (!file_exists($dir.$y.'/'.$m)) {
 				$oldumask = umask(0);
 				$ok = mkdir($dir.$y.'/'.$m, 0777 );
@@ -144,7 +147,7 @@
 				}
 			}
 			
-			$stamp = date('ymd-His');
+			$stamp = date('ymd-His', $blog_date);
 			if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
 				$entryFile = $dir.$y.'/'.$m.'/'.'entry'.$stamp.'.txt.gz';
 			} else {
@@ -315,5 +318,10 @@
 			
 			return( $result_array );
 		}
+	}
+	
+	function write_modifica ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_date=NULL, $filename) {
+		sb_delete_file( $filename );
+		write_entry( stripslashes( $_POST['blog_subject'] ), stripslashes( $_POST['blog_text'] ), stripslashes( $_POST['tb_ping'] ), $_POST['entry'], $_POST[ "catlist" ], $faketime );
 	}
 ?>

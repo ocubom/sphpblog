@@ -8,6 +8,9 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'add' );
 	
+	// variabile per definire se una news è in fase di modifica
+	$modifica = $_POST['modifica'];
+	
 	// "CGI" Functions
 	if ( array_key_exists( 'no', $_POST ) || array_key_exists( 'yes', $_POST ) ) {
 		if ( array_key_exists( 'no', $_POST ) ) {
@@ -33,7 +36,35 @@
 		// Initial passthrough
 		global $auto_discovery_confirm;
 		
-		$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), $_POST[ 'entry' ], $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ) );
+		$temp_date = substr($_GET['entry'],-13,6);
+		$temp_time = substr($_GET['entry'],-6,6);
+		$dd = substr($temp_date,-2,2);
+		$mt = substr($temp_date,-4,2);
+		$yy = substr($temp_date,-6,2);
+		if ($yy >= 95) {
+			$yy = '19' . $yy;
+		} else {
+			$yy = '20' . $yy;
+		}
+		$hh = substr($temp_time,-6,2);
+		$mm = substr($temp_time,-4,2);
+		$ss = substr($temp_time,-2,2);
+		
+		$oldtime = mktime($hh, $mm, $ss, $mt, $dd, $yy );
+		$newtime = mktime($_POST['hour'], $_POST['minute'], $_POST['second'], $_POST['month'], $_POST['day'], $_POST['year'] );
+		
+		if ( $oldtime != $newtime ) {
+			$entry = 'content/'.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
+			if ( file_exists( $entry . ".txt" ) ) {
+				$filename = $entry . ".txt";
+			} elseif ( file_exists( $entry . ".txt.gz" ) ) {
+				$filename = $entry . ".txt.gz";
+			}
+			sb_delete_file( $filename );
+			$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), NULL, $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ), $newtime );
+		} else {
+			$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), $_POST[ 'entry' ], $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ), $oldtime );
+		}
 		
 		if ( $ok === true ) {
 		   if( strlen($auto_discovery_confirm[ 'text' ]) > 0 ) {
