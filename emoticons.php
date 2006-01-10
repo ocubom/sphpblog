@@ -84,7 +84,7 @@
 						$str_out .=  "<input type=\"hidden\" name=\"emo_name$i\" value=\"" . $emo[$i] . '" />';
 				$str_out .=  "</td>\n";
 				$str_out .=  "\t\t\t<td>$emo[$i]</td>\n";
-				$str_out .=  "\t\t\t<td><input type=\"text\" name=\"tag$i\" value=\"" . $tags . "\" /></td>\n";
+				$str_out .=  "\t\t\t<td><input type=\"text\" name=\"tag$i\" value=\"" . $tags . "\" autocomplete=\"OFF\" /></td>\n";
 				$str_out .=  "\t\t</tr>\n";
 			
 			}
@@ -174,7 +174,6 @@
 		}
 		
 		echo '<hr />';
-		echo( emoticons_admin_display() );
 		
 		if (!$_FILES["user_emot"] && $_POST && !$_POST["user_emot"]) {
 			// User is updating emoticon preferences.
@@ -185,6 +184,8 @@
 				echo( $lang_string["save_error"] );
 			}
 		}
+		
+		echo( emoticons_admin_display() );
 
 		$entry_array[ 'entry' ] = ob_get_clean();
 		echo( theme_staticentry( $entry_array ) );	
