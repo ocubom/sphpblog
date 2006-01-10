@@ -242,7 +242,7 @@
 		//Optional channel fields
 		echo "\t<author>\n";
 		echo "\t\t<name>" . clean_atom_output( $blog_config[ 'blog_author' ] ) . "</name>\n";
-		echo "\t\t<email>" . clean_atom_output( $blog_config[ 'blog_email' ] ) . "</email>\n";
+		// echo "\t\t<email>" . clean_atom_output( $blog_config[ 'blog_email' ] ) . "</email>\n";
 		echo "\t</author>\n";
 		echo "\t<copyright>" . clean_atom_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
 		echo "\t<generator url=\"http://www.sourceforge.net/projects/sphpblog\" version=\"" . $sb_info[ 'version' ] . "\">SPHPBLOG</generator>\n";
