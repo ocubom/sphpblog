@@ -41,6 +41,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Blocks";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = 'Anasayfaya Dönüþ';
@@ -117,6 +118,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Önizleme / Girdi Düzenle";
 				$lang_string['instructions_preview'] = "Ýþte girdinizin görünüþü. Eðer metin düzenleyici 'tag'lar kullanýyorsanýz, onlarý kapatmayý unutmayýn.";
@@ -439,6 +441,7 @@
 				$lang_string['blog_title'] = "Blog Adý:";
 				$lang_string['blog_author'] = "Sahibi:";
 				$lang_string['blog_email'] = "E-Posta Adresi:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Son ek:";
 				$lang_string['blog_choose_language'] = "Dil:";
 				$lang_string['blog_enable_comments'] = "Kullanýcýlar Yorum Girebilir"; // <-- New 0.3.6

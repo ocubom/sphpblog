@@ -41,6 +41,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks";
 		$lang_string['menu_add_block'] = "Blocks";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = 'Hem';
@@ -117,6 +118,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)";
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery";
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Förhandsgranska / Ändra Blog-post";
 				$lang_string['instructions_preview'] = "Så här ser din Blog-post ut. Om du har använt text styles eller bilder, kom ihåg att avsluta alla dina 'tags'.";
@@ -434,6 +436,7 @@
 				$lang_string['blog_title'] = "Titel:";
 				$lang_string['blog_author'] = "Författare:";
 				$lang_string['blog_email'] = "E-post:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Sidfot:";
 				$lang_string['blog_choose_language'] = "Välj språk:";
 				$lang_string['blog_enable_comments'] = "Tillåt kommentarer"; // <-- New 0.3.6
