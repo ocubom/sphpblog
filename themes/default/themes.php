@@ -392,6 +392,13 @@
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
+		$result = menu_display_avatar();
+		if( $result[ 'content' ] != '') {
+			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+			echo( $result[ 'content' ] . '' );
+			echo( '<hr />' );
+		}
+
 		$result = menu_display_links();
 		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
 		echo( $result[ 'content' ] . '' );

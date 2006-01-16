@@ -547,6 +547,15 @@
 		
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
 		
+		$result = menu_display_avatar();
+		if( $result[ 'content' ] != '') {
+			echo( "\n<!-- AVATAR -->\n" );
+			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
+			echo( "<div class=\"menu_body\">\n" );
+			echo( $result[ 'content' ] . "\n" );
+			echo( "</div><br />\n" );
+		}
+		
 		// Retained from 0.3.7c
 		echo( "\n<!-- LINKS -->\n" );
 		$result = menu_display_links();
