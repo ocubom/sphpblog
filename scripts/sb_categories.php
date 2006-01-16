@@ -6,6 +6,10 @@
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
 	
+	// get_category_array ()
+	// write_categories ( $catArray )
+	// get_category_by_id ( $id )
+	
 	// ------------------
 	// Category Functions
 	// ------------------
@@ -22,6 +26,7 @@
 				$id_number = $temp_array[$i];
 				$name_str = $temp_array[$i+1];
 				$space_count = $temp_array[$i+2];
+				
 				array_push( $catArray, Array( $id_number, $name_str, $space_count ) );
 			}
 		}
@@ -51,6 +56,8 @@
 	}
 	
 	function get_category_by_id ( $id ) {
+		// Look up a Category by it's ID
+		//
 		$catArray = get_category_array();
 		for ( $i = 0; $i < count( $catArray ); $i++ ) {
 			if ( $catArray[ $i ][ 0 ] == $id ) {
