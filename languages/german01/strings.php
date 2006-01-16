@@ -41,6 +41,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Die neuesten Trackbacks";
 		$lang_string['menu_add_block'] = "Blöcke";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 
 		// Other
 		$lang_string['home'] = "Zurück zur Startseite";
@@ -117,6 +118,7 @@
 				$lang_string['label_tb_ping'] = "Zu sendende Trackback Pings (durch Komma getrennt)";
 				$lang_string['label_tb_autodiscovery'] = "Auto-Erkennung";
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Eintrag Vorschau / Änderung";
 				$lang_string['instructions_preview'] = "<p>So sieht der Eintrag aus. Bei der Verwendung von Textformatierungen oder Bilder daran denken, die 'Tags' zu schließen.</p>";
@@ -451,6 +453,7 @@
 				$lang_string['blog_title'] = "Blog Name:";
 				$lang_string['blog_author'] = "Autor:";
 				$lang_string['blog_email'] = "E-Mail:";
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Fußzeile:";
 				$lang_string['blog_choose_language'] = "Sprache auswählen:";
 				$lang_string['blog_enable_comments'] = "Besucher können Kommentare schreiben";

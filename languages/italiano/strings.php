@@ -41,6 +41,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Ultimi trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Blocchi";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "Torna alla pagina iniziale";
@@ -117,6 +118,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) da inviare (separa con una virgola)"; // <-- New 0.3.8 (??)
 				$lang_string['label_tb_autodiscovery'] = "auto-segnalazione"; // <-- New 0.3.8 (??)
 				$lang_string['label_relatedlink'] = "Link Relativo"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Anteprima / Modifica notizia";
 				$lang_string['instructions_preview'] = "Ecco come apparir&agrave; la notizia. Se stai usando i 'tag' per la formattazione del testo, ricordarti di chiuderli tutti.";
@@ -437,6 +439,7 @@
 				$lang_string['blog_title'] = "Nome Blog:";
 				$lang_string['blog_author'] = "Autore:";
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Pi&egrave; di pagina:";
 				$lang_string['blog_choose_language'] = "Cambia lingua:";
 				$lang_string['blog_enable_cache'] = "Abilita la cache delle notizie (su alcuni server pu&ograve; incrementare la velocit&agrave;)"; // New for 0.4.6

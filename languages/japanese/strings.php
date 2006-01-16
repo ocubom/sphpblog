@@ -41,6 +41,7 @@
 	$lang_string['menu_most_recent_trackback'] = "ºÇ¿·¤Î¥È¥é¥Ã¥¯¥Ð¥Ã¥¯"; 
 	$lang_string['menu_add_block'] = "¥«¥¹¥¿¥à¥Ö¥í¥Ã¥¯";
 	$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+	$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 	// Other
 	$lang_string['home'] = 'Return to Home';
@@ -119,6 +120,7 @@
 	$lang_string['label_tb_ping'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯Á÷¿® (¥«¥ó¥Þ¤Ç¶èÀÚ¤Ã¤ÆÊ£¿ô»ØÄê²ÄÇ½)"; // <-- New 0.3.8
 	$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
 	$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 	// Preview / Edit Entry
 	$lang_string['title_preview'] = "¥×¥ì¥Ó¥å¡¼ / ÊÔ½¸";
 	$lang_string['instructions_preview'] = "¥¨¥ó¥È¥ê¡¼¤ÎÊÔ½¸¤ò¹Ô¤¤¤Þ¤¹¡£¡Ê¥¿¥°¤ÏÉ¬¤ºÊÄ¤¸¤Æ²¼¤µ¤¤¡Ë'.";
@@ -435,44 +437,45 @@ $lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ
 				$lang_string['btn_setup'] = "[ Setup ]";
 				$lang_string['btn_try_again'] = "[ Try Again ]";
 				break;
-	case 'setup':
-	$lang_string['title'] = "ÀßÄê";
-	$lang_string['instructions'] = "blog¤ÎÀßÄê¤È´ÉÍý¼Ô¾ðÊó¤òÀßÄê¤·¤Þ¤¹¡£";
-	$lang_string['blog_title'] = "¥Ö¥í¥°¥¿¥¤¥È¥ë";
-	$lang_string['blog_author'] = "´ÉÍý¼ÔÌ¾";
-	$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
-	$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
-	$lang_string['blog_footer'] = "¥Õ¥Ã¥¿¡¼";
-	$lang_string['blog_choose_language'] = "¸À¸ìÁªÂò";
-	$lang_string['blog_enable_comments'] = "¥³¥á¥ó¥Èµ¡Ç½¤ò»È¤¦"; 
-	// <-- New 0.3.6
-	$lang_string['blog_comments_popup'] = "¥³¥á¥ó¥È¤ò¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥¤¥ó¥É¥¦¤ÇÉ½¼¨"; // <-- New 0.3.6
-	$lang_string['blog_enable_voting'] = "¥¨¥ó¥È¥ê¡¼É¾²Áµ¡Ç½¤ò»È¤¦"; 
-	// <-- New 0.3.8
-	$lang_string['blog_email_notification'] = "¿·¤·¤¤¥³¥á¥ó¥È¤¬¤¢¤ë¾ì¹ç¥á¡¼¥ë¤ÇÃÎ¤é¤»¤ë"; // <-- New 0.3.7
-	$lang_string['blog_send_pings'] = "¥µ¡¼¥Ð¡¼¤ËPing¤òÁ÷¿®¤¹¤ë"; // <-- New 0.3.7
-	$lang_string['blog_ping_urls'] = "Àµ³Î¤ÊURL¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£ (Îã¡§http://rpc.weblogs.com/RPC2)<br />(¥«¥ó¥Þ¤Ç¶èÀÚ¤ë»ö¤Ë¤è¤êÊ£¿ô¤Î¥µ¡¼¥Ð¡¼¤ò»ØÄê¤¹¤ë¤³¤È¤¬½ÐÍè¤Þ¤¹¡£)"; // <-- New 0.3.7
-	$lang_string['blog_trackback_about'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯Á÷¼õ¿®µ¡Ç½¤ÎÀßÄê¤ò¹Ô¤¤¤Þ¤¹¡£<br /> ¼êÆ°¤Ç¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤òÄÉ²Ã¤¹¤ë¤«¼«Æ°¸¡½Ðµ¡Ç½¤ò»ÈÍÑ¤¹¤ë¤«ÁªÂò¤Ç¤­¤Þ¤¹¡£"; // <-- New 0.3.8
-$lang_string['blog_trackback_enabled'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯µ¡Ç½¤ò»ÈÍÑ¤¹¤ë";
-// <-- New 0.3.8
-	$lang_string['blog_trackback_auto_discovery'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤Î¼«Æ°Á÷¼õ¿®µ¡Ç½¤ò»ÈÍÑ¤¹¤ë¡£"; // <-- New 0.?.?
-	$lang_string['blog_max_entries'] = "£±¥Ú¡¼¥¸Æâ¤ÎºÇÂçÉ½¼¨¥¨¥ó¥È¥ê¿ô"; 
-	// <-- New 0.3.6
-	$lang_string['blog_comment_tags'] = "¥³¥á¥ó¥ÈÆâ¤Ç»ÈÍÑ²ÄÇ½¤Ê¥¿¥°"; 
-	// <-- New 0.3.6
-	$lang_string['blog_gzip_about'] = "SPHP 4.0.4°Ê¹ß¤«¤é»ÈÍÑ²ÄÇ½¤Êgzip(.gz)°µ½Ìµ¡Ç½¤ÎÀßÄê¤ò¹Ô¤¤¤Þ¤¹¡£<br />¥Õ¥¡¥¤¥ë¤ò°µ½Ì¤¹¤ë»ö¤Ë¤è¤ê¥Ç¥£¥¹¥¯¥¹¥Ú¡¼¥¹¤ÎÀáÌó¤È¥µ¡¼¥Ð¡¼¤Ø¤ÎÉé²Ù¤òÍÞ¤¨¤ë»ö¤¬¤Ç¤­¤Þ¤¹¡£<br />½é´üÀßÄê¤Ç¤Ï¥ª¥Õ¤Ë¤Ê¤Ã¤Æ¤ª¤ê¤Þ¤¹¤Î¤ÇÉ¬Í×¤Ë±þ¤¸¤ÆÍ­¸ú¤Ë¤·¤Æ²¼¤µ¤¤¡£"; // <-- New 0.3.7
-	$lang_string['blog_enable_gzip_txt'] = "¥í¥°¥Õ¥¡¥¤¥ë¤ògzip¤Ç°µ½Ì¤¹¤ë"; 
-	// <-- New 0.3.7
-	$lang_string['blog_enable_gzip_output'] = "HTTP½ÐÎÏÍÑ¤Îgzip°µ½Ì¤ò»ÈÍÑ¤·¤Þ¤¹"; // <-- New 0.3.7
-	$lang_string['submit_btn'] = "&nbsp;·èÄê&nbsp;";
-	// Error Response
-	$lang_string['error'] = "<h2>Whoops!</h2>ÀßÄê¤ÎÊÝÂ¸¤Ë¼ºÇÔ¤·¤Þ¤·¤¿<br /><br />Server Reported:<br />";
-	$lang_string['form_error'] = "Please complete the Title and Author fields.";
-	$lang_string['label_entry_order'] = "¥¨¥ó¥È¥ê¡¼¤ÎÉ½¼¨";
-	$lang_string['select_new_to_old'] = "¿·¤·¤¤½ç¤ËÉ½¼¨";
-	$lang_string['select_old_to_new'] = "¸Å¤¤½ç¤ËÉ½¼¨";
-	$lang_string['label_comment_order'] = "¥³¥á¥ó¥È¤ÎÉ½¼¨";
-					$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
+			case 'setup':
+				$lang_string['title'] = "ÀßÄê";
+				$lang_string['instructions'] = "blog¤ÎÀßÄê¤È´ÉÍý¼Ô¾ðÊó¤òÀßÄê¤·¤Þ¤¹¡£";
+				$lang_string['blog_title'] = "¥Ö¥í¥°¥¿¥¤¥È¥ë";
+				$lang_string['blog_author'] = "´ÉÍý¼ÔÌ¾";
+				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
+				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
+				$lang_string['blog_footer'] = "¥Õ¥Ã¥¿¡¼";
+				$lang_string['blog_choose_language'] = "¸À¸ìÁªÂò";
+				$lang_string['blog_enable_comments'] = "¥³¥á¥ó¥Èµ¡Ç½¤ò»È¤¦"; 
+				// <-- New 0.3.6
+				$lang_string['blog_comments_popup'] = "¥³¥á¥ó¥È¤ò¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥¤¥ó¥É¥¦¤ÇÉ½¼¨"; // <-- New 0.3.6
+				$lang_string['blog_enable_voting'] = "¥¨¥ó¥È¥ê¡¼É¾²Áµ¡Ç½¤ò»È¤¦"; 
+				// <-- New 0.3.8
+				$lang_string['blog_email_notification'] = "¿·¤·¤¤¥³¥á¥ó¥È¤¬¤¢¤ë¾ì¹ç¥á¡¼¥ë¤ÇÃÎ¤é¤»¤ë"; // <-- New 0.3.7
+				$lang_string['blog_send_pings'] = "¥µ¡¼¥Ð¡¼¤ËPing¤òÁ÷¿®¤¹¤ë"; // <-- New 0.3.7
+				$lang_string['blog_ping_urls'] = "Àµ³Î¤ÊURL¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£ (Îã¡§http://rpc.weblogs.com/RPC2)<br />(¥«¥ó¥Þ¤Ç¶èÀÚ¤ë»ö¤Ë¤è¤êÊ£¿ô¤Î¥µ¡¼¥Ð¡¼¤ò»ØÄê¤¹¤ë¤³¤È¤¬½ÐÍè¤Þ¤¹¡£)"; // <-- New 0.3.7
+				$lang_string['blog_trackback_about'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯Á÷¼õ¿®µ¡Ç½¤ÎÀßÄê¤ò¹Ô¤¤¤Þ¤¹¡£<br /> ¼êÆ°¤Ç¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤òÄÉ²Ã¤¹¤ë¤«¼«Æ°¸¡½Ðµ¡Ç½¤ò»ÈÍÑ¤¹¤ë¤«ÁªÂò¤Ç¤­¤Þ¤¹¡£"; // <-- New 0.3.8
+				$lang_string['blog_trackback_enabled'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯µ¡Ç½¤ò»ÈÍÑ¤¹¤ë";
+				// <-- New 0.3.8
+				$lang_string['blog_trackback_auto_discovery'] = "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤Î¼«Æ°Á÷¼õ¿®µ¡Ç½¤ò»ÈÍÑ¤¹¤ë¡£"; // <-- New 0.?.?
+				$lang_string['blog_max_entries'] = "£±¥Ú¡¼¥¸Æâ¤ÎºÇÂçÉ½¼¨¥¨¥ó¥È¥ê¿ô"; 
+				// <-- New 0.3.6
+				$lang_string['blog_comment_tags'] = "¥³¥á¥ó¥ÈÆâ¤Ç»ÈÍÑ²ÄÇ½¤Ê¥¿¥°"; 
+				// <-- New 0.3.6
+				$lang_string['blog_gzip_about'] = "SPHP 4.0.4°Ê¹ß¤«¤é»ÈÍÑ²ÄÇ½¤Êgzip(.gz)°µ½Ìµ¡Ç½¤ÎÀßÄê¤ò¹Ô¤¤¤Þ¤¹¡£<br />¥Õ¥¡¥¤¥ë¤ò°µ½Ì¤¹¤ë»ö¤Ë¤è¤ê¥Ç¥£¥¹¥¯¥¹¥Ú¡¼¥¹¤ÎÀáÌó¤È¥µ¡¼¥Ð¡¼¤Ø¤ÎÉé²Ù¤òÍÞ¤¨¤ë»ö¤¬¤Ç¤­¤Þ¤¹¡£<br />½é´üÀßÄê¤Ç¤Ï¥ª¥Õ¤Ë¤Ê¤Ã¤Æ¤ª¤ê¤Þ¤¹¤Î¤ÇÉ¬Í×¤Ë±þ¤¸¤ÆÍ­¸ú¤Ë¤·¤Æ²¼¤µ¤¤¡£"; // <-- New 0.3.7
+				$lang_string['blog_enable_gzip_txt'] = "¥í¥°¥Õ¥¡¥¤¥ë¤ògzip¤Ç°µ½Ì¤¹¤ë"; 
+				// <-- New 0.3.7
+				$lang_string['blog_enable_gzip_output'] = "HTTP½ÐÎÏÍÑ¤Îgzip°µ½Ì¤ò»ÈÍÑ¤·¤Þ¤¹"; // <-- New 0.3.7
+				$lang_string['submit_btn'] = "&nbsp;·èÄê&nbsp;";
+				// Error Response
+				$lang_string['error'] = "<h2>Whoops!</h2>ÀßÄê¤ÎÊÝÂ¸¤Ë¼ºÇÔ¤·¤Þ¤·¤¿<br /><br />Server Reported:<br />";
+				$lang_string['form_error'] = "Please complete the Title and Author fields.";
+				$lang_string['label_entry_order'] = "¥¨¥ó¥È¥ê¡¼¤ÎÉ½¼¨";
+				$lang_string['select_new_to_old'] = "¿·¤·¤¤½ç¤ËÉ½¼¨";
+				$lang_string['select_old_to_new'] = "¸Å¤¤½ç¤ËÉ½¼¨";
+				$lang_string['label_comment_order'] = "¥³¥á¥ó¥È¤ÎÉ½¼¨";
+				$lang_string['cal_sunday'] = "Sunday"; // New for 0.4.6
 				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
