@@ -254,6 +254,106 @@
 		
 		return ( clean_post_text( $str ) );
 	}
+	
+	function format_date_class ( $time_stamp,$whatyouwant ) {
+		if ( strpos( $time_stamp, ',' ) !== false ) {
+			// This is a hack for compatibility with the time
+			// format from versions < 0.3.3. In 0.3.3 we switched
+			// to the unix timestamp for storing times.
+			//
+			// Before that it was in this format:
+			//   date( 'F j, Y, g:i a', $time_stamp );
+			//   'May 10, 2004, 3:57 pm'
+			$time_stamp = str_replace( ',', '', $time_stamp );
+			$time_stamp = strtotime( $time_stamp );
+		}
+		
+		// Read config information from file.
+		
+		$dateArray = read_dateFormat();
+		
+		$time_stamp = $time_stamp + ( intval( $dateArray[ 'server_offset' ] ) * 60 * 60);
+		
+		// Long Date
+		$date_long = '';
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotOneSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotTwoSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
+		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
+		
+		// Short Date
+		$date_short = '';
+		$separator = $dateArray[ 'sDate_separator' ];
+		$leading_zero_day = $dateArray[ 'sDate_leadZeroDay' ];
+		$leading_zero_month = $dateArray[ 'sDate_leadZeroMonth' ];
+		$full_century = $dateArray[ 'sDate_fullYear' ];
+		$numeric_day = date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+		$numeric_month = date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+		$numeric_year = date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+		$alpha_month = date_convert( 'month_short', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+		$numeric_day_suffix = date_convert( 'day_suffix', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				
+		// Time View
+		$time_str = '';
+		$time_clockFormat = $dateArray[ 'time_clockFormat' ];
+		$leading_zero_hour = $dateArray[ 'time_leadZeroHour' ];
+		$before_noon = $dateArray[ 'time_AM' ];
+		$after_noon = $dateArray[ 'time_PM' ];
+		$separator = $dateArray[ 'time_separator' ];
+		
+		if ( $time_clockFormat == '24' ) {
+			if ( $leading_zero_hour == 'on' ) {
+				$time_str = $time_str . date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
+			} else {
+				$time_str = $time_str . date( 'G', $time_stamp ) . $separator . date( 'i', $time_stamp );
+			}
+		} else {
+			if ( $leading_zero_hour == 'on' ) {
+				$time_str = $time_str . date( 'h', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				if ( date( 'a', $time_stamp ) == 'am' ) {
+					$time_str = $time_str . $before_noon;
+				} else {
+					$time_str = $time_str . $after_noon;
+				}
+			} else {
+				$time_str = $time_str . date( 'g', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				if ( date( 'a', $time_stamp ) == 'am' ) {
+					$time_str = $time_str . $before_noon;
+				} else {
+					$time_str = $time_str . $after_noon;
+				}
+			}
+		}
+		
+		// OK, we've got it...
+		$str = '';
+		switch( $whatyouwant ) {
+			case 'NUMDAY':
+				$str = $str . $numeric_day;
+				break;
+			case 'NUMMONTH':
+				$str = $str . $numeric_month;
+				break;
+			case 'NUMYEAR':
+				$str = $str . "'" . $numeric_year;
+				break; 
+			case 'ALPHAMONTH':
+				$str = $str . $alpha_month;
+				break;
+			case 'TIMENORMAL':
+				$str = $str . $time_str;
+				break;
+			case 'SUFFIXDAY':
+				$str = $str . $numeric_day_suffix;
+				break;
+		}
+		
+		return ( clean_post_text( $str ) );
+	}
 		
 	function date_convert( $val, $leading_zero_day, $leading_zero_month, $full_century, $time_stamp ) {
 		// Return string dates in the correct format.

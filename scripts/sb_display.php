@@ -203,6 +203,12 @@
 				// Subject / Date
 				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
 				$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
+				$entry_array[ 'date_numeric_day' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'NUMDAY' ), false, false );
+				$entry_array[ 'date_numeric_month' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'NUMMONTH' ), false, false );
+				$entry_array[ 'date_numeric_year' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'NUMYEAR' ), false, false );
+				$entry_array[ 'date_alpha_month' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'ALPHAMONTH' ), false, false );
+				$entry_array[ 'date_numeric_time' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'TIMENORMAL' ), false, false );
+				$entry_array[ 'date_suffix_day' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'SUFFIXDAY' ), false, false );
 				
 				// Categories
 				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
