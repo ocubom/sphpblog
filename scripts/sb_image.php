@@ -36,46 +36,4 @@
 		
 		return ( $str );
 	}
-	
-	function image_dropdown () {
-		// Get a list of images in the image folder. Return HTML.
-		//
-		global $theme_vars;
-		
-		// Changed this to only display Image files. This function
-		// is used in comment.php if the blog owner has img tag
-		// enabled for comments. (09/08/05 - alex)
-		$dir = 'images/';
-		$contents = sb_folder_listing( $dir, array( '.jpg', '.jpeg', '.gif', '.png' ) );
-		// $contents = sb_folder_listing( $dir, array() );
-		
-		$str = NULL;
-		if ($contents) {
-			if ( count( $contents ) > 0 ) {
-				$str = '<select name="image_list" onchange="ins_image_dropdown(this.form.blog_text,this.form.image_list);">';
-				$str = $str . '<option label="--" value="--">--</option>';
-				for ( $i = 0; $i < count( $contents ); $i++ ) {
-					$str_url = $dir.$contents[$i];
-					$img_size = @getimagesize( $str_url );
-					if ( $img_size !== false ) {
-						$width = $img_size[0];
-						$height = $img_size[1];
-						$max_image_width = $theme_vars[ 'max_image_width' ];
-						if ( $width > $max_image_width ) {
-							$height_resized = round( $height * ( $max_image_width / $width ) );
-							$width_resized = $max_image_width;
-							$str = $str . '<option label="'.$contents[$i].' - '.$width.' x '.$height.'" value="[img='.$dir.$contents[$i].' popup=true]">'.$contents[$i].'</option>';
-						} else {
-							$str = $str . '<option label="'.$contents[$i].' - '.$width.' x '.$height.'" value="[img='.$dir.$contents[$i].' popup=false]">'.$contents[$i].'</option>';
-						}
-					} else {
-						$str = $str . '<option label="'.$contents[$i].'" value="[img='.$dir.$contents[$i].' ]">'.$contents[$i].'</option>';
-					}
-				}
-				$str = $str . '</select>';
-			}
-		}
-		
-		return ( $str );
-	}
 ?>

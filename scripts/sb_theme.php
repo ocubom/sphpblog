@@ -56,7 +56,43 @@
 		
 		return ( $result );
 	}
+
+	function menu_display_avatar() {
+		// Title: Avatar mod for sPhpBlog
+		// Author: sverde1
+		// Email: sverde1@email.si
+		
+		// Returns avatar picture
+		//
+		global $lang_string, $blog_config;
+		
+		if ( $blog_config[ 'blog_avatar' ] ) {
+			$str = '<img src="' . $blog_config[ 'blog_avatar' ] . '" alt="" />';
+		}
+		
+		$result = array();
+		$result[ 'title' ] = $lang_string[ 'menu_avatar' ];
+		$result[ 'content' ] = $str;
+		
+		return ( $result );
+	}
 	
+	function menu_random_quote() {
+		// Random Quote Block
+		$quoteFile = "themes/quote.txt"; //File holding quotesÊ
+		$fp = fopen($quoteFile, "r"); //Opens file for readÊ
+		$quotecontent = fread($fp, filesize($quoteFile)); // Read FileÊ
+		$quotes = explode("n",trim($quotecontent)); //Put quotes into arrayÊ
+		fclose($fp); //Close the fileÊ
+		$rquote = array_rand($quotes); // Random NumberÊ
+			
+		$result = array();
+		$result[ 'title' ] = 'Random Quote';
+		$result[ 'content' ] = $quotes[$rquote];
+			
+		return ( $result );
+	}
+
 	function menu_display_blognav () {
 		// Returns the blog entry navigation calendar as HTML.
 		//

@@ -68,26 +68,28 @@
 		}
 		$str .= '</select>';
 		if ( $add_returns ) {
-			$str .= '<br />';
+			$str .= '<p />';
 		}
 		$str .= "\n";
 		
 		return $str;
 	}
 	
-	function HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false ) {
+	function HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false, $autocomplete=false ) {
 		// This function creates a standard HTML input form.
 		
 		$str = '';
 		if ( isset( $label ) && $label !== false ) {
 			$str .= '<label for="'.$id.'">'.$label.'</label>';
-			if ( $add_returns ) {			$str .= '<br />'; }
+			if ( $add_returns ) {
+				$str .= '<br />';
+			}
 			$str .= "\n";
 		}
 		
 		// <input name="name" id="id" type="text" value="value" size="2" maxlength="2" onchange="" disabled>
 		$str .= '<input name="'.$id.'" id="'.$id.'" type="'.$type.'"';
-		if ( $value > 0 ) {
+		if ( isset( $value ) ) {
 			$str .= ' value="'.$value.'"';
 		}
 		if ( $size > 0 ) {
@@ -102,13 +104,16 @@
 		if ( $width > 0) {
 			$str .= ' style="width: '.$width.'px;"';
 		}
-		if ( $disabled == true ) {
+		if ( !$autocomplete ) {
+			$str .= ' autocomplete="OFF"';
+		}
+		if ( $disabled ) {
 			$str .= ' disabled';
 		}
 		$str .= '>' . "\n";
 		
 		if ( $add_returns ) {
-			$str .= '<br />';
+			$str .= '<p />';
 		}
 		$str .= "\n";
 		

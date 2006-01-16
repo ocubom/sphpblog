@@ -6,6 +6,16 @@
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
 	
+	// blog_entry_to_array ( $entryFile )
+	// write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_relatedlink, $blog_date=NULL )
+	// implode_with_keys( $array, $separator = '|' )
+	// explode_with_keys( $str, $separator = '|' )
+	// delete_dir( $dir )
+	// delete_entry( $entry, $path )
+	// write_rating( $y, $m, $entry, $rating )
+	// read_rating( $y, $m, $entry )
+	// write_modifica ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_date=NULL, $filename)
+	
 	// --------------------
 	// Blog Entry Functions
 	// --------------------

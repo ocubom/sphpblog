@@ -502,6 +502,7 @@
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
+						
 						$max_image_width = $theme_vars[ 'max_image_width' ];
 						
 						$auto_resize = true;

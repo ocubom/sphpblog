@@ -1,5 +1,22 @@
 <?php
+	// The Simple PHP Blog is released under the GNU Public License.
+	//
+	// You are free to use and modify the Simple PHP Blog. All changes 
+	// must be uploaded to SourceForge.net under Simple PHP Blog or
+	// emailed to apalmo <at> bigevilbrain <dot> com
+	
+	// -------------------------------
 	// Emoticon Code by NoWhereMan and Hydra	
+	// -------------------------------
+	
+	// emoticons_check_tags($smile_path)
+	// emoticons_load_tags ()
+	// emoticons_load ()
+	// emoticons_show ()
+	
+	// --------------------
+	// Emoticon Functions
+	// --------------------
 	
 	// This function checks for alternate smiley tags
 	// EX: the image for :) could be the same of ^^ ^__^ :happy: or :smile:
@@ -66,18 +83,22 @@
 	function emoticons_show () {
 		$emote_arr = emoticons_load_tags();
 		
-		$str_out =  "<div>\n";
+		$str = null;
 		for ( $n = 0; $n < count( $emote_arr ); $n++ ) {
 			$path = $emote_arr[ $n ][ 'PATH' ];
 			$tags_str = $emote_arr[ $n ][ 'TAGS' ];
 			$tags_arr = explode( ' ', $tags_str );
-			$str_out .=  '<span style="Cursor: hand;" onclick="Javascript:ins_emoticon(document.getElementById(\'text\'), \'' . $tags_arr[0] . '\');">' ."\n";
-			$str_out .=  '<img border="0" src="' . $path . '" alt="'.$tags_str.'"title="'.$tags_str.'"  />' ."\n";
-			$str_out .=  '</span>' ."\n";
+			$str .=  '<span style="Cursor: hand;" onclick="Javascript:ins_emoticon(document.getElementById(\'text\'), \'' . $tags_arr[0] . '\');">' ."\n";
+			$str .=  '<img border="0" src="' . $path . '" alt="'.$tags_str.'"title="'.$tags_str.'"  />' ."\n";
+			$str .=  '</span>' ."\n";
 		}
-		$str_out .=  "</div>\n";
-				
-		echo $str_out;
-		return $str_out;
+		
+		$str_out = null;
+		if ( $str != null ) {
+			$str_out =  "<div>\n" . $str . "</div><p />\n";
+		}
+		
+		echo( $str_out );
+		return( $str_out );
 	}
 ?>

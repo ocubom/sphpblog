@@ -815,7 +815,8 @@
 						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
 					}
 					
-					$str_trackbacks = $str_trackbacks . format_date_menu( $trackback_date ) . '<br />';
+					// $str_trackbacks = $str_trackbacks . format_date_menu( $trackback_date ) . '<br />';
+					$str_trackbacks = $str_trackbacks . format_date( $trackback_date ) . '<br />';
 					$str_trackbacks = $str_trackbacks . $trackback_blogname . '<p />';
 				}
 			}

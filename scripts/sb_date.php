@@ -6,6 +6,11 @@
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
 	
+	// write_dateFormat ( $array )
+	// read_dateFormat ()
+	// format_date ( $time_stamp )
+	// date_convert( $val, $leading_zero_day, $leading_zero_month, $full_century, $time_stamp )
+	
 	// -------------------------------
 	// Date Config / Display Functions
 	// -------------------------------
@@ -244,140 +249,6 @@
 				$str = $str . $time_str;
 				break;
 			case 'none':
-				break;
-		}
-		
-		return ( clean_post_text( $str ) );
-	}
-	
-	function format_date_menu ( $time_stamp ) {
-		if ( strpos( $time_stamp, ',' ) !== false ) {
-			// This is a hack for compatibility with the time
-			// format from versions < 0.3.3. In 0.3.3 we switched
-			// to the unix timestamp for storing times.
-			//
-			// Before that it was in this format:
-			//   date( 'F j, Y, g:i a', $time_stamp );
-			//   'May 10, 2004, 3:57 pm'
-			$time_stamp = str_replace( ',', '', $time_stamp );
-			$time_stamp = strtotime( $time_stamp );
-		}
-		
-		// Read config information from file.
-		
-		$dateArray = read_dateFormat();
-		
-		$time_stamp = $time_stamp + ( intval( $dateArray[ 'server_offset' ] ) * 60 * 60);
-		
-		// Long Date
-		$date_long = '';
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotOneSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotTwoSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
-		
-		// Short Date
-		$date_short = '';
-		$separator = $dateArray[ 'sDate_separator' ];
-		$leading_zero_day = $dateArray[ 'sDate_leadZeroDay' ];
-		$leading_zero_month = $dateArray[ 'sDate_leadZeroMonth' ];
-		$full_century = $dateArray[ 'sDate_fullYear' ];
-		switch ( $dateArray[ 'sDate_order' ] ) {
-			case 'Month/Day/Year':
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-			case 'Day/Month/Year':
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-			case 'Year/Month/Day':
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-			case 'Month/Year/Day':
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-			case 'Day/Year/Month':
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-			case 'Year/Day/Month':
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-			case 'Day/MMM/Year':
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_short', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				break;
-		}
-		
-		// Time View
-		$time_str = '';
-		$time_clockFormat = $dateArray[ 'time_clockFormat' ];
-		$leading_zero_hour = $dateArray[ 'time_leadZeroHour' ];
-		$before_noon = $dateArray[ 'time_AM' ];
-		$after_noon = $dateArray[ 'time_PM' ];
-		$separator = $dateArray[ 'time_separator' ];
-		
-		if ( $time_clockFormat == '24' ) {
-			if ( $leading_zero_hour == 'on' ) {
-				$time_str = $time_str . date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
-			} else {
-				$time_str = $time_str . date( 'G', $time_stamp ) . $separator . date( 'i', $time_stamp );
-			}
-		} else {
-			if ( $leading_zero_hour == 'on' ) {
-				$time_str = $time_str . date( 'h', $time_stamp ) . $separator . date( 'i', $time_stamp );
-				if ( date( 'a', $time_stamp ) == 'am' ) {
-					$time_str = $time_str . $before_noon;
-				} else {
-					$time_str = $time_str . $after_noon;
-				}
-			} else {
-				$time_str = $time_str . date( 'g', $time_stamp ) . $separator . date( 'i', $time_stamp );
-				if ( date( 'a', $time_stamp ) == 'am' ) {
-					$time_str = $time_str . $before_noon;
-				} else {
-					$time_str = $time_str . $after_noon;
-				}
-			}
-		}
-		
-		// Put it all together...
-		$str = '';
-		switch ( $dateArray[ 'mFormat' ] ) {
-			case 'long':
-				$str = $str . $date_long;
-				break;
-			case 'short':
-				$str = $str . $date_short;
 				break;
 		}
 		
