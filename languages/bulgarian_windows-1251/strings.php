@@ -45,6 +45,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Ïîñëåäíè ïðåïðàòêè"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Áëîêîâå";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "Íà ãëàâíàòà";
@@ -121,6 +122,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "àâòîìàòè÷íî îòêðèâàíå"; // <-- New 0.3.8
 				$lang_string['label_relatedlink'] = "Ñâúðçàí Ëèíê"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Ïðåãëåä / ðåäàêòèðàíå íà íîâèíàòà";
 				$lang_string['instructions_preview'] = "Òàêà ùå èçãëåæäà íîâèíàòà. <strong>Îáúðíè âíèìàíèå,</strong>: ÷å àêî èçïîëçâàø ðàçäåëÿíå íà òåêñòà, ïðèêà÷èë ñè èçîîáðàæåíèå èëè ñè äàë ëèíê, òðÿáâà äà ñå óâåðèø, ÷å âñè÷êè òàãîâå ñà çàòâîðåíè.";
@@ -443,6 +445,7 @@
 				$lang_string['blog_title'] = "Èìå íà ñòðàíèöàòà:";
 				$lang_string['blog_author'] = "Àâòîð:";
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.6.3
 				$lang_string['blog_footer'] = "Ïîäòåêñò:";
 				$lang_string['blog_choose_language'] = "Èçáåðè åçèê:";
 				$lang_string['blog_enable_comments'] = "Âúçìîæíè êîìåíòàðèòå"; // <-- New 0.3.6

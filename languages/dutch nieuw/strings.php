@@ -45,6 +45,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Blocks";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "Terug naar startpagina";
@@ -121,6 +122,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Bekijk / Wijzig bericht";
 				$lang_string['instructions_preview'] = "Het bericht zal als volgt uit komen te zien. Als je opmaakcodes of afbeeldingen gebruikt, vergeet dan niet de 'tags' te sluiten.";
@@ -484,6 +486,7 @@
 				$lang_string['blog_title'] = "Blog naam:";
 				$lang_string['blog_author'] = "Auteur:";
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Ondertitel:";
 				$lang_string['blog_choose_language'] = "Kies taal:";
 				$lang_string['blog_enable_comments'] = "Commentaar van gebruikers toestaan"; // <-- New 0.3.6

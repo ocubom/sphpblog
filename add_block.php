@@ -98,7 +98,7 @@
 		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />
-			<input type="text" name="block_name" autocomplete=OFF value="<?php echo $block_name; ?>" size="40"><br /><br />
+			<input type="text" name="block_name" autocomplete="OFF" value="<?php echo $block_name; ?>" size="40"><br /><br />
 			
 			<?php echo( $lang_string[ 'block_content' ] ); ?><br />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.block_content,'b','');" />
@@ -127,7 +127,7 @@
 			<?php echo image_dropdown(); ?><br /><br />
 			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50" autocomplete=OFF><?php echo $block_content; ?></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50" autocomplete="OFF"><?php echo $block_content; ?></textarea><br /><br />
 			
 			<?php if( isset( $block_id ) ) { ?>
 			<input type="hidden" name="block_id" value="<?php echo $block_id; ?>" />

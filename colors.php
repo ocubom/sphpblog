@@ -424,13 +424,13 @@
 
 			<label for="scheme_name"><?php echo( $lang_string[ 'scheme_name' ] ); ?></label><br />
 
-			<input type="text" name="scheme_name" id="scheme_name" autocomplete=OFF value="" size="40"><br /><br />
+			<input type="text" name="scheme_name" id="scheme_name" autocomplete="OFF" value="" size="40"><br /><br />
 
 			
 
 			<label for="scheme_file"><?php echo( $lang_string[ 'scheme_file' ] ); ?></label><br />
 
-			<input type="text" name="scheme_file" id="scheme_file" autocomplete=OFF value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" />
+			<input type="text" name="scheme_file" id="scheme_file" autocomplete="OFF" value="" size="40"> <input type="submit" name="save_btn" value="<?php echo( $lang_string[ 'save_btn' ] ); ?>" />
 
 		
 

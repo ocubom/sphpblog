@@ -47,6 +47,7 @@
 		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks";
 		$lang_string['menu_add_block'] = "Blocks";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 
 		// Other
 		$lang_string['home'] = 'Return to Home';
@@ -125,6 +126,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)";
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery";
 				$lang_string['label_relatedlink'] = "Related Link";
+				$lang_string['label_categories'] = "Category List";
 
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Preview / Edit Entry";
@@ -461,7 +463,8 @@
 				$lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
 				$lang_string['blog_title'] = "Blog Name:";
 				$lang_string['blog_author'] = "Author:";
-				$lang_string['blog_email'] = "Email:";
+				$lang_string['blog_email'] = "Email: (Separate email address should be separated by a , comma)";
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Footer:";
 				$lang_string['blog_choose_language'] = "Choose Language:";
 				$lang_string['blog_enable_comments'] = "Enable User Comments";

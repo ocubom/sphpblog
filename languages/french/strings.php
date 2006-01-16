@@ -42,6 +42,7 @@
 		$lang_string['menu_most_recent_trackback'] = "La plupart De Trackbacks Récent"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Blocs";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "Retour Accueil";
@@ -120,6 +121,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (la virgule a séparé)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Apercu / Edition de contenu";
 				$lang_string['instructions_preview'] = "Voici à quoi ressemble votre post. Si vous utilisez différents styles de texte ou si vous incluez des images, veillez à bien fermer toutes vos balises.";
@@ -443,6 +445,7 @@
 				$lang_string['blog_title'] = "Nom du Blog :";
 				$lang_string['blog_author'] = "Auteur :";
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Pied de Page :";
 				$lang_string['blog_choose_language'] = "Choisissez votre Langue :";
 				$lang_string['blog_enable_comments'] = "Permettez Les Commentaires D'Utilisateur"; // <-- New 0.3.6

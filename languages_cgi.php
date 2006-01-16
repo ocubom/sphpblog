@@ -9,7 +9,47 @@
 	// sb_language( 'index' );
 	
 	// CGI Functions
-	$pages = array( 'add', 'add_static', 'add_block', 'add_link', 'categories', 'colors', 'comments', 'delete', 'delete_static', 'image_list', 'info', 'index', 'static', 'rating', 'login', 'logout', 'forms', 'set_login', 'install00', 'install01', 'install02', 'install03', 'install04', 'install05', 'install06', 'setup', 'trackbacks ', 'options', 'themes', 'upload_img', 'search', 'contact', 'stats','errorpage-nocookies','errorpage' );
+	global $pages;
+			
+	$pages = array();
+	array_push( $pages, 'add' );
+	array_push( $pages, 'add_block' );
+	array_push( $pages, 'add_link' );
+	array_push( $pages, 'add_static' );
+	array_push( $pages, 'archives' );
+	array_push( $pages, 'index' );
+	array_push( $pages, 'categories' );
+	array_push( $pages, 'colors' );
+	array_push( $pages, 'comments' );
+	array_push( $pages, 'contact' );
+	array_push( $pages, 'delete' );
+	array_push( $pages, 'delete_static' );
+	array_push( $pages, 'emoticons' );
+	array_push( $pages, 'errorpage-nocookies' );
+	array_push( $pages, 'errorpage' );
+	array_push( $pages, 'image_list' );
+	array_push( $pages, 'info' );
+	array_push( $pages, 'install00' );
+	array_push( $pages, 'install01' );
+	array_push( $pages, 'install02' );
+	array_push( $pages, 'install03' );
+	array_push( $pages, 'install04' );
+	array_push( $pages, 'install05' );
+	array_push( $pages, 'install06' );
+	array_push( $pages, 'login' );
+	array_push( $pages, 'logout' );
+	array_push( $pages, 'options' );
+	array_push( $pages, 'rating' );
+	array_push( $pages, 'search' );
+	array_push( $pages, 'set_login' );
+	array_push( $pages, 'setup' );
+	array_push( $pages, 'static' );
+	array_push( $pages, 'stats' );
+	array_push( $pages, 'themes' );
+	array_push( $pages, 'trackbacks ' );
+	array_push( $pages, 'upload_img' );
+	array_push( $pages, 'forms' );
+	
 	if ( array_key_exists( 'blog_language1', $_POST ) ) {
 	
 		// Store all the data from language 1
@@ -71,6 +111,8 @@
 		echo( "<h2>" . $lang_string[ 'title' ] . "</h2>" );
 		echo( $lang_string[ 'instructions' ] . "<p />" );
 		
+		global $pages;
+	
 		?>
 		<hr />
 		
@@ -84,7 +126,45 @@
 			$lang1_array = explode( "|", $lang1_string );
 			$lang2_array = explode( "|", $lang2_string );
 			
-			$pages = array( 'add', 'add_static', 'add_block', 'add_link', 'categories', 'colors', 'comments', 'delete', 'delete_static', 'image_list', 'info', 'index', 'static', 'rating', 'login', 'logout', 'forms', 'set_login', 'install00', 'install01', 'install02', 'install03', 'install04', 'install05', 'install06', 'setup', 'trackbacks ', 'options', 'themes', 'upload_img', 'search', 'contact', 'stats','errorpage-nocookies','errorpage' );
+			$pages = array();
+			array_push( $pages, 'add' );
+			array_push( $pages, 'add_block' );
+			array_push( $pages, 'add_link' );
+			array_push( $pages, 'add_static' );
+			array_push( $pages, 'archives' );
+			array_push( $pages, 'index' );
+			array_push( $pages, 'categories' );
+			array_push( $pages, 'colors' );
+			array_push( $pages, 'comments' );
+			array_push( $pages, 'contact' );
+			array_push( $pages, 'delete' );
+			array_push( $pages, 'delete_static' );
+			array_push( $pages, 'emoticons' );
+			array_push( $pages, 'errorpage-nocookies' );
+			array_push( $pages, 'errorpage' );
+			array_push( $pages, 'image_list' );
+			array_push( $pages, 'info' );
+			array_push( $pages, 'install00' );
+			array_push( $pages, 'install01' );
+			array_push( $pages, 'install02' );
+			array_push( $pages, 'install03' );
+			array_push( $pages, 'install04' );
+			array_push( $pages, 'install05' );
+			array_push( $pages, 'install06' );
+			array_push( $pages, 'login' );
+			array_push( $pages, 'logout' );
+			array_push( $pages, 'options' );
+			array_push( $pages, 'rating' );
+			array_push( $pages, 'search' );
+			array_push( $pages, 'set_login' );
+			array_push( $pages, 'setup' );
+			array_push( $pages, 'static' );
+			array_push( $pages, 'stats' );
+			array_push( $pages, 'themes' );
+			array_push( $pages, 'trackbacks ' );
+			array_push( $pages, 'upload_img' );
+			array_push( $pages, 'forms' );
+			
 			// Compare
 			for ( $i = 0; $i < count( $pages ); $i++ ) {
 				$lang1_keys = explode( ",", $lang1_array[ $i ] );

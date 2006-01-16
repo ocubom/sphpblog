@@ -22,10 +22,22 @@
 		}
 	}
 	$comment_tags_allowed = implode( ',', $temp_array );
+
+	// Clean up the Blog Email list...
+	$temp_email = explode( ',', stripslashes( $_POST[ 'blog_email' ] ) );
+	if ( $temp_email === false ) {
+		$temp_email = '';
+	} else if ( is_array( $temp_email ) ) {
+		for ( $i=0; $i < count($temp_email); $i++ ) {
+			$temp_email[$i] = trim( $temp_email[$i] );
+		}
+		$temp_email = implode( ',', $temp_email );
+	}
 	
 	$ok = write_config( stripslashes( $_POST[ 'blog_title' ] ),
 						stripslashes( $_POST[ 'blog_author' ] ),
 						stripslashes( $_POST[ 'blog_email' ] ),
+						$_POST[ 'blog_avatar' ],
 						stripslashes( $_POST[ 'blog_footer' ] ),
 						$_POST[ 'blog_language' ],
 						$_POST[ 'blog_entry_order' ],
