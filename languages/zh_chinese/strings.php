@@ -45,6 +45,7 @@
 		$lang_string['menu_most_recent_trackback'] = "最新 Trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "自定區塊";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Other
 		$lang_string['home'] = "返回首頁";
@@ -128,6 +129,7 @@
 				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;"; // <-- New 0.3.8
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;"; // <-- New 0.3.8
 				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_categories'] = "Category List";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能儲存這篇文章。<br /><br />伺服器報告：<br />";
 				break;
@@ -447,6 +449,7 @@
 				$lang_string['blog_title'] = "Blog 站名：";
 				$lang_string['blog_author'] = "作者：";
 				$lang_string['blog_email'] = "Email："; // <-- New 0.3.7
+				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "頁尾：";
 				$lang_string['blog_choose_language'] = "請選擇語言：";
 				$lang_string['blog_enable_comments'] = "准許回應"; // <-- New 0.3.6
