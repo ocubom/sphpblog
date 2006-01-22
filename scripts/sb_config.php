@@ -7,7 +7,7 @@
 	// emailed to apalmo <at> bigevilbrain <dot> com
 	
 	// read_config ( )
-	// write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start, $blog_enable_title, $blog_enable_permalink )
+	// write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, $blog_enable_lastcomments, $blog_enable_lastentries )
 	// write_metainfo ( $info_keywords, $info_description, $info_copyright )
 	// write_theme ( $blog_theme )
 	// read_theme ( )
@@ -53,7 +53,10 @@
 									'blog_enable_calendar',
 									'blog_calendar_start',
 									'blog_enable_title',
-									'blog_enable_permalink' );
+									'blog_enable_permalink',
+									'blog_enable_stats',
+									'blog_enable_lastcomments',
+									'blog_enable_lastentries' );
 									
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -163,6 +166,18 @@
 			$blog_config[ 'blog_enable_permalink' ] = 1;
 		}
 		
+		if ( !isset( $blog_config[ 'blog_enable_stats' ] ) ) {
+			$blog_config[ 'blog_enable_stats' ] = 1;
+		}
+		
+		if ( !isset( $blog_config[ 'blog_enable_lastcomments' ] ) ) {
+			$blog_config[ 'blog_enable_lastcomments' ] = 1;
+		}	
+		
+		if ( !isset( $blog_config[ 'blog_enable_lastentries' ] ) ) {
+			$blog_config[ 'blog_enable_lastentries' ] = 1;
+		}			
+				
 		//'blog_calendar_start'
 		if ( !isset( $blog_config[ 'blog_calendar_start' ] ) ) {
 			$blog_config[ 'blog_calendar_start' ] = 'sunday';
@@ -209,7 +224,7 @@
 		}
 	}
 	
-	function write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start, $blog_enable_title, $blog_enable_permalink ) {
+	function write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, $blog_enable_lastcomments, $blog_enable_lastentries ) {
 		// Save config information to file.
 		//
 		$array = array( clean_post_text( $blog_title ),
@@ -236,7 +251,10 @@
 						$blog_enable_calendar,
 						$blog_calendar_start,
 						$blog_enable_title,
-						$blog_enable_permalink );
+						$blog_enable_permalink,
+						$blog_enable_stats,
+						$blog_enable_lastcomments,
+						$blog_enable_lastentries );
 						
 		$str = implode('|', $array);
 		

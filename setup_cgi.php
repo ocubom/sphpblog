@@ -58,7 +58,10 @@
 						( $_POST[ 'blog_enable_calendar' ] == 'on' ),
 						$_POST[ 'blog_calendar_start' ],
 						( $_POST[ 'blog_enable_title' ] == 'on' ),
-						( $_POST[ 'blog_enable_permalink' ] == 'on' ));
+						( $_POST[ 'blog_enable_permalink' ] == 'on' ),
+						( $_POST[ 'blog_enable_stats' ] == 'on' ),
+						( $_POST[ 'blog_enable_lastcomments' ] == 'on' ),
+						( $_POST[ 'blog_enable_lastentries' ] == 'on' ));
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );

@@ -463,7 +463,7 @@
 				$lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
 				$lang_string['blog_title'] = "Blog Name:";
 				$lang_string['blog_author'] = "Author:";
-				$lang_string['blog_email'] = "Email: (Separate email address should be separated by a , comma)";
+				$lang_string['blog_email'] = "Email: (Separate email address should be separated by a , comma - blank disables Contact Me option)"; // Updated 0.4.7
 				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Footer:";
 				$lang_string['blog_choose_language'] = "Choose Language:";
@@ -474,6 +474,9 @@
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
 				$lang_string['blog_email_notification'] = "Send email notification when comments are posted";
 				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;";
 				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)";
@@ -506,6 +509,13 @@
 				$lang_string['cal_sunday'] = "Sunday";
 				$lang_string['cal_monday'] = "Monday";
 				$lang_string['label_calendar_start'] = "Calendar Week Start Day";
+				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
+				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
+				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
+				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
+				$lang_string['title_general'] = "General"; // New in 0.4.7
+				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				break;
 			case 'trackbacks':
 				// Trackbacks

@@ -43,10 +43,14 @@
 		global $lang_string, $logged_in, $blog_config;
 		
 		$str = '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
+		
 		if ( !empty( $blog_config[ 'blog_email' ] ) ) {
 			$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
 		}
-		$str = $str . '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
+		
+		if ( $blog_config['blog_enable_stats']){ // New 0.4.7
+			$str = $str . '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
+		}
 		
 		$str = $str . read_links( $logged_in );
 		
