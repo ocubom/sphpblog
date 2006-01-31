@@ -547,7 +547,7 @@
 						
 						if ( $attrib_popup == 'true' ) {
 							// Pop Up True
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'';
+							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
 							if ( isset( $attrib_float ) ) {
 								switch ( $attrib_float ) {
 									case 'left';
@@ -558,10 +558,10 @@
 										break;
 								}
 							}
-							$str_out = $str_out . '></a>';
+							$str_out = $str_out . ' /></a>';
 						} else {
 							// Pop Up False
-							$str_out = $str_out . '<img src="' . $str_url . '" width='.$width.' height='.$height.' border=0 alt=\'\'';
+							$str_out = $str_out . '<img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
 							if ( isset( $attrib_float ) ) {
 								switch ( $attrib_float ) {
 									case 'left';
@@ -572,7 +572,7 @@
 										break;
 								}
 							}
-							$str_out = $str_out . '>';
+							$str_out = $str_out . ' />';
 						}
 										
 						// Store sub_string after the tag.
@@ -583,12 +583,12 @@
 						// Append HTML tag.
 						if ( isset( $attrib_popup ) ) {
 							if ( $attrib_popup == 'true' ) {
-								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border=0 alt=\'\'></a>';						
+								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';
 							} else {
-								$str_out = $str_out . '<img src="' . $str_url . '" border=0 alt=\'\'>';		
+								$str_out = $str_out . '<img src="' . $str_url . '" border="0" alt="" />';		
 							}
 						} else {
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border=0 alt=\'\'></a>';	
+							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';	
 						}
 										
 						// Store sub_string after the tag.
