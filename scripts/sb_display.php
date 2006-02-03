@@ -236,7 +236,7 @@
 					$entry_array[ 'delete' ][ 'url' ] = 'delete.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
 				}
 				$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
-				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
+				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;	
 				
 				$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
 				
@@ -330,7 +330,15 @@
 						}
 					}
 				}
-
+				
+				// OK now support the [more] tag - front page only - only works if comments are turned on
+				
+				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+					$entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
+				} else {
+					$entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , true, '' );
+				}
+				
 				// Trackback
 				if ( $blog_config[ 'blog_trackback_enabled' ] == true ) {
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {

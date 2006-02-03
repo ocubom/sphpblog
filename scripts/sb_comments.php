@@ -117,7 +117,7 @@
 		
 
 		$blog_content = read_entry_from_file( $filename );
-
+		$blog_content = replace_more_tag ( $blog_content , true, '' );
 		
 
 		// Comments
@@ -231,9 +231,7 @@
 				$entry_array[ 'date' ] = blog_to_html( format_date( $comment_entry_data[ 'DATE' ] ), true, false );
 
 				$entry_array[ 'entry' ] = blog_to_html( $comment_entry_data[ 'CONTENT' ], true, false, true ) . '<br clear="all" />';
-
 				
-
 				$entry_array[ 'logged_in' ] = $logged_in;
 
 				

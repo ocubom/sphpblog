@@ -173,7 +173,6 @@
 			}
 		}
 		
-		
 		// Selectively replace line breaks and/or decode html entities.
 		if ( $comment_mode ) {		
 			if ( in_array( 'html', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false ) {
@@ -618,5 +617,23 @@
 	    $text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","[url=mailto:\\1]\\1[/url]", $text); // mail
 	    return ( $text );
 	}
-
+	
+	function replace_more_tag ( $string, $strip_tags, $url )
+	{
+		$tagpos = strpos( strtoupper($string), '[MORE]' );
+		if ( $tagpos != false ) {
+			if ( $strip_tags == true ) {
+				$tagstart = strpos( strtoupper($string), '[MORE]' );
+				$tagend = $tagstart + strlen( '[MORE]' );
+				$tmpstr = substr( $string, 0, $tagpos );
+				$tmpstr = $tmpstr . substr( $string, $tagend, strlen( $string ) );
+				$string = $tmpstr;		
+			} else {			
+				$string = substr( $string, 0, $tagpos );
+				//Now put in the More link
+				$string = $string . ' <a href="' . $url . '">More...</a>';
+			}
+		}
+		return ( $string );
+	}
 ?>
