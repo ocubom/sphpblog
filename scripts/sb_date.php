@@ -381,6 +381,12 @@
 			} else {
 				$str = date( 'j', $time_stamp );
 			}
+		} else if ( $val == 'day_suffix' ) {
+			if ( $leading_zero_day == 'on' ) {
+				$str = date( 'dS', $time_stamp );
+			} else {
+				$str = date( 'jS', $time_stamp );
+			}
 		} else if ( $val == 'year' ) {
 			if ( $full_century == 'on' ) {
 				$str = date( 'Y', $time_stamp );
