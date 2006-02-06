@@ -13,7 +13,7 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'contact' );
 	
-	if (!isset($_SESSION['cookies_enabled'])) {
+    if (!isset($_SESSION['cookies_enabled'])) {
 		redirect_to_url('errorpage-nocookies.php');
 		// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage-nocookies.php');
 	}
@@ -27,7 +27,8 @@
 	$body=$body . '<b>' . $lang_string[ 'email' ] . '</b> ' . $_POST[ 'email' ] . '<br />';
 	$body=$body . '<b>' . $lang_string[ 'subject' ] . '</b> ' . $_POST[ 'subject' ] . '<br /><br />';
 	$body=$body . '<b>' . $lang_string[ 'comment' ] . '</b><br /><br />';
-	$body=$body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
+	//$body=$body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
+	$body=$body . sprintf( $lang_string[ 'wrote' ] . ' ' . format_date( $comment_date ) . ' ' . $_POST[ 'name' ] . ' ' . str_replace("\r\n", "<br />\r\n", $_POST[ 'comment' ] ) ); 
 	
 	$ok=false;
 	if ($_POST[ 'capcha_contact' ] == $_SESSION[ 'capcha_contact' ] AND $_SESSION[ 'capcha_contact' ] != '' ) {
@@ -43,7 +44,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
@@ -52,7 +53,7 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $ok;	
+	global $lang_string, $user_colors, $ok;	
 		
 		if ( $ok == true ) { 
 			echo( $lang_string[ 'success' ] );
