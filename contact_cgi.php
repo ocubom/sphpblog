@@ -27,9 +27,7 @@
 	$body=$body . '<b>' . $lang_string[ 'email' ] . '</b> ' . $_POST[ 'email' ] . '<br />';
 	$body=$body . '<b>' . $lang_string[ 'subject' ] . '</b> ' . $_POST[ 'subject' ] . '<br /><br />';
 	$body=$body . '<b>' . $lang_string[ 'comment' ] . '</b><br /><br />';
-	//$body=$body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
-	$body=$body . sprintf( $lang_string[ 'wrote' ] . ' ' . format_date( $comment_date ) . ' ' . $_POST[ 'name' ] . ' ' . str_replace("\r\n", "<br />\r\n", $_POST[ 'comment' ] ) ); 
-	
+	$body=$body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
 	$ok=false;
 	if ($_POST[ 'capcha_contact' ] == $_SESSION[ 'capcha_contact' ] AND $_SESSION[ 'capcha_contact' ] != '' ) {
 		$ok=sb_mail( $_POST[ 'email' ], $blog_config[ 'blog_email' ], $subject, $body, false );
