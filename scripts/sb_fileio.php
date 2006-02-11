@@ -65,6 +65,68 @@
 		return( $result );
 	}
 	
+	function sb_create_folder($newFolder, $permissions=0777) {
+		// Create a new folder or do nothing if one exists
+		//
+		// The folder path should NOT have a trailing slash
+		// or the mkdir command will fail under Windows.
+		//
+		$ok = true;
+		if ( file_exists($newFolder) == false ) {
+			$oldumask = umask(0);
+			$ok = mkdir($newFolder, $permissions);
+			umask($oldumask);
+		}
+		return $ok;
+	}
+	
+	function sb_copy($source, $dest) {
+		// Copy a file, or recursively copy a folder and its contents
+		//
+		// @author      Aidan Lister <aidan@php.net>
+		// @version     1.0.1
+		// @link        http://aidanlister.com/repos/v/function.copyr.php
+		// @param       string   $source    Source path
+		// @param       string   $dest      Destination path
+		// @return      bool     Returns TRUE on success, FALSE on failure
+		
+		// Simple copy for a file
+		if (is_file($source)) {
+			if ( copy($source, $dest) ) {
+				unlink($source);
+				return true;
+			} else {
+				return false;
+			}
+		}
+	
+		// Make destination directory
+		if ( !is_dir($dest) ) {
+			$oldumask = umask(0);
+			mkdir($dest, 0777);
+			umask($oldumask);
+		}
+	
+		// Loop through the folder
+		$dir = opendir($source);
+		while ($file = readdir($dir) ) {
+			if ($file == '.' || $file == '..') {
+				continue;
+			}
+	
+			// Deep copy directories
+			if ($dest !== $source.'/'.$file) {
+				sb_copy($source.'/'.$file, $dest.'/'.$file);
+			}
+		}
+	
+		// Clean up
+		closedir($dir);
+		rmdir($source);
+		
+		return true;
+	}
+	
 	function sb_folder_listing( $dir, $ext_array ) {
 		// Return an array of files in a directory.
 		// On fail returns an empty array.

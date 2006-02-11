@@ -195,6 +195,48 @@
 		}
 	}
 	
+	
+	function move_entry ( $oldTime, $newTime ) {
+		// Change the date on an entry and move all comments and associated files:
+		//
+		// oldTime = unix timestamp
+		// newTime = unix timestamp
+		global $blog_config, $sb_info;
+		
+		// Delete blog entry cache file.
+		sb_delete_file( 'config/~blog_entry_listing.tmp' );
+		
+		// Create directory structure for new entry:
+		// content/YY/MM/entryYYMMDD-HHMMSS.txt
+		
+		$dir = 'content/';
+		
+		$oldY = date('y', $oldTime);
+		$oldM = date('m', $oldTime);
+		$oldStamp = date('ymd-His', $oldTime);
+		
+		$newY = date('y', $newTime);
+		$newM = date('m', $newTime);
+		$newStamp = date('ymd-His', $newTime);
+		
+		if ( sb_create_folder($dir.$newY) == false ) {
+			return ( 'Couldn\'t create directory: '.$dir.$newY );
+		}
+		
+		if ( sb_create_folder($dir.$newY.'/'.$newM) == false ) {
+			return ( 'Couldn\'t create directory: '.$dir.$newY.'/'.$newM );
+		}
+		
+		// Comment, Rating, and View Counter Folder
+		if ( file_exists($dir.$oldY.'/'.$oldM.'/'.'entry'.$oldStamp) ) {
+			if ( sb_create_folder($dir.$newY.'/'.$newM.'/'.'entry'.$newStamp) == false ) {
+				return ( 'Couldn\'t create directory: '.$dir.$newY.'/'.$newM.'/'.'entry'.$newStamp );
+			}
+			
+			sb_copy($dir.$oldY.'/'.$oldM.'/'.'entry'.$oldStamp,$dir.$newY.'/'.$newM.'/'.'entry'.$newStamp);
+		}
+	}
+	
 	function implode_with_keys( $array, $separator = '|' ) {
 		// Implode an associative array
 		$str = '';

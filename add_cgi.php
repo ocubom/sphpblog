@@ -8,36 +8,41 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'add' );
 	
-	// variabile per definire se una news è in fase di modifica
-	$modifica = $_POST['modifica'];
-	
-	// "CGI" Functions
+	// -----------
+	// CGI FUNCTIONS
+	// -----------
 	if ( array_key_exists( 'no', $_POST ) || array_key_exists( 'yes', $_POST ) ) {
+	
+		// ---------
+		//	TRACKBACK
+		// ---------
 		if ( array_key_exists( 'no', $_POST ) ) {
 			// User clicked the "Cancel" button
 			redirect_to_url( 'index.php' );
 			
 		} else {
+			// User clicked the "OK" button
 			global $auto_discovery_confirm;
          
 			if ( array_key_exists( 'yes', $_POST ) ) {
-				// User clicked the "OK" button
 				$ad_array = $_POST[ 'ad_array' ];
 				foreach ($_POST[ 'confirm' ] as $name => $value) {
-				sb_tb_ping ( $ad_array[$name], 
-					$_POST[ 'title' ], 
-					$_POST[ 'permalink' ], 
-					$_POST[ 'excerpt' ] );
+					sb_tb_ping ( $ad_array[$name], $_POST[ 'title' ], $_POST[ 'permalink' ], $_POST[ 'excerpt' ] );
 				}
 				redirect_to_url( 'index.php' );
 			}
 		}
+		
 	} else {
-		// Initial passthrough
+	
+		// -------------
+		// ADD / EDIT ENTRY
+		// -------------
 		global $auto_discovery_confirm;
 		
-		$temp_date = substr($_GET['entry'],-13,6);
-		$temp_time = substr($_GET['entry'],-6,6);
+		// If editing an entry, store old entry date...
+		$temp_date = substr($_POST['entry'],-13,6);
+		$temp_time = substr($_POST['entry'],-6,6);
 		$dd = substr($temp_date,-2,2);
 		$mt = substr($temp_date,-4,2);
 		$yy = substr($temp_date,-6,2);
@@ -53,20 +58,32 @@
 		$oldtime = mktime($hh, $mm, $ss, $mt, $dd, $yy );
 		$newtime = mktime($_POST['hour'], $_POST['minute'], $_POST['second'], $_POST['month'], $_POST['day'], $_POST['year'] );
 		
+		$ok = false;
 		if ( $oldtime != $newtime ) {
+			// Different date
 			$entry = 'content/'.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
 			if ( file_exists( $entry . ".txt" ) ) {
 				$filename = $entry . ".txt";
 			} elseif ( file_exists( $entry . ".txt.gz" ) ) {
 				$filename = $entry . ".txt.gz";
 			}
-			sb_delete_file( $filename );
+			
+			// Move Assoicated Files
+			move_entry($oldtime,$newtime);
+			
+			// Create New Entry
 			$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), NULL, $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ), $newtime );
+			
+			// Delete Old Entry
+			sb_delete_file($filename);
 		} else {
+		
+			// Update Entry
 			$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), $_POST[ 'entry' ], $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ), $oldtime );
 		}
 		
 		if ( $ok === true ) {
+		
 		   if( strlen($auto_discovery_confirm[ 'text' ]) > 0 ) {
 			   // Find the trackback URLs
 			   $ad_array = trackback_autodiscover( $auto_discovery_confirm[ 'text' ] );
@@ -99,14 +116,15 @@
 	function page_content() {
 		global $lang_string, $user_colors, $ad_array, $auto_discovery_confirm;
 		
-		if ( array_key_exists( 'no', $_POST ) || array_key_exists( 'yes', $_POST ) ) {
-			// Check to see if we're posting data...
+		if ( array_key_exists( 'no', $_POST ) || array_key_exists( 'yes', $_POST ) || $ok == false ) {
+			// Display error message.
 			global $ok;
 			if ( $ok !== true ) {
 				echo( $lang_string[ 'error' ] . $ok . '<p />' );
 			}
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 		} else {
+			// Display Trackback confirmation.
 			?>
 			
 			<h2><?php echo( $lang_string[ 'title_ad' ] ); ?></h2>

@@ -209,10 +209,6 @@
 			$ok = mkdir($dir, 0777 );
 			umask($oldumask);
 			if (!$ok) {
-				// There is a bug in some versions of PHP that will
-				// cause mkdir to fail if there is a trailing "/".
-				//
-				// Thanks to Matt - http://agent.chaosnet.org
 				return ( $dir );
 			}
 		}
