@@ -9,52 +9,42 @@
 	sb_language( 'stats' );
 	global $lang_string, $sb_info, $blog_config;
 
-	function sort_views ( $a, $b )
-	{
+	function sort_views ( $a, $b ) {
 		if ( $a[ 'views' ] < $b[ 'views' ] ) {
 			return( 1 );
-		}
-		else {
+		} else {
 			return( -1 );
 		}
 	}
 	
-	function sort_comments ( $a, $b )
-	{
+	function sort_comments ( $a, $b ) {
 		if ( $a[ 'comments' ] < $b[ 'comments' ] ) {
 			return( 1 );
-		}
-		else {
+		} else {
 			return( -1 );
 		}
 	}
 
-	function sort_trackbacks ( $a, $b )
-	{
+	function sort_trackbacks ( $a, $b ) {
 		if ( $a[ 'trackbacks' ] < $b[ 'trackbacks' ] ) {
 			return( 1 );
-		}
-		else {
+		} else {
 			return( -1 );
 		}
 	}
 	
-	function sort_votes ( $a, $b )
-	{
+	function sort_votes ( $a, $b ) {
 		if ( $a[ 'votes' ] < $b[ 'votes' ] ) {
 			return( 1 );
-		}
-		else {
+		} else {
 			return( -1 );
 		}
 	}
 
-	function sort_rates ( $a, $b )
-	{
+	function sort_rates ( $a, $b ) {
 		if ( $a[ 'rates' ] < $b[ 'rates' ] ) {
 			return( 1 );
-		}
-		else {
+		} else {
 			return( -1 );
 		}
 	}

@@ -10,7 +10,7 @@
 	// logged_in( false, true ); // <-- Anyone can view this page.
 	// logged_in( true, true ); // <-- Redirects to index.php if you are NOT logged in.
 	global $logged_in;
-	$logged_in = logged_in( false, true );
+	$logged_in = logged_in( true, true );
 	
 	// Read Configuration (See scripts/sb_config.php for details.)
 	// --------------

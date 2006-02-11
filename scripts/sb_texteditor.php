@@ -275,7 +275,7 @@
 		
 		// Day Drop Down
 		$itemArray = array();
-		for ( $i = 1; $i <= 31; $i++ ) {
+		for ( $i = 31; $i >= 1; $i-- ) {
 			$item = array( 'label' => $i, 'value' => $i );
 			if ( $i == $e_day ) {
 				$item['selected'] = true;
