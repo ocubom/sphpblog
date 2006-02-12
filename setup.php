@@ -42,7 +42,7 @@
 		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<h2><?php echo( $lang_string[ 'title_language' ] ); ?></h2>
+		<h4><?php echo( $lang_string[ 'title_language' ] ); ?></h4>
 		
 		<form action="setup_cgi.php" method="POST" name="setup" name="setup" onSubmit="return validate(this)">
 			<?php
@@ -76,35 +76,36 @@
 				echo( HTML_dropdown( $lang_string[ 'blog_choose_language' ], "blog_language", $arr ) );
 			?>
 			
-			<h2><?php echo( $lang_string[ 'title_general' ] ); ?></h2>
+			<h4><?php echo( $lang_string[ 'title_general' ] ); ?></h4>
 			
-			<input type="checkbox" id="blog_enable_title" name="blog_enable_title"<?php if ( $blog_config[ 'blog_enable_title' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_title' ] ); ?><br />
+			<input type="checkbox" id="blog_enable_title" name="blog_enable_title"<?php if ( $blog_config[ 'blog_enable_title' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_title' ] ); ?><p />
+			
 			<label for="blog_title"><?php echo( $lang_string[ 'blog_title' ] ); ?></label><br />
-			<input type="text" name="blog_title" value="<?php echo($blog_config[ 'blog_title' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
+			<input type="text" name="blog_title" value="<?php echo($blog_config[ 'blog_title' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><p />
 			
 			<label for="blog_author"><?php echo( $lang_string[ 'blog_author' ] ); ?></label><br />
-			<input type="text" name="blog_author" value="<?php echo($blog_config[ 'blog_author' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
+			<input type="text" name="blog_author" value="<?php echo($blog_config[ 'blog_author' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><p />
 			
 			<label for="blog_email"><?php echo( $lang_string[ 'blog_email' ] ); ?></label><br />
-			<input type="text" name="blog_email" value="<?php echo($blog_config[ 'blog_email' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br />
+			<input type="text" name="blog_email" value="<?php echo($blog_config[ 'blog_email' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><p />
 			
 			<label for="blog_avatar"><?php echo( $lang_string['blog_avatar' ] ); ?></label><br />
-			<input type="text" name="blog_avatar" value="<?php echo($blog_config[ 'blog_avatar' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br /><br /> 
+			<input type="text" name="blog_avatar" value="<?php echo($blog_config[ 'blog_avatar' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><p /> 
 			
 			<label for="blog_footer"><?php echo( $lang_string[ 'blog_footer' ] ); ?></label><br />
 			<input type="text" name="blog_footer" value="<?php echo($blog_config[ 'blog_footer' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;">
 			<br />
 			
-			<h2><?php echo( $lang_string[ 'title_entries' ] ); ?></h2>
+			<h4><?php echo( $lang_string[ 'title_entries' ] ); ?></h4>
 			<input type="checkbox" id="blog_enable_permalink" name="blog_enable_permalink"<?php if ( $blog_config[ 'blog_enable_permalink' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_permalink' ] ); ?><br />
 			<input type="checkbox" id="blog_enable_cache" name="blog_enable_cache"<?php if ( $blog_config[ 'blog_enable_cache' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_cache' ] ); ?><br />
-			<input type="checkbox" id="blog_send_pings" name="blog_send_pings"<?php if ( $blog_config[ 'blog_send_pings' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_send_pings' ] ); ?><br /><br />
+			<input type="checkbox" id="blog_send_pings" name="blog_send_pings"<?php if ( $blog_config[ 'blog_send_pings' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_send_pings' ] ); ?><p />
 			<label for="blog_ping_urls"><?php echo( $lang_string[ 'blog_ping_urls' ] ); ?></label><br />
 			<input type="text" name="blog_ping_urls" value="<?php echo($blog_config[ 'blog_ping_urls' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;"><br />
 			<br />
 			<label for="blog_max_entries"><?php echo( $lang_string[ 'blog_max_entries' ] ); ?></label><br />
 			<input type="text" name="blog_max_entries" value="<?php echo( $blog_config[ 'blog_max_entries' ] ); ?>" autocomplete="OFF" size="6">
-			<br /><br />
+			<p />
 			<?php
 				// Entry Order Drop Down
 				$arr = array();
@@ -112,8 +113,6 @@
 				array_push( $arr, array( 'label' => $lang_string[ 'select_old_to_new' ], 'value' => 'old_to_new', 'selected' => $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) );
 				echo( HTML_dropdown( $lang_string[ 'label_entry_order' ], "blog_entry_order", $arr ) );
 			?>
-			<br />
-			
 			<?php
 				// Comment Order Drop Down
 				$arr = array();
@@ -121,28 +120,30 @@
 				array_push( $arr, array( 'label' => $lang_string[ 'select_old_to_new' ], 'value' => 'old_to_new', 'selected' => $blog_config[ 'blog_comment_order' ] == 'old_to_new' ) );
 				echo( HTML_dropdown( $lang_string[ 'label_comment_order' ], "blog_comment_order", $arr ) );
 			?>
-			<h2><?php echo( $lang_string[ 'title_sidebar' ] ); ?></h2>
+			
+			<h4><?php echo( $lang_string[ 'title_sidebar' ] ); ?></h4>
 			<input type="checkbox" id="blog_enable_voting" name="blog_enable_voting"<?php if ( $blog_config[ 'blog_enable_voting' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_voting' ] ); ?><br />
 			<input type="checkbox" id="blog_enable_stats" name="blog_enable_stats"<?php if ( $blog_config[ 'blog_enable_stats' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_stats' ] ); ?><br /> 
 			<input type="checkbox" id="blog_enable_lastcomments" name="blog_enable_lastcomments"<?php if ( $blog_config[ 'blog_enable_lastcomments' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_lastcomments' ] ); ?><br />
 			<input type="checkbox" id="blog_enable_lastentries" name="blog_enable_lastentries"<?php if ( $blog_config[ 'blog_enable_lastentries' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_lastentries' ] ); ?><br />
-			<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if ( $blog_config[ 'blog_enable_calendar' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_calendar' ] ); ?><br />
+			<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if ( $blog_config[ 'blog_enable_calendar' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_calendar' ] ); ?><br />		
 			<label for="blog_calendar_start"><?php echo( $lang_string[ 'label_calendar_start' ] ); ?></label>
 			<select name="blog_calendar_start">
 				<option label="<?php echo( $lang_string[ 'cal_sunday' ] ); ?>" value="sunday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'sunday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_sunday' ] ); ?></option>
 				<option label="<?php echo( $lang_string[ 'cal_monday' ] ); ?>" value="monday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'monday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_monday' ] ); ?></option>
-			</select><br />			
+			</select><p />
 			
-			<h2><?php echo( $lang_string[ 'title_trackback' ] ); ?></h2>
-			<?php echo( $lang_string[ 'blog_trackback_about' ] ); ?><br /><br />
+			<h4><?php echo( $lang_string[ 'title_trackback' ] ); ?></h4>
+			<?php echo( $lang_string[ 'blog_trackback_about' ] ); ?><p />
 			<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled"<?php if ( $blog_config[ 'blog_trackback_enabled' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_trackback_enabled' ] ); ?><br />
 			<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery"<?php if ( $blog_config[ 'blog_trackback_auto_discovery' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_trackback_auto_discovery' ] ); ?><br />
 
-			<h2><?php echo( $lang_string[ 'title_comments' ] ); ?></h2>
+			<h4><?php echo( $lang_string[ 'title_comments' ] ); ?></h4>
 			<input type="checkbox" id="blog_enable_comments" name="blog_enable_comments"<?php if ( $blog_config[ 'blog_enable_comments' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_comments' ] ); ?><br />
 			<input type="checkbox" id="blog_email_notification" name="blog_email_notification"<?php if ( $blog_config[ 'blog_email_notification' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_email_notification' ] ); ?><br />
-			<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup"<?php if ( $blog_config[ 'blog_comments_popup' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_comments_popup' ] ); ?><br />
-			<br /><label for="area"><?php echo( $lang_string[ 'blog_comment_tags' ] ); ?></label><br />
+			<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup"<?php if ( $blog_config[ 'blog_comments_popup' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_comments_popup' ] ); ?><p />
+			
+			<label for="area"><?php echo( $lang_string[ 'blog_comment_tags' ] ); ?></label><br />
 			<table border="0" width="<?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>" cellspacing="0" cellpadding="0">
 				<tr align="left" valign="top">
 					<td width="50%">
@@ -169,8 +170,8 @@
 				</tr>
 			</table>
 			
-			<h2><?php echo( $lang_string[ 'title_compression' ] ); ?></h2>
-			<?php echo( $lang_string[ 'blog_gzip_about' ] ); ?><br /><br />
+			<h4><?php echo( $lang_string[ 'title_compression' ] ); ?></h4>
+			<?php echo( $lang_string[ 'blog_gzip_about' ] ); ?><p />
 			<input type="checkbox" id="blog_enable_gzip_txt" name="blog_enable_gzip_txt"<?php if ( $blog_config[ 'blog_enable_gzip_txt' ] == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $lang_string[ 'blog_enable_gzip_txt' ] ); ?><br />
 			<input type="checkbox" id="blog_enable_gzip_output" name="blog_enable_gzip_output"<?php if ( $blog_config[ 'blog_enable_gzip_output' ] == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $lang_string[ 'blog_enable_gzip_output' ] ); ?><br />
 			

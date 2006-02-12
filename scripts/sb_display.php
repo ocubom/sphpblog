@@ -417,14 +417,11 @@
 		
 		// Return listing of all the blog entries in order
 		// of newest to oldest.
-		//
-		// An improvement would be to Cache this list in a
-		// file and only recalculate when you add or delete
-		// an entry.
+		
 		$filename='config/~blog_entry_listing.tmp';
 		$entry_array=sb_read_file( $filename );
 		if ( $entry_array!=NULL ) {
-			$entry_array=unserialize( $entry_array );
+			$entry_array=unserialize( $entry_array );		
 		} else {
 			$basedir = 'content/';
 			
@@ -475,26 +472,8 @@
 				}
 			}
 			
-			// Flip entry order
-			if ( isset( $sort ) ) {
-				// Passing a $sort value will over-ride the default preference. This is used in the Archive Tree view.
-				switch( $sort ) {
-					case "new_to_old":
-					case "newest":
-						rsort( $entry_array );
-						break;
-					case "old_to_new":
-					case "oldest";
-						sort( $entry_array );
-						break;
-				}
-			} else {
-				if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-					sort( $entry_array );
-				} else {
-					rsort( $entry_array );
-				}
-			}
+			// Always store newest to oldest.
+			rsort( $entry_array );
 			
 			// Check the option first to see if we use the cache
 			if ( $blog_config[ 'blog_enable_cache' ] == true ) {
@@ -504,6 +483,39 @@
 				}
 			}
 		}
+		
+		// Remove "future" entries
+		$now = date('ymd-His', time());
+		if ($GLOBALS['logged_in']==false) {
+			for ($index=0; $index<count($entry_array); $index++) {
+				if (substr($entry_array[$index], 5, 13)>$now) {
+					array_splice($entry_array, $index, 1);
+					$index--;
+				}
+			}
+		}
+			
+		// Flip entry order
+		if ( isset( $sort ) ) {
+			// Passing a $sort value will over-ride the default preference. This is used in the Archive Tree view.
+			switch( $sort ) {
+				case "new_to_old":
+				case "newest":
+					rsort( $entry_array );
+					break;
+				case "old_to_new":
+				case "oldest";
+					sort( $entry_array );
+					break;
+			}
+		} else {
+			if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
+				sort( $entry_array );
+			} else {
+				rsort( $entry_array );
+			}
+		}
+		
 		return( $entry_array );
 	}
 	

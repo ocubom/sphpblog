@@ -204,8 +204,8 @@ a:active {
 h1, h2, h3, h4, h5, h6
 {
 	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
-	font-weight: normal;
-	/* New 0.3.7 */
+	font-weight: bold;
+	
 	margin: 2px 0px 2px 0px;
 }
 
@@ -215,21 +215,16 @@ h1
 	font-weight: bold;
 }
 
-/* Title */
 h2
 {
-	color: #663;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
-	margin: 4px 0px 3px 0px;
 }
 
-/* Date */
 h3
 {
-	color: #999;
-	font-size: 10px;
-	margin: 4px 0px 3px 0px;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 h4
