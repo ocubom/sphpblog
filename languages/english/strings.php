@@ -5,19 +5,18 @@
 	//
 
 	// Simple PHP Version: 0.4.1
-	// Language Version:   0.4.1.0
-	
+	// Language Version:   0.4.1.0	
 
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;			
 
 		// Language: English
 		$lang_string['locale'] = 'en_US';
-		$lang_string['language'] = 'english';		
+		$lang_string['language'] = 'english';	
 
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
-		$lang_string['php_charset'] = 'ISO-8859-1';		
+		$lang_string['php_charset'] = 'ISO-8859-1';	
 
 		setlocale( LC_TIME, $lang_string['locale'] );		
 

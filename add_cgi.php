@@ -77,9 +77,10 @@
 			// Delete Old Entry
 			sb_delete_file($filename);
 		} else {
+			$entry = 'content/'.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
 		
 			// Update Entry
-			$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), $_POST[ 'entry' ], $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ), $oldtime );
+			$ok = write_entry( stripslashes( $_POST[ 'blog_subject' ] ), stripslashes( $_POST[ 'blog_text' ] ), stripslashes( $_POST[ 'tb_ping' ] ), $entry, $_POST[ 'catlist' ], stripslashes( $_POST[ 'blog_relatedlink' ] ), $oldtime );
 		}
 		
 		if ( $ok === true ) {

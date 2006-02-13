@@ -4,6 +4,33 @@ Simple PHP Blog:
 Version History
 ---------------
 
+0.4.7.1
+===============
+- Fixed add_cgi.php. Edit post bug.
+
+0.4.7
+===============
+- Added option to disable Stats option
+- Modified Text on options to reflect ability to remove "Contact Us" by
+blanking the email addy
+- *Added more date options for theme display:
+	date_numeric_day: show only numeric day
+	date_numeric_month: show only numeric month
+	date_numeric_year: show only 2 digit year
+	date_alpha_month: show short version of month name
+	date_numeric_time: show time
+	date_suffix_day: show numeric date with suffix (like 15th, 3rd, etc)
+- *Added option whether to show Recent Comments Listing
+- *Added option whether to show Recent Entries Listing
+- Re-arranged Setup screen to make more sense and easier to navigate.
+- Added [more] tag to blog entries - on front page, splits the text at that
+point and inserts a comment url link.  Only does the split if comments are
+turned on (otherwise shows the same as the comments page looks like).
+- Fixed display so future entries only show if you are logged in.
+- Entry date and time can be modified.
+- Added emoticon usage.
+- Fixed image align bug
+
 0.4.4 - 
 - - - - - - - - - -
 - Preliminary PHP code support by using [php]
