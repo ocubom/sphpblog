@@ -106,6 +106,13 @@
 				$lang_string['insert_image_height'] = 'Altezza (facoltativo):';
 				$lang_string['insert_image_popup'] = 'Vedi in una nuova finestra a tutto schermo (facoltativo):';
 				$lang_string['insert_image_float'] = 'Allineamento (facoltativo):';
+		
+				$lang_string['day'] = 'Day';
+				$lang_string['month'] = 'Month';
+				$lang_string['year'] = 'Year';
+				$lang_string['hour'] = 'Hour';
+				$lang_string['minute'] = 'Minute';
+				$lang_string['second'] = 'Second';
 		}
 	
 		switch ($page) {
@@ -477,6 +484,16 @@
 				$lang_string['blog_enable_calendar'] = "Abilita calendario / Blocco archivio"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Abilita il titolo del blog come testo semplice (deseleziona la checkbox se il titolo &egrave; all' interno di un header grafico)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Abilita il Permalink nelle notizie."; // New for 0.4.6
+				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
+				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
+				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
+				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
+				$lang_string['title_general'] = "General"; // New in 0.4.7
+				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

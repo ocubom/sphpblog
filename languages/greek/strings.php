@@ -106,6 +106,13 @@
 				$lang_string['insert_image_height'] = '¾øïò (Ðñïáéñåôéêü):';
 				$lang_string['insert_image_popup'] = 'Åðéóêüðéóç óå ðëÞñåò ìÝãåèïò pop-up (Ðñïáéñåôéêü):';
 				$lang_string['insert_image_float'] = 'Ìç óôáèåñü (Ðñïáéñåôéêü):';
+		
+				$lang_string['day'] = 'Day';
+				$lang_string['month'] = 'Month';
+				$lang_string['year'] = 'Year';
+				$lang_string['hour'] = 'Hour';
+				$lang_string['minute'] = 'Minute';
+				$lang_string['second'] = 'Second';
 		}
 	
 		switch ($page) {
@@ -482,6 +489,16 @@
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
+				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
+				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
+				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
+				$lang_string['title_general'] = "General"; // New in 0.4.7
+				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				break;
 			case 'trackbacks':
 				// Trackbacks

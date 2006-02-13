@@ -114,6 +114,13 @@
 			$lang_string['insert_image_height'] = 'Height (Optional):';
 			$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
 			$lang_string['insert_image_float'] = 'Float (Optional):';
+		
+			$lang_string['day'] = 'Day';
+			$lang_string['month'] = 'Month';
+			$lang_string['year'] = 'Year';
+			$lang_string['hour'] = 'Hour';
+			$lang_string['minute'] = 'Minute';
+			$lang_string['second'] = 'Second';
 		}	
 
 		switch ($page) {

@@ -114,6 +114,13 @@
 			$lang_string['insert_image_height'] = 'Vi&#353;ina (Ni obvezno):';
 			$lang_string['insert_image_popup'] = 'Ob kliku prikaz v celotni velikosti in v pop-up oknu (Ni obvezno):';
 			$lang_string['insert_image_float'] = 'Lebde&#269;e (Ni obvezno):';
+		
+			$lang_string['day'] = 'Day';
+			$lang_string['month'] = 'Month';
+			$lang_string['year'] = 'Year';
+			$lang_string['hour'] = 'Hour';
+			$lang_string['minute'] = 'Minute';
+			$lang_string['second'] = 'Second';
 		}	
 
 		switch ($page) {
@@ -474,6 +481,9 @@
 				$lang_string['blog_enable_calendar'] = "Omogo&#269;i kolendar / Blok - zgodovina"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Omogo&#269;i besedilni naslovni blok (Odklukaj, &#269;e je v glavi slika)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Omogo&#269;i stalne povezave pri vnosih"; // New for 0.4.6
+				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
 				$lang_string['blog_email_notification'] = "Po&#353;lji obvestilo po E-mailu, ob novih komentarjih";
 				$lang_string['blog_send_pings'] = "Po&#353;lji &quot;pinge&quot;";
 				$lang_string['blog_ping_urls'] = "Vnesi polni naslov (npr. http://rpc.weblogs.com/RPC2) servisa za &quot;pinganje&quot;.<br />(Lahko vnese&#353; ve&#269; naslovov, ki morajo biti lo&#269;eni z vejico).";
@@ -505,6 +515,13 @@
 				$lang_string['cal_sunday'] = "Nedelja";
 				$lang_string['cal_monday'] = "Ponedeljek";
 				$lang_string['label_calendar_start'] = "Prvi dan v tednu";
+				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
+				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
+				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
+				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
+				$lang_string['title_general'] = "General"; // New in 0.4.7
+				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				break;
 			case 'trackbacks':
 				// Trackbacks

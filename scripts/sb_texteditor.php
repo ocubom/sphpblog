@@ -262,7 +262,9 @@
 		return ( $str );
 	}
 	
-	function editor_date_select( $default_time ) {	
+	function editor_date_select( $default_time ) {
+		global $lang_string;
+		
 		// Edit / Select Date
 		$default_time = isset( $default_time ) ? $default_time : time();
 		
@@ -282,7 +284,7 @@
 			}
 			array_push( $itemArray, $item );
 		}
-		$dd_day = HTML_dropdown( 'Day', 'day', $itemArray, false );
+		$dd_day = HTML_dropdown( $lang_string[ 'day' ], 'day', $itemArray, false );
 		
 		// Month Drop Down
 		$itemArray = array();
@@ -295,7 +297,7 @@
 			}
 			array_push( $itemArray, $item );
 		}
-		$dd_month = HTML_dropdown( 'Month', 'month', $itemArray, false );
+		$dd_month = HTML_dropdown( $lang_string[ 'month' ], 'month', $itemArray, false );
 		
 		// Year Drop Down
 		$itemArray = array();
@@ -308,7 +310,7 @@
 			}
 			array_push( $itemArray, $item );
 		}
-		$dd_year = HTML_dropdown( 'Year', 'year', $itemArray, false );
+		$dd_year = HTML_dropdown( $lang_string[ 'year' ], 'year', $itemArray, false );
 		
 		echo($dd_day . ' ' . $dd_month . ' ' . $dd_year . '<p />');
 		
@@ -329,9 +331,9 @@
 			}
 			array_push( $itemArray, $item );
 		}
-		$dd_hour = HTML_dropdown( 'Hour', 'hour', $itemArray, false );
-		$dd_minute = '<label for="mm">Minute</label> <input name="minute" id="minute" type="text" value="'.$e_minute.'" size="2" maxlength="2" />';
-		$dd_second = '<label for="mm">Second</label> <input name="second" id="second" type="text" value="'.$e_second.'" size="2" maxlength="2" />';
+		$dd_hour = HTML_dropdown( $lang_string[ 'hour' ], 'hour', $itemArray, false );
+		$dd_minute = '<label for="mm">'.$lang_string[ 'minute' ].'</label> <input name="minute" id="minute" type="text" value="'.$e_minute.'" size="2" maxlength="2" />';
+		$dd_second = '<label for="mm">'.$lang_string[ 'second' ].'</label> <input name="second" id="second" type="text" value="'.$e_second.'" size="2" maxlength="2" />';
 		echo($dd_hour . ' ' . $dd_minute . ' ' . $dd_second . '<p />');
 	}
 	

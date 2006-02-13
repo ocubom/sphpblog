@@ -82,33 +82,40 @@
 		
 	// Entry Text Editor
 	if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
-	$lang_string['label_subject'] = "¥¿¥¤¥È¥ë";
-	$lang_string['label_insert'] = "¥¿¥°¤ÎÁÞÆþ";
-	$lang_string['btn_bold'] = "¥Ü¡¼¥ë¥É";
-	$lang_string['btn_italic'] = "¥¤¥¿¥ê¥Ã¥¯";
-	$lang_string['btn_image'] = "¥¤¥á¡¼¥¸";
-	$lang_string['btn_url'] = "¥ê¥ó¥¯";
-	$lang_string['view_images'] = "¥¢¥Ã¥×¥í¡¼¥É²èÁü¤Î»²¾È";
-	$lang_string['label_entry'] = "ÆâÍÆ";
-	$lang_string['btn_preview'] = "&nbsp;¥×¥ì¥Ó¥å¡¼&nbsp;";
-	$lang_string['btn_post'] = "&nbsp;Åê¹Æ&nbsp;";
-	$lang_string['file_name'] = "¤³¤Î¥¨¥ó¥È¥ê¡¼¤Î¥Õ¥¡¥¤¥ëÌ¾ (¶õÍóÉÔ²Ä)"; 
-	// <-- New 0.3.8
-	// Javascript Strings
-	$lang_string['insert_styles'] = "¥Æ¥­¥¹¥È¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£";
-	$lang_string['insert_image'] = "²èÁü¤ÎURL¤òÆþÎÏ";
-	$lang_string['insert_url1'] = "¥ê¥ó¥¯¥Æ¥­¥¹¥È(¥ª¥×¥·¥ç¥ó)";
-	$lang_string['insert_url2'] = "¥ê¥ó¥¯ÀèURL";
-	$lang_string['insert_url3'] = "¿·¤·¤¤¥¦¥£¥ó¥É¥¦¤Ç³«¤¯ (¥ª¥×¥·¥ç¥ó)"; 
-	// <-- New 0.3.6
-	$lang_string['form_error'] = "¥¿¥¤¥È¥ë¤ÈÆâÍÆ¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";	
-	// More Javascript Strings <-- New 0.3.6
-	$lang_string['insert_image_optional'] = '¥ª¥×¥·¥ç¥ó:';
-	$lang_string['insert_image_width'] = '²£¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):';
-	$lang_string['insert_image_height'] = '½Ä¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):';
-	$lang_string['insert_image_popup'] = '¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥£¥ó¥É¥¦ÀßÄê(¥ª¥×¥·¥ç¥ó):';
-	$lang_string['insert_image_float'] = '²èÁü¤Î²ó¤ê¹þ¤ß°ÌÃÖ(¥ª¥×¥·¥ç¥ó):';
-		}
+		$lang_string['label_subject'] = "¥¿¥¤¥È¥ë";
+		$lang_string['label_insert'] = "¥¿¥°¤ÎÁÞÆþ";
+		$lang_string['btn_bold'] = "¥Ü¡¼¥ë¥É";
+		$lang_string['btn_italic'] = "¥¤¥¿¥ê¥Ã¥¯";
+		$lang_string['btn_image'] = "¥¤¥á¡¼¥¸";
+		$lang_string['btn_url'] = "¥ê¥ó¥¯";
+		$lang_string['view_images'] = "¥¢¥Ã¥×¥í¡¼¥É²èÁü¤Î»²¾È";
+		$lang_string['label_entry'] = "ÆâÍÆ";
+		$lang_string['btn_preview'] = "&nbsp;¥×¥ì¥Ó¥å¡¼&nbsp;";
+		$lang_string['btn_post'] = "&nbsp;Åê¹Æ&nbsp;";
+		$lang_string['file_name'] = "¤³¤Î¥¨¥ó¥È¥ê¡¼¤Î¥Õ¥¡¥¤¥ëÌ¾ (¶õÍóÉÔ²Ä)"; 
+		// <-- New 0.3.8
+		// Javascript Strings
+		$lang_string['insert_styles'] = "¥Æ¥­¥¹¥È¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£";
+		$lang_string['insert_image'] = "²èÁü¤ÎURL¤òÆþÎÏ";
+		$lang_string['insert_url1'] = "¥ê¥ó¥¯¥Æ¥­¥¹¥È(¥ª¥×¥·¥ç¥ó)";
+		$lang_string['insert_url2'] = "¥ê¥ó¥¯ÀèURL";
+		$lang_string['insert_url3'] = "¿·¤·¤¤¥¦¥£¥ó¥É¥¦¤Ç³«¤¯ (¥ª¥×¥·¥ç¥ó)"; 
+		// <-- New 0.3.6
+		$lang_string['form_error'] = "¥¿¥¤¥È¥ë¤ÈÆâÍÆ¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£";	
+		// More Javascript Strings <-- New 0.3.6
+		$lang_string['insert_image_optional'] = '¥ª¥×¥·¥ç¥ó:';
+		$lang_string['insert_image_width'] = '²£¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):';
+		$lang_string['insert_image_height'] = '½Ä¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):';
+		$lang_string['insert_image_popup'] = '¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥£¥ó¥É¥¦ÀßÄê(¥ª¥×¥·¥ç¥ó):';
+		$lang_string['insert_image_float'] = '²èÁü¤Î²ó¤ê¹þ¤ß°ÌÃÖ(¥ª¥×¥·¥ç¥ó):';
+			
+		$lang_string['day'] = 'Day';
+		$lang_string['month'] = 'Month';
+		$lang_string['year'] = 'Year';
+		$lang_string['hour'] = 'Hour';
+		$lang_string['minute'] = 'Minute';
+		$lang_string['second'] = 'Second';
+	}
 	
 	switch ($page) {
 	case 'add':
@@ -481,6 +488,16 @@ $lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
+				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
+				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
+				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
+				$lang_string['title_general'] = "General"; // New in 0.4.7
+				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				break;
 	case 'trackbacks':  // <-- New 0.3.8
 	// Trackbacks
