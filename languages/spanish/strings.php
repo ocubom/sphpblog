@@ -1,6 +1,6 @@
 <?php
 	// Spanish Language Translation(s)
-	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com (0.4.5)
+	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com (0.4.7)
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -40,7 +40,7 @@
 		$lang_string['menu_most_recent_entries'] = "Últimos Artículos";
 		$lang_string['menu_most_recent_trackback'] = "Últimos Trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Bloques";
-		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_emoticons'] = "Emoticonos"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 
 		// Other
@@ -61,7 +61,7 @@
 		$lang_string['sb_delete'] = 'borrar';
 		$lang_string['sb_permalink'] = 'enlace permanente'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
-		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
+		$lang_string['sb_relatedlink'] = 'enlace relacionado'; // <-- New in 0.4.6
 
 		$lang_string['sb_add_comment_btn'] = 'añadir comentario';
 
@@ -125,7 +125,7 @@
 				$lang_string['instructions_ad'] = "Éstos son los Auto-Discovered URIs sobre los que hará ping. Si no quiere hacer ping a un cierto URI, deschequee. Entonces pulse 'OK' para hacer ping sobre las URIs chequeadas o pulse 'Cancel' para no realizar ningun ping."; // <-- New 0.3.8
 				$lang_string['label_tb_ping'] = "Trackback ping(s) a enviar (separados por comas)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
-				$lang_string['label_relatedlink'] = "Related Link"; // New for 0.4.6
+				$lang_string['label_relatedlink'] = "Enlace Relacionado"; // New for 0.4.6
 				$lang_string['label_categories'] = "Category List";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Previsualizar / Editar entrada";
@@ -483,12 +483,12 @@
 				$lang_string['blog_title'] = "Nombre de la Bitácora:";
 				$lang_string['blog_author'] = "Autor:";
 				$lang_string['blog_email'] = "Correo Electrónico:"; // <-- New 0.3.7
-				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
+				$lang_string['blog_avatar'] = "URL del avatar: (Déjalo en blanco para ninguno)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Pie de página:";
 				$lang_string['blog_choose_language'] = "Elegir Idioma:";
 				$lang_string['blog_enable_comments'] = "Permitir Comentarios de Usuarios"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "Abrir comentarios en Ventanas Emergentes"; // <-- New 0.3.6
-				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
+				$lang_string['blog_enable_cache'] = "Permitir Caché de Entradas (en algunos servidores mejora el rendimiento)"; // New for 0.4.6
 				$lang_string['blog_enable_voting'] = "Permitir a los Usuarios Votar Artículos"; // <-- New 0.3.8
 				$lang_string['blog_email_notification'] = "Enviar email cuando se publique un comentario"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "Enviar &quot;pings&quot;"; // <-- New 0.3.7
@@ -520,18 +520,18 @@
 				$lang_string['cal_monday'] = "Lunes"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "D&iacute;a de la semana de inicio"; // New for 0.4.6
 				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
-				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['title_comments'] = "Comentarios"; // New in 0.4.7
 				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
-				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
-				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
+				$lang_string['title_compression'] = "Compresión"; // New in 0.4.7
+				$lang_string['title_entries'] = "Entradas"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
-				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['title_language'] = "Idioma"; // New in 0.4.7
 				$lang_string['blog_enable_calendar'] = "Activar calendario / Bloque de archivo"; // New for 0.4.6
-				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
-				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
-				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
-				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
-				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['blog_enable_title'] = "Permitir Bloque de Título de Texto (Desmarca el checkbox si el título de la cabecera es una imágen)"; // New for 0.4.6
+				$lang_string['blog_enable_permalink'] = "Permitir Enlaces Permanentes en las Entradas"; // New for 0.4.6
+				$lang_string['blog_enable_stats'] = "Permitir la Opción de Estadísticas en el Listado"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Permitir la Opción de Comentarios Recientes en el Listado"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Permitir la Opción de Entradas Recientes en el Listado"; // New for 0.4.7
 				break;
 
 			case 'trackbacks':  // <-- New 0.3.8
