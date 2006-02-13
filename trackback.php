@@ -89,7 +89,7 @@
 	 
 	<!-- Meta Data -->
 	<?php global $lang_string, $sb_info, $blog_config; ?>
-	<meta name="generator" content="Simple PHP Blog <?php echo( $sb_info[ 'version' ] );?>" />
+	<meta name="generator" content="Simple PHP Blog" />
 	<link rel="alternate" type="text/xml" title="RSS 2.0" href="rss.php" />
 	
 	<!-- Meta Data -->
