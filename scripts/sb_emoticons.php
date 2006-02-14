@@ -37,22 +37,25 @@
 
 	function emoticons_load_tags () {
 		$str = sb_read_file( 'config/emoticons.txt' );
-		$exploded_array = explode( '|', $str );
 		
 		$emote_arr = array();
-		if ( count( $exploded_array ) > 0 ) {
-			for ( $i = 0; $i < count( $exploded_array ); $i++ ) {
-				$emo = explode_with_keys( $exploded_array[$i], '=' );
-				$tags = $emo['TAGS'];
-				$tags = str_replace( '&#124;', '|', $tags );
-				$tags = str_replace( '&#61;', '=', $tags );
-				$emo['TAGS'] = $tags;
-				array_push( $emote_arr, $emo);
-			}
-		} else {
-			return( false );
+		if ($str) {
+			$exploded_array = explode( '|', $str );
+			
+			if ( count( $exploded_array ) > 0 ) {
+				for ( $i = 0; $i < count( $exploded_array ); $i++ ) {
+					$emo = explode_with_keys( $exploded_array[$i], '=' );
+					$tags = $emo['TAGS'];
+					$tags = str_replace( '&#124;', '|', $tags );
+					$tags = str_replace( '&#61;', '=', $tags );
+					$emo['TAGS'] = $tags;
+					array_push( $emote_arr, $emo);
+				}
+			} else {
+				return( false );
+			}			
 		}
-		
+
 		return( $emote_arr );
 	}
 	
