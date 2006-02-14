@@ -89,7 +89,8 @@
 			$default_entry = array_key_exists( 'entry', $_POST ) ? $_POST[ 'entry' ] : $default_entry;
 			
 			// Store Data for Form Use
-			$default_subject = stripslashes( $_POST[ 'blog_subject' ] ); // Required
+			$default_subject = $str = stripslashes( @htmlspecialchars( $_POST[ 'blog_subject' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
+			// $default_content = $str = stripslashes( @htmlspecialchars( $_POST[ 'blog_text' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
 			$default_content = stripslashes( $_POST[ 'blog_text' ] ); // Required
 			$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
 			$default_categories = array_key_exists( 'catlist', $_POST ) ? stripslashes( $_POST[ 'catlist' ] ): $default_categories;
@@ -177,7 +178,7 @@
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_italic' ] ); ?>" onclick="ins_styles(this.form.blog_text,'i','');" />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_url' ] ); ?>" onclick="ins_url(this.form.blog_text);" />
-			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/><p />
+			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/>
 		<?php
 	}
 	
@@ -209,7 +210,7 @@
 		
 		$str = image_dropdown();
 		if ( $str !== NULL ) {
-			echo( '<a href="javascript:openpopup(\'image_list.php\',' . $theme_vars[ 'popup_window' ][ 'width' ] . ',' . $theme_vars[ 'popup_window' ][ 'height' ] . ',true);">' . $lang_string[ 'view_images' ] . '</a><br />' . $str );
+			echo( '<a href="javascript:openpopup(\'image_list.php\',' . $theme_vars[ 'popup_window' ][ 'width' ] . ',' . $theme_vars[ 'popup_window' ][ 'height' ] . ',true);">' . $lang_string[ 'view_images' ] . '</a><br />' . $str . '<p />' );
 		}
 	}
 	
