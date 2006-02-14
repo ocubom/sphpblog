@@ -10,7 +10,7 @@
 		global $language, $html_charset, $php_charset, $lang_string;
 			
 		// Language: Simplified Chinese
-		$lang_string[ 'locale' ] = array('zh_CN.UTF-8','chs','chinese-simplified');
+		$lang_string[ 'locale' ] = array('zh_CN.UTF-8','zh_CN.GB2312','chs','chinese-simplified');
 		$lang_string[ 'language' ] = 'chinese';
 		
 		// ISO Charset: UTF-8
