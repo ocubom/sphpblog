@@ -89,8 +89,8 @@
 			$default_entry = array_key_exists( 'entry', $_POST ) ? $_POST[ 'entry' ] : $default_entry;
 			
 			// Store Data for Form Use
-			$default_subject = $str = stripslashes( @htmlspecialchars( $_POST[ 'blog_subject' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
-			// $default_content = $str = stripslashes( @htmlspecialchars( $_POST[ 'blog_text' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
+			$default_subject = stripslashes( @htmlspecialchars( $_POST[ 'blog_subject' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
+			// $default_content = stripslashes( @htmlspecialchars( $_POST[ 'blog_text' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
 			$default_content = stripslashes( $_POST[ 'blog_text' ] ); // Required
 			$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
 			$default_categories = array_key_exists( 'catlist', $_POST ) ? stripslashes( $_POST[ 'catlist' ] ): $default_categories;
