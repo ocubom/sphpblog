@@ -12,8 +12,7 @@
 		$lang_string['html_charset'] = 'ISO-8859-15';
 		$lang_string['php_charset'] = 'ISO-8859-15';
 		
-		$lang_string['locale'] = 'sv_SE'; // <-- New 0.3.7
-		//$lang_string['locale'] = 'sve_SWE'; // If running windows server
+		$lang_string[ 'locale' ] = array('sv_SE','sve_SWE','swedish');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

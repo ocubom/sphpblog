@@ -8,7 +8,7 @@
 		global $language, $html_charset, $php_charset, $lang_string;
 			
 		// Language: Francais
-		$lang_string['locale'] = 'fr_FR'; // <-- New 0.3.7
+		$lang_string[ 'locale' ] = array('fr_FR','fra','french');
 		$lang_string['language'] = 'french';
 		
 		// ISO Charset: ISO-8859-1

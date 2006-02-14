@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'koi8-ru';
 		$lang_string['php_charset'] = 'koi8-ru';
 		
-		$lang_string['locale'] = 'RUS'; // <-- New 0.3.7
+		$lang_string['locale'] = array('ru_RU', 'russia', 'rus');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

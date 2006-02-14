@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		
-		$lang_string['locale'] = 'ms_MY'; // <-- New 0.3.7
+		$lang_string[ 'locale' ] = array('ms_MY','malay');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

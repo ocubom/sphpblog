@@ -6,7 +6,7 @@
 		global $language, $html_charset, $php_charset, $lang_string;
 			
 		// Language: Spanish
-		$lang_string['locale'] = 'es_ES';
+		$lang_string[ 'locale' ] = array('es_ES', 'esp', 'spanish');
 		$lang_string['language'] = 'spanish';
 		
 		// ISO Charset: ISO-8859-1

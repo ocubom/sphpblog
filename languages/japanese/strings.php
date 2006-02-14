@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'EUC-JP';
 		$lang_string['php_charset'] = 'EUC-JP';
 		
-		$lang_string['locale'] = 'ja_JA'; // <-- New 0.3.7
+		$lang_string['locale'] = array('ja_JP', 'japanese', 'jpn');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

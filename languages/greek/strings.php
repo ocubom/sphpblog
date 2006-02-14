@@ -6,7 +6,7 @@
 		global $language, $html_charset, $php_charset, $lang_string;
 			
 		// Language: Greek
-		$lang_string['locale'] = 'el'; // <-- New 0.3.7
+		$lang_string['locale'] = array('el_GR', 'grc');
 		$lang_string['language'] = 'greek';
 		
 		// ISO Charset: ISO-8859-1

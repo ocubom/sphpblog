@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'UTF-8';
 		$lang_string['php_charset'] = 'UTF-8';		
 
-		$lang_string['locale'] = 'ta_IN'; // <-- New 0.3.7
+		$lang_string[ 'locale' ] = array('ta_IN', 'tamil');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

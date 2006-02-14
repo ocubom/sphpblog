@@ -16,7 +16,7 @@
 		$lang_string['html_charset'] = 'windows-1251';
 		$lang_string['php_charset'] = 'windows-1251';
 		
-		$lang_string['locale'] = 'bg_BG'; // <-- New 0.3.7
+		$lang_string[ 'locale' ] = array('bg_BG');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

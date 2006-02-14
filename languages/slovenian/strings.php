@@ -12,7 +12,7 @@
 		global $language, $html_charset, $php_charset, $lang_string;			
 
 		// Language: Slovenian
-		$lang_string['locale'] = 'si';
+		$lang_string[ 'locale' ] = array('si_SI', 'si');
 		$lang_string['language'] = 'slovenian';		
 
 		// ISO Charset: ISO-8859-2

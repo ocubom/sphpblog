@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 
-		$lang_string['locale'] = 'de_DE';
+		$lang_string[ 'locale' ] = array('de_DE','german');
 		setlocale(LC_TIME, $lang_string['locale'] );
 
 		// Some Global Strings

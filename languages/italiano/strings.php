@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		
-		$lang_string['locale'] = 'it_IT'; // 'ita'; for Win Server <-- New 0.3.7
+		$lang_string[ 'locale' ] = array('it_IT','ita','italian');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

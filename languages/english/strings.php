@@ -11,7 +11,7 @@
 		global $language, $html_charset, $php_charset, $lang_string;			
 
 		// Language: English
-		$lang_string['locale'] = 'en_US';
+		$lang_string['locale'] = array('en_US', 'us');
 		$lang_string['language'] = 'english';	
 
 		// ISO Charset: ISO-8859-1

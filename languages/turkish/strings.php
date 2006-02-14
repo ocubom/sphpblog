@@ -12,7 +12,7 @@
 		$lang_string['html_charset'] = 'ISO-8859-0';
 		$lang_string['php_charset'] = 'ISO-8859-9';
 		
-		$lang_string['locale'] = 'tr_TR'; // <-- New 0.3.7
+		$lang_string[ 'locale' ] = array('tr_TR', 'trk', 'turkish');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings
@@ -493,7 +493,7 @@
 				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
-				$lang_string['title_language'] = "Language"; // New in 0.4.7
+			   $lang_string['title_language'] = "Language"; // New in 0.4.7
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
