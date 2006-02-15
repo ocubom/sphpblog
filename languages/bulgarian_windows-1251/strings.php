@@ -12,11 +12,13 @@
 		// Language: English
 		$lang_string['language'] = 'bulgarian';
 		
+		$lang_string[ 'locale' ] = array('bg_BG');
+		$lang_string['rss_locale'] = 'bg-BG'; // New 0.4.8
+		
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'windows-1251';
 		$lang_string['php_charset'] = 'windows-1251';
 		
-		$lang_string[ 'locale' ] = array('bg_BG');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

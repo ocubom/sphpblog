@@ -8,11 +8,13 @@
 		// Language: Malay
 		$lang_string['language'] = 'malay';
 		
+		$lang_string[ 'locale' ] = array('ms_MY','malay');
+		$lang_string['rss_locale'] = 'ms-MY'; // New 0.4.8
+		
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		
-		$lang_string[ 'locale' ] = array('ms_MY','malay');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings

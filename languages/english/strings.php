@@ -11,8 +11,10 @@
 		global $language, $html_charset, $php_charset, $lang_string;			
 
 		// Language: English
-		$lang_string['locale'] = array('en_US', 'us');
 		$lang_string['language'] = 'english';	
+		
+		$lang_string['locale'] = array('en_US', 'us');
+		$lang_string['rss_locale'] = 'en-US'; // New 0.4.8
 
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';

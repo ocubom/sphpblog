@@ -11,8 +11,10 @@
 		global $language, $html_charset, $php_charset, $lang_string;
 			
 		// Language: Danish
-		$lang_string[ 'locale' ] = array('da_DK','danish');
 		$lang_string['language'] = 'dansk';
+		
+		$lang_string[ 'locale' ] = array('da_DK','danish');
+		$lang_string['rss_locale'] = 'da-DK'; // New 0.4.8
 		
 		// ISO Charset: ISO-8859-15 - Se http://us4.php.net/manual/en/function.htmlspecialchars.php for valg af ISO-8859-15-tegnsæt.
 		$lang_string['html_charset'] = 'ISO-8859-15';

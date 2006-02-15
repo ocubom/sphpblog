@@ -5,14 +5,16 @@
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
 			
-		// Language: English
+		// Language: Turkish
 		$lang_string['language'] = 'türkçe';
+		
+		$lang_string[ 'locale' ] = array('tr_TR', 'trk', 'turkish');
+		$lang_string['rss_locale'] = 'tr-TR'; // New 0.4.8
 		
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-0';
 		$lang_string['php_charset'] = 'ISO-8859-9';
 		
-		$lang_string[ 'locale' ] = array('tr_TR', 'trk', 'turkish');
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings
