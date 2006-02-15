@@ -337,7 +337,11 @@
 				if ( $array[$i+1] == '' ) {
 					$str = $str . '<br />' . $array[$i] . '<br />';
 				} else {
-					$str = $str . '<a href="' . $array[$i+1] . '">' . $array[$i] . '</a><br />';
+					if ( strpos($array[$i+1], 'http') === 0 ) {
+						$str = $str . '<a href="' . $array[$i+1] . '" target="_blank">' . $array[$i] . '</a><br />';
+					} else {
+						$str = $str . '<a href="' . $array[$i+1] . '">' . $array[$i] . '</a><br />';
+					}
 				}
 			}
 		}
