@@ -149,7 +149,7 @@
 				
 				// Trackback Input
 				if ( $blog_config[ 'blog_trackback_enabled' ] ) {
-					$value = null;
+					$value = $default_tb_ping;
 					if ( $blog_config[ 'blog_trackback_auto_discovery' ] ) {
 						if ( $default_tb_ping ) {
 							$value = $default_tb_ping;

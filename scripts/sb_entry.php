@@ -184,9 +184,9 @@
 			}
 			
 			// Trackback pings?
-		   if ( $blog_config[ 'blog_trackback_enabled' ] ) {
-			  trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
-		   }
+			if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+				trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
+			}
 			return ( true );
 		} else {
 			// Error:

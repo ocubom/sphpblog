@@ -8,16 +8,16 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'trackbacks' );
 
-   function trackback_response( $val, $msg ) {
-      echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n";
-      echo "<response>\n";
-      echo "  <error>$val</error>\n";
-      if( $val > 0 ) {
-         echo "  <message>$msg</message>\n";
-      }
-      echo "</response>\n";
-      exit;
-   }
+	function trackback_response( $val, $msg ) {
+		echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n";
+		echo "<response>\n";
+		echo "  <error>$val</error>\n";
+		if( $val > 0 ) {
+			echo "  <message>$msg</message>\n";
+		}
+		echo "</response>\n";
+		exit;
+	}
 	
 	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 		// Hosted at root.
@@ -31,9 +31,10 @@
 	$redirect = true;
 	if ( isset( $_GET[ 'y' ] ) && isset( $_GET[ 'm' ] ) && isset( $_GET[ 'entry' ] ) ) {
 		$entry_id = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
-      $entry = $_GET[ 'entry' ];
+		$entry = $_GET[ 'entry' ];
 		$year = $_GET[ 'y' ];
 		$month = $_GET[ 'm' ];
+		
 		if ( file_exists( $entry_id . '.txt' ) ) {
 			$redirect = false;
 		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
@@ -41,45 +42,43 @@
 		}
 	}
 
-   // trackback is done by a POST
-   $tb_url = $_POST[ 'url' ];
-   $title = $_POST[ 'title' ];
-   $excerpt = $_POST[ 'excerpt' ];
-   $blog_name = $_POST[ 'blog_name' ];
+	// trackback is done by a POST
+	$tb_url = $_POST[ 'url' ];
+	$title = $_POST[ 'title' ];
+	$excerpt = $_POST[ 'excerpt' ];
+	$blog_name = $_POST[ 'blog_name' ];
 
 	// No such entry exists OR trackback is disabled
 	if ( ($redirect === true ) || ( !$blog_config[ 'blog_trackback_enabled' ] ) ) {
 		redirect_to_url( 'index.php' );
 	}
-	
 
 	if ( ( strlen('' . $entry ) ) && ( empty( $_GET[ '__mode' ] ) ) && ( strlen( '' . $tb_url ) ) && ( strpos( sb_read_file( $tb_url ), $base_url ) !== false ) ) {
-      @header('Content-Type: text/xml');
+		@header('Content-Type: text/xml');
+		
+		$tb_url = addslashes($tb_url);
+		$title = strip_tags($title);
+		$title = ( strlen($title) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
+		$excerpt = strip_tags($excerpt);
+		$excerpt = ( strlen($excerpt) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
+		$blog_name = htmlspecialchars($blog_name);
+		$blog_name = ( strlen($blog_name) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
+		
+		$user_ip = $HTTP_SERVER_VARS[ 'REMOTE_ADDR' ];
+		$user_domain = @gethostbyaddr($user_ip);
+		
+		$ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
+		
+		if (!$ok) {
+			trackback_response(1, $lang_string[ 'error_add' ] );
+		} else {
+			trackback_response(0, '');
+		}
 
-      $tb_url = addslashes($tb_url);
-      $title = strip_tags($title);
-      $title = ( strlen($title) > 127 ? substr( $title, 0, 124 ) . '...' : $title );
-      $excerpt = strip_tags($excerpt);
-      $excerpt = ( strlen($excerpt) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
-      $blog_name = htmlspecialchars($blog_name);
-      $blog_name = ( strlen($blog_name) > 127 ? substr( $blog_name, 0, 124 ) . '...' : $blog_name );
-      
-      $user_ip = $HTTP_SERVER_VARS[ 'REMOTE_ADDR' ];
-      $user_domain = @gethostbyaddr($user_ip);
-      
-      $ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
-      
-      if (!$ok) {
-         trackback_response(1, $lang_string[ 'error_add' ] );
-      } else {
-         trackback_response(0, '');
-      }
-
-   } else if( $_GET[ '__mode' ] === 'html' ) {
-      //
-      // Mode HTML: display in the style of the sphpblog
-      //
-
+	} else if( $_GET[ '__mode' ] === 'html' ) {
+		//
+		// Mode HTML: display in the style of the sphpblog
+		//
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -156,10 +155,10 @@
 </html>
 
 <?php
-   } else {
-      //
-      // Default XML output
-      //
+	} else {
+		//
+		// Default XML output
+		//
 
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
@@ -171,26 +170,26 @@
 
 		header('Content-type: application/xml');
 		
-      echo '<?xml version="1.0" encoding="iso-8859-1"?>'."\n";
-      echo "<response>\n";
-      echo "<error>0</error>\n";
-      echo '<rss version="0.91"><channel>'."\n";
-      echo "<title>" . $blog_config[ 'blog_title' ] . "</title>\n";
-      echo "<link>" . $base_url . "index.php</link>\n";
-      echo "<description>". $blog_config[ 'blog_footer' ] . "</description>\n";
-      echo "<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
-
-      $results = read_trackbacks ( $year, $month, $entry, $logged_in, false );
-      
-      for ( $i = 0; $i <= count( $results ) - 1; $i++ ) {
-         echo "<item>\n";
-         echo "<title>" . $results[$i][ 'title' ] . "</title>\n";
-         echo "<link>" . $results[$i][ 'url' ] . "</link>\n";
-         echo "<description>" . $results[$i][ 'excerpt' ] . "</description>\n";
-         echo "</item>\n";
-      }
-      
-      echo "</channel>\n";
-      echo "</rss></response>\n";
-   }
+		echo '<?xml version="1.0" encoding="iso-8859-1"?>'."\n";
+		echo "<response>\n";
+		echo "<error>0</error>\n";
+		echo '<rss version="0.91"><channel>'."\n";
+		echo "<title>" . $blog_config[ 'blog_title' ] . "</title>\n";
+		echo "<link>" . $base_url . "index.php</link>\n";
+		echo "<description>". $blog_config[ 'blog_footer' ] . "</description>\n";
+		echo "<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
+		
+		$results = read_trackbacks ( $year, $month, $entry, $logged_in, false );
+		
+		for ( $i = 0; $i <= count( $results ) - 1; $i++ ) {
+			echo "<item>\n";
+			echo "<title>" . $results[$i][ 'title' ] . "</title>\n";
+			echo "<link>" . $results[$i][ 'url' ] . "</link>\n";
+			echo "<description>" . $results[$i][ 'excerpt' ] . "</description>\n";
+			echo "</item>\n";
+		}
+		
+		echo "</channel>\n";
+		echo "</rss></response>\n";
+		}
 ?>

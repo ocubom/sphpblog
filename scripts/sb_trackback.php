@@ -318,9 +318,9 @@
 		global $lang_string, $blog_config, $auto_discovery_confirm;
 		
 		$excerpt = blog_to_html( $blog_text, true, true );
-      $excerpt = ( strlen($excerpt) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
+		$excerpt = ( strlen($excerpt) > 127 ? substr( $excerpt, 0, 124 ) . '...' : $excerpt );
 
-      $auto_discovery_confirm = array();
+		$auto_discovery_confirm = array();
       
 		$url_array = explode( ',', $tb_ping );
 		if ( is_array( $url_array ) ) {
