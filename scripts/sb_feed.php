@@ -62,7 +62,7 @@
 		//Optional channel fields
 		echo "\t\t<copyright>" . clean_rss_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
 		echo "\t\t<managingEditor>" . $blog_config[ 'blog_author' ] . "</managingEditor>\n";
-		echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
+		echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'rss_locale' ] ) . "</language>\n";
 		echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
@@ -161,7 +161,7 @@
 		}
 		//echo "\t\t<copyright>" . clean_rdf_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
 		//echo "\t\t<managingEditor>" . clean_rdf_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
-		//echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
+		//echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'rss_locale' ] ) . "</language>\n";
 		//echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
@@ -234,7 +234,7 @@
 		
 		header('Content-type: application/xml');
 		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
-		echo '<feed version="0.3" xmlns="http://purl.org/atom/ns#" xml:lang="' . str_replace('_', '-', $lang_string[ 'locale' ]) . "\">\n";
+		echo '<feed version="0.3" xmlns="http://purl.org/atom/ns#" xml:lang="' . str_replace('_', '-', $lang_string[ 'rss_locale' ]) . "\">\n";
 		//Required channel fields
 		echo "\t<title>" . clean_atom_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
 		echo "\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php\" />\n";
