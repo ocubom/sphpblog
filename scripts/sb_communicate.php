@@ -141,13 +141,13 @@
 		$data = $data . 'title=' . urlencode( strip_tags( $title ) );
 		// Use external name (SERVER_NAME) for pings to the outside world!!
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
-		   $data = $data . '&amp;url=http://' . $_SERVER[ 'SERVER_NAME' ] . '/' . urlencode( strip_tags( $permalink ) );
+		   $data = $data . '&url=http://' . $_SERVER[ 'SERVER_NAME' ] . '/' . urlencode( strip_tags( $permalink ) );
 		} else {
-		   $data = $data . '&amp;url=http://' . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . '/' . urlencode( strip_tags( $permalink ) );
+		   $data = $data . '&url=http://' . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . '/' . urlencode( strip_tags( $permalink ) );
 		}
-		$data = $data . '&amp;excerpt=' . urlencode( strip_tags( $excerpt ) );
-		$data = $data . '&amp;blog_name=' . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
-
+		$data = $data . '&excerpt=' . urlencode( strip_tags( $excerpt ) );
+		$data = $data . '&blog_name=' . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
+		
 		// $socket = fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
 		$socket = fsockopen( ( $url[ 'host' ] === $_SERVER[ 'HTTP_HOST' ] ? $_SERVER[ 'SERVER_ADDR' ] : $url[ 'host' ] ), 80, $errno, $errstr, 30);
 		if ( $socket ) { 
