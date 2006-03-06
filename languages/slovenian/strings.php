@@ -31,6 +31,7 @@
 		$lang_string['menu_contact'] = "Kontakt";
 		$lang_string['menu_stats'] = "Statistika";
 		$lang_string['menu_archive'] = "Zgodovina";
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Dodaj vnos";
 		$lang_string['menu_add_static'] = "Dodaj dodatno stran";

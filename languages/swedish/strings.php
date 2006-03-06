@@ -24,7 +24,8 @@
 		$lang_string['menu_home'] = "Hem";
 		$lang_string['menu_contact'] = "Contact Me";
 		$lang_string['menu_stats'] = "Stats";
-		$lang_string['menu_archive'] = "Arkiv"; 
+		$lang_string['menu_archive'] = "Arkiv";
+    $lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7 
 		$lang_string['menu_menu'] = "Meny";
 		$lang_string['menu_add'] = "Lägg till blog";
 		$lang_string['menu_add_static'] = "Lägg till statisk post";

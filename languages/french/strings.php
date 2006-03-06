@@ -2,31 +2,26 @@
 	// Translation(s)
 	// (c) 2004 Thibaud Chon, thibaud <dot> chone <at> insa-lyon <dot> fr (0.3.7)
 	// (c) 2005 Bill Bateman (0.4.6)
-    // (c) 2006 Alain Gaymard
-	
+  // (c) 2006 Alain Gaymard, Bill Bateman
+  
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
-			
 		// Language: Francais
 		$lang_string['language'] = 'french';
-		
 		$lang_string[ 'locale' ] = array('fr_FR','fra','french');
 		$lang_string['rss_locale'] = 'fr-FR'; // New 0.4.8
-		
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'iso-8859-1';
 		$lang_string['php_charset'] = 'iso-8859-1';
-		
 		setlocale( LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
-		
 		// Some Global Strings
-		
 		// Menu
 		$lang_string['menu_links'] = "Liens";
 		$lang_string['menu_home'] = "Accueil";
 		$lang_string['menu_contact'] = "Contactez moi"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Statistiques"; // <-- New 0.3.7r
 		$lang_string['menu_archive'] = "Archives"; // <-- New
+		$lang_string['menu_viewarchives'] = "Archives de vue "; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Ajout de contenu";
 		$lang_string['menu_add_static'] = "Ajout de page";
@@ -46,7 +41,6 @@
 		$lang_string['menu_add_block'] = "Blocs";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
-		
 		// Other
 		$lang_string['home'] = "Retour à l'accueil";
 		$lang_string['nav_next'] = "Suivant"; // <-- New 0.3.7
@@ -54,36 +48,29 @@
 		$lang_string['search_title'] = "Recherche:"; // <-- New 0.3.7
 		$lang_string['search_go'] = "Allez"; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = "Page générée en %s seconde(s)"; // <-- New 0.3.7
-		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' );
 		$lang_string['sb_default_title'] = 'Sans titre';
 		$lang_string['sb_default_author'] = 'x';
 		$lang_string['sb_default_footer'] = 'x';
-		
 		$lang_string['sb_edit'] = 'Editer';
 		$lang_string['sb_delete'] = 'Supprimer';
 		$lang_string['sb_permalink'] = 'lien permanent'; // <-- New 0.3.8
 		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
 		$lang_string['sb_relatedlink'] = 'lien relatif'; // <-- New in 0.4.6
-		
 		$lang_string['sb_add_comment_btn'] = 'Ajouter un commentaire';
 		$lang_string['sb_comment_btn_number_first'] = true;
 		$lang_string['sb_comment_btn'] = 'commentaire';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
 		$lang_string['sb_comments_plural_btn'] = 'commentaires';
-		
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '(consulté ';
 		$lang_string['sb_view_counter_post'] = ' fois)';
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = '(consulté ';
 		$lang_string['sb_view_counter_plural_post'] = ' fois)';
-		
 		$lang_string['sb_add_link_btn'] = '+ lien';
-		
 		$lang_string['sb_rate_entry_btn'] = "Cliquez pour noter l'article";
-		
 		// Entry Text Editor
 		// DATOH_REPLACE
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
@@ -112,7 +99,6 @@
 				$lang_string['insert_image_height'] = "Taille (optionnel)&nbsp;:";
 				$lang_string['insert_image_popup'] = "Vue normale dans instantané une fois cliqueté (optionnel)&nbsp;:";
 				$lang_string['insert_image_float'] = "Float (optionnel)&nbsp;:";
-		
 				$lang_string['day'] = 'Day';
 				$lang_string['month'] = 'Month';
 				$lang_string['year'] = 'Year';
@@ -120,7 +106,6 @@
 				$lang_string['minute'] = 'Minute';
 				$lang_string['second'] = 'Second';		
 		}
-	
 		switch ($page) {
 			case 'add':
 				// Add Entry
@@ -636,10 +621,8 @@
 					Check the emoticons you want to use. Write in the box the Tags you want 
 					to be replaced by the image. Multiple tags may be used, just separated them 
 					by spaces.<br /><br />
-		
 					For instance:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
-					
 					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
 					otherwise unexpected substitutions may occur.)</i>";
 				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
@@ -653,7 +636,5 @@
 			default:
 				break;
 		}
-
 	}
-		
 ?>

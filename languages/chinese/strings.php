@@ -29,6 +29,7 @@
 		$lang_string[ 'menu_contact' ] = "联系我";
 		$lang_string[ 'menu_stats' ] = "统计";
 		$lang_string[ 'menu_archive' ] = "归档";
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string[ 'menu_menu' ] = "菜单";
 		$lang_string[ 'menu_add' ] = "添加条目";
 		$lang_string[ 'menu_add_static' ] = "添加静态页面";

@@ -30,6 +30,7 @@
 		$lang_string['menu_contact'] = "Kontakt mig";
 		$lang_string['menu_stats'] = "Statistik";
 		$lang_string['menu_archive'] = "Arkiv";
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Opret meddelelse";
 		$lang_string['menu_add_static'] = "Opret statisk side";

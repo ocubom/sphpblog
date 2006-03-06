@@ -25,6 +25,7 @@
 		$lang_string['menu_contact'] = "Contact Me"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Stats"; // <-- New 0.3.7r
 		$lang_string['menu_archive'] = "Arþivler";
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menü";
 		$lang_string['menu_add'] = "Girdi Ekle";
 		$lang_string['menu_add_static'] = "Sabit Sayfa Ekle";

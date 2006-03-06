@@ -25,6 +25,7 @@
 		$lang_string['menu_contact'] = "Kontakt";
 		$lang_string['menu_stats'] = "Statistik";
 		$lang_string['menu_archive'] = "Archiv";
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menü";
 		$lang_string['menu_add'] = "Eintrag hinzufügen";
 		$lang_string['menu_add_static'] = "Statische Seite hinzufügen";

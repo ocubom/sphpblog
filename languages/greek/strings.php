@@ -25,6 +25,7 @@
 		$lang_string['menu_contact'] = "Contact Me";
 		$lang_string['menu_stats'] = "Stats";
 		$lang_string['menu_archive'] = "Áñ÷åßï";
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Ìåíïý";
 		$lang_string['menu_add'] = "ÅéóáãùãÞ ÅããñáöÞò";
 		$lang_string['menu_add_static'] = "ÅéóáãùãÞ ÓôáôéêÞò Óåëßäáò";

@@ -25,6 +25,7 @@
 	$lang_string['menu_contact'] = "¥á¡¼¥ë"; // <-- New 0.3.8
 	$lang_string['menu_stats'] = "Åý·×¥Ç¡¼¥¿"; // <-- New 0.3.7r
 	$lang_string['menu_archive'] = "¥¢¡¼¥«¥¤¥Ö";
+	$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 	$lang_string['menu_menu'] = "¥á¥Ë¥å¡¼";
 	$lang_string['menu_add'] = "¿·µ¬¥¨¥ó¥È¥ê¡¼";
 	$lang_string['menu_add_static'] = "ÀÅÅª¥Ú¡¼¥¸¤ÎºîÀ®";

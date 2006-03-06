@@ -26,6 +26,7 @@
 		$lang_string['menu_stats'] = "Statistiche"; // <-- New 0.3.7r
 		$lang_string['menu_archive'] = "Archivio";
 		$lang_string['menu_menu'] = "Men&ugrave;";
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_add'] = "Aggiungi notizia";
 		$lang_string['menu_add_static'] = "Aggiungi pagina statica";
 		$lang_string['menu_upload'] = "Carica immagine";

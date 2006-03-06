@@ -27,6 +27,7 @@
 		$lang_string['menu_links'] = "連結";
 		$lang_string['menu_home'] = "首頁";
 		$lang_string['menu_archive'] = "舊文章";// 要改進翻譯，原 "Archive"
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_contact'] = "聯絡網主Contact Me"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Stats";
 		$lang_string['menu_menu'] = "選單";

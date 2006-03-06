@@ -29,6 +29,7 @@
 		$lang_string['menu_contact'] = "Çà êîíòàêòè"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Ñòàòèñòèêè"; // <-- New 0.3.7r
 		$lang_string['menu_archive'] = "Àðõèâ"; // <-- New
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Ìåíþ";
 		$lang_string['menu_most_recent'] = "Ïîñëåäíè êîìåíòàðè";
 		$lang_string['menu_add'] = "Äîáàâè íîâèíà";

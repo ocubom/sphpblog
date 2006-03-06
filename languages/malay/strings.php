@@ -25,6 +25,7 @@
 		$lang_string['menu_contact'] = "Contact Me"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Stats"; // <-- New 0.3.7r
 		$lang_string['menu_archive'] = "Arkib";
+		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Tambah Entri";
 		$lang_string['menu_add_static'] = "Tambah Laman Statik";
