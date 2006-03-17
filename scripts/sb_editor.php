@@ -5,7 +5,7 @@
 			// insert [x]yyy[/x] style markup
 			inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", prompt_text);
 			if ( (inserttext != null) ) {
-				theform.value += " ["+sb_code+"]"+inserttext+"[/"+sb_code+"]";
+				insertAtCaret(theform.value, "["+sb_code+"]"+inserttext+"[/"+sb_code+"]");
 				theform.focus();
 			}
 		}
@@ -17,7 +17,7 @@
 				prompt_text = '[' + sb_code + ']xxx[/' + sb_code + ']';
 				user_input = prompt( prompt_text, '' );
 				if ( (user_input != null) ) {
-					theform.value += '['+sb_code+']'+user_input+'[/'+sb_code+']';
+					insertAtCaret(theform, '['+sb_code+']'+user_input+'[/'+sb_code+']');
 					theform.focus();
 				}
 			}
@@ -28,7 +28,7 @@
 			// insert [x]yyy[/x] style markup
 			inserttext = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+"\n[img="+prompt_text+"xxx]",prompt_text);
 			if ((inserttext != null) && (inserttext != "")) {
-				theform.value += " [img="+inserttext+"]";
+				insertAtCaret(theform, "[img="+inserttext+"]");
 			}
 			theform.focus();
 		}
@@ -43,7 +43,7 @@
 				image_popup = prompt('<?php echo( $lang_string[ 'insert_image_popup' ] ); ?>'+'\n[img=xxx popup=true/false]', '');
 				image_float = prompt('<?php echo( $lang_string[ 'insert_image_float' ] ); ?>'+'\n[img=xxx float=left/right]','');
 				
-				str = ' [img='+image_url;
+				str = '[img='+image_url;
 				if ((image_width != null) && (image_width != '')) {
 					str += ' width='+image_width;
 				}
@@ -64,7 +64,7 @@
 				}
 				str += ']';
 				
-				theform.value += str;
+				insertAtCaret(theform, str);
 				theform.focus();
 			
 			}
@@ -73,7 +73,7 @@
 		// Insert Image Dropdown Menu
 		function ins_image_dropdown(theform,theImage) {
 			if (theImage.value != "--") {
-				theform.value += theImage.value;
+				insertAtCaret(theform, theImage.value);
 				theform.focus();
 			}
 		}
@@ -88,7 +88,7 @@
 					link_text = link_url;
 				}
 				link_target = prompt('<?php echo( $lang_string[ 'insert_url3' ] ); ?>'+'\n[url= new=true/false][/url]','');
-				str = ' [url='+link_url;
+				str = '[url='+link_url;
 				if ((link_target != null) && (link_target != '')) {
 					link_target.toLowerCase;
 					if ( link_target == 'true' || link_target == 'false' ) {
@@ -98,7 +98,7 @@
 				}
 				str += ']'+link_text+'[/url]';
 				
-				theform.value += str;
+				insertAtCaret(theform, str);
 				theform.focus();
 			}
 		}
@@ -112,16 +112,16 @@
 				if ( (link_text == null) || (link_text == '') ) {
 					link_text = link_url;
 				}
-				str = ' [url='+link_url+']'+link_text+'[/url]';
+				str = '[url='+link_url+']'+link_text+'[/url]';
 				
-				theform.value += str;
+				insertAtCaret(theform, str);
 				theform.focus();
 			}
 		}
 		
 		//Insert Emoticon
 		function ins_emoticon(theform, emoticon) {
-			theform.value += ' ' + emoticon;
+			insertAtCaret(theform, emoticon);
 			theform.focus();
 		}
 		
@@ -144,5 +144,60 @@
 				return true;
 			}
 		}
-		-->
+
+	// From:
+	// http://parentnode.org/javascript/working-with-the-cursor-position/
+	function insertAtCaret(obj, text) {
+		if(document.selection) {
+			obj.focus();
+			var orig = obj.value.replace(/\r\n/g, "\n");
+			var range = document.selection.createRange();
+
+			if(range.parentElement() != obj) {
+				return false;
+			}
+
+			range.text = text;
+			
+			var actual = tmp = obj.value.replace(/\r\n/g, "\n");
+
+			for(var diff = 0; diff < orig.length; diff++) {
+				if(orig.charAt(diff) != actual.charAt(diff)) break;
+			}
+
+			for(var index = 0, start = 0; 
+				tmp.match(text) 
+					&& (tmp = tmp.replace(text, "")) 
+					&& index <= diff; 
+				index = start + text.length
+			) {
+				start = actual.indexOf(text, index);
+			}
+		} else if(obj.selectionStart >= 0) {
+			var start = obj.selectionStart;
+			var end   = obj.selectionEnd;
+
+			obj.value = obj.value.substr(0, start) 
+				+ text 
+				+ obj.value.substr(end, obj.value.length);
+		}
+		
+		if(start != null) {
+			setCaretTo(obj, start + text.length);
+		} else {
+			obj.value += text;
+		}
+	}
+	
+	function setCaretTo(obj, pos) {
+		if(obj.createTextRange) {
+			var range = obj.createTextRange();
+			range.move('character', pos);
+			range.select();
+		} else if(obj.selectionStart) {
+			obj.focus();
+			obj.setSelectionRange(pos, pos);
+		}
+	}
+-->
 	</script>

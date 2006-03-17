@@ -18,6 +18,23 @@
 	  los primeros llame a la funcion correspondiente. (Lineas 419 a 427)
 	**************************************************************************/
 	
+	 // Sverd1 March 17, 2006
+  function dateString() {
+	  $dateArray = read_dateFormat();
+	  $dateToday = explode("/", $dateArray[ 'sDate_order' ]);
+	  foreach($dateToday as $dToday)
+	  {
+		  if ($dToday == 'Day') {
+			  $dateString[] = '%d';
+		  } elseif ($dToday == 'Month' || $dToday == 'MMM') {
+			  $dateString[] = '%m';
+		  } elseif ($dToday == 'Year') {
+			  $dateString[] = '%y';
+		  }
+	  }
+	  return ( implode("/", $dateString) );
+  }
+	
 	function read_menus_calendar ( $m, $y, $d ) {
 		global $lang_string, $user_colors, $blog_config;
 		
@@ -210,7 +227,9 @@
 			$str = $str . '<td></td>';
 		}
 		$str = $str . '</tr><tr>';
-		$str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">%x') . '</a></td></tr></table>'; // Close the table
+		
+    // Fixed per Sverd1 March 17, 2006
+    $str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">') . $dateString . '</a></td></tr></table>'; // Close the table
 		return( $str );
 	}
 
@@ -259,9 +278,12 @@
 					$str_month .= '<li>' . "\n";
 					$temp_str = ( strftime( '%B', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
 					$str_month .= '<a href="' . $base_url . '?m=' . $last_m . '&amp;y=' . $last_y . '">' . $temp_str . '</a>' . "\n";
-					$str_month .= '<ul>' . "\n";
-					$str_month .= $str_day . "\n";
-					$str_month .= '</ul>' . "\n";
+					
+          // Fixed per Sverd1 March 17, 2006
+          if(!empty($str_day)) {
+	           $str_month .= '<ul>' . "\n" . $str_day . "\n" . '</ul>' . "\n";
+          }
+					
 					$str_month .= '</li>' . "\n";
 					
 					$str_day = '';
@@ -294,7 +316,8 @@
 					
 					$curr_array = Array();
 					$curr_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, true );
-					$curr_array[ 'date' ] = ( strftime( '%x', mktime(0, 0, 0, $curr_m, $curr_d, $curr_y ) ) );
+					// Fixed per Sverd1 March 17, 2006
+          $curr_array[ 'date' ] = ( strftime( dateString(), mktime(0, 0, 0, $curr_m, $curr_d, $curr_y ) ) );
 					$curr_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, true );
 					
 					$str_day .= '<li>' . "\n";
