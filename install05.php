@@ -6,9 +6,11 @@
 	read_config();
 	
 	global $blog_config;
-	if ( isset( $_GET[ 'blog_language' ] ) ) {	
-		$blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
-	}
+  if ( isset( $_GET[ 'blog_language' ] ) ) {
+    if ( preg_match("/[^a-zA-Z0-9_\-]+/",$_GET['blog_language']) === 0 ) {
+    $blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
+    }
+  }
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install05' );
