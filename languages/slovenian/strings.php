@@ -6,24 +6,22 @@
 
 	// Simple PHP Version: 0.4.6.2
 	// Language Version:   0.1
-	
 
 	function sb_language( $page ) {
-		global $language, $html_charset, $php_charset, $lang_string;			
+		global $language, $html_charset, $php_charset, $lang_string;
 
 		// Language: Slovenian
-		$lang_string['language'] = 'slovenian';		
-		
 		$lang_string[ 'locale' ] = array('si_SI', 'si');
-		$lang_string['rss_locale'] = 'si_SI'; // New 0.4.8
+		$lang_string['language'] = 'slovenian';
+		$lang_string['rss_locale'] = 'si_SI';
 
 		// ISO Charset: ISO-8859-2
 		$lang_string['html_charset'] = 'ISO-8859-2';
-		$lang_string['php_charset'] = 'ISO-8859-2';		
+		$lang_string['php_charset'] = 'ISO-8859-2';
 
-		setlocale( LC_TIME, $lang_string['locale'] );		
+		setlocale( LC_TIME, $lang_string['locale'] );
 
-		// Some Global Strings		
+		// Some Global Strings
 
 		// Menu
 		$lang_string['menu_links'] = "Povezave";
@@ -31,7 +29,6 @@
 		$lang_string['menu_contact'] = "Kontakt";
 		$lang_string['menu_stats'] = "Statistika";
 		$lang_string['menu_archive'] = "Zgodovina";
-		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Dodaj vnos";
 		$lang_string['menu_add_static'] = "Dodaj dodatno stran";
@@ -48,8 +45,8 @@
 		$lang_string['menu_most_recent'] = "Zadnji komentarji";
 		$lang_string['menu_most_recent_entries'] = "Zadnji vnosi";
 		$lang_string['menu_most_recent_trackback'] = "Zadnji trackbacki";
-		$lang_string['menu_add_block'] = "Bloki";	
-		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_add_block'] = "Bloki";
+		$lang_string['menu_emoticons'] = "Sme&#353;ki"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 
 		// Other
@@ -58,9 +55,10 @@
 		$lang_string['nav_back'] = 'Nazaj';
 		$lang_string['search_title'] = 'I&#353;&#269;i:';
 		$lang_string['search_go'] = 'Pojdi';
-		$lang_string['page_generated_in'] = 'Stran je bila ustvarjena v %s sekundah';		
+		$lang_string['page_generated_in'] = 'Stran je bila ustvarjena v %s sekundah';
 
 		// SB Functions
+
 		$lang_string['sb_months'] = array( 'Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'August', 'September', 'Oktober', 'November', 'December' );
 		$lang_string['sb_default_title'] = 'Ni naslova';
 		$lang_string['sb_default_author'] = 'Ni avtorja';
@@ -70,13 +68,13 @@
 		$lang_string['sb_delete'] = 'bri&#353;i';
 		$lang_string['sb_permalink'] = 'povezava';
 		$lang_string['sb_trackback'] = 'trackback';
-		$lang_string['sb_relatedlink'] = 'povezana povezava'; // <-- New in 0.4.6		
+		$lang_string['sb_relatedlink'] = 'povezana povezava'; // <-- New in 0.4.6
 
 		$lang_string['sb_add_comment_btn'] = 'dodaj komentar';
 		$lang_string['sb_comment_btn_number_first'] = true;
 		$lang_string['sb_comment_btn'] = 'komentar';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
-		$lang_string['sb_comments_plural_btn'] = 'komentarji';		
+		$lang_string['sb_comments_plural_btn'] = 'komentarji';
 
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
@@ -84,10 +82,10 @@
 
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = '';
-		$lang_string['sb_view_counter_plural_post'] = ' pogledi';		
+		$lang_string['sb_view_counter_plural_post'] = ' pogledi';
 
 		$lang_string['sb_add_link_btn'] = '+ povezava';
-		$lang_string['sb_rate_entry_btn'] = 'Klikni za oceno vnosa';		
+		$lang_string['sb_rate_entry_btn'] = 'Klikni za oceno vnosa';
 
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
@@ -109,7 +107,7 @@
 			$lang_string['insert_url1'] = "Vnesi besedilo, ki bo prikazano kot spletna povezava (Ni obvezno):";
 			$lang_string['insert_url2'] = "Vnesi naslov spletne povezave:";
 			$lang_string['insert_url3'] = "Odpiranje povezave v novem oknu (Ni obvezno):";
-			$lang_string['form_error'] = "Prosim vnesi Naslov in Vsebino.";	
+			$lang_string['form_error'] = "Prosim vnesi Naslov in Vsebino.";
 
 			// More Javascript Strings
 			$lang_string['insert_image_optional'] = 'Ni obvezno:';
@@ -117,14 +115,14 @@
 			$lang_string['insert_image_height'] = 'Vi&#353;ina (Ni obvezno):';
 			$lang_string['insert_image_popup'] = 'Ob kliku prikaz v celotni velikosti in v pop-up oknu (Ni obvezno):';
 			$lang_string['insert_image_float'] = 'Lebde&#269;e (Ni obvezno):';
-		
+
 			$lang_string['day'] = 'Day';
 			$lang_string['month'] = 'Month';
 			$lang_string['year'] = 'Year';
 			$lang_string['hour'] = 'Hour';
 			$lang_string['minute'] = 'Minute';
 			$lang_string['second'] = 'Second';
-		}	
+		}
 
 		switch ($page) {
 			case 'add':
@@ -159,7 +157,7 @@
 				$lang_string['instructions_preview'] = "Tako zgleda tvoja dodatna stran, &#269;e uporablja&#353; oblikovanje teksta ali si vstavil kak&#353;no sliko ne pozabi <b>zapreti</b> vseh 'tagov'.";
 				$lang_string['title_update'] = "Posodobi dodatno stran";
 				$lang_string['instructions_update'] = "Svoj vnos lahko spremeni&#353; z uporabo spodnega obrazca. Klikni 'Predoglej' ali 'Objavi' ko kon&#269;a&#353;.";
-				$lang_string['form_error'] = "Prosim izpolni vsa vnosna polja!";	
+				$lang_string['form_error'] = "Prosim izpolni vsa vnosna polja!";
 
 				// Error Response
 				$lang_string['error'] = "<h2>Opsss!</h2>Vnos ni bil shranjen. Naletel sem na te&#382;ave med shranjevanjem tvojega vnosa.<br /><br />Stre&#382;nik je javil:<br />";
@@ -267,7 +265,7 @@
 				$lang_string['IPAddress'] = "IP Naslov:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "Uporabnikov brskalnik:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>%s, je %s napisal:</i><br />\n<br />\n%s"; // New for 0.4.6.2
-				
+
 				$lang_string['comment_capcha'] = "Anti-Spam: Vnesi <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Komentarji";
 				$lang_string['header'] = "Dodaj komentar";
@@ -474,7 +472,7 @@
 				$lang_string['blog_title'] = "Ime bloga:";
 				$lang_string['blog_author'] = "Avtor:";
 				$lang_string['blog_email'] = "E-mail:";
-				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
+				$lang_string['blog_avatar'] = "Povezava do avatarja: (Pusti prazno, &#269;e ga no&#269;e&#353;)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Noga:";
 				$lang_string['blog_choose_language'] = "Izberi jezik:";
 				$lang_string['blog_enable_comments'] = "Omogo&#269;i komentarje";
@@ -485,8 +483,8 @@
 				$lang_string['blog_enable_title'] = "Omogo&#269;i besedilni naslovni blok (Odklukaj, &#269;e je v glavi slika)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Omogo&#269;i stalne povezave pri vnosih"; // New for 0.4.6
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
-				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
-				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Omogo&#269;i seznam zadnjih komentarjev"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Omogo&#269;i seznam zadnjih vnosov"; // New for 0.4.7
 				$lang_string['blog_email_notification'] = "Po&#353;lji obvestilo po E-mailu, ob novih komentarjih";
 				$lang_string['blog_send_pings'] = "Po&#353;lji &quot;pinge&quot;";
 				$lang_string['blog_ping_urls'] = "Vnesi polni naslov (npr. http://rpc.weblogs.com/RPC2) servisa za &quot;pinganje&quot;.<br />(Lahko vnese&#353; ve&#269; naslovov, ki morajo biti lo&#269;eni z vejico).";
@@ -500,10 +498,10 @@
 				$lang_string['blog_comment_tags'] = "Tagi, ki so dovoljeni v komentarjih:";
 				$lang_string['blog_gzip_about'] = "
 					Od PHP 4.0.4, PHP ima zmo&#382;nost da bere in pi&#353;e gzip (.gz) stisnjene datoteke, kar prihrani
-					nekaj prostora na disku. Lahko tudi transparentno stisne strani, ki so poslane brskalniku, 
+					nekaj prostora na disku. Lahko tudi transparentno stisne strani, ki so poslane brskalniku,
 					ki podpira gzip kompresijo, kar pripomore k hitrej&#353;em nalaganju strani.<br />
 					<br />
-					Zlib podpora ni privzeto omogo&#269;ena v PHP-ju. &#268;e so polja za obkljukati onemogo&#269;ena, potem tvoja 
+					Zlib podpora ni privzeto omogo&#269;ena v PHP-ju. &#268;e so polja za obkljukati onemogo&#269;ena, potem tvoja
 					namestitev PHP ja ne omogo&#269;a Zlib dodatka.";
 				$lang_string['blog_enable_gzip_txt'] = "Omogo&#269;i GZIP kompresijo za datoteke na stre&#382;niku";
 				$lang_string['blog_enable_gzip_output'] = "Omogo&#269;i GZIP kompresijo za HTML izhod";
@@ -518,13 +516,13 @@
 				$lang_string['cal_sunday'] = "Nedelja";
 				$lang_string['cal_monday'] = "Ponedeljek";
 				$lang_string['label_calendar_start'] = "Prvi dan v tednu";
-				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
-				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
-				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
-				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
-				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
-				$lang_string['title_general'] = "General"; // New in 0.4.7
-				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['title_sidebar'] = "Menijska vrstica"; // New in 0.4.7
+				$lang_string['title_comments'] = "Komentarji"; // New in 0.4.7
+				$lang_string['title_trackback'] = "Trackbacki"; // New in 0.4.7
+				$lang_string['title_compression'] = "Kompresija"; // New in 0.4.7
+				$lang_string['title_entries'] = "Vnosi"; // New in 0.4.7
+				$lang_string['title_general'] = "Splo&#353;no"; // New in 0.4.7
+				$lang_string['title_language'] = "Jezik"; // New in 0.4.7
 				break;
 			case 'trackbacks':
 				// Trackbacks
@@ -608,7 +606,7 @@
 				$lang_string['instructions'] = "Izpolni obrazec:";
 				$lang_string['form_error'] = "Prosim izpolni polja: Zadeva in Komentar.";
 				$lang_string['name'] = "Ime:";
-				$lang_string['email'] = "E-mail:";				
+				$lang_string['email'] = "E-mail:";
 				$lang_string['subject'] = "Zadeva:";
 				$lang_string['comment'] = "Komentar:";
 				$lang_string['submit_btn'] = "&nbsp;Potrdi&nbsp;";
@@ -649,24 +647,24 @@
 				$lang_string["clientid"] = 'Client ID: ';
 				break;
 			case 'emoticons':  // New for 0.4.7
-				$lang_string['title'] = "Admin Emoticons";
+				$lang_string['title'] = "Sme&#353;ki";
 				$lang_string['instructions'] = "
-					Check the emoticons you want to use. Write in the box the Tags you want 
-					to be replaced by the image. Multiple tags may be used, just separated them 
-					by spaces.<br /><br />
-		
-					For instance:<br />
+					Obkljukaj sma&#353;ke, ki jih &#382;eli&#353; uporabiti. V polja napi&#353;i tage za sme&#353;ke,
+					ki bodo nato zamenjane z sliko sme&#353;ka. Uporabi&#353; lahko ve&#269; tagov, lo&#269;enih s presledkom.
+					<br /><br />
+
+					Primer:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
-					
-					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
-					otherwise unexpected substitutions may occur.)</i>";
-				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
-				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
-				$lang_string["upload_error"] = 'Error! Image was not uploaded.';
-				$lang_string["upload_invalid"] = 'Error! Invalid image file. Image must be a png, jpg, or gif.';
-				$lang_string["save_success"] = 'Emoticon preferences saved successfully!';
-				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
-				$lang_string["save_button"] = 'Save Emoticons';
+
+					<i>(Priporo&#269;eno je, da uporabi&#353; tage dalj&#353;e od dveh znakov, saj se lahko druga&#269;e zgodi da,
+					napi&#353;e&#353; kak&#353;en tag v besedilu...)</i>";
+				$lang_string["upload_instructions"] = 'Uploadaj novega sme&#353;ka:';
+				$lang_string["upload_success"] = 'Uspeh! Sme&#353;ek je bil uspe&#353;no uploadan!';
+				$lang_string["upload_error"] = 'Napaka! Sme&#353;ek ni bil uploadan!';
+				$lang_string["upload_invalid"] = 'Napaka! Napaèen format datoteke. Sme&#353;ek mora biti v formatu png, jpg, ali gif.';
+				$lang_string["save_success"] = 'Nastavitve sme&#353;kov so bile uspe&#353;no shranjene!';
+				$lang_string["save_error"] = 'Napaka! Nastavitve sme&#353;kov niso shranjene.';
+				$lang_string["save_button"] = 'Shrani sme&#353;ke';
 				break;
 			default:
 				break;
