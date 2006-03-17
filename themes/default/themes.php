@@ -454,11 +454,13 @@
 			echo( $result[ 'content' ] . '' );
 		}
 		
-		$result = menu_most_recent_comments();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
+		if ( $blog_config['blog_enable_lastcomments']){
+      $result = menu_most_recent_comments();
+		  if ( $result[ 'content' ] != '' ) {
+			 echo( '<hr />' );
+			 echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+			 echo( $result[ 'content' ] . '' );
+		  }
 		}
 		
 		if( $blog_config[ 'blog_trackback_enabled' ] ) {
@@ -470,11 +472,13 @@
 			}
 		}
 		
-		$result = menu_most_recent_entries();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
+		if ( $blog_config['blog_enable_lastentries']){
+      $result = menu_most_recent_entries();
+		  if ( $result[ 'content' ] != '' ) {
+			 echo( '<hr />' );
+			 echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+			 echo( $result[ 'content' ] . '' );
+		  }
 		}
 		
 		echo( '<hr />' );

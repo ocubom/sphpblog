@@ -641,24 +641,28 @@
 		echo( "</div><br />\n" );
 		
 		// New 0.3.8
-		$result = menu_most_recent_entries();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- RECENT ENTRIES -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
+		if ( $blog_config['blog_enable_lastentries']){
+      $result = menu_most_recent_entries();
+		  if ( $result[ 'content' ] != "" ) {
+		    echo( "\n<!-- RECENT ENTRIES -->\n" );
+			 echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
+			 echo( "<div class=\"menu_body\">\n" );
+			 echo( $result[ 'content' ] . "\n" );
+		  	echo( "</div><br />\n" );
+		  }
 		}
 		
 		// Retained from 0.3.7c
-		$result = menu_most_recent_comments();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- RECENT COMMENTS -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
+		if ( $blog_config['blog_enable_lastcomments']){
+      $result = menu_most_recent_comments();
+		  if ( $result[ 'content' ] != "" ) {
+			   echo( "\n<!-- RECENT COMMENTS -->\n" );
+			   echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
+			   echo( "<div class=\"menu_body\">\n" );
+			   echo( $result[ 'content' ] . "\n" );
+			   echo( "</div><br />\n" );
+		  }
+	}
 	
 		// New 0.3.8
 		if( $blog_config[ 'blog_trackback_enabled' ] ) {

@@ -504,7 +504,14 @@
 		
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
 		
-		// Retained from 0.3.7c
+		$result = menu_display_avatar();
+		if( $result[ 'content' ] != '') {
+			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
+			echo( $result[ 'content' ] . '' );
+			echo( '<hr />' );
+		}
+    
+    // Retained from 0.3.7c
 		echo( "\n<!-- LINKS -->\n" );
 		$result = menu_display_links();
 		echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
@@ -589,23 +596,27 @@
 		echo( "</div><br />\n" );
 		
 		// New 0.3.8
-		$result = menu_most_recent_entries();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- RECENT ENTRIES -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
+		if ( $blog_config['blog_enable_lastentries']){
+      $result = menu_most_recent_entries();
+		  if ( $result[ 'content' ] != "" ) {
+		  	echo( "\n<!-- RECENT ENTRIES -->\n" );
+		  	echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
+		  	echo( "<div class=\"menu_body\">\n" );
+		  	echo( $result[ 'content' ] . "\n" );
+		  	echo( "</div><br />\n" );
+		  }
 		}
 		
 		// Retained from 0.3.7c
-		$result = menu_most_recent_comments();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- RECENT COMMENTS -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
+		if ( $blog_config['blog_enable_lastcomments']){
+      $result = menu_most_recent_comments();
+		  if ( $result[ 'content' ] != "" ) {
+			 echo( "\n<!-- RECENT COMMENTS -->\n" );
+			 echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
+			 echo( "<div class=\"menu_body\">\n" );
+			 echo( $result[ 'content' ] . "\n" );
+			 echo( "</div><br />\n" );
+		  }
 		}
 	
 		// New 0.3.8
