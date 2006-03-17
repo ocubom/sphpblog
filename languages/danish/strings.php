@@ -1,10 +1,11 @@
 <?php
+
 	// Danish Language File
+	// (c) 2005-2006 Jan Normann Nielsen, spam <at> dubbekarl <dot> dk
 	// (c) 2004 Thomas Petersen, thomasp <at> nsd <dot> dk
-	// (c) 2005 Jan Normann Nielsen, spam <at> dubbekarl <dot> dk
 	//
-	// Simple PHP Version: 0.4.6.2
-	// Language Version:   0.4.6.2
+	// Simple PHP Version: 0.4.7.1
+	// Language Version:   0.4.7.1
 	
 	
 	function sb_language( $page ) {
@@ -26,11 +27,10 @@
 		
 		// Menu
 		$lang_string['menu_links'] = "Links";
-		$lang_string['menu_home'] = "Blog-forside";
+		$lang_string['menu_home'] = "Forside";
 		$lang_string['menu_contact'] = "Kontakt mig";
 		$lang_string['menu_stats'] = "Statistik";
 		$lang_string['menu_archive'] = "Arkiv";
-		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Opret meddelelse";
 		$lang_string['menu_add_static'] = "Opret statisk side";
@@ -48,8 +48,8 @@
 		$lang_string['menu_most_recent_entries'] = "Nyeste meddelelser";
 		$lang_string['menu_most_recent_trackback'] = "Nyeste trackbacks";
 		$lang_string['menu_add_block'] = "Blokke";
-		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
-		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
+		$lang_string['menu_emoticons'] = "Humørikoner";
+		$lang_string['menu_avatar'] = "Displaybillede";
 		
 		// Other
 		$lang_string['home'] = "Tilbage til forside";
@@ -80,12 +80,12 @@
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
 		$lang_string['sb_view_counter_post'] = ' visning';
+
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = '';
 		$lang_string['sb_view_counter_plural_post'] = ' visninger';
 		
 		$lang_string['sb_add_link_btn'] = '+ link';
-		
 		$lang_string['sb_rate_entry_btn'] = 'Klik for at vurdere meddelelsen';
 		
 		// Entry Text Editor
@@ -101,6 +101,7 @@
 			$lang_string['btn_preview'] = "&nbsp;Vis&nbsp;";
 			$lang_string['btn_post'] = "&nbsp;Gem&nbsp;";
 			$lang_string['file_name'] = "Statisk filnavn: (ingen mellemrum eller filendelse)";
+
 			// Javascript Strings
 			$lang_string['insert_styles'] = "Indtast tekst, der skal formateres:";
 			$lang_string['insert_image'] = "Indtast URL til billedet:";
@@ -108,6 +109,7 @@
 			$lang_string['insert_url2'] = "Indtast den fulde URL til linket:";
 			$lang_string['insert_url3'] = "Åbn URL i nyt vindue (valgfrit):";
 			$lang_string['form_error'] = "Udfyld venligst emne- og meddelelse-felterne.";
+
 			// More Javascript Strings
 			$lang_string['insert_image_optional'] = 'Valgfrit:';
 			$lang_string['insert_image_width'] = 'Bredde (valgfrit):';
@@ -115,12 +117,12 @@
 			$lang_string['insert_image_popup'] = 'Vis fuld størrelse i pop-up-vindue ved klik (valgfrit):';
 			$lang_string['insert_image_float'] = 'Flydende (valgfrit):';
 		
-			$lang_string['day'] = 'Day';
-			$lang_string['month'] = 'Month';
-			$lang_string['year'] = 'Year';
-			$lang_string['hour'] = 'Hour';
-			$lang_string['minute'] = 'Minute';
-			$lang_string['second'] = 'Second';
+			$lang_string['day'] = 'Dag';
+			$lang_string['month'] = 'Måned';
+			$lang_string['year'] = 'År';
+			$lang_string['hour'] = 'Time';
+			$lang_string['minute'] = 'Minut';
+			$lang_string['second'] = 'Sekund';
 		}
 	
 		switch ($page) {
@@ -133,7 +135,8 @@
 				$lang_string['label_tb_ping'] = "Trackback-ping(s), der skal sendes (adskilt af komma)";
 				$lang_string['label_tb_autodiscovery'] = "auto-opdagelse";
 				$lang_string['label_relatedlink'] = "Relateret link";
-				$lang_string['label_categories'] = "Category List";
+				$lang_string['label_categories'] = "Kategori-liste";
+
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Vis/rediger meddelelse";
 				$lang_string['instructions_preview'] = "Sådan ser din meddelelse ud. Hvis du bruger tekstformatering eller inkluderer billeder, skal du huske at 'lukke' alle dine 'tags'.";
@@ -141,6 +144,7 @@
 				$lang_string['instructions_update'] = "Du kan ændre din meddelelse ved at udfylde formularen herunder. Klik på 'Vis' eller 'Ok', når du er færdig.";
 				$lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Annuller&nbsp;";
+
 				// Error Response
 				$lang_string['error'] = "<h2>Ups!</h2>Meddelelsen blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
@@ -148,16 +152,19 @@
 				// Add Entry
 				$lang_string['title'] = "Tilføj statisk side";
 				$lang_string['instructions'] = "Udfyld formularen herunder for at lave en statisk side. I modsætning til en normal blog-meddelelse optræder statiske sider som links i menuen til højre og bruges som sider, der altid skal være tilgængelige, fx Om Mig, Kontakt Os, Kalender osv. Klik på 'Vis' for at se, hvordan din side ser ud eller klik på 'Godkend' for at gemme siden.";
+
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Vis/rediger statisk side";
 				$lang_string['instructions_preview'] = "Sådan ser din statiske side ud. Hvis du bruger tekstformatering eller inkluderer billeder, skal du huske at 'lukke' alle dine 'tags'.";
 				$lang_string['title_update'] = "Opdater statisk side";
 				$lang_string['instructions_update'] = "Du kan ændre din statiske side ved af udfylde formularen herunder. Klik på 'Vis' eller 'Godkend', når du er færdig.";
 				$lang_string['form_error'] = "Udfyld venligst emne-, meddelelses- og filnavn-felterne.";
+
 				// Error Response
 				$lang_string['error'] = "<h2>Ups!</h2>Siden blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
 			case 'add_block':
+
 				// Add / Manage Blocks
 				$lang_string['title'] = "Tilføj/rediger blokke";
 				$lang_string['instructions'] = "Tilføj specielle blokke";
@@ -175,6 +182,7 @@
 				break;
 			case 'add_link':
 				$lang_string['static_pages'] = "Statiske sider:";
+
 				// Add / Manage Links
 				$lang_string['title'] = "Tilføj/rediger links";
 				$lang_string['instructions'] = "Her kan du tilføje links til andre sites. Udfyld formularen herunder og klik 'Tilføj link' for at tilføje et link. Klik på knapperne 'op' eller 'ned' for at ændre rækkefølgen. Klik på knappen 'rediger' for at redigere et link. Klik på knappen 'slet' for at slette et link.";
@@ -191,6 +199,7 @@
 				$lang_string['form_error'] = "Udfyld venligst navn-feltet.";
 				break;
 			case 'categories':
+
 				// Add / Manage Links
 				$lang_string['title'] = "Tilføj/rediger kategorier";
 				$lang_string['instructions'] = "Udfyld formularen herunder for at tilføje og redigere dine kategorier. Hver kategori skal være på følgende format: 'kategorinavn (id-nummer)'. Brug indrykning med mellemrum og til at lave hierarkier med.<br /><br /><b>Eksempel:</b><br />Generelt (1)<br />Nyheder (3)<br />&nbsp;&nbsp;Opslag (6)<br />&nbsp;&nbsp;Events (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Forskelligt (7)<br />Teknologi(2)<br />";
@@ -220,6 +229,7 @@
 				$lang_string['link_reg_color'] = "Link (standard)";
 				$lang_string['link_hi_color'] = "Link (valgt)";
 				$lang_string['link_down_color'] = "Link (aktivt)";
+
 				// More Colors
 				$lang_string['entry_bg'] = "Meddelelse-baggrund";
 				$lang_string['entry_title_bg'] = "Meddelelsestitel-baggrund";
@@ -234,6 +244,7 @@
 				$lang_string['menu_link_reg_color'] = "Menu-link (standard)";
 				$lang_string['menu_link_hi_color'] = "Menu-link (valgt)";
 				$lang_string['menu_link_down_color'] = "Menu-link (aktivt)";
+
 				// Submit
 				$lang_string['color_preset'] = "Farveskemaer:";
 				$lang_string['scheme_name'] = "Indtast et navn til farveskemaet:";
@@ -242,6 +253,7 @@
 				$lang_string['form_error'] = "Indtast venligst et navn til dit farveskema.";
 				$lang_string['submit_btn'] = "&nbsp;Godkend&nbsp;";
 				$lang_string['theme_doesnt_allow_colors'] = 'Det valgte tema tillader ikke brugerdefinerede farver.';
+
 				// Error Response
 				$lang_string['error'] = "<h2>Ups!</h2>Informationerne blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				break;
@@ -254,7 +266,7 @@
 				$lang_string['IPAddress'] = "IP-adresse:";
 				$lang_string['useragent'] = "Browser:";
 				$lang_string['wrote'] = "<i>Den %s skrev %s:</i><br />\n<br />\n%s";
-				$lang_string['commentposted'] = "Ny kommentar skrevet på: ";
+
 				$lang_string['comment_capcha'] = "Anti-spam: Indtast <b>%s</b>";
 				$lang_string['title'] = "Kommentarer";
 				$lang_string['header'] = "Tilføj kommentar";
@@ -262,15 +274,18 @@
 				$lang_string['comment_name'] = "Dit navn:";
 				$lang_string['comment_email'] = "E-mail:";
 				$lang_string['comment_url'] = "URL:";
+				$lang_string['commentposted'] = "Ny kommentar skrevet på: ";
 				$lang_string['comment_remember'] = "Husk mig:";
 				$lang_string['comment_text'] = "Kommentar:";
 				$lang_string['post_btn'] = "&nbsp;Gem kommentar&nbsp;";
 				$lang_string['delete_btn'] = "slet";
+
 				// Error Response
 				$lang_string['error_add'] = "<h2>Ups!</h2>Kommentaren blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
 				$lang_string['error_delete'] = "<h2>Ups!</h2>Kommentaren blev ikke slettet. Der opstod et problem med at slette.<br /><br />Serveren sagde:<br />";
 				$lang_string['form_error'] = "Udfyld venligst navn-, kommentar- og anti-spam-felterne.";
 				break;
+
 			case 'delete':
 				$lang_string['title'] = "Slet meddelelse";
 				$lang_string['instructions'] = "Dette er den meddelelse, du er ved at slette. Er du helt sikker på at du vil slette den? Du kan ikke fortryde...";
@@ -457,8 +472,8 @@
 				$lang_string['instructions'] = "Du kan ændre navnet på din blog og dine personlige informationer herunder.";
 				$lang_string['blog_title'] = "Blog-navn:";
 				$lang_string['blog_author'] = "Forfatter:";
-				$lang_string['blog_email'] = "E-mail:";
-				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
+				$lang_string['blog_email'] = "E-mail (Flere e-mail-adresser skal adskilles af komma, og med tomt indhold slås funktionen \"Kontakt mig\" fra):";
+				$lang_string['blog_avatar'] = "URL til displaybillede: (Tomt indhold for intet billede)";
 				$lang_string['blog_footer'] = "Sidefod:";
 				$lang_string['blog_choose_language'] = "Vælg sprog:";
 				$lang_string['blog_enable_comments'] = "Tillad brugerkommentarer";
@@ -468,9 +483,9 @@
 				$lang_string['blog_enable_calendar'] = "Slå kalender/arkiv-blok til";
 				$lang_string['blog_enable_title'] = "Slå klartekst-titel-blok til (Fjern krydset, hvis titlen er i titel-grafikken)";
 				$lang_string['blog_enable_permalink'] = "Slå permalink for blog-meddelelser til";
-				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
-				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
-				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['blog_enable_stats'] = "Slå statistik til i menuen";
+				$lang_string['blog_enable_lastcomments'] = "Slå liste med mest kommenterede indlæg til";
+				$lang_string['blog_enable_lastentries'] = "Slå liste med nyeste indlæg til";
 				$lang_string['blog_email_notification'] = "Send e-mail, når der skrives kommentarer";
 				$lang_string['blog_send_pings'] = "Send weblog-&quot;pings&quot;";
 				$lang_string['blog_ping_urls'] = "Indtast den fulde URL (fx http://rpc.weblogs.com/RPC2) på den service, der skal &quot;pinges&quot;.<br />(Du kan indtaste mere end én adresse ved at adskille med kommaer.)";
@@ -503,13 +518,13 @@
 				$lang_string['cal_sunday'] = "Søndag";
 				$lang_string['cal_monday'] = "Mandag";
 				$lang_string['label_calendar_start'] = "Kalenderens første ugedag";
-				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
-				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
-				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
-				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
-				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
-				$lang_string['title_general'] = "General"; // New in 0.4.7
-				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['title_sidebar'] = "Side-bar";
+				$lang_string['title_comments'] = "Kommentarer";
+				$lang_string['title_trackback'] = "Trackbacks";
+				$lang_string['title_compression'] = "Kompression";
+				$lang_string['title_entries'] = "Indlæg";
+				$lang_string['title_general'] = "Generelt";
+				$lang_string['title_language'] = "Sprog";
 				break;
 			case 'trackbacks':
 				// Trackbacks
@@ -587,11 +602,6 @@
 				$lang_string['instructions'] = "Resultat af søgning efter <b>%string</b>:";
 				$lang_string['not_found'] = "Ingen resultater";
 				break;
-			case 'entries':
-				$lang_string['title'] = "Oversigt over alle meddelser";
-				$lang_string['instructions'] = "Nedenfor er en komplet liste over meddelelser.";
-				$lang_string['no_entries'] = "Der er ingen meddelelser.";
-				break;
 			case 'contact':
 				$lang_string['contact_capcha'] = "Anti-spam: Indtast ";
 				$lang_string['title'] = "Kontakt mig";
@@ -610,15 +620,15 @@
 				$lang_string['wrote'] = "<i>Den %s skrev %s:</i><br />\n<br />\n%s";
 				break;
 			case 'stats':
-				$lang_string['title'] = "Statistikker";
-				$lang_string['general'] = "Generelt";
-				$lang_string['entry_info'] = "<b>%s</b> meddelelser med <b>%s</b> ord gemt i <b>%s</b> bytes";
-				$lang_string['comment_info'] = "<b>%s</b> kommentarer med <b>%s</b> ord gemt i <b>%s</b> bytes";
-				$lang_string['trackback_info'] = "<b>%s</b> trackbacks gemt i <b>%s</b> bytes";
-				$lang_string['static_info'] = "<b>%s</b> statiske sider med <b>%s</b> ord gemt i <b>%s</b> bytes";
-				$lang_string['most_viewed_entries'] = "10 mest viste meddelelser";
-				$lang_string['most_commented_entries'] = "10 mest kommenterede meddelelser";
-				$lang_string['most_trackbacked_entries'] = "10 mest trackback'ede meddelelser";
+				$lang_string["title"] = "Statistikker";
+				$lang_string["general"] = "Generelt";
+				$lang_string["entry_info"] = "<b>%s</b> meddelelser med <b>%s</b> ord gemt i <b>%s</b> bytes";
+				$lang_string["comment_info"] = "<b>%s</b> kommentarer med <b>%s</b> ord gemt i <b>%s</b> bytes";
+				$lang_string["trackback_info"] = "<b>%s</b> trackbacks gemt i <b>%s</b> bytes";
+				$lang_string["static_info"] = "<b>%s</b> statiske sider med <b>%s</b> ord gemt i <b>%s</b> bytes";
+				$lang_string["most_viewed_entries"] = "10 mest viste meddelelser";
+				$lang_string["most_commented_entries"] = "10 mest kommenterede meddelelser";
+				$lang_string["most_trackbacked_entries"] = "10 mest trackback'ede meddelelser";
 				$lang_string['vote_info'] = "<b>%s</b> stemmer gemt i  <b>%s</b> bytes";
 				$lang_string["most_voted_entries"] = "10 meddelelser med flest stemmer";
 				$lang_string["most_rated_entries"] = "10 meddelelser med højeste stemmer";
@@ -639,29 +649,28 @@
 				$lang_string["clientid"] = 'Klient-ID: ';
 				break;
 			case 'emoticons':  // New for 0.4.7
-				$lang_string['title'] = "Admin Emoticons";
+				$lang_string['title'] = "Administration af humørikoner";
 				$lang_string['instructions'] = "
-					Check the emoticons you want to use. Write in the box the Tags you want 
-					to be replaced by the image. Multiple tags may be used, just separated them 
-					by spaces.<br /><br />
+					Afkryds de humørikoner, du ønsker at bruge. Skriv i tekstboksen de tags,
+					som du ønsker skal erstattes af billedet. Du kan benytte flere tags, de
+					skal blot adskilles af mellemrum.<br /><br />
 		
-					For instance:<br />
+					For eksempel:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
 					
-					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
-					otherwise unexpected substitutions may occur.)</i>";
-				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
-				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
-				$lang_string["upload_error"] = 'Error! Image was not uploaded.';
-				$lang_string["upload_invalid"] = 'Error! Invalid image file. Image must be a png, jpg, or gif.';
-				$lang_string["save_success"] = 'Emoticon preferences saved successfully!';
-				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
-				$lang_string["save_button"] = 'Save Emoticons';
+					<i>(Det anbefales kraftigt, at du laver tags længere end 2 tegn, ellers kan der
+					opstå uventede udskiftninger i teksten.)</i>";
+				$lang_string["upload_instructions"] = 'Upload ny humørikon:';
+				$lang_string["upload_success"] = 'Upload lykkedes. Billedet blev uploadet korrekt.';
+				$lang_string["upload_error"] = 'Fejl! Billedet blev ikke uploadet.';
+				$lang_string["upload_invalid"] = 'Fejl! Ugyldig billedfil. Billedet skal være PNG, JPG eller GIF.';
+				$lang_string["save_success"] = 'Indstillinger for humørikoner blev gemt.';
+				$lang_string["save_error"] = 'Fejl! Indstillinger for humørikoner blev ikke gemt.';
+				$lang_string["save_button"] = 'Gem humørikoner';
 				break;
 			default:
 				break;
 		}
-
 	}
 		
 ?>
