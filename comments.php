@@ -217,9 +217,13 @@
 			
 			
       <? if ($GLOBALS['logged_in']==true ) {
-        echo('<!-- Logged in user! -->');
+        echo('<!-- Logged in user -->');
         echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
       
+      } elseif ($blog_config['blog_enable_capcha']==0) {
+        echo('<!-- Anti-spam disabled -->');
+        echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
+
       } else {
         echo('<!-- Not logged in! Show capcha -->');
         echo('<label for="comment_capcha">');

@@ -97,7 +97,8 @@
 			<br />
 			
 			<h4><?php echo( $lang_string[ 'title_entries' ] ); ?></h4>
-			<input type="checkbox" id="blog_enable_permalink" name="blog_enable_permalink"<?php if ( $blog_config[ 'blog_enable_permalink' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_permalink' ] ); ?><br />
+			<input type="checkbox" id="blog_enable_capcha" name="blog_enable_capcha"<?php if ( $blog_config[ 'blog_enable_capcha' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_capcha' ] ); ?><br />
+      <input type="checkbox" id="blog_enable_permalink" name="blog_enable_permalink"<?php if ( $blog_config[ 'blog_enable_permalink' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_permalink' ] ); ?><br />
 			<input type="checkbox" id="blog_enable_cache" name="blog_enable_cache"<?php if ( $blog_config[ 'blog_enable_cache' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_cache' ] ); ?><br />
 			<input type="checkbox" id="blog_send_pings" name="blog_send_pings"<?php if ( $blog_config[ 'blog_send_pings' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_send_pings' ] ); ?><p />
 			<label for="blog_ping_urls"><?php echo( $lang_string[ 'blog_ping_urls' ] ); ?></label><br />

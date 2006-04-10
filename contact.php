@@ -11,7 +11,7 @@
 	read_config();
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
-	sb_language( 'contact' );	
+sb_language( 'contact' );	
 	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -45,7 +45,7 @@
 		if (!isset($_SESSION['cookies_enabled'])) {
 			header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage-nocookies.php');	
 		} else {
-			global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
+			global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;	
 			$entry_array = array();
 			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 			
@@ -61,16 +61,24 @@
 			<input type="text" name="subject" size="40"><br /><br />
 			<label for="comment"><?php echo( $lang_string[ 'comment' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
-			<label for="capcha_contact"><?php 
-				if ( function_exists('imagecreate') ) {
-					echo ( $lang_string[ 'contact_capcha' ] . '<br /><img src="capcha.php?entry=contact" />' );
-				}
-				else {
-					echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
-				}
-			?></label><br />
-			<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />
-			<hr />
+			
+      <?php
+      if ($blog_config['blog_enable_capcha']==0) {
+        echo('<!-- Anti-spam disabled -->');
+        echo('<input type="hidden" name="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
+      } else {
+        echo('<label for="capcha_contact">');
+        if ( function_exists('imagecreate') ) {
+				  echo ( $lang_string[ 'contact_capcha' ] . '<br /><img src="capcha.php?entry=contact" />' );
+				  }	else {
+				  echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
+				  }
+			  echo('</label><br />');
+			  echo('<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />');
+			} 
+      ?>
+			
+      <hr />
 	
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 			</form>

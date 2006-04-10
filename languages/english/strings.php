@@ -483,6 +483,7 @@
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
@@ -525,6 +526,7 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				
 				break;
 			case 'trackbacks':
 				// Trackbacks

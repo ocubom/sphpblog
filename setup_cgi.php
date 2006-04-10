@@ -61,7 +61,8 @@
 						( $_POST[ 'blog_enable_permalink' ] == 'on' ),
 						( $_POST[ 'blog_enable_stats' ] == 'on' ),
 						( $_POST[ 'blog_enable_lastcomments' ] == 'on' ),
-						( $_POST[ 'blog_enable_lastentries' ] == 'on' ));
+						( $_POST[ 'blog_enable_lastentries' ] == 'on' ),
+            ( $_POST[ 'blog_enable_capcha' ] == 'on' ));
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
