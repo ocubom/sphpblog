@@ -71,11 +71,13 @@
 		}
 		
 		// View Count
-		$view_counter = 1;
-		$view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
-		for ( $i = 0; $i < count( $view_array ); $i++ ) {
-			if ( $view_array[$i] === 'view_counter.txt' ) {
-				$view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
+		if ( $logged_in == false ) {
+			$view_counter = 1;
+			$view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
+			for ( $i = 0; $i < count( $view_array ); $i++ ) {
+				if ( $view_array[$i] === 'view_counter.txt' ) {
+					$view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
+				}
 			}
 		}
 
@@ -88,7 +90,9 @@
 		
 		if ( $contents ) {	
 			// Store Counter
-			sb_write_file( $dir . '../view_counter.txt' , $view_counter );
+			if ( $logged_in == false ) {
+				sb_write_file( $dir . '../view_counter.txt' , $view_counter );
+			}
 		
 			// Display comments Oldest to Newest to. Oldest Comments will be at the top of the page.
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
@@ -136,6 +140,42 @@
 		}
 		
 		return $blog_content;
+	}
+	
+	function check_for_duplicate ( $y, $m, $entry, $newContent ) {
+		
+		// Comments
+		$basedir = 'content/';
+		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/comments/';
+		$file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
+
+		$contents = array();
+		for ( $i = 0; $i < count( $file_array ); $i++ ) {
+			if ( $file_array[$i] !== 'rating.txt' ) {
+				array_push( $contents, array( 'path' => ( $dir . $file_array[$i] ), 'entry' => $file_array[$i] ) );
+			}
+		}
+		
+		$is_duplicate = false;
+		if ( $contents ) {
+			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
+				$comment_entry_data = comment_to_array( $contents[$i][ 'path' ] );
+				//
+				// $comment_entry_data[ 'VERSION' ]
+				// $comment_entry_data[ 'NAME' ]
+				// $comment_entry_data[ 'DATE' ]
+				// $comment_entry_data[ 'CONTENT' ]
+				// $comment_entry_data[ 'EMAIL' ] <-- Optional
+				// $comment_entry_data[ 'URL' ] <-- Optional
+				//
+				if ( $comment_entry_data[ 'CONTENT' ] == $newContent ) {
+					$is_duplicate == true;
+					break;
+				}
+			}
+		}
+		
+		return $is_duplicate;
 	}
 	
 	function sb_display_email ($email) {
