@@ -116,25 +116,25 @@
 			<input type="hidden" name="m" value="<?php echo( $_GET[ 'm' ] ); ?>">
 			<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 			
-      <?      
-      if ($GLOBALS['logged_in']==false ) {
-        echo('<label for="comment_name">' . $lang_string[ 'comment_name' ] . '</label><br />');
-			  echo('<input type="text" name="comment_name" value="' . $_COOKIE[ 'comment_name' ] . '" autocomplete="OFF"><br />');
+			<?php 
+			if ($GLOBALS['logged_in']==false ) {
+				echo('<label for="comment_name">' . $lang_string[ 'comment_name' ] . '</label><br />');
+				echo('<input type="text" name="comment_name" value="' . $_COOKIE[ 'comment_name' ] . '" autocomplete="OFF"><br />');
 			} else {
-			  echo('<input type="hidden" name="comment_name" value="' . $blog_config[ 'blog_author' ] . '" autocomplete="OFF"><br />');
-      }
+				echo('<input type="hidden" name="comment_name" value="' . $blog_config[ 'blog_author' ] . '" autocomplete="OFF"><br />');
+			}
 			
 			if ($GLOBALS['logged_in']==false ) {
-        echo('<label for="comment_email">' . $lang_string[ 'comment_email' ] . '</label><br />');
-			  echo('<input type="text" name="comment_email" value="' . $_COOKIE[ 'comment_email' ] . '" autocomplete="OFF"><br />');
-			}      
+				echo('<label for="comment_email">' . $lang_string[ 'comment_email' ] . '</label><br />');
+				echo('<input type="text" name="comment_email" value="' . $_COOKIE[ 'comment_email' ] . '" autocomplete="OFF"><br />');
+			}
 			
-      if ($GLOBALS['logged_in']==false ) {
-        echo('<label for="comment_url">' . $lang_string[ 'comment_url' ] . '</label><br />');
-			  echo('<input type="text" name="comment_url" value="' . $_COOKIE[ 'comment_url' ] . '" autocomplete="OFF"><br />');
-			  echo('<label for="comment_remember">' . $lang_string[ 'comment_remember' ] . '<input type="checkbox" name="comment_remember" value="1"');
-        echo(' autocomplete="OFF"></label><br /><br />');
-      }
+			if ($GLOBALS['logged_in']==false ) {
+				echo('<label for="comment_url">' . $lang_string[ 'comment_url' ] . '</label><br />');
+				echo('<input type="text" name="comment_url" value="' . $_COOKIE[ 'comment_url' ] . '" autocomplete="OFF"><br />');
+				echo('<label for="comment_remember">' . $lang_string[ 'comment_remember' ] . '<input type="checkbox" name="comment_remember" value="1"');
+				echo(' autocomplete="OFF"></label><br /><br />');
+			}
 			?>
 			
 			<!-- NEW -->
@@ -216,30 +216,28 @@
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
 			
 			
-      <? if ($GLOBALS['logged_in']==true ) {
-        echo('<!-- Logged in user -->');
-        echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
-      
-      } elseif ($blog_config['blog_enable_capcha']==0) {
-        echo('<!-- Anti-spam disabled -->');
-        echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
-
-      } else {
-        echo('<!-- Not logged in! Show capcha -->');
-        echo('<label for="comment_capcha">');
- 
+		<?php
+			if ($GLOBALS['logged_in']==true ) {
+				echo('<!-- Logged in user -->');
+				echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
+				
+			} elseif ($blog_config['blog_enable_capcha']==0) {
+				echo('<!-- Anti-spam disabled -->');
+				echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
+				
+			} else {
+				echo('<!-- Not logged in! Show capcha -->');
+				echo('<label for="comment_capcha">');
+				
 				if ( function_exists('imagecreate') ) {
 					printf( $lang_string[ 'comment_capcha' ], '<br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
-				}
-				else {
+				} else {
 					printf( $lang_string[ 'comment_capcha' ], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); 
 				}
-
-        echo('</label><br />');			
-      
-        echo('<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />');
-
-			 }     ?>
+				echo('</label><br />');
+				echo('<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />');
+			}
+		?>
       
       
       <input type="submit" name="submit" value="<?php echo( $lang_string[ 'post_btn' ] ); ?>" />
