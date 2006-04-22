@@ -1,17 +1,31 @@
 <?php 
+	// Load Scripts
 	require_once('scripts/sb_functions.php');
+	
+	// Login
 	global $logged_in;
 	$logged_in = logged_in( false, true );
+	
+	// Create a session for the anti-spam cookie
 	if ( !session_id() ) {
 		session_start();
 	}
 	$_SESSION['cookies_enabled'] = '1';
+	
+	// Read configuration file
 	read_config();
 	
+	// Load language strings
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
-	// Verify information being passed
+	// Verify information being passed in:
+	//
+	// index.php?d=12&m=11&y=05
+	// index.php?entry=entry051128-213804
+	// index.php?d=28&m=11&y=05&category=3
+	// index.php?category=3
+	//
 	$temp_year = NULL;
 	if ( array_key_exists( 'y', $_GET ) ) {
 		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 ) {
@@ -37,6 +51,7 @@
 		}
 	}
 	
+	// Month / Year
 	if ( !isset( $temp_year ) || !isset( $temp_month ) ) {
 		// Set the $month, $year, $day globals...
 		get_latest_entry();
@@ -47,16 +62,19 @@
 		$month = $temp_month;
 	}
 	
+	// Day
 	if ( isset( $temp_day ) ) {
 		global $day;
 		$day = $temp_day;
 	}
 	
+	// Entry
 	if ( isset( $temp_entry) ) {
-		global $temp_entry;
+		global $entry;
 		$entry = $temp_entry;
 	}
 	
+	// Category
 	if ( array_key_exists( 'category', $_GET ) ) {
 		global $category;
 		$category = $_GET[ 'category' ];
@@ -71,7 +89,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	 
 	<!-- Meta Data -->
-	<?php global $lang_string, $sb_info, $blog_config; ?>
 	<meta name="generator" content="Simple PHP Blog" />
 	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php" />
 	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php" />
@@ -110,13 +127,13 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
 <?php 
+	// Page Content (Called from within the theme_pagelayout function below)
 	function page_content() {
 		global $month, $year, $day, $category, $logged_in, $entry;
 		
 		echo ( read_entries( $month, $year, $day, $logged_in, $entry, $category ) );
 	}
-?>
-<?php 
+	
 	theme_pagelayout();
 ?>
 </html>
