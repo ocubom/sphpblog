@@ -22,8 +22,8 @@
 	// Last version and update information.
 	//
 	global $sb_info;
-	$sb_info[ 'version' ] = "0.4.7.1";
-	$sb_info[ 'last_update' ] = '2/13/06';	
+	$sb_info[ 'version' ] = "0.4.7.3";
+	$sb_info[ 'last_update' ] = '4/22/06';	
 	
 	// Error reporting should be set to 0 in production environments.
 	//
@@ -47,6 +47,15 @@
 
 	global $page_timestamp;
 	$page_timestamp = getmicrotime();
+	
+	// PHP4 < 4.3.0
+	if (!function_exists("ob_get_clean")) { 
+		function ob_get_clean() { 
+		$ob_contents = ob_get_contents(); 
+		ob_end_clean(); 
+		return $ob_contents; 
+		} 
+	} 
 	
 	// Load all the other functions.
 	require_once('scripts/sb_fileio.php');
