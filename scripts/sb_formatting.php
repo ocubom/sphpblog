@@ -26,7 +26,7 @@
 		return ( $str );
 	}
 	
-	function blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow = false ) {
+	function blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false ) {
 		// Convert Simple Blog tags to HTML.
 		//
 		// Search and replace simple tags. These tags don't have any
@@ -34,6 +34,8 @@
 		//
 		// ( Could use str_ireplace() but it's only supported in PHP 5. )
 		global $blog_config;
+		
+		$str = str_replace( '&amp;#124;', '|', $str );
 		
 		if ( $comment_mode ) {
 			$tag_arr = array();
@@ -104,16 +106,18 @@
 		
 		// Emoticons
 		if ( !$strip_all_tags ) {
-			$emote_arr = emoticons_load_tags();
-			
-			for ( $i = 0; $i < count($emote_arr); $i++) {
-			
-				$emotetag_arr = explode( ' ', $emote_arr[$i]['TAGS'] );
-				for ( $j = 0; $j < count( $emotetag_arr ); $j++ ) {
-					$html_safe_tag = @htmlspecialchars( $emotetag_arr[$j], ENT_QUOTES, $lang_string[ 'php_charset' ] );
-					
-					array_push( $search_arr, $emotetag_arr[$j] );
-					array_push( $replace_arr, '<img src="' . $emote_arr[$i]['PATH'] . '" alt="' . $html_safe_tag . '" />' );
+			if ($emoticon_replace) {
+				$emote_arr = emoticons_load_tags();
+				
+				for ( $i = 0; $i < count($emote_arr); $i++) {
+				
+					$emotetag_arr = explode( ' ', $emote_arr[$i]['TAGS'] );
+					for ( $j = 0; $j < count( $emotetag_arr ); $j++ ) {
+						$html_safe_tag = @htmlspecialchars( addslashes($emotetag_arr[$j]), ENT_QUOTES, $lang_string[ 'php_charset' ] );
+						
+						array_push( $search_arr, $emotetag_arr[$j] );
+						array_push( $replace_arr, '<img src="' . $emote_arr[$i]['PATH'] . '" alt="' . $html_safe_tag . '" />' );
+					}
 				}
 			}
 		}
@@ -188,7 +192,6 @@
 			}
 		}
 		
-		$str = str_replace( '&amp;#124;', '|', $str );
 		return ( $str );
 	}
 	
