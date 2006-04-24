@@ -317,7 +317,7 @@
 					$curr_array = Array();
 					$curr_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, true );
 					// Fixed per Sverd1 March 17, 2006
-          $curr_array[ 'date' ] = ( strftime( dateString(), mktime(0, 0, 0, $curr_m, $curr_d, $curr_y ) ) );
+					$curr_array[ 'date' ] = ( strftime( dateString(), mktime(0, 0, 0, $curr_m, $curr_d, $curr_y ) ) );
 					$curr_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, true );
 					
 					$str_day .= '<li>' . "\n";
@@ -494,8 +494,9 @@
 		if ( $result ) {
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i+=2 ) {
-				$block_array[$i] = blog_to_html( $array[$i], false, false );
-				$block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false );
+				// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
+				$block_array[$i] = blog_to_html( $array[$i], false, false, false, true );
+				$block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false, false, true );
 			}
 		}
 		

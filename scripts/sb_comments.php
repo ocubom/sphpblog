@@ -119,10 +119,12 @@
 					$comment_email = sb_display_email( $comment_entry_data[ 'EMAIL' ] );
 					$comment_subject .= ' ' . $comment_email;
 				}
+				
+				// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 				$entry_array[ 'id' ] = $entry . '_' . sb_strip_extension( $contents[$i][ 'entry' ] );
 				$entry_array[ 'subject' ] = blog_to_html( $comment_subject, true, false, true );
 				$entry_array[ 'date' ] = blog_to_html( format_date( $comment_entry_data[ 'DATE' ] ), true, false );
-				$entry_array[ 'entry' ] = blog_to_html( $comment_entry_data[ 'CONTENT' ], true, false, true ) . '<br clear="all" />';
+				$entry_array[ 'entry' ] = blog_to_html( $comment_entry_data[ 'CONTENT' ], true, false, true, true ) . '<br clear="all" />';
 				
 				$entry_array[ 'logged_in' ] = $logged_in;
 				

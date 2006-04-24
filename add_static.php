@@ -61,7 +61,7 @@
 			<?php echo image_dropdown(); ?><br /><br />
 			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
+			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="blog_text" name="blog_text" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
 			
 			<label for="file_name"><?php echo( $lang_string[ 'file_name' ] ); ?></label><br/>
 			<input type="text" name="file_name" autocomplete="OFF" size="40" value="static<?php echo date('ymd-His'); ?>"><br /><br />

@@ -427,8 +427,7 @@
 		return( $count );
 	}
 	
-	function sb_get_capcha ()
-	{
+	function sb_get_capcha () {
 		$capcha=rand(100000, 999999);
 		return( $capcha );
 	}

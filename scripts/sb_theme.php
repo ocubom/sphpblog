@@ -383,7 +383,7 @@
 				
 				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 				
-				$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><br />';
+				$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><p />';
 			}
 		}
 		

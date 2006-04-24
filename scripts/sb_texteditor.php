@@ -141,7 +141,7 @@
 			?>
 			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
-			<textarea style="width: <?php echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php echo( $default_content ); ?></textarea><p />
+			<textarea style="width: <?php echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="blog_text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php echo( $default_content ); ?></textarea><p />
 			
 			<?php
 				// Related Link Input

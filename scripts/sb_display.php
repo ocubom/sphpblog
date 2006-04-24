@@ -201,7 +201,8 @@
 				$entry_array = array();
 				
 				// Subject / Date
-				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+				// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
+				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
 				$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
 				$entry_array[ 'date_numeric_day' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'NUMDAY' ), false, false );
 				$entry_array[ 'date_numeric_month' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'NUMMONTH' ), false, false );
@@ -238,7 +239,8 @@
 				$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
 				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;	
 				
-				$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
+				// // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
+				$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
 				
 				// Comments link and count
 				$comment_trackback_base = 'content/'.$y.'/'.$m.'/'.$entry.'/';
@@ -554,10 +556,11 @@
 		
 		list( $blog_subject, $blog_date, $blog_text, $tb_ping, $relatedlink ) = explode( '|', $str );
 		
+		// // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 		$entry_array = array();
-		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false );
+		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
-		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
+		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br clear="all" />';
 		if ( $tb_ping !== '' ) {
 			$entry_array[ 'tb_ping' ] = blog_to_html( $tb_ping, false, false );
 		}
@@ -582,10 +585,11 @@
 		
 		list( $blog_subject, $blog_date, $blog_text ) = explode( '|', $str );
 		
+		// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 		$entry_array = array();
-		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false );
+		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
-		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false ) . '<br clear="all" />';
+		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br clear="all" />';
 		
 		$blog_content = theme_blogentry( $entry_array );
 		
@@ -609,9 +613,9 @@
 		$blog_entry_data = blog_entry_to_array( $filename );
 		
 		$entry_array = array();
-		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
-		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
+		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
 		$entry_array[ 'id' ] = substr( $entry_id, strlen( $entry_id )-18, 18 );
 
 		// Categories

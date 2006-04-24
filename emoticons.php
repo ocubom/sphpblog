@@ -81,10 +81,10 @@
 										if ($tags) { $str_out .=  'checked="checked" '; }
 															$str_out .=  "/></td>\n";
 				$str_out .=  "\t\t\t<td><img src=\"" . $emo[$i] . "\" alt=\"emo$i\" />";
-						$str_out .=  "<input type=\"hidden\" name=\"emo_name$i\" value=\"" . $emo[$i] . '" />';
+						$str_out .=  "<input type=\"hidden\" name=\"emo_name$i\" value=\"" . encode_input_value($emo[$i]) . '" />';
 				$str_out .=  "</td>\n";
 				$str_out .=  "\t\t\t<td>$emo[$i]</td>\n";
-				$str_out .=  "\t\t\t<td><input type=\"text\" name=\"tag$i\" value=\"" . $tags . "\" autocomplete=\"OFF\" /></td>\n";
+				$str_out .=  "\t\t\t<td><input type=\"text\" name=\"tag$i\" value=\"" . encode_input_value($tags) . "\" autocomplete=\"OFF\" /></td>\n";
 				$str_out .=  "\t\t</tr>\n";
 			
 			}
@@ -107,8 +107,8 @@
 				if ($_POST['emo' . $i] == 'on') {
 					if ($_POST['tag' . $i] !== '') {
 						$temp_arr = Array();
-						$temp_arr['PATH'] = $_POST['emo_name' . $i];
-						$temp_arr['TAGS'] = $_POST['tag' . $i];
+						$temp_arr['PATH'] = ($_POST['emo_name' . $i]);
+						$temp_arr['TAGS'] = ($_POST['tag' . $i]);
 						array_push( $form_arr, $temp_arr );
 					}
 				}
@@ -133,7 +133,7 @@
 				$tags = str_replace( '=', '&#61;', $tags );
 				
 				$temp_arr['PATH'] = $form_arr[$i]['PATH'];
-				$temp_arr['TAGS'] = $tags;
+				$temp_arr['TAGS'] = sb_stripslashes($tags);
 				
 				array_push( $emote_arr, implode_with_keys( $temp_arr, '=' ) );
 			}

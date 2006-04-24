@@ -63,11 +63,12 @@
 		}
 		
 		$blog_entry_data = static_entry_to_array( $filename );
-		
+				
+		// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 		$entry_array = array();
-		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
-		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
+		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
 		$entry_array[ 'logged_in' ] = $logged_in;
 		
 		// Author edit and delete
@@ -199,11 +200,12 @@
 		}
 		
 		$blog_entry_data = static_entry_to_array( $filename );
-		
+				
+		// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 		$entry_array = array();
-		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
-		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false ) . '<br clear="all" />';
+		$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
 		
 		$blog_content = theme_staticentry( $entry_array, $logged_in );
 		
