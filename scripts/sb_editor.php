@@ -5,7 +5,7 @@
 			// insert [x]yyy[/x] style markup
 			inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", prompt_text);
 			if ( (inserttext != null) ) {
-				insertAtCaret(theform.value, "["+sb_code+"]"+inserttext+"[/"+sb_code+"]");
+				insertAtCaret(theform, "["+sb_code+"]"+inserttext+"[/"+sb_code+"]");
 				theform.focus();
 			}
 		}
