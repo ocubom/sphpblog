@@ -13,20 +13,32 @@
 	
 	// Verify information being passed:
 	$ok = false;
-	if ( array_key_exists( 'y', $_POST ) && array_key_exists( 'm', $_POST ) && array_key_exists( 'entry', $_POST ) ) {
+	
+	// Verify that all the correct POST keys exist (except comment_remember which is a check box)
+	$fieldsExist = true;
+	$requiredFields = Array( 'y', 'm', 'entry', 'comment_capcha', 'comment_name', 'comment_email', 'comment_url', 'comment_text' );
+	foreach ( $requiredFields as $fieldName ) {
+		if (! array_key_exists( $fieldName, $_POST ) ) {
+			// echo("Field \"$fieldName\" is missing<br />");
+			$fieldsExist = false;
+			break;
+		}
+	}
+	
+	if ( $fieldsExist ) {
 		// Dis-allow dots, and slashes to make sure the
 		// user is not able to back-up a directory.
 		//
 		// Make sure the string lengths are correct.
-		if ( array_key_exists( 'comment_capcha', $_POST ) || $logged_in ) {
-			if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] || $logged_in ) {
-				if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'y' ] ) == 2 &&
-						strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'm' ] ) == 2 &&
-						strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'entry' ] ) == 18 ) {
-					
-					// Verify that the file exists.
-					if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
-						$ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ], stripslashes( $_POST[ 'comment_name' ] ), stripslashes( $_POST[ 'comment_email' ] ), stripslashes( $_POST[ 'comment_url' ] ), $_POST[ 'comment_remember' ], stripslashes( $_POST[ 'blog_text' ] ) );
+		if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] || $logged_in ) {
+			if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'y' ] ) == 2 &&
+					strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'm' ] ) == 2 &&
+					strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'entry' ] ) == 18 ) {
+				
+				// Verify that the file exists.
+				if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
+					if ( strlen( $_POST[ 'comment_name' ] ) > 0 && strlen( $_POST[ 'comment_text' ] ) > 0 ) {
+						$ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ], stripslashes( $_POST[ 'comment_name' ] ), stripslashes( $_POST[ 'comment_email' ] ), stripslashes( $_POST[ 'comment_url' ] ), $_POST[ 'comment_remember' ], stripslashes( $_POST[ 'comment_text' ] ) );
 						@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
 					}
 				}
