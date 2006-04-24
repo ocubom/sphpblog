@@ -8,8 +8,41 @@
 	// --------------------
 	// Form Validation Functions
 	// --------------------
-	function validatePostData( ) {
 	
+	
+	// ----------------
+	// Form Utility Functions
+	// ----------------
+	function sb_stripslashes( $str ) {
+		// Strip slashes from POST data if magic_quote_gpc is on...
+		
+		if ( get_magic_quotes_gpc() == true ) {
+			$str = stripslashes($str);
+		} else {
+			$str = $str;
+		}
+		
+		return $str;
+	}
+	
+	function sb_addslashes( $str ) {
+		// Add slashes if magic_quote_gpc is on...
+		
+		if ( get_magic_quotes_gpc() == true ) {
+			$str = $str;
+		} else {
+			$str = addslashes( $str );
+		}
+		
+		return $str;
+	}
+	
+	function encode_input_value( $str ) {
+	
+		global $lang_string;
+		$str = @htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+
+		return ( $str );
 	}
 
 	// ------------------
