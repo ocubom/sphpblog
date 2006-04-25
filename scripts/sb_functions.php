@@ -48,6 +48,7 @@
 	global $page_timestamp;
 	$page_timestamp = getmicrotime();
 	
+	// Legacy support functions
 	// PHP4 < 4.3.0
 	if (!function_exists("ob_get_clean")) { 
 		function ob_get_clean() { 
@@ -56,6 +57,27 @@
 		return $ob_contents; 
 		} 
 	} 
+	
+	if (!function_exists('str_word_count')) {
+		function str_word_count($str,$n = "0"){ 
+			$m=strlen($str)/2;
+			$a=1;
+			while ($a<$m) {
+				$str=str_replace("Ê "," ",$str);
+				$a++;
+			}
+			$b = explode(" ", $str);
+			$i = 0;
+			foreach ($b as $v) { 
+				$i++;
+			}
+			if ($n==1) {
+				return $b;
+			} else {
+				return $i;
+			}
+		}
+	}
 	
 	// Load all the other functions.
 	require_once('scripts/sb_fileio.php');
