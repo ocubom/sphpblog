@@ -85,7 +85,8 @@
 					//Required item fields
 					echo "\t\t\t<title>" . clean_rss_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
 					echo "\t\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
-					echo "\t\t\t<description><![CDATA[" . clean_rss_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
+					echo "\t\t\t<description><![CDATA[" . clean_rss_output( replace_more_tag( blog_to_html( $contents[ 'CONTENT' ], false, false ), true, '' ) ) . $content_footer . "]]></description>\n";
+					
 					//Optional item fields
 					echo "\t\t\t<category>";
 					for ( $k = 0; $k < count( $cats ); $k++ ) {
@@ -190,7 +191,8 @@
 			//Required item fields
 			echo "\t\t<title>" . clean_rdf_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
 			echo "\t\t<link>" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</link>\n"; /* Changed the link URL */
-			echo "\t\t<description><![CDATA[" . clean_rdf_output( blog_to_html( $contents[ 'CONTENT' ], false, false ) ) . $content_footer . "]]></description>\n";
+			echo "\t\t<description><![CDATA[" . clean_rdf_output( replace_more_tag( blog_to_html( $contents[ 'CONTENT' ], false, false ), true, '' ) ) . $content_footer . "]]></description>\n";
+			
 			//Optional item fields
 			//echo "\t\t<guid isPermaLink=\"true\">" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
 			//echo "\t\t<author>" . clean_rdf_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
@@ -267,7 +269,8 @@
 					//Required item fields
 					echo "\t\t<title>" . clean_atom_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
 					echo "\t\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "\" />\n";
-					echo "\t\t<content type=\"text/html\" mode=\"escaped\"><![CDATA[" . blog_to_html( $contents[ 'CONTENT' ], false, false ) . $content_footer . "]]></content>\n";
+					echo "\t\t<content type=\"text/html\" mode=\"escaped\"><![CDATA[" . replace_more_tag( blog_to_html( $contents[ 'CONTENT' ], false, false ), true, '' ) . $content_footer . "]]></content>\n";
+					
 					//Optional item fields
 					echo "\t\t<id>" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "</id>\n";
 					echo "\t\t<issued>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</issued>\n";

@@ -608,8 +608,7 @@
 		return ( $str );
 	}
 	
-	function sb_parse_url ( $text )
-	{
+	function sb_parse_url ( $text ) {
 	    // Con espacios 
 	    $text = eregi_replace("([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=\\2]\\2[/url]", $text); //http
 	    $text = eregi_replace("([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=http://\\2]\\2[/url]", $text); // www.
@@ -621,20 +620,25 @@
 	    return ( $text );
 	}
 	
-	function replace_more_tag ( $string, $strip_tags, $url )
-	{
+	function replace_more_tag ( $string, $strip_tags=true, $url='', $trim_off_end=false ) {
 		$tagpos = strpos( strtoupper($string), '[MORE]' );
 		if ( $tagpos != false ) {
 			if ( $strip_tags == true ) {
 				$tagstart = strpos( strtoupper($string), '[MORE]' );
 				$tagend = $tagstart + strlen( '[MORE]' );
 				$tmpstr = substr( $string, 0, $tagpos );
-				$tmpstr = $tmpstr . substr( $string, $tagend, strlen( $string ) );
-				$string = $tmpstr;		
+				if ( $trim_off_end == true ) {
+					$string = $tmpstr;
+				} else {
+					$tmpstr = $tmpstr . substr( $string, $tagend, strlen( $string ) );
+					$string = $tmpstr;
+				}
 			} else {			
 				$string = substr( $string, 0, $tagpos );
 				//Now put in the More link
-				$string = $string . ' <a href="' . $url . '">More...</a>';
+				if ( $url != '' ){
+					$string = $string . ' <a href="' . $url . '">More...</a>';
+				}
 			}
 		}
 		return ( $string );
