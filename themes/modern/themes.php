@@ -164,8 +164,10 @@
 		$comment_area = "";
 		if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
 			// Show "add comment" button if set...
-			$comment_area = $comment_area . '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '">' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
+			$comment_area = $comment_area . '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="" width="14" height="14" align="top"/> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
 		}
+		
+		
 		
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show "( x views )" string...
