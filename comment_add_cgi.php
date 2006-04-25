@@ -18,7 +18,7 @@
 	$fieldsExist = true;
 	$requiredFields = Array( 'y', 'm', 'entry', 'comment_capcha', 'comment_name', 'comment_email', 'comment_url', 'comment_text' );
 	foreach ( $requiredFields as $fieldName ) {
-		if (! array_key_exists( $fieldName, $_POST ) ) {
+		if ( !array_key_exists( $fieldName, $_POST ) ) {
 			// echo("Field \"$fieldName\" is missing<br />");
 			$fieldsExist = false;
 			break;
