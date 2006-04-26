@@ -5,7 +5,7 @@
 	
 	$ok = false;
 	if ( $logged_in && array_key_exists( 'user', $_POST ) && array_key_exists( 'pass', $_POST ) ) {
-		$ok = create_password( stripslashes( $_POST[ 'user' ] ), stripslashes( $_POST[ 'pass' ] ) );
+		$ok = create_password( sb_stripslashes( $_POST[ 'user' ] ), sb_stripslashes( $_POST[ 'pass' ] ) );
 		$logged_in = $ok;
 	}
 	

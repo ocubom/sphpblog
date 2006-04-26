@@ -3,7 +3,7 @@
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
-	// $ok = create_password( stripslashes( $_POST['user'] ), stripslashes( $_POST['pass'] ) );
+	// $ok = create_password( sb_stripslashes( $_POST['user'] ), sb_stripslashes( $_POST['pass'] ) );
 	// $logged_in = $ok;
 	
 	read_config();
@@ -30,8 +30,8 @@
 	function page_content() {
 		global $lang_string, $user_colors, $ok, $blog_config;
 		
-		$hashedUser = crypt(  stripslashes( $_POST['user'] ) );
-		$hashedPass = crypt( stripslashes( $_POST['pass'] ) );
+		$hashedUser = crypt( sb_stripslashes( $_POST['user'] ) );
+		$hashedPass = crypt( sb_stripslashes( $_POST['pass'] ) );
 		?>
 		
 		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>

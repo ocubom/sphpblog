@@ -24,7 +24,7 @@
 	$comment_tags_allowed = implode( ',', $temp_array );
 
 	// Clean up the Blog Email list...
-	$temp_email = explode( ',', stripslashes( $_POST[ 'blog_email' ] ) );
+	$temp_email = explode( ',', sb_stripslashes( $_POST[ 'blog_email' ] ) );
 	if ( $temp_email === false ) {
 		$temp_email = '';
 	} else if ( is_array( $temp_email ) ) {
@@ -34,11 +34,11 @@
 		$temp_email = implode( ',', $temp_email );
 	}
 	
-	$ok = write_config( stripslashes( $_POST[ 'blog_title' ] ),
-						stripslashes( $_POST[ 'blog_author' ] ),
-						stripslashes( $_POST[ 'blog_email' ] ),
+	$ok = write_config( sb_stripslashes( $_POST[ 'blog_title' ] ),
+						sb_stripslashes( $_POST[ 'blog_author' ] ),
+						sb_stripslashes( $_POST[ 'blog_email' ] ),
 						$_POST[ 'blog_avatar' ],
-						stripslashes( $_POST[ 'blog_footer' ] ),
+						sb_stripslashes( $_POST[ 'blog_footer' ] ),
 						$_POST[ 'blog_language' ],
 						$_POST[ 'blog_entry_order' ],
 						$_POST[ 'blog_comment_order' ],
@@ -50,7 +50,7 @@
 						( $_POST[ 'blog_enable_gzip_output' ] == 'on' ),
 						( $_POST[ 'blog_email_notification' ] == 'on' ),
 						( $_POST[ 'blog_send_pings' ] == 'on' ),
-						stripslashes( $_POST[ 'blog_ping_urls' ] ),
+						sb_stripslashes( $_POST[ 'blog_ping_urls' ] ),
 						( $_POST[ 'blog_enable_voting' ] == 'on' ),
 						( $_POST[ 'blog_trackback_enabled' ] == 'on' ),
 						( $_POST[ 'blog_trackback_auto_discovery' ] == 'on' ),

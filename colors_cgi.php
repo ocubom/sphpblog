@@ -20,7 +20,7 @@
 	
 	for ( $i = 0; $i < count( $color_def ); $i++ ) {
 		$id = $color_def[$i][ 'id' ];
-		$color = stripslashes( $_POST[ $id ] );
+		$color = sb_stripslashes( $_POST[ $id ] );
 		array_push( $post_array, $id );
 		array_push( $post_array, $color );
 	}

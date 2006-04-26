@@ -13,7 +13,7 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install06' );
 	
-	$ok = check_password( stripslashes( $_POST['user'] ), stripslashes( $_POST['pass'] ) );
+	$ok = check_password( sb_stripslashes( $_POST['user'] ), sb_stripslashes( $_POST['pass'] ) );
 	$logged_in = $ok;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

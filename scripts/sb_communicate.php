@@ -75,7 +75,7 @@
 		
 		ini_set('sendmail_from', $from);
 		for ( $j=0; $j < count($to_array); $j++ ) {
-			$result = mail( $to_array[$j], stripslashes($subject), stripslashes($body), $headers );
+			$result = mail( $to_array[$j], sb_stripslashes($subject), sb_stripslashes($body), $headers );
 		}
 		ini_restore('sendmail_from');
 		

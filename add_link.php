@@ -9,16 +9,16 @@
 	sb_language( 'add_link' );
 	
 	if ( isset( $_POST[ 'link_name' ] ) ) {
-		$ok = write_link( stripslashes( $_POST[ 'link_name' ] ), stripslashes( $_POST[ 'link_url' ] ), stripslashes( $_POST[ 'link_id' ] ) );
+		$ok = write_link( sb_stripslashes( $_POST[ 'link_name' ] ), sb_stripslashes( $_POST[ 'link_url' ] ), sb_stripslashes( $_POST[ 'link_id' ] ) );
 	}
 	
 	if ( isset( $_GET[ 'action' ] ) ) {
-		$action = stripslashes( $_GET[ 'action' ] );
+		$action = sb_stripslashes( $_GET[ 'action' ] );
 		if ( $action === 'edit' ) {
-			$link_id = stripslashes( $_GET[ 'link_id' ] );
+			$link_id = sb_stripslashes( $_GET[ 'link_id' ] );
 			// nothing
 		} else {
-			$ok = modify_link( $action, stripslashes( $_GET[ 'link_id' ] ) );
+			$ok = modify_link( $action, sb_stripslashes( $_GET[ 'link_id' ] ) );
 		}
 	}
 ?>

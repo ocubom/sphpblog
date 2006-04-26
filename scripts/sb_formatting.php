@@ -26,6 +26,19 @@
 		return ( $str );
 	}
 	
+	function htmlDecode( $temp_str ) {		
+		// $temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		$trans_str = get_html_translation_table(HTML_ENTITIES);
+		foreach($trans_str as $k => $v){
+			$ttr[$v] = utf8_encode($k);
+		}
+		$temp_str = strtr($temp_str, $ttr);
+		
+		$temp_str = str_replace( '&#039;', '\'', $temp_str );
+		
+		return( $temp_str );
+	}
+	
 	function blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false ) {
 		// Convert Simple Blog tags to HTML.
 		//
@@ -227,12 +240,19 @@
 			}
 		}
 		
+		// Loop
 		while ( $str_offset !== false ) {
 			// Store all the text BEFORE the openning HTML tag.
-			//
-			// Also, replace hard returns with '<br />' tags.
 			$temp_str = substr( $str, 0, $str_offset );
-			$temp_str = str_replace( chr(10), '<br />', $temp_str );
+			//
+			// Replace hard returns in string with '<br />' tags.
+			// "\r\n" - WINDOWS
+			// "\n"   - UNIX
+			// "\r"   - MACINTOSH
+			$temp_str = str_replace( "\r\n", '<br />', $temp_str );
+			$temp_str = str_replace( "\n", '<br />', $temp_str );
+			$temp_str = str_replace( "\r", '<br />', $temp_str );
+			// $temp_str = str_replace( chr(10), '<br />', $temp_str );
 			$str_out = $str_out . $temp_str;
 			
 			// Store all text AFTER the tag
@@ -257,9 +277,9 @@
 			
 			if ( $str_offset !== false ) {
 				// Store all the text BETWEEN the HTML tags.
-				//
-				// Also, decode HTML entities between the tags.
 				$temp_str = substr( $str, 0, $str_offset );
+				//
+				// Decode HTML entities between the tags.
 				if ( $strip_tags === false ) {
 					// $temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 					$trans_str = get_html_translation_table(HTML_ENTITIES);
@@ -296,11 +316,16 @@
 		//
 		// All this text will be outside of any HTML tags so
 		// we need to encode the line breaks.
-		$str = str_replace( chr(10), '<br />', $str );
+		// "\r\n" - WINDOWS
+		// "\n"   - UNIX
+		// "\r"   - MACINTOSH
+		$str = str_replace( "\r\n", '<br />', $str );
+		$str = str_replace( "\n", '<br />', $str );
+		$str = str_replace( "\r", '<br />', $str );
+		// $str = str_replace( chr(10), '<br />', $str );
 		$str = $str_out . $str;
 		
 		return ( $str );
-	
 	}
 	
 	function replace_url_tag( $str, $tag_begin, $tag_end, $tag_close, $strip_tags, $add_no_follow = false ) {

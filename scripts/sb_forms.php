@@ -123,7 +123,7 @@
 		// <input name="name" id="id" type="text" value="value" size="2" maxlength="2" onchange="" disabled>
 		$str .= '<input name="'.$id.'" id="'.$id.'" type="'.$type.'"';
 		if ( isset( $value ) ) {
-			$str .= ' value="'.$value.'"';
+			$str .= ' value="'. addslashes( encode_input_value( $value ) ) .'"';
 		}
 		if ( $size > 0 ) {
 			$str .= ' size="'.$size.'"';

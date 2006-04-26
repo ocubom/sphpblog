@@ -47,10 +47,10 @@
 				$entry = $_POST[ 'entry' ];
 			}
 			
-			$temp_subject = stripslashes( $_POST[ 'blog_subject' ] );
-			$temp_text = stripslashes( $_POST[ 'blog_text' ] );
+			$temp_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
+			$temp_text = sb_stripslashes( $_POST[ 'blog_text' ] );
 			$blog_content = preview_static_entry( $temp_subject, $temp_text );
-			$temp_file_name = stripslashes( $_POST[ 'file_name' ] );
+			$temp_file_name = sb_stripslashes( $_POST[ 'file_name' ] );
 			echo( $blog_content );
 		}
 			

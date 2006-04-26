@@ -374,6 +374,6 @@
 	
 	function write_modifica ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_date=NULL, $filename) {
 		sb_delete_file( $filename );
-		write_entry( stripslashes( $_POST['blog_subject'] ), stripslashes( $_POST['blog_text'] ), stripslashes( $_POST['tb_ping'] ), $_POST['entry'], $_POST[ "catlist" ], $faketime );
+		write_entry( sb_stripslashes( $_POST['blog_subject'] ), sb_stripslashes( $_POST['blog_text'] ), sb_stripslashes( $_POST['tb_ping'] ), $_POST['entry'], $_POST[ "catlist" ], $faketime );
 	}
 ?>

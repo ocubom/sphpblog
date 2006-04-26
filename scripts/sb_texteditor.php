@@ -48,13 +48,13 @@
 			$blog_entry_data = blog_entry_to_array( $filename );
 			
 			// Store Data for Form Use
-			$default_subject = $blog_entry_data[ 'SUBJECT' ];
+			$default_subject = htmlDecode( $blog_entry_data[ 'SUBJECT' ] );
 			$default_content = $blog_entry_data[ 'CONTENT' ];
-			$default_tb_ping = $blog_entry_data[ 'TB_PING' ];			
+			$default_tb_ping = htmlDecode( $blog_entry_data[ 'TB_PING' ] );
 			if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
 				$default_categories = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
 			}
-			$default_relatedlink = $blog_entry_data[ 'relatedlink'];
+			$default_relatedlink = htmlDecode( $blog_entry_data[ 'relatedlink'] );
 			
 			// Split up Date Information
 			$temp_date = substr($_GET['entry'],-13,6);
@@ -89,12 +89,11 @@
 			$default_entry = array_key_exists( 'entry', $_POST ) ? $_POST[ 'entry' ] : $default_entry;
 			
 			// Store Data for Form Use
-			$default_subject = stripslashes( @htmlspecialchars( $_POST[ 'blog_subject' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
-			// $default_content = stripslashes( @htmlspecialchars( $_POST[ 'blog_text' ], ENT_QUOTES, $lang_string[ 'php_charset' ] ) );
-			$default_content = stripslashes( $_POST[ 'blog_text' ] ); // Required
-			$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
-			$default_categories = array_key_exists( 'catlist', $_POST ) ? stripslashes( $_POST[ 'catlist' ] ): $default_categories;
-			$default_relatedlink = array_key_exists( 'blog_relatedlink', $_POST ) ? stripslashes( $_POST[ 'blog_relatedlink' ] ): $default_relatedlink;
+			$default_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
+			$default_content = sb_stripslashes( $_POST[ 'blog_text' ] );
+			$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? sb_stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
+			$default_categories = array_key_exists( 'catlist', $_POST ) ? sb_stripslashes( $_POST[ 'catlist' ] ): $default_categories;
+			$default_relatedlink = array_key_exists( 'blog_relatedlink', $_POST ) ? sb_stripslashes( $_POST[ 'blog_relatedlink' ] ): $default_relatedlink;
 			
 			// Create Time
 			$default_time = mktime($_POST['hour'], $_POST['minute'], $_POST['second'], $_POST['month'], $_POST['day'], $_POST['year'] ); // Required
