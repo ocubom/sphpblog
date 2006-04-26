@@ -286,9 +286,10 @@
 					foreach($trans_str as $k => $v){
 						$ttr[$v] = utf8_encode($k);
 					}
-					$temp_str = strtr($temp_str, $ttr);
+					$temp_str = strtr($temp_str, $ttr);	
+					
+					$str_out = $str_out . $temp_str;
 				}
-				$str_out = $str_out . $temp_str;
 				
 				// Store sub_string after the tag.
 				$str = substr( $str, $str_offset + strlen( $tag_end ) );

@@ -258,15 +258,16 @@
 				
 				// Month
 				if ( $last_m != $curr_m || $last_y != $curr_y || $n == count( $entry_array ) - 1 ) {
+				
 					// Build Month List
 					$str_month .= '<li>' . "\n";
 					$temp_str = ( strftime( '%B', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
 					$str_month .= '<a href="' . $base_url . '?m=' . $last_m . '&amp;y=' . $last_y . '">' . $temp_str . '</a>' . "\n";
 					
-          // Fixed per Sverd1 March 17, 2006
-          if(!empty($str_day)) {
-	           $str_month .= '<ul>' . "\n" . $str_day . "\n" . '</ul>' . "\n";
-          }
+					// Fixed per Sverd1 March 17, 2006
+					if (!empty($str_day)) {
+						$str_month .= '<ul>' . "\n" . $str_day . "\n" . '</ul>' . "\n";
+					}
 					
 					$str_month .= '</li>' . "\n";
 					
@@ -303,7 +304,7 @@
 					// Fixed per Sverd1 March 17, 2006
 					$curr_array[ 'date' ] = ( strftime( dateString(), mktime(0, 0, 0, $curr_m, $curr_d, $curr_y ) ) );
 					$curr_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, true );
-					
+
 					$str_day .= '<li>' . "\n";
 					$str_day .= '<a href="index.php?m=' . $curr_m . '&amp;y=' . $curr_y . '&amp;entry=' . sb_strip_extension( $curr_filename ) . '">' . $curr_array[ 'subject' ] . '</a><br />' . "\n";
 					$str_day .= '<b>' . $curr_array[ 'date' ] . '</b>';
