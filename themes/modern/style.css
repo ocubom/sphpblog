@@ -98,6 +98,22 @@ blockquote {
 	border-left: 5px solid #ddd
 }
 
+/* NEW */
+#archive_tree_menu ul	
+{
+	list-style: none inside;
+	padding: 0px 0px 0px 10px;
+	margin: 0px;
+}
+
+/* NEW */
+#archive_tree_menu li	
+{
+	margin: 0px;
+	padding: 4px 0px 0px 0px;
+	/* border: 1px #F00 solid; */
+}
+
 input, select, option, textarea
 {
 	font-size: 11px;

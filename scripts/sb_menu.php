@@ -250,23 +250,7 @@
 			list( $last_filename, $last_y, $last_m ) = explode( '|', $entry_array[ 0 ] );
 			$last_d = substr($last_filename, 9, 2);
 			
-			$str = '
-<style type="text/css" media="screen">
-<!--
-	#archive_tree_menu ul	
-	{
-		list-style: none inside;
-		padding: 0px 0px 0px 10px;
-		margin: 0px;
-	}
-	#archive_tree_menu li	
-	{
-		margin: 0px;
-		padding: 4px 0px 0px 0px;
-		/* border: 1px #F00 solid; */
-	}
--->
-</style>';
+			$str = '';
 			$str.= '<div id="archive_tree_menu"><ul>';
 			for ( $n = 0; $n < count( $entry_array ); $n++ ) {
 				list( $curr_filename, $curr_y, $curr_m ) = explode( '|', $entry_array[ $n ] );
