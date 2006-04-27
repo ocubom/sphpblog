@@ -13,6 +13,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	
 	<style type="text/css">
 	<!--

@@ -149,6 +149,11 @@ input, select, option, textarea
 	line-height: 14px;
 }
 
+div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSidebarArchives, #toggleSidebarCategories , #toggleSidebarSearch, #toggleSidebarMenu, #toggleSidebarPreferences, #toggleSidebarRecentComments, #toggleSidebarRecentEntries, #toggleSidebarRecentTrackbacks
+{
+	display: none;
+}
+
 #sidebar
 {
 	padding: 10px;
@@ -160,6 +165,15 @@ input, select, option, textarea
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 20px;
+}
+
+#sidebar .menu_body 
+{
+	padding: 10px;
+	border-color: #999;
+	border-width: 1px;
+	border-style: dashed;
+	display: none;
 }
 
 #sidebar .divider {

@@ -22,7 +22,6 @@ sb_language( 'contact' );
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-	</script>
 	<script type="text/javascript">
 	<!--
 	function validate(theform) {

@@ -41,6 +41,10 @@
 	#maincontent .blog_categories {
 		color: #<?php echo( $user_colors[ 'date_txt_color' ] ); ?>;
 	}
+	
+	#sidebar .menu_body {
+		border-color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
+	}
 
 	a:link, a:visited {
 		color: #<?php echo( $user_colors[ 'link_reg_color' ] ); ?>;

@@ -72,13 +72,15 @@
 		
 		if ( $blog_config[ 'blog_avatar' ] ) {
 			$str = '<img src="' . $blog_config[ 'blog_avatar' ] . '" alt="" />';
+			
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_avatar' ];
+			$result[ 'content' ] = $str;
+			
+			return ( $result );
 		}
 		
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_avatar' ];
-		$result[ 'content' ] = $str;
-		
-		return ( $result );
+		return;
 	}
 	
 	function menu_random_quote() {
@@ -100,16 +102,20 @@
 	function menu_display_blognav () {
 		// Returns the blog entry navigation calendar as HTML.
 		//
-		global $month, $year, $day, $lang_string;
-
-		// The "read_menus_calendar()" function is located in "scripts/sb_theme.php"
-		$str = read_menus_calendar( $month, $year, $day );
-
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_archive' ];
-		$result[ 'content' ] = $str;
+		global $month, $year, $day, $lang_string, $blog_config;
 		
-		return ( $result );
+		
+		 if ( $blog_config[ 'blog_enable_calendar' ] ) {
+			// The "read_menus_calendar()" function is located in "scripts/sb_theme.php"
+			$str = read_menus_calendar( $month, $year, $day );
+	
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_archive' ];
+			$result[ 'content' ] = $str;
+			return ( $result );
+		}
+		
+		return;
 	}
 	
 	function menu_display_blognav_tree () {
@@ -121,16 +127,20 @@
 		// May (2)
 		//   5/27/04 (2)
 		//
-		global $month, $year, $day, $lang_string;
-
-		// The "read_menus_tree()" function is located in "scripts/sb_theme.php"
-		$str = read_menus_tree( $month, $year, $day );
-
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_archive' ];
-		$result[ 'content' ] = '<a href="archives.php">' . $lang_string[ 'menu_viewarchives' ] . '</a><br />' . "\n" . $str;
+		global $month, $year, $day, $lang_string, $blog_config;
 		
-		return ( $result );
+
+		 if ( $blog_config[ 'blog_enable_calendar' ] ) {
+			// The "read_menus_tree()" function is located in "scripts/sb_theme.php"
+			$str = read_menus_tree( $month, $year, $day );
+	
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_archive' ];
+			$result[ 'content' ] = '<a href="archives.php">' . $lang_string[ 'menu_viewarchives' ] . '</a><br />' . "\n" . $str;
+			return ( $result );
+		}
+		
+		return;
 	}
 	
 	function menu_display_login () {
@@ -165,18 +175,20 @@
 		//
 		global $lang_string, $logged_in, $user_colors;
 		
-		$str = '';
 		if ($logged_in === true) {
+			$str = '';
 			$str = $str . '<a href="add.php">' . $lang_string[ 'menu_add' ] . '</a><br />';
 			$str = $str . '<a href="add_static.php">' . $lang_string[ 'menu_add_static' ] . '</a><br />';
 			$str = $str . '<a href="upload_img.php">' . $lang_string[ 'menu_upload' ] . '</a>';
+			
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_menu' ];
+			$result[ 'content' ] = $str;
+			
+			return ( $result );
 		}
 		
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_menu' ];
-		$result[ 'content' ] = $str;
-		
-		return ( $result );
+		return;
 	}
 	
    function menu_display_categories () {
@@ -264,8 +276,8 @@
 		//
 		global $lang_string, $logged_in, $user_colors;
 		
-		$str = '';
 		if ($logged_in === true) {
+			$str = '';
 			$str = $str . '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
 			$str = $str . '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
 			$str = $str . '<a href="setup.php">' . $lang_string[ 'menu_setup' ] . '</a><br />';
@@ -274,41 +286,47 @@
 			$str = $str . '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
 			$str = $str . '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
 			$str = $str . '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
+			
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_setup' ];
+			$result[ 'content' ] = $str;
+			
+			return ( $result );
 		}
 		
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_setup' ];
-		$result[ 'content' ] = $str;
-		
-		return ( $result );
+		return;
 	}
 	
 	function menu_most_recent_comments () {
-		global $lang_string;
+		global $lang_string, $blog_config;
 		
-		$str = get_most_recent();
+		if( $blog_config[ 'blog_enable_lastcomments' ] ) {
+			$str = get_most_recent();
+			
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_most_recent' ];
+			$result[ 'content' ] = $str;
+			
+			return ( $result );
+		}
 		
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_most_recent' ];
-		$result[ 'content' ] = $str;
-		
-		return ( $result );
+		return;
 	}
 	
 	function menu_most_recent_trackbacks () {
 		global $lang_string, $blog_config;
 		
-		$result = array();
-		
 		if( $blog_config[ 'blog_trackback_enabled' ] ) {
 			$str = get_most_recent_trackback();
+			
+			$result = array();
 			$result[ 'title' ] = $lang_string[ 'menu_most_recent_trackback' ];
 			$result[ 'content' ] = $str;
-		} else {
-   			$result[ 'title' ] = '';
-			$result[ 'content' ] = '';
+			
+			return ( $result );
 		}
-		return ( $result );
+		
+		return;
 	}
 	
 	function menu_search_field () {
@@ -345,52 +363,56 @@
 	function menu_most_recent_entries () {
 		global $lang_string, $blog_config;
 		
-		$entry_file_array = blog_entry_listing();
-		
-		// Grab the next X number of entries
-		$file_array = array();
-		for ( $i = 0; $i < min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) ); $i++ ) {
-			array_push( $file_array, $entry_file_array[ $i ] );
-		}
-		
-		// Read entry files
-		$contents = array();
-		for ( $i = 0; $i < count( $file_array ); $i++ ) {
-			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $file_array[ $i ] );
-			array_push( $contents, array( 	'path' => ( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename ),
-											'entry' => $entry_filename,
-											'year' => $year_dir,
-											'month' => $month_dir ) );
-		}
-		
-		$str = '';
-		if ( $contents ) {
-			if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
-				// Hosted at root.
-				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
-			} else {
-				// Hosted in sub-directory.
-				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+		if ( $blog_config['blog_enable_lastentries'] ) {		
+			$entry_file_array = blog_entry_listing();
+			
+			// Grab the next X number of entries
+			$file_array = array();
+			for ( $i = 0; $i < min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) ); $i++ ) {
+				array_push( $file_array, $entry_file_array[ $i ] );
 			}
 			
-			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
-				$blog_entry_data = blog_entry_to_array( $contents[$i][ 'path' ] );
-				
-				$entry_array = array();
-				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
-				
-				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
-				
-				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
-				
-				$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><p />';
+			// Read entry files
+			$contents = array();
+			for ( $i = 0; $i < count( $file_array ); $i++ ) {
+				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $file_array[ $i ] );
+				array_push( $contents, array( 	'path' => ( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename ),
+												'entry' => $entry_filename,
+												'year' => $year_dir,
+												'month' => $month_dir ) );
 			}
+			
+			$str = '';
+			if ( $contents ) {
+				if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+					// Hosted at root.
+					$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+				} else {
+					// Hosted in sub-directory.
+					$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+				}
+				
+				for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
+					$blog_entry_data = blog_entry_to_array( $contents[$i][ 'path' ] );
+					
+					$entry_array = array();
+					$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false );
+					
+					$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
+					
+					$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
+					
+					$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><p />';
+				}
+			}
+			
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_most_recent_entries' ];
+			$result[ 'content' ] = $str;
+			
+			return ( $result );
 		}
 		
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_most_recent_entries' ];
-		$result[ 'content' ] = $str;
-		
-		return ( $result );
+		return;
 	}
 ?>

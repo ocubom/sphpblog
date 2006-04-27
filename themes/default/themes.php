@@ -301,7 +301,7 @@
 		
 		// Begin Page Layout HTML
 		?>
-		<body>
+		<body onload="pageInit();">
 			<br />
 			<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
 				<tr align="left" valign="top">
@@ -389,99 +389,81 @@
 		// End Popup Layout HTML
 	}
 	
+	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
+		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
+		
+		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {
+			echo( "\n<!-- " . $comment . " -->\n" );
+			
+			if ( isset( $toggleDiv ) ) {
+				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');">[+]</a> ' );
+			}
+			echo( '<span class="menu_title">' . $blockArray[ 'title' ] . '</span><br />' . "\n" );
+			
+			if ( isset( $toggleDiv ) ) {
+				echo( '<div id="toggle' . $toggleDiv . '" class="menu_body">' . "\n" );
+			} else{
+				echo( '<div class="test">' . "\n" );
+			}
+			echo( $blockArray[ 'content' ] . "\n" );
+			echo( "</div><br />\n" );
+			
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
-		$result = menu_display_avatar();
-		if( $result[ 'content' ] != '') {
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-			echo( '<hr />' );
-		}
+		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
 
+		// AVATAR
+		theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
+		
+		// LINKS
 		$result = menu_display_links();
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
-		echo( '<hr />' );
+		$result[ 'content' ] = $result[ 'content' ] . '<hr />' . menu_display_login();
+		theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
 		
-		echo( menu_display_login() );
+		// MENU
+		theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
 		
+		// SETUP
+		theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
+				
+		// CUSTOM BLOCKS
 		$array = read_blocks($logged_in);
-		for($i=0 ; $i<count($array) ; $i+=2) {
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $array[$i] . '</span><br/>' );
-			echo( $array[$i+1] . '' );
+		for ($i=0 ; $i<count($array) ; $i+=2) {
+			$result = Array();
+			$result[ 'title' ] = $array[$i];
+			$result[ 'content' ] = $array[$i+1];
+			theme_menu_block( $result, 'CUSTOM BLOCK' );
 		}
 		
-		 if( $blog_config[ 'blog_enable_calendar' ] ) {
-			echo( '<hr />' );		
-			$result = menu_display_blognav();
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
+		// CALENDAR
+		theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
 		
-		$result = menu_display_blognav_tree();
-		if ( $result[ 'content' ] != '' ) {			
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
+		// ARCHIVE TREE
+		theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
 		
-		$result = menu_display_categories();
-		if ( $result[ 'content' ] != '' ) {			
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
+		// CATEGORIES
+		theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
 		
-		// Search Box - Added in 0.3.7
-		$result = menu_search_field();
-		echo( '<hr />' );
-		echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-		echo( $result[ 'content' ] . '' );
+		// SEARCH
+		theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
+
+		// RECENT ENTRIES
+		theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
+				
+		// RECENT COMMENTS
+		theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
 		
-		$result = menu_display_user();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
+		// RECENT TRACKBACKS
+		theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
 		
-		$result = menu_display_setup();
-		if ( $result[ 'content' ] != '' ) {
-			echo( '<hr />' );
-			echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			echo( $result[ 'content' ] . '' );
-		}
-		
-		if ( $blog_config['blog_enable_lastcomments']){
-      $result = menu_most_recent_comments();
-		  if ( $result[ 'content' ] != '' ) {
-			 echo( '<hr />' );
-			 echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			 echo( $result[ 'content' ] . '' );
-		  }
-		}
-		
-		if( $blog_config[ 'blog_trackback_enabled' ] ) {
-			$result = menu_most_recent_trackbacks();
-			if ( $result[ 'content' ] != '' ) {
-				echo( '<hr />' );
-				echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-				echo( $result[ 'content' ] . '' );
-			}
-		}
-		
-		if ( $blog_config['blog_enable_lastentries']){
-      $result = menu_most_recent_entries();
-		  if ( $result[ 'content' ] != '' ) {
-			 echo( '<hr />' );
-			 echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-			 echo( $result[ 'content' ] . '' );
-		  }
-		}
-		
-		echo( '<hr />' );
+		echo( '<p />' );
 	
 		// Web Badges - Changed in 0.4.4
 		echo( '<div align="center">' );

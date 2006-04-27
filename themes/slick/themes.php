@@ -439,7 +439,7 @@
 		
 		// Begin Popup Layout HTML
 		?>
-		<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+		<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" onload="pageInit();">
 			<br />
 			<table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
 				<tr align="left" valign="top">

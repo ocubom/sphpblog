@@ -422,7 +422,7 @@
 		
 		// Begin Page Layout HTML
 		?>
-		<body>
+		<body onload="pageInit();">
 			<br />
 			<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
 				<tr align="left" valign="top">
@@ -513,6 +513,32 @@
 		// End Popup Layout HTML
 	}
 	
+	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
+		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
+		
+		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {
+			echo( "\n<!-- " . $comment . " -->\n" );
+			
+			echo( '<div class="menu_title">' );
+			if ( isset( $toggleDiv ) ) {
+				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');">[+]</a> ' );
+			}
+			echo( $blockArray[ 'title' ] . '</div>' . "\n" );
+			
+			if ( isset( $toggleDiv ) ) {
+				echo( '<div id="toggle' . $toggleDiv . '" class="menu_body">' . "\n" );
+			} else {
+				echo( '<div class="menu_body">' . "\n" );
+			}
+			echo( $blockArray[ 'content' ] . "\n" );
+			echo( "</div><br />\n" );
+			
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
@@ -548,135 +574,52 @@
 		// I could go on, but this is kind of boring stuff... :)
 		
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
+
+		// AVATAR
+		theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
 		
-		$result = menu_display_avatar();
-		if( $result[ 'content' ] != '') {
-			echo( "\n<!-- AVATAR -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
-		// Retained from 0.3.7c
-		echo( "\n<!-- LINKS -->\n" );
+		// LINKS
 		$result = menu_display_links();
-		echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-		echo( "<div class=\"menu_body\">\n" );
-		echo( $result[ 'content' ] . "\n" );
-		echo( "<br />" . menu_display_login() . "\n" );
-		echo( "</div><br />\n" );
+		$result[ 'content' ] = $result[ 'content' ] . '<hr />' . menu_display_login();
+		theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
 		
-		// Retained from 0.3.7c
-		$result = menu_display_user();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- USER MENU -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
+		// MENU
+		theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
 		
-		// Retained from 0.3.7c
-		$result = menu_display_setup();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- SETUP MENU -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
-		
-		// New 0.3.8
-		//
-		// The ADD BLOCKS page lets you insert your own
-		// content "blocks" into the menu area.
+		// SETUP
+		theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
+				
+		// CUSTOM BLOCKS
 		$array = read_blocks($logged_in);
-		for($i=0 ; $i<count($array) ; $i+=2) {
-			if ( $array[$i+1] != "" ) {
-				echo("<div class=\"menu_title\">" . $array[$i] . "</div>\n" );
-				echo( "<div class=\"menu_body\">\n" );
-				echo( $array[$i+1] . "\n" );
-				echo( "</div><br />\n" );
-			}
+		for ($i=0 ; $i<count($array) ; $i+=2) {
+			$result = Array();
+			$result[ 'title' ] = $array[$i];
+			$result[ 'content' ] = $array[$i+1];
+			theme_menu_block( $result, 'CUSTOM BLOCK' );
 		}
 		
-		// Retained from 0.3.7c
-		//
-		// However, this function now displays a calendar
-		// rather then the "tree view"....
-		if( $blog_config[ 'blog_enable_calendar' ] ) {
-			echo( "\n<!-- ARCHIVE -->\n" );
-			 $result = menu_display_blognav();
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
+		// CALENDAR
+		theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
 		
-		// New 0.4.7
-		$result = menu_display_blognav_tree();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- RECENT ENTRIES -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
+		// ARCHIVE TREE
+		theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
 		
-		// New 0.3.8
-		$result = menu_display_categories();
-		if ( $result[ 'content' ] != "" ) {
-			echo( "\n<!-- RECENT ENTRIES -->\n" );
-			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			echo( "<div class=\"menu_body\">\n" );
-			echo( $result[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
-		}
+		// CATEGORIES
+		theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
 		
-		// Retained from 0.3.7c
-		echo( "\n<!-- SEARCH -->\n" );
-		$result = menu_search_field();
-		echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-		echo( "<div class=\"menu_body\">\n" );
-		echo( $result[ 'content' ] . "\n" );
-		echo( "</div><br />\n" );
+		// SEARCH
+		theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
+
+		// RECENT ENTRIES
+		theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
+				
+		// RECENT COMMENTS
+		theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
 		
-		// New 0.3.8
-		if ( $blog_config['blog_enable_lastentries']){
-      $result = menu_most_recent_entries();
-		  if ( $result[ 'content' ] != "" ) {
-		    echo( "\n<!-- RECENT ENTRIES -->\n" );
-			 echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			 echo( "<div class=\"menu_body\">\n" );
-			 echo( $result[ 'content' ] . "\n" );
-		  	echo( "</div><br />\n" );
-		  }
-		}
+		// RECENT TRACKBACKS
+		theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
 		
-		// Retained from 0.3.7c
-		if ( $blog_config['blog_enable_lastcomments']){
-      $result = menu_most_recent_comments();
-		  if ( $result[ 'content' ] != "" ) {
-			   echo( "\n<!-- RECENT COMMENTS -->\n" );
-			   echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-			   echo( "<div class=\"menu_body\">\n" );
-			   echo( $result[ 'content' ] . "\n" );
-			   echo( "</div><br />\n" );
-		  }
-	}
-	
-		// New 0.3.8
-		if( $blog_config[ 'blog_trackback_enabled' ] ) {
-			$result = menu_most_recent_trackbacks();
-			if ( $result[ 'content' ] != "" ) {
-				echo( "\n<!-- RECENT TRACKBACKS -->\n" );
-				echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-				echo( "<div class=\"menu_body\">\n" );
-				echo( $result[ 'content' ] . "\n" );
-				echo( "</div><br />\n" );
-			}
-		}
+		echo( '<p />' );
 		
 		// Web Badges - Changed in 0.4.4
 		echo( '<div align="center">' );
