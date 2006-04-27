@@ -143,9 +143,13 @@
 			<input type="checkbox" id="blog_enable_comments" name="blog_enable_comments"<?php if ( $blog_config[ 'blog_enable_comments' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_comments' ] ); ?><br />
 			<input type="checkbox" id="blog_email_notification" name="blog_email_notification"<?php if ( $blog_config[ 'blog_email_notification' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_email_notification' ] ); ?><br />
 			<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup"<?php if ( $blog_config[ 'blog_comments_popup' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_comments_popup' ] ); ?><p />
+			<br />
+      <label for="blog_comment_days_expiry"><?php echo( $lang_string[ 'blog_comment_days_expiry' ] ); ?></label>
+			<input type="text" name="blog_comment_days_expiry" value="<?php echo( $blog_config[ 'blog_comment_days_expiry' ] ); ?>" autocomplete="OFF" size="3"><br /><br />
 			
-			<label for="area"><?php echo( $lang_string[ 'blog_comment_tags' ] ); ?></label><br />
-			<table border="0" width="<?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>" cellspacing="0" cellpadding="0">
+      <label for="area"><?php echo( $lang_string[ 'blog_comment_tags' ] ); ?></label><br />
+			
+      <table border="0" width="<?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>" cellspacing="0" cellpadding="0">
 				<tr align="left" valign="top">
 					<td width="50%">
 						<input type="checkbox" id="b" name="b"<?php if ( in_array( 'b', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [b] = Bold<br />

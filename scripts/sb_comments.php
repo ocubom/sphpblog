@@ -72,13 +72,13 @@
 		
 		// View Count
 		if ( $logged_in == false ) {
-			$view_counter = 1;
-			$view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
-			for ( $i = 0; $i < count( $view_array ); $i++ ) {
-				if ( $view_array[$i] === 'view_counter.txt' ) {
-					$view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
-				}
+		$view_counter = 1;
+		$view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
+		for ( $i = 0; $i < count( $view_array ); $i++ ) {
+			if ( $view_array[$i] === 'view_counter.txt' ) {
+				$view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
 			}
+		}
 		}
 
 		$contents = array();
@@ -91,7 +91,7 @@
 		if ( $contents ) {	
 			// Store Counter
 			if ( $logged_in == false ) {
-				sb_write_file( $dir . '../view_counter.txt' , $view_counter );
+			sb_write_file( $dir . '../view_counter.txt' , $view_counter );
 			}
 		
 			// Display comments Oldest to Newest to. Oldest Comments will be at the top of the page.
@@ -203,6 +203,27 @@
 		
 		return($htmlstr);
 	}
+	
+	function are_comments_expired ($month, $day, $year) {
+    // Finds out if the comments are expired based on the setting
+    // in the preferences
+    global $blog_config;
+    
+    $tmp_expiry = intval( $blog_config[ 'blog_comment_days_expiry' ] );
+    if ( $tmp_expiry < 1 ) {
+      return ( false ); 
+    } else {    
+      $blog_entry_date = mktime(0,0,0,$month,$day,$year);
+      $todays_date = mktime(0,0,0,date('m'),date('d'),date('Y'));
+      $days_elapsed = Round((($todays_date - $blog_entry_date)/86400), 0) ;
+      $tmp_expiry = intval( $blog_config[ 'blog_comment_days_expiry' ] );    
+      if ( ($days_elapsed) >= $tmp_expiry ) {         
+        return ( true );
+      } else {  
+        return ( false );
+      }
+    }
+  }
 	
 	function sb_str_to_ascii ($str) {
 		// Converts a string to ASCII HEX code. This is used for email obfuscation.

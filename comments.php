@@ -108,15 +108,15 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
+		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;		
 		
 		echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) );
 		echo( '<p />' );
 		
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			
-		ob_start(); ?>
+			$entry_array = array();
+			$entry_array[ 'subject' ] = $lang_string[ 'title' ];				
+
+      ob_start(); ?>
 		<h2><?php echo( $lang_string[ 'header' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?></p>
 		
@@ -126,37 +126,37 @@
 			<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 			
 			<?php 
-				if ( $GLOBALS['logged_in'] == false ) {
-					echo('<label for="comment_name">' . $lang_string[ 'comment_name' ] . '</label><br />');
-					echo('<input type="text" name="comment_name" value="' . $_COOKIE[ 'comment_name' ] . '" autocomplete="OFF"><br />');
-				} else {
+      if ($GLOBALS['logged_in']==false ) {
+        echo('<label for="comment_name">' . $lang_string[ 'comment_name' ] . '</label><br />');
+			  echo('<input type="text" name="comment_name" value="' . $_COOKIE[ 'comment_name' ] . '" autocomplete="OFF"><br />');
+			} else {
 					echo('<input type="hidden" name="comment_name" value="' . $blog_config[ 'blog_author' ] . '" autocomplete="OFF">');
-				}
-				
-				if ( $GLOBALS['logged_in'] == false ) {
-					echo('<label for="comment_email">' . $lang_string[ 'comment_email' ] . '</label><br />');
-					echo('<input type="text" name="comment_email" value="' . $_COOKIE[ 'comment_email' ] . '" autocomplete="OFF"><br />');
+      }
+			
+			if ($GLOBALS['logged_in']==false ) {
+        echo('<label for="comment_email">' . $lang_string[ 'comment_email' ] . '</label><br />');
+			  echo('<input type="text" name="comment_email" value="' . $_COOKIE[ 'comment_email' ] . '" autocomplete="OFF"><br />');
 				} else {
 					// Blank Email
 					echo('<input type="hidden" name="comment_email" value="" autocomplete="OFF">');
-				}
-				
-				if ( $GLOBALS['logged_in'] == false ) {
-					echo('<label for="comment_url">' . $lang_string[ 'comment_url' ] . '</label><br />');
-					echo('<input type="text" name="comment_url" value="' . $_COOKIE[ 'comment_url' ] . '" autocomplete="OFF"><br />');
-					echo('<label for="comment_remember">' . $lang_string[ 'comment_remember' ] . '<input type="checkbox" name="comment_remember" value="1"');
-					echo(' autocomplete="OFF"></label><br /><br />');
+			}      
+			
+      if ($GLOBALS['logged_in']==false ) {
+        echo('<label for="comment_url">' . $lang_string[ 'comment_url' ] . '</label><br />');
+			  echo('<input type="text" name="comment_url" value="' . $_COOKIE[ 'comment_url' ] . '" autocomplete="OFF"><br />');
+			  echo('<label for="comment_remember">' . $lang_string[ 'comment_remember' ] . '<input type="checkbox" name="comment_remember" value="1"');
+        echo(' autocomplete="OFF"></label><br /><br />');
 				} else {
 					// Blank URL
 					echo('<input type="hidden" name="comment_url" value="" autocomplete="OFF">');
-				}
+      }
 			?>
 			
 			<!-- NEW -->
 			<?php echo( $lang_string[ 'label_insert' ] ); ?><br />
 			<?php
-				global $blog_config;
-			
+				global $blog_config;			  
+        
 				if ( in_array( 'b', $blog_config[ 'comment_tags_allowed' ] ) ) {
 					?><input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.comment_text,'b','');" /><?php
 				}
@@ -232,34 +232,41 @@
 			
 		<?php
 			if ($GLOBALS['logged_in']==true ) {
-				echo('<!-- Logged in user -->');
+        echo('<!-- Logged in user -->');
 				echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6">'); 
-				
-			} elseif ($blog_config['blog_enable_capcha']==0) {
-				echo('<!-- Anti-spam disabled -->');
+      
+      } elseif ($blog_config['blog_enable_capcha']==0) {
+        echo('<!-- Anti-spam disabled -->');
 				echo('<input type="hidden" name="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="OFF" maxlength="6">'); 
-				
-			} else {
-				echo('<!-- Not logged in! Show capcha -->');
-				echo('<label for="comment_capcha">');
-				
+
+      } else {
+        echo('<!-- Not logged in! Show capcha -->');
+        echo('<label for="comment_capcha">');
+ 
 				if ( function_exists('imagecreate') ) {
 					printf( $lang_string[ 'comment_capcha' ], '<br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
 				} else {
 					printf( $lang_string[ 'comment_capcha' ], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); 
 				}
-				echo('</label><br />');
-				echo('<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />');
+
+        echo('</label><br />');			
+      
+        echo('<input type="text" name="comment_capcha" value="" autocomplete="OFF" maxlength="6"><br /><br />');
 			}
 		?>
-		
-		<input type="submit" name="submit" value="<?php echo( $lang_string[ 'post_btn' ] ); ?>" />
-		
-		</form>
+      
+      <input type="submit" name="submit" value="<?php echo( $lang_string[ 'post_btn' ] ); ?>" />
+			
+		</form>		
 		
 		<?php
-			$entry_array[ 'entry' ] = ob_get_clean();
-			echo( theme_staticentry( $entry_array ) );	
+      if ( are_comments_expired( $GLOBALS[ 'month' ],$GLOBALS[ 'day' ],$GLOBALS[ 'year' ] ) ) {
+          ob_end_clean();
+          $entry_array[ 'entry' ] = $lang_string['expired_comment1'] . $blog_config[ 'blog_comment_days_expiry' ] . $lang_string['expired_comment2'];
+        } else {
+          $entry_array[ 'entry' ] = ob_get_clean();
+        }      			
+        echo( theme_staticentry( $entry_array ) );	
 	}
 ?>
 <?php 

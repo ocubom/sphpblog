@@ -57,7 +57,8 @@
 									'blog_enable_stats',
 									'blog_enable_lastcomments',
 									'blog_enable_lastentries',
-                  'blog_enable_capcha' );
+                  'blog_enable_capcha',
+                  'blog_comment_days_expiry' );
 									
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -107,7 +108,7 @@
 		
 		if ( !isset( $blog_config[ 'blog_max_entries' ] ) ) {
 			$blog_config[ 'blog_max_entries' ] = 5;
-		}
+		}		
 		
 		if ( !isset( $blog_config[ 'blog_comments_popup' ] ) ) {
 			$blog_config[ 'blog_comments_popup' ] = 1;
@@ -186,7 +187,11 @@
 		//'blog_calendar_start'
 		if ( !isset( $blog_config[ 'blog_calendar_start' ] ) ) {
 			$blog_config[ 'blog_calendar_start' ] = 'sunday';
-		}		
+		}	
+    
+    if ( !isset( $blog_config[ 'blog_comment_days_expiry' ] ) ) {
+			$blog_config[ 'blog_comment_days_expiry' ] = 0;
+		}	
 		
 		// READ META-DATA INFORMATION
 		$contents = sb_read_file( 'config/metainfo.txt' );
@@ -229,7 +234,15 @@
 		}
 	}
 	
-	function write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha ) {
+	function write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, 
+                          $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, 
+                          $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, 
+                          $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, 
+                          $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, 
+                          $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, 
+                          $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, 
+                          $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha, 
+                          $blog_comment_days_expiry ) {
 		// Save config information to file.
 		//
 		$array = array( clean_post_text( $blog_title ),
@@ -260,7 +273,8 @@
 						$blog_enable_stats,
 						$blog_enable_lastcomments,
 						$blog_enable_lastentries,
-            $blog_enable_capcha );
+            $blog_enable_capcha,
+            $blog_comment_days_expiry );
 						
 		$str = implode('|', $array);
 		

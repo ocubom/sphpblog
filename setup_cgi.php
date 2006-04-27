@@ -13,6 +13,11 @@
 		$temp_max_entries = 5;
 	}
 	
+	$temp_blog_comment_days_expiry = intval( $_POST[ 'blog_comment_days_expiry' ] );
+	if ( $temp_blog_comment_days_expiry < 0) {
+		$temp_blog_comment_days_expiry = 0;
+	}
+	
 	$tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html' );
 	$temp_array = array();
 	for ( $i = 0; $i < count( $tag_array ); $i++ ) {
@@ -34,7 +39,7 @@
 		$temp_email = implode( ',', $temp_email );
 	}
 	
-	$ok = write_config( sb_stripslashes( $_POST[ 'blog_title' ] ),
+  $ok = write_config( sb_stripslashes( $_POST[ 'blog_title' ] ),
 						sb_stripslashes( $_POST[ 'blog_author' ] ),
 						sb_stripslashes( $_POST[ 'blog_email' ] ),
 						$_POST[ 'blog_avatar' ],
@@ -62,7 +67,8 @@
 						( $_POST[ 'blog_enable_stats' ] == 'on' ),
 						( $_POST[ 'blog_enable_lastcomments' ] == 'on' ),
 						( $_POST[ 'blog_enable_lastentries' ] == 'on' ),
-            ( $_POST[ 'blog_enable_capcha' ] == 'on' ));
+            ( $_POST[ 'blog_enable_capcha' ] == 'on' ),
+            $temp_blog_comment_days_expiry );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
