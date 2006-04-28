@@ -151,7 +151,7 @@ input, select, option, textarea
 
 div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSidebarArchives, #toggleSidebarCategories , #toggleSidebarSearch, #toggleSidebarMenu, #toggleSidebarPreferences, #toggleSidebarRecentComments, #toggleSidebarRecentEntries, #toggleSidebarRecentTrackbacks
 {
-	display: none;
+	display: block;
 }
 
 #sidebar
@@ -165,6 +165,18 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 20px;
+	background-color: #E7E7D0;
+}
+
+#sidebar .menu_title a
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+#sidebar .menu_title:hover
+{
+	background-color: #F1F0C9;
 }
 
 #sidebar .menu_body 
@@ -173,7 +185,6 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	border-color: #999;
 	border-width: 1px;
 	border-style: dashed;
-	display: none;
 }
 
 #sidebar .divider {
@@ -248,7 +259,8 @@ a:hover
 	color: #FF3333; /* link_hi_color */
 }
 
-a:active {
+a:active
+{
 	font-weight : bold; 
 	text-decoration : none;
 	color: #3333FF; /* link_down_color */

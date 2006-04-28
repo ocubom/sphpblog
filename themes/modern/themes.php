@@ -422,7 +422,7 @@
 		
 		// Begin Page Layout HTML
 		?>
-		<body onload="pageInit();">
+		<body>
 			<br />
 			<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
 				<tr align="left" valign="top">
@@ -514,16 +514,47 @@
 	}
 	
 	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
-		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
+		global $blog_theme;
 		
-		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {
+		// This function creates the menu "blocks" in the sidebar.
+		//
+		// If you don't want the block to have a "twisty" arrow, then don't pass in a value for $toggleDiv
+		
+		// With "twisty" arrow
+		/*
+			<!-- LINKS -->
+			<div class="menu_title"><a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" name="twisty"> Links</a></div>
+			<div id="toggleSidebarLinks" class="menu_body">
+			<a href="index.php">Home</a><br />
+			</div><br />
+		*/
+		
+		// Without "twisty" arrow
+		/*
+			<!-- LINKS -->
+			<div class="menu_title">Links</div>
+			<div class="menu_body">
+			<a href="index.php">Home</a><br />
+			</div><br />
+		*/
+		
+		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {	
+			// Default image path.
+			$img_path = "themes/" . $blog_theme . "/images/";
+			$img_show = $img_path . 'plus.gif';
+			$img_hide = $img_path . 'minus.gif';
+		
 			echo( "\n<!-- " . $comment . " -->\n" );
 			
 			echo( '<div class="menu_title">' );
 			if ( isset( $toggleDiv ) ) {
-				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');">[+]</a> ' );
+				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty"> ' );
 			}
-			echo( $blockArray[ 'title' ] . '</div>' . "\n" );
+			echo( $blockArray[ 'title' ] );
+			if ( isset( $toggleDiv ) ) {
+				echo( '</a>' );
+			}
+			echo( "</div>\n" );
 			
 			if ( isset( $toggleDiv ) ) {
 				echo( '<div id="toggle' . $toggleDiv . '" class="menu_body">' . "\n" );
@@ -542,36 +573,27 @@
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
-		// This function determines the content displayed
-		// in the menu area on the right.
+		// This function creates the sidebar menu.
 		//
-		// Feel free to move these blocks of code around.
-		//
-		// For instance, if you want the calendar at the
-		// top of the menu area, just copy the ARCHIVE
-		// block of code to the top (above LINKS.)
+		// Move blocks of code up/down to change the order.
 		//
 		// The "\n" that you see is a RETURN character.
 		// This is just to make the HTML code look prettier.
 		// It will not show up on the page.
 		//
-		// Please note that \n must be used within " quotes...
-		// echo( "\n" ); // <-- This is a return character
-		// echo( '\n' ); // <-- This will print \n on your page...
+		// 	Please note that \n must be used within " quotes...
+		// 		echo( "\n" ); // <-- This is a return character
+		// 		echo( '\n' ); // <-- This will print \n on your page...
 		//
 		// You can use either ' or " in your echo() statements.
 		// But keep in mind that might need to use a backslash --> \
 		// to print a double or single quote:
 		//
-		// These are equivatent: (note the \" escape chracter...)
-		// echo( 'this "is" a test' ); 
-		// echo( "this \"is\" a test" ); 
-		//
-		// These are equivatent: (note the \' escape chracter...)
-		// echo( 'this \'is\' a test' ); 
-		// echo( "this 'is' a test" ); 
-		//
-		// I could go on, but this is kind of boring stuff... :)
+		// 	These are equivalent: (note the \" or \'  escape chracter...)
+		// 		echo( 'this "is" a test' ); // displays: this "is" a test
+		// 		echo( "this \"is\" a test" );  // displays: this "is" a test
+		// 		echo( "this 'is' a test" );  // displays: this 'is' a test
+		// 		echo( 'this \'is\' a test' );  // displays: this 'is' a test
 		
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
 
@@ -621,7 +643,7 @@
 		
 		echo( '<p />' );
 		
-		// Web Badges - Changed in 0.4.4
+		// WEB BADGES
 		echo( '<div align="center">' );
 		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog" title="Powered by Simple PHP Blog" border="0" /></a> ' );
 		echo( '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0" /></a><br />' );
