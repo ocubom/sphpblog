@@ -29,8 +29,9 @@
 		$lang_string['menu_home'] = "Home";
 		$lang_string['menu_contact'] = "Contact Me";
 		$lang_string['menu_stats'] = "Stats";
+		$lang_string['menu_calendar'] = "Calendar";
 		$lang_string['menu_archive'] = "Archives";
-		$lang_string[ 'menu_viewarchives' ] = "View Archives";
+		$lang_string['menu_viewarchives'] = "View Archives";
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Add Entry";
 		$lang_string['menu_add_static'] = "Add Static Page";

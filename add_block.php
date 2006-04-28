@@ -37,9 +37,12 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	
 	<?php require_once('scripts/sb_editor.php'); ?>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>

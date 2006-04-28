@@ -123,6 +123,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>

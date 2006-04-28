@@ -15,9 +15,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	
 	
 	<script type="text/javascript">
 		<!--
@@ -181,11 +184,13 @@
 			document.forms[ 'setup' ][ 'time_preview' ].value = str;
 		}
 		
-		function pageInit2() {
+		function dateInit() {
 			longdate_view();
 			shortdate_view();
 			time_view();
 		}
+		
+		addEvent(window, 'load', dateInit, false);
 		//-->
 	</script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
