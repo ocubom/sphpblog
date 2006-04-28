@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	
 	<script type="text/javascript">
 		<!--
 		
@@ -179,11 +180,16 @@
 			
 			document.forms[ 'setup' ][ 'time_preview' ].value = str;
 		}
+		
+		function pageInit2() {
+			longdate_view();
+			shortdate_view();
+			time_view();
+		}
 		//-->
 	</script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<body onLoad="longdate_view(); shortdate_view(); time_view();">
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
