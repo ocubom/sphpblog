@@ -110,7 +110,7 @@
 			$str = read_menus_calendar( $month, $year, $day );
 	
 			$result = array();
-			$result[ 'title' ] = $lang_string[ 'menu_archive' ];
+			$result[ 'title' ] = $lang_string[ 'menu_calendar' ];
 			$result[ 'content' ] = $str;
 			return ( $result );
 		}

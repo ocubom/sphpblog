@@ -603,7 +603,8 @@
 		// LINKS
 		$result = menu_display_links();
 		$result[ 'content' ] = $result[ 'content' ] . '<hr />' . menu_display_login();
-		theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
+		theme_menu_block( $result, 'LINKS' );
+		// theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
 		
 		// MENU
 		theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );

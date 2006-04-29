@@ -89,8 +89,8 @@ function deleteCookie(name, path, domain) {
 }
 
 // TOGGLE BLOCK
-function toggleBlock(id, forceVisible) {
-	forceVisible = (forceVisible==undefined) ? false : forceVisible;
+function toggleBlock(id, forceHidden) {
+	forceHidden = (forceHidden==undefined) ? false : forceHidden;
 	
 	// Variables
 	var toggleObj;
@@ -98,19 +98,18 @@ function toggleBlock(id, forceVisible) {
 	
 	// Get Element
 	if (document.getElementById) {
-		// this is the way the standards work
+		// this is the way the standards work: Safari, FireFox
 		toggleObj = document.getElementById('toggle'+id);
 		linkObj = document.getElementById('link'+id);
-		
 	} else if (document.all) {
 		// this is the way old msie versions work
-		toggleObj = document.all[id];
-		linkObj = document.all[id];
+		toggleObj = document.all['toggle'+id];
+		linkObj = document.all['link'+id];
 		
 	} else if (document.layers) {
 		// this is the way nn4 works
-		toggleObj = document.layers[id];
-		linkObj = document.layers[id];
+		toggleObj = document.layers['toggle'+id];
+		linkObj = document.layers['link'+id];
 	}
 	
 	// Toggle
@@ -122,23 +121,41 @@ function toggleBlock(id, forceVisible) {
 	
 	if (toggleObj) {
 		styleObj = toggleObj.style;
-		if (styleObj.display && forceVisible==false) {
+		if (styleObj.display != "none" || forceHidden==true) {
 			// HIDE
-			toggleArr.remove(id);
-			styleObj.display = "";
-			linkObj.innerHTML = "[+]";
+			toggleArr.addUnique(id);
+			styleObj.display = "none";
+			if (linkObj) {
+				twistyObj = linkObj.getElementsByTagName('img')[0];
+				
+				if (twistyObj) {
+					twistyObj.setAttribute('src', blogSettings['img_path'] + 'plus.gif');
+					twistyObj.setAttribute('alt','[+]');
+				} else {
+					linkObj.innerHTML = "[+]";
+				}
+			}
 		}else{
 			// SHOW
-			toggleArr.addUnique(id);
+			toggleArr.remove(id);
 			styleObj.display = "block";
+			if (linkObj) {
+				twistyObj = linkObj.getElementsByTagName('img')[0];
+				
+				if (twistyObj) {
+					twistyObj.setAttribute('src', blogSettings['img_path'] + 'minus.gif');
+					twistyObj.setAttribute('alt','[-]');
+				} else {
 			linkObj.innerHTML = "[-]";
+		}
+			}
 		}
 		setCookie('toggledItems', toggleArr.toString(),30);
 	}	
 }
 
 // DEFAULT PAGE INIT FUNCTION
-function pageInit() {
+function init() {
 	var cookieStr = getCookie('toggledItems');
 	var toggleArr = Array();
 	
@@ -148,6 +165,18 @@ function pageInit() {
 			toggleBlock(toggleArr[i], true);
 		}
 	}
-	
-	pageInit2();
 }
+
+function addEvent(elm, evType, fn, useCapture){
+	if (elm.addEventListener) {
+		elm.addEventListener(evType, fn, useCapture);
+		return true;
+	} else if (elm.attachEvent) {
+		var r = elm.attachEvent('on' + evType, fn);
+		return r;
+	} else {
+		elm['on' + evType] = fn;
+	}
+}
+
+addEvent(window, 'load', init, false);
