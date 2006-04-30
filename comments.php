@@ -246,7 +246,7 @@
         echo('<!-- Not logged in! Show capcha -->');
         echo('<label for="comment_capcha">');
  
-				if ( function_exists('imagecreate') ) {
+				if ( function_exists('imagecreate') && $blog_config[ 'blog_enable_capcha_image' ] ) {
 					printf( $lang_string[ 'comment_capcha' ], '<br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
 				} else {
 					printf( $lang_string[ 'comment_capcha' ], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ); 

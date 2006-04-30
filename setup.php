@@ -136,7 +136,8 @@
 			</a><p />
 			<div id="toggleSetupEntries" class="toggleBody"><p />
 				<input type="checkbox" id="blog_enable_capcha" name="blog_enable_capcha"<?php if ( $blog_config[ 'blog_enable_capcha' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_capcha' ] ); ?><br />
-		  <input type="checkbox" id="blog_enable_permalink" name="blog_enable_permalink"<?php if ( $blog_config[ 'blog_enable_permalink' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_permalink' ] ); ?><br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="blog_enable_capcha_image" name="blog_enable_capcha_image"<?php if ( $blog_config[ 'blog_enable_capcha_image' ] == 1 ) { echo ( ' checked' ); } if ( function_exists( 'imagecreate' )==false ) { echo(' disabled'); }?>> <?php echo( $lang_string[ 'blog_enable_capcha_image' ] ); ?><br />
+				<input type="checkbox" id="blog_enable_permalink" name="blog_enable_permalink"<?php if ( $blog_config[ 'blog_enable_permalink' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_permalink' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_cache" name="blog_enable_cache"<?php if ( $blog_config[ 'blog_enable_cache' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_cache' ] ); ?><br />
 				<input type="checkbox" id="blog_send_pings" name="blog_send_pings"<?php if ( $blog_config[ 'blog_send_pings' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_send_pings' ] ); ?><p />
 				<label for="blog_ping_urls"><?php echo( $lang_string[ 'blog_ping_urls' ] ); ?></label><br />

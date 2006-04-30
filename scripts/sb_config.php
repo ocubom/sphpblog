@@ -57,8 +57,9 @@
 									'blog_enable_stats',
 									'blog_enable_lastcomments',
 									'blog_enable_lastentries',
-                  'blog_enable_capcha',
-                  'blog_comment_days_expiry' );
+									'blog_enable_capcha',
+									'blog_comment_days_expiry',
+									'blog_enable_capcha_image' );
 									
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -187,10 +188,14 @@
 		//'blog_calendar_start'
 		if ( !isset( $blog_config[ 'blog_calendar_start' ] ) ) {
 			$blog_config[ 'blog_calendar_start' ] = 'sunday';
-		}	
+		}
     
-    if ( !isset( $blog_config[ 'blog_comment_days_expiry' ] ) ) {
+		if ( !isset( $blog_config[ 'blog_comment_days_expiry' ] ) ) {
 			$blog_config[ 'blog_comment_days_expiry' ] = 0;
+		}
+    
+		if ( !isset( $blog_config[ 'blog_enable_capcha_image' ] ) ) {
+			$blog_config[ 'blog_enable_capcha_image' ] = function_exists( 'imagecreate' );
 		}	
 		
 		// READ META-DATA INFORMATION

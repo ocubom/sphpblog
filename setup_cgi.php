@@ -67,8 +67,9 @@
 						( $_POST[ 'blog_enable_stats' ] == 'on' ),
 						( $_POST[ 'blog_enable_lastcomments' ] == 'on' ),
 						( $_POST[ 'blog_enable_lastentries' ] == 'on' ),
-            ( $_POST[ 'blog_enable_capcha' ] == 'on' ),
-            $temp_blog_comment_days_expiry );
+						( $_POST[ 'blog_enable_capcha' ] == 'on' ),
+						$temp_blog_comment_days_expiry,
+						( $_POST[ 'blog_enable_capcha_image' ] == 'on' );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );

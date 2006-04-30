@@ -70,7 +70,7 @@ sb_language( 'contact' );
         echo('<input type="hidden" name="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
       } else {
         echo('<label for="capcha_contact">');
-        if ( function_exists('imagecreate') ) {
+        if ( function_exists('imagecreate') && $blog_config[ 'blog_enable_capcha_image' ] ) {
 				  echo ( $lang_string[ 'contact_capcha' ] . '<br /><img src="capcha.php?entry=contact" />' );
 				  }	else {
 				  echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
