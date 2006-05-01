@@ -91,7 +91,7 @@
 			$path = $emote_arr[ $n ][ 'PATH' ];
 			$tags_str = $emote_arr[ $n ][ 'TAGS' ];
 			$tags_arr = explode( ' ', $tags_str );
-			$str .=  '<span style="Cursor: hand;" onclick="Javascript:theform=(document.getElementById(\'comment_text\')==null)?document.getElementById(\'text\'):document.getElementById(\'comment_text\');ins_emoticon(theform, \'' . encode_input_value(addslashes($tags_arr[0])) . '\');">' ."\n";
+			$str .=  '<span onclick="Javascript:theform=(document.getElementById(\'comment_text\')==null)?document.getElementById(\'blog_text\'):document.getElementById(\'comment_text\');ins_emoticon(theform, \'' . encode_input_value(addslashes($tags_arr[0])) . '\');">' ."\n";
 			$str .=  '<img border="0" src="' . $path . '" alt="'.encode_input_value($tags_str).'"title="'.encode_input_value($tags_str).'"  />' ."\n";
 			$str .=  '</span>' ."\n";
 		}

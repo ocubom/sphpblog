@@ -12,7 +12,7 @@
 		// Language: English
 		$lang_string['language'] = 'bulgarian';
 		
-		$lang_string[ 'locale' ] = array('bg_BG');
+		$lang_string[ 'locale' ] = array('bg_BG', 'bgr_BGR');
 		$lang_string['rss_locale'] = 'bg-BG'; // New 0.4.8
 		
 		// ISO Charset: ISO-8859-1

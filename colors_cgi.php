@@ -12,7 +12,7 @@
 	$post_array = array();
 	array_push( $post_array, 'name' );
 	if ( array_key_exists( 'save_btn', $_POST ) == true && $_POST[ 'scheme_name' ] != '' && $_POST[ 'scheme_file' ] != '' ) {
-		$str = str_replace( '|', ':', $_POST[ 'scheme_name' ] );
+		$str = str_replace( '|', ':', sb_stripslashes( $_POST[ 'scheme_name' ] ) );
 		array_push( $post_array, $str );
 	} else {
 		array_push( $post_array, 'custom' );
@@ -27,7 +27,9 @@
 	
 	// Check if we should save color scheme, or just update colors on web site.
 	if ( array_key_exists( 'save_btn', $_POST ) == true && $_POST[ 'scheme_name' ] != '' && $_POST[ 'scheme_file' ] != '' ) {
-		$ok = write_colors( $post_array, $_POST[ 'scheme_file' ] );
+		$filename = sb_stripslashes( $_POST[ 'scheme_file' ] );
+		$filename = preg_replace( '/(\s|\\\|\/|%|#)/', '_', $filename ); // Replace whitespaces [\n\r\f\t ], slashes, % and # with _
+		$ok = write_colors( $post_array, $filename );
 	} else {
 		$ok = write_colors( $post_array, NULL );
 	}

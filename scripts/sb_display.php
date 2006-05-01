@@ -389,8 +389,10 @@
 			if ( $category != NULL ) {
 				$blog_content = $blog_content . '&amp;category=' . $category;
 			}
-			$blog_content = $blog_content . '">' . $lang_string[ 'nav_next' ] . '</a></span><br /> ';
+			$blog_content = $blog_content . '">' . $lang_string[ 'nav_next' ] . '</a></span> ';
 		}
+		
+		$blog_content = $blog_content . '<br />';
 		
 		return $blog_content;
 	}
