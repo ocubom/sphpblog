@@ -130,7 +130,7 @@
 		global $month, $year, $day, $lang_string, $blog_config;
 		
 
-		 if ( $blog_config[ 'blog_enable_calendar' ] ) {
+		 if ( $blog_config[ 'blog_enable_archives' ] ) {
 			// The "read_menus_tree()" function is located in "scripts/sb_theme.php"
 			$str = read_menus_tree( $month, $year, $day );
 	
@@ -150,14 +150,17 @@
 		// --------
 		// Login
 		//
-		global $lang_string, $logged_in;
+		global $lang_string, $blog_config, $logged_in;
+		
 		
 		$str = '';
 		if ($logged_in === true) {
-			$str = $str . '<a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a><br />';
+			// $str = $str . '<a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a><br />';
 			$str = $str . '<a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a>';
 		} else {
-			$str = $str . '<a href="login.php">' . $lang_string[ 'menu_login' ] . '</a>';
+			if( $blog_config[ 'blog_enable_login' ] ) {
+				$str = $str . '<a href="login.php">' . $lang_string[ 'menu_login' ] . '</a>';
+			}
 		}
 		
 		return ( $str );

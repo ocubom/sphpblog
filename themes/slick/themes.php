@@ -517,7 +517,10 @@
 		echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
 		echo( "<div class=\"menu_body\">\n" );
 		echo( $result[ 'content' ] . "\n" );
-		echo( "<br />" . menu_display_login() . "\n" );
+		$loginString = menu_display_login();
+		if ( $loginString ) {
+			echo( "<br />" . $loginString . "\n" );
+		}
 		echo( "</div><br />\n" );
 		
 		// Retained from 0.3.7c

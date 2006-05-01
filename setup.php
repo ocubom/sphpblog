@@ -174,7 +174,9 @@
 				<input type="checkbox" id="blog_enable_stats" name="blog_enable_stats"<?php if ( $blog_config[ 'blog_enable_stats' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_stats' ] ); ?><br /> 
 				<input type="checkbox" id="blog_enable_lastcomments" name="blog_enable_lastcomments"<?php if ( $blog_config[ 'blog_enable_lastcomments' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_lastcomments' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_lastentries" name="blog_enable_lastentries"<?php if ( $blog_config[ 'blog_enable_lastentries' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_lastentries' ] ); ?><br />
-				<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if ( $blog_config[ 'blog_enable_calendar' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_calendar' ] ); ?><br />		
+				<input type="checkbox" id="blog_enable_login" name="blog_enable_login"<?php if ( $blog_config[ 'blog_enable_login' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_login' ] ); ?><br />
+				<input type="checkbox" id="blog_enable_archives" name="blog_enable_archives"<?php if ( $blog_config[ 'blog_enable_archives' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_archives' ] ); ?><br />
+				<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if ( $blog_config[ 'blog_enable_calendar' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_calendar' ] ); ?><br />
 				<label for="blog_calendar_start"><?php echo( $lang_string[ 'label_calendar_start' ] ); ?></label>
 				<select name="blog_calendar_start">
 					<option label="<?php echo( $lang_string[ 'cal_sunday' ] ); ?>" value="sunday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'sunday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_sunday' ] ); ?></option>

@@ -59,7 +59,9 @@
 									'blog_enable_lastentries',
 									'blog_enable_capcha',
 									'blog_comment_days_expiry',
-									'blog_enable_capcha_image' );
+									'blog_enable_capcha_image',
+									'blog_enable_archives',
+									'blog_enable_login' );
 									
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -161,6 +163,10 @@
 			$blog_config[ 'blog_enable_calendar' ] = 1;
 		}
 		
+		if ( !isset( $blog_config[ 'blog_enable_archives' ] ) ) {
+			$blog_config[ 'blog_enable_archives' ] = 1;
+		}
+		
 		if ( !isset( $blog_config[ 'blog_enable_title' ] ) ) {
 			$blog_config[ 'blog_enable_title' ] = 1;
 		}
@@ -196,6 +202,10 @@
     
 		if ( !isset( $blog_config[ 'blog_enable_capcha_image' ] ) ) {
 			$blog_config[ 'blog_enable_capcha_image' ] = function_exists( 'imagecreate' );
+		}
+    
+		if ( !isset( $blog_config[ 'blog_enable_login' ] ) ) {
+			$blog_config[ 'blog_enable_login' ] = 1;
 		}	
 		
 		// READ META-DATA INFORMATION
@@ -247,7 +257,7 @@
                           $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, 
                           $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, 
                           $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha, 
-                          $blog_comment_days_expiry, $blog_enable_capcha_image ) {
+                          $blog_comment_days_expiry, $blog_enable_capcha_image, $blog_enable_archives, $blog_enable_login ) {
 		// Save config information to file.
 		//
 		$array = array( clean_post_text( $blog_title ),
@@ -280,7 +290,9 @@
 						$blog_enable_lastentries,
 						$blog_enable_capcha,
 						$blog_comment_days_expiry,
-						$blog_enable_capcha_image );
+						$blog_enable_capcha_image,
+						$blog_enable_archives,
+						$blog_enable_login );
 						
 		$str = implode('|', $array);
 		
