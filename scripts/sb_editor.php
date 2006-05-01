@@ -247,17 +247,31 @@
 	}
 	
 	function getSelectedText(obj) {
-		if (obj.selectionStart >= 0) {
-			// FireFox & Safari
-			var start = obj.selectionStart;
-			var end    = obj.selectionEnd;
-			var txt    = obj.value.substr(start, end-start);
-			
-			return txt;
-		} else {
-			return '';
-		}
-	}
+   if (document.selection && document.selection.createRange) {
+    // Internet Explorer 4.0x
+    
+    obj.focus();
+    var orig = obj.value.replace(/\r\n/g, "\n"); // IE Bug
+    var range = document.selection.createRange();
+ 
+    if(range.parentElement() != obj) {
+     return '';
+    }
+ 
+    txt = range.text;
+    
+    return txt;
+   } else if (obj.selectionStart >= 0) {
+    // FireFox & Safari
+    var start = obj.selectionStart;
+    var end    = obj.selectionEnd;
+    var txt    = obj.value.substr(start, end-start);
+    
+    return txt;
+   } else {
+    return '';
+   }
+  }
 	
 	function setCaretTo(obj, pos) {
 		if(obj.createTextRange) {
