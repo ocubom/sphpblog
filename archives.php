@@ -58,6 +58,11 @@
 		global $category;
 		$category = $_GET[ 'category' ];
 	}
+	
+	if ( array_key_exists( 'showall', $_GET ) ) {
+		global $showall;
+		$showall = true;
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -74,11 +79,11 @@
 </head>
 	<?php 
 		function page_content() {
-			global $month, $year, $day, $lang_string;
+			global $month, $year, $day, $lang_string, $showall;
 			
 			$entry_array = array();
 			$entry_array[ 'subject' ] = 'Archives';
-			$entry_array[ 'entry' ] = read_menus_tree( $month, $year, $day, 300, 'archives.php' );
+			$entry_array[ 'entry' ] = read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
 			
 			echo( theme_staticentry( $entry_array ) );
 		}

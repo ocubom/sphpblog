@@ -233,7 +233,7 @@
 		return( $str );
 	}
 
-	function read_menus_tree ( $m, $y, $d, $max_chars = 75, $base_url = 'index.php') {
+	function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false) {
 		// Create the right-hand navigation menu. Return HTML
 		//
 		global $lang_string;
@@ -252,13 +252,18 @@
 			
 			$str = '';
 			$str.= '<div id="archive_tree_menu"><ul>';
-			for ( $n = 0; $n < count( $entry_array ); $n++ ) {
-				list( $curr_filename, $curr_y, $curr_m ) = explode( '|', $entry_array[ $n ] );
+			
+			for ( $n = 0; $n <= count( $entry_array ) - 0; $n++ ) {
+				if ( $n == count( $entry_array ) ) {
+					list( $curr_filename, $curr_y, $curr_m ) = explode( '|', $entry_array[ $n-1 ] );
+				} else {
+					list( $curr_filename, $curr_y, $curr_m ) = explode( '|', $entry_array[ $n ] );
+				}
 				$curr_d = substr($curr_filename, 9, 2);
 				
 				// Month
-				if ( $last_m != $curr_m || $last_y != $curr_y || $n == count( $entry_array ) - 1 ) {
-				
+				if ( $last_m != $curr_m || $last_y != $curr_y || $n == count( $entry_array ) ) {
+					
 					// Build Month List
 					$str_month .= '<li>' . "\n";
 					$temp_str = ( strftime( '%B', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
@@ -276,7 +281,8 @@
 				}
 				
 				// Year
-				if ( $last_y != $curr_y || $n == count( $entry_array ) - 1 ) {
+				if ( $last_y != $curr_y || $n == count( $entry_array ) ) {
+				
 					// Build Year List
 					$temp_str = ( strftime( '%Y', mktime(0, 0, 0, $last_m, $last_d, $last_y ) ) );
 					$str_year .= '<li>' . "\n";
@@ -295,7 +301,8 @@
 				}
 				
 				// Day
-				if ( $curr_y == $y && $curr_m == $m ) {
+				if ( $curr_y == $y && $curr_m == $m || $showAll==true ) {
+				
 					// Build Day List
 					$blog_entry_data = blog_entry_to_array( 'content/' . $curr_y . '/' . $curr_m . '/' . $curr_filename );
 					
@@ -314,9 +321,13 @@
 						// Truncate...
 						$str_day .= "<br />\n";
 						$str_day .= substr( $curr_array[ 'entry' ], 0, $max_chars) . "<p />\n";
+					} else {
+						$str_day .= "<br />\n";
+						$str_day .= $curr_array[ 'entry' ] . "<p />\n";
 					}
 					$str_day .= '</li>' . "\n";
 				}
+				
 			}
 			$str .= '</ul></div>';
 		}				
