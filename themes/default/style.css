@@ -165,7 +165,7 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 20px;
-	background-color: #E7E7D0;
+	/* background-color: #E7E7D0; */
 }
 
 #sidebar .menu_title a

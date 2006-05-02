@@ -24,8 +24,6 @@
 		
 		$theme_vars = array();
 		
-		// New 0.3.8
-		//
 		// Optional:
 		// "content_width" and "menu_width" area used internally
 		// within the theme only. (optional but recommended.)
@@ -42,8 +40,6 @@
 		// "popup_window" "content_width" is only used internally.
 		$theme_vars[ 'popup_window' ][ 'content_width' ] = $theme_vars[ 'content_width' ];
 		
-		// Retained from 0.3.7c
-		//
 		// Required:
 		// Determines the maximum with of images within a page.
 		// Make sure this value is less then "content_width" or you
@@ -53,6 +49,12 @@
 		// styles that you have applied. If you adjust the margins or
 		// padding then these will change.
 		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 66;
+		
+		// ------------
+		// CUSTOMIZATION 
+		// ------------
+		// New 0.3.8
+		$theme_vars[ 'menu_align' ] = 'right'; // Valid values are 'left' or 'right'
 	}
 	
 	// Function:
@@ -429,22 +431,31 @@
 					<td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
 						<div id="header_image"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
 						<?php
-						if ( $blog_config['blog_enable_title']){// New for 0.4.6 
+						if ( $blog_config['blog_enable_title']) { // New for 0.4.6 
 						echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
 						}?>
 						<div id="pagebody">
 							<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
 								<tr valign="top">
+									<?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
+									<td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>" style="border-right: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;">
+										<div id="sidebar">
+											<?php theme_menu(); ?>
+										</div>
+									</td>
+									<?php } ?>
 									<td width="<?php echo( $content_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
 										<div id="maincontent">
 											<?php page_content(); ?>
 										</div>
 									</td>
+									<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { // New 0.3.8 - Right Menu ?>
 									<td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>" style="border-left: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;">
 										<div id="sidebar">
 											<?php theme_menu(); ?>
 										</div>
 									</td>
+									<?php } ?>
 								</tr>
 								<tr align="left" valign="top">
 									<td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>" colspan="2">
@@ -606,8 +617,8 @@
 		if ( $loginString ) {
 			$result[ 'content' ] = $result[ 'content' ] . '<hr />' . $loginString;
 		}
-		// theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
 		theme_menu_block( $result, 'LINKS' );
+		// theme_menu_block( $result, 'LINKS', 'SidebarLinks' ); <-- Use this if you want to be able to Expand/Collapse links.
 		
 		// MENU
 		theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );

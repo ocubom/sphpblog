@@ -233,7 +233,7 @@
 		return( $str );
 	}
 
-	function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false) {
+	function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false ) {
 		// Create the right-hand navigation menu. Return HTML
 		//
 		global $lang_string;
@@ -254,6 +254,7 @@
 			$str.= '<div id="archive_tree_menu"><ul>';
 			
 			for ( $n = 0; $n <= count( $entry_array ) - 0; $n++ ) {
+			
 				if ( $n == count( $entry_array ) ) {
 					list( $curr_filename, $curr_y, $curr_m ) = explode( '|', $entry_array[ $n-1 ] );
 				} else {
@@ -301,8 +302,8 @@
 				}
 				
 				// Day
-				if ( $curr_y == $y && $curr_m == $m || $showAll==true ) {
-				
+				if ( $curr_y == $y && $curr_m == $m || $showall == true ) {
+					
 					// Build Day List
 					$blog_entry_data = blog_entry_to_array( 'content/' . $curr_y . '/' . $curr_m . '/' . $curr_filename );
 					
@@ -329,6 +330,7 @@
 				}
 				
 			}
+			
 			$str .= '</ul></div>';
 		}				
 		return( $str );
