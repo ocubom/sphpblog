@@ -8,123 +8,213 @@
 	// ------------------
 	// Text Editor
 	// ------------------
-	function sb_editor( ) {
+	function sb_editor( $mode='entry' ) {
 		// The "Text Editor Interface" for Simple PHP Blog
 		//
-		// This is used on the "add.php", "preview_cgi.php" pages. I'm planning on using it for static and comments pages also...
+		// This is used on the "add.php", "preview_cgi.php", "add_static.php", "preview_static_cgi.php" pages. I'm planning on using it for static and comments pages also...
 		global $lang_string, $user_colors, $blog_config, $theme_vars;
 		
 		// Include Supporting Java Script
 		require_once('scripts/sb_editor.php');
 		
 		// Default Form Values
-		$default_subject = null;
-		$default_content = null;
+		$default_subject = null; // Value for Subject input field
+		$default_content = null; // Value for Entry input field
 		$default_tb_ping = null; // Only when blog_trackback_enabled = true
-		$default_categories = null; // Field not required.
-		$default_relatedlink = null; // Field not required.
+		$default_categories = null; // Field not required...
+		$default_relatedlink = null; // Field not required...
 		$default_time = time(); // Defaults to "now"
+		$default_y = null; // Only in "Edit" mode...
+		$default_m = null; // Only in "Edit" mode...
+		$default_entry = null; // Only in "Edit" mode...
+		$default_filename = null; // Only for Static Entries
 		
-		$default_y = null; // Only in "Edit" mode.
-		$default_m = null; // Only in "Edit" mode.
-		$default_entry = null; // Only in "Edit" mode.
+		if ( $mode == 'static' ) {
+			// ------------
+			// Add Static Mode
+			// ------------
 		
-		if ( array_key_exists( 'entry', $_GET ) == true && array_key_exists( 'y', $_GET ) == true && array_key_exists( 'm', $_GET ) == true ) {
-			// --------------
-			// Edit Existing Entry
-			// --------------
-			$default_y = $_GET[ 'y' ];
-			$default_m = $_GET[ 'm' ];
-			$default_entry = $_GET[ 'entry' ];
+			if ( array_key_exists( 'entry', $_GET ) ) {
+				// -------------------
+				// Edit Existing Static Entry
+				// -------------------
+				$default_entry = $_GET[ 'entry' ];
 		
-			$entry = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
-			
-			// Read Saved Entry
-			if ( file_exists( $entry . ".txt" ) ) {
-				$filename = $entry . ".txt";
-			} else if ( file_exists( $entry . ".txt.gz" ) ) {
-				$filename = $entry . ".txt.gz";
-			}
-			$blog_entry_data = blog_entry_to_array( $filename );
-			
-			// Store Data for Form Use
-			$default_subject = htmlDecode( $blog_entry_data[ 'SUBJECT' ] );
-			$default_content = $blog_entry_data[ 'CONTENT' ];
-			$default_tb_ping = htmlDecode( $blog_entry_data[ 'TB_PING' ] );
-			if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
-				$default_categories = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
-			}
-			$default_relatedlink = htmlDecode( $blog_entry_data[ 'relatedlink'] );
-			
-			// Split up Date Information
-			$temp_date = substr($_GET['entry'],-13,6);
-			$temp_time = substr($_GET['entry'],-6,6);
-			$dd = substr($temp_date,-2,2);
-			$mt = substr($temp_date,-4,2);
-			$yy = substr($temp_date,-6,2);
-			if ($yy >= 95) {
-				$yy = '19' . $yy;
+				// Read Saved Static Entry
+				if ( file_exists( 'content/static/' . $default_entry . '.txt' ) ) {
+					$filename = 'content/static/' . $default_entry . '.txt';
+				} elseif ( file_exists( 'content/static/' . $default_entry . '.txt.gz' ) ) {
+					$filename = 'content/static/' . $default_entry . '.txt.gz';
+				}
+				$blog_entry_data = static_entry_to_array( $filename );
+				
+				// Store Data for Form Use
+				$default_subject = htmlDecode( $blog_entry_data[ 'SUBJECT' ] );
+				$default_content = $blog_entry_data[ 'CONTENT' ];
+				$default_filename = $default_entry;
+				
+				// Display Current Entry
+				$entry_content = get_static_entry_by_file( $default_entry );
+				echo( $entry_content );
+				
+			} else if ( array_key_exists( 'blog_subject', $_POST ) == true ) {
+				// ----------------
+				// Preview Static Entry
+				// ----------------
+				
+				// (These will only be set if previewing an existing entry that your are editing...)
+				$default_entry = array_key_exists( 'entry', $_POST ) ? $_POST[ 'entry' ] : $default_entry;
+				
+				// Store Data for Form Use
+				$default_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
+				$default_content = sb_stripslashes( $_POST[ 'blog_text' ] );
+				$default_filename = sb_stripslashes( $_POST[ 'file_name' ] );
+				
+				// Display Preview Entry	
+				$entry_content = preview_static_entry( $default_subject, $default_content );
+				echo( $entry_content );
+				
 			} else {
-				$yy = '20' . $yy;
+				// -------------
+				// New Static Entry
+				// -------------
+				$default_filename = 'static' . date('ymd-His');
 			}
-			$hh = substr($temp_time,-6,2);
-			$mm = substr($temp_time,-4,2);
-			$ss = substr($temp_time,-2,2);
 			
-			// Create Time
-			$default_time = mktime($hh, $mm, $ss, $mt, $dd, $yy );
-			
-			// Display Current Entry
-			$entry_content = read_entry_from_file( $entry );
-			echo( $entry_content );
-			
-		} else if ( array_key_exists( 'blog_subject', $_POST ) == true ) {
-			// -----------
-			// Preview Entry
-			// -----------
-			
-			// (These will only be set if previewing an existing entry that your are editing...)
-			$default_y = array_key_exists( 'y', $_POST ) ? $_POST[ 'y' ] : $default_y;
-			$default_m = array_key_exists( 'm', $_POST ) ? $_POST[ 'm' ] : $default_m;
-			$default_entry = array_key_exists( 'entry', $_POST ) ? $_POST[ 'entry' ] : $default_entry;
-			
-			// Store Data for Form Use
-			$default_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
-			$default_content = sb_stripslashes( $_POST[ 'blog_text' ] );
-			$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? sb_stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
-			$default_categories = array_key_exists( 'catlist', $_POST ) ? sb_stripslashes( $_POST[ 'catlist' ] ): $default_categories;
-			$default_relatedlink = array_key_exists( 'blog_relatedlink', $_POST ) ? sb_stripslashes( $_POST[ 'blog_relatedlink' ] ): $default_relatedlink;
-			
-			// Create Time
-			$default_time = mktime($_POST['hour'], $_POST['minute'], $_POST['second'], $_POST['month'], $_POST['day'], $_POST['year'] ); // Required
-			
-			// Display Preview Entry			
-			$entry_content = preview_entry( $default_subject, $default_content, $default_tb_ping, $default_relatedlink, $default_time );
-			echo( $entry_content );
-			
-		} else {
-			// --------
-			// New Entry
-			// --------
 		}
 		
+		if ( $mode == 'entry' ) {
+			// ------------
+			// Add Entry Mode
+			// ------------
+		
+			if ( array_key_exists( 'entry', $_GET ) == true && array_key_exists( 'y', $_GET ) == true && array_key_exists( 'm', $_GET ) == true ) {
+				// --------------
+				// Edit Existing Entry
+				// --------------
+				$default_y = $_GET[ 'y' ];
+				$default_m = $_GET[ 'm' ];
+				$default_entry = $_GET[ 'entry' ];
+			
+				$entry = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
+				
+				// Read Saved Entry
+				if ( file_exists( $entry . ".txt" ) ) {
+					$filename = $entry . ".txt";
+				} else if ( file_exists( $entry . ".txt.gz" ) ) {
+					$filename = $entry . ".txt.gz";
+				}
+				$blog_entry_data = blog_entry_to_array( $filename );
+				
+				// Store Data for Form Use
+				$default_subject = htmlDecode( $blog_entry_data[ 'SUBJECT' ] );
+				$default_content = $blog_entry_data[ 'CONTENT' ];
+				$default_tb_ping = htmlDecode( $blog_entry_data[ 'TB_PING' ] );
+				if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
+					$default_categories = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
+				}
+				$default_relatedlink = htmlDecode( $blog_entry_data[ 'relatedlink'] );
+				
+				// Split up Date Information
+				$temp_date = substr($_GET['entry'],-13,6);
+				$temp_time = substr($_GET['entry'],-6,6);
+				$dd = substr($temp_date,-2,2);
+				$mt = substr($temp_date,-4,2);
+				$yy = substr($temp_date,-6,2);
+				if ($yy >= 95) {
+					$yy = '19' . $yy;
+				} else {
+					$yy = '20' . $yy;
+				}
+				$hh = substr($temp_time,-6,2);
+				$mm = substr($temp_time,-4,2);
+				$ss = substr($temp_time,-2,2);
+				
+				// Create Time
+				$default_time = mktime($hh, $mm, $ss, $mt, $dd, $yy );
+				
+				// Display Current Entry
+				$entry_content = read_entry_from_file( $entry );
+				echo( $entry_content );
+				
+			} else if ( array_key_exists( 'blog_subject', $_POST ) == true ) {
+				// -----------
+				// Preview Entry
+				// -----------
+				
+				// (These will only be set if previewing an existing entry that your are editing...)
+				$default_y = array_key_exists( 'y', $_POST ) ? $_POST[ 'y' ] : $default_y;
+				$default_m = array_key_exists( 'm', $_POST ) ? $_POST[ 'm' ] : $default_m;
+				$default_entry = array_key_exists( 'entry', $_POST ) ? $_POST[ 'entry' ] : $default_entry;
+				
+				// Store Data for Form Use
+				$default_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
+				$default_content = sb_stripslashes( $_POST[ 'blog_text' ] );
+				$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? sb_stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
+				$default_categories = array_key_exists( 'catlist', $_POST ) ? sb_stripslashes( $_POST[ 'catlist' ] ): $default_categories;
+				$default_relatedlink = array_key_exists( 'blog_relatedlink', $_POST ) ? sb_stripslashes( $_POST[ 'blog_relatedlink' ] ): $default_relatedlink;
+				
+				// Create Time
+				$default_time = mktime($_POST['hour'], $_POST['minute'], $_POST['second'], $_POST['month'], $_POST['day'], $_POST['year'] ); // Required
+				
+				// Display Preview Entry			
+				$entry_content = preview_entry( $default_subject, $default_content, $default_tb_ping, $default_relatedlink, $default_time );
+				echo( $entry_content );
+				
+			} else {
+				// --------
+				// New Entry
+				// --------
+			}
+			
+		}
+		
+		// --------------
+		// Misc. Form Values
+		// --------------
+		switch ( $mode ) {
+			case 'entry' :
+				$submit_page = 'add_cgi.php';
+				$preview_page = 'preview_cgi.php';
+				$validate_script = 'validate';
+				break;
+			case 'static' :
+				$submit_page = 'add_static_cgi.php';
+				$preview_page = 'preview_static_cgi.php';
+				$validate_script = 'validate_static';
+				break;
+		}
+		
+		
+		// --------
+		// Begin Form
+		// --------
 		?>
-		<form action='add_cgi.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
+		<form action='<?php echo( $submit_page ); ?>' method="POST" name="editor" id="editor" onSubmit="return <?php echo( $validate_script ); ?>(this)">
 			<?php
-				if ( isset($default_y) && isset($default_m) && isset($default_entry) ) {
-					echo( HTML_input( false, "y", $default_y, false, 'hidden' ) );
-					echo( HTML_input( false, "m", $default_m, false, 'hidden' ) );
-					echo( HTML_input( false, "entry", $default_entry, false, 'hidden' ) );
+			
+				// Hidden Fields
+				if ( $mode == 'entry' ) {
+					if ( isset($default_y) && isset($default_m) && isset($default_entry) ) {
+						echo( HTML_input( false, "y", $default_y, false, 'hidden' ) );
+						echo( HTML_input( false, "m", $default_m, false, 'hidden' ) );
+						echo( HTML_input( false, "entry", $default_entry, false, 'hidden' ) );
+					}
+				}
+				if ( $mode == 'static' ) {
+					if ( isset($default_entry) ) {
+						echo( HTML_input( false, "entry", $default_entry, false, 'hidden' ) );
+					}
 				}
 				
 				// Subject Input
-				// ----------
 				// HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false, $autocomplete=false );
-				//
 				echo( HTML_input( $lang_string[ 'label_subject' ], 'blog_subject', $default_subject, true, 'text', 0, null, null, $theme_vars[ 'max_image_width' ] ) );
 				
 				// Date Selection Block
-				editor_date_select( $default_time );
+				if ( $mode == 'entry' ) {
+					editor_date_select( $default_time );
+				}
 				
 				// Style Tag Buttons
 				editor_style_buttons();
@@ -137,39 +227,62 @@
 				
 				// Image Selection Dropdown
 				editor_image_dropdown();
+				
+				// Content Text Area
 			?>
-			
 			<label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
 			<textarea style="width: <?php echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="blog_text" name="blog_text" rows="20" cols="50" autocomplete="OFF"><?php echo( $default_content ); ?></textarea><p />
-			
 			<?php
+			
 				// Related Link Input
-				echo( HTML_input( $lang_string[ 'label_relatedlink' ], 'blog_relatedlink', $default_relatedlink, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
-				
+				if ( $mode == 'entry' ) {
+					echo( HTML_input( $lang_string[ 'label_relatedlink' ], 'blog_relatedlink', $default_relatedlink, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
+				}
+					
 				// Trackback Input
-				if ( $blog_config[ 'blog_trackback_enabled' ] ) {
-					$value = $default_tb_ping;
-					if ( $blog_config[ 'blog_trackback_auto_discovery' ] ) {
-						if ( $default_tb_ping ) {
-							$value = $default_tb_ping;
-						} else {
-							$value = $lang_string[ 'label_tb_autodiscovery' ];
+				if ( $mode == 'entry' ) {
+					if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+						$value = $default_tb_ping;
+						if ( $blog_config[ 'blog_trackback_auto_discovery' ] ) {
+							if ( $default_tb_ping ) {
+								$value = $default_tb_ping;
+							} else {
+								$value = $lang_string[ 'label_tb_autodiscovery' ];
+							}
 						}
+						echo( HTML_input( $lang_string[ 'label_tb_ping' ], 'tb_ping', $value, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
 					}
-					echo( HTML_input( $lang_string[ 'label_tb_ping' ], 'tb_ping', $value, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
+				}
+					
+				// Category Selection Box
+				if ( $mode == 'entry' ) {
+					category_selection_box( $default_categories );
 				}
 				
-				// Category Selection Box
-				category_selection_box( $default_categories );
+				// Static File Name
+				if ( $mode == 'static' ) {
+					editor_static_file( $default_filename );
+				}
 			?>
 			
-			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='preview_cgi.php';" />
-			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='add_cgi.php';" /><p />
+			<input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='<?php echo( $preview_page ); ?>';" />
+			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='<?php echo( $submit_page ); ?>';" /><p />
 		</form>
 		<?php
 	}
 	
+	function editor_static_file( $filename ) {
+		// Static File Name
+		global $lang_string;
+	
+		?>
+			<label for="file_name"><?php echo( $lang_string[ 'file_name' ] ); ?></label><br/>
+			<input type="text" name="file_name" autocomplete="OFF" size="40" value="<?php echo $filename; ?>"><br /><br />
+		<?php
+	}
+	
 	function editor_style_buttons() {
+		// Style Tag Buttons
 		global $lang_string;
 		
 		echo( $lang_string[ 'label_insert' ] . '<br />' );
@@ -182,6 +295,7 @@
 	}
 	
 	function editor_style_dropdown() {
+		// Style Tag Dropdown
 		global $lang_string;
 		
 		?>
@@ -205,6 +319,7 @@
 	}
 	
 	function editor_image_dropdown () {
+		// Image Selection Dropdown
 		global $lang_string, $theme_vars;
 		
 		$str = image_dropdown();
@@ -263,6 +378,7 @@
 	}
 	
 	function editor_date_select( $default_time ) {
+		// Date Selection Block
 		global $lang_string;
 		
 		// Edit / Select Date
@@ -334,6 +450,7 @@
 		$dd_hour = HTML_dropdown( $lang_string[ 'hour' ], 'hour', $itemArray, false );
 		$dd_minute = '<label for="mm">'.$lang_string[ 'minute' ].'</label> <input name="minute" id="minute" type="text" value="'.$e_minute.'" size="2" maxlength="2" />';
 		$dd_second = '<label for="mm">'.$lang_string[ 'second' ].'</label> <input name="second" id="second" type="text" value="'.$e_second.'" size="2" maxlength="2" />';
+			
 		echo($dd_hour . ' ' . $dd_minute . ' ' . $dd_second . '<p />');
 	}
 	

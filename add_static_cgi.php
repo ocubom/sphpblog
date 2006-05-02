@@ -8,7 +8,10 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'add' );
 	
-	$ok = write_static_entry( sb_stripslashes( $_POST[ 'blog_subject' ] ), sb_stripslashes( $_POST[ 'blog_text' ] ), $_POST[ 'entry' ], sb_stripslashes( $_POST[ 'file_name' ] ) );
+	$filename = sb_stripslashes( $_POST[ 'file_name' ] );
+	$filename = preg_replace( '/(\s|\\\|\/|%|#)/', '_', $filename ); // Replace whitespaces [\n\r\f\t ], slashes, % and # with _
+		
+	$ok = write_static_entry( sb_stripslashes( $_POST[ 'blog_subject' ] ), sb_stripslashes( $_POST[ 'blog_text' ] ), $_POST[ 'entry' ], $filename );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
