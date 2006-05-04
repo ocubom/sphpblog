@@ -89,7 +89,7 @@
 	// $entry_array[ 'maxcount' ]         = Integer: Total number of entries
 	// $entry_array[ 'categories' ]         = array: String names of categories
 	// (There are some more, just look through the code...)
-	function theme_blogentry ( $entry_array ) {
+	function theme_blogentry ( $entry_array, $mode='entry' ) { // New 0.4.8
 		global $user_colors, $blog_theme, $blog_config;
 		
 		// Default image path.
@@ -100,26 +100,27 @@
 		
 		// New 0.4.4
 		// You must have this if you are using the trackback feature.
-      if ( $blog_config[ "blog_trackback_enabled" ] ) {
-   		$blog_content = $blog_content . "<!--\n";
-   		$blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
-   		$blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
-   		$blog_content = $blog_content . '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
-   		$blog_content = $blog_content . '<rdf:Description' . "\n";
-   		$blog_content = $blog_content . '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
-   		$blog_content = $blog_content . '</rdf:RDF>' . "\n";
-   		$blog_content = $blog_content . '-->' . "\n";
-	   }
+		if ( $blog_config[ "blog_trackback_enabled" ] ) {
+			$blog_content = $blog_content . "<!--\n";
+			$blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
+			$blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
+			$blog_content = $blog_content . '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
+			$blog_content = $blog_content . '<rdf:Description' . "\n";
+			$blog_content = $blog_content . '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+			$blog_content = $blog_content . '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+			$blog_content = $blog_content . '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
+			$blog_content = $blog_content . '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
+			$blog_content = $blog_content . '</rdf:RDF>' . "\n";
+			$blog_content = $blog_content . '-->' . "\n";
+		}
 	   
 		// Display SUBJECT Line
 		$blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "<br />\n";
+		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
 		
 		// Display EDIT and DELETE buttons if the user is logged in.
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
+			
 			$blog_content = $blog_content . "\t" . '<span class="blog_title_buttons">' . "\n";
 			
 			// Show "edit" and "delete" buttons if the user is logged-in...
@@ -134,42 +135,50 @@
 		}
 		
 		$blog_content = $blog_content . "</div>\n";
-		$blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
+		$blog_content = $blog_content . "\n<!-- BLOG TITLE END -->\n";
 		
 		$blog_content = $blog_content . "\n<!-- BLOG BODY BEGIN -->\n";
 		$blog_content = $blog_content . '<div class="blog_body">' . "\n\t";
 		
 		// Display DATE
-		$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
-		
-		// Display CATEGORIES
-		// This is an array. There can be multiple categories per entry.
-		if ( array_key_exists( "categories", $entry_array ) ) {
-			$blog_content = $blog_content . " - ";
-			for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
-				$blog_content = $blog_content . $entry_array[ 'categories' ][$i];
-				if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
-					$blog_content = $blog_content . ", ";
+		if ( $mode != 'static') { // New 0.4.8
+			$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
+			
+			// Display CATEGORIES
+			// This is an array. There can be multiple categories per entry.
+			if ( array_key_exists( "categories", $entry_array ) ) {
+				$blog_content = $blog_content . " - ";
+				for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
+					$blog_content = $blog_content . $entry_array[ 'categories' ][$i];
+					if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
+						$blog_content = $blog_content . ", ";
+					}
 				}
 			}
+			
+			// New 0.4.8
+			if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
+				if ( array_key_exists( 'ip-address', $entry_array ) && $mode == 'comment' ) {
+					$blog_content = $blog_content . ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
+				}
+			}
+			
+			$blog_content = $blog_content . "</div>\n\t\t";
 		}
-		$blog_content = $blog_content . "</div>\n\t\t";
 		
 		// Display BODY TEXT
 		$blog_content = $blog_content . $entry_array[ 'entry' ];
 		$blog_content = $blog_content . "\n\t</div>";
 		$blog_content = $blog_content . "\n<!-- BLOG BODY END -->\n";
 		
-		
 		$blog_content = $blog_content . "\n<!-- BLOG FOOTER BEGIN -->\n";
+		
 		// Display ADD COMMENT, COUNT,TRACKBACK, PERMALINK, and RATING
 		$comment_area = "";
 		if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
 			// Show "add comment" button if set...
 			$comment_area = $comment_area . '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="" width="14" height="14" align="top"/> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
 		}
-		
-		
 		
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show "( x views )" string...
@@ -181,7 +190,7 @@
 			$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
 		}
 		
-		if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
+		if ( $blog_config['blog_enable_permalink'] ){ // New for 0.4.6
 			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
 				// Show 'permalink' string...
 				$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
@@ -201,6 +210,7 @@
 		if ( $comment_area != "" ) {
 			$blog_content = $blog_content . "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
 		}
+		
 		$blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
 		
 		$blog_content = $blog_content . "<br />";
@@ -214,7 +224,7 @@
 		// Display STATIC entry page.
 		// 
 		// This theme uses the same format for static entries as regular blog entries.
-		$blog_content = theme_blogentry( $entry_array );
+		$blog_content = theme_blogentry( $entry_array, 'static' );
 		return $blog_content;
 	}
 	
@@ -222,7 +232,7 @@
 		// Display COMMENT entry page.
 		// 
 		// This theme uses the same format for comment entries as regular blog entries.
-		$blog_content = theme_blogentry( $entry_array );
+		$blog_content = theme_blogentry( $entry_array, 'comment' );
 		return $blog_content;
 	}
 	

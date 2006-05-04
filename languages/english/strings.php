@@ -281,7 +281,9 @@
 				$lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
 				$lang_string['delete_btn'] = "delete";
 				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
-        $lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
         
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";

@@ -137,6 +137,11 @@
 				$entry_array[ 'count' ] = $i;
 				$entry_array[ 'maxcount' ] = count( $contents ) - 1;
 				
+				// New 0.4.8
+				if ( array_key_exists( 'IP-ADDRESS', $comment_entry_data ) ) {
+					$entry_array[ 'ip-address' ] = $comment_entry_data[ 'IP-ADDRESS' ];
+				}
+				
 				$blog_content = $blog_content . theme_commententry( $entry_array );
 			}
 		}
@@ -299,6 +304,7 @@
 		if ( $comment_url != '' ) {
 			$save_data[ 'URL' ] = clean_post_text( $comment_url );
 		}
+		$save_data[ 'IP-ADDRESS' ] = getIP(); // New 0.4.8
 
 		// Implode the array
 		$str = implode_with_keys( $save_data );

@@ -177,6 +177,11 @@ input, select, option, textarea
 	border-color: #A6A6A6;
 }
 
+.blog_ip_address
+{
+	font-size: 10px;
+}
+
 #maincontent .blog_title_buttons
 {
 	/* Edit and Delete buttons in the Blog Title */
@@ -185,6 +190,7 @@ input, select, option, textarea
 	top: -15px;
 	right: 2px;
 	/* This is totally broken on IE for the Mac but who cares! */
+	display: inline;
 }
 
 #maincontent .blog_body

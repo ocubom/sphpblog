@@ -18,8 +18,9 @@
 	}
 	
 	global $entry_array;
-	$entry_array = read_static_entry( $_GET[ 'page' ], $logged_in )
-	
+	$static_page = urldecode( $_GET[ 'page' ] );
+	$static_page = preg_replace( '/(\s|\\\|\/|%|#)/', '_', $static_page );
+	$entry_array = read_static_entry( $static_page, $logged_in );
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

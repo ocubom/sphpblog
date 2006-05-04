@@ -5,7 +5,7 @@
 	//
 	// Name: Default/Classic Theme
 	// Author: Alexander Palmo
-	// Version: 0.4.5
+	// Version: 0.4.8
 	//
 	// Description:
 	// This the is default theme for Simple PHP Blog. You can use
@@ -83,42 +83,57 @@
 	// $entry_array[ 'comment' ][ 'count' ] = String: The number of 'views' in the appropriate language.
 	// $entry_array[ 'count' ]            = Integer: Index of current entry (i.e. use this if you want to add a line after every entry except the last one...)
 	// $entry_array[ 'maxcount' ]         = Integer: Total number of entries
-	function theme_blogentry ( $entry_array ) {
+	function theme_blogentry ( $entry_array, $mode='entry' ) { // New 0.4.8
 		global $blog_config, $user_colors;
 		
 		$blog_content = "\n";
 
-      if ( $blog_config[ 'blog_trackback_enabled' ] ) {
-   		$blog_content = $blog_content . '<!--' . "\n";
-   		$blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
-   		$blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
-   		$blog_content = $blog_content . '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
-   		$blog_content = $blog_content . '<rdf:Description' . "\n";
-   		$blog_content = $blog_content . '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
-   		$blog_content = $blog_content . '</rdf:RDF>' . "\n";
-   		$blog_content = $blog_content . '-->' . "\n";
-	   }
+		// TRACKBACKS (RDF)
+		if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+			$blog_content = $blog_content . '<!--' . "\n";
+			$blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
+			$blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
+			$blog_content = $blog_content . '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
+			$blog_content = $blog_content . '<rdf:Description' . "\n";
+			$blog_content = $blog_content . '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+			$blog_content = $blog_content . '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+			$blog_content = $blog_content . '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
+			$blog_content = $blog_content . '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
+			$blog_content = $blog_content . '</rdf:RDF>' . "\n";
+			$blog_content = $blog_content . '-->' . "\n";
+		}
 	
+		// SUBJECT
 		$blog_content = $blog_content . '<div class="blog_subject">' . $entry_array[ 'subject' ]  . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a></div>' . "\n";
 		
-		$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
-		
-		if ( array_key_exists( "categories", $entry_array ) ) {
-			$blog_content = $blog_content . " - ";
-			for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
-				$blog_content = $blog_content . $entry_array[ 'categories' ][$i];
-				if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
-					$blog_content = $blog_content . ", ";
+		// DATE
+		if ( $mode != 'static' ) { // New 0.4.8
+			$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
+			
+			// CATEGORIES
+			if ( array_key_exists( "categories", $entry_array ) ) {
+				$blog_content = $blog_content . " - ";
+				for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
+					$blog_content = $blog_content . $entry_array[ 'categories' ][$i];
+					if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
+						$blog_content = $blog_content . ", ";
+					}
 				}
 			}
+			
+			// IP ADDRESS
+			// New 0.4.8
+			if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
+				if ( array_key_exists( 'ip-address', $entry_array ) && $mode == 'comment' ) {
+					$blog_content = $blog_content . ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
+				}
+			}
+			
+			$blog_content = $blog_content . "</div>\n\t\t";
 		}
-		$blog_content = $blog_content . "</div>\n\t\t";
 		
+		// EDIT/DELETE BUTTONS
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
-			// Show 'edit' and 'delete' buttons if the user is logged-in...
 			if ( isset( $entry_array[ 'edit' ][ 'url' ] ) ) {
 				$blog_content = $blog_content . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '">[ ' . $entry_array[ 'edit' ][ 'name' ] . ' ]</a>' . "\n";
 			}
@@ -127,24 +142,28 @@
 			}
 		}
 		
-		// Blog content body...
+		// BLOG ENTRY
 		$blog_content = $blog_content . $entry_array[ 'entry' ] . "\n";
 		
+		// COMMENT ADD
 		if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
 			// Show 'add comment' button if set...
 			$blog_content = $blog_content . '<br /><a href="' . $entry_array[ 'comment' ][ 'url' ] . '">[ ' . $entry_array[ 'comment' ][ 'name' ] . ' ]</a>' . "\n";
 		}
 		
+		// COMMENT COUNT
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show '( x views )' string...
 			$blog_content = $blog_content . ' ( ' . $entry_array[ 'comment' ][ 'count' ] . ' )' . "\n";
 		}
 		
+		// TRACKBACK
 		if ( isset( $entry_array[ 'trackback' ][ 'url' ] ) ) {
 			// Show 'trackback' symbol
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">[ ' . $entry_array[ 'trackback' ][ 'name' ] . ' ]</a>' . "\n";;
 		}
 		
+		// PERMALINK
 		if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
 			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
 				// Show 'permalink' symbol
@@ -152,28 +171,31 @@
 			}
 		}
 		
+		// RELATED LINK
 		if ( isset( $entry_array['relatedlink']['url'] ) ) {
 			// Show 'relatedlink' symbol - New to 0.4.6
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>';
 		}
 		
+		// RATING
 		if ( isset( $entry_array[ 'stars' ] ) ) {
 			// Show 'permalink' symbol
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;' . $entry_array[ 'stars' ];
 		}
 		
+		// END
 		$blog_content = $blog_content . '<hr />' . "\n";
 		
 		return $blog_content;
 	}
 	
 	function theme_staticentry ( $entry_array ) {
-		$blog_content = theme_blogentry( $entry_array );
+		$blog_content = theme_blogentry( $entry_array, 'static' ); // New 0.4.8
 		return $blog_content;
 	}
 	
 	function theme_commententry ( $entry_array ) {
-		$blog_content = theme_blogentry( $entry_array );
+		$blog_content = theme_blogentry( $entry_array, 'comment' ); // New 0.4.8
 		return $blog_content;
 	}
 	
@@ -424,8 +446,6 @@
 			<a href="index.php">Home</a><br />
 			</div><br />
 		*/
-
-		
 		
 		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {
 			// Default image path.

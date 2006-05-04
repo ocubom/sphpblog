@@ -358,6 +358,11 @@
 						$entry_array[ 'trackback' ][ 'name' ] = $lang_string[ 'sb_trackback' ] . ' ' . $trackback_count;
 					}
 				}
+				
+				// New 0.4.8
+				if ( array_key_exists( 'IP-ADDRESS', $blog_entry_data ) ) {
+					$entry_array[ 'ip-address' ] = $blog_entry_data[ 'IP-ADDRESS' ];
+				}
 
    				// TODO: link opbouwen net als comments!
    				

@@ -45,7 +45,12 @@
 		$str = '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
 		
 		if ( !empty( $blog_config[ 'blog_email' ] ) ) {
-			$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
+			// New 0.4.8
+			$oBlacklist = new CBlacklist;
+			$oBlacklist->load( 'config/blacklist.txt' );
+			if ( $oBlacklist->isBanned( getIP() ) == false || $logged_in == true  ) {
+				$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
+			}
 		}
 		
 		if ( $blog_config['blog_enable_stats']){ // New 0.4.7

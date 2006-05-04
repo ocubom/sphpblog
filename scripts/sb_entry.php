@@ -86,6 +86,8 @@
 			$save_data[ 'relatedlink' ] = clean_post_text( $blog_relatedlink );
 		}
 		
+		$save_data[ 'IP-ADDRESS' ] = getIP(); // New 0.4.8
+		
 		if ( $updateFile == true ) {
 			// Updating an entry
 			//

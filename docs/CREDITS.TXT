@@ -29,6 +29,12 @@ Date: 21/02/2005
 Entries listing contributed by Jan Normann Nielsen (spam@Edubbekarl.dk)
 Date: 16/07/2005
 
+IP Tracking code contributed by Deathwish - http://deathwish.altervista.org/
+Date: 03/05/2006
+
+Emoticon code contributed by NoWhereMan - http://nowherenet.altervista.org/
+Date: 03/05/2006
+
 Translations
 ------------
 Chinese Language File

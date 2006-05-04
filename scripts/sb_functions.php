@@ -103,4 +103,7 @@
 	require_once('scripts/sb_forms.php');
 	require_once('scripts/sb_texteditor.php');
 	
+	// New 0.4.8 - deathwish
+	require_once('scripts/sb_blacklist.php');
+	
 ?>

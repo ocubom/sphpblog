@@ -45,7 +45,7 @@
 		$theme_vars[ 'popup_window' ][ 'width' ] = 600;
 	}
 	
-	function theme_blogentry ( $entry_array ) {
+	function theme_blogentry ( $entry_array, $mode='entry' ) {
 		global $user_colors, $blog_theme, $blog_config;
 		
 		// Default image path.
@@ -88,12 +88,13 @@
 		
 		// Display DATE
 		$blog_content = $blog_content . '<div class="blog_date">' . $entry_array[ 'date' ];
+		
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show "( x views )" string...
 			$blog_content = $blog_content . " ( " . $entry_array[ 'comment' ][ 'count' ] . " )";
 		}
 		$blog_content = $blog_content . "\n\t";
-		
+	
 		// Display CATEGORIES
 		// This is an array. There can be multiple categories per entry.
 		if ( array_key_exists( "categories", $entry_array ) ) {
@@ -179,7 +180,7 @@
 		// Display STATIC entry page.
 		// 
 		// This theme uses the same format for static entries as regular blog entries.
-		$blog_content = theme_blogentry( $entry_array );
+		$blog_content = theme_blogentry( $entry_array, 'static' );
 		return $blog_content;
 	}
 	
@@ -187,7 +188,7 @@
 		// Display COMMENT entry page.
 		// 
 		// This theme uses the same format for comment entries as regular blog entries.
-		$blog_content = theme_blogentry( $entry_array );
+		$blog_content = theme_blogentry( $entry_array, 'comment' );
 		return $blog_content;
 	}
 	
