@@ -1,5 +1,4 @@
-<?php 
-	
+<?php 	
 	// Simple PHP Blog
 	// ------------------------------
 	// Created by: Alexander Palmo, apalmo <at> bigevilbrain <dot> com
@@ -102,6 +101,7 @@
 	require_once('scripts/sb_categories.php');
 	require_once('scripts/sb_forms.php');
 	require_once('scripts/sb_texteditor.php');
+	require_once('scripts/sb_counter.php');
 	
 	// New 0.4.8 - deathwish
 	require_once('scripts/sb_blacklist.php');

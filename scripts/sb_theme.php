@@ -65,6 +65,18 @@
 		
 		return ( $result );
 	}
+	
+	function menu_display_countertotals () {
+
+		global $lang_string, $logged_in;		
+    
+    $result = array();
+		$result[ 'title' ] = 'Counter Totals'; //$lang_string[ 'menu_links' ];
+		$str = $str . show_counter_totals( $logged_in );
+    $result[ 'content' ] = $str;;
+		
+		return ( $result );
+	}
 
 	function menu_display_avatar() {
 		// Title: Avatar mod for sPhpBlog

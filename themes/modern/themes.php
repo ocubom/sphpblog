@@ -656,6 +656,9 @@
 		
 		// SEARCH
 		theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
+		
+		// Counter Totals
+		theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter');
 
 		// RECENT ENTRIES
 		theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );

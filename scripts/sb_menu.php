@@ -335,6 +335,16 @@
 		}				
 		return( $str );
 	}
+	
+	// ----------------------
+	// "Counter" functions
+	// ----------------------
+	
+	function show_counter_totals ( $logged_in ) {
+    $str = '';
+    $str = stat_all();
+    return ( $str );
+  }
 
 	// ----------------------
 	// "Links Menu" Functions
@@ -344,7 +354,7 @@
 		// Create the right-hand link menu. Return HTML
 		//
 	
-		global $lang_string;
+		
 		
 		// Read links file.
 		$filename = 'config/links.txt';
