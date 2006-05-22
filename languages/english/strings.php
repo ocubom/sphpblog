@@ -65,6 +65,7 @@
 		$lang_string['search_title'] = 'Search:';
 		$lang_string['search_go'] = 'Go';
 		$lang_string['page_generated_in'] = 'Page Generated in %s seconds';		
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
 
 		// SB Functions
 		$lang_string['sb_months'] = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
@@ -493,10 +494,12 @@
 				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar"; // New for 0.4.6
 				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter"; // New for 0.4.8
 				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
 				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
 				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7

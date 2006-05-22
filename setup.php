@@ -125,7 +125,9 @@
 				
 				<label for="blog_footer"><?php echo( $lang_string[ 'blog_footer' ] ); ?></label><br />
 				<input type="text" name="blog_footer" value="<?php echo($blog_config[ 'blog_footer' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
-			</div>
+			  <input type="checkbox" id="blog_footer_counter" name="blog_footer_counter"<?php if ( $blog_config[ 'blog_footer_counter' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_footer_counter' ] ); ?><br />
+      
+      </div>
 			
 			<p />
 			
@@ -177,6 +179,7 @@
 				<input type="checkbox" id="blog_enable_login" name="blog_enable_login"<?php if ( $blog_config[ 'blog_enable_login' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_login' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_archives" name="blog_enable_archives"<?php if ( $blog_config[ 'blog_enable_archives' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_archives' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if ( $blog_config[ 'blog_enable_calendar' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_calendar' ] ); ?><br />
+				<input type="checkbox" id="blog_enable_counter" name="blog_enable_counter"<?php if ( $blog_config[ 'blog_enable_counter' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_counter' ] ); ?><br /> 
 				<label for="blog_calendar_start"><?php echo( $lang_string[ 'label_calendar_start' ] ); ?></label>
 				<select name="blog_calendar_start">
 					<option label="<?php echo( $lang_string[ 'cal_sunday' ] ); ?>" value="sunday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'sunday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_sunday' ] ); ?></option>

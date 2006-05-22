@@ -61,7 +61,9 @@
 									'blog_comment_days_expiry',
 									'blog_enable_capcha_image',
 									'blog_enable_archives',
-									'blog_enable_login' );
+									'blog_enable_login',
+                  'blog_enable_counter',
+                  'blog_footer_counter' );
 									
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -208,6 +210,14 @@
 			$blog_config[ 'blog_enable_login' ] = 1;
 		}	
 		
+		if ( !isset( $blog_config[ 'blog_enable_counter' ] ) ) {
+			$blog_config[ 'blog_enable_counter' ] = 1;
+		}
+		
+		if ( !isset( $blog_config[ 'blog_footer_counter' ] ) ) {
+			$blog_config[ 'blog_footer_counter' ] = 1;
+		}
+		
 		// READ META-DATA INFORMATION
 		$contents = sb_read_file( 'config/metainfo.txt' );
 		if ( $contents ) {
@@ -257,7 +267,8 @@
                           $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, 
                           $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, 
                           $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha, 
-                          $blog_comment_days_expiry, $blog_enable_capcha_image, $blog_enable_archives, $blog_enable_login ) {
+                          $blog_comment_days_expiry, $blog_enable_capcha_image, $blog_enable_archives, 
+                          $blog_enable_login, $blog_enable_counter, $blog_footer_counter ) {
 		// Save config information to file.
 		//
 		$array = array( clean_post_text( $blog_title ),
@@ -292,7 +303,9 @@
 						$blog_comment_days_expiry,
 						$blog_enable_capcha_image,
 						$blog_enable_archives,
-						$blog_enable_login );
+						$blog_enable_login,
+            $blog_enable_counter,
+            $blog_footer_counter );
 						
 		$str = implode('|', $array);
 		

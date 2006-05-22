@@ -68,13 +68,15 @@
 	
 	function menu_display_countertotals () {
 
-		global $lang_string, $logged_in;		
+		global $lang_string, $logged_in, $blog_config;		
     
-    $result = array();
-		$result[ 'title' ] = 'Counter Totals'; //$lang_string[ 'menu_links' ];
-		$str = $str . show_counter_totals( $logged_in );
-    $result[ 'content' ] = $str;;
-		
+    if( $blog_config[ 'blog_enable_counter' ] ) 
+    {
+      $result = array();
+		  $result[ 'title' ] = 'Counter Totals';
+		  $str = $str . show_counter_totals( $logged_in );
+      $result[ 'content' ] = $str;
+		}
 		return ( $result );
 	}
 
@@ -373,11 +375,14 @@
 	
 	function page_generated_in () {
 		// Returns "Page Generated x.xxxx in seconds"
-		global $lang_string, $page_timestamp;
+		global $lang_string, $page_timestamp, $blog_config;
 		
 		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $lang_string[ 'page_generated_in' ] );
-
-		return ( $str );
+    
+    if( $blog_config['blog_footer_counter'] ) {
+      $str = $str . '&nbsp;|&nbsp;' . $lang_string[ 'counter_total' ] . stat_total(); }
+		
+    return ( $str );
 	}
 	
 	function menu_most_recent_entries () {

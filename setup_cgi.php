@@ -71,7 +71,9 @@
 						$temp_blog_comment_days_expiry,
 						( $_POST[ 'blog_enable_capcha_image' ] == 'on' ),
 						( $_POST[ 'blog_enable_archives' ] == 'on' ),
-						( $_POST[ 'blog_enable_login' ] == 'on' ) );
+						( $_POST[ 'blog_enable_login' ] == 'on' ),
+            ( $_POST[ 'blog_enable_counter' ] == 'on' ),
+            ( $_POST[ 'blog_footer_counter' ] == 'on' ) );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
