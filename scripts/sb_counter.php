@@ -101,9 +101,13 @@ function daily_counter()
 	fputs($emptyhandle,"0|0|0|0|0");
 	fclose($emptyhandle);
   }
-  $counthandle = fopen($count,"r");
-  $counter = fgets($counthandle, 1000);
-  list($ctotalold,$dateold,$hits,$dateyesterday,$hitsyesterday ) = explode("|",$counter);
+  if ( file_exists( $count ) ) { 
+    $counthandle = fopen($count,"r");
+    $counter = fgets($counthandle, 1000);
+    list($ctotalold,$dateold,$hits,$dateyesterday,$hitsyesterday ) = explode("|",$counter);
+    fclose($counthandle);
+  }
+  
   $ctotalold++;
   $ctotal = $ctotalold;
   if ($dateold == $date)
@@ -123,7 +127,7 @@ function daily_counter()
 	$hitsyesterday = 0;
   }
   $new_line = "$ctotal|$date|$hits|$dateyesterday|$hitsyesterday";
-  fclose($counthandle);
+  
   $writecount = fopen($count,"w+");
   fputs($writecount,$new_line);
   fclose($writecount);
@@ -133,26 +137,39 @@ function daily_counter()
 function stat_total()
 {
   global $count,$aktip;
+  
   checkip($aktip);
-  $handle = fopen($count,"r");
-  while($counter = fgetcsv($handle, 1024, "|"))
-  {
-    $text = "$counter[0]";
+  if ( file_exists( $count ) ) {    
+    $handle = fopen($count,"r");
+    while($counter = fgetcsv($handle, 1024, "|"))
+    {
+      $text = "$counter[0]";
+    }
+    fclose ($handle);
+  } else {
+    $text = "0";
   }
-  return( $text );
-  fclose ($handle);
+  
+  return( $text );   
 }
 
 function stat_all()
 {
   global $count,$aktip;
+  
   checkip($aktip);
-  $allhandle = fopen($count,"r");
-  while($counter = fgetcsv($allhandle, 1024, "|"))
-  {
-    $text = "Total: <b>$counter[0]</b><br />Today: <b>$counter[2]</b><br />Yesterday: <b>$counter[4]</b><br />";
-  }
+  if ( file_exists( $count ) ) {    
+    $allhandle = fopen($count,"r");
+    while($counter = fgetcsv($allhandle, 1024, "|"))
+    {
+      $text = "Total: <b>$counter[0]</b><br />Today: <b>$counter[2]</b><br />Yesterday: <b>$counter[4]</b><br />";
+    }
+  
+    fclose ($allhandle);
+  } else {
+    $text = "Total: <b>0</b><br />Today: <b>0</b><br />Yesterday: <b>0</b><br />";
+  }  
   return( $text );
-  fclose ($allhandle);
 }
+
 ?>
