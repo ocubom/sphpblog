@@ -545,6 +545,28 @@
 		return $exists;
 	}
 	
+	function get_entry_title ( $y, $m, $entry ) {	
+	  global $lang_string, $blog_config, $user_colors, $theme_vars;
+    
+    $entry_id = 'content/' . $y . '/' . $m . '/' . $entry;
+    
+    if ( file_exists( $entry_id . '.txt' ) ) {
+			$filename = $entry_id . '.txt';
+		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
+			$filename = $entry_id . '.txt.gz';
+		}
+    
+    $blog_entry = blog_entry_to_array( $filename );
+    
+    if ($blog_entry == FALSE ) {
+      $title = $lang_string[ 'title' ]; // For some reason we couldnt load the file
+    } else {    
+      $title = blog_to_html( $blog_entry[ 'SUBJECT' ], false, false ); // loaded and fired
+    }
+		
+    return( $title );
+  }
+	
 	// -----------------
 	// Preview Functions
 	// -----------------

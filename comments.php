@@ -106,14 +106,14 @@
 		}
 		-->
 	</script>
-
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
-</head>
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;		
-		
-		echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) );
+    
+    // Do the title
+		echo( '<title>' . $blog_config[ 'blog_title' ] . ' - ' . get_entry_title( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ] ) . '</title></head>'); 
+    
+    echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) );
 		echo( '<p />' );
 		
 		$entry_array = array();
@@ -121,6 +121,8 @@
 		
 		// ADD COMMENT FORM
 		ob_start(); ?>
+	   
+
 		<h2><?php echo( $lang_string[ 'header' ] ); ?></h2>
 		<?php echo( $lang_string[ 'instructions' ] ); ?></p>
 		
