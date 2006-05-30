@@ -18,6 +18,11 @@
 		$temp_blog_comment_days_expiry = 0;
 	}
 	
+	$temp_blog_counter_hours = intval( $_POST[ 'blog_counter_hours' ] );
+	if ( $temp_blog_counter_hours < 1) {
+		$temp_blog_counter_hours = 1;
+	}
+	
 	$tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html' );
 	$temp_array = array();
 	for ( $i = 0; $i < count( $tag_array ); $i++ ) {
@@ -73,7 +78,8 @@
 						( $_POST[ 'blog_enable_archives' ] == 'on' ),
 						( $_POST[ 'blog_enable_login' ] == 'on' ),
             ( $_POST[ 'blog_enable_counter' ] == 'on' ),
-            ( $_POST[ 'blog_footer_counter' ] == 'on' ) );
+            ( $_POST[ 'blog_footer_counter' ] == 'on' ),
+            $temp_blog_counter_hours );
 	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );

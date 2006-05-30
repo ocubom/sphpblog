@@ -55,7 +55,7 @@
 		// Counter
 		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
-		$lang_string['counter_total'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
 		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
 
 		// Other
@@ -494,7 +494,8 @@
 				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar"; // New for 0.4.6
 				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
-				$lang_string['blog_enable_counter'] = "Enable Counter"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
 				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6

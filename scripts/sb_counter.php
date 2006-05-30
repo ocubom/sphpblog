@@ -5,9 +5,6 @@
 $count = "content/counter/hits.txt"; 
 $ipfile = "content/counter/counterip.txt";
 
-// duration of IP lock in minutes
-$duration = 5; 
-
 $phpversion = phpversion();
 if ($phpversion < 4.1){
   global $HTTP_SERVER_VARS;
@@ -49,7 +46,11 @@ function checkforfiles()
 
 function checkip($ip)
 {
-  global $ipfile,$duration;
+  global $blog_config, $ipfile;
+  
+  // duration of IP lock in minutes
+  $duration = $blog_config[ 'blog_counter_hours' ]; 
+  
   checkforfiles();
   
   $timestamp = time();
@@ -155,19 +156,19 @@ function stat_total()
 
 function stat_all()
 {
-  global $count,$aktip;
+  global $count,$aktip, $lang_string;
   
   checkip($aktip);
   if ( file_exists( $count ) ) {    
     $allhandle = fopen($count,"r");
     while($counter = fgetcsv($allhandle, 1024, "|"))
     {
-      $text = "Total: <b>$counter[0]</b><br />Today: <b>$counter[2]</b><br />Yesterday: <b>$counter[4]</b><br />";
+      $text = $lang_string['counter_totalsidebar'] . ' <b>' . $counter[0] . '</b><br />' . $lang_string['counter_today'] . ' <b>' . $counter[2] . '</b><br />' . $lang_string['counter_yesterday'] . ' <b>' . $counter[4] . '</b><br />';
     }
   
     fclose ($allhandle);
   } else {
-    $text = "Total: <b>0</b><br />Today: <b>0</b><br />Yesterday: <b>0</b><br />";
+    $text = $lang_string['counter_totalsidebar'] . ' <b>0</b><br />' . $lang_string['counter_today'] . ' <b>0</b><br />' . $lang_string['counter_yesterday'] . ' <b>0</b><br />';
   }  
   return( $text );
 }
