@@ -108,7 +108,7 @@
 		
 		// DATE
 		if ( $mode != 'static' ) { // New 0.4.8
-			$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
+			$blog_content = $blog_content . "<div class=\"blog_byline\">" . $entry_array[ 'date' ];
 			
 			// CATEGORIES
 			if ( array_key_exists( "categories", $entry_array ) ) {

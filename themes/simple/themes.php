@@ -47,7 +47,7 @@
 		// Determines the maximum with of images within a page.
 		// Make sure this value is less then "content_width" or you
 		// might have wrapping problems.
-		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 38;
+		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 50;
 	}
 	
 	// Function:

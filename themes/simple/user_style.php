@@ -34,11 +34,7 @@
 		color: #<?php echo( $user_colors[ 'headline_txt_color' ] ); ?>;
 	}
 
-	#maincontent .blog_date {
-		color: #<?php echo( $user_colors[ 'date_txt_color' ] ); ?>;
-	}
-
-	#maincontent .blog_categories {
+	#maincontent .blog_byline {
 		color: #<?php echo( $user_colors[ 'date_txt_color' ] ); ?>;
 	}
 	
@@ -56,5 +52,10 @@
 
 	a:active {
 		color: #<?php echo( $user_colors[ 'link_down_color' ] ); ?>;
+	}
+	
+	pre {
+		width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+		border-color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
 	}
 </style>

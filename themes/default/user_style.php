@@ -57,4 +57,9 @@
 	a:active {
 		color: #<?php echo( $user_colors[ 'link_down_color' ] ); ?>;
 	}
+	
+	pre {
+		width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+		border-color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
+	}
 </style>
