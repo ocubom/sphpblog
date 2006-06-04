@@ -457,7 +457,7 @@
 			
 			echo( '<div class="menu_title">' );
 			if ( isset( $toggleDiv ) ) {
-				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty"> ' );
+				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty" alt="" /> ' );
 			}
 			echo( $blockArray[ 'title' ] );
 			if ( isset( $toggleDiv ) ) {
