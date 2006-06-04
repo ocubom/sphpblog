@@ -1,33 +1,56 @@
 <!-- MAIN LAYOUT START -->
 <body>
-	<p />
-	<table border="0" width="%page_width%" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #%border_color%;">
-		<tr align="left" valign="top">
-			<td width="%page_width%" colspan="2" bgcolor="#%header_bg_color%">
-				<div id="header_image"><img src="%image_path%header750x100.jpg" alt="" border="0" /></div>
-				<div id="header">%blog_title%</div>
-				<div id="pagebody">
-					<table border="0" width="%page_width%" cellspacing="0" cellpadding="0" align="left">
-						<tr valign="top">
-							<td width="%content_width%" bgcolor="#%main_bg_color%">
-								<div id="maincontent">
-									%content%
-								</div>
-							</td>
-							<td width="%menu_width%" bgcolor="#%menu_bg_color%" style="border-left: 1px solid #%inner_border_color%;">
-								<div id="sidebar">%menu%</div>
-							</td>
-						</tr>
-						<tr align="left" valign="top">
-							<td width="%page_width%" bgcolor="#%footer_bg_color%" colspan="2">
-								<div id="footer">%footer%</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</td>
-		</tr>
+	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+		<tbody>
+			<tr>
+				<td background="%image_path%background-left.gif" width="100">&nbsp;</td>
+				<td valign="top">
+				
+					<!-- HEADER -->
+					<div id="header">
+						<img src="%image_path%header750x100.jpg" alt="" border="0" />
+					</div>
+					
+					<!-- NAVIGATION -->
+					<div id="navigation">
+						<div style="float: left; padding: 6px 12px 0px 12px;"><a href="index.php">%blog_title%</a></div>
+						<div style="float: left;"><img src="%image_path%nav-splitter.gif" height="25" width="2"></div>
+						<div style="float: left; padding: 6px 12px 0px 12px;"><a href="rss.php">Feed</a></div>
+						<div style="float: left;"><img src="%image_path%nav-splitter.gif" height="25" width="2"></div>
+						
+						<div style="float: right; padding: 6px 12px 0px 12px;"><a href="contact.php">Contact</a></div>
+						<div style="float: right;"><img src="%image_path%nav-splitter.gif" height="25" width="2"></div>
+					</div>
+					
+					<!-- MAIN CONTENT -->
+					<div id="main">
+						<!-- <h1>%blog_title%</h1> -->
+						<p>%content%</p>
+					</div>
+						
+					<!-- SIDEBAR -->
+					<div id="sidebar">
+						%widget_avatar%
+						%widget_links%
+						%widget_user%
+						%widget_setup%
+						%widget_custom%
+						%widget_calendar%
+						%widget_archive_tree%
+						%widget_categories%
+						%widget_search%
+						%widget_recent_entries%
+						%widget_recent_comments%
+						%widget_recent_trackbacks%
+						<div align="center">%widget_badges%</div>
+					</div>
+					
+					<div id="footer"><p class="copyright">%footer%</p></div>
+					
+				</td>
+				<td background="%image_path%background-right.gif" width="100">&nbsp;</td>
+			</tr>
+		</tbody>
 	</table>
-	<p />
 </body>
 <!-- MAIN LAYOUT END -->

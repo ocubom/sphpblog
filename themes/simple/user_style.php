@@ -20,21 +20,19 @@
 		background-color: #<?php echo( $user_colors[ 'header_bg_color' ] ); ?>;
 	}
 
-	#footer {
+	.copyright {
 		color: #<?php echo( $user_colors[ 'footer_txt_color' ] ); ?>;
-		background: #<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>;
-		border-top: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #<?php echo( $user_colors[ 'headline_txt_color' ] ); ?>;
 	}
 
-	#maincontent .blog_subject {
+	#main .blog_subject {
 		color: #<?php echo( $user_colors[ 'headline_txt_color' ] ); ?>;
 	}
 
-	#maincontent .blog_byline {
+	#main .blog_byline {
 		color: #<?php echo( $user_colors[ 'date_txt_color' ] ); ?>;
 	}
 	

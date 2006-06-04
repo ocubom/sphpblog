@@ -13,19 +13,24 @@ You can use this as a template for your own themes.
 Also refer to user_style.php...
 */
 
-/* General */
+/*
+-------
+GENERAL
+-------
+*/
 
 body
-{
-	color: #666633; /* txt_color */
-    font-size: 11px;
+{ 
 	margin: 0px;
 	padding: 0px;
+	border: 0px;
+	color: #666633; /* txt_color */
+	font-family: Helvetica, Arial, Sans-Serif;
+    font-size: 12px;
+	font-weight: normal;
 	text-align: left;
-	background-color: #CCCC99; /* bg_color */
 	
 	/* Standard. Readable */
-	font-family: Arial, Helvetica, Sans-Serif;
 	/* font-family:  'Lucida Grande', Geneva, sans-serif; */
 	/* font-family: Tahoma, Geneva, sans-serif; */
 	/* font-family: Geneva, Verdana, sans-serif; */
@@ -47,6 +52,24 @@ body
 p
 {
 	margin: 8px 0px 8px 0px; 
+}
+
+code, pre {
+	font-family: 'Courier New', Courier, Fixed;
+}
+
+pre {
+	overflow: auto;
+	width: 512px;
+	border: 1px dotted #D9D9D9; /* inner_border_color */
+	padding: 5px
+}
+
+blockquote {
+	color: #777;
+	margin: 15px 30px 0 10px;
+	padding-left: 20px;
+	border-left: 5px solid #ddd
 }
 
 h1, h2, h3, h4, h5, h6
@@ -87,27 +110,6 @@ h5
 h6
 {
 	font-size: 10px;
-}
-
-/* NEW */
-code, pre {
-	font-family: 'Courier New', Courier, Fixed;
-}
-
-/* NEW */
-pre {
-	overflow: auto;
-	width: 512px;
-	border: 1px dotted #D9D9D9; /* inner_border_color */
-	padding: 5px
-}
-
-/* NEW */
-blockquote {
-	color: #777;
-	margin: 15px 30px 0 10px;
-	padding-left: 20px;
-	border-left: 5px solid #ddd
 }
 
 /* Links */
@@ -151,20 +153,8 @@ img
 	margin: 2px 2px 4px 8px;
 }
 
-/* Elements */
-
-hr	
-{
-	color: #D9D9D9; /* inner_border_color */
-	background-color: #D9D9D9; /* inner_border_color */
-	height: 1px;
-	border: 0px;
-	margin: 8px 0px 8px 0px; 
-}
-
 /* Forms */
 
-/* NEW */
 form {
 	font-size: 11px;
 	margin: 0px;
@@ -177,36 +167,60 @@ input, select, option, textarea
 	text-align: left;
 }
 
-/* Theme Specific */
+/* Other Elements */
 
-#header_image
+hr	
 {
-	border-color: #666;
-	border-width: 0px 0px 1px 0px;
-	border-style: solid;
+	color: #D9D9D9; /* inner_border_color */
+	background-color: #D9D9D9; /* inner_border_color */
+	height: 1px;
+	border: 0px;
+	margin: 8px 0px 8px 0px; 
 }
+
+/*
+------------
+THEME SPECIFIC
+------------
+*/
+
+/* Navigation */
+
+#navigation
+{
+	position: relative;
+	height: 25px;
+	background: url(images/nav-background.gif) repeat-x;
+}
+
+#navigation a, #navigation a:hover
+{
+	color: inherit;
+    font-size: inherit;
+	font-weight: inherit;
+	text-decoration: inherit;
+}
+
+/* Header */
 
 #header
 {
-	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
-	color: #FFFFFF; /* header_txt_color */
-	margin: 0px;
-	padding: 4px 12px 4px 12px;
-	border-color: #4D4D45; /* border_color */
-	border-width: 0px 0px 1px 0px;
-	border-style: solid;
-	background-color: #999966; /* header_bg_color */
-	font-size: 14px;
-	font-weight: bold;
+	/* background-image: url(images/background-header.gif); */
+	width: 100%;
+	background-color: #2b557f;
 }
 
-#maincontent
+/* Main */
+
+#main
 {
-	margin: 0;
-	padding: 20px;
+	padding: 20px 0px 20px 20px;
+	float: left;
+	/* sidebar total width + 20px = 240 */
+	margin-right: 240px;
 }
 
-#maincontent .blog_subject
+#main .blog_subject
 {
 	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
 	color: #666633; /* headline_txt_color */
@@ -215,12 +229,29 @@ input, select, option, textarea
 	margin: 0px;
 }
 
-#maincontent .blog_byline
+#main .blog_byline
 {
 	color: #999999; /* date_txt_color */
 	font-size: 9px;
 	margin-bottom: 10px;
 }
+
+/* Footer */
+
+#footer
+{
+	padding: 10px 20px 10px 20px;
+	clear: both;
+	border-top: #999999 1px solid;
+}
+
+.copyright
+{
+	font-size: 10px;
+	color: #999999;
+}
+
+/* Sidebar */
 
 div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSidebarArchives, #toggleSidebarCategories , #toggleSidebarSearch, #toggleSidebarMenu, #toggleSidebarPreferences, #toggleSidebarRecentComments, #toggleSidebarRecentEntries, #toggleSidebarRecentTrackbacks
 {
@@ -230,6 +261,10 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 #sidebar
 {
 	padding: 10px;
+	width: 200px;
+	/* padding plus width = 220 */
+  	margin-left: -220px;
+	float: right;
 }
 
 #sidebar .menu_title
@@ -275,7 +310,6 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	padding: 2px;
 }
 
-/* NEW */
 #archive_tree_menu ul	
 {
 	list-style: none inside;
@@ -283,23 +317,9 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	margin: 0px;
 }
 
-/* NEW */
 #archive_tree_menu li	
 {
 	margin: 0px;
 	padding: 0px;
 	/* border: 1px #F0F dashed; */
 }
-
-#footer
-{
-	border: 0;
-	border-top: 1px solid #4D4D45; /* border_color */
-	color: #666666; /* footer_txt_color */
-	background: #EEEEEE; /* footer_bg_color */
-	padding: 10px;
-	text-align: left;
-	clear: both;
-}
-
-.divider { margin: 20px 0px 15px 0px; }

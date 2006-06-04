@@ -87,7 +87,18 @@
 		// ------------------
 		// HTML ENTRY TEMPLATE
 		// ------------------
-		$template = sb_read_file( "themes/" . $blog_theme . "/templates/blog_entry.html" );
+		$template = '';
+		switch ( $mode ) {
+			case 'entry' :
+				$template = theme_load_template( "themes/" . $blog_theme . "/templates/entry.html" );
+				break;
+			case 'comment' :
+				$template = theme_load_template( "themes/" . $blog_theme . "/templates/comment.html" );
+				break;
+			case 'static' :
+				$template = theme_load_template( "themes/" . $blog_theme . "/templates/static.html" );
+				break;
+		}
 		
 		// CATEGORIES
 		$category_string = "";
@@ -120,7 +131,7 @@
 		$ipaddress = "";
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 			if ( array_key_exists( 'ip-address', $entry_array ) && $mode == 'comment' ) {
-				$ipaddress = $entry_array[ 'ip-address' ];
+				$ipaddress = '(' . $entry_array[ 'ip-address' ] . ')';
 			}
 		}
 		
@@ -360,7 +371,7 @@
 		// -----------------
 		// HTML PAGE TEMPLATE
 		// -----------------
-		$template = sb_read_file( "themes/" . $blog_theme . "/templates/main_layout.html" );
+		$template = theme_load_template( "themes/" . $blog_theme . "/templates/main_layout.html" );
 		
 		$tag = "%content%";
 		$pos = strpos( $template, $tag );
@@ -371,6 +382,7 @@
 		$search = array();
 		$replace = array();
 		
+		// PAGE SIZES
 		array_push( $search, "%page_width%" );
 		array_push( $replace, $theme_vars[ 'content_width' ] + $theme_vars[ 'menu_width' ] );
 		array_push( $search, "%image_path%" );
@@ -380,18 +392,48 @@
 		array_push( $search, "%menu_width%" );
 		array_push( $replace, $theme_vars[ 'menu_width' ] );
 		
+		// COLORS
 		$arr = array_keys( $user_colors );
 		for ( $i = 0; $i < count( $arr ); $i++ ) {
 			array_push( $search, "%" . $arr[$i] . "%" );
 			array_push( $replace, $user_colors[ $arr[$i] ] );		
 		}
 		
+		// BLOG CONTENT
 		array_push( $search, "%blog_title%" );
 		array_push( $replace, $blog_config[ 'blog_title' ] );
 		array_push( $search, "%menu%" );
 		array_push( $replace, theme_menu() );
 		array_push( $search, "%footer%" );
 		array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
+		
+		// MENU WIDGETS
+		array_push( $search, "%widget_avatar%" );
+		array_push( $replace, theme_widget_avatar() );
+		array_push( $search, "%widget_links%" );
+		array_push( $replace, theme_widget_links() );
+		array_push( $search, "%widget_user%" );
+		array_push( $replace, theme_widget_user() );
+		array_push( $search, "%widget_setup%" );
+		array_push( $replace, theme_widget_setup() );
+		array_push( $search, "%widget_custom%" );
+		array_push( $replace, theme_widget_custom() );
+		array_push( $search, "%widget_calendar%" );
+		array_push( $replace, theme_widget_calendar() );
+		array_push( $search, "%widget_archive_tree%" );
+		array_push( $replace, theme_widget_archive_tree() );
+		array_push( $search, "%widget_categories%" );
+		array_push( $replace, theme_widget_categories() );
+		array_push( $search, "%widget_search%" );
+		array_push( $replace, theme_widget_search() );
+		array_push( $search, "%widget_recent_entries%" );
+		array_push( $replace, theme_widget_recent_entries() );
+		array_push( $search, "%widget_recent_comments%" );
+		array_push( $replace, theme_widget_recent_comments() );
+		array_push( $search, "%widget_recent_trackbacks%" );
+		array_push( $replace, theme_widget_recent_trackbacks() );
+		array_push( $search, "%widget_badges%" );
+		array_push( $replace, theme_widget_badges() );
 		
 		// DO SEARCH AND REPLACE
 		echo( str_replace($search, $replace, $top_half) );
@@ -415,7 +457,7 @@
 		// ------------------
 		// HTML POPUP TEMPLATE
 		// ------------------
-		$template = sb_read_file( "themes/" . $blog_theme . "/templates/popup_layout.html" );
+		$template = theme_load_template( "themes/" . $blog_theme . "/templates/popup_layout.html" );
 		
 		$tag = "%content%";
 		$pos = strpos( $template, $tag );
@@ -452,10 +494,56 @@
 		// ------------------
 		// HTML BLOCK TEMPLATE
 		// ------------------
-		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {		
-			$template = sb_read_file( "themes/" . $blog_theme . "/templates/menu_block.html" );
-			return( str_replace( array( "%title%", "%content%" ), array( $blockArray[ 'title' ], $blockArray[ 'content' ] ), $template) );
+		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {	
+		
+			// Expand/Collapse Images
+			$img_path = "themes/" . $blog_theme . "/images/";
+			$img_show = $img_path . 'plus.gif';
+			$img_hide = $img_path . 'minus.gif';
+			
+			// SEARCH AND REPLACE TERMS
+			$search = array();
+			$replace = array();
+			
+			array_push( $search, "%title%" );
+			array_push( $replace, $blockArray[ 'title' ] );
+			array_push( $search, "%content%" );
+			array_push( $replace, $blockArray[ 'content' ] );
+			array_push( $search, "%comment%" );
+			array_push( $replace, $comment );
+			array_push( $search, "%id%" );
+			array_push( $replace, $toggleDiv );
+			array_push( $search, "%twisty%" );
+			array_push( $replace, $img_hide );
+		
+			$template = theme_load_template( "themes/" . $blog_theme . "/templates/menu_block.html" );
+			return( str_replace( $search, $replace, $template) );
 		}
+	}
+	
+	function theme_load_template( $url ) {
+		global $theme_vars, $blog_theme;
+		
+		// "themes/" . $blog_theme . "/templates/blog_entry.html"
+		$template = sb_read_file( $url );
+		
+		// SEARCH AND REPLACE TERMS
+		$search = array();
+		$replace = array();
+		
+		// DEFAULT REPLACEMENTS
+		array_push( $search, "%page_width%" );
+		array_push( $replace, $theme_vars[ 'content_width' ] + $theme_vars[ 'menu_width' ] );
+		array_push( $search, "%image_path%" );
+		array_push( $replace, "themes/" . $blog_theme . "/images/" );
+		array_push( $search, "%content_width%" );
+		array_push( $replace, $theme_vars[ 'content_width' ] );
+		array_push( $search, "%menu_width%" );
+		array_push( $replace, $theme_vars[ 'menu_width' ] );
+		
+		$template = str_replace($search, $replace, $template);
+		
+		return ( $template );
 	}
 	
 	function theme_menu () {
@@ -465,27 +553,62 @@
 		// HTML SIDEBAR MENU
 		// ----------------
 		$html = "";
+		$html .= "\n<!-- SIDEBAR MENU BEGIN -->\n";
+		$html .= theme_widget_avatar();
+		$html .= theme_widget_links();
+		$html .= theme_widget_user();
+		$html .= theme_widget_setup();
+		$html .= theme_widget_custom();
+		$html .= theme_widget_calendar();
+		$html .= theme_widget_archive_tree();
+		$html .= theme_widget_categories();
+		$html .= theme_widget_search();
+		$html .= theme_widget_recent_entries();
+		$html .= theme_widget_recent_comments();
+		$html .= theme_widget_recent_trackbacks();
+		// $html .= '<p />';
+		// $html .= theme_widget_badges();
+		$html .= "\n<!-- SIDEBAR MENU END -->\n";
 		
-		$html = "\n<!-- SIDEBAR MENU BEGIN -->\n";
-
-		// AVATAR
-		$html .= theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
-		
+		// RETURN HTML
+		return ( $html );
+	}
+	
+	function theme_widget_links() {
 		// LINKS
 		$result = menu_display_links();
 		$loginString = menu_display_login();
 		if ( $loginString ) {
 			$result[ 'content' ] = $result[ 'content' ] . '<hr />' . $loginString;
 		}
-		$html .= theme_menu_block( $result, 'LINKS' );
-		
+		$html = theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
+		return ( $html );
+	}
+	
+	function theme_widget_avatar() {
+		// AVATAR
+		$html = theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
+		return ( $html );
+	}
+	
+	function theme_widget_user() {
 		// MENU
-		$html .= theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
-		
+		$html = theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
+		return ( $html );
+	}
+	
+	function theme_widget_setup() {
 		// SETUP
-		$html .= theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
-				
+		$html = theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
+		return ( $html );
+	}
+	
+	function theme_widget_custom() {
+		global $logged_in;
+		
 		// CUSTOM BLOCKS
+		$html = "";
+		
 		$array = read_blocks($logged_in);
 		for ($i=0 ; $i<count($array) ; $i+=2) {
 			$result = Array();
@@ -494,44 +617,68 @@
 			$html .= theme_menu_block( $result, 'CUSTOM BLOCK' );
 		}
 		
+		return ( $html );
+	}
+	
+	function theme_widget_calendar() {
 		// CALENDAR
-		$html .= theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
-		
+		$html = theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
+		return ( $html );
+	}
+	
+	function theme_widget_archive_tree() {
 		// ARCHIVE TREE
-		$html .= theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
-		
+		$html = theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
+		return ( $html );
+	}
+	
+	function theme_widget_categories() {
 		// CATEGORIES
-		$html .= theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
-		
+		$html = theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
+		return ( $html );
+	}
+	
+	function theme_widget_search() {
 		// SEARCH
-		$html .= theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
-		
-		// Counter Totals
-		$html .= theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter');
-
+		$html = theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
+		return ( $html );
+	}
+	
+	function theme_widget_counter() {
+		// COUNTER
+		$html = theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter' );
+		return ( $html );
+	}
+	
+	function theme_widget_recent_entries() {
 		// RECENT ENTRIES
-		$html .= theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
-				
+		$html = theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
+		return ( $html );
+	}
+	
+	function theme_widget_recent_comments() {
 		// RECENT COMMENTS
-		$html .= theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
-		
+		$html = theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
+		return ( $html );
+	}
+	
+	function theme_widget_recent_trackbacks() {
 		// RECENT TRACKBACKS
-		$html .= theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
-		
-		$html .= '<p />';
-		
+		$html = theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
+		return ( $html );
+	}
+	
+	function theme_widget_badges() {
 		// BADGES
-		$html .= '<div align="center">';
+		$html = '';
+		// $html .= '<div align="center">';
 		$html .= '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog" title="Powered by Simple PHP Blog" border="0" /></a> ';
 		$html .= '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0" /></a><br />';
 		$html .= '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0" /></a> ';
 		$html .= '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0" /></a><br />';
 		$html .= '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0" /> ';
 		$html .= '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />';
-		$html .= '</div>';
-		
-		// RETURN HTML
+		// $html .= '</div>';
 		return ( $html );
 	}
-	
 ?>
