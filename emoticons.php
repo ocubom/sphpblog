@@ -50,12 +50,14 @@
 				$uploaddir = $uploaddir.'/';
 				$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES[ 'user_emot' ][ 'name' ]);
 		
-				if ( @getimagesize($_FILES['user_emot']['tmp_name']) == FALSE ){
-					$ok = -1;
-				} else {
-					if ( @move_uploaded_file($_FILES[ 'user_emot' ][ 'tmp_name' ], $uploadfile ) ) {
-						chmod( $uploadfile, 0777 );
-						$ok = true;
+				if ( @is_uploaded_file($_FILES['user_emot']['tmp_name'] ) ) {
+					if ( @getimagesize($_FILES['user_emot']['tmp_name'] ) == FALSE ){
+						$ok = -1;
+					} else {
+						if ( @move_uploaded_file($_FILES[ 'user_emot' ][ 'tmp_name' ], $uploadfile ) ) {
+							chmod( $uploadfile, 0777 );
+							$ok = true;
+						}
 					}
 				}
 			}
