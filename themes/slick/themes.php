@@ -385,12 +385,12 @@
 						  </div>
           				  <div id="HeaderRight"></div>
         	</div>			
-			<table border="0" width=100% cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
 				<tr align="left" valign="top">
-					<td width=100% colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
+					<td width="100%" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
 							
 						<div id="pagebody">
-							<table border="0" width=100% cellspacing="0" cellpadding="0" align="left">
+							<table border="0" width="100%" cellspacing="0" cellpadding="0" align="left">
 								<tr valign="top">
 									<td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>" style="border-left: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;">
 										<div id="sidebar-top"></div>
@@ -398,14 +398,14 @@
 											<?php theme_menu(); ?>
 										</div>										
 									</td>
-									<td width=100% bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
+									<td width="100%" bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
 										<div id="maincontent">
 											<?php page_content(); ?>
 										</div>
 									</td>									
 								</tr>
 								<tr align="left" valign="top">
-									<td width=100% bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>" colspan="2">
+									<td width="100%" bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>" colspan="2">
 										<div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
 									</td>
 								</tr>
