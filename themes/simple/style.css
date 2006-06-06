@@ -60,13 +60,13 @@ code, pre {
 
 pre {
 	overflow: auto;
-	width: 512px;
+	width: 550px;
 	border: 1px dotted #D9D9D9; /* inner_border_color */
 	padding: 5px
 }
 
 blockquote {
-	color: #777;
+	/* color: #777; */
 	margin: 15px 30px 0 10px;
 	padding-left: 20px;
 	border-left: 5px solid #ddd
@@ -77,8 +77,7 @@ h1, h2, h3, h4, h5, h6
 	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
 	font-weight: bold;
 	color: #666633; /* headline_txt_color */
-    text-shadow: #bbb 2px 2px 1px;
-	
+    /* text-shadow: #bbb 2px 2px 1px; */
 	margin: 2px 0px 2px 0px;
 }
 
@@ -188,6 +187,7 @@ THEME SPECIFIC
 
 #navigation
 {
+	color: #000;
 	position: relative;
 	height: 25px;
 	background: url(images/nav-background.gif) repeat-x;
@@ -214,33 +214,54 @@ THEME SPECIFIC
 
 #main
 {
-	padding: 20px 0px 20px 20px;
+	padding: 20px 20px 20px 20px;
 	float: left;
-	/* sidebar total width + 20px = 240 */
-	margin-right: 240px;
+	/* sidebar total width + 10px + 10px = 220 */
+	margin-right: 220px;
 }
 
-#main .blog_subject
+#popup
+{
+	padding: 20px;
+}
+
+.entry
+{
+	margin-bottom: 40px;
+}
+
+.comment
+{
+	margin-bottom: 20px;
+	padding: 10px 10px 5px 10px;
+	background-color: #EFEFEF;
+}
+
+.subject
 {
 	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
-	color: #666633; /* headline_txt_color */
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: bold;
-	margin: 0px;
+	color: #666633;
 }
 
-#main .blog_byline
+.byline
 {
 	color: #999999; /* date_txt_color */
-	font-size: 9px;
-	margin-bottom: 10px;
+	font-size: 10px;
+}
+
+.content
+{
+	margin-top: 10px;
+	margin-bottom: 15px;
 }
 
 /* Footer */
 
 #footer
 {
-	padding: 10px 20px 10px 20px;
+	padding: 5px 20px 5px 20px;
 	clear: both;
 	border-top: #999999 1px solid;
 }
@@ -262,7 +283,7 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 {
 	padding: 10px;
 	width: 200px;
-	/* padding plus width = 220 */
+	/* padding plus width = 240 */
   	margin-left: -220px;
 	float: right;
 }
@@ -273,21 +294,17 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	font-weight: bold;
 }
 
-#sidebar .menu_title a
+#sidebar .menu_title a, #sidebar .menu_title:hover
 {
 	text-decoration: none;
 	color: inherit;
-}
-
-#sidebar .menu_title:hover
-{
 }
 
 #sidebar .menu_body
 {
 	padding: 10px;
 	margin-bottom: 10px;
-	border: #999 1px solid;
+	border: #FF0 1px solid;
 }
 
 #sidebar .divider {

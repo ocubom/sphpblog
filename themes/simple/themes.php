@@ -306,42 +306,21 @@
 		
 		$color_def = array();
 		
-		array_push( $color_def, array( 'id' => 'bg_color',
-								'string' => $lang_string[ 'bg_color' ],
-								'default' => 'CCCC99' ) );
-		array_push( $color_def, array( 'id' => 'border_color',
-								'string' => $lang_string[ 'border_color' ],
-								'default' => '4D4D45' ) );
 		array_push( $color_def, array( 'id' => 'main_bg_color',
 								'string' => $lang_string[ 'main_bg_color' ],
 								'default' => 'FFFFFF' ) );
+		array_push( $color_def, array( 'id' => 'header_bg_color',
+								'string' => $lang_string[ 'header_bg_color' ],
+								'default' => '999966' ) );
+		array_push( $color_def, array( 'id' => 'footer_bg_color',
+								'string' => $lang_string[ 'footer_bg_color' ],
+								'default' => 'EEEEEE' ) );
 		array_push( $color_def, array( 'id' => 'menu_bg_color',
 								'string' => $lang_string[ 'menu_bg_color' ],
 								'default' => 'F2F2F2' ) );
 		array_push( $color_def, array( 'id' => 'inner_border_color',
 								'string' => $lang_string[ 'inner_border_color' ],
 								'default' => 'D9D9D9' ) );
-		array_push( $color_def, array( 'id' => 'link_reg_color',
-								'string' => $lang_string[ 'link_reg_color' ],
-								'default' => '993333' ) );
-		array_push( $color_def, array( 'id' => 'link_hi_color',
-								'string' => $lang_string[ 'link_hi_color' ],
-								'default' => 'FF3333' ) );
-		array_push( $color_def, array( 'id' => 'link_down_color',
-								'string' => $lang_string[ 'link_down_color' ],
-								'default' => '3333FF' ) );
-		array_push( $color_def, array( 'id' => 'header_bg_color',
-								'string' => $lang_string[ 'header_bg_color' ],
-								'default' => '999966' ) );
-		array_push( $color_def, array( 'id' => 'header_txt_color',
-								'string' => $lang_string[ 'header_txt_color' ],
-								'default' => 'FFFFFF' ) );
-		array_push( $color_def, array( 'id' => 'footer_bg_color',
-								'string' => $lang_string[ 'footer_bg_color' ],
-								'default' => 'EEEEEE' ) );
-		array_push( $color_def, array( 'id' => 'footer_txt_color',
-								'string' => $lang_string[ 'footer_txt_color' ],
-								'default' => '666666' ) );
 		array_push( $color_def, array( 'id' => 'txt_color',
 								'string' => $lang_string[ 'txt_color' ],
 								'default' => '666633' ) );
@@ -351,6 +330,21 @@
 		array_push( $color_def, array( 'id' => 'date_txt_color',
 								'string' => $lang_string[ 'date_txt_color' ],
 								'default' => '999999' ) );
+		array_push( $color_def, array( 'id' => 'header_txt_color',
+								'string' => $lang_string[ 'header_txt_color' ],
+								'default' => 'FFFFFF' ) );
+		array_push( $color_def, array( 'id' => 'footer_txt_color',
+								'string' => $lang_string[ 'footer_txt_color' ],
+								'default' => '666666' ) );
+		array_push( $color_def, array( 'id' => 'link_reg_color',
+								'string' => $lang_string[ 'link_reg_color' ],
+								'default' => '993333' ) );
+		array_push( $color_def, array( 'id' => 'link_hi_color',
+								'string' => $lang_string[ 'link_hi_color' ],
+								'default' => 'FF3333' ) );
+		array_push( $color_def, array( 'id' => 'link_down_color',
+								'string' => $lang_string[ 'link_down_color' ],
+								'default' => '3333FF' ) );
 		
 		return ( $color_def );
 	}
