@@ -62,7 +62,7 @@
 		$lang_string['home'] = 'Return to Home';
 		$lang_string['nav_next'] = 'Next';
 		$lang_string['nav_back'] = 'Back';
-		$lang_string['search_title'] = 'Search:';
+		$lang_string['search_title'] = 'Search';
 		$lang_string['search_go'] = 'Go';
 		$lang_string['page_generated_in'] = 'Page Generated in %s seconds';		
 		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
