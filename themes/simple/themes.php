@@ -457,6 +457,8 @@
 		array_push( $replace, theme_widget_categories() );
 		array_push( $search, "%widget_search%" );
 		array_push( $replace, theme_widget_search() );
+		array_push( $search, "%widget_counter%" );
+		array_push( $replace, theme_widget_counter() );
 		array_push( $search, "%widget_recent_entries%" );
 		array_push( $replace, theme_widget_recent_entries() );
 		array_push( $search, "%widget_recent_comments%" );
@@ -594,6 +596,7 @@
 		$html .= theme_widget_archive_tree();
 		$html .= theme_widget_categories();
 		$html .= theme_widget_search();
+		$html .= theme_widget_counter();
 		$html .= theme_widget_recent_entries();
 		$html .= theme_widget_recent_comments();
 		$html .= theme_widget_recent_trackbacks();
