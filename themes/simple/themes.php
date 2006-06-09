@@ -306,6 +306,7 @@
 		
 		$color_def = array();
 		
+		// Backgrounds
 		array_push( $color_def, array( 'id' => 'main_bg_color',
 								'string' => $lang_string[ 'main_bg_color' ],
 								'default' => 'FFFFFF' ) );
@@ -315,12 +316,41 @@
 		array_push( $color_def, array( 'id' => 'footer_bg_color',
 								'string' => $lang_string[ 'footer_bg_color' ],
 								'default' => 'EEEEEE' ) );
-		array_push( $color_def, array( 'id' => 'menu_bg_color',
-								'string' => $lang_string[ 'menu_bg_color' ],
-								'default' => 'F2F2F2' ) );
+								
+		// Menus
+		array_push( $color_def, array( 'id' => 'menu_bg',
+								'string' => $lang_string[ 'menu_bg' ],
+								'default' => 'ACACA0' ) );
+		array_push( $color_def, array( 'id' => 'menu_title_bg',
+								'string' => $lang_string[ 'menu_title_bg' ],
+								'default' => '959587' ) );
+		array_push( $color_def, array( 'id' => 'menu_border',
+								'string' => $lang_string[ 'menu_border' ],
+								'default' => 'DADACE' ) );
+		array_push( $color_def, array( 'id' => 'menu_title_text',
+								'string' => $lang_string[ 'menu_title_text' ],
+								'default' => 'FFFFFF' ) );
+		array_push( $color_def, array( 'id' => 'menu_text',
+								'string' => $lang_string[ 'menu_text' ],
+								'default' => 'FFFFFF' ) );
+								
+								
+		array_push( $color_def, array( 'id' => 'menu_link_reg_color',
+								'string' => $lang_string[ 'menu_link_reg_color' ],
+								'default' => '59594F' ) );
+		array_push( $color_def, array( 'id' => 'menu_link_hi_color',
+								'string' => $lang_string[ 'menu_link_hi_color' ],
+								'default' => 'FF6600' ) );
+		array_push( $color_def, array( 'id' => 'menu_link_down_color',
+								'string' => $lang_string[ 'menu_link_down_color' ],
+								'default' => '6329F7' ) );
+								
+		// Border
 		array_push( $color_def, array( 'id' => 'inner_border_color',
 								'string' => $lang_string[ 'inner_border_color' ],
 								'default' => 'D9D9D9' ) );
+								
+		// Text Color
 		array_push( $color_def, array( 'id' => 'txt_color',
 								'string' => $lang_string[ 'txt_color' ],
 								'default' => '666633' ) );
@@ -336,6 +366,8 @@
 		array_push( $color_def, array( 'id' => 'footer_txt_color',
 								'string' => $lang_string[ 'footer_txt_color' ],
 								'default' => '666666' ) );
+								
+		// Links
 		array_push( $color_def, array( 'id' => 'link_reg_color',
 								'string' => $lang_string[ 'link_reg_color' ],
 								'default' => '993333' ) );
@@ -345,6 +377,11 @@
 		array_push( $color_def, array( 'id' => 'link_down_color',
 								'string' => $lang_string[ 'link_down_color' ],
 								'default' => '3333FF' ) );
+		
+		// Entries
+		array_push( $color_def, array( 'id' => 'entry_title_text',
+								'string' => $lang_string[ 'entry_title_text' ],
+								'default' => '666661' ) );
 		
 		return ( $color_def );
 	}

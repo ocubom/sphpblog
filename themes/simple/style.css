@@ -19,7 +19,7 @@ GENERAL
 -------
 */
 
-body
+body, html
 { 
 	margin: 0px;
 	padding: 0px;
@@ -29,6 +29,7 @@ body
     font-size: 12px;
 	font-weight: normal;
 	text-align: left;
+	height: 100%; 
 	
 	/* Standard. Readable */
 	/* font-family:  'Lucida Grande', Geneva, sans-serif; */
@@ -225,16 +226,14 @@ THEME SPECIFIC
 	padding: 20px;
 }
 
-.entry
-{
-	margin-bottom: 40px;
-}
-
 .comment
 {
 	margin-bottom: 20px;
-	padding: 10px 10px 5px 10px;
-	background-color: #EFEFEF;
+}
+
+.entry
+{
+	margin-bottom: 20px;
 }
 
 .subject
@@ -243,25 +242,36 @@ THEME SPECIFIC
 	font-size: 18px;
 	font-weight: bold;
 	color: #666633;
+	padding: 5px 0px;
+}
+
+.comment .subject
+{
+	font-size: 16px;
 }
 
 .byline
 {
 	color: #999999; /* date_txt_color */
 	font-size: 10px;
+	padding: 5px 0px;
 }
 
 .content
 {
-	margin-top: 10px;
-	margin-bottom: 15px;
+	padding: 5px 0px;
+}
+
+.buttons
+{
+	padding: 5px 0px;
 }
 
 /* Footer */
 
 #footer
 {
-	padding: 5px 20px 5px 20px;
+	padding: 5px 20px;
 	clear: both;
 	border-top: #999999 1px solid;
 }
@@ -292,6 +302,7 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 {
 	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
 	font-weight: bold;
+	padding: 7px 5px 5px 6px;
 }
 
 #sidebar .menu_title a, #sidebar .menu_title:hover
@@ -305,10 +316,6 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	padding: 10px;
 	margin-bottom: 10px;
 	border: #FF0 1px solid;
-}
-
-#sidebar .divider {
-	margin: 8px 0px 8px 0px;
 }
 
 #sidebar .calendar

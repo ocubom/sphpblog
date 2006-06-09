@@ -55,13 +55,44 @@
 		background-color: #<?php echo( $user_colors[ 'header_bg_color' ] ); ?>;
 	}
 	
-	#sidebar .menu_body {
-		border-color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
-		background-color: #<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>;
-	}
-	
 	#footer {
 		background-color: #<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>;
 	}
 	
+	#sidebar a:link, #sidebar a:visited
+	{
+		color: #<?php echo( $user_colors[ 'menu_link_reg_color' ] ); ?>;
+	}
+	
+	#sidebar a:hover
+	{
+		color: #<?php echo( $user_colors[ 'menu_link_hi_color' ] ); ?>;
+	}
+	
+	#sidebar a:active
+	{
+		color: #<?php echo( $user_colors[ 'menu_link_down_color' ] ); ?>;
+	}
+	
+	#sidebar .menu_title,  #sidebar .menu_title a:link, #sidebar .menu_title a:visited, #sidebar .menu_title a:hover, #sidebar .menu_title a:active {
+		color: #<?php echo( $user_colors[ 'menu_title_text' ] ); ?>;
+		background-color: #<?php echo( $user_colors[ 'menu_title_bg' ] ); ?>;
+		border-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;
+	}
+	
+	#sidebar .menu_body {
+		color: #<?php echo( $user_colors[ 'menu_text' ] ); ?>;
+		background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>;
+		border-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;
+	}
+	
+	.subject {
+		color: #<?php echo( $user_colors[ 'entry_title_text' ] ); ?>;
+	}
+	
+	/* entry_bg
+	entry_title_bg
+	entry_border
+	entry_title_text
+	entry_text */
 </style>
