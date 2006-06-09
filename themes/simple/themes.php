@@ -157,10 +157,12 @@
 		}
 		
 		// PERMALINK
-		$permalink = "";
-		if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
-			// Show 'permalink'
-			$permalink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
+		$permalink = "";		
+		if ( $blog_config['blog_enable_permalink'] ){ // New for 0.4.6
+			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
+				// Show 'permalink'
+				$permalink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
+			}
 		}
 		
 		// RELATED LINK
@@ -173,7 +175,7 @@
 		// RATING STARS
 		$ratings = "";
 		if ( isset( $entry_array[ 'stars' ] ) ) {
-			// Show 'permalink' symbol
+			// Show 'stars' symbol
 			$ratings = $entry_array[ 'stars' ];
 		}
 		
