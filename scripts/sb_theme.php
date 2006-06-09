@@ -70,14 +70,14 @@
 
 		global $lang_string, $logged_in, $blog_config;		
     
-    if( $blog_config[ 'blog_enable_counter' ] ) 
-    {
-      $result = array();
-		  $result[ 'title' ] = 'Counter Totals';
-		  $str = $str . show_counter_totals( $logged_in );
-      $result[ 'content' ] = $str;
+		if ( $blog_config[ 'blog_enable_counter' ] ) {
+			$result = array();
+			$result[ 'title' ] = 'Counter Totals';
+			$str = $str . show_counter_totals( $logged_in );
+			$result[ 'content' ] = $str;
+		
+			return ( $result );
 		}
-		return ( $result );
 	}
 
 	function menu_display_avatar() {
@@ -98,8 +98,6 @@
 			
 			return ( $result );
 		}
-		
-		return;
 	}
 	
 	function menu_random_quote() {
@@ -133,8 +131,6 @@
 			$result[ 'content' ] = $str;
 			return ( $result );
 		}
-		
-		return;
 	}
 	
 	function menu_display_blognav_tree () {
@@ -158,8 +154,6 @@
 			$result[ 'content' ] = '<a href="archives.php">' . $lang_string[ 'menu_viewarchives' ] . '</a><br />' . "\n" . $str;
 			return ( $result );
 		}
-		
-		return;
 	}
 	
 	function menu_display_login () {
@@ -171,13 +165,12 @@
 		//
 		global $lang_string, $blog_config, $logged_in;
 		
-		
 		$str = '';
 		if ($logged_in === true) {
 			// $str = $str . '<a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a><br />';
 			$str = $str . '<a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a>';
 		} else {
-			if( $blog_config[ 'blog_enable_login' ] ) {
+			if ( $blog_config[ 'blog_enable_login' ] ) {
 				$str = $str . '<a href="login.php">' . $lang_string[ 'menu_login' ] . '</a>';
 			}
 		}
@@ -209,8 +202,6 @@
 			
 			return ( $result );
 		}
-		
-		return;
 	}
 	
    function menu_display_categories () {
@@ -277,11 +268,13 @@
 			}
 		}
 		
-		$result = array();
-		$result[ 'title' ] = $lang_string[ 'menu_categories' ];
-		$result[ 'content' ] = $str;
-		
-		return ( $result );
+		if ( $str ) {
+			$result = array();
+			$result[ 'title' ] = $lang_string[ 'menu_categories' ];
+			$result[ 'content' ] = $str;
+			
+			return ( $result );
+		}
 	}
 	
 	function menu_display_setup () {
@@ -315,14 +308,12 @@
 			
 			return ( $result );
 		}
-		
-		return;
 	}
 	
 	function menu_most_recent_comments () {
 		global $lang_string, $blog_config;
 		
-		if( $blog_config[ 'blog_enable_lastcomments' ] ) {
+		if ( $blog_config[ 'blog_enable_lastcomments' ] ) {
 			$str = get_most_recent();
 			
 			$result = array();
@@ -331,14 +322,12 @@
 			
 			return ( $result );
 		}
-		
-		return;
 	}
 	
 	function menu_most_recent_trackbacks () {
 		global $lang_string, $blog_config;
 		
-		if( $blog_config[ 'blog_trackback_enabled' ] ) {
+		if ( $blog_config[ 'blog_trackback_enabled' ] ) {
 			$str = get_most_recent_trackback();
 			
 			$result = array();
@@ -347,8 +336,6 @@
 			
 			return ( $result );
 		}
-		
-		return;
 	}
 	
 	function menu_search_field () {
@@ -379,10 +366,11 @@
 		
 		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $lang_string[ 'page_generated_in' ] );
     
-    if( $blog_config['blog_footer_counter'] ) {
-      $str = $str . '&nbsp;|&nbsp;' . $lang_string[ 'counter_total' ] . stat_total(); }
+		if ( $blog_config[ 'blog_footer_counter'] ) {
+			$str = $str . '&nbsp;|&nbsp;' . $lang_string[ 'counter_total' ] . stat_total();
+		}
 		
-    return ( $str );
+		return ( $str );
 	}
 	
 	function menu_most_recent_entries () {
@@ -437,7 +425,5 @@
 			
 			return ( $result );
 		}
-		
-		return;
 	}
 ?>
