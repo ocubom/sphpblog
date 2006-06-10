@@ -18,7 +18,12 @@
 		
 		$ok = false;
 		if ($catArray !== false ) {
-			$ok = write_categories( $catArray );
+			if ($catArray === -1 ) {
+				// Delete all categories.
+				$ok = sb_delete_file( 'config/categories.txt' );
+			} else {
+				$ok = write_categories( $catArray );
+			}
 		}
 								
 		if ( $ok === true ) {	
@@ -29,9 +34,9 @@
 	// PHP Validate results
 	function phpValidate( $str ) {
 		if ( $str == '' ) {
-			// Make sure the form is filled out
-			// echo("Uh, you should type something first...");
-			return false;
+			// If the form is empty, then delete existing categories.
+			return -1;
+			
 		} else {
 			// Define the return character
 			if ( strstr( $str, urldecode( '%0D%0A') ) !== false ) {
@@ -131,9 +136,9 @@
 		<!--
 		function validate(theform) {
 			if (theform.category_list.value == "" ) {
-				// Make sure the form is filled out
-				alert("Uh, you should type something first...");
-				return false;
+				// If the form is empty, then delete existing categories
+				return true;
+				
 			} else {
 				str = theform.category_list.value;
 				
