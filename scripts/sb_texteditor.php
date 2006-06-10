@@ -217,7 +217,7 @@
 				}
 				
 				// Style Tag Buttons
-				editor_style_buttons();
+				editor_style_buttons( $mode );
 				
 				// Style Tag Dropdown
 				editor_style_dropdown();
@@ -281,7 +281,7 @@
 		<?php
 	}
 	
-	function editor_style_buttons() {
+	function editor_style_buttons( $mode ) {
 		// Style Tag Buttons
 		global $lang_string;
 		
@@ -292,6 +292,11 @@
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_url' ] ); ?>" onclick="ins_url(this.form.blog_text);" />
 			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/>
 		<?php
+		if ( $mode == 'entry' ) {
+		?>
+			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_readmore' ] ); ?>" onclick="insertAtCaret(this.form.blog_text,'[more]');"/>
+		<?php
+		}
 	}
 	
 	function editor_style_dropdown() {

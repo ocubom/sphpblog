@@ -647,6 +647,8 @@
 	}
 	
 	function replace_more_tag ( $string, $strip_tags=true, $url='', $trim_off_end=false ) {
+		global $lang_string;
+		
 		$tagpos = strpos( strtoupper($string), '[MORE]' );
 		if ( $tagpos != false ) {
 			if ( $strip_tags == true ) {
@@ -663,7 +665,8 @@
 				$string = substr( $string, 0, $tagpos );
 				//Now put in the More link
 				if ( $url != '' ){
-					$string = $string . ' <a href="' . $url . '">More...</a>';
+					$read_more = isset( $lang_string['read_more'] ) ? $lang_string['read_more'] : 'Read more...';
+					$string = $string . ' <a href="' . $url . '">' . $read_more . '</a>';
 				}
 			}
 		}
