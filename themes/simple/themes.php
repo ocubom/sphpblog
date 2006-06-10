@@ -51,7 +51,7 @@
 	// Load Templates
 	// -------------
 	function theme_load_template( $url ) {
-		global $theme_vars, $blog_theme;
+		global $theme_vars, $blog_theme, $user_colors;
 		
 		// Description:
 		// This function loads an individual template .html file and does
