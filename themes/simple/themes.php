@@ -2,20 +2,17 @@
 	// --------------------------
 	// Simple PHP Blog Theme File
 	// --------------------------
-	//
-	// Name: String Replace (Default) Theme
+	
+	// Name: Simple Template Theme
 	// Author: Alexander Palmo
 	// Version: 0.4.8
-	//
+	
 	// Description:
-	// This is a clone of the default theme, except that it uses separate
-	// template files and "str_replace" to accomplish its goal.
+	// This theme uses separate template files and "preg_replace" 
+	// to accomplish its goal.
 	//
 	// Should be easier for the novice to edit this theme and make
 	// quick modifications without having to edit the PHP code much.
-	//
-	// All graphic will be relative to the base-url (i.e. the folder
-	// where index.php is located.) 
 	
 	theme_init();
 	
@@ -29,7 +26,7 @@
 		
 		// Optional:
 		// "content_width" and "menu_width" area used internally
-		// within the theme only. (optional but recommended.)
+		// within the theme only. (optional but highly recommended.)
 		$theme_vars[ 'content_width' ] = 550;
 		$theme_vars[ 'menu_width' ] = 200;
 		
@@ -44,14 +41,57 @@
 		$theme_vars[ 'popup_window' ][ 'content_width' ] = $theme_vars[ 'content_width' ];
 		
 		// Required:
-		// Determines the maximum with of images within a page.
+		// Determines the maximum width of images within a page.
 		// Make sure this value is less then "content_width" or you
 		// might have wrapping problems.
 		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 50;
 	}
 	
+	// -------------
+	// Load Templates
+	// -------------
+	function theme_load_template( $url ) {
+		global $theme_vars, $blog_theme;
+		
+		// Description:
+		// This function loads an individual template .html file and does
+		// the first round of search/replace for some global strings and
+		// the color strings. This is a utility function.
+		
+		$template = sb_read_file( $url );
+		
+		// SEARCH AND REPLACE TERMS
+		$search = array();
+		$replace = array();
+		
+		// DEFAULT REPLACEMENTS
+		array_push( $search, "/%page_width%/" );
+		array_push( $replace, $theme_vars[ 'content_width' ] + $theme_vars[ 'menu_width' ] );
+		array_push( $search, "/%image_path%/" );
+		array_push( $replace, "themes/" . $blog_theme . "/images/" );
+		array_push( $search, "/%content_width%/" );
+		array_push( $replace, $theme_vars[ 'content_width' ] );
+		array_push( $search, "/%menu_width%/" );
+		array_push( $replace, $theme_vars[ 'menu_width' ] );
+		
+		// COLORS
+		$arr = array_keys( $user_colors );
+		for ( $i = 0; $i < count( $arr ); $i++ ) {
+			array_push( $search, "/%" . $arr[$i] . "%/" );
+			array_push( $replace, $user_colors[ $arr[$i] ] );		
+		}
+		
+		$template = preg_replace($search, $replace, $template);
+		
+		return ( $template );
+	}
+	
+	// ---------
+	// Blog Entry
+	// ---------
+	//
 	// Function:
-	// theme_blogentry( $entry_array )
+	// theme_blogentry ( $entry_array, $mode='entry' )
 	//
 	// Theme for Blog Entries
 	// ----------------------
@@ -204,54 +244,63 @@
 		$search = array();
 		$replace = array();
 		
-		array_push( $search, "%rdf%" );
+		array_push( $search, "/%rdf%/" );
 		array_push( $replace, $rdf_string );
-		array_push( $search, "%subject%" );
+		array_push( $search, "/%subject%/" );
 		array_push( $replace, $entry_array[ 'subject' ] );
-		array_push( $search, "%id%" );
+		array_push( $search, "/%id%/" );
 		array_push( $replace, $entry_array[ 'id' ] );
-		array_push( $search, "%date%" );
+		array_push( $search, "/%date%/" );
 		array_push( $replace, $entry_array[ 'date' ] );
-		array_push( $search, "%categories%" );
+		array_push( $search, "/%categories%/" );
 		array_push( $replace, $category_string );
-		array_push( $search, "%edit_button%" );
+		array_push( $search, "/%edit_button%/" );
 		array_push( $replace, $edit_button );
-		array_push( $search, "%delete_button%" );
+		array_push( $search, "/%delete_button%/" );
 		array_push( $replace, $delete_button );
-		array_push( $search, "%add_comment%" );
+		array_push( $search, "/%add_comment%/" );
 		array_push( $replace, $add_comment );
-		array_push( $search, "%views%" );
+		array_push( $search, "/%views%/" );
 		array_push( $replace, $views );
-		array_push( $search, "%trackbacks%" );
+		array_push( $search, "/%trackbacks%/" );
 		array_push( $replace, $trackbacks );
-		array_push( $search, "%permalink%" );
+		array_push( $search, "/%permalink%/" );
 		array_push( $replace, $permalink );
-		array_push( $search, "%relatedlink%" );
+		array_push( $search, "/%relatedlink%/" );
 		array_push( $replace, $relatedlink );
-		array_push( $search, "%ipaddress%" );
+		array_push( $search, "/%ipaddress%/" );
 		array_push( $replace, $ipaddress );
-		array_push( $search, "%ratings%" );
+		array_push( $search, "/%ratings%/" );
 		array_push( $replace, $ratings );
-		array_push( $search, "%content%" );
+		array_push( $search, "/%content%/" );
 		array_push( $replace, $entry_array[ 'entry' ] );
 		
 		// DO SEARCH AND REPLACE
-		$blog_content = str_replace($search, $replace, $template);
+		$blog_content = preg_replace($search, $replace, $template);
 		
 		// RETURN HTML
 		return $blog_content;
 	}
 	
+	// ----------
+	// Static Entry
+	// ----------
 	function theme_staticentry ( $entry_array ) {
 		$blog_content = theme_blogentry( $entry_array, 'static' );
 		return $blog_content;
 	}
 	
+	// -------------
+	// Comment Entry
+	// -------------
 	function theme_commententry ( $entry_array ) {
 		$blog_content = theme_blogentry( $entry_array, 'comment' );
 		return $blog_content;
 	}
 	
+	// --------------
+	// Trackback Entry
+	// --------------
 	function theme_trackbackentry ( $entry_array ) {
 		global $blog_config, $user_colors;
 
@@ -280,6 +329,10 @@
 		return $blog_content;
 	}
 	
+	// ------
+	// Colors
+	// ------
+	//
 	// Function:
 	// theme_default_colors( )
 	//
@@ -291,17 +344,7 @@
 	// get overwritten when the user saved colors are
 	// read from file.
 	//
-	// Note
-	// ----
-	// You can create your own "keys" but they will not
-	// show up in the "colors.php" document yet...
-	//
-	// Also, only these default keys have translations for
-	// different languages. If something is missing, email
-	// me and I'll add it for future releases.
-	//
-	// Eventually you'll have the option of disabling keys
-	// and added keys will appear on the "color.php" page.
+	// Custom keys appear on the Color page.
 	//
 	function theme_default_colors () {
 		global $lang_string;
@@ -388,6 +431,10 @@
 		return ( $color_def );
 	}
 	
+	// --------------
+	// Main Page Layout
+	// --------------
+	//
 	// Function:
 	// theme_pagelayout( )
 	//
@@ -406,76 +453,65 @@
 		// -----------------
 		$template = theme_load_template( "themes/" . $blog_theme . "/templates/main_layout.html" );
 		
-		$tag = "%content%";
-		$pos = strpos( $template, $tag );
-		$top_half = substr( $template, 0, $pos );
-		$bottom_half = substr( $template, $pos + strlen( $tag ), strlen( $template ) - $pos - strlen( $tag ) );
-		
 		// SEARCH AND REPLACE TERMS
 		$search = array();
 		$replace = array();
 		
-		// PAGE SIZES
-		array_push( $search, "%page_width%" );
-		array_push( $replace, $theme_vars[ 'content_width' ] + $theme_vars[ 'menu_width' ] );
-		array_push( $search, "%image_path%" );
-		array_push( $replace, "themes/" . $blog_theme . "/images/" );
-		array_push( $search, "%content_width%" );
-		array_push( $replace, $theme_vars[ 'content_width' ] );
-		array_push( $search, "%menu_width%" );
-		array_push( $replace, $theme_vars[ 'menu_width' ] );
-		
-		// COLORS
-		$arr = array_keys( $user_colors );
-		for ( $i = 0; $i < count( $arr ); $i++ ) {
-			array_push( $search, "%" . $arr[$i] . "%" );
-			array_push( $replace, $user_colors[ $arr[$i] ] );		
-		}
-		
 		// BLOG CONTENT
-		array_push( $search, "%blog_title%" );
+		array_push( $search, "/%blog_title%/" );
 		array_push( $replace, $blog_config[ 'blog_title' ] );
-		array_push( $search, "%menu%" );
-		array_push( $replace, theme_menu() );
-		array_push( $search, "%footer%" );
+		array_push( $search, "/%menu%/e" );
+		array_push( $replace, "theme_menu()" );
+		array_push( $search, "/%footer%/" );
 		array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
 		
 		// MENU WIDGETS
-		array_push( $search, "%widget_avatar%" );
-		array_push( $replace, theme_widget_avatar() );
-		array_push( $search, "%widget_links%" );
-		array_push( $replace, theme_widget_links() );
-		array_push( $search, "%widget_user%" );
-		array_push( $replace, theme_widget_user() );
-		array_push( $search, "%widget_setup%" );
-		array_push( $replace, theme_widget_setup() );
-		array_push( $search, "%widget_custom%" );
-		array_push( $replace, theme_widget_custom() );
-		array_push( $search, "%widget_calendar%" );
-		array_push( $replace, theme_widget_calendar() );
-		array_push( $search, "%widget_archive_tree%" );
-		array_push( $replace, theme_widget_archive_tree() );
-		array_push( $search, "%widget_categories%" );
-		array_push( $replace, theme_widget_categories() );
-		array_push( $search, "%widget_search%" );
-		array_push( $replace, theme_widget_search() );
-		array_push( $search, "%widget_counter%" );
-		array_push( $replace, theme_widget_counter() );
-		array_push( $search, "%widget_recent_entries%" );
-		array_push( $replace, theme_widget_recent_entries() );
-		array_push( $search, "%widget_recent_comments%" );
-		array_push( $replace, theme_widget_recent_comments() );
-		array_push( $search, "%widget_recent_trackbacks%" );
-		array_push( $replace, theme_widget_recent_trackbacks() );
-		array_push( $search, "%widget_badges%" );
+		array_push( $search, "/%widget_avatar=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_avatar('\\1')" );
+		array_push( $search, "/%widget_links=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_links('\\1')" );
+		array_push( $search, "/%widget_user=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_user('\\1')" );
+		array_push( $search, "/%widget_setup=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_setup('\\1')" );
+		array_push( $search, "/%widget_custom=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_custom('\\1')" );
+		array_push( $search, "/%widget_calendar=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_calendar('\\1')" );
+		array_push( $search, "/%widget_archive_tree=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_archive_tree('\\1')" );
+		array_push( $search, "/%widget_categories=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_categories('\\1')" );
+		array_push( $search, "/%widget_search=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_search('\\1')" );
+		array_push( $search, "/%widget_counter=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_counter('\\1')" );
+		array_push( $search, "/%widget_recent_entries=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_recent_entries('\\1')" );
+		array_push( $search, "/%widget_recent_comments=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_recent_comments('\\1')" );
+		array_push( $search, "/%widget_recent_trackbacks=?(.+)?%/e" );
+		array_push( $replace, "theme_widget_recent_trackbacks('\\1')" );
+		array_push( $search, "/%widget_badges%/" );
 		array_push( $replace, theme_widget_badges() );
 		
-		// DO SEARCH AND REPLACE
-		echo( str_replace($search, $replace, $top_half) );
+		// MAIN CONTENT
+		array_push( $search, "/%content%/" );
+
+		ob_start();
 		page_content();
-		echo( str_replace($search, $replace, $bottom_half) );
+		$main_content = ob_get_clean();
+		
+		array_push( $replace,  $main_content);
+		
+		// DO SEARCH AND REPLACE
+		echo( preg_replace( $search, $replace, $template ) );
 	}
 	
+	// -----------------
+	// Popup Window Layout
+	// -----------------
+	//
 	// Function:
 	// theme_popuplayout( )
 	//
@@ -494,37 +530,46 @@
 		// ------------------
 		$template = theme_load_template( "themes/" . $blog_theme . "/templates/popup_layout.html" );
 		
-		$tag = "%content%";
-		$pos = strpos( $template, $tag );
-		$top_half = substr( $template, 0, $pos );
-		$bottom_half = substr( $template, $pos + strlen( $tag ), strlen( $template ) - $pos - strlen( $tag ) );
-		
 		// SEARCH AND REPLACE TERMS
 		$search = array();
 		$replace = array();
 		
-		array_push( $search, "%popup_width%" );
+		array_push( $search, "/%popup_width%/" );
 		array_push( $replace, $theme_vars[ 'popup_window' ][ 'content_width' ] );
 		
 		$arr = array_keys( $user_colors );
 		for ( $i = 0; $i < count( $arr ); $i++ ) {
-			array_push( $search, "%" . $arr[$i] . "%" );
+			array_push( $search, "/%" . $arr[$i] . "%/" );
 			array_push( $replace, $user_colors[ $arr[$i] ] );		
 		}
 		
-		array_push( $search, "%blog_title%" );
+		array_push( $search, "/%blog_title%/" );
 		array_push( $replace, $blog_config[ 'blog_title' ] );
-		array_push( $search, "%footer%" );
+		array_push( $search, "/%footer%/" );
 		array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
 		
-		// DO SEARCH AND REPLACE
-		echo( str_replace($search, $replace, $top_half) );
+		// MAIN CONTENT
+		array_push( $search, "/%content%/" );
+
+		ob_start();
 		page_content();
-		echo( str_replace($search, $replace, $bottom_half) );
+		$main_content = ob_get_clean();
+		
+		array_push( $replace,  $main_content);
+		
+		// DO SEARCH AND REPLACE
+		echo( preg_replace($search, $replace, $template ) );
 	}
 	
-	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
+	// ----------
+	// Menu Block
+	// ----------
+	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null, $template_file='menu_block.html' ) {
 		global $blog_theme;
+		
+		if ( $template_file == false ) {
+			$template_file = 'menu_block.html';
+		}
 		
 		// ------------------
 		// HTML BLOCK TEMPLATE
@@ -540,48 +585,27 @@
 			$search = array();
 			$replace = array();
 			
-			array_push( $search, "%title%" );
+			array_push( $search, "/%title%/" );
 			array_push( $replace, $blockArray[ 'title' ] );
-			array_push( $search, "%content%" );
+			array_push( $search, "/%content%/" );
 			array_push( $replace, $blockArray[ 'content' ] );
-			array_push( $search, "%comment%" );
+			array_push( $search, "/%comment%/" );
 			array_push( $replace, $comment );
-			array_push( $search, "%id%" );
+			array_push( $search, "/%id%/" );
 			array_push( $replace, $toggleDiv );
-			array_push( $search, "%twisty%" );
+			array_push( $search, "/%twisty%/" );
 			array_push( $replace, $img_hide );
 		
-			$template = theme_load_template( "themes/" . $blog_theme . "/templates/menu_block.html" );
-			return( str_replace( $search, $replace, $template) );
+			$template = theme_load_template( "themes/" . $blog_theme . "/templates/" . $template_file );
+			
+			return( preg_replace( $search, $replace, $template) );
 		}
 	}
 	
-	function theme_load_template( $url ) {
-		global $theme_vars, $blog_theme;
-		
-		// "themes/" . $blog_theme . "/templates/blog_entry.html"
-		$template = sb_read_file( $url );
-		
-		// SEARCH AND REPLACE TERMS
-		$search = array();
-		$replace = array();
-		
-		// DEFAULT REPLACEMENTS
-		array_push( $search, "%page_width%" );
-		array_push( $replace, $theme_vars[ 'content_width' ] + $theme_vars[ 'menu_width' ] );
-		array_push( $search, "%image_path%" );
-		array_push( $replace, "themes/" . $blog_theme . "/images/" );
-		array_push( $search, "%content_width%" );
-		array_push( $replace, $theme_vars[ 'content_width' ] );
-		array_push( $search, "%menu_width%" );
-		array_push( $replace, $theme_vars[ 'menu_width' ] );
-		
-		$template = str_replace($search, $replace, $template);
-		
-		return ( $template );
-	}
-	
-	function theme_menu () {
+	// ------------------
+	// Complete Sidebar Menu
+	// ------------------
+	function theme_menu() {
 		global $user_colors, $blog_theme, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
 		
 		// ----------------
@@ -602,110 +626,113 @@
 		$html .= theme_widget_recent_entries();
 		$html .= theme_widget_recent_comments();
 		$html .= theme_widget_recent_trackbacks();
-		// $html .= '<p />';
-		// $html .= theme_widget_badges();
+		$html .= '<p />';
+		$html .= theme_widget_badges();
 		$html .= "\n<!-- SIDEBAR MENU END -->\n";
 		
 		// RETURN HTML
 		return ( $html );
 	}
 	
-	function theme_widget_links() {
-		// LINKS
+	// ------------------
+	// Sidebar Menu "Widgets"
+	// ------------------
+	
+	// LINKS
+	function theme_widget_links( $template_file='menu_block.html' ) {
 		$result = menu_display_links();
 		$loginString = menu_display_login();
 		if ( $loginString ) {
 			$result[ 'content' ] = $result[ 'content' ] . '<hr />' . $loginString;
 		}
-		$html = theme_menu_block( $result, 'LINKS', 'SidebarLinks' );
+		$html = theme_menu_block( $result, 'LINKS', 'SidebarLinks', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_avatar() {
-		// AVATAR
-		$html = theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
+	// AVATAR
+	function theme_widget_avatar( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_user() {
-		// MENU
-		$html = theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
+	// MENU
+	function theme_widget_user( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_setup() {
-		// SETUP
-		$html = theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
+	// SETUP
+	function theme_widget_setup( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_custom() {
+	// CUSTOM BLOCKS
+	function theme_widget_custom( $template_file='menu_block.html' ) {
 		global $logged_in;
 		
-		// CUSTOM BLOCKS
-		$html = "";
-		
+		$html = "";		
 		$array = read_blocks($logged_in);
 		for ($i=0 ; $i<count($array) ; $i+=2) {
 			$result = Array();
 			$result[ 'title' ] = $array[$i];
 			$result[ 'content' ] = $array[$i+1];
-			$html .= theme_menu_block( $result, 'CUSTOM BLOCK' );
+			$html .= theme_menu_block( $result, 'CUSTOM BLOCK', null, $template_file );
 		}
 		
 		return ( $html );
 	}
 	
-	function theme_widget_calendar() {
-		// CALENDAR
-		$html = theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
+	// CALENDAR
+	function theme_widget_calendar( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_archive_tree() {
-		// ARCHIVE TREE
-		$html = theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
+	// ARCHIVE TREE
+	function theme_widget_archive_tree( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_categories() {
-		// CATEGORIES
-		$html = theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
+	// CATEGORIES
+	function theme_widget_categories( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_search() {
-		// SEARCH
-		$html = theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
+	// SEARCH
+	function theme_widget_search( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_counter() {
-		// COUNTER
-		$html = theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter' );
+	// COUNTER
+	function theme_widget_counter( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_recent_entries() {
-		// RECENT ENTRIES
-		$html = theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
+	// RECENT ENTRIES
+	function theme_widget_recent_entries( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_recent_comments() {
-		// RECENT COMMENTS
-		$html = theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
+	// RECENT COMMENTS
+	function theme_widget_recent_comments( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments', $template_file );
 		return ( $html );
 	}
 	
-	function theme_widget_recent_trackbacks() {
-		// RECENT TRACKBACKS
-		$html = theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
+	// RECENT TRACKBACKS
+	function theme_widget_recent_trackbacks( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks', $template_file );
 		return ( $html );
 	}
 	
+	// BADGES
 	function theme_widget_badges() {
-		// BADGES
 		$html = '';
 		// $html .= '<div align="center">';
 		$html .= '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog" title="Powered by Simple PHP Blog" border="0" /></a> ';
