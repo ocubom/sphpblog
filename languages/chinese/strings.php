@@ -28,6 +28,7 @@
 		$lang_string[ 'menu_home' ] = "首页";
 		$lang_string[ 'menu_contact' ] = "联系我";
 		$lang_string[ 'menu_stats' ] = "统计";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
 		$lang_string[ 'menu_archive' ] = "归档";
 		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string[ 'menu_menu' ] = "菜单";
@@ -50,6 +51,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string[ 'home' ] = "返回首页";
 		$lang_string[ 'nav_next' ] = '下一页';
@@ -57,6 +64,8 @@
 		$lang_string[ 'search_title' ] = '搜索：';
 		$lang_string[ 'search_go' ] = 'Go';
 		$lang_string[ 'page_generated_in' ] = '页面生成时间: %s 秒';
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string[ 'sb_months' ] = array( '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' );
@@ -95,6 +104,7 @@
 				$lang_string[ 'btn_italic' ] = "斜";
 				$lang_string[ 'btn_image' ] = "图";
 				$lang_string[ 'btn_url' ] = "链";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string[ 'view_images' ] = "浏览上传的图片";
 				$lang_string[ 'label_entry' ] = "内容：";
 				$lang_string[ 'btn_preview' ] = "&nbsp;预览&nbsp;";
@@ -267,6 +277,10 @@
 				$lang_string[ 'comment_text' ] = "评论：";
 				$lang_string[ 'post_btn' ] = "&nbsp;发表评论&nbsp;";
 				$lang_string[ 'delete_btn' ] = "删除";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string[ 'error_add' ] = "<h2>哇！</h2>评论没有保存。在保存评论时遇到了一个问题。<br /><br />服务器报告：<br />";
 				$lang_string[ 'error_delete' ] = "<h2>哇！</h2>评论没有删除。在删除评论时遇到了一个问题。<br /><br />服务器报告：<br />";
@@ -464,8 +478,15 @@
 				$lang_string[ 'blog_enable_voting' ] = "允许访客对日志打分";
 				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
@@ -508,6 +529,7 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				break;
 			case 'trackbacks':
 				// Trackbacks

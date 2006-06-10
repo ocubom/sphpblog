@@ -28,6 +28,8 @@
 		$lang_string['menu_home'] = "Domov";
 		$lang_string['menu_contact'] = "Kontakt";
 		$lang_string['menu_stats'] = "Statistika";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_archive'] = "Zgodovina";
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Dodaj vnos";
@@ -48,6 +50,12 @@
 		$lang_string['menu_add_block'] = "Bloki";
 		$lang_string['menu_emoticons'] = "Sme&#353;ki"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
+		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
 
 		// Other
 		$lang_string['home'] = 'Vrni se na prvo stran';
@@ -56,9 +64,10 @@
 		$lang_string['search_title'] = 'I&#353;&#269;i:';
 		$lang_string['search_go'] = 'Pojdi';
 		$lang_string['page_generated_in'] = 'Stran je bila ustvarjena v %s sekundah';
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 
 		// SB Functions
-
 		$lang_string['sb_months'] = array( 'Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'August', 'September', 'Oktober', 'November', 'December' );
 		$lang_string['sb_default_title'] = 'Ni naslova';
 		$lang_string['sb_default_author'] = 'Ni avtorja';
@@ -95,6 +104,7 @@
 			$lang_string['btn_italic'] = " i ";
 			$lang_string['btn_image'] = "img";
 			$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 			$lang_string['view_images'] = "Pogled uploadanih slik";
 			$lang_string['label_entry'] = "Vsebina:";
 			$lang_string['btn_preview'] = "&nbsp;Predoglej&nbsp;";
@@ -278,6 +288,10 @@
 				$lang_string['comment_text'] = "Komentar:";
 				$lang_string['post_btn'] = "&nbsp;Objavi komentar&nbsp;";
 				$lang_string['delete_btn'] = "izbri&#353;i";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 
 				// Error Response
 				$lang_string['error_add'] = "<h2>Opsss!</h2>Komentar ni bil shranjen. Naletel sem na te&#382;ave med shranjevanjem tvojega komentarja.<br /><br />Stre&#382;nik je javil:<br />";
@@ -480,8 +494,15 @@
 				$lang_string['blog_enable_voting'] = "Omogo&#269;i ocenjevanje vnosov";
 				$lang_string['blog_enable_cache'] = "Omogo&#269;i predpomnenje vnosov v blog (na nekaterih stre&#382;nikih se lahko hitrost pove&#269;a)"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Omogo&#269;i kolendar / Blok - zgodovina"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Omogo&#269;i besedilni naslovni blok (Odklukaj, &#269;e je v glavi slika)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Omogo&#269;i stalne povezave pri vnosih"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Omogo&#269;i seznam zadnjih komentarjev"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Omogo&#269;i seznam zadnjih vnosov"; // New for 0.4.7
@@ -523,6 +544,7 @@
 				$lang_string['title_entries'] = "Vnosi"; // New in 0.4.7
 				$lang_string['title_general'] = "Splo&#353;no"; // New in 0.4.7
 				$lang_string['title_language'] = "Jezik"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				break;
 			case 'trackbacks':
 				// Trackbacks

@@ -25,6 +25,8 @@
 		$lang_string['menu_home'] = "Pagina iniziale";
 		$lang_string['menu_contact'] = "Contattami"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Statistiche"; // <-- New 0.3.7r
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_archive'] = "Archivio";
 		$lang_string['menu_menu'] = "Men&ugrave;";
 		$lang_string['menu_add'] = "Aggiungi notizia";
@@ -46,6 +48,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = "Torna alla pagina iniziale";
 		$lang_string['nav_next'] = 'Altre notizie'; // <-- New 0.3.7
@@ -53,6 +61,8 @@
 		$lang_string['search_title'] = 'Cerca:'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Vai'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Pagina generata in %s secondi'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre' );
@@ -91,6 +101,7 @@
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Vedi immagini caricate";
 				$lang_string['label_entry'] = "Notizia:";
 				$lang_string['btn_preview'] = "&nbsp;Anteprima&nbsp;";
@@ -261,6 +272,10 @@
 				$lang_string['comment_text'] = "Commento (*):";
 				$lang_string['post_btn'] = "&nbsp;Inserisci&nbsp;";
 				$lang_string['delete_btn'] = "Cancella";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>Opps!</h2>Commento non pubblicato! Si &egrave; verificato un problema durante la pubblicazione del commento.<br /><br />Il server ha risposto:<br />";
 				$lang_string['error_delete'] = "<h2>Opps!</h2>Commento non cancellato! Si &egrave; verificato un problema durante la cancellazione del commento.<br /><br />Il server ha risposto:<br />";
@@ -488,8 +503,15 @@
 				$lang_string['cal_monday'] = "Luned&igrave;"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Giorno di partenza del calendario"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Abilita calendario / blocco archivio"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Abilita il titolo del blog come testo semplice (deseleziona la checkbox se il titolo &egrave; all' interno di un header grafico)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Abilita il permalink nelle notizie."; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
 				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
 				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
@@ -497,6 +519,7 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
         break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

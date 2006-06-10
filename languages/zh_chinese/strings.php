@@ -6,6 +6,7 @@
 	// Language Version:   0.4.1.1
 	
 	
+	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
 			
@@ -30,6 +31,7 @@
 		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_contact'] = "聯絡網主Contact Me"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Stats";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
 		$lang_string['menu_menu'] = "選單";
 		$lang_string['menu_add'] = "寫新文章";
 		$lang_string['menu_add_static'] = "寫靜態文章";// 要改進翻譯，原 "Static Entry"
@@ -50,6 +52,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = "返回首頁";
 		$lang_string['nav_next'] = '下一頁'; // <-- New 0.3.7
@@ -57,6 +65,8 @@
 		$lang_string['search_title'] = '搜尋：'; // <-- New 0.3.7
 		$lang_string['search_go'] = '開始'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = '本頁花費了 %s 秒產生'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' );
@@ -95,6 +105,7 @@
 				$lang_string['btn_italic'] = "斜體";
 				$lang_string['btn_image'] = "圖片";
 				$lang_string['btn_url'] = "網址";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "遊覽已上傳的圖片";
 				$lang_string['label_entry'] = "內容："; // 要改進翻譯，原 "Entry"
 				$lang_string['btn_preview'] = "&nbsp;預覽&nbsp;";
@@ -265,6 +276,10 @@
 				$lang_string['comment_text'] = "回應：";
 				$lang_string['post_btn'] = "&nbsp;發表回應&nbsp;";
 				$lang_string['delete_btn'] = "刪除";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能儲存這篇回應。<br /><br />伺服器報告：<br />";
 				$lang_string['error_delete'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能刪除這篇回應。<br /><br />伺服器報告：<br />";
@@ -503,9 +518,17 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				$lang_string['blog_enable_calendar'] = "顯示日曆/舊文章區塊"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "顯示網站標題 (不選只會出現標題圖片)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "顯示文章獨立網址連接"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7

@@ -24,6 +24,7 @@
 	$lang_string['menu_home'] = "¥Û¡¼¥à";
 	$lang_string['menu_contact'] = "¥á¡¼¥ë"; // <-- New 0.3.8
 	$lang_string['menu_stats'] = "Åý·×¥Ç¡¼¥¿"; // <-- New 0.3.7r
+	$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
 	$lang_string['menu_archive'] = "¥¢¡¼¥«¥¤¥Ö";
 	$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 	$lang_string['menu_menu'] = "¥á¥Ë¥å¡¼";
@@ -46,6 +47,12 @@
 	$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 	$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 	// Other
 	$lang_string['home'] = 'Return to Home';
 	$lang_string['nav_next'] = 'Next'; // <-- New 0.3.7
@@ -53,6 +60,8 @@
 	$lang_string['search_title'] = '¥µ¥¤¥ÈÆâ¸¡º÷'; // <-- New 0.3.7
 	$lang_string['search_go'] = '¸¡º÷'; // <-- New 0.3.7
 	$lang_string['page_generated_in'] = 'Page Generated in %s seconds'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 		
 	// SB Functions
 	$lang_string['sb_months'] = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
@@ -91,6 +100,7 @@
 		$lang_string['btn_italic'] = "¥¤¥¿¥ê¥Ã¥¯";
 		$lang_string['btn_image'] = "¥¤¥á¡¼¥¸";
 		$lang_string['btn_url'] = "¥ê¥ó¥¯";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 		$lang_string['view_images'] = "¥¢¥Ã¥×¥í¡¼¥É²èÁü¤Î»²¾È";
 		$lang_string['label_entry'] = "ÆâÍÆ";
 		$lang_string['btn_preview'] = "&nbsp;¥×¥ì¥Ó¥å¡¼&nbsp;";
@@ -264,6 +274,10 @@ $lang_string['instructions'] = "°Ê²¼¤Î¥Õ¥©¡¼¥à¤ò»ÈÍÑ¤·¤Æ
 	$lang_string['comment_text'] = "¥³¥á¥ó¥È:";
 	$lang_string['post_btn'] = "&nbsp;¥³¥á¥ó¥È¤òÅê¹Æ&nbsp;";
 	$lang_string['delete_btn'] = "ºï½ü";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 
 	// Error Response
 	$lang_string['error_add'] = "<h2>Whoops!</h2>¥³¥á¥ó¥È¤¬Åê¹Æ¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£<br /><br />Server Reported:<br />";
@@ -489,8 +503,15 @@ $lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ
 				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Calendar Week Start Day"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
@@ -501,6 +522,7 @@ $lang_string['form_error'] = "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				break;
 	case 'trackbacks':  // <-- New 0.3.8
 	// Trackbacks

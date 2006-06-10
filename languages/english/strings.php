@@ -29,7 +29,7 @@
 		$lang_string['menu_home'] = "Home";
 		$lang_string['menu_contact'] = "Contact Me";
 		$lang_string['menu_stats'] = "Stats";
-		$lang_string['menu_calendar'] = "Calendar";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
 		$lang_string['menu_archive'] = "Archives";
 		$lang_string['menu_viewarchives'] = "View Archives";
 		$lang_string['menu_menu'] = "Menu";
@@ -64,8 +64,9 @@
 		$lang_string['nav_back'] = 'Back';
 		$lang_string['search_title'] = 'Search';
 		$lang_string['search_go'] = 'Go';
-		$lang_string['page_generated_in'] = 'Page Generated in %s seconds';		
+		$lang_string['page_generated_in'] = 'Page Generated in %s seconds';
 		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 
 		// SB Functions
 		$lang_string['sb_months'] = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
@@ -104,6 +105,7 @@
 			$lang_string['btn_italic'] = " i ";
 			$lang_string['btn_image'] = "img";
 			$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 			$lang_string['view_images'] = "View Uploaded Images";
 			$lang_string['label_entry'] = "Entry:";
 			$lang_string['btn_preview'] = "&nbsp;Preview&nbsp;";

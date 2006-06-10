@@ -1,22 +1,28 @@
 <?php
 	// Spanish Language Translation(s)
 	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com (0.4.7)
+	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
+		
 		// Language: Spanish
 		$lang_string['language'] = 'spanish';
 		$lang_string[ 'locale' ] = array('es_ES', 'esp', 'spanish');
 		$lang_string['rss_locale'] = 'es-ES'; // New 0.4.8
+		
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		setlocale( LC_TIME, $lang_string['locale'] );
+		
 		// Some Global Strings
+		
 		// Menu
 		$lang_string['menu_links'] = "Enlaces";
 		$lang_string['menu_home'] = "Principal";
 		$lang_string['menu_contact'] = "Contacta Conmigo"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Estadísticas"; // <-- New 0.3.7r
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
 		$lang_string['menu_archive'] = "Archivo";
 		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menú";
@@ -38,6 +44,13 @@
 		$lang_string['menu_add_block'] = "Bloques";
 		$lang_string['menu_emoticons'] = "Emoticonos"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
+		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+
 		// Other
 		$lang_string['home'] = 'Página Principal';
 		$lang_string['nav_next'] = 'Siguiente'; // <-- New 0.3.7
@@ -45,6 +58,9 @@
 		$lang_string['search_title'] = 'Búsqueda'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Enviar'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Página generada en %s segundos'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
+		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' );
 		$lang_string['sb_default_title'] = 'Sin título';
@@ -68,6 +84,7 @@
 		$lang_string['sb_view_counter_plural_post'] = ' visualizaciones';
 		$lang_string['sb_add_link_btn'] = 'Añadir Enlaces';
 		$lang_string['sb_rate_entry_btn'] = 'Haga clic para valorar la entrada';
+		
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
 				$lang_string['label_subject'] = "Título:";
@@ -76,11 +93,13 @@
 				$lang_string['btn_italic'] = " I ";
 				$lang_string['btn_image'] = "IMG";
 				$lang_string['btn_url'] = "URL";
+				$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Ver imágenes cargadas";
 				$lang_string['label_entry'] = "Texto:";
 				$lang_string['btn_preview'] = "&nbsp;Previsualizar&nbsp;";
 				$lang_string['btn_post'] = "&nbsp;Publicar&nbsp;";
 				$lang_string['file_name'] = "Nombre de fichero estático: (sin espacios ni extensiones de fichero)"; // <-- New 0.3.8
+				
 				// Javascript Strings
 				$lang_string['insert_styles'] = "Introduzca el texto";
 				$lang_string['insert_image'] = "Introduzca la dirección URL para la imagen";
@@ -88,12 +107,14 @@
 				$lang_string['insert_url2'] = "Introduzca la dirección web completa para el enlace";
 				$lang_string['insert_url3'] = "Abrir URL en una nueva ventana (Opcional):"; // <-- New 0.3.6
 				$lang_string['form_error'] = "Por favor rellene los campos Título y Texto.";
+				
 				// More Javascript Strings <-- New 0.3.6
 				$lang_string['insert_image_optional'] = 'Opcional:';
 				$lang_string['insert_image_width'] = 'Ancho (Opcional):';
 				$lang_string['insert_image_height'] = 'Alto (Opcional):';
 				$lang_string['insert_image_popup'] = 'Ver en una ventana emergente al hacer clic (Opcional):';
 				$lang_string['insert_image_float'] = 'Flotar (Opcional):';
+				
 				$lang_string['day'] = 'Day';
 				$lang_string['month'] = 'Month';
 				$lang_string['year'] = 'Year';
@@ -244,6 +265,10 @@
 				$lang_string['comment_text'] = "Comentario:";
 				$lang_string['post_btn'] = "&nbsp;Publicar comentario&nbsp;";
 				$lang_string['delete_btn'] = "Borrar";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				$lang_string['wrote'] = "<i>El %s, %s escribi&oacute;:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comentario no grabado. Ocurrió un problema mientras se guardaba su comentario.<br /><br />Respuesta del servidor:<br />";
@@ -471,9 +496,17 @@
 				$lang_string['title_entries'] = "Entradas"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Idioma"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				$lang_string['blog_enable_calendar'] = "Activar calendario / Bloque de archivo"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Permitir Bloque de Título de Texto (Desmarca el checkbox si el título de la cabecera es una imágen)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Permitir Enlaces Permanentes en las Entradas"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Permitir la Opción de Estadísticas en el Listado"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Permitir la Opción de Comentarios Recientes en el Listado"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Permitir la Opción de Entradas Recientes en el Listado"; // New for 0.4.7

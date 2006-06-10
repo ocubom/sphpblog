@@ -24,6 +24,7 @@
 		$lang_string['menu_home'] = "Íà ãëàâíóþ";
 		$lang_string['menu_contact'] = "Contact Me"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Stats"; // <-- New 0.3.7r
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
 		$lang_string['menu_archive'] = "Archives"; // <-- New
 		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Ìåíþ";
@@ -46,6 +47,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = "Âåðíóòüñÿ íà ãëàâíóþ";
 		$lang_string['nav_next'] = 'Next'; // <-- New 0.3.7
@@ -53,6 +60,8 @@
 		$lang_string['search_title'] = 'Search:'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Go'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Page Generated in %s seconds'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'ßíâàðü', 'Ôåâðàëü', 'Ìàðò', 'Àïðåëü', 'Ìàé', 'Èþíü', 'Èþëü', 'Àâãóñò', 'Ñåíòÿáðü', 'Îêòÿáðü', 'Íîÿáðü', 'Äåêàáðü' );
@@ -91,6 +100,7 @@
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Ïðîñìîòðåòü çàêà÷àííûå êàðòèíêè";
 				$lang_string['label_entry'] = "Òåêñò çàìåòêè:";
 				$lang_string['btn_preview'] = "&nbsp;Ïðîñìîòðåòü&nbsp;";
@@ -261,6 +271,10 @@
 				$lang_string['comment_text'] = "Òåêñò êîììåíòàðèÿ:";
 				$lang_string['post_btn'] = "&nbsp;Äîáàâèòü&nbsp;";
 				$lang_string['delete_btn'] = "óäàëèòü";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>Óïñ!</h2>Êîììåíòàðèé íå ñîõðàíåí. Ïðè ïîïûòêå ñîõðàíåíèÿ ïðîèçîøëà íåïîëàäêà.<br /><br />Îòâåò ñåðâåðà:<br />";
 				$lang_string['error_delete'] = "<h2>Óïñ!</h2>Êîììåíòàðèé íå áûë óäàëåí. Ïðè ïîïûòêå óäàëåíèÿ ïðîèçîøëà îøèáêà.<br /><br />Îòâåò ñåðâåðà:<br />";
@@ -497,9 +511,17 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				$lang_string['blog_enable_calendar'] = "Enable Calendar / Archives Block"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7

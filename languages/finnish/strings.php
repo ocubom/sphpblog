@@ -29,6 +29,8 @@
 		$lang_string['menu_home'] = "Etusivu";
 		$lang_string['menu_contact'] = "Ota yhteyttä";
 		$lang_string['menu_stats'] = "Tilastot";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_archive'] = "Arkisto";
 		$lang_string['menu_menu'] = "Valikko";
 		$lang_string['menu_add'] = "Lisää teksti";
@@ -49,6 +51,12 @@
 		$lang_string['menu_add_block'] = "Laatikot";
 		$lang_string['menu_emoticons'] = "Hymiöt"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
+		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
 
 		// Other
 		$lang_string['home'] = 'Palaa etusivulle';
@@ -57,6 +65,8 @@
 		$lang_string['search_title'] = 'Etsi:';
 		$lang_string['search_go'] = 'Etsi';
 		$lang_string['page_generated_in'] = 'Sivu luotu %s sekunnissa';		
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Tammikuu', 'Helmikuu', 'Maaliskuu', 'Huhtikuu', 'Toukokuu', 'Kesäkuu', 'Heinäkuu', 'Elokuu', 'Syyskuu', 'Lokakuu', 'Marraskuu', 'Joulukuu' );
@@ -95,6 +105,7 @@
 			$lang_string['btn_italic'] = " i ";
 			$lang_string['btn_image'] = "img";
 			$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 			$lang_string['view_images'] = "Katsele lähetettyjä kuvia";
 			$lang_string['label_entry'] = "Teksti:";
 			$lang_string['btn_preview'] = "&nbsp;Esikatselu&nbsp;";
@@ -278,6 +289,10 @@
 				$lang_string['comment_text'] = "Comment:";
 				$lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
 				$lang_string['delete_btn'] = "delete";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
@@ -479,8 +494,15 @@ Kansion/kansioiden luonti epäonnistui!<br /><br />Tämä tapahtui, koska:<br />
 				$lang_string['blog_enable_voting'] = "Salli käyttäjien arvostella tekstejä";
 				$lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Kalenteri/arkisto käytössä"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Tekstirivi kuvan alla (Ota ruksi pois, jos haluat, että blogin nimi ei näy yläkuvan alla)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Näytä tilastot valikossa"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Näytä uusimmat kommentit -lista"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Näytä uusimmat tekstit -lista"; // New for 0.4.7
@@ -520,6 +542,7 @@ Kansion/kansioiden luonti epäonnistui!<br /><br />Tämä tapahtui, koska:<br />
 				$lang_string['title_entries'] = "Tekstit"; // New in 0.4.7
 				$lang_string['title_general'] = "Yleiset"; // New in 0.4.7
 				$lang_string['title_language'] = "Kieli"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				break;
 			case 'trackbacks':
 				// Trackbacks

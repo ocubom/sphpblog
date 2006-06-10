@@ -28,6 +28,7 @@
 		$lang_string['menu_home'] = "Íà ãëàâíàòà";
 		$lang_string['menu_contact'] = "Çà êîíòàêòè"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Ñòàòèñòèêè"; // <-- New 0.3.7r
+		$lang_string['menu_calendar'] = "Calendar";
 		$lang_string['menu_archive'] = "Àðõèâ"; // <-- New
 		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Ìåíþ";
@@ -50,6 +51,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = "Íà ãëàâíàòà";
 		$lang_string['nav_next'] = 'Ñëåäâàùà'; // <-- New 0.3.7
@@ -57,6 +64,8 @@
 		$lang_string['search_title'] = 'Òúðñåíå:'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Òúðñè'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Ñòðàíèöàòà çàðåäè çà %s ñåêóíäè'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'ßíóàðè', 'Ôåâðóàðè', 'Ìàðò', 'Àïðèë', 'Ìàé', 'Þíè', 'Þëè', 'Àâãóñò', 'Ñåïòåìâðè', 'Îêòîìâðè', 'Íîåìâðè', 'Äåêåìâðè' );
@@ -79,12 +88,12 @@
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
 		$lang_string['sb_view_counter_post'] = ' ïðåãëåä';
+		
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = 'ïðåãëåäà: ';
 		$lang_string['sb_view_counter_plural_post'] = '';
 		
 		$lang_string['sb_add_link_btn'] = 'äîáàâè âðúçêà';
-		
 		$lang_string['sb_rate_entry_btn'] = 'Êëèêíè çà îöåíêà';
 		
 		// Entry Text Editor
@@ -95,11 +104,13 @@
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
+				$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Ïðåãëåäàé ïðèêà÷åíèòå èçîáðàæåíèÿ";
 				$lang_string['label_entry'] = "Òåêñò íà íîâèíàòà:";
 				$lang_string['btn_preview'] = "&nbsp;Ïðåãëåä&nbsp;";
 				$lang_string['btn_post'] = "&nbsp;Ïóáëèêóâàé&nbsp;";
 				$lang_string['file_name'] = "Èìå íà ñòàòè÷íèÿ ôàéë: (áåç èíòåðâàëè èëè ôàéëîâè ðàçøèðåíèÿ)"; // <-- New 0.3.8
+				
 				// Javascript Strings
 				$lang_string['insert_styles'] = "Âúâåäè ñòèë íà òåêñòà";
 				$lang_string['insert_image'] = "Âúâåäè ïúëåí URL íà èçîáðàæåíèåòî";
@@ -107,6 +118,7 @@
 				$lang_string['insert_url2'] = "Âúâåäè ïúëåí URL íà âðúçêàòà";
 				$lang_string['insert_url3'] = "Oòâîðè URL â íîâ ïðîçîðåö (íåçàäúëæèòåëíî):"; // <-- New 0.3.6
 				$lang_string['form_error'] = "Ìîëÿ, ïîïúëíè ïîëåòàòà çà òåìà è ñúäúðæàíèå.";
+				
 				// More Javascript Strings <-- New 0.3.6
 				$lang_string['insert_image_optional'] = 'Íåçàäúëæèòåëíî:';
 				$lang_string['insert_image_width'] = 'Øèðèíà (íåçàäúëæèòåëíî):';
@@ -265,6 +277,10 @@
 				$lang_string['comment_text'] = "Òåêñò íà êîìåíòàðà:";
 				$lang_string['post_btn'] = "&nbsp;Äîáàâè&nbsp;";
 				$lang_string['delete_btn'] = "èçòðèé";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>Óïñ!</h2>Êîìåíòàðúò íå å çàïàçåí. Ïðè îïèòà çà çàïàçâàíå å âúçíèêíàë ïðîáëåì.<br /><br />Îòãîâîð íà ñúðâúðà:<br />";
 				$lang_string['error_delete'] = "<h2>Óïñ!</h2>Êîìåíòàðúò íå å èçòðèò. Ïðè îïèòà çà èçòðèâàíå å âúçíèêíàëà ãðåøêà.<br /><br />Îòãîâîð íà ñúðâúðà:<br />";
@@ -501,9 +517,17 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				$lang_string['blog_enable_calendar'] = "Àêòèâèðàíå íà êàëåíäàð / Áëîê Àðõèâ"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Ïîêàæè çàãëàâèåòî íà ñàéòà â òåêñò (Íå ìàðêèðàé, àêî èìåòî ñå ñúäúðæà â ãðàôè÷íèÿ õåäúð)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7

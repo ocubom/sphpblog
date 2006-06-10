@@ -25,6 +25,8 @@
 		$lang_string['menu_home'] = "Αρχική Σελίδα";
 		$lang_string['menu_contact'] = "Επικοινωνία";
 		$lang_string['menu_stats'] = "Στατιστικά";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_archive'] = "Αρχείο";
 		$lang_string['menu_menu'] = "Μενού";
 		$lang_string['menu_add'] = "Εισαγωγή Εγγραφής";
@@ -46,6 +48,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = 'Επιστροφή στην Αρχική Σελίδα';
 		$lang_string['nav_next'] = 'Επόμενο'; // <-- New 0.3.7
@@ -53,6 +61,8 @@
 		$lang_string['search_title'] = 'Αναζήτηση:'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Πάμε!'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Η σελίδα δημιουργήθηκε σε %s δευτερολέπτα'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάϊος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος' );
@@ -91,6 +101,7 @@
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Επισκόπηση Απεσταλμένων Εικόνων";
 				$lang_string['label_entry'] = "Εγγραφή:";
 				$lang_string['btn_preview'] = "&nbsp;Προεπισκόπηση&nbsp;";
@@ -261,6 +272,10 @@
 				$lang_string['comment_text'] = "Σχόλιο:";
 				$lang_string['post_btn'] = "&nbsp;Δημοσίευση Σχολίου&nbsp;";
 				$lang_string['delete_btn'] = "Διαγραφή";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>Σφάλμα !</h2>Το Σχόλιο δεν αποθηκεύθηκε. Εμφανίστηκε το εξής πρόβλημα:<br /><br />Μήνυμα Server:<br />";
 				$lang_string['error_delete'] = "<h2>Σφάλμα !</h2>Το Σχόλιο δεν διαγράφηκε. Εμφανίστηκε το εξής πρόβλημα:<br /><br />Μήνυμα Server:<br />";
@@ -492,8 +507,15 @@
 				$lang_string['cal_monday'] = "Δευτέρα"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Ημέρα έναρξης Ημερολογίου εβδομάδας"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Ενεργοποίηση Block Ημερολογίου / Αρχείου"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Ενεργοποίηση του Block με απλό κειμένου στον τίτλο (Απενεργοποιήστε το checkbox εαν ο τίτλος βρίσκεται μέσα στο γραφικό της κεφαλίδας)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Ενεργοποίηση Permalink στις Εγγραφές του Blog"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
 				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
 				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
@@ -501,6 +523,7 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
         break;
 			case 'trackbacks':
 				// Trackbacks

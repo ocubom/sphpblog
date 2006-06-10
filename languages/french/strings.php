@@ -23,6 +23,8 @@
 		$lang_string['menu_home'] = "&Agrave; la maison";
 		$lang_string['menu_contact'] = "Contactez-Moi"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Statistiques"; // <-- New 0.3.7r
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
 		$lang_string['menu_archive'] = "Archives"; // <-- New
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Ajout Contenu";
@@ -46,6 +48,12 @@
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = "Retour Accueil";
 		$lang_string['nav_next'] = 'Apr&egrave;s'; // <-- New 0.3.7
@@ -53,6 +61,8 @@
 		$lang_string['search_title'] = 'Recherche:'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Allez'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Page produite dans %s secondes'; // <-- New 0.3.7
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre', 'Novembre', 'D&eacute;cembre' );
@@ -93,6 +103,7 @@
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Voir les images t&eacute;l&eacute;charg&eacute;es";
 				$lang_string['label_entry'] = "Contenu :";
 				$lang_string['btn_preview'] = "&nbsp;Aper&ccedil;u&nbsp;";
@@ -262,6 +273,10 @@
 				$lang_string['comment_text'] = "Votre commentaire :";
 				$lang_string['post_btn'] = "&nbsp;Poster&nbsp;";
 				$lang_string['delete_btn'] = "Effacer";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Commentaire non sauvegard&eacute;. Probl&egrave;me rencontr&eacute; durant l'&eacute;xecution du script.<br /><br />Le Serveur &agrave; report&eacute; :<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Commentaire non d&eacute;truit. Probl&egrave;me rencontr&eacute; durant l'op&eacute;ration de suppression de votre commentaire.<br /><br />le serveur &agrave; report&eacute; :<br />";
@@ -495,8 +510,15 @@
 				$lang_string['cal_monday'] = "Monday"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Jour De D&eacute;but De Semaine De Calendrier"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Permettez Le Bloc De Calendrier/Archives"; // New for 0.4.6
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Permettez le bloc plat de titre des textes (checkbox clair si le titre est dans le graphique d'en-t&ecirc;te)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Permettez Permalink sur des entr&eacute;es de Blog"; // New for 0.4.6
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
 				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
 				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
@@ -504,6 +526,7 @@
 				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
         break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks

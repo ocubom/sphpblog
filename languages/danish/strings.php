@@ -30,6 +30,8 @@
 		$lang_string['menu_home'] = "Forside";
 		$lang_string['menu_contact'] = "Kontakt mig";
 		$lang_string['menu_stats'] = "Statistik";
+		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string['menu_viewarchives'] = "View Archives";
 		$lang_string['menu_archive'] = "Arkiv";
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Opret meddelelse";
@@ -51,6 +53,12 @@
 		$lang_string['menu_emoticons'] = "Humørikoner";
 		$lang_string['menu_avatar'] = "Displaybillede";
 		
+		// Counter
+		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		
 		// Other
 		$lang_string['home'] = "Tilbage til forside";
 		$lang_string['nav_next'] = 'Næste';
@@ -58,6 +66,8 @@
 		$lang_string['search_title'] = 'Søg:';
 		$lang_string['search_go'] = 'Søg';
 		$lang_string['page_generated_in'] = 'Side genereret på %s sekunder';
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December' );
@@ -96,6 +106,7 @@
 			$lang_string['btn_italic'] = " k ";
 			$lang_string['btn_image'] = "bil";
 			$lang_string['btn_url'] = "url";
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
 			$lang_string['view_images'] = "Vis uploadede billeder";
 			$lang_string['label_entry'] = "Meddelelse:";
 			$lang_string['btn_preview'] = "&nbsp;Vis&nbsp;";
@@ -279,6 +290,10 @@
 				$lang_string['comment_text'] = "Kommentar:";
 				$lang_string['post_btn'] = "&nbsp;Gem kommentar&nbsp;";
 				$lang_string['delete_btn'] = "slet";
+				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				
+				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 
 				// Error Response
 				$lang_string['error_add'] = "<h2>Ups!</h2>Kommentaren blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
@@ -481,8 +496,15 @@
 				$lang_string['blog_enable_voting'] = "Tillad brugere at vurdere meddelelser";
 				$lang_string['blog_enable_cache'] = "Slå blog-meddelses-cache til (kan give forøget hastighed på nogen servere)";
 				$lang_string['blog_enable_calendar'] = "Slå kalender/arkiv-blok til";
+				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Slå klartekst-titel-blok til (Fjern krydset, hvis titlen er i titel-grafikken)";
 				$lang_string['blog_enable_permalink'] = "Slå permalink for blog-meddelelser til";
+				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Slå statistik til i menuen";
 				$lang_string['blog_enable_lastcomments'] = "Slå liste med mest kommenterede indlæg til";
 				$lang_string['blog_enable_lastentries'] = "Slå liste med nyeste indlæg til";
@@ -525,6 +547,7 @@
 				$lang_string['title_entries'] = "Indlæg";
 				$lang_string['title_general'] = "Generelt";
 				$lang_string['title_language'] = "Sprog";
+				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
 				break;
 			case 'trackbacks':
 				// Trackbacks
