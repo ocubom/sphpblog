@@ -64,23 +64,23 @@ sb_language( 'contact' );
 			<label for="comment"><?php echo( $lang_string[ 'comment' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
 			
-      <?php
-      if ($blog_config['blog_enable_capcha']==0) {
-        echo('<!-- Anti-spam disabled -->');
-        echo('<input type="hidden" name="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
-      } else {
-        echo('<label for="capcha_contact">');
-        if ( function_exists('imagecreate') && $blog_config[ 'blog_enable_capcha_image' ] ) {
-				  echo ( $lang_string[ 'contact_capcha' ] . '<br /><img src="capcha.php?entry=contact" />' );
-				  }	else {
-				  echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
-				  }
-			  echo('</label><br />');
-			  echo('<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />');
+			<?php
+			if ( $blog_config['blog_enable_capcha'] == 0 ) {
+				echo('<!-- Anti-spam disabled -->');
+				echo('<input type="hidden" name="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
+			} else {
+				echo('<label for="capcha_contact">');
+				if ( function_exists('imagecreate') && $blog_config[ 'blog_enable_capcha_image' ] ) {
+					echo ( $lang_string[ 'contact_capcha' ] . '<br /><img src="capcha.php?entry=contact" />' );
+				}	else {
+					echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
+				}
+				echo('</label><br />');
+				echo('<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />');
 			} 
-      ?>
+			?>
 			
-      <hr />
+			<hr />
 	
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 			</form>
