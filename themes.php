@@ -52,7 +52,7 @@
 			
 			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
 			
-			<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action="themes.php" method="POST" name="setup" name="setup">
+			<form action="themes.php" method="POST" name="setup" name="setup">
 				
 				<label for="blog_theme"><?php echo( $lang_string[ 'choose_theme' ] ); ?></label><br />
 				<select name="blog_theme">

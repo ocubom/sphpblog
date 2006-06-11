@@ -98,7 +98,7 @@
 		echo( '<hr />' );
 	?>
 	
-		<form accept-charset="<?php echo( $lang_string[ 'html_charset' ] ); ?>,iso-8859-1,utf-8" action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
+		<form action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />
 			<input type="text" name="block_name" autocomplete="OFF" value="<?php echo $block_name; ?>" size="40"><br /><br />
