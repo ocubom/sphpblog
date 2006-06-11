@@ -82,8 +82,8 @@
 			global $month, $year, $day, $lang_string, $showall;
 			
 			$entry_array = array();
-			$entry_array[ 'subject' ] = 'Archives - <a href="archives.php?showall=1">Show All</a>';
-			$entry_array[ 'entry' ] = read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
+			$entry_array[ 'subject' ] = $lang_string['title'];
+			$entry_array[ 'entry' ] = '<p><a href="archives.php?showall=1">' . $lang_string['showall'] . '</a></p>' . read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
 			
 			echo( theme_staticentry( $entry_array ) );
 		}

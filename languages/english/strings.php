@@ -158,6 +158,7 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'add_static':
 				// Add Entry
 				$lang_string['title'] = "Add Static Page";
@@ -173,6 +174,7 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'add_block':
 
 				// Add / Manage Blocks
@@ -190,6 +192,7 @@
 				$lang_string['submit_btn_add'] = "Add Block";
 				$lang_string['form_error'] = "Please complete the Name field.";
 				break;
+				
 			case 'add_link':
 				$lang_string['static_pages'] = "Static Pages:";
 
@@ -208,6 +211,7 @@
 				$lang_string['submit_btn_add'] = "Add Link";
 				$lang_string['form_error'] = "Please complete the Name field.";
 				break;
+				
 			case 'categories':
 
 				// Add / Manage Links
@@ -220,6 +224,7 @@
 				$lang_string['validate'] = "Validate";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				break;
+				
 			case 'colors':
 				// Change Colors
 				$lang_string['title'] = "Change Colors";
@@ -267,6 +272,7 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'comments':
 				// Comments
 				$lang_string['name'] = "Name:"; //New in 0.4.6.2
@@ -308,6 +314,7 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'delete_static':
 				$lang_string['title'] = "Delete Static Page";
 				$lang_string['instructions'] = "This is the static page you are about to delete. Please make sure you really want to get rid of it, there's no undo...";
@@ -316,10 +323,12 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'image_list':
 				$lang_string['title'] = "Image List";
 				$lang_string['instructions'] = "Click on the links below to view images.<br /><br />To add an image to your entry:<br />1) Control-click a link and choose 'Copy Link to Clipboard'.<br />2) Return to the Add Entry or Edit Entry page.<br />3) Click the 'img' button and paste the URL into the window.";
 				break;
+				
 			case 'info':
 				$lang_string['title'] = "Meta-Data Information";
 				$lang_string['instructions'] = "The information below is used for &quot;meta-data&quot;, which helps search engines correctly find and identify your site. Information may also be used in RSS feeds.";
@@ -331,15 +340,19 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Title and Author fields.";
 				break;
+				
 			case 'index':
 				// Index
 				break;
+				
 			case 'static':
 				// Index
 				break;
+				
 			case 'rating':
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'login':
 				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
 				$lang_string['upgrade_count'] = "%n comment files need to be upgraded:"; // New 0.3.8
@@ -355,16 +368,19 @@
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
 				break;
+				
 			case 'logout':
 				$lang_string['title'] = "Logout";
 				$lang_string['instructions'] = "<h2>Whoops!</h2>Logout failed. Could not delete cookie. Why are you still logged in?<p />";
 				break;
+				
 			case 'forms':
 				$lang_string['title'] = "";
 				$lang_string['instructions'] = "";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'set_login':
 				$lang_string['title'] = "Change Username &amp; Password";
 				$lang_string['instructions'] = "Use the form below to change your Username and/or Password. Enter the Username and Password that you want to use.";
@@ -381,12 +397,14 @@
 					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
 					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
+				
 			case 'install00':
 				$lang_string['title'] = "Welcome";
 				$lang_string['instructions'] = "Thank you for choosing Simple PHP Blog!";
 				$lang_string['blog_choose_language'] = "Choose Language:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				break;
+				
 			case 'install01':
 				$lang_string['title'] = "Welcome";
 				$lang_string['instructions'] = "
@@ -395,6 +413,7 @@
 				<b>Click below to begin setup:</b>";
 				$lang_string['begin'] = "[ Begin Setup ]";
 				break;
+				
 			case 'install02':
 				$lang_string['title'] = "Setup";
 				$lang_string['instructions'] = "Trying to create <b>config</b>, <b>content</b>, and <b>images</b> folders:";
@@ -420,6 +439,7 @@
 				$lang_string['success'] = "<h2>Success!</h2>Folders created successfully!<p /><b>Click below to continue:</b>";
 				$lang_string['continue'] = "[ Continue ]";
 				break;
+				
 			case 'install03':
 				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
 				$lang_string['standard'] = "Standard DES Encryption: ";
@@ -446,6 +466,7 @@
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
 				break;
+				
 			case 'install04':
 				$lang_string['title'] = "Create Password File";
 				$lang_string['instructions'] = "Here's the tricky part:<br />
@@ -463,6 +484,7 @@
 				$lang_string['code'] = "Code for <b>password.php</b> file:";
 				$lang_string['continue'] = "[ Continue ]";
 				break;
+				
 			case 'install05':
 			case 'install06':
 				$lang_string['title'] = "Login";
@@ -481,6 +503,7 @@
 				$lang_string['btn_setup'] = "[ Setup ]";
 				$lang_string['btn_try_again'] = "[ Try Again ]";
 				break;
+				
 			case 'setup':
 				$lang_string['title'] = "Setup";
 				$lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
@@ -557,6 +580,7 @@
 				// Error Response
 				$lang_string['error_add'] = "Error storing trackback data.";
 				break;
+				
 			case 'options':
 				$lang_string['title'] = "Options";
 				$lang_string['instructions'] = "Use the form below to customize the date and time display for blog and comment entries. You can select 12 or 24 hour clocks. Short or long date format. And the <b>Preview</b> areas update automatically to show you how you formatting will appear.";
@@ -602,6 +626,7 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'themes':
 				$lang_string['title'] = "Themes";
 				$lang_string['instructions'] = "Use the drop-down menu to select a different theme.";
@@ -612,6 +637,7 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'upload_img':
 				$lang_string['title'] = "Upload Image";
 				$lang_string['instructions'] = "Click on the button below to select a file to upload.";
@@ -620,11 +646,13 @@
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't upload image. Here's some more information:<br /><br />Server Reported:<br />";
 				break;
+				
 			case 'search':
 				$lang_string['title'] = "Search Results";
 				$lang_string['instructions'] = "Search results for <b>%string</b>:";
 				$lang_string['not_found'] = "No results found";
 				break;
+				
 			case 'contact':
 				$lang_string['contact_capcha'] = "Anti-Spam: Enter "; // 0.4.2
 				$lang_string['title'] = "Contact Me";
@@ -642,6 +670,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;
+				
 			case 'stats':
 				$lang_string["title"] = "Statistics";
 				$lang_string["general"] = "General";
@@ -656,12 +685,14 @@
 				$lang_string["most_voted_entries"] = "10 Most voted entries"; // 0.4.1
 				$lang_string["most_rated_entries"] = "10 Most rated entries"; // 0.4.1
 				break;
+				
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
 				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
 				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
 				$lang_string["clientid"] = 'Client ID: ';
 				break;
+				
 			case 'errorpage':  // New for 0.4.6
 				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
 				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
@@ -671,6 +702,7 @@
 				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
 				$lang_string["clientid"] = 'Client ID: ';
 				break;
+				
 			case 'emoticons':  // New for 0.4.7
 				$lang_string['title'] = "Admin Emoticons";
 				$lang_string['instructions'] = "
@@ -691,6 +723,11 @@
 				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
 				$lang_string["save_button"] = 'Save Emoticons';
 				break;
+				
+			case 'archives': // New for 0.4.8
+				$lang_string['title'] = "Archives";
+				$lang_string['showall'] = "Show All";
+				
 			default:
 				break;
 		}
