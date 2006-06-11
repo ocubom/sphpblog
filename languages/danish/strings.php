@@ -4,10 +4,9 @@
 	// (c) 2005-2006 Jan Normann Nielsen, spam <at> dubbekarl <dot> dk
 	// (c) 2004 Thomas Petersen, thomasp <at> nsd <dot> dk
 	//
-	// Simple PHP Version: 0.4.7.1
-	// Language Version:   0.4.7.1
-	
-	
+	// Simple PHP Version: 0.4.8
+	// Language Version:   0.4.8
+		
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
 			
@@ -15,7 +14,7 @@
 		$lang_string['language'] = 'dansk';
 		
 		$lang_string[ 'locale' ] = array('da_DK','danish');
-		$lang_string['rss_locale'] = 'da-DK'; // New 0.4.8
+		$lang_string['rss_locale'] = 'da-DK';
 		
 		// ISO Charset: ISO-8859-15 - Se http://us4.php.net/manual/en/function.htmlspecialchars.php for valg af ISO-8859-15-tegnsæt.
 		$lang_string['html_charset'] = 'ISO-8859-15';
@@ -30,8 +29,8 @@
 		$lang_string['menu_home'] = "Forside";
 		$lang_string['menu_contact'] = "Kontakt mig";
 		$lang_string['menu_stats'] = "Statistik";
-		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
-		$lang_string['menu_viewarchives'] = "View Archives";
+		$lang_string['menu_calendar'] = "Kalender";
+		$lang_string['menu_viewarchives'] = "Vis arkiv";
 		$lang_string['menu_archive'] = "Arkiv";
 		$lang_string['menu_menu'] = "Menu";
 		$lang_string['menu_add'] = "Opret meddelelse";
@@ -54,10 +53,10 @@
 		$lang_string['menu_avatar'] = "Displaybillede";
 		
 		// Counter
-		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
-		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
-		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
-		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		$lang_string['counter_today'] = "I dag:";
+		$lang_string['counter_yesterday'] = "I går:";
+		$lang_string['counter_totalsidebar'] = "I alt:";
+		$lang_string['counter_title'] = "Totaler for tæller";
 		
 		// Other
 		$lang_string['home'] = "Tilbage til forside";
@@ -66,8 +65,8 @@
 		$lang_string['search_title'] = 'Søg:';
 		$lang_string['search_go'] = 'Søg';
 		$lang_string['page_generated_in'] = 'Side genereret på %s sekunder';
-		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
-		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
+		$lang_string['counter_total'] = 'Sidevisninger: ';
+		$lang_string['read_more'] = 'Læs mere...';
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December' );
@@ -106,7 +105,7 @@
 			$lang_string['btn_italic'] = " k ";
 			$lang_string['btn_image'] = "bil";
 			$lang_string['btn_url'] = "url";
-			$lang_string['btn_readmore'] = "read more"; // 0.4.8
+			$lang_string['btn_readmore'] = "læs mere";
 			$lang_string['view_images'] = "Vis uploadede billeder";
 			$lang_string['label_entry'] = "Meddelelse:";
 			$lang_string['btn_preview'] = "&nbsp;Vis&nbsp;";
@@ -290,10 +289,10 @@
 				$lang_string['comment_text'] = "Kommentar:";
 				$lang_string['post_btn'] = "&nbsp;Gem kommentar&nbsp;";
 				$lang_string['delete_btn'] = "slet";
-				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
-				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				$lang_string['expired_comment1'] = "Beklager, men nye kommentarer kan ikke skriver efter ";
+				$lang_string['expired_comment2'] = " dage.";
 				
-				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
+				$lang_string['blacklisted'] = "Beklager, men din IP-adresse er blevet bandlyst. Kommentarer er ikke tilladt.";
 
 				// Error Response
 				$lang_string['error_add'] = "<h2>Ups!</h2>Kommentaren blev ikke gemt. Der opstod et problem med at gemme.<br /><br />Serveren sagde:<br />";
@@ -496,15 +495,15 @@
 				$lang_string['blog_enable_voting'] = "Tillad brugere at vurdere meddelelser";
 				$lang_string['blog_enable_cache'] = "Slå blog-meddelses-cache til (kan give forøget hastighed på nogen servere)";
 				$lang_string['blog_enable_calendar'] = "Slå kalender/arkiv-blok til";
-				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
-				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
-				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
-				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
+				$lang_string['blog_enable_archives'] = "Slå arkiv-blok til";
+				$lang_string['blog_enable_counter'] = "Slå tæller i side-bar til";
+				$lang_string['blog_counter_hours'] = "Antal timer, der skal gå, før sidevisninger tælles igen (baseret på IP-adressen):";
+				$lang_string['blog_enable_login'] = "Slå login-link til (Husk at gemme et bogmærke til \"login.php\" først...)";
 				$lang_string['blog_enable_title'] = "Slå klartekst-titel-blok til (Fjern krydset, hvis titlen er i titel-grafikken)";
 				$lang_string['blog_enable_permalink'] = "Slå permalink for blog-meddelelser til";
-				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
-				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
-				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
+				$lang_string['blog_enable_capcha'] = "Slå anti-spam til";
+				$lang_string['blog_footer_counter'] = "Slå tæller i sidefod til";
+				$lang_string['blog_enable_capcha_image'] = "Billeder til anti-spam (kun GD-bibliokteket) / Tekstfelt til anti-spam";
 				$lang_string['blog_enable_stats'] = "Slå statistik til i menuen";
 				$lang_string['blog_enable_lastcomments'] = "Slå liste med mest kommenterede indlæg til";
 				$lang_string['blog_enable_lastentries'] = "Slå liste med nyeste indlæg til";
@@ -547,7 +546,8 @@
 				$lang_string['title_entries'] = "Indlæg";
 				$lang_string['title_general'] = "Generelt";
 				$lang_string['title_language'] = "Sprog";
-				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
+				$lang_string['blog_comment_days_expiry'] = "Kommentarer tilladt i hvor mange dage? (0 giver ingen begrænsning)";
+
 				break;
 			case 'trackbacks':
 				// Trackbacks
@@ -625,6 +625,7 @@
 				$lang_string['instructions'] = "Resultat af søgning efter <b>%string</b>:";
 				$lang_string['not_found'] = "Ingen resultater";
 				break;
+				
 			case 'contact':
 				$lang_string['contact_capcha'] = "Anti-spam: Indtast ";
 				$lang_string['title'] = "Kontakt mig";
@@ -695,5 +696,4 @@
 				break;
 		}
 	}
-		
 ?>
