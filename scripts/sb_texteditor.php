@@ -151,7 +151,7 @@
 				$default_subject = sb_stripslashes( $_POST[ 'blog_subject' ] );
 				$default_content = sb_stripslashes( $_POST[ 'blog_text' ] );
 				$default_tb_ping = array_key_exists( 'tb_ping', $_POST ) ? sb_stripslashes( $_POST[ 'tb_ping' ] ): $default_tb_ping;
-				$default_categories = array_key_exists( 'catlist', $_POST ) ? sb_stripslashes( $_POST[ 'catlist' ] ): $default_categories;
+				$default_categories = array_key_exists( 'catlist', $_POST ) ? $_POST[ 'catlist' ]: $default_categories;
 				$default_relatedlink = array_key_exists( 'blog_relatedlink', $_POST ) ? sb_stripslashes( $_POST[ 'blog_relatedlink' ] ): $default_relatedlink;
 				
 				// Create Time

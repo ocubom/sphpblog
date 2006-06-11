@@ -72,7 +72,7 @@
     
 		if ( $blog_config[ 'blog_enable_counter' ] ) {
 			$result = array();
-			$result[ 'title' ] = 'Counter Totals';
+			$result[ 'title' ] = $lang_string['counter_title'];
 			$str = $str . show_counter_totals( $logged_in );
 			$result[ 'content' ] = $str;
 		

@@ -22,9 +22,9 @@
 		$lang_string['menu_home'] = "Principal";
 		$lang_string['menu_contact'] = "Contacta Conmigo"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Estadísticas"; // <-- New 0.3.7r
-		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
+		$lang_string['menu_calendar'] = "Calendario"; // New for 0.4.8
 		$lang_string['menu_archive'] = "Archivo";
-		$lang_string['menu_viewarchives'] = "View Archives"; // New in 0.4.7
+		$lang_string['menu_viewarchives'] = "Ver Archivos"; // New in 0.4.7
 		$lang_string['menu_menu'] = "Menú";
 		$lang_string['menu_add'] = "Agregar Entrada";
 		$lang_string['menu_add_static'] = "Agregar Página Estática";
@@ -46,10 +46,10 @@
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Counter
-		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
-		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
+		$lang_string['counter_today'] = "Hoy:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Ayer:"; // New for 0.4.8
 		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
-		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		$lang_string['counter_title'] = "Contadores totales"; // New for 0.4.8
 
 		// Other
 		$lang_string['home'] = 'Página Principal';
@@ -58,8 +58,8 @@
 		$lang_string['search_title'] = 'Búsqueda'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Enviar'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Página generada en %s segundos'; // <-- New 0.3.7
-		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
-		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
+		$lang_string['counter_total'] = 'Visitas al Sitio: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Leer Más...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' );
@@ -93,7 +93,7 @@
 				$lang_string['btn_italic'] = " I ";
 				$lang_string['btn_image'] = "IMG";
 				$lang_string['btn_url'] = "URL";
-				$lang_string['btn_readmore'] = "read more"; // 0.4.8
+				$lang_string['btn_readmore'] = "leer más"; // 0.4.8
 				$lang_string['view_images'] = "Ver imágenes cargadas";
 				$lang_string['label_entry'] = "Texto:";
 				$lang_string['btn_preview'] = "&nbsp;Previsualizar&nbsp;";
@@ -265,10 +265,10 @@
 				$lang_string['comment_text'] = "Comentario:";
 				$lang_string['post_btn'] = "&nbsp;Publicar comentario&nbsp;";
 				$lang_string['delete_btn'] = "Borrar";
-				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
-				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				$lang_string['expired_comment1'] = "Lo sentimos. No se permiten comentarios después de "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " días."; // New for 0.4.8
 				
-				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
+				$lang_string['blacklisted'] = "Lo siento, tu IP ha sido baneada. No se permiten comentarios."; // New for 0.4.8
 				$lang_string['wrote'] = "<i>El %s, %s escribi&oacute;:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comentario no grabado. Ocurrió un problema mientras se guardaba su comentario.<br /><br />Respuesta del servidor:<br />";
@@ -496,7 +496,7 @@
 				$lang_string['title_entries'] = "Entradas"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Idioma"; // New in 0.4.7
-				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
+				$lang_string['blog_comment_days_expiry'] = "¿Comentarios Permitidos Durante Cuántos Días? (0 sin caducidad)"; // New in 0.4.8
 				$lang_string['blog_enable_calendar'] = "Activar calendario / Bloque de archivo"; // New for 0.4.6
 				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
 				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
