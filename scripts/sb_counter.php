@@ -157,7 +157,8 @@
 		if ( file_exists( $count ) ) {
 			$allhandle = fopen($count,"r");
 			while($counter = fgetcsv($allhandle, 1024, "|")) {
-				$text = $lang_string['counter_totalsidebar'] . ' <b>' . $counter[0] . '</b><br />' . $lang_string['counter_today'] . ' <b>' . $counter[2] . '</b><br />' . $lang_string['counter_yesterday'] . ' <b>' . $counter[4] . '</b><br />';
+				// $text = $lang_string['counter_totalsidebar'] . ' <b>' . $counter[0] . '</b><br />' . $lang_string['counter_today'] . ' <b>' . $counter[2] . '</b><br />' . $lang_string['counter_yesterday'] . ' <b>' . $counter[4] . '</b><br />';
+				$text = $lang_string['counter_totalsidebar'] . ' <b>' . number_format( $counter[0], 0 ) . '</b><br />' . $lang_string['counter_today'] . ' <b>' . number_format( $counter[2], 0 ) . '</b><br />' . $lang_string['counter_yesterday'] . ' <b>' . number_format( $counter[4], 0 ) . '</b><br />';
 			}
 		
 			fclose ($allhandle);
