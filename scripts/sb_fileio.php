@@ -173,7 +173,11 @@
 		//
 		// I'm guessing that we don't need to lock a file to delete it. Who knows?
 		clearstatcache();
-		$result = @unlink( $filename );
+		if ( file_exists( $filename ) ) {
+			$result = @unlink( $filename );
+		} else {
+			$result = 'File "' . $filename . '" does not exist.';
+		}
 		return( $result );
 	}
 	

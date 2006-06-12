@@ -157,6 +157,7 @@
 
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Entry Saved!</h2>Your entry has been successfully saved."; // 0.4.8.1
 				break;
 				
 			case 'add_static':
@@ -271,6 +272,7 @@
 
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 				
 			case 'comments':
@@ -303,6 +305,8 @@
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
+				$lang_string['success_add'] = "<h2>Comment Added!</h2>Your comment has been successfully saved."; // New for 0.4.8.1
+				$lang_string['success_delete'] = "<h2>Comment Deleted!</h2>The comment has been deleted."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Name, Comment and Anti-Spam fields.";
 				break;
 
@@ -313,6 +317,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Entry Deleted!</h2>The entry has been deleted."; // New for 0.4.8.1
 				break;
 				
 			case 'delete_static':
@@ -322,6 +327,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Static Page Deleted!</h2>The static page has been deleted."; // New for 0.4.8.1
 				break;
 				
 			case 'image_list':
@@ -338,6 +344,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Meta-Data Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Title and Author fields.";
 				break;
 				
@@ -351,6 +358,7 @@
 				
 			case 'rating':
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Vote Saved!</h2>Your rating has been successfully saved."; // New for 0.4.8.1
 				break;
 				
 			case 'login':
@@ -371,7 +379,8 @@
 				
 			case 'logout':
 				$lang_string['title'] = "Logout";
-				$lang_string['instructions'] = "<h2>Whoops!</h2>Logout failed. Could not delete cookie. Why are you still logged in?<p />";
+				$lang_string['error'] = "<h2>Goodbye!</h2>You are now logged out. (You weren't logged in anyway!)<p />";
+				$lang_string['success'] = "<h2>Goodbye!</h2>You are now logged out.<p />";
 				break;
 				
 			case 'forms':
@@ -505,7 +514,7 @@
 				break;
 				
 			case 'setup':
-				$lang_string['title'] = "Setup";
+				$lang_string['title'] = "Preferences";
 				$lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
 				$lang_string['blog_title'] = "Blog Name:";
 				$lang_string['blog_author'] = "Author:";
@@ -554,6 +563,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Title and Author fields.";
 				$lang_string['label_entry_order'] = "Entry Order:";
 				$lang_string['select_new_to_old'] = "List Newest First";
@@ -579,6 +589,8 @@
 				$lang_string['delete_btn'] = "delete";
 				// Error Response
 				$lang_string['error_add'] = "Error storing trackback data.";
+				$lang_string['error_delete'] = "<h2>Whoops!</h2>Trackback not deleted. I ran into a problem while deleting the trackback.<br /><br />Server Reported:<br />";
+				$lang_string['success_delete'] = "<h2>Trackback Deleted!</h2>The trackback link has been deleted."; // New for 0.4.8.1
 				break;
 				
 			case 'options':
@@ -625,6 +637,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Options Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 				
 			case 'themes':
@@ -636,6 +649,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Theme Selected!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 				
 			case 'upload_img':
@@ -645,6 +659,7 @@
 				$lang_string['upload_btn'] = "Upload";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't upload image. Here's some more information:<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Image Uploaded!</h2>The image has been successfully saved."; // New for 0.4.8.1
 				break;
 				
 			case 'search':

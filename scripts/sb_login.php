@@ -87,9 +87,22 @@
 			session_set_cookie_params(60*60*24*5);
 			session_id($my_id);
 			session_start();
+			
+			// Check if they're actually logged in (for reporting...)
+			$is_logged_in = false;
+			if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
+				if ( $_SESSION[ 'site_path' ] === dirname($_SERVER[ 'PHP_SELF' ]) ) {
+					$is_logged_in = true;
+				}
+			}
+			
 			session_unset($_SESSION[ 'logged_in' ]);
 			session_unset($_SESSION[ 'site_path' ]);
 			session_destroy();
+			
+			return ( $is_logged_in );
+		} else {
+			return ( false );
 		}
 	}
 	

@@ -10,7 +10,8 @@
 	
 	$filename = sb_stripslashes( $_POST[ 'file_name' ] );
 	$filename = preg_replace( '/(\s|\\\|\/|%|#)/', '_', $filename ); // Replace whitespaces [\n\r\f\t ], slashes, % and # with _
-		
+	
+	global $ok;
 	$ok = write_static_entry( sb_stripslashes( $_POST[ 'blog_subject' ] ), sb_stripslashes( $_POST[ 'blog_text' ] ), $_POST[ 'entry' ], $filename );
 	
 	if ( $ok === true ) {
@@ -36,6 +37,8 @@
 		
 		if ( $ok !== true ) {
 			echo( $lang_string[ 'error' ] . $ok . '<p />' );
+		} else {
+			echo( $lang_string[ 'success' ] . '<p />' );
 		}
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );

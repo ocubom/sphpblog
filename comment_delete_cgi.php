@@ -9,7 +9,9 @@
 	sb_language( 'comments' );
 	
 	// Delete selected comment file.
+	global $ok;
 	$ok = false;
+	
 	if ( strpos( $_GET[ "comment" ], array( "/", ".", "\\", "%" ) ) === false && strlen( sb_strip_extension($_GET["comment"]) ) == 20 ) {
 		if ( strpos( $_GET[ "y" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["y"] ) == 2 ) {
 			if ( strpos( $_GET[ "m" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["m"] ) == 2 ) {
@@ -40,10 +42,12 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $ok;
 		
 		if ( $ok !== true ) {
 			echo $lang_string[ 'error_delete' ] . $ok . '<p />';
+		} else {
+			echo $lang_string[ 'success_delete' ] . '<p />';
 		}
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );

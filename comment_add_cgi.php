@@ -11,7 +11,8 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'comments' );
 	
-	// Verify information being passed:
+	// Verify information being passed
+	global $ok;
 	$ok = false;
 	
 	// Verify that all the correct POST keys exist (except comment_remember which is a check box)
@@ -66,10 +67,12 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $ok;
 		
 		if ( $ok !== true ) {
-			echo $lang_string[ 'error_add' ].$ok.'<p />';
+			echo $lang_string[ 'error_add' ] . $ok . '<p />';
+		} else {
+			echo $lang_string[ 'success_add' ] . '<p />';
 		}
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );

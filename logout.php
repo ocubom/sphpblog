@@ -1,8 +1,9 @@
 <?php 
 	require_once('scripts/sb_functions.php');
-	logout();
+	global $ok;
+	$ok = logout();
 	
-	$logged_in = logged_in( true, true );
+	$logged_in = logged_in( false, true );
 	
 	read_config();
 	
@@ -24,9 +25,14 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $ok;
 		
-		echo( $lang_string[ 'error' ] );
+		if ( $ok !== true ) {
+			echo( $lang_string[ 'error' ] . '<p />' );
+		} else {
+			echo( $lang_string[ 'success' ] . '<p />' );
+		}
+		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}
 ?>

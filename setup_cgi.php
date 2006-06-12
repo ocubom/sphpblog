@@ -44,6 +44,7 @@
 		$temp_email = implode( ',', $temp_email );
 	}
 	
+	global $ok;
   $ok = write_config( sb_stripslashes( $_POST[ 'blog_title' ] ),
 						sb_stripslashes( $_POST[ 'blog_author' ] ),
 						sb_stripslashes( $_POST[ 'blog_email' ] ),
@@ -103,6 +104,8 @@
 		global $lang_string, $user_colors, $ok;
 		if ( $ok !== true ) {
 			echo( $lang_string[ 'error' ] . $ok . '<p />' );
+		} else {
+			echo( $lang_string[ 'success' ] . '<p />' );
 		}
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}

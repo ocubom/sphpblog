@@ -16,6 +16,7 @@
 	if ( array_key_exists( 'category_list', $_POST ) ) {
 		$catArray = phpValidate( $_POST[ 'category_list' ] );
 		
+		global $ok;
 		$ok = false;
 		if ($catArray !== false ) {
 			if ($catArray === -1 ) {
@@ -226,69 +227,60 @@
 <?php 
 	function page_content() {
 		global $lang_string, $user_colors, $blog_config;
-		
-		if ( array_key_exists( 'info_keywords', $_POST ) && array_key_exists( 'info_description', $_POST ) && array_key_exists( 'info_copyright', $_POST ) ) {	
-			// Check to see if we're posting data...
-			global $ok;
-			if ( $ok !== true ) {
-				echo( $lang_string[ 'error' ] . $ok . '<p />' );
-			}
-			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
-		} else {			
-			$entry_array = array();
-			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			ob_start(); ?>	
-			
-			<?php
-				echo ( $lang_string[ 'instructions' ] . '<p />');
-				echo ( '<b>' . $lang_string[ 'current_categories' ] . '</b><br />');
 				
-				$catArray = get_category_array();
-				if ( count($catArray) > 0) {
-					$str = '';
-					for ( $i = 0; $i < count( $catArray ); $i++ ) {
-						$id_number = $catArray[$i][0];
-						$name_str = $catArray[$i][1];
-						$space_count = $catArray[$i][2];
-						for ( $j = 0; $j < $space_count; $j++ ) {
-							$str = $str . '&nbsp;';
-						}
-						$str = $str . $name_str . ' (' . $id_number . ")<br />\n";
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>	
+		
+		<?php
+			echo ( $lang_string[ 'instructions' ] . '<p />');
+			echo ( '<b>' . $lang_string[ 'current_categories' ] . '</b><br />');
+			
+			$catArray = get_category_array();
+			if ( count($catArray) > 0) {
+				$str = '';
+				for ( $i = 0; $i < count( $catArray ); $i++ ) {
+					$id_number = $catArray[$i][0];
+					$name_str = $catArray[$i][1];
+					$space_count = $catArray[$i][2];
+					for ( $j = 0; $j < $space_count; $j++ ) {
+						$str = $str . '&nbsp;';
 					}
-					echo( $str );
-				} else {
-					echo( $lang_string[ 'no_categories_found' ] . '<br />' );
+					$str = $str . $name_str . ' (' . $id_number . ")<br />\n";
 				}
-			?>
-			
-			
-			<form action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
-			<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
-			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete="OFF"><?php
-				$catArray = get_category_array();
-				if ( count($catArray) > 0) {
-					$str = "";
-					for ( $i = 0; $i < count( $catArray ); $i++ ) {
-						$id_number = $catArray[$i][0];
-						$name_str = $catArray[$i][1];
-						$space_count = $catArray[$i][2];
-						for ( $j = 0; $j < $space_count; $j++ ) {
-							$str = $str . ' ';
-						}
-						$str = $str . $name_str . ' (' . $id_number . ")\n";
+				echo( $str );
+			} else {
+				echo( $lang_string[ 'no_categories_found' ] . '<br />' );
+			}
+		?>
+		
+		
+		<form action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
+		<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
+		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete="OFF"><?php
+			$catArray = get_category_array();
+			if ( count($catArray) > 0) {
+				$str = "";
+				for ( $i = 0; $i < count( $catArray ); $i++ ) {
+					$id_number = $catArray[$i][0];
+					$name_str = $catArray[$i][1];
+					$space_count = $catArray[$i][2];
+					for ( $j = 0; $j < $space_count; $j++ ) {
+						$str = $str . ' ';
 					}
-					echo( $str );
+					$str = $str . $name_str . ' (' . $id_number . ")\n";
 				}
-			?></textarea><br />
-				<br />
-				<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" />
-				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
-			</form>
-			
-			<?php
-			$entry_array[ 'entry' ] = ob_get_clean();
-			echo( theme_staticentry( $entry_array ) );
-		}
+				echo( $str );
+			}
+		?></textarea><br />
+			<br />
+			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" />
+			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
+		</form>
+		
+		<?php
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );
 	}
 ?>
 <?php 

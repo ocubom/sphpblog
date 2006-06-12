@@ -8,7 +8,9 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'upload_img' );
 	
+	global $ok;
 	$ok = false;
+	
 	if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
 		if ( $_FILES[ 'userfile' ][ 'error' ] == 0 ) {
 			if (!file_exists('images')) {
@@ -64,9 +66,11 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $ok;
 		if ( $ok !== true ) {
 			echo( $lang_string[ 'error' ] . $ok . '<p />' );
+		} else {
+			echo( $lang_string[ 'success' ] . '<p />' );
 		}
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}

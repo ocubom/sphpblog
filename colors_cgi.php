@@ -57,7 +57,9 @@
 		global $lang_string, $user_colors, $ok;
 		
 		if ( $ok !== true ) {
-			echo $lang_string[ 'error' ] . '<p />';
+			echo( $lang_string[ 'error' ] . $ok . '<p />' );
+		} else {
+			echo $lang_string[ 'success' ] . '<p />';
 		}
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}

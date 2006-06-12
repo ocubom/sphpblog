@@ -9,7 +9,9 @@
 	sb_language( 'trackbacks' );
 	
 	// Delete selected comment file.
+	global $ok;
 	$ok = false;
+	
 	if ( array_key_exists( 'trackback', $_GET ) ) {
 		$ok = delete_trackback( $_GET[ 'trackback' ] );	
 	}
@@ -34,10 +36,12 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $ok;
 		
 		if ( $ok !== true ) {
 			echo $lang_string[ 'error_delete' ] . $ok . '<p />';
+		} else {
+			echo $lang_string[ 'success_delete' ] . '<p />';
 		}
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );

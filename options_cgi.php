@@ -38,6 +38,7 @@
 		array_push( $array, str_replace( '|', ':', $_POST[ $key_array[$i] ] ) );
 	}
 	
+	global $ok;
 	$ok = write_dateFormat( $array );
 	
 	if ( $ok === true ) {
@@ -59,10 +60,12 @@
 </head>
 <?php 
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $user_colors, $ok;
 		
 		if ( $ok !== true ) {
 			echo( $lang_string[ 'error' ] . $ok . '<p />' );
+		} else {
+			echo( $lang_string[ 'success' ] . '<p />' );
 		}
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );

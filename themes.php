@@ -10,10 +10,11 @@
 	
 	// Post
 	if ( array_key_exists( 'blog_theme', $_POST ) ) {
+		global $ok;
 		$ok = write_theme( sb_stripslashes( $_POST[ 'blog_theme' ] ) );
 		
 		if ( $ok === true ) {
-		redirect_to_url( 'index.php' );
+			redirect_to_url( 'index.php' );
 		}
 	}
 ?>
@@ -40,8 +41,12 @@
 			global $ok;
 			if ( $ok !== true ) {
 				echo( $lang_string[ 'error' ] . $ok . '<p />' );
+			} else {
+				echo( $lang_string[ 'success' ] . '<p />' );
 			}
+			
 			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+			
 		} else {
 			$entry_array = array();
 			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
