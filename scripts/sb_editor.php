@@ -201,7 +201,7 @@
 
 	// From:
 	// http://parentnode.org/javascript/working-with-the-cursor-position/
-	function insertAtCaret(obj, text) {
+	function insertAtCaret2(obj, text) {
 		if (document.selection && document.selection.createRange) {
 			// Internet Explorer 4.0x
 			
@@ -222,12 +222,12 @@
 			}
 
 			for(var index = 0, start = 0; 
-				tmp.match(text) 
-					&& (tmp = tmp.replace(text, "")) 
+				tmp.match(text.toString()) 
+					&& (tmp = tmp.replace(text.toString(), "")) 
 					&& index <= diff; 
-				index = start + text.length
+				index = start + text.toString().length
 			) {
-				start = actual.indexOf(text, index);
+				start = actual.indexOf(text.toString(), index);
 			}
 		} else if (obj.selectionStart >= 0) {
 			// FireFox & Safari
@@ -304,5 +304,53 @@
 		}
 		return txt;
 	}
+	
+	  //**** BEGIN Ridgarou modification
+	function insertAtCaret(obj, text) {
+	  var mytext;
+	  obj.focus();
+	  'Code For IE'
+		if(document.selection) {
+  		text = ' ' + text + ' ';
+    	if (obj.createTextRange && obj.caretPos) {
+    		var caretPos = obj.caretPos;
+    		caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+    		return;
+      }
+    'Code for Gecko'
+		} else if(obj.selectionStart) {
+			var start = obj.selectionStart;
+			var end   = obj.selectionEnd;
+
+			obj.value = obj.value.substr(0, start) 
+				+ text 
+				+ obj.value.substr(end, obj.value.length);
+		}
+		
+		if(start != null) {
+			setCaretTo(obj, start + text.length);
+		} else {
+		  obj.focus();
+			obj.value += text;
+		}
+	}
+
+  // Insert at Caret position. Code from
+  // http://www.faqts.com/knowledge_base/view.phtml/aid/1052/fid/130
+  function storeCaret(textEl) {
+  	if (textEl.createTextRange) textEl.caretPos = document.selection.createRange().duplicate();
+  }
+  
+		// Validate the Form for Blocks
+		function validate_block(theform) {
+			if (theform.text.value=="" || theform.block_name.value=="") {
+				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+  //**** END Ridgarou modification
 -->
 	</script>

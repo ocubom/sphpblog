@@ -203,8 +203,8 @@
 		return ( false );
 	}
 	
-	function redirect_to_url( $relative_url = "index.php" ) {
-	 	$port=':' . $_SERVER[ 'SERVER_PORT'];
+	function redirect_to_url_old( $relative_url = "index.php" ) {
+	 	$port = ':' . $_SERVER[ 'SERVER_PORT'];
 		if ($port == ':80') {
 			$port = '';
 		}
@@ -212,10 +212,36 @@
  		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
 			header('Location: http://'.$_SERVER['HTTP_HOST' ].$port.'/'.$relative_url);
-			} else {
+		} else {
 			// Hosted in sub-directory.
 			header('Location: http://'.$_SERVER['HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF']).'/'.$relative_url);
 		}
 		exit;
 	}
+	
+	//**** BEGIN Ridgarou modification
+	function redirect_to_url( $relative_url = "index.php" ) {
+	
+		if ( strpos ($_SERVER['HTTP_HOST' ], ":") != false ){
+			$port = '';
+		  
+		} else {
+			$port = ':' . $_SERVER[ 'SERVER_PORT'];
+			
+			if ($port == ':80') {
+				$port = '';
+			}
+		}
+
+ 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+			// Hosted at root.
+			header('Location: http://'.$_SERVER['HTTP_HOST' ].$port.'/'.$relative_url);
+		} else {
+			// Hosted in sub-directory.
+			header('Location: http://'.$_SERVER['HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF']).'/'.$relative_url);
+		}
+		exit;
+	}
+	//**** END Ridgarou modification
+	
 ?>

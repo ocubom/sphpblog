@@ -98,7 +98,7 @@
 		echo( '<hr />' );
 	?>
 	
-		<form action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate(this)">
+		<form action='add_block.php' method="POST" name="editor" id="editor" onSubmit="return validate_block(this)">
 		
 			<label for="blog_subject"><?php echo( $lang_string[ 'block_name' ] ); ?></label><br />
 			<input type="text" name="block_name" autocomplete="OFF" value="<?php echo $block_name; ?>" size="40"><br /><br />
