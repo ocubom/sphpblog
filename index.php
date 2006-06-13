@@ -126,7 +126,13 @@
 	<?php require_once('scripts/sb_javascript.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	
-	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
+	<?php 
+		if (!isset($_GET['entry'])) {
+			echo( '<title>' . $blog_config[ 'blog_title' ] . '</title>');
+		} else {
+			echo( '<title>' . $blog_config[ 'blog_title' ] . ' - ' . get_entry_title( substr( $_GET[ 'entry' ], 5, 2 ), substr ( $_GET[ 'entry' ], 7, 2 ), $_GET[ 'entry' ] ) . '</title>');
+		}
+	?>
 </head>
 <?php 
 	// Page Content (Called from within the theme_pagelayout function below)
