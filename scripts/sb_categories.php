@@ -34,6 +34,42 @@
 		return $catArray;
 	}
 	
+	function get_sub_categories ( $parent_id ) {
+		
+		$result_arr = Array();
+			
+		if ( isset( $parent_id ) ) {
+			$cat_arr = get_category_array();
+			
+			// Look for matching category id
+			for ( $i=0; $i<count($cat_arr); $i++ ) {
+				$id_number = $cat_arr[$i][0];
+				// $name_str = $cat_arr[$i][1];
+				$space_count = $cat_arr[$i][2];
+				
+				// Found it...
+				if ($id_number==$parent_id) {
+					$parent_space_count = $space_count;
+					
+					// Look for sub categories
+					for ( $j=$i+1; $j<count($cat_arr); $j++ ) {
+						$id_number = $cat_arr[$j][0];
+						// $name_str = $cat_arr[$i][1];
+						$space_count = $cat_arr[$j][2];
+						
+						if ( $space_count > $parent_space_count ) {
+							array_push( $result_arr, $id_number );
+						} else {
+							break 2;
+						}
+					}
+				}
+			}
+		}
+		
+		return( $result_arr );
+	}
+	
 	function write_categories ( $catArray ) {
 		// Save the category array
 		//
