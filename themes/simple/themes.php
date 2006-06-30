@@ -8,7 +8,7 @@
 	// Version: 0.4.8
 	
 	// Description:
-	// This theme uses separate template files and "preg_replace" 
+	// This theme uses separate template files and "str_replace" 
 	// to accomplish its goal.
 	//
 	// Should be easier for the novice to edit this theme and make
@@ -65,23 +65,23 @@
 		$replace = array();
 		
 		// DEFAULT REPLACEMENTS
-		array_push( $search, "/%page_width%/" );
+		array_push( $search, '%page_width%' );
 		array_push( $replace, $theme_vars[ 'content_width' ] + $theme_vars[ 'menu_width' ] );
-		array_push( $search, "/%image_path%/" );
+		array_push( $search, '%image_path%' );
 		array_push( $replace, "themes/" . $blog_theme . "/images/" );
-		array_push( $search, "/%content_width%/" );
+		array_push( $search, '%content_width%' );
 		array_push( $replace, $theme_vars[ 'content_width' ] );
-		array_push( $search, "/%menu_width%/" );
+		array_push( $search, '%menu_width%' );
 		array_push( $replace, $theme_vars[ 'menu_width' ] );
 		
 		// COLORS
 		$arr = array_keys( $user_colors );
 		for ( $i = 0; $i < count( $arr ); $i++ ) {
-			array_push( $search, "/%" . $arr[$i] . "%/" );
+			array_push( $search, '%" . $arr[$i] . "%' );
 			array_push( $replace, $user_colors[ $arr[$i] ] );		
 		}
 		
-		$template = preg_replace($search, $replace, $template);
+		$template = str_replace($search, $replace, $template);
 		
 		return ( $template );
 	}
@@ -144,9 +144,9 @@
 		$category_string = "";
 		if ( array_key_exists( "categories", $entry_array ) ) {
 			for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
-				$category_string = $category_str . $entry_array[ 'categories' ][$i];
+				$category_string = $category_string . $entry_array[ 'categories' ][$i];
 				if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
-					$category_string = $category_str . ", ";
+					$category_string = $category_string . ", ";
 				}
 			}
 		}
@@ -244,39 +244,39 @@
 		$search = array();
 		$replace = array();
 		
-		array_push( $search, "/%rdf%/" );
+		array_push( $search, '%rdf%' );
 		array_push( $replace, $rdf_string );
-		array_push( $search, "/%subject%/" );
+		array_push( $search, '%subject%' );
 		array_push( $replace, $entry_array[ 'subject' ] );
-		array_push( $search, "/%id%/" );
+		array_push( $search, '%id%' );
 		array_push( $replace, $entry_array[ 'id' ] );
-		array_push( $search, "/%date%/" );
+		array_push( $search, '%date%' );
 		array_push( $replace, $entry_array[ 'date' ] );
-		array_push( $search, "/%categories%/" );
+		array_push( $search, '%categories%' );
 		array_push( $replace, $category_string );
-		array_push( $search, "/%edit_button%/" );
+		array_push( $search, '%edit_button%' );
 		array_push( $replace, $edit_button );
-		array_push( $search, "/%delete_button%/" );
+		array_push( $search, '%delete_button%' );
 		array_push( $replace, $delete_button );
-		array_push( $search, "/%add_comment%/" );
+		array_push( $search, '%add_comment%' );
 		array_push( $replace, $add_comment );
-		array_push( $search, "/%views%/" );
+		array_push( $search, '%views%' );
 		array_push( $replace, $views );
-		array_push( $search, "/%trackbacks%/" );
+		array_push( $search, '%trackbacks%' );
 		array_push( $replace, $trackbacks );
-		array_push( $search, "/%permalink%/" );
+		array_push( $search, '%permalink%' );
 		array_push( $replace, $permalink );
-		array_push( $search, "/%relatedlink%/" );
+		array_push( $search, '%relatedlink%' );
 		array_push( $replace, $relatedlink );
-		array_push( $search, "/%ipaddress%/" );
+		array_push( $search, '%ipaddress%' );
 		array_push( $replace, $ipaddress );
-		array_push( $search, "/%ratings%/" );
+		array_push( $search, '%ratings%' );
 		array_push( $replace, $ratings );
-		array_push( $search, "/%content%/" );
+		array_push( $search, '%content%' );
 		array_push( $replace, $entry_array[ 'entry' ] );
-		
+				
 		// DO SEARCH AND REPLACE
-		$blog_content = preg_replace($search, $replace, $template);
+		$blog_content = str_replace( $search, $replace, $template );
 		
 		// RETURN HTML
 		return $blog_content;
@@ -458,45 +458,94 @@
 		$replace = array();
 		
 		// BLOG CONTENT
-		array_push( $search, "/%blog_title%/" );
+		array_push( $search, '%blog_title%' );
 		array_push( $replace, $blog_config[ 'blog_title' ] );
-		array_push( $search, "/%menu%/e" );
+		array_push( $search, '%menu%' );
 		array_push( $replace, "theme_menu()" );
-		array_push( $search, "/%footer%/" );
+		array_push( $search, '%footer%' );
 		array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
 		
-		// MENU WIDGETS
-		array_push( $search, "/%widget_avatar=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_avatar('\\1')" );
-		array_push( $search, "/%widget_links=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_links('\\1')" );
-		array_push( $search, "/%widget_user=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_user('\\1')" );
-		array_push( $search, "/%widget_setup=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_setup('\\1')" );
-		array_push( $search, "/%widget_custom=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_custom('\\1')" );
-		array_push( $search, "/%widget_calendar=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_calendar('\\1')" );
-		array_push( $search, "/%widget_archive_tree=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_archive_tree('\\1')" );
-		array_push( $search, "/%widget_categories=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_categories('\\1')" );
-		array_push( $search, "/%widget_search=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_search('\\1')" );
-		array_push( $search, "/%widget_counter=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_counter('\\1')" );
-		array_push( $search, "/%widget_recent_entries=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_recent_entries('\\1')" );
-		array_push( $search, "/%widget_recent_comments=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_recent_comments('\\1')" );
-		array_push( $search, "/%widget_recent_trackbacks=?(.+)?%/e" );
-		array_push( $replace, "theme_widget_recent_trackbacks('\\1')" );
-		array_push( $search, "/%widget_badges%/" );
+		// MENU WIDGETS (NO CUSTOM PATH)
+		array_push( $search, '%widget_avatar%' );
+		array_push( $replace, theme_widget_avatar() );
+		array_push( $search, '%widget_links%' );
+		array_push( $replace, theme_widget_links() );
+		array_push( $search, '%widget_user%' );
+		array_push( $replace, theme_widget_user() );
+		array_push( $search, '%widget_setup%' );
+		array_push( $replace, theme_widget_setup() );
+		array_push( $search, '%widget_custom%' );
+		array_push( $replace, theme_widget_custom() );
+		array_push( $search, '%widget_calendar%' );
+		array_push( $replace, theme_widget_calendar() );
+		array_push( $search, '%widget_archive_tree%' );
+		array_push( $replace, theme_widget_archive_tree() );
+		array_push( $search, '%widget_categories%' );
+		array_push( $replace, theme_widget_categories() );
+		array_push( $search, '%widget_search%' );
+		array_push( $replace, theme_widget_search() );
+		array_push( $search, '%widget_counter%' );
+		array_push( $replace, theme_widget_counter() );
+		array_push( $search, '%widget_recent_entries%' );
+		array_push( $replace, theme_widget_recent_entries() );
+		array_push( $search, '%widget_recent_comments%' );
+		array_push( $replace, theme_widget_recent_comments() );
+		array_push( $search, '%widget_recent_trackbacks%' );
+		array_push( $replace, theme_widget_recent_trackbacks() );
+		
+		// MENU WIDGETS (CUSTOM PATH)
+		$pattern_arr = Array();
+		$function_arr = Array();
+		array_push( $pattern_arr, 'widget_avatar' );
+		array_push( $function_arr, 'theme_widget_avatar' );
+		array_push( $pattern_arr, 'widget_links' );
+		array_push( $function_arr, 'theme_widget_links' );
+		array_push( $pattern_arr, 'widget_user' );
+		array_push( $function_arr, 'theme_widget_user' );
+		array_push( $pattern_arr, 'widget_setup' );
+		array_push( $function_arr, 'theme_widget_setup' );
+		array_push( $pattern_arr, 'widget_custom' );
+		array_push( $function_arr, 'theme_widget_custom' );
+		array_push( $pattern_arr, 'widget_calendar' );
+		array_push( $function_arr, 'theme_widget_calendar' );
+		array_push( $pattern_arr, 'widget_archive_tree' );
+		array_push( $function_arr, 'theme_widget_archive_tree' );
+		array_push( $pattern_arr, 'widget_categories' );
+		array_push( $function_arr, 'theme_widget_categories' );
+		array_push( $pattern_arr, 'widget_search' );
+		array_push( $function_arr, 'theme_widget_search' );
+		array_push( $pattern_arr, 'widget_counter' );
+		array_push( $function_arr, 'theme_widget_counter' );
+		array_push( $pattern_arr, 'widget_recent_entries' );
+		array_push( $function_arr, 'theme_widget_recent_entries' );
+		array_push( $pattern_arr, 'widget_recent_comments' );
+		array_push( $function_arr, 'theme_widget_recent_comments' );
+		array_push( $pattern_arr, 'widget_recent_trackbacks' );
+		array_push( $function_arr, 'theme_widget_recent_trackbacks' );
+		
+		for ($i=0; $i<count($pattern_arr); $i++) {
+		
+			$pattern = $pattern_arr[$i];
+			$function = $function_arr[$i];
+			
+			preg_match_all('/%' . $pattern . '=(.+)%/', $template, $matches );
+			$attrib_arr = $matches[1];
+			
+			if ( count( $attrib_arr ) ) {
+				foreach ($attrib_arr as $attrib) {
+					// echo( '%' .$pattern . '=' . $attrib . '%' . '<br />' );
+					array_push( $search, '%' .$pattern . '=' . $attrib . '%' );
+					$str = call_user_func( $function, $attrib );
+					array_push( $replace, $str );
+				}
+			}
+		}
+		
+		array_push( $search, '%widget_badges%' );
 		array_push( $replace, theme_widget_badges() );
 		
 		// MAIN CONTENT
-		array_push( $search, "/%content%/" );
+		array_push( $search, '%content%' );
 
 		ob_start();
 		page_content();
@@ -505,7 +554,7 @@
 		array_push( $replace,  $main_content);
 		
 		// DO SEARCH AND REPLACE
-		echo( preg_replace( $search, $replace, $template ) );
+		echo( str_replace( $search, $replace, $template ) );
 	}
 	
 	// -----------------
@@ -534,22 +583,22 @@
 		$search = array();
 		$replace = array();
 		
-		array_push( $search, "/%popup_width%/" );
+		array_push( $search, '%popup_width%' );
 		array_push( $replace, $theme_vars[ 'popup_window' ][ 'content_width' ] );
 		
 		$arr = array_keys( $user_colors );
 		for ( $i = 0; $i < count( $arr ); $i++ ) {
-			array_push( $search, "/%" . $arr[$i] . "%/" );
+			array_push( $search, '%" . $arr[$i] . "%' );
 			array_push( $replace, $user_colors[ $arr[$i] ] );		
 		}
 		
-		array_push( $search, "/%blog_title%/" );
+		array_push( $search, '%blog_title%' );
 		array_push( $replace, $blog_config[ 'blog_title' ] );
-		array_push( $search, "/%footer%/" );
+		array_push( $search, '%footer%' );
 		array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
 		
 		// MAIN CONTENT
-		array_push( $search, "/%content%/" );
+		array_push( $search, '%content%' );
 
 		ob_start();
 		page_content();
@@ -558,7 +607,7 @@
 		array_push( $replace,  $main_content);
 		
 		// DO SEARCH AND REPLACE
-		echo( preg_replace($search, $replace, $template ) );
+		echo( str_replace($search, $replace, $template ) );
 	}
 	
 	// ----------
@@ -585,20 +634,20 @@
 			$search = array();
 			$replace = array();
 			
-			array_push( $search, "/%title%/" );
+			array_push( $search, '%title%' );
 			array_push( $replace, $blockArray[ 'title' ] );
-			array_push( $search, "/%content%/" );
+			array_push( $search, '%content%' );
 			array_push( $replace, $blockArray[ 'content' ] );
-			array_push( $search, "/%comment%/" );
+			array_push( $search, '%comment%' );
 			array_push( $replace, $comment );
-			array_push( $search, "/%id%/" );
+			array_push( $search, '%id%' );
 			array_push( $replace, $toggleDiv );
-			array_push( $search, "/%twisty%/" );
+			array_push( $search, '%twisty%' );
 			array_push( $replace, $img_hide );
 		
 			$template = theme_load_template( "themes/" . $blog_theme . "/templates/" . $template_file );
 			
-			return( preg_replace( $search, $replace, $template) );
+			return( str_replace( $search, $replace, $template) );
 		}
 	}
 	
