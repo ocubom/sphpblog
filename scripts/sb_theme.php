@@ -86,7 +86,6 @@
 		// Email: sverde1@email.si
 		
 		// Returns avatar picture
-		//
 		global $lang_string, $blog_config;
 		
 		if ( $blog_config[ 'blog_avatar' ] ) {
@@ -147,7 +146,7 @@
 
 		 if ( $blog_config[ 'blog_enable_archives' ] ) {
 			// The "read_menus_tree()" function is located in "scripts/sb_theme.php"
-			$str = read_menus_tree( $month, $year, $day );
+			$str = read_menus_tree( $month, $year, $day, 0 );
 	
 			$result = array();
 			$result[ 'title' ] = $lang_string[ 'menu_archive' ];

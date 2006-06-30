@@ -17,6 +17,50 @@
 	// ----------------------
 	// Blog Display Functions
 	// ----------------------
+	function in_arrayr($needle, $haystack) {
+		if ( is_array($haystack) ) {
+			// haystack is array
+			foreach ($haystack as $value) {
+				if (is_array($needle)) {
+					// needle is array
+					foreach ($needle as $needle_val) {
+						$result = in_arrayr($needle_val, $value);
+						if ( $result ) {
+							return true;
+						}
+					}
+				} else if (is_array($value)) {
+					// value is array
+					$result = in_arrayr($needle, $value);
+					if ( $result ) {
+						return true;
+					}
+				} elseif ($needle == $value) {
+					return true;
+				} else {
+					return false;
+				}
+			 }
+		} else {
+			// haystack is not array
+			if (is_array($needle)) {
+				// needle is array
+				foreach ($needle as $needle_val) {
+					$result = in_arrayr($needle_val, $haystack);
+					if ( $result ) {
+						return true;
+					}
+				}
+			} else {
+				// needle is not array
+				if ( $needle == $haystack ) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+	}
 	
 	function read_entries ( $m, $y, $d, $logged_in, $start_entry, $category ) {
 		// Read entries by month, year and/or day. Generate HTML output.
@@ -62,11 +106,24 @@
 			// I'm sure it would be faster when blogs start to have
 			// to 1000's of entries.
 			//
-			for ( $i = $entry_index; $i < count( $entry_file_array ); $i++ ) {			
+			
+			$cat_sub_arr = get_sub_categories($category);
+			array_push( $cat_sub_arr, $category );
+			
+			for ( $i = $entry_index; $i < count( $entry_file_array ); $i++ ) {
 				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 				$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
 					$cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
+					
+					if ( in_arrayr( $cat_array, $cat_sub_arr ) ) {
+						array_push( $file_array, $entry_file_array[ $i ] );
+						// Look for +1 entries (for the next button...)
+						if ( count( $file_array ) >= $blog_config[ 'blog_max_entries' ] + 1 ) {
+							break;
+						}					
+					}
+					/*
 					for ( $j=0; $j < count($cat_array); $j++ ) {
 						if ( $cat_array[ $j ] == $category ) {
 							array_push( $file_array, $entry_file_array[ $i ] );
@@ -86,6 +143,7 @@
 							}
 						}
 					}
+					*/
 				}
 			}
 			
@@ -129,6 +187,14 @@
 				}
 				
 				$previous_entry = $previous_file_array[ count( $previous_file_array ) - 1 ];
+				
+				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $previous_entry );
+				$entry = sb_strip_extension( $entry_filename );
+				
+				// Previous entry and current start entry are the same.
+				if ( $entry == $start_entry ) {
+					$previous_entry = NULL;				
+				}
 			}
 		} else {
 			// No Filtering
@@ -197,7 +263,7 @@
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
 				// Read and Parse Blog Entry
 				$blog_entry_data = blog_entry_to_array( 'content/' . $contents[$i][ 'year' ] . '/' . $contents[$i][ 'month' ] . '/' . $contents[$i][ 'entry' ] );
-				
+			
 				$entry_array = array();
 				
 				// Subject / Date

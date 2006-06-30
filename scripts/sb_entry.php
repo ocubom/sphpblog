@@ -270,7 +270,7 @@
 			$key = $array[ $i ];
 			$output[ $key ] = $array[ $i+1 ];
 		}
-		
+				
 		return ( $output );
 	} 
 	

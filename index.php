@@ -139,7 +139,8 @@
 	function page_content() {
 		global $month, $year, $day, $category, $logged_in, $entry;
 		
-		echo ( read_entries( $month, $year, $day, $logged_in, $entry, $category ) );
+		$page_content = read_entries( $month, $year, $day, $logged_in, $entry, $category );
+		echo( $page_content );
 	}
 	
 	theme_pagelayout();

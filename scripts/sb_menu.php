@@ -234,7 +234,7 @@
 	}
 
 	function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false ) {
-		// Create the right-hand navigation menu. Return HTML
+		// Create the right-hand navigation menu and Archives page. Return HTML
 		//
 		global $lang_string;
 		
