@@ -19,21 +19,20 @@
 	**************************************************************************/
 	
 	 // Sverd1 March 17, 2006
-  function dateString() {
-	  $dateArray = read_dateFormat();
-	  $dateToday = explode("/", $dateArray[ 'sDate_order' ]);
-	  foreach($dateToday as $dToday)
-	  {
-		  if ($dToday == 'Day') {
-			  $dateString[] = '%d';
-		  } elseif ($dToday == 'Month' || $dToday == 'MMM') {
-			  $dateString[] = '%m';
-		  } elseif ($dToday == 'Year') {
-			  $dateString[] = '%y';
-		  }
-	  }
-	  return ( implode("/", $dateString) );
-  }
+	function dateString() {
+		$dateArray = read_dateFormat();
+		$dateToday = explode("/", $dateArray[ 'sDate_order' ]);
+		foreach($dateToday as $dToday) {
+			if ($dToday == 'Day') {
+				$dateString[] = '%d';
+			} elseif ($dToday == 'Month' || $dToday == 'MMM') {
+				$dateString[] = '%m';
+			} elseif ($dToday == 'Year') {
+				$dateString[] = '%y';
+			}
+		}
+		return ( implode("/", $dateString) );
+	}
 	
 	function read_menus_calendar ( $m, $y, $d ) {
 		global $lang_string, $user_colors, $blog_config;
@@ -112,6 +111,7 @@
 		unset( $temp_entries );
 
 		// Loop Through Days
+		$counts = Array();
 		for ( $i = 0; $i < count( $entries ); $i++ ) {
 			$temp_index = substr( $entries[$i], 9, 2 )-1;
 			$temp_entry = substr( $entries[$i], 0, 11 );
@@ -121,8 +121,7 @@
 			for ( $j = $i + 1; $j < count( $entries ); $j++ ) {
 				if ( $temp_entry == substr( $entries[$j], 0, 11 ) ) {
 					$counts[$temp_index]++;
-				} 
-				else {
+				} else {
 					break;
 				}
 			}
@@ -184,37 +183,28 @@
 		$total_days_in_month = date( 't', $date_string); //The total days in the month for the end of the loop
 
 		//Loop all the days from the month
-		for ( $i = 1; $i<=$total_days_in_month; $i++)
-		{
-			if ( mktime(0, 0, 0, $m, $i, $y ) == mktime(0, 0, 0 ) )
-			{
+		for ( $i = 1; $i<=$total_days_in_month; $i++) {
+			if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
 				$str = $str . '<td align="center"><u>';
-			}
-			else
-			{
+			} else {
 				$str = $str . '<td align="center">';
 			}
-			if ( $counts[$i-1] > 0 )
-			{
+			
+			if ( isset($counts[$i-1]) && $counts[$i-1] > 0 ) {
 				$str = $str . '<a href="index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
-			}
-			else
-			{
+			} else {
 				$str = $str . $i;
 			}
-			if ( mktime(0, 0, 0, $m, $i, $y ) == mktime(0, 0, 0 ) )
-			{
+			
+			if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
 				$str = $str . '</u></td>';
-			}
-			else
-			{
+			} else {
 				$str = $str . '</td>';
 			}
 			
 			$current_position++;
 			
-			if ( $current_position == 7 )
-			{
+			if ( $current_position == 7 ) {
 				$str = $str . '</tr><tr>';
 				$current_position = 0;
 			}
@@ -228,8 +218,8 @@
 		}
 		$str = $str . '</tr><tr>';
 		
-    // Fixed per Sverd1 March 17, 2006
-    $str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">') . $dateString . '</a></td></tr></table>'; // Close the table
+		// Fixed per Sverd1 March 17, 2006
+		$str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . dateString() ) . '</a></td></tr></table>'; // Close the table
 		return( $str );
 	}
 

@@ -16,7 +16,7 @@
 	}
 	else{
 		$aktip = $_SERVER['REMOTE_ADDR'];
-		if ( ($aktip=="127.0.0.1")&&($_SERVER['HTTP_X_FORWARDED_FOR']!="") ) {
+		if ( ($aktip=="127.0.0.1") && array_key_exists('HTTP_X_FORWARDED_FOR',$_SERVER) && ($_SERVER['HTTP_X_FORWARDED_FOR'] != "" ) ) {
 			$aktip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		}
 	}

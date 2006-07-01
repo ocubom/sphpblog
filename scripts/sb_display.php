@@ -285,11 +285,12 @@
 						array_push( $temp_cat_names, get_category_by_id ( $temp_cat_array[$j] ) );
 					}
 					$entry_array[ 'categories' ] = $temp_cat_names;
+					$entry_array[ 'categories_id'] = $temp_cat_array;
 				}
 				
 				// Read More link
 				$entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
-				$entry_array[ 'relatedlink' ][ 'url' ] = $blog_entry_data[ 'relatedlink' ];
+				$entry_array[ 'relatedlink' ][ 'url' ] = array_key_exists( 'relatedlink', $blog_entry_data ) ? $blog_entry_data[ 'relatedlink' ] : '';
 				
 				// Author edit and delete
 				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
@@ -513,7 +514,7 @@
 								
 								if ( $month_dir_handle = @opendir( $dir . $year_dir . '/' ) ) {
 									while ( ( $month_dir = readdir( $month_dir_handle ) ) !== false ) {
-										if ( is_dir( $dir . $year_dir . '/' . $month_dir . '/' ) ) {
+										if ( is_dir( $dir . $year_dir . '/' . $month_dir ) ) {
 											if ( $month_dir != '.' && $month_dir != '..' ) {
 											
 												// ENTRIES
