@@ -141,12 +141,12 @@
 		}
 		
 		// CATEGORIES
-		$category_string = "";
+		$category_string = '';
 		if ( array_key_exists( "categories", $entry_array ) ) {
 			for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
-				$category_string = $category_string . $entry_array[ 'categories' ][$i];
+				$category_string .= '<a href="index.php?category=' . $entry_array[ 'categories_id' ][$i] . '">' . $entry_array[ 'categories' ][$i] . '</a>';
 				if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
-					$category_string = $category_string . ", ";
+					$category_string .= ', ';
 				}
 			}
 		}
@@ -206,10 +206,10 @@
 		}
 		
 		// RELATED LINK
-		$releatedlink = "";
+		$relatedlink = "";
 		if ( isset( $entry_array['relatedlink']['url'] ) ) {
 			// Show 'related link'
-			$releatedlink = '<a href="' . $entry_array[ 'relatedlink' ][ 'url' ] . '">' . $entry_array[ 'relatedlink' ][ 'name' ] . '</a>';
+			$relatedlink = '<a href="' . $entry_array[ 'relatedlink' ][ 'url' ] . '">' . $entry_array[ 'relatedlink' ][ 'name' ] . '</a>';
 		}
 		
 		// RATING STARS
@@ -240,6 +240,30 @@
 			$rdf_string = ob_get_clean();
 		}
 		
+		// SUBJECT
+		$subject = "";
+		if ( isset( $entry_array[ 'subject' ] ) ) {
+			$subject = $entry_array[ 'subject' ];
+		}
+		
+		// ID
+		$id = "";
+		if ( isset( $entry_array[ 'subject' ] ) ) {
+			$id = $entry_array[ 'subject' ];
+		}
+		
+		// DATE
+		$date = "";
+		if ( isset( $entry_array[ 'date' ] ) ) {
+			$date = $entry_array[ 'date' ];
+		}
+		
+		// ENTRY CONTENT
+		$entry_content = "";
+		if ( isset( $entry_array[ 'entry' ] ) ) {
+			$entry_content = $entry_array[ 'entry' ];
+		}
+		
 		// SEARCH AND REPLACE TERMS
 		$search = array();
 		$replace = array();
@@ -247,11 +271,11 @@
 		array_push( $search, '%rdf%' );
 		array_push( $replace, $rdf_string );
 		array_push( $search, '%subject%' );
-		array_push( $replace, $entry_array[ 'subject' ] );
+		array_push( $replace, $subject );
 		array_push( $search, '%id%' );
-		array_push( $replace, $entry_array[ 'id' ] );
+		array_push( $replace, $id );
 		array_push( $search, '%date%' );
-		array_push( $replace, $entry_array[ 'date' ] );
+		array_push( $replace, $date );
 		array_push( $search, '%categories%' );
 		array_push( $replace, $category_string );
 		array_push( $search, '%edit_button%' );
@@ -273,7 +297,7 @@
 		array_push( $search, '%ratings%' );
 		array_push( $replace, $ratings );
 		array_push( $search, '%content%' );
-		array_push( $replace, $entry_array[ 'entry' ] );
+		array_push( $replace, $entry_content );
 				
 		// DO SEARCH AND REPLACE
 		$blog_content = str_replace( $search, $replace, $template );

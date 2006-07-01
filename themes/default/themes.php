@@ -114,9 +114,9 @@
 			if ( array_key_exists( "categories", $entry_array ) ) {
 				$blog_content = $blog_content . " - ";
 				for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
-					$blog_content = $blog_content . $entry_array[ 'categories' ][$i];
+					$blog_content .= '<a href="index.php?category=' . $entry_array[ 'categories_id' ][$i] . '">' . $entry_array[ 'categories' ][$i] . '</a>';
 					if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
-						$blog_content = $blog_content . ", ";
+						$blog_content .= ', ';
 					}
 				}
 			}
