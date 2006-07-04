@@ -77,7 +77,7 @@
 						if ( $dhandle ) {
 							$sub_dir = readdir( $dhandle );
 							while ( $sub_dir ) {
-								if ( is_dir( $dir . $sub_dir . '/' ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
+								if ( is_dir( $dir . $sub_dir ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
 									$lang_dir = $sub_dir;
 									$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
 									if ( $lang_name ) {

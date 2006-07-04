@@ -78,7 +78,7 @@
 		if ( is_dir( $dir ) ) {
 			if ( $year_dir_handle = @opendir( $dir ) ) {
 				while ( ( $year_dir = readdir( $year_dir_handle ) ) !== false ) {
-					if ( is_dir( $dir.$year_dir . '/' ) ) {
+					if ( is_dir( $dir . $year_dir ) ) {
 						if ( $year_dir != '.' && $year_dir != '..' ) {
 							if ( $year_dir != 'static' ) {
 						
@@ -86,7 +86,7 @@
 								
 								if ( $month_dir_handle = @opendir( $dir.$year_dir . '/' ) ) {
 									while ( ( $month_dir = readdir( $month_dir_handle ) ) !== false ) {
-										if ( is_dir( $dir.$year_dir.'/'.$month_dir . '/' ) ) {
+										if ( is_dir( $dir.$year_dir.'/'.$month_dir ) ) {
 											if ( $month_dir != '.' && $month_dir != '..' ) {
 											
 												// ENTRIES
@@ -125,7 +125,7 @@
 															// COMMENTS
 															
 															$comments_dir = $entry_filename.'/comments';
-															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/' ) ) {
+															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir ) ) {
 																if ( $comments_dir != '.' && $comments_dir != '..' ) {
 																	if ( $comments_dir_handle = @opendir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/' ) ) {
 																	
@@ -169,7 +169,7 @@
 															// TRACKBACKS
 
 															$trackbacks_dir = $entry_filename.'/trackbacks';
-															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/' ) ) {
+															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir ) ) {
 																if ( $trackbacks_dir != '.' && $trackbacks_dir != '..' ) {
 																	if ( $trackbacks_dir_handle = @opendir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/' ) ) {
 																	
@@ -284,7 +284,7 @@
 		if ( is_dir( $dir ) ) {
 			if ( $year_dir_handle = @opendir( $dir ) ) {
 				while ( ( $year_dir = readdir( $year_dir_handle ) ) !== false ) {
-					if ( is_dir( $dir.$year_dir . '/' ) ) {
+					if ( is_dir( $dir.$year_dir ) ) {
 						if ( $year_dir != '.' && $year_dir != '..' ) {
 							if ( $year_dir != 'static' ) {
 						
@@ -292,7 +292,7 @@
 								
 								if ( $month_dir_handle = @opendir( $dir.$year_dir . '/' ) ) {
 									while ( ( $month_dir = readdir( $month_dir_handle ) ) !== false ) {
-										if ( is_dir( $dir.$year_dir.'/'.$month_dir . '/' ) ) {
+										if ( is_dir( $dir.$year_dir.'/'.$month_dir ) ) {
 											if ( $month_dir != '.' && $month_dir != '..' ) {
 											
 												// ENTRIES
@@ -309,7 +309,7 @@
 																$comments_dir = $entry_filename.'/comments';
 															}
 															
-															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/' ) ) {
+															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir ) ) {
 																if ( $comments_dir != '.' && $comments_dir != '..' ) {
 																	if ( $comments_dir_handle = @opendir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/' ) ) {
 																		while ( ( $comment_filename = readdir( $comments_dir_handle ) ) !== false ) {
@@ -372,7 +372,7 @@
 		if ( is_dir( $dir ) ) {
 			if ( $year_dir_handle = @opendir( $dir ) ) {
 				while ( ( $year_dir = readdir( $year_dir_handle ) ) !== false ) {
-					if ( is_dir( $dir.$year_dir . '/' ) ) {
+					if ( is_dir( $dir . $year_dir ) ) {
 						if ( $year_dir != '.' && $year_dir != '..' ) {
 							if ( $year_dir != 'static' ) {
 						
@@ -380,7 +380,7 @@
 								
 								if ( $month_dir_handle = @opendir( $dir.$year_dir . '/' ) ) {
 									while ( ( $month_dir = readdir( $month_dir_handle ) ) !== false ) {
-										if ( is_dir( $dir.$year_dir.'/'.$month_dir . '/' ) ) {
+										if ( is_dir( $dir.$year_dir.'/'.$month_dir ) ) {
 											if ( $month_dir != '.' && $month_dir != '..' ) {
 											
 												// ENTRIES
@@ -391,7 +391,7 @@
 															 
 															$trackbacks_dir = $entry_filename.'/trackbacks';
 															
-															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/' ) ) {
+															if ( is_dir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir ) ) {
 																if ( $trackbacks_dir != '.' && $trackbacks_dir != '..' ) {
 																	if ( $trackbacks_dir_handle = @opendir( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/' ) ) {
 																		while ( ( $trackback_filename = readdir( $trackbacks_dir_handle ) ) !== false ) {
