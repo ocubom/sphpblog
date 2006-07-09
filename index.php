@@ -89,6 +89,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	 
 	<!-- Meta Data -->
+	<?php global $lang_string, $sb_info, $blog_config; ?>
 	<meta name="generator" content="Simple PHP Blog" />
 	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php" />
 	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php" />

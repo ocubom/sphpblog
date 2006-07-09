@@ -32,7 +32,7 @@
 		
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
-		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">
+		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="post">
 			<?php echo( $lang_string[ 'select_file' ] ); ?><br /><br />
 			<input name="userfile" type="file">			
 			<input type="submit" value="<?php echo( $lang_string[ 'upload_btn' ] ); ?>">

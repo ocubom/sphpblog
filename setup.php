@@ -59,7 +59,7 @@
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
 		<!-- FORM -->
-		<form action="setup_cgi.php" method="POST" name="setup" name="setup" onSubmit="return validate(this)">
+		<form action="setup_cgi.php" method="post" name="setup" name="setup" onsubmit="return validate(this)">
 		
 			<!-- LANGUAGE -->
 			<a id="linkSetupLanguage" href="javascript:toggleBlock('SetupLanguage');">

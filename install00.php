@@ -60,7 +60,7 @@
 
 		?>
 
-		<form action="install01.php" method="POST">
+		<form action="install01.php" method="post">
 
 			<?php
 

@@ -57,7 +57,7 @@
 			
 			<hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
 			
-			<form action="themes.php" method="POST" name="setup" name="setup">
+			<form action="themes.php" method="post" name="setup" name="setup">
 				
 				<label for="blog_theme"><?php echo( $lang_string[ 'choose_theme' ] ); ?></label><br />
 				<select name="blog_theme">

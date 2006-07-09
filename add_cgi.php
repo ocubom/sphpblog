@@ -282,7 +282,7 @@
 
 			
 
-			<form action='add_cgi.php' method="POST">
+			<form action='add_cgi.php' method="post">
 
 			
 

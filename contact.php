@@ -53,21 +53,21 @@ sb_language( 'contact' );
 			
 			ob_start(); ?>
 			<?php echo ( $lang_string[ 'instructions' ] ); ?><p />
-			<form action="contact_cgi.php" method="POST" onSubmit="return validate(this)">
+			<form action="contact_cgi.php" method="post" onsubmit="return validate(this)">
 		
 			<label for="name"><?php echo( $lang_string[ 'name' ] ); ?></label><br />
-			<input type="text" name="name" size="40"><br /><br />
+			<input type="text" name="name" id="name" size="40" /><br /><br />
 			<label for="email"><?php echo( $lang_string[ 'email' ] ); ?></label><br />
-			<input type="text" name="email" size="40"><br /><br />
+			<input type="text" name="email" id="email" size="40" /><br /><br />
 			<label for="subject"><?php echo( $lang_string[ 'subject' ] ); ?></label><br />
-			<input type="text" name="subject" size="40"><br /><br />
-			<label for="comment"><?php echo( $lang_string[ 'comment' ] ); ?></label><br />
+			<input type="text" name="subject" id="subject" size="40" /><br /><br />
+			<label for="text"><?php echo( $lang_string[ 'comment' ] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
 			
 			<?php
 			if ( $blog_config['blog_enable_capcha'] == 0 ) {
 				echo('<!-- Anti-spam disabled -->');
-				echo('<input type="hidden" name="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6"><br /><br />'); 
+				echo('<input type="hidden" name="capcha_contact" id="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6" /><br /><br />'); 
 			} else {
 				echo('<label for="capcha_contact">');
 				if ( function_exists('imagecreate') && $blog_config[ 'blog_enable_capcha_image' ] ) {
@@ -76,7 +76,7 @@ sb_language( 'contact' );
 					echo ( $lang_string[ 'contact_capcha' ] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
 				}
 				echo('</label><br />');
-				echo('<input type="text" name="capcha_contact" value="" autocomplete="OFF" maxlength="6"><br /><br />');
+				echo('<input type="text" name="capcha_contact" id="capcha_contact" value="" autocomplete="OFF" maxlength="6" /><br /><br />');
 			} 
 			?>
 			

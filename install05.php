@@ -51,7 +51,7 @@
 		
 		<hr />
 		
-		<form action="install06.php?blog_language=<?php echo( $blog_config[ 'blog_language' ] ); ?>" method="POST" onSubmit="return validate(this)">
+		<form action="install06.php?blog_language=<?php echo( $blog_config[ 'blog_language' ] ); ?>" method="post" onsubmit="return validate(this)">
 			<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />
 			<input type="text" name="user" autocomplete="OFF" size="40"><p />
 			

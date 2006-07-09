@@ -126,7 +126,7 @@
 
 			
 
-			<form action='delete.php' method="POST">
+			<form action='delete.php' method="post">
 
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 

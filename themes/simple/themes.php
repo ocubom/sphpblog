@@ -248,8 +248,8 @@
 		
 		// ID
 		$id = "";
-		if ( isset( $entry_array[ 'subject' ] ) ) {
-			$id = $entry_array[ 'subject' ];
+		if ( isset( $entry_array[ 'id' ] ) ) {
+			$id = $entry_array[ 'id' ];
 		}
 		
 		// DATE

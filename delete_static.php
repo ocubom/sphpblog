@@ -154,7 +154,7 @@
 
 			
 
-			<form action='delete_static.php' method="POST">
+			<form action='delete_static.php' method="post">
 
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 

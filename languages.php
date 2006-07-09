@@ -74,7 +74,7 @@
 
 		
 
-		<form action="languages_cgi.php" method="POST">
+		<form action="languages_cgi.php" method="post">
 
 			
 

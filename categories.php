@@ -255,7 +255,7 @@
 		?>
 		
 		
-		<form action="categories.php" method="POST" name="categories" id="categories" onSubmit="return validate(this)">
+		<form action="categories.php" method="post" name="categories" id="categories" onsubmit="return validate(this)">
 		<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
 		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete="OFF"><?php
 			$catArray = get_category_array();

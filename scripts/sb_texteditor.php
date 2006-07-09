@@ -190,7 +190,7 @@
 		// Begin Form
 		// --------
 		?>
-		<form action='<?php echo( $submit_page ); ?>' method="POST" name="editor" id="editor" onSubmit="return <?php echo( $validate_script ); ?>(this)">
+		<form action='<?php echo( $submit_page ); ?>' method="post" name="editor" id="editor" onsubmit="return <?php echo( $validate_script ); ?>(this)">
 			<?php
 			
 				// Hidden Fields
