@@ -245,7 +245,7 @@
 		return($res);
 	}
 
-	function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_remember, $comment_text ) {
+	function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_remember, $comment_text, $user_ip ) {
 		// Save new entry or update old entry
 		//
 		global $blog_config, $sb_info, $lang_string;
@@ -309,7 +309,7 @@
 		if ( $comment_url != '' ) {
 			$save_data[ 'URL' ] = clean_post_text( $comment_url );
 		}
-		$save_data[ 'IP-ADDRESS' ] = getIP(); // New 0.4.8
+		$save_data[ 'IP-ADDRESS' ] = $user_ip; // New 0.4.8
 
 		// Implode the array
 		$str = implode_with_keys( $save_data );
