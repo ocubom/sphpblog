@@ -133,9 +133,10 @@
 					$entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'delete_btn' ];
 					$entry_array[ 'delete' ][ 'url' ] = 'comment_delete_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;comment=' . ( $contents[$i][ 'entry' ] );
 
-					$entry_array[ 'ban' ][ 'name' ] = $lang_string[ 'ban_btn' ];
-					$entry_array[ 'ban' ][ 'url' ] = 'comment_ban_cgi.php?ban=' . $comment_entry_data[ 'IP-ADDRESS' ] .'&amp;y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;comment=' . ( $contents[$i][ 'entry' ] );
-
+					if ( array_key_exists( 'IP-ADDRESS', $comment_entry_data ) ) {
+						$entry_array[ 'ban' ][ 'name' ] = $lang_string[ 'ban_btn' ];
+						$entry_array[ 'ban' ][ 'url' ] = 'comment_ban_cgi.php?ban=' . $comment_entry_data[ 'IP-ADDRESS' ] .'&amp;y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;comment=' . ( $contents[$i][ 'entry' ] );
+					}
 				}
 
 				$entry_array[ 'count' ] = $i;
