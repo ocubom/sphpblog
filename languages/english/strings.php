@@ -5,24 +5,24 @@
 	//
 
 	// Simple PHP Version: 0.4.1
-	// Language Version:   0.4.1.0	
+	// Language Version:   0.4.1.0
 
 	function sb_language( $page ) {
-		global $language, $html_charset, $php_charset, $lang_string;			
+		global $language, $html_charset, $php_charset, $lang_string;
 
 		// Language: English
-		$lang_string['language'] = 'english';	
-		
+		$lang_string['language'] = 'english';
+
 		$lang_string['locale'] = array('en_US', 'us');
 		$lang_string['rss_locale'] = 'en-US'; // New 0.4.8
 
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
-		$lang_string['php_charset'] = 'ISO-8859-1';	
+		$lang_string['php_charset'] = 'ISO-8859-1';
 
-		setlocale( LC_TIME, $lang_string['locale'] );		
+		setlocale( LC_TIME, $lang_string['locale'] );
 
-		// Some Global Strings		
+		// Some Global Strings
 
 		// Menu
 		$lang_string['menu_links'] = "Links";
@@ -51,7 +51,8 @@
 		$lang_string['menu_add_block'] = "Blocks";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
-		
+		$lang_string['menu_moderation'] = "Moderation"; // New for 0.4.9
+
 		// Counter
 		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
@@ -78,13 +79,13 @@
 		$lang_string['sb_delete'] = 'delete';
 		$lang_string['sb_permalink'] = 'permalink';
 		$lang_string['sb_trackback'] = 'trackbacks';
-		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6		
+		$lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 
 		$lang_string['sb_add_comment_btn'] = 'add comment';
 		$lang_string['sb_comment_btn_number_first'] = true;
 		$lang_string['sb_comment_btn'] = 'comment';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
-		$lang_string['sb_comments_plural_btn'] = 'comments';		
+		$lang_string['sb_comments_plural_btn'] = 'comments';
 
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
@@ -92,10 +93,10 @@
 
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = '';
-		$lang_string['sb_view_counter_plural_post'] = ' views';		
+		$lang_string['sb_view_counter_plural_post'] = ' views';
 
 		$lang_string['sb_add_link_btn'] = '+ link';
-		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';		
+		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';
 
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
@@ -118,7 +119,7 @@
 			$lang_string['insert_url1'] = "Enter the text to be displayed for the link (Optional):";
 			$lang_string['insert_url2'] = "Enter the full URL for the link:";
 			$lang_string['insert_url3'] = "Open URL in new window (Optional):";
-			$lang_string['form_error'] = "Please complete the Subject and Entry fields.";	
+			$lang_string['form_error'] = "Please complete the Subject and Entry fields.";
 
 			// More Javascript Strings
 			$lang_string['insert_image_optional'] = 'Optional:';
@@ -126,14 +127,14 @@
 			$lang_string['insert_image_height'] = 'Height (Optional):';
 			$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
 			$lang_string['insert_image_float'] = 'Float (Optional):';
-		
+
 			$lang_string['day'] = 'Day';
 			$lang_string['month'] = 'Month';
 			$lang_string['year'] = 'Year';
 			$lang_string['hour'] = 'Hour';
 			$lang_string['minute'] = 'Minute';
 			$lang_string['second'] = 'Second';
-		}	
+		}
 
 		switch ($page) {
 			case 'add':
@@ -159,7 +160,7 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Entry Saved!</h2>Your entry has been successfully saved."; // 0.4.8.1
 				break;
-				
+
 			case 'add_static':
 				// Add Entry
 				$lang_string['title'] = "Add Static Page";
@@ -170,12 +171,12 @@
 				$lang_string['instructions_preview'] = "Here's how your Static Page looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
 				$lang_string['title_update'] = "Update Static Page";
 				$lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
-				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";	
+				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";
 
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
-				
+
 			case 'add_block':
 
 				// Add / Manage Blocks
@@ -193,7 +194,7 @@
 				$lang_string['submit_btn_add'] = "Add Block";
 				$lang_string['form_error'] = "Please complete the Name field.";
 				break;
-				
+
 			case 'add_link':
 				$lang_string['static_pages'] = "Static Pages:";
 
@@ -212,7 +213,7 @@
 				$lang_string['submit_btn_add'] = "Add Link";
 				$lang_string['form_error'] = "Please complete the Name field.";
 				break;
-				
+
 			case 'categories':
 
 				// Add / Manage Links
@@ -225,7 +226,7 @@
 				$lang_string['validate'] = "Validate";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				break;
-				
+
 			case 'colors':
 				// Change Colors
 				$lang_string['title'] = "Change Colors";
@@ -274,7 +275,7 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
-				
+
 			case 'comments':
 				// Comments
 				$lang_string['name'] = "Name:"; //New in 0.4.6.2
@@ -284,7 +285,7 @@
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
-				
+
 				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Comments";
 				$lang_string['header'] = "Add Comment";
@@ -297,17 +298,22 @@
 				$lang_string['comment_text'] = "Comment:";
 				$lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
 				$lang_string['delete_btn'] = "delete";
+				$lang_string['ban_btn'] = "ban ip";
 				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
 				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
-				
+
 				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
-        
+
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
+				$lang_string['error_ban'] = "<h2>Whoops!</h2>IP not added to banned ip listing.<br /><br />Server Reported:<br />";
 				$lang_string['success_add'] = "<h2>Comment Added!</h2>Your comment has been successfully saved."; // New for 0.4.8.1
 				$lang_string['success_delete'] = "<h2>Comment Deleted!</h2>The comment has been deleted."; // New for 0.4.8.1
+				$lang_string['success_ban1'] = "<h2>IP Banned!";
+				$lang_string['success_ban2'] = "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Name, Comment and Anti-Spam fields.";
+				$lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
 				break;
 
 			case 'delete':
@@ -319,7 +325,7 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Entry Deleted!</h2>The entry has been deleted."; // New for 0.4.8.1
 				break;
-				
+
 			case 'delete_static':
 				$lang_string['title'] = "Delete Static Page";
 				$lang_string['instructions'] = "This is the static page you are about to delete. Please make sure you really want to get rid of it, there's no undo...";
@@ -329,12 +335,12 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Static Page Deleted!</h2>The static page has been deleted."; // New for 0.4.8.1
 				break;
-				
+
 			case 'image_list':
 				$lang_string['title'] = "Image List";
 				$lang_string['instructions'] = "Click on the links below to view images.<br /><br />To add an image to your entry:<br />1) Control-click a link and choose 'Copy Link to Clipboard'.<br />2) Return to the Add Entry or Edit Entry page.<br />3) Click the 'img' button and paste the URL into the window.";
 				break;
-				
+
 			case 'info':
 				$lang_string['title'] = "Meta-Data Information";
 				$lang_string['instructions'] = "The information below is used for &quot;meta-data&quot;, which helps search engines correctly find and identify your site. Information may also be used in RSS feeds.";
@@ -347,20 +353,20 @@
 				$lang_string['success'] = "<h2>Meta-Data Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Title and Author fields.";
 				break;
-				
+
 			case 'index':
 				// Index
 				break;
-				
+
 			case 'static':
 				// Index
 				break;
-				
+
 			case 'rating':
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Vote Saved!</h2>Your rating has been successfully saved."; // New for 0.4.8.1
 				break;
-				
+
 			case 'login':
 				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
 				$lang_string['upgrade_count'] = "%n comment files need to be upgraded:"; // New 0.3.8
@@ -376,20 +382,20 @@
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
 				break;
-				
+
 			case 'logout':
 				$lang_string['title'] = "Logout";
 				$lang_string['error'] = "<h2>Goodbye!</h2>You are now logged out. (You weren't logged in anyway!)<p />";
 				$lang_string['success'] = "<h2>Goodbye!</h2>You are now logged out.<p />";
 				break;
-				
+
 			case 'forms':
 				$lang_string['title'] = "";
 				$lang_string['instructions'] = "";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
 				break;
-				
+
 			case 'set_login':
 				$lang_string['title'] = "Change Username &amp; Password";
 				$lang_string['instructions'] = "Use the form below to change your Username and/or Password. Enter the Username and Password that you want to use.";
@@ -406,14 +412,14 @@
 					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
 					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
 				break;
-				
+
 			case 'install00':
 				$lang_string['title'] = "Welcome";
 				$lang_string['instructions'] = "Thank you for choosing Simple PHP Blog!";
 				$lang_string['blog_choose_language'] = "Choose Language:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				break;
-				
+
 			case 'install01':
 				$lang_string['title'] = "Welcome";
 				$lang_string['instructions'] = "
@@ -422,7 +428,7 @@
 				<b>Click below to begin setup:</b>";
 				$lang_string['begin'] = "[ Begin Setup ]";
 				break;
-				
+
 			case 'install02':
 				$lang_string['title'] = "Setup";
 				$lang_string['instructions'] = "Trying to create <b>config</b>, <b>content</b>, and <b>images</b> folders:";
@@ -448,7 +454,7 @@
 				$lang_string['success'] = "<h2>Success!</h2>Folders created successfully!<p /><b>Click below to continue:</b>";
 				$lang_string['continue'] = "[ Continue ]";
 				break;
-				
+
 			case 'install03':
 				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
 				$lang_string['standard'] = "Standard DES Encryption: ";
@@ -475,7 +481,7 @@
 				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
 				$lang_string['form_error'] = "Please complete the Username and Password fields.";
 				break;
-				
+
 			case 'install04':
 				$lang_string['title'] = "Create Password File";
 				$lang_string['instructions'] = "Here's the tricky part:<br />
@@ -493,7 +499,7 @@
 				$lang_string['code'] = "Code for <b>password.php</b> file:";
 				$lang_string['continue'] = "[ Continue ]";
 				break;
-				
+
 			case 'install05':
 			case 'install06':
 				$lang_string['title'] = "Login";
@@ -512,7 +518,7 @@
 				$lang_string['btn_setup'] = "[ Setup ]";
 				$lang_string['btn_try_again'] = "[ Try Again ]";
 				break;
-				
+
 			case 'setup':
 				$lang_string['title'] = "Preferences";
 				$lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
@@ -543,20 +549,20 @@
 				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;";
 				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)";
 				$lang_string['blog_trackback_about'] = "Trackback provides a method of notification between blogs. Let another
-					blog know that you are linking to them by sending them a trackback ping. See who is linking to 
+					blog know that you are linking to them by sending them a trackback ping. See who is linking to
 					your blog by receiving trackback pings.<br />
-				   You can either enter the URIs to ping manually, or try to do it automatically through 
+				   You can either enter the URIs to ping manually, or try to do it automatically through
 				   Auto-Discovery.";
 				$lang_string['blog_trackback_enabled'] = "Enable trackback in my blog";
 				$lang_string['blog_trackback_auto_discovery'] = "Enable Auto-Discovery when submitting a post containing URLs";
 				$lang_string['blog_max_entries'] = "Maximum Entries to Display:";
 				$lang_string['blog_comment_tags'] = "Tags to Allow in Comments:";
 				$lang_string['blog_gzip_about'] = "
-					Since PHP 4.0.4, PHP has had the ability to read and write gzip (.gz) compressed files, 
-					thus saving disk-space. It can also transparently compress pages that are sent to browsers 
+					Since PHP 4.0.4, PHP has had the ability to read and write gzip (.gz) compressed files,
+					thus saving disk-space. It can also transparently compress pages that are sent to browsers
 					which support gzip compression, thus saving bandwidth.<br />
 					<br />
-					Zlib support in PHP is not enabled by default. If the checkboxes are disabled, then your 
+					Zlib support in PHP is not enabled by default. If the checkboxes are disabled, then your
 					installation of PHP does not support the Zlib extension.";
 				$lang_string['blog_enable_gzip_txt'] = "Enable GZIP Compression for Database Files";
 				$lang_string['blog_enable_gzip_output'] = "Enable GZIP Compression for HTTP Output";
@@ -580,7 +586,16 @@
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
-				
+				break;
+			case 'moderation':
+				$lang_string['title'] = "Moderation Preferences";
+				$lang_string['instructions'] = "You can modify the auto moderation lists here.";
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				// Error Response
+				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+				$lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
+				$lang_string['banned_address_list_title'] = "<h2>Banned IP Addresses</h2>";
+				$lang_string['banned_address_list'] = "Below is a list of numerical ip addresses that have been banned from entering comments. Each ip is on a separate line and must be numbers (not DNS names). When logged in, IP's canned be banned directly from the comments view.";
 				break;
 			case 'trackbacks':
 				// Trackbacks
@@ -592,7 +607,7 @@
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Trackback not deleted. I ran into a problem while deleting the trackback.<br /><br />Server Reported:<br />";
 				$lang_string['success_delete'] = "<h2>Trackback Deleted!</h2>The trackback link has been deleted."; // New for 0.4.8.1
 				break;
-				
+
 			case 'options':
 				$lang_string['title'] = "Options";
 				$lang_string['instructions'] = "Use the form below to customize the date and time display for blog and comment entries. You can select 12 or 24 hour clocks. Short or long date format. And the <b>Preview</b> areas update automatically to show you how you formatting will appear.";
@@ -639,7 +654,7 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Options Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
-				
+
 			case 'themes':
 				$lang_string['title'] = "Themes";
 				$lang_string['instructions'] = "Use the drop-down menu to select a different theme.";
@@ -651,7 +666,7 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Theme Selected!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
-				
+
 			case 'upload_img':
 				$lang_string['title'] = "Upload Image";
 				$lang_string['instructions'] = "Click on the button below to select a file to upload.";
@@ -661,20 +676,20 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Couldn't upload image. Here's some more information:<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Image Uploaded!</h2>The image has been successfully saved."; // New for 0.4.8.1
 				break;
-				
+
 			case 'search':
 				$lang_string['title'] = "Search Results";
 				$lang_string['instructions'] = "Search results for <b>%string</b>:";
 				$lang_string['not_found'] = "No results found";
 				break;
-				
+
 			case 'contact':
 				$lang_string['contact_capcha'] = "Anti-Spam: Enter "; // 0.4.2
 				$lang_string['title'] = "Contact Me";
 				$lang_string['instructions'] = "Fill in the form:";
 				$lang_string['form_error'] = "Please complete the Subject and Comment fields.";
 				$lang_string['name'] = "Name:";
-				$lang_string['email'] = "Email:";				
+				$lang_string['email'] = "Email:";
 				$lang_string['subject'] = "Subject:";
 				$lang_string['comment'] = "Comment:";
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
@@ -685,7 +700,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;
-				
+
 			case 'stats':
 				$lang_string["title"] = "Statistics";
 				$lang_string["general"] = "General";
@@ -700,14 +715,14 @@
 				$lang_string["most_voted_entries"] = "10 Most voted entries"; // 0.4.1
 				$lang_string["most_rated_entries"] = "10 Most rated entries"; // 0.4.1
 				break;
-				
+
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
 				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
 				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
 				$lang_string["clientid"] = 'Client ID: ';
 				break;
-				
+
 			case 'errorpage':  // New for 0.4.6
 				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
 				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
@@ -717,18 +732,18 @@
 				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
 				$lang_string["clientid"] = 'Client ID: ';
 				break;
-				
+
 			case 'emoticons':  // New for 0.4.7
 				$lang_string['title'] = "Admin Emoticons";
 				$lang_string['instructions'] = "
-					Check the emoticons you want to use. Write in the box the Tags you want 
-					to be replaced by the image. Multiple tags may be used, just separated them 
+					Check the emoticons you want to use. Write in the box the Tags you want
+					to be replaced by the image. Multiple tags may be used, just separated them
 					by spaces.<br /><br />
-		
+
 					For instance:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
-					
-					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
+
+					<i>(It is highly recommended that you make the Tags longer than 2 characters,
 					otherwise unexpected substitutions may occur.)</i>";
 				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
 				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
@@ -738,11 +753,11 @@
 				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
 				$lang_string["save_button"] = 'Save Emoticons';
 				break;
-				
+
 			case 'archives': // New for 0.4.8
 				$lang_string['title'] = "Archives";
 				$lang_string['showall'] = "Show All";
-				
+
 			default:
 				break;
 		}

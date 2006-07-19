@@ -1,4 +1,4 @@
-<?php 
+<?php
 	// --------------------------
 	// Simple PHP Blog Theme File
 	// --------------------------
@@ -12,47 +12,47 @@
 	// this as a template for your own themes.
 	//
 	// All graphic will be relative to the base-url (i.e. the folder
-	// where index.php is located.) 
-	
+	// where index.php is located.)
+
 	theme_init();
-	
+
 	// ---------------
 	// Theme Variables
 	// ---------------
 	function theme_init () {
 		global $theme_vars;
-		
+
 		$theme_vars = array();
-		
+
 		// Optional:
 		// "content_width" and "menu_width" area used internally
 		// within the theme only. (optional but recommended.)
 		$theme_vars[ 'content_width' ] = 550;
 		$theme_vars[ 'menu_width' ] = 200;
-		
+
 		// Required:
 		// "popup_window" "width" and "height" are used to determine
 		// the size of window to open for the comment view.
 		$theme_vars[ 'popup_window' ][ 'width' ] = $theme_vars[ 'content_width' ] + 50;
 		$theme_vars[ 'popup_window' ][ 'height' ] = 600;
-		
+
 		// Optional:
 		// "popup_window" "content_width" is only used internally.
 		$theme_vars[ 'popup_window' ][ 'content_width' ] = $theme_vars[ 'content_width' ];
-		
+
 		// Required:
 		// Determines the maximum with of images within a page.
 		// Make sure this value is less then "content_width" or you
 		// might have wrapping problems.
 		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 38;
-		
+
 		// ------------
 		// CUSTOMIZATION
 		// ------------
 		// New 0.3.8
 		$theme_vars[ 'menu_align' ] = 'right'; // Valid values are 'left' or 'right'
 	}
-	
+
 	// Function:
 	// theme_blogentry( $entry_array )
 	//
@@ -85,7 +85,7 @@
 	// $entry_array[ 'maxcount' ]         = Integer: Total number of entries
 	function theme_blogentry ( $entry_array, $mode='entry' ) { // New 0.4.8
 		global $blog_config, $user_colors;
-		
+
 		$blog_content = "\n";
 
 		// TRACKBACKS (RDF)
@@ -102,14 +102,14 @@
 			$blog_content = $blog_content . '</rdf:RDF>' . "\n";
 			$blog_content = $blog_content . '-->' . "\n";
 		}
-	
+
 		// SUBJECT
 		$blog_content = $blog_content . '<div class="blog_subject">' . $entry_array[ 'subject' ]  . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a></div>' . "\n";
-		
+
 		// DATE
 		if ( $mode != 'static' ) { // New 0.4.8
 			$blog_content = $blog_content . "<div class=\"blog_byline\">" . $entry_array[ 'date' ];
-			
+
 			// CATEGORIES
 			if ( array_key_exists( "categories", $entry_array ) ) {
 				$blog_content = $blog_content . " - ";
@@ -120,7 +120,7 @@
 					}
 				}
 			}
-			
+
 			// IP ADDRESS
 			// New 0.4.8
 			if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
@@ -128,41 +128,45 @@
 					$blog_content = $blog_content . ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
 				}
 			}
-			
+
 			$blog_content = $blog_content . "</div>\n\t\t";
 		}
-		
+
 		// EDIT/DELETE BUTTONS
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 			if ( isset( $entry_array[ 'edit' ][ 'url' ] ) ) {
 				$blog_content = $blog_content . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '">[ ' . $entry_array[ 'edit' ][ 'name' ] . ' ]</a>' . "\n";
 			}
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">[ ' . $entry_array[ 'delete' ][ 'name' ] . ' ]</a><br /><br />' . "\n";
+				$blog_content = $blog_content . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">[ ' . $entry_array[ 'delete' ][ 'name' ] . ' ]</a>' . "\n";
+			}
+
+			if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
+				$blog_content = $blog_content . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '">[ ' . $entry_array[ 'ban' ][ 'name' ] . ' ]</a><br /><br />' . "\n";
 			}
 		}
-		
+
 		// BLOG ENTRY
 		$blog_content = $blog_content . $entry_array[ 'entry' ] . "\n";
-		
+
 		// COMMENT ADD
 		if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
 			// Show 'add comment' button if set...
 			$blog_content = $blog_content . '<br /><a href="' . $entry_array[ 'comment' ][ 'url' ] . '">[ ' . $entry_array[ 'comment' ][ 'name' ] . ' ]</a>' . "\n";
 		}
-		
+
 		// COMMENT COUNT
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show '( x views )' string...
 			$blog_content = $blog_content . ' ( ' . $entry_array[ 'comment' ][ 'count' ] . ' )' . "\n";
 		}
-		
+
 		// TRACKBACK
 		if ( isset( $entry_array[ 'trackback' ][ 'url' ] ) ) {
 			// Show 'trackback' symbol
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">[ ' . $entry_array[ 'trackback' ][ 'name' ] . ' ]</a>' . "\n";;
 		}
-		
+
 		// PERMALINK
 		if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
 			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
@@ -170,40 +174,40 @@
 				$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
 			}
 		}
-		
+
 		// RELATED LINK
 		if ( isset( $entry_array['relatedlink']['url'] ) ) {
 			// Show 'relatedlink' symbol - New to 0.4.6
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>';
 		}
-		
+
 		// RATING
 		if ( isset( $entry_array[ 'stars' ] ) ) {
 			// Show 'permalink' symbol
 			$blog_content = $blog_content . '&nbsp;&nbsp;|&nbsp;&nbsp;' . $entry_array[ 'stars' ];
 		}
-		
+
 		// END
 		$blog_content = $blog_content . '<hr />' . "\n";
-		
+
 		return $blog_content;
 	}
-	
+
 	function theme_staticentry ( $entry_array ) {
 		$blog_content = theme_blogentry( $entry_array, 'static' ); // New 0.4.8
 		return $blog_content;
 	}
-	
+
 	function theme_commententry ( $entry_array ) {
 		$blog_content = theme_blogentry( $entry_array, 'comment' ); // New 0.4.8
 		return $blog_content;
 	}
-	
+
 	function theme_trackbackentry ( $entry_array ) {
 		global $blog_config, $user_colors;
 
 	   $blog_content = "\n";
-	   
+
 		$blog_content = $blog_content . '<div class="blog_subject">' . $entry_array[ 'title' ] . '</div>' . "\n";
 		$blog_content = $blog_content . '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n";
 
@@ -213,7 +217,7 @@
 				$blog_content = $blog_content . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">[ ' . $entry_array[ 'delete' ][ 'name' ] . ' ]</a><br /><br />' . "\n";
 			}
 		}
-		
+
 		$blog_content = $blog_content . $entry_array[ 'excerpt' ] . "<p>\n";
 
 		if ( (isset( $entry_array[ 'blog_name' ] ) ) && ($entry_array[ 'blog_name' ] != "") ) {
@@ -221,12 +225,12 @@
 		} else {
 		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'">[ ' . $entry_array[ 'url' ] . " ]</a><p>\n";
 		}
-		
+
 		$blog_content = $blog_content . '<hr />' . "\n";
 
 		return $blog_content;
 	}
-	
+
 	// Function:
 	// theme_default_colors( )
 	//
@@ -251,9 +255,9 @@
 	// and added keys will appear on the "color.php" page.
 	function theme_default_colors () {
 		global $lang_string;
-		
+
 		$color_def = array();
-		
+
 		array_push( $color_def, array( 'id' => 'bg_color',
 								'string' => $lang_string[ 'bg_color' ],
 								'default' => 'CCCC99' ) );
@@ -299,10 +303,10 @@
 		array_push( $color_def, array( 'id' => 'date_txt_color',
 								'string' => $lang_string[ 'date_txt_color' ],
 								'default' => '999999' ) );
-		
+
 		return ( $color_def );
 	}
-	
+
 	// Function:
 	// theme_pagelayout( )
 	//
@@ -315,14 +319,14 @@
 	//
 	function theme_pagelayout () {
 		global $user_colors, $blog_config, $blog_theme, $theme_vars;
-		
+
 		$content_width = $theme_vars[ 'content_width' ];
 		$menu_width = $theme_vars[ 'menu_width' ];
-		$page_width = $content_width + $menu_width; 
-		
+		$page_width = $content_width + $menu_width;
+
 		// Default image path.
 		$img_path = "themes/" . $blog_theme . "/images/";
-		
+
 		// Begin Page Layout HTML
 		?>
 		<body>
@@ -331,12 +335,12 @@
 				<tr align="left" valign="top">
 					<td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
 						<div id="header_image"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
-						
+
 						<?php
-						if ( $blog_config['blog_enable_title']) { // New for 0.4.6 
+						if ( $blog_config['blog_enable_title']) { // New for 0.4.6
 						echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
 						}?>
-						
+
 						<div id="pagebody">
 							<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
 								<tr valign="top">
@@ -372,10 +376,10 @@
 			</table>
 			<br />
 		</body>
-		<?php 
+		<?php
 		// End Page Layout HTML
 	}
-	
+
 	// Function:
 	// theme_popuplayout( )
 	//
@@ -383,14 +387,14 @@
 	// -----------------------------
 	// This function controls all HTML output to the browser.
 	//
-	// Same as above, but for the pop-up comment window and 
+	// Same as above, but for the pop-up comment window and
 	// the image list pop-up.
 	//
 	function theme_popuplayout () {
 		global $user_colors, $blog_config, $theme_vars;
-		
-		$popup_width = $theme_vars[ 'popup_window' ][ 'content_width' ]; 
-		
+
+		$popup_width = $theme_vars[ 'popup_window' ][ 'content_width' ];
+
 		// Begin Popup Layout HTML
 		?>
 		<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
@@ -418,17 +422,17 @@
 			</table>
 			<br />
 		</body>
-		<?php 
+		<?php
 		// End Popup Layout HTML
 	}
-	
+
 	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
 		global $blog_theme;
-		
+
 		// This function creates the menu "blocks" in the sidebar.
 		//
 		// If you don't want the block to have a "twisty" arrow, then don't pass in a value for $toggleDiv
-		
+
 		// With "twisty" arrow
 		/*
 			<!-- LINKS -->
@@ -437,7 +441,7 @@
 			<a href="index.php">Home</a><br />
 			</div><br />
 		*/
-		
+
 		// Without "twisty" arrow
 		/*
 			<!-- LINKS -->
@@ -446,15 +450,15 @@
 			<a href="index.php">Home</a><br />
 			</div><br />
 		*/
-		
+
 		if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {
 			// Default image path.
 			$img_path = "themes/" . $blog_theme . "/images/";
 			$img_show = $img_path . 'plus.gif';
 			$img_hide = $img_path . 'minus.gif';
-			
+
 			echo( "\n<!-- " . $comment . " -->\n" );
-			
+
 			echo( '<div class="menu_title">' );
 			if ( isset( $toggleDiv ) ) {
 				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty" alt="" /> ' );
@@ -464,7 +468,7 @@
 				echo( '</a>' );
 			}
 			echo( "</div>\n" );
-			
+
 			if ( isset( $toggleDiv ) ) {
 				echo( '<div id="toggle' . $toggleDiv . '" class="menu_body">' . "\n" );
 			} else {
@@ -472,16 +476,16 @@
 			}
 			echo( $blockArray[ 'content' ] . "\n" );
 			echo( "</div><br />\n" );
-			
+
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	function theme_menu () {
 		global $user_colors, $lang_string, $theme_vars, $logged_in, $sb_info, $blog_config;
-		
+
 		// This function creates the sidebar menu.
 		//
 		// Move blocks of code up/down to change the order.
@@ -503,12 +507,12 @@
 		// 		echo( "this \"is\" a test" );  // displays: this "is" a test
 		// 		echo( "this 'is' a test" );  // displays: this 'is' a test
 		// 		echo( 'this \'is\' a test' );  // displays: this 'is' a test
-		
+
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
 
 		// AVATAR
 		theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
-		
+
 		// LINKS
 		$result = menu_display_links();
 		$loginString = menu_display_login();
@@ -517,13 +521,13 @@
 		}
 		theme_menu_block( $result, 'LINKS' );
 		// theme_menu_block( $result, 'LINKS', 'SidebarLinks' ); <-- Use this if you want to be able to Expand/Collapse links.
-		
+
 		// MENU
 		theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
-		
+
 		// SETUP
 		theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
-				
+
 		// CUSTOM BLOCKS
 		$array = read_blocks($logged_in);
 		for ($i=0 ; $i<count($array) ; $i+=2) {
@@ -532,33 +536,33 @@
 			$result[ 'content' ] = $array[$i+1];
 			theme_menu_block( $result, 'CUSTOM BLOCK' );
 		}
-		
+
 		// CALENDAR
 		theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
-		
+
 		// ARCHIVE TREE
 		theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
-		
+
 		// CATEGORIES
 		theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
-		
+
 		// SEARCH
 		theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
-		
+
 		// Counter Totals
 		theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter');
 
 		// RECENT ENTRIES
 		theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
-				
+
 		// RECENT COMMENTS
 		theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
-		
+
 		// RECENT TRACKBACKS
 		theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
-		
+
 		echo( '<p />' );
-	
+
 		// WEB BADGES
 		echo( '<div align="center">' );
 		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog" title="Powered by Simple PHP Blog" border="0" /></a> ' );
@@ -569,5 +573,5 @@
 		echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />' );
 		echo( '</div>' );
 	}
-	
+
 ?>
