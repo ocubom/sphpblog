@@ -625,7 +625,6 @@
 				$lang_string['instructions'] = "Resultat af søgning efter <b>%string</b>:";
 				$lang_string['not_found'] = "Ingen resultater";
 				break;
-				
 			case 'contact':
 				$lang_string['contact_capcha'] = "Anti-spam: Indtast ";
 				$lang_string['title'] = "Kontakt mig";
