@@ -1,6 +1,7 @@
 <?php
 	// Spanish Language Translation(s)
 	// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com (0.4.7)
+	//  Retocado por Cristian Olate, cristian <dot> olate <at> gmail <dot> com (0.4.8)
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -42,14 +43,14 @@
 		$lang_string['menu_most_recent_entries'] = "Últimos Artículos";
 		$lang_string['menu_most_recent_trackback'] = "Últimos Trackbacks"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Bloques";
-		$lang_string['menu_emoticons'] = "Emoticonos"; // New for 0.4.7
+		$lang_string['menu_emoticons'] = "Emoticones"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Counter
 		$lang_string['counter_today'] = "Hoy:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Ayer:"; // New for 0.4.8
 		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
-		$lang_string['counter_title'] = "Contadores totales"; // New for 0.4.8
+		$lang_string['counter_title'] = "Conteos Totales"; // New for 0.4.8
 
 		// Other
 		$lang_string['home'] = 'Página Principal';
@@ -58,8 +59,8 @@
 		$lang_string['search_title'] = 'Búsqueda'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Enviar'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Página generada en %s segundos'; // <-- New 0.3.7
-		$lang_string['counter_total'] = 'Visitas al Sitio: '; // New in 0.4.8
-		$lang_string['read_more'] = 'Leer Más...'; // New in 0.4.8
+		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Leer más...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' );
@@ -115,12 +116,12 @@
 				$lang_string['insert_image_popup'] = 'Ver en una ventana emergente al hacer clic (Opcional):';
 				$lang_string['insert_image_float'] = 'Flotar (Opcional):';
 				
-				$lang_string['day'] = 'Day';
-				$lang_string['month'] = 'Month';
-				$lang_string['year'] = 'Year';
-				$lang_string['hour'] = 'Hour';
-				$lang_string['minute'] = 'Minute';
-				$lang_string['second'] = 'Second';
+				$lang_string['day'] = 'Día';
+				$lang_string['month'] = 'Mes';
+				$lang_string['year'] = 'Año';
+				$lang_string['hour'] = 'Hora';
+				$lang_string['minute'] = 'Minutos';
+				$lang_string['second'] = 'Segundos';
 		}
 		switch ($page) {
 			case 'add':
@@ -132,7 +133,7 @@
 				$lang_string['label_tb_ping'] = "Trackback ping(s) a enviar (separados por comas)"; // <-- New 0.3.8
 				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
 				$lang_string['label_relatedlink'] = "Enlace Relacionado"; // New for 0.4.6
-				$lang_string['label_categories'] = "Category List";
+				$lang_string['label_categories'] = "Lista de Categorías";
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Previsualizar / Editar entrada";
 				$lang_string['instructions_preview'] = "Así es como se ve su entrada";
@@ -237,10 +238,10 @@
 				$lang_string['color_preset'] = "Esquemas de Color:";
 				$lang_string['scheme_name'] = "Introduzca un nombre para el Esquema de Color Personalizado:";
 				$lang_string['scheme_file'] = "Introduzca el nombre del fichero del Esquema: (sin espacio ni extensiones)";
-				$lang_string['form_error'] = "Por favor, introduzca un nombre para suEsquema de Color Personalizado.";
+				$lang_string['form_error'] = "Por favor, introduzca un nombre para su Esquema de Color Personalizado.";
 				$lang_string['save_btn'] = "&nbsp;Guardar&nbsp;";
 				$lang_string['submit_btn'] = "&nbsp;Aceptar&nbsp;";
-				$lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
+				$lang_string['theme_doesnt_allow_colors'] = 'El tema seleccionado no permite un Esquema de Color Personalizado.';
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>La información no pudo ser guardada. Se encontró un problema mientras se almacenaba su información.<br /><br />Respuesta del servidor:<br />";
 				break;
@@ -257,7 +258,7 @@
 				$lang_string['comment_email'] = "Email:"; // 0.3.8
 				$lang_string['commentposted'] = "Nuevo comentario publicado en: ";  // New for 0.4.6.2
 				$lang_string['IPAddress'] = "Direcci&oacute;n IP:";  // New for 0.4.6.2
-				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['useragent'] = "Agente Usuario:";  // New for 0.4.6.2
 				$lang_string['comment_url'] = "Web:"; // 0.3.8
 				$lang_string['comment_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2
 				$lang_string['form_error'] = "Por favor rellene los campos Nombre, Comentario y el campo Anti-Spam."; //0.4.2
@@ -265,10 +266,10 @@
 				$lang_string['comment_text'] = "Comentario:";
 				$lang_string['post_btn'] = "&nbsp;Publicar comentario&nbsp;";
 				$lang_string['delete_btn'] = "Borrar";
-				$lang_string['expired_comment1'] = "Lo sentimos. No se permiten comentarios después de "; // New for 0.4.8
+				$lang_string['expired_comment1'] = "Lo sentimos. No se permiten nuevos comentarios después de "; // New for 0.4.8
 				$lang_string['expired_comment2'] = " días."; // New for 0.4.8
 				
-				$lang_string['blacklisted'] = "Lo siento, tu IP ha sido baneada. No se permiten comentarios."; // New for 0.4.8
+				$lang_string['blacklisted'] = "Lo sentimos, su dirección IP ha sido baneada. No se permiten comentarios."; // New for 0.4.8
 				$lang_string['wrote'] = "<i>El %s, %s escribi&oacute;:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comentario no grabado. Ocurrió un problema mientras se guardaba su comentario.<br /><br />Respuesta del servidor:<br />";
@@ -317,7 +318,7 @@
 				$lang_string['upgrade'] = "<h2>Actualización</h2>"; // New 0.3.8
 				$lang_string['upgrade_count'] = "%n ficheros de comentarios necesitan ser actualizados:"; // New 0.3.8
 				$lang_string['upgrade_url'] = "Actualizar Comentarios"; // New 0.3.8
-				$lang_string['title'] = "Login";
+				$lang_string['title'] = "Ingreso";
 				$lang_string['instructions'] = "Introduzca su nombre de usuario y contraseña";
 				$lang_string['username'] = "Usuario:";
 				$lang_string['password'] = "Contraseña";
@@ -349,10 +350,10 @@
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>¡Ups!</h2>Información no guardada. Hubo un error mientras se guardaba su nombre de usuario y contraseña .<br /><br />Respuesta del servidor:<br />";
 				$lang_string['form_error'] = "Por favor complete los campos Usuario y Contraseña.";
-				$lang_string['explanation'] = "In recent versions, our password structure has changed.  There is no longer a way to update passwords
-					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php
-					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script
-					to generate your password as you did when originally creating the blog site.";  // New for 0.4.6
+				$lang_string['explanation'] = "En las versiones recientes, la estructura de la contraseña ha cambiado. Ya no hay manera de actualizar contraseñas
+				    y/o logins desde el código del blog. Para cambiar su contraseña, elimine el archivo /config/password.php y asegúrese de que existen los ficheros
+					install*.php en el servidor local. Una vez hecho esto, refresque la página (o desconéctese). Se le presentará el mismo formulario para crear la
+					contraseña que vió cuando creó por primera vez el blog.";  // New for 0.4.6
 				break;
 			case 'install00':
 				$lang_string['title'] = "Bienvenido";
@@ -388,18 +389,18 @@
 				$lang_string['continue'] = "[ Continuar ]";
 				break;
 			case 'install03':
-				$lang_string['supported'] = "<b>Your web server supports the following encryption schemes:</b>";
+				$lang_string['supported'] = "<b>Su servidor web soporta los siguientes esquemas de cifrado:</b>";
 				$lang_string['standard'] = "Standard DES Encryption: ";
 				$lang_string['extended'] = "Extended DES Encryption: ";
 				$lang_string['MD5'] = "MD5 Encryption: ";
 				$lang_string['blowfish'] = "Blowfish Encryption: ";
-				$lang_string['enabled'] = "enabled";
-				$lang_string['disabled'] = "disabled";
-				$lang_string['using_standard'] = "<b>Using Standard DES Encryption...</b>";
-				$lang_string['using_extended'] = "<b>Using Extended DES Encryption...</b>";
-				$lang_string['using_MD5'] = "<b style=\"color: green;\">Using MD5 Encryption...</b>";
+				$lang_string['enabled'] = "habilitado";
+				$lang_string['disabled'] = "deshabilitado";
+				$lang_string['using_standard'] = "<b>Usando Standard DES Encryption...</b>";
+				$lang_string['using_extended'] = "<b>Usando Extended DES Encryption...</b>";
+				$lang_string['using_MD5'] = "<b style=\"color: green;\">Usando MD5 Encryption...</b>";
 				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Using Blowfish Encryption...</b>";
-				$lang_string['using_unknown'] = "<b>Using Unknown Encryption...</b>";
+				$lang_string['using_unknown'] = "<b>Usando Unknown Encryption...</b>";
 				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />";
 				$lang_string['title'] = "Crear Usuario y Contraseña";
 				$lang_string['instructions'] = "Use el formulario inferior para crear un Usuario y una Contraseña.";
@@ -414,39 +415,39 @@
 				$lang_string['form_error'] = "Por favor, rellene los campos Usuario y Contraseña";
 				break;
 			case 'install04':
-				$lang_string['title'] = "Create Password File";
-				$lang_string['instructions'] = "Here's the tricky part:<br />
+				$lang_string['title'] = "Crear el archivo para la contraseña";
+				$lang_string['instructions'] = "He aquí el truco:<br />
 				<ol>
-				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
-				<li>Create a New Text Document.</li>
-				<li>Copy and paste the code in the box below into your document.</li>
-				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
-				<li>Open a FTP application.</li>
-				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
-				<li>Delete the <b>password.php</b> from your hard drive.</li>
+				<li>Abra un editor de texto. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
+				<li>Cree un nuevo documento de texto.</li>
+				<li>Copie y pegue el código del cuadro inferior en su documento.</li>
+				<li>Guarde su archivo y llámelo <b>password.php</b> <i>(Asegúrese de guardarlo en formato de <b>texto</b> o <b>texto plano</b>.)</i></li>
+				<li>Abra una aplicación FTP.</li>
+				<li>Suba el archivo <b>password.php</b> dentro de la carpeta <b>config</b> de su sitio web.</li>
+				<li>Borre el archivo <b>password.php</b> de su disco duro.</li>
 				</ol>
 				";
-				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
-				$lang_string['code'] = "Code for <b>password.php</b> file:";
-				$lang_string['continue'] = "[ Continue ]";
+				$lang_string['information'] = "<i>Nota: Si desea borar su nombre de usuario y contraseña (probablemente porque la olvidó), elimine el archivo <b>password.php</b> en la carpeta <b>config</b> de su sitio web. La próxima vez que visite su sitio, lo llevará a tavés de este proceso de instalación nuevamente...</i>";
+				$lang_string['code'] = "Código para el archivo <b>password.php</b>:";
+				$lang_string['continue'] = "[ Continuar ]";
 				break;
 			case 'install05':
 			case 'install06':
-				$lang_string['title'] = "Login";
-				$lang_string['instructions'] = "Please enter your Username and Password below";
-				$lang_string['username'] = "Username:";
-				$lang_string['password'] = "Password";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['title'] = "Ingreso";
+				$lang_string['instructions'] = "Ingrese su nombre de usuario y contraseña";
+				$lang_string['username'] = "Nombre de Usuario:";
+				$lang_string['password'] = "Contraseña";
+				$lang_string['submit_btn'] = "&nbsp;Aceptar&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
-				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
-				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+				$lang_string['success'] = "<h2>¡Felicitaciones!</h2>Usted se ha conectado.<p />
+				Haga click abajo para visitar la página de <b>Configuración</b> , desde donde podrá personalizar su nuevo blog.<p />
+				<i>Nota: Ahora que ha completado el proceso de instalación, se le recomienda borrar los archivos <b>installXX.php</b> desde su sitio web. (i.e. install00.php hasta install06.php)</i><p />";
 				// Wrong Password
-				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
-				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+				$lang_string['wrong_password'] = "<h2>Ups!</h2>No está conectado. Verifique que ha escrito bien su Nombre de Usuario y Contraseña e intente nuevamente.<p />";
+				$lang_string['form_error'] = "Complete los campos de Nombre de Usuario y Contraseña.";
 				// Success
-				$lang_string['btn_setup'] = "[ Setup ]";
-				$lang_string['btn_try_again'] = "[ Try Again ]";
+				$lang_string['btn_setup'] = "[ Configuración ]";
+				$lang_string['btn_try_again'] = "[ Intente de nuevo ]";
 				break;
 			case 'setup':
 				$lang_string['title'] = "Configuración";
@@ -464,13 +465,12 @@
 				$lang_string['blog_email_notification'] = "Enviar email cuando se publique un comentario"; // <-- New 0.3.7
 				$lang_string['blog_send_pings'] = "Enviar &quot;pings&quot;"; // <-- New 0.3.7
 				$lang_string['blog_ping_urls'] = "URL completa (ej: http://rpc.weblogs.com/RPC2) del servicio de &quot;ping&quot;.<br />(Puedes introducir más de una separándolas por comas.)"; // <-- New 0.3.7
-				$lang_string['blog_trackback_about'] = "Trackback provides a method of notification between blogs. Let another
-					blog know that you are linking to them by sending them a trackback ping. See who is linking to 
-					your blog by receiving trackback pings.<br />
-				   You can either enter the URIs to ping manually, or try to do it automatically through 
-				   Auto-Discovery."; // <-- New 0.3.8
-				$lang_string['blog_trackback_enabled'] = "Enable trackback in my blog"; // <-- New 0.3.8
-				$lang_string['blog_trackback_auto_discovery'] = "Enable Auto-Discovery when submitting a post containing URLs"; // <-- New 0.?.?
+				$lang_string['blog_trackback_about'] = "Trackback provee de un método de notificación entre blogs. Permita que otro
+					blog sepa que usted lo está enlazando enviando un trackback ping. Vea quién está enlazando su blog 
+					recibiendo trackback pings.<br />
+				   Usted puede tanto ingresar las URLs manualmente para hacer ping, o hacerlo automáticamente a través de Auto-Discovery."; // <-- New 0.3.8
+				$lang_string['blog_trackback_enabled'] = "Activar trackback en mi blog"; // <-- New 0.3.8
+				$lang_string['blog_trackback_auto_discovery'] = "Activar Auto-Discovery al crear posts que contengan URLs"; // <-- New 0.?.?
 				$lang_string['blog_max_entries'] = "Máximas Entradas a Mostrar:"; // <-- New 0.3.6
 				$lang_string['blog_comment_tags'] = "Etiquetas permitidas en los Comentarios:"; // <-- New 0.3.6
 				$lang_string['blog_gzip_about'] = "
@@ -496,17 +496,17 @@
 				$lang_string['title_entries'] = "Entradas"; // New in 0.4.7
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Idioma"; // New in 0.4.7
-				$lang_string['blog_comment_days_expiry'] = "¿Comentarios Permitidos Durante Cuántos Días? (0 sin caducidad)"; // New in 0.4.8
+				$lang_string['blog_comment_days_expiry'] = "Por cuantos días permitir comentarios? (0 significa sin límite de días)"; // New in 0.4.8
 				$lang_string['blog_enable_calendar'] = "Activar calendario / Bloque de archivo"; // New for 0.4.6
-				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
-				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
-				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
+				$lang_string['blog_enable_archives'] = "Activar Bloque de archivo"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Activar Contador en el menú"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Número de horas entes de contar de nuevo las visitas (basado en una dirección IP específica):"; // New for 0.4.8
 				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Permitir Bloque de Título de Texto (Desmarca el checkbox si el título de la cabecera es una imágen)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Permitir Enlaces Permanentes en las Entradas"; // New for 0.4.6
-				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
-				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
-				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
+				$lang_string['blog_enable_capcha'] = "Activar Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Activar Contador en Pié de Página"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Imágenes Anti-Spam (librería GD solamente) / Campo de texto Anti-Spam"; // New for 0.4.8
 				$lang_string['blog_enable_stats'] = "Permitir la Opción de Estadísticas en el Listado"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Permitir la Opción de Comentarios Recientes en el Listado"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Permitir la Opción de Entradas Recientes en el Listado"; // New for 0.4.7
@@ -541,8 +541,8 @@
 				$lang_string['time_title'] = "Formato de Hora:";
 				$lang_string['12hour'] = "Reloj de 12 horas";
 				$lang_string['24hour'] = "Reloj de 24 horas";
-				$lang_string['before_noon'] = "Before Noon";
-				$lang_string['after_noon'] = "After Noon";
+				$lang_string['before_noon'] = "Mañana";
+				$lang_string['after_noon'] = "Tarde";
 				// Date
 				$lang_string['date_title'] = "Formato de Visualización de Fecha:";
 				$lang_string['long_date'] = "Fecha Larga";
@@ -606,7 +606,7 @@
 				$lang_string['contact_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2	
 				$lang_string['contactsent'] = "Contacto enviado desde: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Direcci&oacute;n IP:";  // New for 0.4.6
-				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
+				$lang_string['useragent'] = "Agente Usuario:";  // New for 0.4.6
 				$lang_string['wrote'] = "<i>El %s, %s escribi&oacute;:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				break;
 			case 'stats':
@@ -624,37 +624,35 @@
 				$lang_string['most_rated_entries'] = "10 Artículos mejor valorados"; //0.4.1
 				break;
 			case 'errorpage-nocookies':  // New for 0.4.6
-				$lang_string["title"] = 'HTTP Error 403.8 - Page/Function Access Denied';
-				$lang_string["errorline1"] = 'The page or function you attempted to process requires the use of cookies.';
-				$lang_string["errorline2"] = 'Restore cookie functionality within your browser or protection software and attempt your request again.';
-				$lang_string["clientid"] = 'Client ID: ';
+				$lang_string["title"] = 'HTTP Error 403.8 - Acceso denegado a Página/Función';
+				$lang_string["errorline1"] = 'La página o función que intenta acceder requiere el uso de cookies.';
+				$lang_string["errorline2"] = 'Habilite las cookies en su navegador o software de protección e intente nuevamente.';
+				$lang_string["clientid"] = 'ID Cliente: ';
 				break;
 			case 'errorpage':  // New for 0.4.6
-				$lang_string["403.8"] = 'HTTP Error 403.8 - Page/Function Access Denied';
-				$lang_string["404"] = 'HTTP Error 404 - Page/Function Does Not Exist';
-				$lang_string["error_404"] = 'The page or function you attempted to process does not exist.';
-				$lang_string["error_javascript"] = 'The page or function you attempted requires javascript in order to properly function.';
-				$lang_string["error_emailnotsent"] = 'The message you attempted to send has failed.';
-				$lang_string["error_emailnotsentcapcha"] = 'The message you attempted to send has failed because the anti-spam entry was incorrect or missing.';
-				$lang_string["clientid"] = 'Client ID: ';
+				$lang_string["403.8"] = 'HTTP Error 403.8 - Acceso denegado a Página/Función';
+				$lang_string["404"] = 'HTTP Error 404 - Página/Función inexistente';
+				$lang_string["error_404"] = 'La página o función que intenta acceder no existe.';
+				$lang_string["error_javascript"] = 'La página o función que intenta acceder requere javascript para funcionar correctamente.';
+				$lang_string["error_emailnotsent"] = 'El mensaje que intentó enviar ha fallado.';
+				$lang_string["error_emailnotsentcapcha"] = 'El mensaje que intentó enviar ha fallado pues la entrada anti-spam está incorrecta o no ha sido ingresada.';
+				$lang_string["clientid"] = 'ID Cliente: ';
 				break;
 			case 'emoticons':  // New for 0.4.7
-				$lang_string['title'] = "Admin Emoticons";
+				$lang_string['title'] = "Administrar Emoticones";
 				$lang_string['instructions'] = "
-					Check the emoticons you want to use. Write in the box the Tags you want 
-					to be replaced by the image. Multiple tags may be used, just separated them 
-					by spaces.<br /><br />
-					For instance:<br />
+					Marque los emoticones que desea usar. Escriba en el cuadro los Tags que desea sean remplazados por la imagen.
+					Puede usar múltiples Tags, separándolos por espacios.<br /><br />
+					Por ejemplo:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
-					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
-					otherwise unexpected substitutions may occur.)</i>";
-				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
-				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
-				$lang_string["upload_error"] = 'Error! Image was not uploaded.';
-				$lang_string["upload_invalid"] = 'Error! Invalid image file. Image must be a png, jpg, or gif.';
-				$lang_string["save_success"] = 'Emoticon preferences saved successfully!';
-				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
-				$lang_string["save_button"] = 'Save Emoticons';
+					<i>(Se recomienda fuertemente que los Tags sean de más de 2 caracteres, de otro modo sustituciones inesperadas pueden ocurrir.)</i>";
+				$lang_string["upload_instructions"] = 'Subir Nuevo Emoticon:';
+				$lang_string["upload_success"] = '¡Felicitaciones! Imagen subida exitosamente!';
+				$lang_string["upload_error"] = '¡Error! La Imagen no ha sido subida.';
+				$lang_string["upload_invalid"] = '¡Error! Archivo de Imagen no válido. La Imagen debe tener extensión png, jpg, o gif.';
+				$lang_string["save_success"] = '¡Preferencias para emoticones guardada exitosamente!';
+				$lang_string["save_error"] = '¡Error! Las Preferencias para Emoticones no han sido guardadas.';
+				$lang_string["save_button"] = 'Guardar Emoticones';
 				break;
 			default:
 				break;
