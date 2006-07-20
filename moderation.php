@@ -16,7 +16,7 @@
 	if ( array_key_exists( 'banned_address_list', $_POST )) {
 		global $ok;
 		$ok = write_blacklist( sb_stripslashes( $_POST[ 'banned_address_list' ] ) );
-
+		$ok = write_bannedwordlist( $_POST[ 'banned_word_list' ] );
 		if ( $ok === true ) {
 			redirect_to_url( 'index.php' );
 		}
@@ -45,7 +45,11 @@
 
 			<?php echo( $lang_string[ 'banned_address_list_title' ] ); ?>
 			<label for="info_keywords"><?php echo( $lang_string[ 'banned_address_list' ] ); ?></label><br />
-				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="banned_address_list" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'banned_address_list' ]); ?></textarea><br /><br />
+				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="banned_address_list" rows="20" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'banned_address_list' ]); ?></textarea><br /><br />
+
+				<?php echo( $lang_string[ 'banned_word_list_title' ] ); ?>
+			<label for="info_keywords"><?php echo( $lang_string[ 'banned_word_list' ] ); ?></label><br />
+				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="banned_word_list" rows="20" cols="50" autocomplete="OFF"><?php echo($blog_config[ 'banned_word_list' ]); ?></textarea><br /><br />
 
 			<!-- SUBMIT -->
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />

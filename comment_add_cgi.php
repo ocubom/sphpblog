@@ -1,5 +1,6 @@
 <?php
 	require_once('scripts/sb_functions.php');
+	//require_once('scripts/sb_blacklist.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 	if ( !session_id() ) {
@@ -26,32 +27,42 @@
 		}
 	}
 
-	if ( $fieldsExist ) {
-		// Dis-allow dots, and slashes to make sure the
-		// user is not able to back-up a directory.
-		//
-		// Make sure the string lengths are correct.
-		if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] || $logged_in ) {
-			if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'y' ] ) == 2 &&
-					strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'm' ] ) == 2 &&
-					strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'entry' ] ) == 18 ) {
-
-				// Verify that the file exists.
-				if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
-					if ( strlen( $_POST[ 'comment_name' ] ) > 0 && strlen( $_POST[ 'comment_text' ] ) > 0 ) {
-						$ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ],
-																 sb_stripslashes( $_POST[ 'comment_name' ] ),
-																 sb_stripslashes( $_POST[ 'comment_email' ] ),
-																 sb_stripslashes( $_POST[ 'comment_url' ] ),
-																 $_POST[ 'comment_remember' ],
-																 sb_stripslashes( $_POST[ 'comment_text' ] ),
-																 $_POST[ 'user_ip' ] );
-						@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
-					}
-				}
-			}
-		}
+	// Do the banned words checking (New 0.4.9)
+	$oBannedWords = new CBannedWords;
+	$oBannedWords->load( 'config/bannedwordlist.txt' );
+	if ( $oBannedWords->ContainsBannedWord( $_POST[ 'comment_name' ], $_POST[ 'comment_email' ], $_POST[ 'comment_url' ], $_POST[ 'comment_text' ] ) )
+	{
+		$ok = $lang_string['bannedword'];
 	}
+
+	if ( $ok != True ) {
+	if ( $fieldsExist ) {
+    // Dis-allow dots, and slashes to make sure the
+    // user is not able to back-up a directory.
+    //
+    // Make sure the string lengths are correct.
+    if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] || $logged_in ) {
+      if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'y' ] ) == 2 &&
+          strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'm' ] ) == 2 &&
+          strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'entry' ] ) == 18 ) {
+
+        // Verify that the file exists.
+        if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
+          if ( strlen( $_POST[ 'comment_name' ] ) > 0 && strlen( $_POST[ 'comment_text' ] ) > 0 ) {
+            $ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ],
+                                 sb_stripslashes( $_POST[ 'comment_name' ] ),
+                                 sb_stripslashes( $_POST[ 'comment_email' ] ),
+                                 sb_stripslashes( $_POST[ 'comment_url' ] ),
+                                 $_POST[ 'comment_remember' ],
+                                 sb_stripslashes( $_POST[ 'comment_text' ] ),
+                                 $_POST[ 'user_ip' ] );
+            @session_unregister( 'capcha_' . $_GET[ 'entry' ] );
+          }
+        }
+      }
+    }
+  }
+  }
 
 	if ( $ok === true ) {
 		$relative_url = 'comments.php?y='.$_POST[ 'y' ].'&m='.$_POST[ 'm' ].'&entry='.$_POST[ 'entry' ];

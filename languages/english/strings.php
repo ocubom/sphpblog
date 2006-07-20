@@ -303,6 +303,7 @@
 				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
 
 				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
+				$lang_string['bannedword'] = "Your comment, url, name or email contained word(s) that have been banned by the administrator. Your comment has NOT been posted."; // New for 0.4.8
 
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
@@ -590,12 +591,14 @@
 			case 'moderation':
 				$lang_string['title'] = "Moderation Preferences";
 				$lang_string['instructions'] = "You can modify the auto moderation lists here.";
-				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+				$lang_string['submit_btn'] = "&nbsp;Save Moderation Settings&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['banned_address_list_title'] = "<h2>Banned IP Addresses</h2>";
 				$lang_string['banned_address_list'] = "Below is a list of numerical ip addresses that have been banned from entering comments. Each ip is on a separate line and must be numbers (not DNS names). When logged in, IP's canned be banned directly from the comments view.";
+				$lang_string['banned_word_list_title'] = "<h2>Banned Words</h2>";
+				$lang_string['banned_word_list'] = "Below is a list of words that are not allowed to be in the url or the text. Each word or group of words is on a separate line. The comments will attempt to match each line exactly in order to enact the ban.";
 				break;
 			case 'trackbacks':
 				// Trackbacks

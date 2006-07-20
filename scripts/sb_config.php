@@ -252,17 +252,21 @@
 		// READ BLACKLIST
 		$contents = sb_read_file( 'config/blacklist.txt' );
 		if ( $contents ) {
-			$temp_configs = explode('|', $contents);
-			$config_keys = array( 'banned_address_list' );
-
-			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
-				$key = $config_keys[ $i ];
-				$blog_config[ $key ] = $temp_configs[ $i ];
-			}
+			$blog_config[ 'banned_address_list' ] = $contents;
 		}
 
 		if ( !isset( $blog_config[ 'banned_address_list' ] ) ) {
 			$blog_config[ 'banned_address_list' ] = '';
+		}
+
+		// READ BANNED WORD LIST
+		$contents = sb_read_file( 'config/bannedwordlist.txt' );
+		if ( $contents ) {
+			$blog_config[ 'banned_word_list' ] = $contents;
+		}
+
+		if ( !isset( $blog_config[ 'banned_word_list' ] ) ) {
+			$blog_config[ 'banned_word_list' ] = '';
 		}
 
 		// LOAD THEME
@@ -398,6 +402,27 @@
 
 		$filename = 'config/blacklist.txt';
 		$result = sb_write_file( $filename, $address_list );
+
+		if ( $result ) {
+			return ( true );
+		} else {
+			// Error:
+			// Probably couldn't create file...
+			return ( $filename );
+		}
+	}
+
+	function write_bannedwordlist ( $banned_word_list ) {
+		// Save information to file.
+		//
+		if (!file_exists('config')) {
+			$oldumask = umask(0);
+			$ok = mkdir( 'config', 0777 );
+			umask( $oldumask );
+		}
+
+		$filename = 'config/bannedwordlist.txt';
+		$result = sb_write_file( $filename, $banned_word_list );
 
 		if ( $result ) {
 			return ( true );
