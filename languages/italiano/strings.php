@@ -1,6 +1,6 @@
 <?php
 	// Italian Language Translation(s)
-	// (c) 2004 Porro Luciano (alias drudo), drudo3 <at> jumpy <dot> it, http://drudo.altervista.org/blog/ (0.4.6.1)
+	// (c) 2004 Porro Luciano (alias drudo), drudo3 <at> jumpy <dot> it, http://drudo.altervista.org/blog/ (0.4.8)
 	// (c) 2006 Lizza Marco (a.k.a. deathwish), deathwish <at> altervista <dot> org, http://deathwish.altervista.org (0.4.6.2)
 	
 	function sb_language( $page ) {
@@ -25,8 +25,8 @@
 		$lang_string['menu_home'] = "Pagina iniziale";
 		$lang_string['menu_contact'] = "Contattami"; // <-- New 0.3.8
 		$lang_string['menu_stats'] = "Statistiche"; // <-- New 0.3.7r
-		$lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
-		$lang_string[ 'menu_viewarchives' ] = "View Archives"; // New in 0.4.7
+		$lang_string['menu_calendar'] = "Calendario"; // New for 0.4.8
+		$lang_string[ 'menu_viewarchives' ] = "Vedi archivio"; // New in 0.4.7
 		$lang_string['menu_archive'] = "Archivio";
 		$lang_string['menu_menu'] = "Men&ugrave;";
 		$lang_string['menu_add'] = "Aggiungi notizia";
@@ -45,14 +45,14 @@
 		$lang_string['menu_most_recent_entries'] = "Ultime notizie";
 		$lang_string['menu_most_recent_trackback'] = "Ultimi trackback"; // <-- New 0.3.8
 		$lang_string['menu_add_block'] = "Blocchi";
-		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
+		$lang_string['menu_emoticons'] = "Faccine"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
 		
 		// Counter
-		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
-		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
-		$lang_string['counter_totalsidebar'] = "Total:"; // New for 0.4.8
-		$lang_string['counter_title'] = "Counter Totals"; // New for 0.4.8
+		$lang_string['counter_today'] = "Oggi:"; // New for 0.4.8
+		$lang_string['counter_yesterday'] = "Ieri:"; // New for 0.4.8
+		$lang_string['counter_totalsidebar'] = "Totale:"; // New for 0.4.8
+		$lang_string['counter_title'] = "Contatore"; // New for 0.4.8
 		
 		// Other
 		$lang_string['home'] = "Torna alla pagina iniziale";
@@ -61,8 +61,8 @@
 		$lang_string['search_title'] = 'Cerca:'; // <-- New 0.3.7
 		$lang_string['search_go'] = 'Vai'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = 'Pagina generata in %s secondi'; // <-- New 0.3.7
-		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
-		$lang_string['read_more'] = 'Read More...'; // New in 0.4.8
+		$lang_string['counter_total'] = 'Visite sito: '; // New in 0.4.8
+		$lang_string['read_more'] = 'Continua...'; // New in 0.4.8
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre' );
@@ -101,7 +101,7 @@
 				$lang_string['btn_italic'] = " i ";
 				$lang_string['btn_image'] = "img";
 				$lang_string['btn_url'] = "url";
-			$lang_string['btn_readmore'] = "read more"; // 0.4.8
+				$lang_string['btn_readmore'] = "read more"; // 0.4.8
 				$lang_string['view_images'] = "Vedi immagini caricate";
 				$lang_string['label_entry'] = "Notizia:";
 				$lang_string['btn_preview'] = "&nbsp;Anteprima&nbsp;";
@@ -121,12 +121,12 @@
 				$lang_string['insert_image_popup'] = 'Vedi in una nuova finestra a tutto schermo (facoltativo):';
 				$lang_string['insert_image_float'] = 'Allineamento (facoltativo):';
 				
-        $lang_string['day'] = 'Day';
-			  $lang_string['month'] = 'Month';
-			  $lang_string['year'] = 'Year';
-			  $lang_string['hour'] = 'Hour';
-			  $lang_string['minute'] = 'Minute';
-			  $lang_string['second'] = 'Second';
+			  $lang_string['day'] = 'Giorno';
+			  $lang_string['month'] = 'Mese';
+			  $lang_string['year'] = 'Anno';
+			  $lang_string['hour'] = 'Ora';
+			  $lang_string['minute'] = 'Minuti';
+			  $lang_string['second'] = 'Secondi';
 		}
 	
 		switch ($page) {
@@ -139,7 +139,7 @@
 				$lang_string['label_tb_ping'] = "Trackback da inviare (separati da una virgola)"; // <-- New 0.3.8 (??)
 				$lang_string['label_tb_autodiscovery'] = "Auto-segnalazione"; // <-- New 0.3.8 (??)
 				$lang_string['label_relatedlink'] = "Riferimento"; // New for 0.4.6
-				$lang_string['label_categories'] = "Category List"; // new for 0.4.7
+				$lang_string['label_categories'] = "Lista categorie"; // new for 0.4.7
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Anteprima / modifica notizia";
 				$lang_string['instructions_preview'] = "Ecco come apparir&agrave; la notizia. Se stai usando i 'tag' per la formattazione del testo, ricordarti di chiuderli tutti.";
@@ -260,8 +260,8 @@
 				$lang_string['IPAddress'] = "Indirizzo IP:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "User-Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>In data %s, %s ha scritto:</i><br />\n<br />\n%s"; // New for 0.4.6.2
-				$lang_string['commentposted'] = "Nuovo commento datato: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "[ anti-spam ] Inserisci <b>%s</b>"; // 0.4.2
+				$lang_string['commentposted'] = "Nuovo commento inviato da: ";  // New for 0.4.6.2
+				$lang_string['comment_capcha'] = "[anti-spam] Inserisci <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Commenti";
 				$lang_string['header'] = "Aggiungi commento";
 				$lang_string['instructions'] = "Compilare i campi sottostanti per inserire un commento.<br /><br />";
@@ -272,10 +272,10 @@
 				$lang_string['comment_text'] = "Commento (*):";
 				$lang_string['post_btn'] = "&nbsp;Inserisci&nbsp;";
 				$lang_string['delete_btn'] = "Cancella";
-				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
-				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
+				$lang_string['expired_comment1'] = "Spiacente. Non sono permessi nuovi commenti dopo "; // New for 0.4.8
+				$lang_string['expired_comment2'] = " giorni."; // New for 0.4.8
 				
-				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
+				$lang_string['blacklisted'] = "Spiacente, il tuo indirizzo &egrave; stato bannato. Commento non permesso."; // New for 0.4.8
 				// Error Response
 				$lang_string['error_add'] = "<h2>Opps!</h2>Commento non pubblicato! Si &egrave; verificato un problema durante la pubblicazione del commento.<br /><br />Il server ha risposto:<br />";
 				$lang_string['error_delete'] = "<h2>Opps!</h2>Commento non cancellato! Si &egrave; verificato un problema durante la cancellazione del commento.<br /><br />Il server ha risposto:<br />";
@@ -380,7 +380,7 @@
 				$lang_string['instructions'] = "Creazione cartelle 'config', 'content', e 'images':";
 				$lang_string['folder_exists'] = "Le cartelle sono gi&agrave; presenti. Non &egrave; avvenuto nessun cambiamento.";
 				$lang_string['folder_failed'] = "Opps! Cartelle non create!";
-				$lang_string['folder_success'] = "Ok! Cartelle create.";
+				$lang_string['folder_success'] = "Ok! Cartella creata.";
 				// Help
 				$lang_string['help'] = "
 				<h2>Opps!</h2>
@@ -465,7 +465,7 @@
 				$lang_string['blog_author'] = "Autore:";
 				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
 				$lang_string['blog_footer'] = "Pi&egrave;-pagina:";
-				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
+				$lang_string['blog_avatar'] = "Avatar URL: (lasciare in bianco per non farlo apparire)."; // <-- New 0.4.7
         $lang_string['blog_choose_language'] = "Cambia lingua:";
 				$lang_string['blog_enable_cache'] = "Abilita la cache delle notizie (su alcuni server pu&ograve; incrementare la velocit&agrave;)"; // New for 0.4.6
 				$lang_string['blog_enable_comments'] = "Abilita i commenti da parte degli utenti"; // <-- New 0.3.6
@@ -478,9 +478,9 @@
 				$lang_string['blog_trackback_enabled'] = "Abilita il trackback nel blog"; // <-- New 0.3.8
 				$lang_string['blog_trackback_auto_discovery'] = "Abilita auto-segnalazione quando la notizia contiene degli URL"; // <-- New 0.?.?
 				$lang_string['blog_max_entries'] = "Numero massimo di notizie visualizzabili:"; // <-- New 0.3.6
-				$lang_string['blog_enable_stats'] = "Enable Stats Option in Menu"; // New for 0.4.7
-				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
-				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
+				$lang_string['blog_enable_stats'] = "Abilita pagina \"Statistiche\" nel men&ugrave;"; // New for 0.4.7
+				$lang_string['blog_enable_lastcomments'] = "Abilita lista commenti recenti"; // New for 0.4.7
+				$lang_string['blog_enable_lastentries'] = "Abilita lista ultime notizie"; // New for 0.4.7
 				$lang_string['blog_comment_tags'] = "Tag consentiti nei commenti:"; // <-- New 0.3.6
 				$lang_string['blog_gzip_about'] = "
 					Dalla versione 4.0.4, PHP ha la possibilit&agrave; di leggere e scrivere file compressi gzip (.gz), 
@@ -503,23 +503,23 @@
 				$lang_string['cal_monday'] = "Luned&igrave;"; // New for 0.4.6
 				$lang_string['label_calendar_start'] = "Giorno di partenza del calendario"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Abilita calendario / blocco archivio"; // New for 0.4.6
-				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
-				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
-				$lang_string['blog_counter_hours'] = "Number of hours to delay before hits are counted again (based on specific ip address):"; // New for 0.4.8
-				$lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
+				$lang_string['blog_enable_archives'] = "Abilita i blocchi"; // New for 0.4.8
+				$lang_string['blog_enable_counter'] = "Abilita contatore nel men&ugrave;"; // New for 0.4.8
+				$lang_string['blog_counter_hours'] = "Numero di ore da posticipare prima che gli accessi siano contati ancora (in base all' indirizzo IP specifico):"; // New for 0.4.8
+				$lang_string['blog_enable_login'] = "Abilita link \"Login\" (Prima aggiungi ai segnalibri \"login.php\"...)"; // New for 0.4.8
 				$lang_string['blog_enable_title'] = "Abilita il titolo del blog come testo semplice (deseleziona la checkbox se il titolo &egrave; all' interno di un header grafico)"; // New for 0.4.6
 				$lang_string['blog_enable_permalink'] = "Abilita il permalink nelle notizie."; // New for 0.4.6
-				$lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
-				$lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
-				$lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
-				$lang_string['title_sidebar'] = "Sidebar"; // New in 0.4.7
-				$lang_string['title_comments'] = "Comments"; // New in 0.4.7
+				$lang_string['blog_enable_capcha'] = "Abilita Anti-Spam"; // New for 0.4.8
+				$lang_string['blog_footer_counter'] = "Abilita contatore a pi&egrave; pagina"; // New for 0.4.8
+				$lang_string['blog_enable_capcha_image'] = "Anti-Spam con immagini (GD library necessarie) / Anti-Spam con testo semplice"; // New for 0.4.8
+				$lang_string['title_sidebar'] = "Colonna laterale / Men&ugrave"; // New in 0.4.7
+				$lang_string['title_comments'] = "Commenti"; // New in 0.4.7
 				$lang_string['title_trackback'] = "Trackbacks"; // New in 0.4.7
-				$lang_string['title_compression'] = "Compression"; // New in 0.4.7
-				$lang_string['title_entries'] = "Entries"; // New in 0.4.7
-				$lang_string['title_general'] = "General"; // New in 0.4.7
-				$lang_string['title_language'] = "Language"; // New in 0.4.7
-				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
+				$lang_string['title_compression'] = "Compressione"; // New in 0.4.7
+				$lang_string['title_entries'] = "Notizie"; // New in 0.4.7
+				$lang_string['title_general'] = "Generale"; // New in 0.4.7
+				$lang_string['title_language'] = "Lingua"; // New in 0.4.7
+				$lang_string['blog_comment_days_expiry'] = "Commenti permessi per quanti giorni? (0 significa senza scadenza)"; // New in 0.4.8
         break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks
@@ -608,7 +608,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Invia&nbsp;";
 				$lang_string['success'] = "<h2>Ok!</h2>Messaggio inviato correttamente!<p />";
 				$lang_string['failure'] = "<h2>Errore!</h2>Il vostro messaggio non &egrave; stato spedito. Probabilmente il codice anti-spam non &egrave; stato inserito correttamente.<p />";
-				$lang_string['contact_capcha'] = "[ anti-spam ] Inserisci "; // 0.4.2
+				$lang_string['contact_capcha'] = "[anti-spam] Inserisci "; // 0.4.2
 				$lang_string['contactsent'] = "Contatto inviato a: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Indirizzo IP:";  // New for 0.4.6
 				$lang_string['useragent'] = "User-Agent:";  // New for 0.4.6
@@ -622,7 +622,7 @@
 
 				$lang_string['trackback_info'] = "<b>%s</b> trackback / <b>%s</b> byte";
 				$lang_string['static_info'] = "<b>%s</b> pagine statiche / <b>%s</b> parole / <b>%s</b> byte";
-				$lang_string['most_viewed_entries'] = "Le 10 notizie più visitate";
+				$lang_string['most_viewed_entries'] = "Le 10 notizie pi visitate";
 				$lang_string['most_commented_entries'] = "Le 10 notizie pi&ugrave; commentate";
 				$lang_string['most_trackbacked_entries'] = "Le 10 notizie con maggior numero di trackback";
 				$lang_string['vote_info'] = "<b>%s</b> voti / <b>%s</b> byte"; // 0.4.1
@@ -645,24 +645,24 @@
 				$lang_string["clientid"] = 'Client-ID: ';
 				break;
 			case 'emoticons':  // New for 0.4.7
-				$lang_string['title'] = "Admin Emoticons";
+				$lang_string['title'] = "Amministra faccine";
 				$lang_string['instructions'] = "
-					Check the emoticons you want to use. Write in the box the Tags you want 
-					to be replaced by the image. Multiple tags may be used, just separated them 
-					by spaces.<br /><br />
+					Seleziona le faccine che vuoi usare. Scrivi nel campo testo il Tag corrispondente 
+					per rimpiazzare l' immagine. Puoi usare Tag multipli, basta separarli con uno 
+					spazio.<br /><br />
 		
-					For instance:<br />
+					Per esempio:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
 					
-					<i>(It is highly recommended that you make the Tags longer than 2 characters, 
-					otherwise unexpected substitutions may occur.)</i>";
-				$lang_string["upload_instructions"] = 'Upload New Emoticon:';
-				$lang_string["upload_success"] = 'Success! Image uploaded successfully!';
-				$lang_string["upload_error"] = 'Error! Image was not uploaded.';
-				$lang_string["upload_invalid"] = 'Error! Invalid image file. Image must be a png, jpg, or gif.';
-				$lang_string["save_success"] = 'Emoticon preferences saved successfully!';
-				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
-				$lang_string["save_button"] = 'Save Emoticons';
+					<i>(Si raccomanda fortemente l' uso di Tag lunghi almeno 2 caratteri, 
+					onde evitare sostituzioni non volute.)</i>";
+				$lang_string["upload_instructions"] = 'Carica nuova faccina:';
+				$lang_string["upload_success"] = 'Ok! Immagine caricata con successo!';
+				$lang_string["upload_error"] = 'Errore! Immagine non caricata.';
+				$lang_string["upload_invalid"] = 'Errore! File immagine non valida. L\' immagine deve essere una png, jpg, o gif.';
+				$lang_string["save_success"] = 'Preferenze faccine salvate correttamente!';
+				$lang_string["save_error"] = 'Errore! Preferenze faccine non salvate.';
+				$lang_string["save_button"] = 'Salva faccine';
 				break;
 			default:
 				break;
