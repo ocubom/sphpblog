@@ -35,6 +35,13 @@
 		$ok = $lang_string['bannedword'];
 	}
 
+	if (!$logged_in && $_SESSION[ 'capcha_' . $_POST['entry' ] ] == '') {
+	// Capcha did not exist in session, so comment poster did not come from comments page,
+	// where this should have been created. User is probably a spam robot.
+	// Fix submitted by Jan Normann Nielsen via Sourceforge 2006-08-11
+	$fieldsExist = false;
+  }
+
 	if ( $ok != True ) {
 	if ( $fieldsExist ) {
     // Dis-allow dots, and slashes to make sure the
