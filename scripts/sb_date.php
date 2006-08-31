@@ -1,34 +1,34 @@
-<?php 
+<?php
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
-	// You are free to use and modify the Simple PHP Blog. All changes 
+	// You are free to use and modify the Simple PHP Blog. All changes
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
-	
+
 	// write_dateFormat ( $array )
 	// read_dateFormat ()
 	// format_date ( $time_stamp )
 	// date_convert( $val, $leading_zero_day, $leading_zero_month, $full_century, $time_stamp )
-	
+
 	// -------------------------------
 	// Date Config / Display Functions
 	// -------------------------------
-	
+
 	function write_dateFormat ( $array ) {
 		// Save date/time format information to file.
 		//
 		$str = implode('|', $array);
-		
+
 		if (!file_exists('config')) {
 			$oldumask = umask(0);
 			$ok = mkdir('config', 0777 );
 			umask($oldumask);
 		}
-		
+
 		$filename = 'config/date_format.txt';
 		$result = sb_write_file( $filename, $str );
-		
+
 		if ( $result ) {
 			return ( true );
 		} else {
@@ -37,9 +37,9 @@
 			return ( $filename );
 		}
 	}
-	
+
 	function read_dateFormat () {
-		
+
 		$dateArray = array();
 		$dateArray[ 'lDate_slotOne' ] = 'weekday';
 		$dateArray[ 'lDate_slotOneSeparator' ] = ', ';
@@ -65,12 +65,13 @@
 		$dateArray[ 'eFormat_slotTwo' ] = 'time';
 		$dateArray[ 'server_offset' ] = '0';
 		$dateArray[ 'mFormat' ] = 'short';
-		
+
+		return ( $dateArray ); // So if the date_format.tx file is missing then it will still show the blog entries.
 		$contents = sb_read_file( 'config/date_format.txt' );
-			
+
 		if ( $contents ) {
 			$array = explode('|', $contents);
-			
+
 			$dateArray[ 'lDate_slotOne' ] = $array[ 0 ];
 			$dateArray[ 'lDate_slotOneSeparator' ] = $array[ 1 ];
 			$dateArray[ 'lDate_slotTwo' ] = $array[ 2 ];
@@ -96,10 +97,10 @@
 			$dateArray[ 'server_offset' ] = $array[ 22 ];
 			$dateArray[ 'mFormat' ] = $array[ 23 ];
 		}
-		
-		return ( $dateArray );	
+
+		return ( $dateArray );
 	}
-	
+
 	function format_date ( $time_stamp ) {
 		if ( strpos( $time_stamp, ',' ) !== false ) {
 			// This is a hack for compatibility with the time
@@ -112,13 +113,13 @@
 			$time_stamp = str_replace( ',', '', $time_stamp );
 			$time_stamp = strtotime( $time_stamp );
 		}
-		
+
 		// Read config information from file.
-		
+
 		$dateArray = read_dateFormat();
-		
+
 		$time_stamp = $time_stamp + ( intval( $dateArray[ 'server_offset' ] ) * 60 * 60);
-		
+
 		// Long Date
 		$date_long = '';
 		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
@@ -129,7 +130,7 @@
 		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
 		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
 		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
-		
+
 		// Short Date
 		$date_short = '';
 		$separator = $dateArray[ 'sDate_separator' ];
@@ -187,7 +188,7 @@
 				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 		}
-		
+
 		// Time View
 		$time_str = '';
 		$time_clockFormat = $dateArray[ 'time_clockFormat' ];
@@ -195,7 +196,7 @@
 		$before_noon = $dateArray[ 'time_AM' ];
 		$after_noon = $dateArray[ 'time_PM' ];
 		$separator = $dateArray[ 'time_separator' ];
-		
+
 		if ( $time_clockFormat == '24' ) {
 			if ( $leading_zero_hour == 'on' ) {
 				$time_str = $time_str . date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
@@ -219,7 +220,7 @@
 				}
 			}
 		}
-		
+
 		// Put it all together...
 		$str = '';
 		switch ( $dateArray[ 'eFormat_slotOne' ] ) {
@@ -235,9 +236,9 @@
 			case 'none':
 				break;
 		}
-					
+
 		$str = $str . $dateArray[ 'eFormat_separator' ];
-		
+
 		switch ( $dateArray[ 'eFormat_slotTwo' ] ) {
 			case 'long':
 				$str = $str . $date_long;
@@ -251,10 +252,10 @@
 			case 'none':
 				break;
 		}
-		
+
 		return ( clean_post_text( $str ) );
 	}
-	
+
 	function format_date_class ( $time_stamp,$whatyouwant ) {
 		if ( strpos( $time_stamp, ',' ) !== false ) {
 			// This is a hack for compatibility with the time
@@ -267,13 +268,13 @@
 			$time_stamp = str_replace( ',', '', $time_stamp );
 			$time_stamp = strtotime( $time_stamp );
 		}
-		
+
 		// Read config information from file.
-		
+
 		$dateArray = read_dateFormat();
-		
+
 		$time_stamp = $time_stamp + ( intval( $dateArray[ 'server_offset' ] ) * 60 * 60);
-		
+
 		// Long Date
 		$date_long = '';
 		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
@@ -284,7 +285,7 @@
 		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
 		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
 		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
-		
+
 		// Short Date
 		$date_short = '';
 		$separator = $dateArray[ 'sDate_separator' ];
@@ -296,7 +297,7 @@
 		$numeric_year = date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 		$alpha_month = date_convert( 'month_short', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 		$numeric_day_suffix = date_convert( 'day_suffix', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				
+
 		// Time View
 		$time_str = '';
 		$time_clockFormat = $dateArray[ 'time_clockFormat' ];
@@ -304,7 +305,7 @@
 		$before_noon = $dateArray[ 'time_AM' ];
 		$after_noon = $dateArray[ 'time_PM' ];
 		$separator = $dateArray[ 'time_separator' ];
-		
+
 		if ( $time_clockFormat == '24' ) {
 			if ( $leading_zero_hour == 'on' ) {
 				$time_str = $time_str . date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
@@ -328,7 +329,7 @@
 				}
 			}
 		}
-		
+
 		// OK, we've got it...
 		$str = '';
 		switch( $whatyouwant ) {
@@ -340,7 +341,7 @@
 				break;
 			case 'NUMYEAR':
 				$str = $str . "'" . $numeric_year;
-				break; 
+				break;
 			case 'ALPHAMONTH':
 				$str = $str . $alpha_month;
 				break;
@@ -351,14 +352,14 @@
 				$str = $str . $numeric_day_suffix;
 				break;
 		}
-		
+
 		return ( clean_post_text( $str ) );
 	}
-		
+
 	function date_convert( $val, $leading_zero_day, $leading_zero_month, $full_century, $time_stamp ) {
 		// Return string dates in the correct format.
 		//
-		
+
 		$str = '';
 		if ( $val == 'weekday' ) {
 			// Monday
@@ -396,7 +397,7 @@
 		} else if ( $val == 'none' ) {
 			$str = '';
 		}
-		
+
 		return $str;
 	}
 ?>
