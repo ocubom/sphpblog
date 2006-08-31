@@ -279,6 +279,9 @@
 			// Check Expiration Date
 			ob_end_clean();
 			$entry_array[ 'entry' ] = $lang_string['expired_comment1'] . $blog_config[ 'blog_comment_days_expiry' ] . $lang_string['expired_comment2'];
+		} else if ( $blog_config[ 'blog_enable_comments' ] == 0 ){
+			ob_end_clean();
+			$entry_array[ 'entry' ] = $lang_string['nocomments'];
 		} else {
 			$entry_array[ 'entry' ] = ob_get_clean();
 		}
