@@ -1,22 +1,25 @@
 <?php
 	// Catalan  Language Translation(s)
 	// (c) 2006 Laura Primo Monlleo laupri <at> gmail <dot> com  (0.4.8)
-	
+
+	// Simple PHP Version: 0.4.9
+	// Language Version:   0.4.8.0
+
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
-		
+
 		// Language: Spanish
 		$lang_string['language'] = 'catalan';
 		$lang_string[ 'locale' ] = array('ca_ES', 'ca', 'catala');
 		$lang_string['rss_locale'] = 'ca-ES'; // New 0.4.8
-		
+
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		setlocale( LC_TIME, $lang_string['locale'] );
-		
+
 		// Some Global Strings
-		
+
 		// Menu
 		$lang_string['menu_links'] = "Enlla&ccedil;";
 		$lang_string['menu_home'] = "Principal";
@@ -44,7 +47,8 @@
 		$lang_string['menu_add_block'] = "Seccions";
 		$lang_string['menu_emoticons'] = "Emoticones"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
-		
+		$lang_string['menu_moderation'] = "Moderation"; // New for 0.4.9
+
 		// Counter
 		$lang_string['counter_today'] = "Avui:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Ahir:"; // New for 0.4.8
@@ -60,7 +64,7 @@
 		$lang_string['page_generated_in'] = 'P&agrave;gina generada en %s segons'; // <-- New 0.3.7
 		$lang_string['counter_total'] = 'Visites a la web: '; // New in 0.4.8
 		$lang_string['read_more'] = 'Llegir m&eacute;s...'; // New in 0.4.8
-		
+
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Gener', 'Febrer', 'Mar&ccedil;', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Septembre', 'Octubre', 'Novembre', 'Decembre' );
 		$lang_string['sb_default_title'] = 'Sense t&iacute;tol';
@@ -84,7 +88,7 @@
 		$lang_string['sb_view_counter_plural_post'] = ' visualitzacions';
 		$lang_string['sb_add_link_btn'] = 'Afegir Enlla&ccedil;';
 		$lang_string['sb_rate_entry_btn'] = 'Feu clic per valorar l\'entrada';
-		
+
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
 				$lang_string['label_subject'] = "T&iacute;tol:";
@@ -99,7 +103,7 @@
 				$lang_string['btn_preview'] = "&nbsp;Previsualitzar&nbsp;";
 				$lang_string['btn_post'] = "&nbsp;Publicar&nbsp;";
 				$lang_string['file_name'] = "Nom de fitxer est&agrave;tic: (sense espais ni extensions de fitxer)"; // <-- New 0.3.8
-				
+
 				// Javascript Strings
 				$lang_string['insert_styles'] = "Introdu&iuml;sca el text";
 				$lang_string['insert_image'] = "Introdu&iuml;sca la direcci&oacute; URL per a la imatge";
@@ -107,20 +111,20 @@
 				$lang_string['insert_url2'] = "Introdu&iuml;sca la direcci&oacute; web completa per l\'enlla&ccedil;";
 				$lang_string['insert_url3'] = "Obrir URL en una nova finestra (Opcional):"; // <-- New 0.3.6
 				$lang_string['form_error'] = "Per favor ompliga els camps T&iacute;tol i Text.";
-				
+
 				// More Javascript Strings <-- New 0.3.6
 				$lang_string['insert_image_optional'] = 'Opcional:';
 				$lang_string['insert_image_width'] = 'Ample (Opcional):';
 				$lang_string['insert_image_height'] = 'Al&ccedil;ada (Opcional):';
 				$lang_string['insert_image_popup'] = 'Vore en una finestra emergent al fer clic (Opcional):';
 				$lang_string['insert_image_float'] = 'Flotar (Opcional):';
-				
+
 				$lang_string['day'] = 'Dia';
 				$lang_string['month'] = 'Mes';
 				$lang_string['year'] = 'Any';
 				$lang_string['hour'] = 'Hora';
 				$lang_string['minute'] = 'Minut';
-				$lang_string['second'] = 'Segon'; 
+				$lang_string['second'] = 'Segon';
 		}
 		switch ($page) {
 			case 'add':
@@ -142,6 +146,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&middot;lar&nbsp;"; // <-- New 0.3.8
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>L'entrada no ha pogut ser desada. S'ha trobat un problema mentre es guardava.<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Entry Saved!</h2>Your entry has been successfully saved."; // 0.4.8.1
 				break;
 			case 'add_static':
 				// Add Entry
@@ -152,7 +157,7 @@
 				$lang_string['instructions_preview'] = "Aix&iacute; &eacute;s com la seua p&agrave;gina est&agrave;tica es mostrar&agrave;. Si est&agrave; usant estils de text o ha incl&oacute; im&agrave;ges, recorde 'tancar' totes les 'etiquetes'.";
 				$lang_string['title_update'] = "Actualitzar P&agrave;gina Est&agrave;tica";
 				$lang_string['instructions_update'] = "Pot canviar l'entrada utilitzant el formulario que es troba sota. Prema 'Previsualitzar' o 'Publicar' quan estiga preparat.";
-				$lang_string['form_error'] = "Per favor ompliga els camps T&iacute;tol, Text i Nom.";	
+				$lang_string['form_error'] = "Per favor ompliga els camps T&iacute;tol, Text i Nom.";
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>L'entrada no pot ser desada. S'ha trobat un problema mentre es guardava.<br /><br />Resposta del servidor:<br />";
 				break;
@@ -165,12 +170,12 @@
 				$lang_string['edit'] = "Editar";
 				$lang_string['delete'] = "Esborrar";
 				$lang_string['block_name'] = "Nom de la secci&oacute; :";
-				$lang_string['block_content'] = "Contingut de la Secci&oacute;:";   
+				$lang_string['block_content'] = "Contingut de la Secci&oacute;:";
 				$lang_string['instructions_edit'] = "Est&agrave;s editant una Secci&oacute; :";
 				$lang_string['instructions_modify'] = "Fa&ccedil;a  clic en <b>Editar</b> per modificar la secci&oacute;:";
 				$lang_string['submit_btn_edit'] = "Editar Secci&oacute;";
 				$lang_string['submit_btn_add'] = "Afegir Secci&oacute;";
-				$lang_string['form_error'] = "Per favor ompliga el camp Nom."; 
+				$lang_string['form_error'] = "Per favor ompliga el camp Nom.";
 				break;
 			case 'add_link':
 				// Add / Manage Links
@@ -192,7 +197,7 @@
 			case 'categories':
 				// Add / Manage Links
 				$lang_string['title'] = "Afegir / Organitzar Categories";
-				$lang_string['instructions'] = "Ompliga el formulari que es troba sota per crear una categaoria. Cada nom de categoria podr&agrave; tindre aquest format 'nom categoria (id nombre)'. 
+				$lang_string['instructions'] = "Ompliga el formulari que es troba sota per crear una categaoria. Cada nom de categoria podr&agrave; tindre aquest format 'nom categoria (id nombre)'.
  S'identar&agrave; els noms amb espais per crear jeraquies.<br /><br /><b>Exemple:</b><br />General (1)<br />Noticies (3)<br />&nbsp;&nbsp;Anuncis (6)<br />&nbsp;&nbsp;Events (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Misc (7)<br />Tecnologia (2)<br />";
 				$lang_string['error'] = "Error";
 				$lang_string['current_categories'] = "Categories Actuals";
@@ -244,6 +249,7 @@
 				$lang_string['theme_doesnt_allow_colors'] = 'El tema actualment seleccionat no permet la modificaci&oacute; dels colors.';
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>La informaci&oacute; no ha pogut ser desada. S'ha trobat un problema mentre es guardava.<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'comments':
 				// Comments
@@ -259,6 +265,8 @@
 				$lang_string['commentposted'] = "Nou comentari publicat en: ";  // New for 0.4.6.2
 				$lang_string['IPAddress'] = "Direcci&oacute; IP:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>El %s, %s va escriure:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+
 				$lang_string['comment_url'] = "Web:"; // 0.3.8
 				$lang_string['comment_capcha'] = "Anti-Spam: Introdu&iuml;sca <b>%s</b>"; // 0.4.2
 				$lang_string['form_error'] = "Per favor ompliga els camps Nom, Comentari i el camp Anti-Spam."; //0.4.2
@@ -266,15 +274,23 @@
 				$lang_string['comment_text'] = "Comentari:";
 				$lang_string['post_btn'] = "&nbsp;Publicar comentari&nbsp;";
 				$lang_string['delete_btn'] = "Esborrar";
-
+				$lang_string['ban_btn'] = "ban ip"; // New for 0.4.8
 				$lang_string['expired_comment1'] = "Ho lamentem. No s&oacute;n permesos els comentaris a posteriori"; // New for 0.4.8
 				$lang_string['expired_comment2'] = " dies."; // New for 0.4.8
-				
+
 				$lang_string['blacklisted'] = "Perdone, la seua adre&ccedil;a IP ha estat banejada. Els seus comentaris no seran permessos."; // New for 0.4.8
-				$lang_string['wrote'] = "<i>El %s, %s va escriure:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				$lang_string['bannedword'] = "Your comment, url, name or email contained word(s) that have been banned by the administrator. Your comment has NOT been posted."; // New for 0.4.8
+				$lang_string['nocomments'] = "Comments are not available for this entry."; // New for 0.4.9
+
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comentari no desat. S'ha prod&iuml;t un problema mentre  es desava el seu comentari.<br /><br />Resposta del servidor:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comentari no esborrat. S'ha produ&iuml;t un problema mentre s'esborrava el seu comentari.<br /><br />Resposta del servidor:<br />";
+				$lang_string['error_ban'] = "<h2>Whoops!</h2>IP not added to banned ip listing.<br /><br />Server Reported:<br />";
+				$lang_string['success_add'] = "<h2>Comment Added!</h2>Your comment has been successfully saved."; // New for 0.4.8.1
+				$lang_string['success_delete'] = "<h2>Comment Deleted!</h2>The comment has been deleted."; // New for 0.4.8.1
+				$lang_string['success_ban1'] = "<h2>IP Banned!";
+				$lang_string['success_ban2'] = "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."; // New for 0.4.8.1
+				$lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
 				break;
 			case 'delete':
 				$lang_string['title'] = "Esborrar entrada";
@@ -283,6 +299,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&middot;lar&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>No s'ha pogut esborrar l'entrada.<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Entry Deleted!</h2>The entry has been deleted."; // New for 0.4.8.1
 				break;
 			case 'delete_static':
 				$lang_string['title'] = "Esborrar P&agrave;gina Est&agrave;tica";
@@ -290,6 +307,7 @@
 				$lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Cancel&middot;lar&nbsp;";
 				$lang_string['error'] = "<h2>¡Ups!</h2>No s'ha pogut esborrar l'entrada.<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Static Page Deleted!</h2>The static page has been deleted."; // New for 0.4.8.1
 				break;
 			case 'image_list':
 				$lang_string['title'] = "Llistat d'imatges";
@@ -304,6 +322,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Desar&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>La informaci&oacute; no ha pogut ser desada. S'ha trobat un problema mentre es guardava la seua informaci&oacute;.<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Meta-Data Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Per favor ompliga els camps T&iacute;tol i Autor.";
 				break;
 			case 'index':
@@ -314,7 +333,8 @@
 				break;
 			case 'rating': // New 0.3.8
 				$lang_string['error'] = "<h2>¡Ups!</h2>La informaci&oacute; no ha pogut ser desadaudo. S'ha trobat un problema mentre es guardava la seua inforamci&oacute;.<br /><br />Resposta del servidor:<br />";
-				break;			
+				$lang_string['success'] = "<h2>Vote Saved!</h2>Your rating has been successfully saved."; // New for 0.4.8.1
+				break;
 			case 'login':
 				$lang_string['upgrade'] = "<h2>Actualizaci&oacute;</h2>"; // New 0.3.8
 				$lang_string['upgrade_count'] = "%n fitxers de comentaris necessiten ser actualizats:"; // New 0.3.8
@@ -332,7 +352,8 @@
 				break;
 			case 'logout':
 				$lang_string['title'] = "Eixir";
-				$lang_string['instructions'] = "<h2>¡Ups!</h2>Error intentant eixir. No s'ha pogut esborrar la galeta. Per qu&egrave; seguix connectat?<p />";
+				$lang_string['error'] = "<h2>Goodbye!</h2>You are now logged out. (You weren't logged in anyway!)<p />";
+				$lang_string['success'] = "<h2>Goodbye!</h2>You are now logged out.<p />";
 				break;
 			case 'forms':
 				$lang_string['title'] = "";
@@ -381,7 +402,7 @@
 				<h2>¡Ups!</h2>No s'ha pogut crear un o m&eacute;s directoris! A&ccedil;&ograve; sol deure's a:<br>
 				<i>1) <b>Permissos d'escriptura</b> no estan configurats per permetre l'acc&eacute;s d'<b>Escriptura/Lectura</b>.</i><br>
 				<i>2) Els <b>UID</b>'s (user ID's) de tots els arxius i directoris han de correspondre.</i><p />
-				Segueisca les instruccions seg&uuml;ents per resoldre el problema i despr&eacute;s intente-ho novament:<p />				
+				Segueisca les instruccions seg&uuml;ents per resoldre el problema i despr&eacute;s intente-ho novament:<p />
 				1) Crei manualment els seg&uuml;ents directoris: <b>config</b>, <b>content</b>, i <b>images</b>.<p />
 				2) Donga-los <b>Permisos d'escriptura</b> als directoris. Al seu client FTP; Owner, User i World han de tindre acc&eacute; de <b>Read</b> i <b>Write</b>. <i>(Es possible que calga posar-se en contacte amb l'administrador del servidor per canviar aquests permissos...)</i><p />
 				3) Assegure's de que els UID's de tots els seus arxius i directoris s&oacute;n els mateixos. <i>(Es possible que calga posar-se en contacte amb l'administrador del servidor per canviar aquests permissos...)</i>";
@@ -510,6 +531,8 @@
 				$lang_string['blog_enable_stats'] = "Activar l\'Opci&oacute; de les Estad&iacute;stiques al Men&uacute;"; // New for 0.4.7
 				$lang_string['blog_enable_lastcomments'] = "Activar l'aparici&oacute; de Comentaris Recents al Men&uacute;"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Activar les Entrades Recents al Men&uacute;"; // New for 0.4.7
+				$lang_string['success'] = "<h2>Options Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
+
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks
@@ -562,6 +585,7 @@
 				// Buttons
 				$lang_string['submit_btn'] = "&nbsp;Desar&nbsp;";
 				// Error Response
+				$lang_string['success'] = "<h2>Options Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['error'] = "<h2>¡Ups!</h2>La informaci&oacute; no ha pogut ser enmagatzemada. S'ha trobat un problema mentre se desava la seua informaci&oacute;.<br /><br />Resposta del servidor:<br />";
 				break;
 			case 'themes':
@@ -573,6 +597,8 @@
 				$lang_string['submit_btn'] = "&nbsp;Desar&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>La informaci&oacute; no ha pogut estar desada. S'ha trobat un problema mentre s'enmagatzemava la seua informaci&oacute;.<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Theme Selected!</h2>Information has been successfully saved."; // New for 0.4.8.1
+
 				break;
 			case 'upload_img':
 				$lang_string['title'] = "Pujar imatge";
@@ -581,6 +607,7 @@
 				$lang_string['upload_btn'] = "Pujar";
 				// Error Response
 				$lang_string['error'] = "<h2>¡Ups!</h2>Ha estat impossible pujar la imatge. Ac&iacute; hi ha m&eacute;s informaci&oacute;:<br /><br />Resposta del servidor:<br />";
+				$lang_string['success'] = "<h2>Image Uploaded!</h2>The image has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'search':
 				$lang_string['title'] = "Resultats de la cerca";
@@ -603,7 +630,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				$lang_string['success'] = "<h2>Preparat!</h2>El seu missatge ha estat enviat.<p />";
 				$lang_string['failure'] = "<h2>¡Ups!</h2>El seu missatge no ha estat enviat. Probablement el camp Anti-Spam no s'ha omplert correctament.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Introdu&iuml;sca <b>%s</b>"; // 0.4.2	
+				$lang_string['contact_capcha'] = "Anti-Spam: Introdu&iuml;sca <b>%s</b>"; // 0.4.2
 				$lang_string['contactsent'] = "Contacte enviat des de: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Direcci&oacute; IP:";  // New for 0.4.6
 				$lang_string['useragent'] = "Agent Emprat:";  // New for 0.4.6
@@ -655,6 +682,12 @@
 				$lang_string["save_error"] = 'Error! Les prefer&egrave;ncies de les Emoticones no han estat desades.';
 				$lang_string["save_button"] = 'Desa les Emoticones';
 				break;
+
+			case 'archives': // New for 0.4.8
+				$lang_string['title'] = "Archives";
+				$lang_string['showall'] = "Show All";
+				break;
+
 			default:
 				break;
 		}

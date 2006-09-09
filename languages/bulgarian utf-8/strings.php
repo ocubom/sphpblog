@@ -1,6 +1,6 @@
 <?php
 	      // Bulgarian Language Translation(s)
-	      // (c) 2005 Lucy Pearl, lusinda <at> gbg <dot> bg	
+	      // (c) 2005 Lucy Pearl, lusinda <at> gbg <dot> bg
             //
 
 	      // Simple PHP Version: 0.4.1
@@ -8,21 +8,21 @@
 
 	      function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
-			
+
 		// Language: English
 		$lang_string['language'] = 'bulgarian';
-		
+
 		$lang_string['locale'] = array('bg_BG', 'bulgaria', 'bul');
 		$lang_string['rss_locale'] = 'bg-BG'; // New 0.4.8
-		
+
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'utf-8';
 		$lang_string['php_charset'] = 'utf-8';
-		
+
 		setlocale(LC_TIME, $lang_string['locale'] );
-		
+
 		// Some Global Strings
-		
+
 		// Menu
 		$lang_string['menu_links'] = "Връзки";
 		$lang_string['menu_home'] = "Начало";
@@ -50,13 +50,14 @@
 		$lang_string['menu_add_block'] = "Блокове";
 		$lang_string['menu_emoticons'] = "Емотикони"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Здравей :)"; // New for 0.4.7
-		
+		$lang_string['menu_moderation'] = "Moderation"; // New for 0.4.9
+
 		// Counter
 		$lang_string['counter_today'] = "Днес:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Вчера:"; // New for 0.4.8
 		$lang_string['counter_totalsidebar'] = "Всичко:"; // New for 0.4.8
 		$lang_string['counter_title'] = " Посещения"; // New for 0.4.8
-		
+
 		// Other
 		$lang_string['home'] = "Начало";
 		$lang_string['nav_next'] = 'Следваща';
@@ -66,36 +67,36 @@
 		$lang_string['page_generated_in'] = ' Страницата зареди за %s секунди';
 		$lang_string['counter_total'] = 'Посещения '; // New in 0.4.8
 		$lang_string['read_more'] = 'Още...'; // New in 0.4.8
-		
+
 		// SB Functions
 		$lang_string['sb_months'] = array( 'Януари', 'Февруари', 'Март', 'Април', 'Май', 'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември' );
 		$lang_string['sb_default_title'] = 'Без име';
 		$lang_string['sb_default_author'] = 'Без автор';
 		$lang_string['sb_default_footer'] = 'Без подтекст';
-		
+
 		$lang_string['sb_edit'] = 'редактирай';
 		$lang_string['sb_delete'] = 'изтрий';
 		$lang_string['sb_permalink'] = 'линк';
 		$lang_string['sb_trackback'] = 'препратки';
 		$lang_string['sb_relatedlink'] = 'свързан линк'; // <-- New in 0.4.6
-		
+
 		$lang_string['sb_add_comment_btn'] = 'добави коментар';
 		$lang_string['sb_comment_btn_number_first'] = успех;
 		$lang_string['sb_comment_btn'] = 'коментар';
 		$lang_string['sb_comments_plural_btn_number_first'] = успех;
 		$lang_string['sb_comments_plural_btn'] = 'коментара';
-		
+
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
 		$lang_string['sb_view_counter_post'] = ' преглед';
 		// ( 2 views )
 		$lang_string['sb_view_counter_plural_pre'] = 'прегледа: ';
 		$lang_string['sb_view_counter_plural_post'] = '';
-		
+
 		$lang_string['sb_add_link_btn'] = 'добави връзка';
-		
+
 		$lang_string['sb_rate_entry_btn'] = 'Кликни за оценка';
-		
+
 		// Entry Text Editor
 		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
 			$lang_string['label_subject'] = "Име:";
@@ -109,7 +110,8 @@
 			$lang_string['btn_preview'] = "&nbsp;Преглед&nbsp;";
 			$lang_string['btn_post'] = "&nbsp;Изпрати&nbsp;";
 			$lang_string['file_name'] = "Име на статичния файл (без интервали или файлови разширения):";
-		
+			$lang_string['btn_readmore'] = "read more"; // 0.4.8
+
             // Javascript Strings
 			$lang_string['insert_styles'] = "Въведи стил на текста";
 			$lang_string['insert_image'] = "Въведи пълен URL на изображението";
@@ -117,14 +119,14 @@
 			$lang_string['insert_url2'] = "Въведи пълен URL на връзката";
 			$lang_string['insert_url3'] = "Oтвори URL в нов прозорец (незадължително):";
 			$lang_string['form_error'] = "Моля, попълни полетата за тема и съдържание.";
-		
+
            // More Javascript Strings
 			$lang_string['insert_image_optional'] = 'Незадължително:';
 			$lang_string['insert_image_width'] = 'Ширина (незадължително):';
 			$lang_string['insert_image_height'] = 'Височина (незадължително):';
 			$lang_string['insert_image_popup'] = 'Виж в пълен размер в нов прозорец при кликване (незадължително):';
 			$lang_string['insert_image_float'] = 'Свободно (незадължително):';
-		
+
 			$lang_string['day'] = 'Ден';
 			$lang_string['month'] = 'Месец';
 			$lang_string['year'] = 'Година';
@@ -132,7 +134,7 @@
 			$lang_string['minute'] = 'Минута';
 			$lang_string['second'] = 'Секунда';
 		}
-	
+
 		switch ($page) {
 			case 'add':
 				// Add Entry
@@ -144,7 +146,7 @@
 				$lang_string['label_tb_autodiscovery'] = "автоматично откриване";
 				$lang_string['label_relatedlink'] = "Свързан Линк"; // New for 0.4.6
 				$lang_string['label_categories'] = "Списък на категориите";
-				
+
                         // Preview / Edit Entry
 				$lang_string['title_preview'] = "Преглед / редактиране на новината";
 				$lang_string['instructions_preview'] = "Така ще изглежда новината. <strong>Обърни внимание,</strong>: че ако използваш разделяне на текста, прикачил си изоображение или си дал линк, трябва да се увериш, че всички тагове са затворени.";
@@ -152,26 +154,28 @@
 				$lang_string['instructions_update'] = "Можеш да промениш новината, използвайки следната форма. Когато завършиш, използвай бутоните <strong>'Преглед'</strong> и '<strong>Изпрати'</strong>.";
 				$lang_string['ok_btn'] = "&nbsp;ОК&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Отмени&nbsp;";
-				
+
                         // Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Новината не е запазена! При опита за запазване е възникнала грешка.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Entry Saved!</h2>Your entry has been successfully saved."; // 0.4.8.1
+
 				break;
 			case 'add_static':
 				// Add Entry
 				$lang_string['title'] = "Добави статична страница";
 				$lang_string['instructions'] = "Попълни следната форма за създаване на статична страница. За разлика от обичайните, статичните страници се показват в менюто от другата страна. На тях е удобно да се помества информация, която трябва да бъде винаги достъпна: контакти, отговори на често задавани въпроси, график за работа и т.н. Използвай бутона 'Преглед' за предварителен преглед на страницата и 'Изпрати' за запазване на страницата.";
-				
+
                         // Preview / Edit Entry
 				$lang_string['title_preview'] = "Преглед / редактиране на статична страница";
 				$lang_string['instructions_preview'] = "Така изглежда статичната страница. Ако използваш стил или изображение, не забравяй да затвориш всички 'тагове'.";
 				$lang_string['title_update'] = "Обнови статичната страница";
 				$lang_string['instructions_update'] = "Можеш да промениш страницата, използвайки формата по-долу. Когато завършиш редактирането, използвай бутоните 'Преглед' и 'Изпрати'.";
-				$lang_string['form_error'] = "Моля, попълни полетата Име, Текст, и Име на файл.";	
+				$lang_string['form_error'] = "Моля, попълни полетата Име, Текст, и Име на файл.";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Страницата не е запазена.<br /><br />Отговор на сървъра: <br />";
 				break;
 			case 'add_block':
-				
+
                         // Add / Manage Blocks
 				$lang_string['title'] = "Въведи / Оформи Блок";
 				$lang_string['instructions'] = "Въведи обичайни Блокове";
@@ -189,7 +193,7 @@
 				break;
 			case 'add_link':
 				$lang_string['static_pages'] = "Статични Страници:";
-				
+
                         // Add / Manage Links
 				$lang_string['title'] = "Добавяне / промяна на връзки";
 				$lang_string['instructions'] = "Тук можеш да добавиш връзки към други сайтове. Попълни формата и кликни бутона <strong>'Изпрати'</strong>. Кликвай 'нагоре' или 'надолу' за промяна на поредността на връзките. Използвай 'промени' за редактиране на връзката и 'изтрий' - за изтриване.";
@@ -206,7 +210,7 @@
 				$lang_string['form_error'] = "Попълни полетата за Име и Адрес на връзката";
 				break;
 			case 'categories':
-				
+
                         // Add / Manage Links
 				$lang_string['title'] = "Добавяне / Оформяне на Категории";
 				$lang_string['instructions'] = "Използвай следната форма за да добавиш и редактираш категориите. Всяка категория трябва да бъде в този формат 'име на категорията (id номер)'. Разделяй с интервали за да създадеш йерархии.<br /><br /><b>Пример:</b><br />Обща (1)<br />Новини (3)<br />&nbsp;&nbsp;Съобщения (6)<br />&nbsp;&nbsp;Събития (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Разни (7)<br />Техника (2)<br />";
@@ -236,7 +240,7 @@
 				$lang_string['link_reg_color'] = "Обичайна връзка";
 				$lang_string['link_hi_color'] = "Активна връзка";
 				$lang_string['link_down_color'] = "Кликната връзка";
-				
+
                         // More Colors
 				$lang_string['entry_bg'] = "Фон на новините";
 				$lang_string['entry_title_bg'] = "Фон на заглавие на новините";
@@ -251,7 +255,7 @@
 				$lang_string['menu_link_reg_color'] = "Обичайна връзка в меню";
 				$lang_string['menu_link_hi_color'] = "Активна връзка в меню";
 				$lang_string['menu_link_down_color'] = "Кликната връзка в меню";
-				
+
                         // Submit
 				$lang_string['color_preset'] = "Цветови схеми:";
 				$lang_string['scheme_name'] = "Въведи име на обичайна цветова схема:";
@@ -262,6 +266,7 @@
 				$lang_string['theme_doesnt_allow_colors'] = 'Избраната тема не позволява промяна на цветовете.';
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Информацията не е запазена! При опита за запазване е възникнала грешка.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'comments':
 				// Comments
@@ -285,17 +290,26 @@
 				$lang_string['comment_text'] = "Текст и Името ти:";
 				$lang_string['post_btn'] = "&nbsp;Изпрати&nbsp;";
 				$lang_string['delete_btn'] = "изтрий";
+				$lang_string['ban_btn'] = "ban ip"; // New for 0.4.9
 				$lang_string['expired_comment1'] = "Коментари са разрешени само за новини не по-стари от  "; // New for 0.4.8
 				$lang_string['expired_comment2'] = " дена."; // New for 0.4.8
-				
+
 				$lang_string['blacklisted'] = "Този IP е баннат. Коментарите от него са забранени."; // New for 0.4.8
-				
+				$lang_string['bannedword'] = "Your comment, url, name or email contained word(s) that have been banned by the administrator. Your comment has NOT been posted."; // New for 0.4.8
+				$lang_string['nocomments'] = "Comments are not available for this entry."; // New for 0.4.9
                         // Error Response
 				$lang_string['error_add'] = "<h2>Упс!</h2>Коментарът не е запазен. При опита за запазване е възникнал проблем.<br /><br />Отговор на сървъра:<br />";
 				$lang_string['error_delete'] = "<h2>Упс!</h2>Коментарът не е изтрит. При опита за изтриване е възникнала грешка.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['error_ban'] = "<h2>Whoops!</h2>IP not added to banned ip listing.<br /><br />Server Reported:<br />";
+				$lang_string['success_add'] = "<h2>Comment Added!</h2>Your comment has been successfully saved."; // New for 0.4.8.1
+				$lang_string['success_delete'] = "<h2>Comment Deleted!</h2>The comment has been deleted."; // New for 0.4.8.1
+				$lang_string['success_ban1'] = "<h2>IP Banned!";
+				$lang_string['success_ban2'] = "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."; // New for 0.4.8.1
+
 				$lang_string['form_error'] = "Попълни полетата за заглавие и текст на коментара, както и Anti-Spam кода";
+				$lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
 				break;
-			
+
                   case 'delete':
 				$lang_string['title'] = "Изтриване на текст";
 				$lang_string['instructions'] = "Преди да изтриеш текста още веднъж се увери, че искаш да изтриеш точно него, защото след изтриването му, не е възможно да бъде възстановен...";
@@ -303,6 +317,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;Отмени&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Упм!</h2>Неуспешно изтриване на бележка.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'delete_static':
 				$lang_string['title'] = "Изтриване на статична страница";
@@ -311,6 +326,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;Отмени&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Страницата не е изтрита.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'image_list':
 				$lang_string['title'] = "Каталог на изображения";
@@ -325,6 +341,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Изпрати&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Информацията не е запазена. При опита за запазване е възникнал е проблем.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Попълни полетата Заглавие и Автор.";
 				break;
 			case 'index':
@@ -335,6 +352,7 @@
 				break;
 			case 'rating':
 				$lang_string['error'] = "<h2>Упс!</h2>Информацията не е запазена. При опита за запазване е възникнал е проблем.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'login':
 				$lang_string['upgrade'] = "<h2>Upgrade</h2>";
@@ -353,7 +371,10 @@
 				break;
 			case 'logout':
 				$lang_string['title'] = "Изход";
-				$lang_string['instructions'] = "<h2>Упс!</h2>Неуспешно излизане: не са отстранени cookies. Странно, и как така все още си регистриран?..<br />";
+			  $lang_string['error'] = "<h2>Goodbye!</h2>You are now logged out. (You weren't logged in anyway!)<p />";
+				$lang_string['success'] = "<h2>Goodbye!</h2>You are now logged out.<p />";
+				break;
+
 				break;
 			case 'forms':
 				$lang_string['title'] = "";
@@ -507,7 +528,7 @@
 				$lang_string['blog_send_pings'] = "Изпращане на Пинг &quot;pings&quot;";
 				$lang_string['blog_ping_urls'] = "Въведи пълен URL (например http://rpc.weblogs.com/RPC2) на пингващия сървър &quot;ping&quot;.<br />(Можеш да въведеш и повече адреси, разделени от запетайки.)";
 				$lang_string['blog_trackback_about'] = "Проследяването на препратки е начин за известяване между блогове. Позволява на други блогове
-					да разберат, че в блога ти има линк към тях, чрез изпращането на проследяващ пинг. Както и да видиш кой е дал линк към твоя блог 
+					да разберат, че в блога ти има линк към тях, чрез изпращането на проследяващ пинг. Както и да видиш кой е дал линк към твоя блог
 					чрез получаването на проследяващ пинг.<br />
 				   Можеш или да въведеш ръчно пингващия URIs или да оставиш това на автоматично откриване. ";
 				$lang_string['blog_trackback_enabled'] = "Разреши Препратки";
@@ -515,17 +536,18 @@
 				$lang_string['blog_max_entries'] = "Максимум показвани новини:";
 				$lang_string['blog_comment_tags'] = "Позволени тагове в коментарите:";
 				$lang_string['blog_gzip_about'] = "
-					От версия PHP 4.0.4, PHP дава възможност за четене и писане на gzip (.gz) компресирани файлове, 
-					спестявайки място на диска. Може също да компресира страниците, които се изпращат към браузъри, 
+					От версия PHP 4.0.4, PHP дава възможност за четене и писане на gzip (.gz) компресирани файлове,
+					спестявайки място на диска. Може също да компресира страниците, които се изпращат към браузъри,
 					поддържащи gzip компрасия, спестявайки трафик.<br />
 					<br />
-					Zlib не се поддържа от PHP по подразбиране. Ако липсват местата за маркирането на компресията, 
+					Zlib не се поддържа от PHP по подразбиране. Ако липсват местата за маркирането на компресията,
 					значи твоята инсталация на PHP не поддържа Zlib разширение.";
 				$lang_string['blog_enable_gzip_txt'] = "Разреши GZIP компресия за База данни файловете";
 				$lang_string['blog_enable_gzip_output'] = "Разреши GZIP компресия за HTTP изпращане";
 				$lang_string['submit_btn'] = "&nbsp;Запази&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Информацията не може да се запази. При опита за запазване е възникнала грешка.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Посочи име и автор.";
 				$lang_string['label_entry_order'] = "Ред на показване на новините:";
 				$lang_string['select_new_to_old'] = "Започни от най-новите";
@@ -542,7 +564,7 @@
 				$lang_string['title_general'] = "Главни"; // New in 0.4.7
 				$lang_string['title_language'] = "Език"; // New in 0.4.7
 				$lang_string['blog_comment_days_expiry'] = "Колко дена след публикуване на новина могат да се пишат коментари за нея? (0 означава безсрочно)"; // New in 0.4.8
-				
+
 				break;
 			case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks
@@ -596,6 +618,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Запази&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Параметрите не са запазени. Възникнала грешка при опита за запазване.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'themes':
 				$lang_string['title'] = "Теми";
@@ -606,6 +629,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Изпрати&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>Информацията не е запазена. Възникнал е проблем при опита за запазване.<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'upload_img':
 				$lang_string['title'] = "Прикачване на изображение";
@@ -614,6 +638,7 @@
 				$lang_string['upload_btn'] = "Добави";
 				// Error Response
 				$lang_string['error'] = "<h2>Упс!</h2>При опита за прикачване на изображението е възникнала грешка. Служебна информация:<br /><br />Отговор на сървъра:<br />";
+				$lang_string['success'] = "<h2>Colors Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				break;
 			case 'search':
 				$lang_string['title'] = "Резултати от Търсенето";
@@ -631,7 +656,7 @@
 				$lang_string['comment'] = "Текст:";
 				$lang_string['submit_btn'] = "&nbsp;Изпрати&nbsp;";
 				$lang_string['success'] = "<h2>Успех!</h2>Съобщението беше изпратено.<p />";
-				$lang_string['failure'] = "<h2>Грешка!</h2>Съобщението не беше изпратено. Най-вероятно кодът за Anti Spam не е бил въведен правилно.<p />";	
+				$lang_string['failure'] = "<h2>Грешка!</h2>Съобщението не беше изпратено. Най-вероятно кодът за Anti Spam не е бил въведен правилно.<p />";
 				$lang_string['contactsent'] = "Контактната форма е изпратена от: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Адрес:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6
@@ -669,14 +694,14 @@
 			case 'emoticons':  // New for 0.4.7
 				$lang_string['title'] = "Админ Емотикони";
 				$lang_string['instructions'] = "
-					Отбележи емотиконите, които искаш да използваш. Срещу тях напиши таговете, които искаш 
-					да заместват картинките. Могат да се изпозват множество тагове, но трябва да се 
+					Отбележи емотиконите, които искаш да използваш. Срещу тях напиши таговете, които искаш
+					да заместват картинките. Могат да се изпозват множество тагове, но трябва да се
 					разделят с празно място.<br /><br />
-		
+
 					Например:<br />
 					:) :-) :SMILE: :HAPPY:<br /><br />
-					
-					<i>(В този случай е задължително да използваш тагове с повече от 2 знака, 
+
+					<i>(В този случай е задължително да използваш тагове с повече от 2 знака,
 					иначе може да се получи неочаквано заместване.)</i>";
 				$lang_string["upload_instructions"] = 'Качи нови емотикони:';
 				$lang_string["upload_success"] = 'Успех! Изображенията са качени успешно!';
@@ -686,10 +711,16 @@
 				$lang_string["save_error"] = 'Грешка! Предпочитаните емотикони не са запазени.';
 				$lang_string["save_button"] = 'Изпрати';
 				break;
+
+			case 'archives': // New for 0.4.8
+				$lang_string['title'] = "Archives";
+				$lang_string['showall'] = "Show All";
+				break;
+
 			default:
 				break;
 		}
 
 	}
-		
+
 ?>

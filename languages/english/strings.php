@@ -1,25 +1,21 @@
 <?php
-
 	// English Language File
 	// (c) 2004 Alexander Palmo, apalmo <at> bigevilbrain <dot> com
-	//
 
-	// Simple PHP Version: 0.4.1
-	// Language Version:   0.4.1.0
+	// Simple PHP Version: 0.4.9
+	// Language Version:   0.4.9.0
 
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
 
 		// Language: English
 		$lang_string['language'] = 'english';
-
 		$lang_string['locale'] = array('en_US', 'us');
 		$lang_string['rss_locale'] = 'en-US'; // New 0.4.8
 
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';
 		$lang_string['php_charset'] = 'ISO-8859-1';
-
 		setlocale( LC_TIME, $lang_string['locale'] );
 
 		// Some Global Strings
@@ -298,7 +294,7 @@
 				$lang_string['comment_text'] = "Comment:";
 				$lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
 				$lang_string['delete_btn'] = "delete";
-				$lang_string['ban_btn'] = "ban ip";
+				$lang_string['ban_btn'] = "ban ip"; // New for 0.4.8
 				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
 				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
 
@@ -761,6 +757,7 @@
 			case 'archives': // New for 0.4.8
 				$lang_string['title'] = "Archives";
 				$lang_string['showall'] = "Show All";
+				break;
 
 			default:
 				break;
