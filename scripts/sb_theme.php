@@ -42,7 +42,19 @@
 		//
 		global $lang_string, $logged_in, $blog_config;
 
-		$str = '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
+		$str = '';
+
+		// Put any notifications for the logged in use here
+		if ($logged_in) {
+			$str .= '<b>' . $lang_string['notice_loggedin'] . '</b><br /><br />';
+
+			$unmod = get_unmodded_count(True);
+			if ( $unmod != 0 ) {
+				$str .= '<b>' . $lang_string['notice_moderator1'] . $unmod . $lang_string['notice_moderator2'] . '<br /><br />';
+			}
+		}
+
+		$str .= '<a href="index.php">' . $lang_string[ 'menu_home' ] . '</a><br />';
 
 		if ( !empty( $blog_config[ 'blog_email' ] ) ) {
 			// New 0.4.8
@@ -284,7 +296,7 @@
 		// Themes
 		// Change Login
 		//
-		global $lang_string, $logged_in, $user_colors;
+		global $lang_string, $logged_in, $user_colors, $blog_config;
 
 		if ($logged_in === true) {
 			$str = '';
@@ -296,8 +308,11 @@
 			$str = $str . '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
 			$str = $str . '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
 			$str = $str . '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
+			$str = $str . '<hr />';
 			$str = $str . '<a href="moderation.php">' . $lang_string[ 'menu_moderation' ] . '</a><br />';
-
+			if ( $blog_config[ 'blog_comments_moderation' ] ) {
+				$str = $str . '<a href="comments_moderation.php">' . $lang_string[ 'menu_commentmoderation' ] . ' (' . get_unmodded_count(1) . ')</a><br />';
+			}
 			$result = array();
 			$result[ 'title' ] = $lang_string[ 'menu_setup' ];
 			$result[ 'content' ] = $str;

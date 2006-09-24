@@ -28,7 +28,7 @@
 		$exploded_array = explode( '|', $str );
 
 		if ( count( $exploded_array ) > 1 ) {
-			if ( count( $exploded_array ) <= 5 ) {
+			if ( count( $exploded_array ) <= 6 ) {
 				// Old List Format: name, date, content, email, url
 				$comment_entry_data[ 'VERSION' ]  = $sb_info[ 'version' ];
 				$comment_entry_data[ 'NAME' ]  = $exploded_array[0];
@@ -40,10 +40,13 @@
 				if ( count( $exploded_array ) > 4) {
 					$comment_entry_data[ 'URL' ]  = $exploded_array[4];
 				}
+				if ( count( $exploded_array ) > 5) {
+				$comment_entry_data[ 'MODERATIONFLAG' ] = $exploded_array[5];
+				}
 
 			} else {
 				// New Format: key/value pairs
-				// VERSION, NAME, DATE, CONTENT, EMAIL, URL
+				// VERSION, NAME, DATE, CONTENT, EMAIL, URL, FLAG
 
 				$comment_entry_data = explode_with_keys( $exploded_array );
 			}
@@ -125,7 +128,7 @@
 				$entry_array[ 'subject' ] = blog_to_html( $comment_subject, true, false, true );
 				$entry_array[ 'date' ] = blog_to_html( format_date( $comment_entry_data[ 'DATE' ] ), true, false );
 				$entry_array[ 'entry' ] = blog_to_html( $comment_entry_data[ 'CONTENT' ], true, false, true, true ) . '<br clear="all" />';
-
+				$entry_array[ 'modflag' ] = blog_to_html( $comment_entry_data[ 'MODERATIONFLAG' ], true,  false, true );
 				$entry_array[ 'logged_in' ] = $logged_in;
 
 				// Author
@@ -147,11 +150,138 @@
 					$entry_array[ 'ip-address' ] = $comment_entry_data[ 'IP-ADDRESS' ];
 				}
 
-				$blog_content = $blog_content . theme_commententry( $entry_array );
+				// Check if moderation is on - if it is, then don't show this item
+				// unless the user is logged in or the item is marked as 'H'
+				if (( $blog_config[ 'blog_comments_moderation' ] == 1 ) && ( $entry_array[ 'modflag' ] == 'H' ) && ( $logged_in != 1 )) {
+					$blog_content = $blog_content;
+				} else {
+					$blog_content = $blog_content . theme_commententry( $entry_array );
+				}
 			}
 		}
 
 		return $blog_content;
+	}
+
+	function read_unmodded_comments ( $logged_in ) {
+			global $lang_string, $blog_config;
+
+		// To avoid server overload
+		sleep(1);
+		$output_str = '';
+		$entry_file_array = blog_entry_listing();
+		$results = 0;
+
+		// Loop through entry files
+		for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
+			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
+			$contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			$j = 0;
+			$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			// Search Comments
+			if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+				$comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+
+				for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
+					$comment_filename =  $comment_file_array[ $k ];
+					//We only want to search inside comments, not the counter
+					if ( strpos($comment_filename, 'comment') === 0 )
+					{
+						$contents_comment = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+						$comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+
+						// check to see if our comment is on hold right now (from a mod point of view)
+						if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
+							global $theme_vars;
+							$results++;
+							if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+								$output_str .= '<b>' . $lang_string['enteredby'] . $comment_entry_data[ 'NAME' ]  . '</b><br />';
+								$output_str .= $lang_string['entrydate'] . format_date( $comment_entry_data[ 'DATE' ] ) . '<br />';
+								$output_str .= $lang_string['blogentrytitle'] . '<a href="javascript:openpopup(\'comments.php?y='.$year_dir.'&amp;m='.$month_dir.'&amp;entry='. sb_strip_extension($entry_filename).'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
+								$output_str .= $lang_string['enteredcontent'] . $comment_entry_data[ 'CONTENT' ] . '<br /><br />';
+								$output_str .= '<a href="comment_approve_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $lang_string['mod_approve'] . '</a>';
+								$output_str .= '<a href="comment_delete_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $lang_string['mod_delete'] . '</a><br /><br />';
+							} else {
+								$output_str .= '<b>' . $lang_string['enteredby'] . $comment_entry_data[ 'NAME' ]  . '</b><br />';
+								$output_str .= $lang_string['entrydate'] . format_date( $comment_entry_data[ 'DATE' ] ) . '<br />';
+								$output_str .= $lang_string['blogentrytitle'] . '<a href="comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
+								$output_str .= $lang_string['enteredcontent'] . $comment_entry_data[ 'CONTENT' ] . '<br />';
+								$output_str .= '<a href="comment_approve_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $lang_string['mod_approve'] . '</a>';
+								$output_str .= '<a href="comment_delete_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '&amp;sourcepage=m" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $lang_string['mod_delete'] . '</a><br /><br />';
+							}
+						}
+					}
+				}
+			}
+		}
+		$output_str .= '<b>' . $results . $lang_string['totalunmodded'] . '</b>';
+
+		return ( $output_str );
+	}
+
+	function get_unmodded_count ( $logged_in ) {
+			global $lang_string, $blog_config;
+
+		// To avoid server overload
+		sleep(1);
+		$output_str = '';
+		$entry_file_array = blog_entry_listing();
+		$results = 0;
+
+		// Loop through entry files
+		for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
+			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
+			$contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			$j = 0;
+			$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			// Search Comments
+			if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+				$comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+
+				for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
+					$comment_filename =  $comment_file_array[ $k ];
+					//We only want to search inside comments, not the counter
+					if ( strpos($comment_filename, 'comment') === 0 )
+					{
+						$contents_comment = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+						$comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+
+						// check to see if our comment is on hold right now (from a mod point of view)
+						if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
+							$results++;
+						}
+					}
+				}
+			}
+		}
+		return ( $results );
+	}
+
+	function get_entry_unmodded_count ( $y, $m, $entry) {
+			global $lang_string, $blog_config;
+
+		// To avoid server overload
+		sleep(1);
+		$entry_file_array = blog_entry_listing();
+		$results = 0;
+
+		$comment_file_array = sb_folder_listing( 'content/' . $y . '/' . $m . '/' . sb_strip_extension( $entry ) . '/comments/', array( '.txt', '.gz' ) );
+
+		for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
+			$comment_filename =  $comment_file_array[ $k ];
+			//We only want to search inside comments, not the counter
+			if ( strpos($comment_filename, 'comment') === 0 )
+			{
+				$contents_comment = sb_read_file( 'content/' . $y . '/' . $m . '/' . sb_strip_extension( $entry ) . '/comments/' . $comment_filename );
+				$comment_entry_data = comment_to_array( 'content/' . $y . '/' . $m . '/' . sb_strip_extension( $entry ) . '/comments/' . $comment_filename );
+
+				// check to see if our comment is on hold right now (from a mod point of view)
+				if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
+					$results++;
+				}
+			}
+		}
+		return ( $results );
 	}
 
 	function check_for_duplicate ( $y, $m, $entry, $newContent ) {
@@ -245,7 +375,7 @@
 		return($res);
 	}
 
-	function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_remember, $comment_text, $user_ip ) {
+	function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_remember, $comment_text, $user_ip, $hold_flag ) {
 		// Save new entry or update old entry
 		//
 		global $blog_config, $sb_info, $lang_string;
@@ -310,6 +440,7 @@
 			$save_data[ 'URL' ] = clean_post_text( $comment_url );
 		}
 		$save_data[ 'IP-ADDRESS' ] = $user_ip; // New 0.4.8
+		$save_data[ 'MODERATIONFLAG' ] = $hold_flag;
 
 		// Implode the array
 		$str = implode_with_keys( $save_data );
@@ -349,6 +480,12 @@
 
 				$body = $body . '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";
 				$body = $body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
+
+				if ( $blog_config[ 'blog_comments_moderation' ] ) {
+					if ( $logged_in == false ) {
+						$body .= $lang_string['email_moderator'] . "\n";
+					}
+				}
 
 				// Send the Email
 				if ( array_key_exists( 'EMAIL', $save_data ) ) {

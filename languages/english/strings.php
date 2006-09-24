@@ -47,7 +47,11 @@
 		$lang_string['menu_add_block'] = "Blocks";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
-		$lang_string['menu_moderation'] = "Moderation"; // New for 0.4.9
+		$lang_string['menu_moderation'] = "Word/IP Moderation"; // New for 0.4.9
+		$lang_string['menu_commentmoderation'] = "Unmodded Comments"; // New for 0.5.0
+		$lang_string['notice_moderator1'] = "You have ";
+		$lang_string['notice_moderator2'] = " comment(s) that require approval.";
+		$lang_string['notice_loggedin'] = "You are currently logged in.";
 
 		// Counter
 		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
@@ -301,7 +305,8 @@
 				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
 				$lang_string['bannedword'] = "Your comment, url, name or email contained word(s) that have been banned by the administrator. Your comment has NOT been posted."; // New for 0.4.8
 				$lang_string['nocomments'] = "Comments are not available for this entry."; // New for 0.4.9
-
+				$lang_string['email_moderator'] = "Comments are currently moderated. This comment needs approval before it will be seen by the public."; // New for 0.5.0
+				$lang_string['user_notice_mod'] = "Moderation is turned on for this blog. Your comment will require the administrators approval before it will be visible."; // new for 0.5.0
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
@@ -584,6 +589,22 @@
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
+				$lang_string['blog_comments_moderation'] = "Require comment entries to be approved by logged in user before public
+				  (always visible to logged in user)"; // New in 0.5.0
+				$lang_string['comment_moderation'] = "Moderation Options"; // New in 0.5.0
+				break;
+			case 'comment_moderation':
+				$lang_string['title'] = "Unmodded Comments";
+				$lang_string['instructions'] = "This is a list of all comments are not available to users that are not logged into the
+				  blog because they have not been approved by a moderator.";
+				$lang_string['header'] = "Moderation Listing";
+				$lang_string['enteredby'] = "Entered By: ";
+				$lang_string['entrydate'] = "Entry Date: ";
+				$lang_string['blogentrytitle'] = "Blog Entry Title: ";
+				$lang_string['enteredcontent'] = "Content: ";
+				$lang_string['totalunmodded'] = " total item(s) waiting for moderator update.";
+				$lang_string['mod_approve'] = "[Approve] ";
+				$lang_string['mod_delete'] = "[Delete]";
 				break;
 			case 'moderation':
 				$lang_string['title'] = "Moderation Preferences";

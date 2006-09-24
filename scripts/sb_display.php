@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
-	// You are free to use and modify the Simple PHP Blog. All changes 
+	// You are free to use and modify the Simple PHP Blog. All changes
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
-	
+
 	// read_entries ( $m, $y, $d, $logged_in, $start_entry, $category )
 	// get_latest_entry ()
 	// blog_entry_listing ( $sort = NULL )
@@ -13,7 +13,7 @@
 	// preview_entry ( $blog_subject, $blog_text, $tb_ping, $temp_relatedlink, $timestamp )
 	// preview_static_entry ( $blog_subject, $blog_text )
 	// read_entry_from_file ( $entry_id )
-	
+
 	// ----------------------
 	// Blog Display Functions
 	// ----------------------
@@ -61,15 +61,15 @@
 			}
 		}
 	}
-	
+
 	function read_entries ( $m, $y, $d, $logged_in, $start_entry, $category ) {
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
 		// Used for the main Index page.
 		global $lang_string, $blog_config, $user_colors, $theme_vars;
-		
+
 		$entry_file_array = blog_entry_listing( );
-		
+
 		// Loop through the $entry_file_array looking for the
 		// first match. Note that $d could be NULL in which
 		// case we get the first entry for the month.
@@ -84,7 +84,7 @@
 		} else {
 			$look_for = 'entry' . $y . $m . $d;
 		}
-		
+
 		$entry_index = 0;
 		for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
 			if ( $look_for == substr( $entry_file_array[ $i ], 0, strlen( $look_for ) ) ) {
@@ -93,7 +93,7 @@
 				break;
 			}
 		}
-		
+
 		// Grab the next X number of entries
 		$file_array = array();
 		if ( isset( $category ) ) {
@@ -106,22 +106,22 @@
 			// I'm sure it would be faster when blogs start to have
 			// to 1000's of entries.
 			//
-			
+
 			$cat_sub_arr = get_sub_categories($category);
 			array_push( $cat_sub_arr, $category );
-			
+
 			for ( $i = $entry_index; $i < count( $entry_file_array ); $i++ ) {
 				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 				$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
 					$cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
-					
+
 					if ( in_arrayr( $cat_array, $cat_sub_arr ) ) {
 						array_push( $file_array, $entry_file_array[ $i ] );
 						// Look for +1 entries (for the next button...)
 						if ( count( $file_array ) >= $blog_config[ 'blog_max_entries' ] + 1 ) {
 							break;
-						}					
+						}
 					}
 					/*
 					for ( $j=0; $j < count($cat_array); $j++ ) {
@@ -146,20 +146,20 @@
 					*/
 				}
 			}
-			
+
 			// Store info for next and previous links...
 			if ( count( $file_array ) > $blog_config[ 'blog_max_entries' ] ) {
 				$next_entry = array_pop( $file_array );
 			} else {
 				$next_entry = NULL;
 			}
-			
+
 			// Now we have to search backwards...
 			if ( $entry_index == 0 ) {
 				$previous_entry = NULL;
 			} else {
-				$previous_file_array = array();			
-				for ( $i = $entry_index; $i >= 0; $i-- ) {			
+				$previous_file_array = array();
+				for ( $i = $entry_index; $i >= 0; $i-- ) {
 					list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 					$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 					if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
@@ -185,15 +185,15 @@
 						}
 					}
 				}
-				
+
 				$previous_entry = $previous_file_array[ count( $previous_file_array ) - 1 ];
-				
+
 				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $previous_entry );
 				$entry = sb_strip_extension( $entry_filename );
-				
+
 				// Previous entry and current start entry are the same.
 				if ( $entry == $start_entry ) {
-					$previous_entry = NULL;				
+					$previous_entry = NULL;
 				}
 			}
 		} else {
@@ -201,26 +201,26 @@
 			for ( $i = $entry_index; $i < min( ( $blog_config[ 'blog_max_entries' ] + $entry_index ), count( $entry_file_array ) ); $i++ ) {
 				array_push( $file_array, $entry_file_array[ $i ] );
 			}
-			
+
 			// Store info for next and previous links...
 			if ( $entry_index + $blog_config[ 'blog_max_entries' ] < count( $entry_file_array ) ) {
 				$next_entry = $entry_file_array[ $entry_index + $blog_config[ 'blog_max_entries' ] ];
 			} else {
 				$next_entry = NULL;
 			}
-			
+
 			if ( $entry_index - $blog_config[ 'blog_max_entries' ] >= 0 ) {
 				$previous_entry = $entry_file_array[ $entry_index - $blog_config[ 'blog_max_entries' ] ];
 			} else {
 				$previous_entry = NULL;
 			}
 		}
-		
+
 		// Flip entry order
 		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
 			$file_array = array_reverse( $file_array );
 		}
-		
+
 		// Read entry files
 		$contents = array();
 		for ( $i = 0; $i < count( $file_array ); $i++ ) {
@@ -229,7 +229,7 @@
 											'year' => $year_dir,
 											'month' => $month_dir ) );
 		}
-		
+
 		$blog_content = '';
 		if ( $contents ) {
 			if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
@@ -239,7 +239,7 @@
 				// Hosted in sub-directory.
 				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
 			}
-			
+
 			// I'm putting this check in here for people who have made
 			// custom themes before I added these values...
 			global $theme_vars;
@@ -248,24 +248,24 @@
 					$theme_vars[ 'popup_window' ][ 'width' ] = 500;
 				}
 				if ( isset( $theme_vars[ 'popup_window' ][ 'height' ] ) === false ) {
-					$theme_vars[ 'popup_window' ][ 'height' ] = 500;	
+					$theme_vars[ 'popup_window' ][ 'height' ] = 500;
 				}
 				if ( isset( $theme_vars[ 'options'][ 'disallow_colors' ] ) === false ) {
-					$theme_vars[ 'options'][ 'disallow_colors' ] = 0;		
+					$theme_vars[ 'options'][ 'disallow_colors' ] = 0;
 				}
 			} else {
 				$theme_vars = array();
 				$theme_vars[ 'popup_window' ][ 'width' ] = 500;
 				$theme_vars[ 'popup_window' ][ 'height' ] = 500;
-				$theme_vars[ 'options'][ 'disallow_colors' ] = 0;	
+				$theme_vars[ 'options'][ 'disallow_colors' ] = 0;
 			}
-			
+
 			for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
 				// Read and Parse Blog Entry
 				$blog_entry_data = blog_entry_to_array( 'content/' . $contents[$i][ 'year' ] . '/' . $contents[$i][ 'month' ] . '/' . $contents[$i][ 'entry' ] );
-			
+
 				$entry_array = array();
-				
+
 				// Subject / Date
 				// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 				$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
@@ -276,7 +276,7 @@
 				$entry_array[ 'date_alpha_month' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'ALPHAMONTH' ), false, false );
 				$entry_array[ 'date_numeric_time' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'TIMENORMAL' ), false, false );
 				$entry_array[ 'date_suffix_day' ] = blog_to_html( format_date_class( $blog_entry_data[ 'DATE' ],'SUFFIXDAY' ), false, false );
-				
+
 				// Categories
 				if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
 					$temp_cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
@@ -287,16 +287,16 @@
 					$entry_array[ 'categories' ] = $temp_cat_names;
 					$entry_array[ 'categories_id'] = $temp_cat_array;
 				}
-				
+
 				// Read More link
 				$entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
 				$entry_array[ 'relatedlink' ][ 'url' ] = array_key_exists( 'relatedlink', $blog_entry_data ) ? $blog_entry_data[ 'relatedlink' ] : '';
-				
+
 				// Author edit and delete
 				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
 				$y = sb_strip_extension( $contents[$i][ 'year' ] );
 				$m = sb_strip_extension( $contents[$i][ 'month' ] );
-				
+
 				if ( $logged_in ) {
 					$entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
 					$entry_array[ 'edit' ][ 'url' ] = 'preview_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
@@ -304,17 +304,34 @@
 					$entry_array[ 'delete' ][ 'url' ] = 'delete.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
 				}
 				$entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
-				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;	
-				
+				$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
+
 				// // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 				$entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
-				
+
 				// Comments link and count
 				$comment_trackback_base = 'content/'.$y.'/'.$m.'/'.$entry.'/';
 				$comment_path = $comment_trackback_base.'comments/';
 				$comment_array = sb_folder_listing( $comment_path, array( '.txt', '.gz' ) );
-				$comment_count = count( $comment_array );
-				
+
+				// This is not a real count if some of the items haven't been modded yet...
+				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+					if ( $logged_in ) {
+						$comment_count = count( $comment_array );
+					} else if ( $blog_config[ 'blog_comments_moderation' ] != true ) {
+						$comment_count = count( $comment_array );
+					} else {
+						// Cycle through the comments if there are some and find out how many are modded
+						if ( count( $comment_array ) != 0) {
+						  $comment_count = count( $comment_array ) - get_entry_unmodded_count($y, $m, $entry);
+						} else {
+							$comment_count = 0;
+						}
+					}
+				} else {
+					$comment_count = 0;
+				}
+
 				// Trackbacks link and count
 				$trackback_path = $comment_trackback_base.'trackbacks/';
 				$trackback_array = sb_folder_listing( $trackback_path, array( '.txt', '.gz' ) );
@@ -326,7 +343,7 @@
 				if ( in_array( 'view_counter.txt', $view_array ) ) {
 					$view_counter = intval( sb_read_file( $comment_trackback_base . 'view_counter.txt' ) );
 				}
-				
+
 				// Entry Rating
 				if ( $blog_config[ 'blog_enable_voting' ] == true ) {
 					$rating_array = read_rating( $y, $m, $entry );
@@ -339,7 +356,7 @@
 						$votes = 0;
 						$rating = 0;
 					}
-						
+
 					global $blog_theme;
 					$str = '';
 					for ( $star_number = 1; $star_number <= 5; $star_number++ ) {
@@ -359,7 +376,7 @@
 					$str = $str . ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
 					$entry_array[ 'stars' ] = $str;
 				}
-				
+
 				// Comments
 				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
 					// Add comment buttons
@@ -368,7 +385,7 @@
 					} else {
 						$entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
 					}
-					
+
 					if ( $comment_count == 0) {
 						// [ add comment ]
 						$entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_add_comment_btn' ];
@@ -389,7 +406,7 @@
 					}
 
 					$entry_array[ 'comment' ][ 'comment_count' ] = $comment_count;
-					
+
 					// Add view counter
 					if ( $view_counter > 0 ) {
 						if ( $view_counter == 1) {
@@ -399,15 +416,15 @@
 						}
 					}
 				}
-				
+
 				// OK now support the [more] tag - front page only - only works if comments are turned on
-				
+
 				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
 					$entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
 				} else {
 					$entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , true, '' );
 				}
-				
+
 				// Trackback
 				if ( $blog_config[ 'blog_trackback_enabled' ] == true ) {
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
@@ -425,25 +442,25 @@
 						$entry_array[ 'trackback' ][ 'name' ] = $lang_string[ 'sb_trackback' ] . ' ' . $trackback_count;
 					}
 				}
-				
+
 				// New 0.4.8
 				if ( array_key_exists( 'IP-ADDRESS', $blog_entry_data ) ) {
 					$entry_array[ 'ip-address' ] = $blog_entry_data[ 'IP-ADDRESS' ];
 				}
 
    				// TODO: link opbouwen net als comments!
-   				
+
    				$entry_array[ 'count' ] = $i;
    				$entry_array[ 'maxcount' ] = count( $contents ) - 1;
    				$entry_array[ 'logged_in' ] = $logged_in;
 				$entry_array[ 'id' ] = $entry;
-   				
+
    				$blog_content = $blog_content . theme_blogentry( $entry_array );
 			}
 		}
-		
+
 		$blog_content = $blog_content . '<br />';
-		
+
 		if ( $previous_entry != NULL ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $previous_entry );
 			$d = substr( $entry_filename, 9, 2 );
@@ -453,7 +470,7 @@
 			}
 			$blog_content = $blog_content . '">' . $lang_string[ 'nav_back' ] . '</a></span> ';
 		}
-		
+
 		if ( $next_entry != NULL ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $next_entry );
 			$d = substr( $entry_filename, 9, 2 );
@@ -463,12 +480,12 @@
 			}
 			$blog_content = $blog_content . '">' . $lang_string[ 'nav_next' ] . '</a></span> ';
 		}
-		
+
 		$blog_content = $blog_content . '<br />';
-		
+
 		return $blog_content;
 	}
-	
+
 	function get_latest_entry () {
 		// Figure out the date of the last entry. Set default year and month global values.
 		// This is done so we're not displaying an empty page. If it's April and the last
@@ -482,25 +499,25 @@
 			$GLOBALS[ 'month' ] = substr($entry_array[0], 7, 2);
 			$GLOBALS[ 'day' ] = substr($entry_array[0], 9, 2);
 		}
-	}	
-	
+	}
+
 	function blog_entry_listing ( $sort = NULL ) {
 		global $blog_config;
-		
+
 		// Valid $sort values:
 		// "new_to_old", "newest"
 		// "old_to_new", "oldest"
-		
+
 		// Return listing of all the blog entries in order
 		// of newest to oldest.
-		
+
 		$filename='config/~blog_entry_listing.tmp';
 		$entry_array=sb_read_file( $filename );
 		if ( $entry_array!=NULL ) {
-			$entry_array=unserialize( $entry_array );		
+			$entry_array=unserialize( $entry_array );
 		} else {
 			$basedir = 'content/';
-			
+
 			// YEAR directories
 			$entry_array = array();
 			$dir = $basedir;
@@ -509,48 +526,48 @@
 					while ( ( $year_dir = readdir( $year_dir_handle ) ) !== false ) {
 						if ( is_dir( $dir . $year_dir ) ) {
 							if ( $year_dir != '.' && $year_dir != '..' && $year_dir != 'static' ) {
-							
+
 								// MONTH directories
-								
+
 								if ( $month_dir_handle = @opendir( $dir . $year_dir . '/' ) ) {
 									while ( ( $month_dir = readdir( $month_dir_handle ) ) !== false ) {
 										if ( is_dir( $dir . $year_dir . '/' . $month_dir ) ) {
 											if ( $month_dir != '.' && $month_dir != '..' ) {
-											
+
 												// ENTRIES
-								
+
 												if ( $entry_dir_handle = @opendir( $dir . $year_dir . '/' . $month_dir . '/' ) ) {
 													while ( ( $entry_filename = readdir( $entry_dir_handle ) ) !== false ) {
 														if ( is_file( $dir . $year_dir . '/' . $month_dir . '/' . $entry_filename ) ) {
-															
+
 															$ext = strtolower( strrchr( $entry_filename, '.' ) );
 															if ( $ext == '.txt' || $ext == '.gz' ) {
-																
+
 																// Store Blog Entry Information
 																array_push( $entry_array, implode( '|', array( $entry_filename, $year_dir, $month_dir ) ) );
 															}
-															
+
 														}
 													}
 												}
-												
+
 												// END of ENTRIES
-												
+
 											}
 										}
 									}
 								}
-								
+
 								// END of MONTH directories
 							}
 						}
 					}
 				}
 			}
-			
+
 			// Always store newest to oldest.
 			rsort( $entry_array );
-			
+
 			// Check the option first to see if we use the cache
 			if ( $blog_config[ 'blog_enable_cache' ] == true ) {
 				// Do not create cache if empty
@@ -559,7 +576,7 @@
 				}
 			}
 		}
-		
+
 		// Remove "future" entries
 		$now = date('ymd-His', time());
 		if ($GLOBALS['logged_in']==false) {
@@ -570,7 +587,7 @@
 				}
 			}
 		}
-			
+
 		// Flip entry order
 		if ( isset( $sort ) ) {
 			// Passing a $sort value will over-ride the default preference. This is used in the Archive Tree view.
@@ -591,67 +608,67 @@
 				rsort( $entry_array );
 			}
 		}
-		
+
 		return( $entry_array );
 	}
-	
+
 	// -----------------
 	// Utility Functions
 	// -----------------
-	
+
 	function entry_exists ( $y, $m, $entry ) {
 		$entry_id = 'content/'.$y.'/'.$m.'/'.$entry;
-		
+
 		$exists = false;
 		if ( file_exists( $entry_id . '.txt' ) ) {
 			$exists = true;
 		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
 			$exists = true;
 		}
-		
+
 		return $exists;
 	}
-	
-	function get_entry_title ( $y, $m, $entry ) {	
+
+	function get_entry_title ( $y, $m, $entry ) {
 	  global $lang_string, $blog_config, $user_colors, $theme_vars;
-    
+
     $entry_id = 'content/' . $y . '/' . $m . '/' . $entry;
-    
+
     if ( file_exists( $entry_id . '.txt' ) ) {
 			$filename = $entry_id . '.txt';
 		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
 			$filename = $entry_id . '.txt.gz';
 		}
-    
+
     $blog_entry = blog_entry_to_array( $filename );
-    
+
     if ($blog_entry == FALSE ) {
       $title = $lang_string[ 'title' ]; // For some reason we couldnt load the file
-    } else {    
+    } else {
       $title = blog_to_html( $blog_entry[ 'SUBJECT' ], false, false ); // loaded and fired
     }
-		
+
     return( $title );
   }
-	
+
 	// -----------------
 	// Preview Functions
 	// -----------------
-	
+
 	function preview_entry ( $blog_subject, $blog_text, $tb_ping, $temp_relatedlink, $timestamp ) {
 		// Function to preview an entry before saving it to disk
 		//
 		// Just going through the motions...
 		global $blog_content, $user_colors, $lang_string, $logged_in;
-	
+
 		if ( !isset( $timestamp ) ) {
 			$timestamp = time();
 		}
 		$array = array( clean_post_text( $blog_subject ), $timestamp, clean_post_text( $blog_text ), clean_post_text( $tb_ping ), clean_post_text( $temp_relatedlink ) );
 		$str = implode('|', $array);
-		
+
 		list( $blog_subject, $blog_date, $blog_text, $tb_ping, $relatedlink ) = explode( '|', $str );
-		
+
 		// // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 		$entry_array = array();
 		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
@@ -660,38 +677,38 @@
 		if ( $tb_ping !== '' ) {
 			$entry_array[ 'tb_ping' ] = blog_to_html( $tb_ping, false, false );
 		}
-		if ( $temp_relatedlink !== '' ) {		
+		if ( $temp_relatedlink !== '' ) {
 			$entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
 			$entry_array[ 'relatedlink' ][ 'url' ] = blog_to_html( $relatedlink, false, false );
 		}
-		
+
 		$blog_content = theme_blogentry( $entry_array );
-		
+
 		return ( $blog_content );
 	}
-	
+
 	function preview_static_entry ( $blog_subject, $blog_text ) {
 		// Function to preview an entry before saving it to disk
 		//
 		// Just going through the motions...
 		global $blog_content, $user_colors, $logged_in;
-		
+
 		$array = array( clean_post_text( $blog_subject ), time(), clean_post_text( $blog_text ) );
 		$str = implode('|', $array);
-		
+
 		list( $blog_subject, $blog_date, $blog_text ) = explode( '|', $str );
-		
+
 		// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
 		$entry_array = array();
 		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
 		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br clear="all" />';
-		
+
 		$blog_content = theme_blogentry( $entry_array );
-		
+
 		return ( $blog_content );
 	}
-	
+
 	function read_entry_from_file ( $entry_id ) {
 		// Read an entry from disk and create the HTML.
 		//
@@ -705,9 +722,9 @@
 		} elseif ( file_exists( $entry_id . '.txt.gz' ) ) {
 			$filename = $entry_id . '.txt.gz';
 		}
-		
+
 		$blog_entry_data = blog_entry_to_array( $filename );
-		
+
 		$entry_array = array();
 		$entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
@@ -723,9 +740,9 @@
 			}
 			$entry_array[ 'categories' ] = $temp_cat_names;
 		}
-		
+
 		$blog_content = theme_blogentry( $entry_array );
-		
+
 		return ( $blog_content );
 	}
 ?>

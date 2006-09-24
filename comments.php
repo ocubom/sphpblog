@@ -260,6 +260,12 @@
 
 				echo('</label><br />');
 				echo('<input type="text" name="comment_capcha" id="comment_capcha" value="" autocomplete="off" maxlength="6" /><br /><br />');
+
+				if ( $blog_config[ 'blog_comments_moderation' ] ) {
+					if ( $logged_in == false ) {
+						echo($lang_string['user_notice_mod'] . '<br /><br />');
+					}
+				}
 			}
 			?>
 

@@ -1,14 +1,14 @@
-<?php 
+<?php
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
-	
+
 	read_config();
-		
-	if ( array_key_exists( 'blog_language', $_GET ) ) {	
+
+	if ( array_key_exists( 'blog_language', $_GET ) ) {
 		$blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
 	}
-	
+
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'setup' );
 ?>
@@ -20,9 +20,9 @@
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	<?php require_once('scripts/sb_javascript.php'); ?>
-	
+
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-	
+
 	<style type="text/css">
 		div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
 		{
@@ -33,10 +33,10 @@
 			display: block;
 		}
 	</style>
-	
+
 	<script type="text/javascript">
 		<!--
-		
+
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" ) {
 				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
@@ -45,32 +45,32 @@
 				return true;
 			}
 		}
-		
+
 		//-->
 	</script>
 	<title><?php echo( $blog_config[ 'blog_title' ] ); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
+<?php
 	function page_content() {
-		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;	
+		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-		
+
 		<!-- FORM -->
 		<form action="setup_cgi.php" method="post" name="setup" name="setup" onsubmit="return validate(this)">
-		
+
 			<!-- LANGUAGE -->
 			<a id="linkSetupLanguage" href="javascript:toggleBlock('SetupLanguage');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_language' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupLanguage"><p />
 				<?php
 					$arr = array();
 					$dir = 'languages/';
-					
+
 					clearstatcache();
 					if ( is_dir($dir) ) {
 						$dhandle = opendir($dir);
@@ -95,43 +95,43 @@
 						}
 						closedir( $dhandle );
 					}
-					
+
 					// HTML_dropdown( $label=false, $id, $itemArray, $add_returns=true, $onchange=null, $width=0, $size=0, $multiple=false, $disabled=false )
 					echo( HTML_dropdown( $lang_string[ 'blog_choose_language' ], "blog_language", $arr ) );
 				?>
 			</div>
-			
+
 			<p />
-			
+
 			<!-- GENERAL -->
 			<a id="linkSetupGeneral" href="javascript:toggleBlock('SetupGeneral');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_general' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupGeneral" class="toggleBody"><p />
 				<input type="checkbox" id="blog_enable_title" name="blog_enable_title"<?php if ( $blog_config[ 'blog_enable_title' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_title' ] ); ?><p />
-				
+
 				<label for="blog_title"><?php echo( $lang_string[ 'blog_title' ] ); ?></label><br />
 				<input type="text" name="blog_title" value="<?php echo($blog_config[ 'blog_title' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
-				
+
 				<label for="blog_author"><?php echo( $lang_string[ 'blog_author' ] ); ?></label><br />
 				<input type="text" name="blog_author" value="<?php echo($blog_config[ 'blog_author' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
-				
+
 				<label for="blog_email"><?php echo( $lang_string[ 'blog_email' ] ); ?></label><br />
 				<input type="text" name="blog_email" value="<?php echo($blog_config[ 'blog_email' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
-				
+
 				<label for="blog_avatar"><?php echo( $lang_string['blog_avatar' ] ); ?></label><br />
-				<input type="text" name="blog_avatar" value="<?php echo($blog_config[ 'blog_avatar' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p /> 
-				
+				<input type="text" name="blog_avatar" value="<?php echo($blog_config[ 'blog_avatar' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
+
 				<label for="blog_footer"><?php echo( $lang_string[ 'blog_footer' ] ); ?></label><br />
 				<input type="text" name="blog_footer" value="<?php echo($blog_config[ 'blog_footer' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
 			</div>
-			
+
 			<p />
-			
+
 			<!-- ENTRIES -->
 			<a id="linkSetupEntries" href="javascript:toggleBlock('SetupEntries');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_entries' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupEntries" class="toggleBody"><p />
@@ -162,17 +162,17 @@
 					echo( HTML_dropdown( $lang_string[ 'label_comment_order' ], "blog_comment_order", $arr ) );
 				?>
 			</div>
-			
+
 			<p />
-			
+
 			<!-- SIDEBAR -->
 			<a id="linkSetupSidebar" href="javascript:toggleBlock('SetupSidebar');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_sidebar' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupSidebar" class="toggleBody"><p />
 				<input type="checkbox" id="blog_enable_login" name="blog_enable_login"<?php if ( $blog_config[ 'blog_enable_login' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_login' ] ); ?><br />
-				<input type="checkbox" id="blog_enable_stats" name="blog_enable_stats"<?php if ( $blog_config[ 'blog_enable_stats' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_stats' ] ); ?><br /> 
+				<input type="checkbox" id="blog_enable_stats" name="blog_enable_stats"<?php if ( $blog_config[ 'blog_enable_stats' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_stats' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_lastcomments" name="blog_enable_lastcomments"<?php if ( $blog_config[ 'blog_enable_lastcomments' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_lastcomments' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_lastentries" name="blog_enable_lastentries"<?php if ( $blog_config[ 'blog_enable_lastentries' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_lastentries' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_archives" name="blog_enable_archives"<?php if ( $blog_config[ 'blog_enable_archives' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_archives' ] ); ?><br />
@@ -187,12 +187,12 @@
 					<option label="<?php echo( $lang_string[ 'cal_monday' ] ); ?>" value="monday"<?php if ($blog_config[ 'blog_calendar_start' ] == 'monday') { echo ' selected'; } ?>><?php echo( $lang_string[ 'cal_monday' ] ); ?></option>
 				</select><p />
 			</div>
-			
+
 			<p />
-			
+
 			<!-- TRACKBACK -->
 			<a id="linkSetupTrackbacks" href="javascript:toggleBlock('SetupTrackbacks');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_trackback' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupTrackbacks" class="toggleBody"><p />
@@ -200,24 +200,24 @@
 				<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled"<?php if ( $blog_config[ 'blog_trackback_enabled' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_trackback_enabled' ] ); ?><br />
 				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery"<?php if ( $blog_config[ 'blog_trackback_auto_discovery' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_trackback_auto_discovery' ] ); ?><p />
 			</div>
-			
+
 			<p />
-			
+
 			<!-- COMMENTS -->
 			<a id="linkSetupComments" href="javascript:toggleBlock('SetupComments');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_comments' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupComments" class="toggleBody"><p />
 				<input type="checkbox" id="blog_enable_comments" name="blog_enable_comments"<?php if ( $blog_config[ 'blog_enable_comments' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_comments' ] ); ?><br />
 				<input type="checkbox" id="blog_email_notification" name="blog_email_notification"<?php if ( $blog_config[ 'blog_email_notification' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_email_notification' ] ); ?><br />
 				<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup"<?php if ( $blog_config[ 'blog_comments_popup' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_comments_popup' ] ); ?><p />
-				
+
 				<label for="blog_comment_days_expiry"><?php echo( $lang_string[ 'blog_comment_days_expiry' ] ); ?></label>
 				<input type="text" name="blog_comment_days_expiry" value="<?php echo( $blog_config[ 'blog_comment_days_expiry' ] ); ?>" autocomplete="OFF" size="3"><p />
-				
+
 				<label for="area"><?php echo( $lang_string[ 'blog_comment_tags' ] ); ?></label><br />
-				
+
 				<table border="0" width="<?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>" cellspacing="0" cellpadding="0">
 					<tr align="left" valign="top">
 						<td width="50%">
@@ -243,13 +243,16 @@
 						</td>
 					</tr>
 				</table><p />
+				<label for="area"><b><?php echo( $lang_string[ 'comment_moderation' ] ); ?></b></label><br />
+				<input type="checkbox" id="blog_comments_moderation" name="blog_comments_moderation"<?php if ( $blog_config[ 'blog_comments_moderation' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_comments_moderation' ] ); ?><p />
+
 			</div>
-			
+
 			<p />
-			
+
 			<!-- COMPRESSION -->
 			<a id="linkSetupCompression" href="javascript:toggleBlock('SetupCompression');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty"> 
+				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
 				<h4 style="display: inline;"><?php echo( $lang_string[ 'title_compression' ] ); ?></h4>
 			</a><p />
 			<div id="toggleSetupCompression" class="toggleBody"><p />
@@ -257,19 +260,19 @@
 				<input type="checkbox" id="blog_enable_gzip_txt" name="blog_enable_gzip_txt"<?php if ( $blog_config[ 'blog_enable_gzip_txt' ] == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $lang_string[ 'blog_enable_gzip_txt' ] ); ?><br />
 				<input type="checkbox" id="blog_enable_gzip_output" name="blog_enable_gzip_output"<?php if ( $blog_config[ 'blog_enable_gzip_output' ] == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $lang_string[ 'blog_enable_gzip_output' ] ); ?><p />
 			</div>
-			
+
 			<p />
-			
+
 			<!-- SUBMIT -->
 			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
 		</form>
-		
+
 		<?php
 		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	
+		echo( theme_staticentry( $entry_array ) );
 	}
 ?>
-<?php 
+<?php
 	theme_pagelayout();
 ?>
 

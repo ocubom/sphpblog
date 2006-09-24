@@ -1,28 +1,28 @@
-<?php 
+<?php
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
-	
+
 	read_config();
-	
+
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'setup' );
-	
+
 	$temp_max_entries = intval( $_POST[ 'blog_max_entries' ] );
 	if ( $temp_max_entries <= 0) {
 		$temp_max_entries = 5;
 	}
-	
+
 	$temp_blog_comment_days_expiry = intval( $_POST[ 'blog_comment_days_expiry' ] );
 	if ( $temp_blog_comment_days_expiry < 0) {
 		$temp_blog_comment_days_expiry = 0;
 	}
-	
+
 	$temp_blog_counter_hours = intval( $_POST[ 'blog_counter_hours' ] );
 	if ( $temp_blog_counter_hours < 1) {
 		$temp_blog_counter_hours = 1;
 	}
-	
+
 	$tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html' );
 	$temp_array = array();
 	for ( $i = 0; $i < count( $tag_array ); $i++ ) {
@@ -43,7 +43,7 @@
 		}
 		$temp_email = implode( ',', $temp_email );
 	}
-	
+
 	global $ok;
   $ok = write_config( sb_stripslashes( $_POST[ 'blog_title' ] ),
 						sb_stripslashes( $_POST[ 'blog_author' ] ),
@@ -80,8 +80,9 @@
 						( $_POST[ 'blog_enable_login' ] == 'on' ),
             ( $_POST[ 'blog_enable_counter' ] == 'on' ),
             ( $_POST[ 'blog_footer_counter' ] == 'on' ),
-            $temp_blog_counter_hours );
-	
+            $temp_blog_counter_hours,
+						( $_POST[ 'blog_comments_moderation' ] == 'on' ));
+
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
 	}
@@ -91,15 +92,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
-	
+
 	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
 	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 	<?php require_once('scripts/sb_javascript.php'); ?>
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-	
+
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
+<?php
 	function page_content() {
 		global $lang_string, $user_colors, $ok;
 		if ( $ok !== true ) {
@@ -110,7 +111,7 @@
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}
 ?>
-<?php 
+<?php
 	theme_pagelayout();
 ?>
 </html>

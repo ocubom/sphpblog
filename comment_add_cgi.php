@@ -42,6 +42,14 @@
 	$fieldsExist = false;
   }
 
+	// Handle the moderator flag...
+	// Blank for release, H for hold comment (don't show to regular users)
+	if ( $logged_in ) {
+		$holdflag = '';
+	} else {
+		$holdflag = 'H';
+	}
+
 	if ( $ok != True ) {
 	if ( $fieldsExist ) {
     // Dis-allow dots, and slashes to make sure the
@@ -62,7 +70,8 @@
                                  sb_stripslashes( $_POST[ 'comment_url' ] ),
                                  $_POST[ 'comment_remember' ],
                                  sb_stripslashes( $_POST[ 'comment_text' ] ),
-                                 $_POST[ 'user_ip' ] );
+                                 $_POST[ 'user_ip' ],
+																 $holdflag );
             @session_unregister( 'capcha_' . $_GET[ 'entry' ] );
           }
         }

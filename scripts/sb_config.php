@@ -64,7 +64,8 @@
 									'blog_enable_login',
                   'blog_enable_counter',
                   'blog_footer_counter',
-                  'blog_counter_hours' );
+                  'blog_counter_hours',
+									'blog_comments_moderation' );
 
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
 				$key = $config_keys[ $i ];
@@ -219,6 +220,10 @@
 			$blog_config[ 'blog_footer_counter' ] = 1;
 		}
 
+		if ( !isset( $blog_config[ 'blog_comments_moderation' ] ) ) {
+			$blog_config[ 'blog_comments_moderation' ] = 1;
+			}
+
 		if ( !isset( $blog_config[ 'blog_counter_hours' ] ) ) {
 			$blog_config[ 'blog_counter_hours' ] = 24;
 		}
@@ -293,7 +298,7 @@
                           $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats,
                           $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha,
                           $blog_comment_days_expiry, $blog_enable_capcha_image, $blog_enable_archives,
-                          $blog_enable_login, $blog_enable_counter, $blog_footer_counter, $blog_counter_hours ) {
+                          $blog_enable_login, $blog_enable_counter, $blog_footer_counter, $blog_counter_hours, $blog_comments_moderation ) {
 		// Save config information to file.
 		//
 		$array = array( clean_post_text( $blog_title ),
@@ -331,7 +336,8 @@
 						$blog_enable_login,
             $blog_enable_counter,
             $blog_footer_counter,
-            $blog_counter_hours );
+            $blog_counter_hours,
+						$blog_comments_moderation );
 
 		$str = implode('|', $array);
 
