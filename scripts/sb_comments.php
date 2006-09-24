@@ -480,10 +480,11 @@
 
 				$body = $body . '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";
 				$body = $body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
+				$body = $body . '<br /><br />';
 
 				if ( $blog_config[ 'blog_comments_moderation' ] ) {
 					if ( $logged_in == false ) {
-						$body .= $lang_string['email_moderator'] . "\n";
+						$body = $body . $lang_string['email_moderator'] . "\n";
 					}
 				}
 

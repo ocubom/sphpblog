@@ -221,7 +221,7 @@
 		}
 
 		if ( !isset( $blog_config[ 'blog_comments_moderation' ] ) ) {
-			$blog_config[ 'blog_comments_moderation' ] = 1;
+			$blog_config[ 'blog_comments_moderation' ] = 0;
 			}
 
 		if ( !isset( $blog_config[ 'blog_counter_hours' ] ) ) {
