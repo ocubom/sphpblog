@@ -26,20 +26,26 @@
 	// index.php?d=28&m=11&y=05&category=3
 	// index.php?category=3
 	//
+	global $is_permalink;
+	$is_permalink = true;
+	
 	$temp_year = NULL;
 	if ( array_key_exists( 'y', $_GET ) ) {
+		$is_permalink = false;
 		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 ) {
 			$temp_year = $_GET[ 'y' ];
 		}
 	}
 	$temp_month = NULL;
 	if ( array_key_exists( 'm', $_GET ) ) {
+		$is_permalink = false;
 		if ( strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'm' ] ) == 2 ) {
 			$temp_month = $_GET[ 'm' ];
 		}
 	}
 	$temp_day = NULL;
 	if ( array_key_exists( 'd', $_GET ) ) {
+		$is_permalink = false;
 		if ( strpos( $_GET[ 'd' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'd' ] ) == 2 ) {
 			$temp_day = $_GET[ 'd' ];
 		}
@@ -49,6 +55,8 @@
 		if ( strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
 			$temp_entry = $_GET[ 'entry' ];
 		}
+	} else {
+		$is_permalink = false;
 	}
 	
 	// Month / Year
@@ -78,6 +86,7 @@
 	if ( array_key_exists( 'category', $_GET ) ) {
 		global $category;
 		$category = $_GET[ 'category' ];
+		$is_permalink = false;
 	}
 	
 	global $lang_string, $sb_info, $blog_config;
@@ -138,9 +147,9 @@
 <?php 
 	// Page Content (Called from within the theme_pagelayout function below)
 	function page_content() {
-		global $month, $year, $day, $category, $logged_in, $entry;
+		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink;
 		
-		$page_content = read_entries( $month, $year, $day, $logged_in, $entry, $category );
+		$page_content = read_entries( $month, $year, $day, $logged_in, $entry, $category, $is_permalink );
 		echo( $page_content );
 	}
 	

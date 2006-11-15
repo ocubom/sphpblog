@@ -62,7 +62,7 @@
 		}
 	}
 
-	function read_entries ( $m, $y, $d, $logged_in, $start_entry, $category ) {
+	function read_entries ( $m, $y, $d, $logged_in, $start_entry, $category, $is_permalink ) {
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
 		// Used for the main Index page.
@@ -82,6 +82,7 @@
 		if ( $start_entry != NULL ) {
 			$look_for = $start_entry;
 		} else {
+			// 'dummy' entry name...
 			$look_for = 'entry' . $y . $m . $d;
 		}
 
