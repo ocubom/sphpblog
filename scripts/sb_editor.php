@@ -1,6 +1,7 @@
 
 <script type="text/javascript">
 	<!--
+	
 	// Insert Style Tags
 	function ins_styles(theform,sb_code,prompt_text,tag_prompt) {
 		// Insert [x]yyy[/x] style markup
@@ -12,7 +13,7 @@
 			// Display prompt if no text is selected
 			var inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", '' );
 			if ( (inserttext != null) ) {
-				insertAtCaret(theform, "["+sb_code+"]"+selected_text+"[/"+sb_code+"]");
+				insertAtCaret(theform, "["+sb_code+"]"+inserttext+"[/"+sb_code+"]");
 				theform.focus();
 			}
 		} else {
@@ -96,27 +97,6 @@
 	function ins_image_dropdown(theform,theImage) {
 		if (theImage.value != '-'+'-') {
 			insertAtCaret(theform, theImage.value);
-			theform.focus();
-		}
-	}
-	
-	// Insert Style Tags
-	function ins_styles(theform,sb_code,prompt_text,tag_prompt) {
-		// Insert [x]yyy[/x] style markup
-		
-		// Get selected text
-		var selected_text = getSelectedText(theform);
-		
-		if (selected_text == '') {
-			// Display prompt if no text is selected
-			var inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", '' );
-			if ( (inserttext != null) ) {
-				insertAtCaret(theform, "["+sb_code+"]"+selected_text+"[/"+sb_code+"]");
-				theform.focus();
-			}
-		} else {
-			// Insert text automatically around selection
-			insertAtCaret(theform, "["+sb_code+"]"+selected_text+"[/"+sb_code+"]");
 			theform.focus();
 		}
 	}
@@ -309,7 +289,8 @@
 	function insertAtCaret(obj, text) {
 		var mytext;
 		obj.focus();
-		if(document.selection) {
+		
+		if (document.selection) {
 			// 'Code For IE'
 			text = ' ' + text + ' ';
 			if (obj.createTextRange && obj.caretPos) {
@@ -317,14 +298,12 @@
 				caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
 				return;
 			}
-		} else if (obj.selectionStart) {
+		} else if (obj.selectionStart!==false) {
 			// 'Code for Gecko'
 			var start = obj.selectionStart;
 			var end   = obj.selectionEnd;
 			
-			obj.value = obj.value.substr(0, start) 
-				+ text 
-				+ obj.value.substr(end, obj.value.length);
+			obj.value = obj.value.substr(0, start) + text + obj.value.substr(end, obj.value.length);
 		}
 		
 		if (start != null) {
