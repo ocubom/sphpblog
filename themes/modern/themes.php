@@ -617,11 +617,13 @@
 		// 		echo( "this \"is\" a test" );  // displays: this "is" a test
 		// 		echo( "this 'is' a test" );  // displays: this 'is' a test
 		// 		echo( 'this \'is\' a test' );  // displays: this 'is' a test
+		
 
 		echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
-
+		
 		// AVATAR
 		theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
+		
 
 		// LINKS
 		$result = menu_display_links();
@@ -648,7 +650,7 @@
 		}
 
 		// CALENDAR
-		theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
+		// theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
 
 		// ARCHIVE TREE
 		theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );

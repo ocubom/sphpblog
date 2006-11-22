@@ -220,7 +220,7 @@
 	}
 
 	function get_unmodded_count ( $logged_in ) {
-			global $lang_string, $blog_config;
+		global $lang_string, $blog_config;
 
 		// To avoid server overload
 		sleep(1);
@@ -258,7 +258,7 @@
 	}
 
 	function get_entry_unmodded_count ( $y, $m, $entry) {
-			global $lang_string, $blog_config;
+		global $lang_string, $blog_config;
 
 		// To avoid server overload
 		sleep(1);

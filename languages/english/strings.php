@@ -18,7 +18,7 @@
 		$lang_string['php_charset'] = 'ISO-8859-1';
 		setlocale( LC_TIME, $lang_string['locale'] );
 
-		// Some Global Strings
+		// Global Strings
 
 		// Menu
 		$lang_string['menu_links'] = "Links";
@@ -164,7 +164,7 @@
 			case 'add_static':
 				// Add Entry
 				$lang_string['title'] = "Add Static Page";
-				$lang_string['instructions'] = "Fill out the form below to create a Static Page. Unlike a regular Blog Entry, Static Entries appear as a links in the right-hand menu. They are for pages that you always want available such as: About Me, Contact Us, Schedule, etc. Click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
+				$lang_string['instructions'] = "Fill out the form below to create a Static Page. Unlike a regular Blog Entry, Static Entries appear in the Links menu. They are for pages that you always want available such as: About Me, Contact Us, Schedule, etc. Click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
 
 				// Preview / Edit Entry
 				$lang_string['title_preview'] = "Preview / Edit Static Page";
@@ -181,15 +181,15 @@
 
 				// Add / Manage Blocks
 				$lang_string['title'] = "Add / Manage Blocks";
-				$lang_string['instructions'] = "Add custom Blocks";
+				$lang_string['instructions'] = "Use the form below to add custom 'Blocks' which will appear in the sidebar menu.";
 				$lang_string['up'] = "up";
 				$lang_string['down'] = "down";
 				$lang_string['edit'] = "edit";
 				$lang_string['delete'] = "delete";
 				$lang_string['block_name'] = "Block Name:";
-				$lang_string['block_content'] = "Block content:";
-				$lang_string['instructions_edit'] = "You are currently editing block:";
-				$lang_string['instructions_modify'] = "Click below to modify a block:";
+				$lang_string['block_content'] = "Block Content:";
+				$lang_string['instructions_edit'] = "You are currently editing a Block.";
+				$lang_string['instructions_modify'] = "Use the form below to add or modify the custom 'Blocks' which appear in the sidebar menu.";
 				$lang_string['submit_btn_edit'] = "Edit Block";
 				$lang_string['submit_btn_add'] = "Add Block";
 				$lang_string['form_error'] = "Please complete the Name field.";
@@ -528,7 +528,7 @@
 				$lang_string['blog_title'] = "Blog Name:";
 				$lang_string['blog_author'] = "Author:";
 				$lang_string['blog_email'] = "Email: (Separate email address should be separated by a , comma - blank disables Contact Me option)"; // Updated 0.4.7
-				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
+				$lang_string['blog_avatar'] = "Avatar URL: images/avatar.jpg (Leave blank for none)."; // <-- New 0.4.7
 				$lang_string['blog_footer'] = "Footer:";
 				$lang_string['blog_choose_language'] = "Choose Language:";
 				$lang_string['blog_enable_comments'] = "Enable User Comments";

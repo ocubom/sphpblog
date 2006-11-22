@@ -47,7 +47,7 @@
 		// Put any notifications for the logged in use here
 		if ($logged_in) {
 			$str .= '<b>' . $lang_string['notice_loggedin'] . '</b><br /><br />';
-
+			
 			$unmod = get_unmodded_count(True);
 			if ( $unmod != 0 ) {
 				$str .= '<b>' . $lang_string['notice_moderator1'] . $unmod . $lang_string['notice_moderator2'] . '<br /><br />';
