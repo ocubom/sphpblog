@@ -127,12 +127,11 @@
 			if ( isset( $entry_array[ 'edit' ][ 'url' ] ) ) {
 				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '"><img src="' . $img_path . 'box_right.png" title="' . $entry_array[ 'edit' ][ 'name' ] . '" alt="' . $entry_array[ 'edit' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
+			if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
+				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '"><img src="' . $img_path . 'box_delete.png" title="' . $entry_array[ 'ban' ][ 'name' ] . '" alt="' . $entry_array[ 'ban' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
+			}
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
 				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" title="' . $entry_array[ 'delete' ][ 'name' ] . '" alt="' . $entry_array[ 'delete' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
-			}
-
-			if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" title="' . $entry_array[ 'ban' ][ 'name' ] . '" alt="' . $entry_array[ 'ban' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
 
 			$blog_content = $blog_content . "\t</span>\n";

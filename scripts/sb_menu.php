@@ -228,7 +228,7 @@
 		//
 		global $lang_string;
 		
-		$entry_array = blog_entry_listing( "new_to_old" );
+		$entry_array = blog_entry_listing();
 		// $entry_array[$i] = implode( '|', array( $entry_filename, $year_dir, $month_dir ) ) );
 		
 		$str = '';

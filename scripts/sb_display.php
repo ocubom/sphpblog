@@ -8,7 +8,7 @@
 
 	// read_entries ( $m, $y, $d, $logged_in, $start_entry, $category )
 	// get_latest_entry ()
-	// blog_entry_listing ( $sort = NULL )
+	// blog_entry_listing ()
 	// entry_exists ( $y, $m, $entry )
 	// preview_entry ( $blog_subject, $blog_text, $tb_ping, $temp_relatedlink, $timestamp )
 	// preview_static_entry ( $blog_subject, $blog_text )
@@ -68,7 +68,7 @@
 		// Used for the main Index page.
 		global $lang_string, $blog_config, $user_colors, $theme_vars;
 
-		$entry_file_array = blog_entry_listing( );
+		$entry_file_array = blog_entry_listing();
 
 		// Loop through the $entry_file_array looking for the
 		// first match. Note that $d could be NULL in which
@@ -217,11 +217,6 @@
 			}
 		}
 
-		// Flip entry order
-		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-			$file_array = array_reverse( $file_array );
-		}
-
 		// Read entry files
 		$contents = array();
 		for ( $i = 0; $i < count( $file_array ); $i++ ) {
@@ -229,6 +224,12 @@
 			array_push( $contents, array( 	'entry' => $entry_filename,
 											'year' => $year_dir,
 											'month' => $month_dir ) );
+		}
+		
+		// Flip entry order
+		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
+			echo( count($contents) );
+			$contents = array_reverse( $contents );
 		}
 
 		$blog_content = '';
@@ -494,7 +495,7 @@
 		//
 		// Returns nothing but sets $GLOBALS[ 'month' ] and $GLOBALS[ 'year' ]
 		//
-		$entry_array=blog_entry_listing();
+		$entry_array = blog_entry_listing();
 		if ( count( $entry_array>0 ) ) {
 			$GLOBALS[ 'year' ] = substr($entry_array[0], 5, 2);
 			$GLOBALS[ 'month' ] = substr($entry_array[0], 7, 2);
@@ -502,20 +503,16 @@
 		}
 	}
 
-	function blog_entry_listing ( $sort = NULL ) {
+	function blog_entry_listing () {
 		global $blog_config;
-
-		// Valid $sort values:
-		// "new_to_old", "newest"
-		// "old_to_new", "oldest"
 
 		// Return listing of all the blog entries in order
 		// of newest to oldest.
 
-		$filename='config/~blog_entry_listing.tmp';
-		$entry_array=sb_read_file( $filename );
-		if ( $entry_array!=NULL ) {
-			$entry_array=unserialize( $entry_array );
+		$filename = 'config/~blog_entry_listing.tmp';
+		$entry_array = sb_read_file( $filename );
+		if ( $entry_array != NULL ) {
+			$entry_array = unserialize( $entry_array );
 		} else {
 			$basedir = 'content/';
 
@@ -590,25 +587,7 @@
 		}
 
 		// Flip entry order
-		if ( isset( $sort ) ) {
-			// Passing a $sort value will over-ride the default preference. This is used in the Archive Tree view.
-			switch( $sort ) {
-				case "new_to_old":
-				case "newest":
-					rsort( $entry_array );
-					break;
-				case "old_to_new":
-				case "oldest";
-					sort( $entry_array );
-					break;
-			}
-		} else {
-			if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-				sort( $entry_array );
-			} else {
-				rsort( $entry_array );
-			}
-		}
+		rsort( $entry_array );
 
 		return( $entry_array );
 	}
