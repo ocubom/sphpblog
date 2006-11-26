@@ -50,7 +50,7 @@
 			
 			$unmod = get_unmodded_count(True);
 			if ( $unmod != 0 ) {
-				$str .= '<b>' . $lang_string['notice_moderator1'] . $unmod . $lang_string['notice_moderator2'] . '<br /><br />';
+				$str .= '<a href="comments_moderation.php">' . $lang_string['notice_moderator1'] . $unmod . $lang_string['notice_moderator2'] . '</a><br /><br />';
 			}
 		}
 
