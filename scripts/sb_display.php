@@ -228,7 +228,6 @@
 		
 		// Flip entry order
 		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
-			echo( count($contents) );
 			$contents = array_reverse( $contents );
 		}
 
