@@ -36,11 +36,11 @@
 	}
 
 	if (!$logged_in && $_SESSION[ 'capcha_' . $_POST['entry' ] ] == '') {
-	// Capcha did not exist in session, so comment poster did not come from comments page,
-	// where this should have been created. User is probably a spam robot.
-	// Fix submitted by Jan Normann Nielsen via Sourceforge 2006-08-11
-	$fieldsExist = false;
-  }
+		// Capcha did not exist in session, so comment poster did not come from comments page,
+		// where this should have been created. User is probably a spam robot.
+		// Fix submitted by Jan Normann Nielsen via Sourceforge 2006-08-11
+		$fieldsExist = false;
+	}
 
 	// Handle the moderator flag...
 	// Blank for release, H for hold comment (don't show to regular users)
@@ -51,34 +51,34 @@
 	}
 
 	if ( $ok != True ) {
-	if ( $fieldsExist ) {
-    // Dis-allow dots, and slashes to make sure the
-    // user is not able to back-up a directory.
-    //
-    // Make sure the string lengths are correct.
-    if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] || $logged_in ) {
-      if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'y' ] ) == 2 &&
-          strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'm' ] ) == 2 &&
-          strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'entry' ] ) == 18 ) {
-
-        // Verify that the file exists.
-        if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
-          if ( strlen( $_POST[ 'comment_name' ] ) > 0 && strlen( $_POST[ 'comment_text' ] ) > 0 ) {
-            $ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ],
-                                 sb_stripslashes( $_POST[ 'comment_name' ] ),
-                                 sb_stripslashes( $_POST[ 'comment_email' ] ),
-                                 sb_stripslashes( $_POST[ 'comment_url' ] ),
-                                 $_POST[ 'comment_remember' ],
-                                 sb_stripslashes( $_POST[ 'comment_text' ] ),
-                                 $_POST[ 'user_ip' ],
-																 $holdflag );
-            @session_unregister( 'capcha_' . $_GET[ 'entry' ] );
-          }
-        }
-      }
-    }
-  }
-  }
+		if ( $fieldsExist ) {
+			// Dis-allow dots, and slashes to make sure the
+			// user is not able to back-up a directory.
+			//
+			// Make sure the string lengths are correct.
+			if ( $_POST[ 'comment_capcha' ] == $_SESSION[ 'capcha_' . $_POST[ 'entry' ] ] || $logged_in ) {
+				if ( strpos( $_POST[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'y' ] ) == 2 &&
+				strpos( $_POST[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'm' ] ) == 2 &&
+				strpos( $_POST[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_POST[ 'entry' ] ) == 18 ) {
+				
+					// Verify that the file exists.
+					if ( entry_exists ( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ] ) ) {
+						if ( strlen( $_POST[ 'comment_name' ] ) > 0 && strlen( $_POST[ 'comment_text' ] ) > 0 ) {
+							$ok = write_comment( $_POST[ 'y' ], $_POST[ 'm' ], $_POST[ 'entry' ],
+								sb_stripslashes( $_POST[ 'comment_name' ] ),
+								sb_stripslashes( $_POST[ 'comment_email' ] ),
+								sb_stripslashes( $_POST[ 'comment_url' ] ),
+								$_POST[ 'comment_remember' ],
+								sb_stripslashes( $_POST[ 'comment_text' ] ),
+								$_POST[ 'user_ip' ],
+								$holdflag );
+								@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
+						}
+					}
+				}
+			}
+		}
+	}
 
 	if ( $ok === true ) {
 		$relative_url = 'comments.php?y='.$_POST[ 'y' ].'&m='.$_POST[ 'm' ].'&entry='.$_POST[ 'entry' ];
