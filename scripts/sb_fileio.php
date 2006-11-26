@@ -13,9 +13,9 @@
 		// Safely read a file.
 		//
 		// Returns either the contents of the file or NULL on fail.
-		
+
+		$result = NULL;
 		if ( version_compare( phpversion(), '4.3.0' ) == -1 ) {
-			$result = NULL;
 			if ( file_exists( $filename ) ) {
 				$fp = @fopen( $filename, 'r' );
 				if ( $fp ) {
