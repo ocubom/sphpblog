@@ -209,11 +209,14 @@
 			} else {
 				$next_entry = NULL;
 			}
-
-			if ( $entry_index - $blog_config[ 'blog_max_entries' ] >= 0 ) {
-				$previous_entry = $entry_file_array[ $entry_index - $blog_config[ 'blog_max_entries' ] ];
-			} else {
-				$previous_entry = NULL;
+			
+			$previous_entry = NULL;
+			if ( $entry_index > 0 ) {
+				if ( $entry_index - $blog_config[ 'blog_max_entries' ] > 0 ) {
+					$previous_entry = $entry_file_array[ $entry_index - $blog_config[ 'blog_max_entries' ] ];
+				} else {
+					$previous_entry = $entry_file_array[ 0 ];
+				}
 			}
 		}
 
@@ -495,6 +498,7 @@
 		// Returns nothing but sets $GLOBALS[ 'month' ] and $GLOBALS[ 'year' ]
 		//
 		$entry_array = blog_entry_listing();
+		
 		if ( count( $entry_array>0 ) ) {
 			$GLOBALS[ 'year' ] = substr($entry_array[0], 5, 2);
 			$GLOBALS[ 'month' ] = substr($entry_array[0], 7, 2);
@@ -573,7 +577,7 @@
 				}
 			}
 		}
-
+		
 		// Remove "future" entries
 		$now = date('ymd-His', time());
 		if ($GLOBALS['logged_in']==false) {
@@ -584,7 +588,7 @@
 				}
 			}
 		}
-
+		
 		// Flip entry order
 		rsort( $entry_array );
 
