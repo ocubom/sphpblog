@@ -90,7 +90,48 @@
 			return ( $result );
 		}
 	}
-
+	
+	function menu_random_entry() {
+		// Get index of all entries
+		$entry_array = blog_entry_listing();
+		if ( count($entry_array >= 2) ) {
+			
+			// Randomly select an entry to display
+			$randomIndex = rand ( 0, count( $entry_array ) - 1 );
+			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_array[ $randomIndex ] );
+			
+			// Read the entry and grab the subject line
+			$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			
+			// Format the subject line to make sure there's no extra HTML that will mess up formatting...
+			// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
+			$subject = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, true, false, false );
+			
+			// We're just going to make this a relative link... Uncomment below to make a full URL link:
+			$base_permalink_url = '';
+			/*
+			if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
+				// Hosted at root.
+				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+			} else {
+				// Hosted in sub-directory.
+				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+			}
+			*/
+			
+			// Strip the file extension
+			$entry_no_ext = sb_strip_extension( $entry_filename );
+			$link = $base_permalink_url . 'index.php?entry=' . $entry_no_ext;
+			
+			// Create array for proper 'widget' format
+			$result = array();
+			$result[ 'title' ] = 'Random Entry';
+			$result[ 'content' ] = '<a href="'.$link.'">'.$subject.'</a>';
+				
+			return($result);
+		}
+	}
+	
 	function menu_display_avatar() {
 		// Title: Avatar mod for sPhpBlog
 		// Author: sverde1
