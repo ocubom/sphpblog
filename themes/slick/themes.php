@@ -577,6 +577,16 @@
 			echo( $result[ 'content' ] . "\n" );
 			echo( "</div><br />\n" );
 		}
+		
+		// RANDOM ENTRY
+		$result = menu_random_entry();
+		if ( $result[ 'content' ] != "" ) {
+			echo( "\n<!-- RANDOM ENTRY -->\n" );
+			echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
+			echo( "<div class=\"menu_body\">\n" );
+			echo( $result[ 'content' ] . "\n" );
+			echo( "</div><br />\n" );
+		}
 
 		// New 0.4.7
 		$result = menu_display_blognav_tree();

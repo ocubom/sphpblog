@@ -650,7 +650,10 @@
 		}
 
 		// CALENDAR
-		// theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
+		theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
+
+		// RANDOM ENTRY
+		theme_menu_block( menu_random_entry(), 'RANDOM ENTRY', 'SidebarRandomEntry' );
 
 		// ARCHIVE TREE
 		theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );

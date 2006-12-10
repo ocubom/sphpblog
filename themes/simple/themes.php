@@ -504,6 +504,8 @@
 		array_push( $replace, theme_widget_custom() );
 		array_push( $search, '%widget_calendar%' );
 		array_push( $replace, theme_widget_calendar() );
+		array_push( $search, '%widget_random_entry%' );
+		array_push( $replace, theme_widget_random_entry() );
 		array_push( $search, '%widget_archive_tree%' );
 		array_push( $replace, theme_widget_archive_tree() );
 		array_push( $search, '%widget_categories%' );
@@ -534,6 +536,8 @@
 		array_push( $function_arr, 'theme_widget_custom' );
 		array_push( $pattern_arr, 'widget_calendar' );
 		array_push( $function_arr, 'theme_widget_calendar' );
+		array_push( $pattern_arr, 'widget_random_entry' );
+		array_push( $function_arr, 'theme_widget_random_entry' );
 		array_push( $pattern_arr, 'widget_archive_tree' );
 		array_push( $function_arr, 'theme_widget_archive_tree' );
 		array_push( $pattern_arr, 'widget_categories' );
@@ -694,6 +698,7 @@
 		$html .= theme_widget_setup();
 		$html .= theme_widget_custom();
 		$html .= theme_widget_calendar();
+		$html .= theme_widget_random_entry();
 		$html .= theme_widget_archive_tree();
 		$html .= theme_widget_categories();
 		$html .= theme_widget_search();
@@ -761,6 +766,12 @@
 	// CALENDAR
 	function theme_widget_calendar( $template_file='menu_block.html' ) {
 		$html = theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar', $template_file );
+		return ( $html );
+	}
+
+	// RANDOM ENTRY
+	function theme_widget_random_entry( $template_file='menu_block.html' ) {
+		$html = theme_menu_block( menu_random_entry(), 'RANDOM ENTRY', 'SidebarRandomEntry', $template_file );
 		return ( $html );
 	}
 
