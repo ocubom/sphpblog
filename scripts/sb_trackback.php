@@ -205,12 +205,16 @@
 				}
 				$body='From: ' . $save_data[ 'BLOGNAME' ] . "<br />\n";
 				
+				$port = ':' . $_SERVER[ 'SERVER_PORT'];
+				if ($port == ':80') {
+					$port = '';
+				}				
 				if ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' ) {
 					// Hosted at root.
-					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
 				} else {
 					// Hosted in sub-directory.
-					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 				}
 				
 				$body=$body . '<a href="' . $base_url . 'trackback.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;__mode=html">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "&amp;__mode=html</a><br /><br />\n\n";

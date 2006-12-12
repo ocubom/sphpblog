@@ -41,7 +41,7 @@
 					$comment_entry_data[ 'URL' ]  = $exploded_array[4];
 				}
 				if ( count( $exploded_array ) > 5) {
-				$comment_entry_data[ 'MODERATIONFLAG' ] = $exploded_array[5];
+					$comment_entry_data[ 'MODERATIONFLAG' ] = $exploded_array[5];
 				}
 
 			} else {
@@ -470,12 +470,16 @@
 				$body=$body . "<br />\n";
 				$body=$body . "<b>" . $lang_string[ 'comment' ] . "</b><br />\n";
 
+				$port = ':' . $_SERVER[ 'SERVER_PORT'];
+				if ($port == ':80') {
+					$port = '';
+				}				
 				if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 					// Hosted at root.
-					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
 				} else {
 					// Hosted in sub-directory.
-					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 				}
 
 				$body = $body . '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";

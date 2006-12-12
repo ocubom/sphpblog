@@ -1,4 +1,4 @@
-<?php 
+<?php
 	// ---------------
 	// INITIALIZE PAGE
 	// ---------------
@@ -25,13 +25,17 @@
 		echo "</response>\n";
 		exit;
 	}
+	$port = ':' . $_SERVER[ 'SERVER_PORT'];
+	if ($port == ':80') {
+		$port = '';
+	}
 	
 	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 		// Hosted at root.
-		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ];
+		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ].$port;
 	} else {
 		// Hosted in sub-directory.
-		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]);
+		$base_url = '://' . $_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]);
 	}
 	
    // trackback ping contains entry in the URI
@@ -139,12 +143,16 @@
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars;
 		
+		$port = ':' . $_SERVER[ 'SERVER_PORT'];
+		if ($port == ':80') {
+			$port = '';
+		}
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 		}
 		
 		$tb[ 'subject' ] = $lang_string[ 'title' ];
@@ -170,12 +178,16 @@
 		// Default XML output
 		//
 
+		$port = ':' . $_SERVER[ 'SERVER_PORT'];
+		if ($port == ':80') {
+			$port = '';
+		}
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 		}
 
 		header('Content-type: application/xml');

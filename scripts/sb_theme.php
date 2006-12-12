@@ -448,13 +448,17 @@
 			}
 
 			$str = '';
+			$port = ':' . $_SERVER[ 'SERVER_PORT'];
+			if ($port == ':80') {
+				$port = '';
+			}
 			if ( $contents ) {
 				if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 					// Hosted at root.
-					$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].'/';
+					$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
 				} else {
 					// Hosted in sub-directory.
-					$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
+					$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 				}
 
 				for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
