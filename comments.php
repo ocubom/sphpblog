@@ -1,5 +1,7 @@
 <?php
-	// Load Scripts
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 
 	// Login
@@ -17,6 +19,10 @@
 	// Load language strings
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'comments' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 
 	// Verify information being passed:
 	$redirect = true;
@@ -45,77 +51,10 @@
 	if ( $redirect === true ) {
 		redirect_to_url( 'index.php' );
 	}
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
-
-	<!-- Meta Data -->
-	<?php global $lang_string, $sb_info, $blog_config; ?>
-	<meta name="generator" content="Simple PHP Blog" />
-	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php" />
-	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php" />
-	<link rel="alternate" type="application/atom+xml" title="Get Atom 0.3 Feed" href="atom.php" />
-
-	<!-- Meta Data -->
-	<!-- http://dublincore.org/documents/dces/ -->
-	<meta name="dc.title"       content="<?php echo( $blog_config[ 'blog_title' ] ); ?>" />
-	<meta name="author"         content="<?php echo( $blog_config[ 'blog_author' ] ); ?>" />
-	<meta name="dc.creator"     content="<?php echo( $blog_config[ 'blog_author' ] ); ?>" />
-	<meta name="dc.subject"     content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>" />
-	<meta name="keywords"       content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>" />
-	<meta name="dc.description" content="<?php echo( $blog_config[ 'info_description' ] ); ?>" />
-	<meta name="description"    content="<?php echo( $blog_config[ 'info_description' ] ); ?>" />
-	<meta name="dc.type"        content="weblog" />
-	<meta name="dc.type"        content="blog" />
-	<meta name="resource-type"  content="document" />
-	<meta name="dc.format"      scheme="IMT" content="text/html" />
-	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php' ); } else { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php' ); } ?>" />
-	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string[ 'locale' ]) ); ?>" />
-	<meta name="dc.coverage"    content="global" />
-	<meta name="distribution"   content="GLOBAL" />
-	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
-	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
-
-	<!-- Robots -->
-	<meta name="robots" content="ALL,INDEX,FOLLOW,ARCHIVE" />
-	<meta name="revisit-after" content="7 days" />
-
-	<!-- Fav Icon -->
-	<link rel="shortcut icon" href="interface/favicon.ico" />
-
-	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-	<?php require_once('scripts/sb_javascript.php'); ?>
-	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-
-	<?php require_once('scripts/sb_editor.php'); ?>
-		<script type="text/javascript">
-		<!--
-		// Validate the Form
-		function validate_comment(theform) {
-			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
-				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		-->
-	</script>
-
-	<?php
-		if (!isset($_GET['entry'])) {
-			echo( '<title>' . $blog_config[ 'blog_title' ] . '</title>');
-		} else {
-			echo( '<title>' . $blog_config[ 'blog_title' ] . ' - ' . get_entry_title( substr( $_GET[ 'entry' ], 5, 2 ), substr ( $_GET[ 'entry' ], 7, 2 ), $_GET[ 'entry' ] ) . '</title>');
-		}
-	?>
-</head>
-<?php
-	// Page Content (Called from within the theme_pagelayout function below)
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
 
@@ -294,13 +233,88 @@
 
 		echo( theme_staticentry( $entry_array ) );
 	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
-<?php
-	global $blog_config;
-	if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-		theme_popuplayout();
-	} else {
-		theme_pagelayout();
-	}
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+
+	<!-- Meta Data -->
+	<?php global $lang_string, $sb_info, $blog_config; ?>
+	<meta name="generator" content="Simple PHP Blog" />
+	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php" />
+	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php" />
+	<link rel="alternate" type="application/atom+xml" title="Get Atom 0.3 Feed" href="atom.php" />
+
+	<!-- Meta Data -->
+	<!-- http://dublincore.org/documents/dces/ -->
+	<meta name="dc.title"       content="<?php echo( $blog_config[ 'blog_title' ] ); ?>" />
+	<meta name="author"         content="<?php echo( $blog_config[ 'blog_author' ] ); ?>" />
+	<meta name="dc.creator"     content="<?php echo( $blog_config[ 'blog_author' ] ); ?>" />
+	<meta name="dc.subject"     content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>" />
+	<meta name="keywords"       content="<?php echo( $blog_config[ 'info_keywords' ] ); ?>" />
+	<meta name="dc.description" content="<?php echo( $blog_config[ 'info_description' ] ); ?>" />
+	<meta name="description"    content="<?php echo( $blog_config[ 'info_description' ] ); ?>" />
+	<meta name="dc.type"        content="weblog" />
+	<meta name="dc.type"        content="blog" />
+	<meta name="resource-type"  content="document" />
+	<meta name="dc.format"      scheme="IMT" content="text/html" />
+	<meta name="dc.source"      scheme="URI" content="<?php if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php' ); } else { echo( 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php' ); } ?>" />
+	<meta name="dc.language"    scheme="RFC1766" content="<?php echo( str_replace('_', '-', $lang_string[ 'locale' ]) ); ?>" />
+	<meta name="dc.coverage"    content="global" />
+	<meta name="distribution"   content="GLOBAL" />
+	<meta name="dc.rights"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
+	<meta name="copyright"      content="<?php echo( $blog_config[ 'info_copyright' ] ); ?>" />
+
+	<!-- Robots -->
+	<meta name="robots" content="ALL,INDEX,FOLLOW,ARCHIVE" />
+	<meta name="revisit-after" content="7 days" />
+
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="interface/favicon.ico" />
+
+	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+
+	<?php require_once('scripts/sb_editor.php'); ?>
+		<script type="text/javascript">
+		<!--
+		// Validate the Form
+		function validate_comment(theform) {
+			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
+				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+				return false;
+			} else {
+				return true;
+			}
+		}
+		-->
+	</script>
+
+	<?php
+		if (!isset($_GET['entry'])) {
+			echo( '<title>' . $blog_config[ 'blog_title' ] . '</title>');
+		} else {
+			echo( '<title>' . $blog_config[ 'blog_title' ] . ' - ' . get_entry_title( substr( $_GET[ 'entry' ], 5, 2 ), substr ( $_GET[ 'entry' ], 7, 2 ), $_GET[ 'entry' ] ) . '</title>');
+		}
+	?>
+</head>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		global $blog_config;
+		if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+			theme_popuplayout();
+		} else {
+			theme_pagelayout();
+		}
+	?>
 </html>

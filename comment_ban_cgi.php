@@ -1,4 +1,7 @@
-<?php
+<?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
@@ -10,6 +13,10 @@
 
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'comments' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 
 	// Verify information being passed
 	global $ok;
@@ -19,6 +26,25 @@
 	} else {
 		$ok = $lang_string[ 'error_noip' ];
 	}
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $user_colors, $ok;
+
+		if ( $ok !== true ) {
+			echo $lang_string[ 'error_ban' ] . $ok . '<p />';
+		} else {
+			echo $lang_string[ 'success_ban1' ] . '(' . $_GET[ "ban" ] . ')' . $lang_string[ 'success_ban2' ] . '<p />';
+		}
+
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -33,25 +59,15 @@
 
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php
-	function page_content() {
-		global $lang_string, $user_colors, $ok;
-
-		if ( $ok !== true ) {
-			echo $lang_string[ 'error_ban' ] . $ok . '<p />';
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		global $blog_config;
+		if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+			theme_popuplayout();
 		} else {
-			echo $lang_string[ 'success_ban1' ] . '(' . $_GET[ "ban" ] . ')' . $lang_string[ 'success_ban2' ] . '<p />';
+			theme_pagelayout();
 		}
-
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
-	}
-?>
-<?php
-	global $blog_config;
-	if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-		theme_popuplayout();
-	} else {
-		theme_pagelayout();
-	}
-?>
+	?>
 </html>

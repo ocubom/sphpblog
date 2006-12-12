@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
@@ -85,8 +88,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	// BEGIN OUTPUT
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

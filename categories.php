@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -7,8 +10,10 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'categories' );
-		
-	// "CGI" Functions
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 	if ( array_key_exists( 'category_list', $_POST ) ) {
 		$catArray = phpValidate( $_POST[ 'category_list' ] );
 		
@@ -117,6 +122,71 @@
 			return $valid_arr;
 		}
 	}
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $user_colors, $blog_config;
+				
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		ob_start(); ?>	
+		
+		<?php
+			echo ( $lang_string[ 'instructions' ] . '<p />');
+			echo ( '<b>' . $lang_string[ 'current_categories' ] . '</b><br />');
+			
+			$catArray = get_category_array();
+			if ( count($catArray) > 0) {
+				$str = '';
+				for ( $i = 0; $i < count( $catArray ); $i++ ) {
+					$id_number = $catArray[$i][0];
+					$name_str = $catArray[$i][1];
+					$space_count = $catArray[$i][2];
+					for ( $j = 0; $j < $space_count; $j++ ) {
+						$str = $str . '&nbsp;';
+					}
+					$str = $str . $name_str . ' (' . $id_number . ")<br />\n";
+				}
+				echo( $str );
+			} else {
+				echo( $lang_string[ 'no_categories_found' ] . '<br />' );
+			}
+		?>
+		
+		
+		<form action="categories.php" method="post" name="categories" id="categories" onsubmit="return validate(this)">
+		<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
+		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete="OFF"><?php
+			$catArray = get_category_array();
+			if ( count($catArray) > 0) {
+				$str = "";
+				for ( $i = 0; $i < count( $catArray ); $i++ ) {
+					$id_number = $catArray[$i][0];
+					$name_str = $catArray[$i][1];
+					$space_count = $catArray[$i][2];
+					for ( $j = 0; $j < $space_count; $j++ ) {
+						$str = $str . ' ';
+					}
+					$str = $str . $name_str . ' (' . $id_number . ")\n";
+				}
+				echo( $str );
+			}
+		?></textarea><br />
+			<br />
+			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" />
+			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
+		</form>
+		
+		<?php
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -220,67 +290,10 @@
 	</script>
 	<title><?php echo( $blog_config[ 'blog_title' ] ); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	function page_content() {
-		global $lang_string, $user_colors, $blog_config;
-				
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-		ob_start(); ?>	
-		
-		<?php
-			echo ( $lang_string[ 'instructions' ] . '<p />');
-			echo ( '<b>' . $lang_string[ 'current_categories' ] . '</b><br />');
-			
-			$catArray = get_category_array();
-			if ( count($catArray) > 0) {
-				$str = '';
-				for ( $i = 0; $i < count( $catArray ); $i++ ) {
-					$id_number = $catArray[$i][0];
-					$name_str = $catArray[$i][1];
-					$space_count = $catArray[$i][2];
-					for ( $j = 0; $j < $space_count; $j++ ) {
-						$str = $str . '&nbsp;';
-					}
-					$str = $str . $name_str . ' (' . $id_number . ")<br />\n";
-				}
-				echo( $str );
-			} else {
-				echo( $lang_string[ 'no_categories_found' ] . '<br />' );
-			}
-		?>
-		
-		
-		<form action="categories.php" method="post" name="categories" id="categories" onsubmit="return validate(this)">
-		<label for="category_list"><?php echo( $lang_string[ 'category_list' ] ); ?></label><br />
-		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete="OFF"><?php
-			$catArray = get_category_array();
-			if ( count($catArray) > 0) {
-				$str = "";
-				for ( $i = 0; $i < count( $catArray ); $i++ ) {
-					$id_number = $catArray[$i][0];
-					$name_str = $catArray[$i][1];
-					$space_count = $catArray[$i][2];
-					for ( $j = 0; $j < $space_count; $j++ ) {
-						$str = $str . ' ';
-					}
-					$str = $str . $name_str . ' (' . $id_number . ")\n";
-				}
-				echo( $str );
-			}
-		?></textarea><br />
-			<br />
-			<input type="button" class="bginput" value="<?php echo( $lang_string[ 'validate' ] ); ?>" onclick="validate(document.forms.categories);" />
-			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
-		</form>
-		
-		<?php
-		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );
-	}
-?>
-<?php 
-	theme_pagelayout();
-?>
-
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

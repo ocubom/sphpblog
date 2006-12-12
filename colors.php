@@ -1,76 +1,23 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in, $theme_vars;
 	$logged_in = logged_in( true, true );
-	read_config();	
+	
+	read_config();
+	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'colors' );	
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	
-	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-	<?php require_once('scripts/sb_javascript.php'); ?>
-	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 	
-	
-	<style type="text/css">
-	<!--
-	.swatch {
-		height: 20px;
-		width: 20px;
-		color: #000;
-		background: #fff;
-		border: 1px solid #999;
-	}
-	-->
-	</style>
-
-	<script type="text/javascript">
-	<!--
-	// Update Text Fields
-	function set_hex ( hex_val ) {
-		var str;
-		for (i=0; i<document.forms[ 'colors' ][ 'area' ].length; i++) {
-			if (document.forms[ 'colors' ][ 'area' ][i].checked == true) {
-				str = document.forms[ 'colors' ][ 'area' ][i].value;
-			}
-		}
-		document.forms[ 'colors' ][str].value = hex_val;
-		changeColor(str, "#"+hex_val);
-	}
-	
-	// Change Swatch Color
-	function changeColor(area, whichColor) {
-		document.getElementById(area+'_swatch').style.backgroundColor = whichColor;
-	}
-	
-	function load_preset() {
-		// alert( 'hello' );
-		str = document.forms[ 'colors' ][ 'presets' ].value;
-		if ( str != '--' ) {
-			arr = str.split('|');
-			for (i=4; i<arr.length; i=i+2) {
-				id = arr[i];
-				hex = arr[i+1];
-				document.forms[ 'colors' ][id].value = hex;
-				document.getElementById(id+'_swatch').style.backgroundColor = "#"+hex;
-			}
-			document.getElementById("scheme_name").value = arr[0];
-			document.getElementById("scheme_file").value = arr[1];
-		}
-	}
-	
-	-->
-	</script>
-
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
-</head>
-<?php 
+	// ------------
+	// PAGE CONTENT
+	// ------------
 	function page_content() {
 		global $lang_string, $user_colors, $theme_vars, $blog_theme;		
 	
@@ -236,8 +183,79 @@
 				echo( theme_staticentry( $entry_array ) );
 			}
 	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
-<?php 
-	theme_pagelayout();
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	
+	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	
+	
+	<style type="text/css">
+	<!--
+	.swatch {
+		height: 20px;
+		width: 20px;
+		color: #000;
+		background: #fff;
+		border: 1px solid #999;
+	}
+	-->
+	</style>
+
+	<script type="text/javascript">
+	<!--
+	// Update Text Fields
+	function set_hex ( hex_val ) {
+		var str;
+		for (i=0; i<document.forms[ 'colors' ][ 'area' ].length; i++) {
+			if (document.forms[ 'colors' ][ 'area' ][i].checked == true) {
+				str = document.forms[ 'colors' ][ 'area' ][i].value;
+			}
+		}
+		document.forms[ 'colors' ][str].value = hex_val;
+		changeColor(str, "#"+hex_val);
+	}
+	
+	// Change Swatch Color
+	function changeColor(area, whichColor) {
+		document.getElementById(area+'_swatch').style.backgroundColor = whichColor;
+	}
+	
+	function load_preset() {
+		// alert( 'hello' );
+		str = document.forms[ 'colors' ][ 'presets' ].value;
+		if ( str != '--' ) {
+			arr = str.split('|');
+			for (i=4; i<arr.length; i=i+2) {
+				id = arr[i];
+				hex = arr[i+1];
+				document.forms[ 'colors' ][id].value = hex;
+				document.getElementById(id+'_swatch').style.backgroundColor = "#"+hex;
+			}
+			document.getElementById("scheme_name").value = arr[0];
+			document.getElementById("scheme_file").value = arr[1];
+		}
+	}
+	
+	-->
+	</script>
+
+	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+</head>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

@@ -8,6 +8,9 @@
 	// Version: 0.4.5b
 	// Revised by Ridgarou
 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -17,6 +20,9 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'add_block' );
 	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 	if ( isset( $_POST[ 'block_name' ] ) ) {
 		if ( !isset($_POST[ 'block_id' ] ) ) {
 			$_POST[ 'block_id' ] = '';
@@ -33,27 +39,18 @@
 			$ok = modify_block( $action, sb_stripslashes( $_GET[ 'block_id' ] ) );
 		}
 	}
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 	
-	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-	<?php require_once('scripts/sb_javascript.php'); ?>
-	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-	
-	<?php require_once('scripts/sb_editor.php'); ?>
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
-</head>
-<?php 
+	// ------------
+	// PAGE CONTENT
+	// ------------
 	function page_content() {
-		global $block_id, $block_name, $block_content, $action, $lang_string, $user_colors, $theme_vars;
-		
+		global $block_id, $block_name, $block_content, $action, $lang_string, $theme_vars;
+	
+		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];			
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		// Read blocks file.
@@ -154,11 +151,35 @@
 		</form>
 		
 		<?php
-			$entry_array[ 'entry' ] = ob_get_clean();
-			echo( theme_staticentry( $entry_array ) );	
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
-<?php 
-	theme_pagelayout();
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	
+	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	
+	<?php require_once('scripts/sb_editor.php'); ?>
+	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+</head>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>
