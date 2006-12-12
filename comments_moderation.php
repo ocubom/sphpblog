@@ -6,6 +6,11 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
+	// Create a session for the anti-spam cookie
+	if ( !session_id() ) {
+		session_start();
+	}
+
 	// Read configuration file
 	read_config();
 
@@ -16,11 +21,6 @@
 	// ---------------
 	// POST PROCESSING
 	// ---------------
-
-	// Create a session for the anti-spam cookie
-	if ( !session_id() ) {
-		session_start();
-	}
 	
 	// ------------
 	// PAGE CONTENT

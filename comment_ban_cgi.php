@@ -5,6 +5,7 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
+	
 	if ( !session_id() ) {
 		session_start();
 	}

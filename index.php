@@ -1,5 +1,7 @@
 <?php 
-	// Load Scripts
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	
 	// Login
@@ -18,6 +20,10 @@
 	// Load language strings
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 	
 	// Verify information being passed in:
 	//
@@ -90,6 +96,20 @@
 	}
 	
 	global $lang_string, $sb_info, $blog_config;
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink;
+		
+		$page_content = read_entries( $month, $year, $day, $logged_in, $entry, $category, $is_permalink );
+		echo( $page_content );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -144,15 +164,10 @@
 		}
 	?>
 </head>
-<?php 
-	// Page Content (Called from within the theme_pagelayout function below)
-	function page_content() {
-		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink;
-		
-		$page_content = read_entries( $month, $year, $day, $logged_in, $entry, $category, $is_permalink );
-		echo( $page_content );
-	}
-	
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

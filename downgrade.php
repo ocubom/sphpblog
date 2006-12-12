@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -7,6 +10,22 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		echo ( 'Deleted ' . delete_all_trackbacks() . ' trackback files...<p />');
+		echo ( 'Moved ' . move_all_comment_files( false ) . ' comment files...');
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21,13 +40,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
-<?php 
-	function page_content() {
-		echo ( 'Deleted ' . delete_all_trackbacks() . ' trackback files...<p />');
-		echo ( 'Moved ' . move_all_comment_files( false ) . ' comment files...');
-	}
-?>
-<?php 
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

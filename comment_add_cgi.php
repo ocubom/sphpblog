@@ -3,9 +3,9 @@
 	// INITIALIZE PAGE
 	// ---------------
 	require_once('scripts/sb_functions.php');
-	//require_once('scripts/sb_blacklist.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
+	
 	if ( !session_id() ) {
 		session_start();
 	}
