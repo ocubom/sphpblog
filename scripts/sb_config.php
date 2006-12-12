@@ -460,6 +460,50 @@
 			return ( $result );
 		}
 	}
+	
+	function get_installed_translations() {
+		global $blog_config;
+		
+		$dir = 'languages/';	
+		$translation_arr = array();;
+		clearstatcache();
+		
+		if ( is_dir($dir) ) {
+			$dhandle = opendir($dir);
+			if ( $dhandle ) {
+				$sub_dir = readdir( $dhandle );
+				while ( $sub_dir ) {
+					if ( is_dir( $dir . $sub_dir ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
+						$lang_dir = $sub_dir;
+						$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
+						if ( $lang_name ) {
+							$lang_arr = array();
+							$lang_arr['directory'] = $lang_dir;
+							$lang_arr['name'] = $lang_name;
+							
+							array_push( $translation_arr, $lang_arr );
+						}
+					}
+					$sub_dir = readdir( $dhandle );
+				}
+			}
+			closedir( $dhandle );
+		}
+		
+		return( $translation_arr );
+	}
+	
+	function validate_language($temp_lang) {
+		$translation_arr = get_installed_translations();
+		$ok = false;
+		for ($i=0; $i < count($translation_arr); $i++) {
+			if ( $temp_lang === $translation_arr[$i]['directory'] ) {
+				$ok = true;
+				break;
+			}
+		}
+		return( $ok );
+	}
 
 	// --------------
 	// Theme Settings
