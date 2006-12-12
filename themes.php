@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -8,9 +11,9 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'themes' );
 	
-	// -------------
+	// ---------------
 	// POST PROCESSING
-	// -------------
+	// ---------------
 	if ( array_key_exists( 'blog_theme', $_POST ) ) {
 		global $ok;
 		$ok = write_theme( sb_stripslashes( $_POST[ 'blog_theme' ] ) );
@@ -20,9 +23,9 @@
 		}
 	}
 	
-	// -----------
+	// ------------
 	// PAGE CONTENT
-	// -----------
+	// ------------
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
 		
@@ -110,7 +113,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

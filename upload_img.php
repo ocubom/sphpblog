@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -7,6 +10,42 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'upload_img' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $blog_config;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start(); ?>
+		
+		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
+		
+		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="post">
+			<?php echo( $lang_string[ 'select_file' ] ); ?><br /><br />
+			<input name="userfile" type="file">			
+			<input type="submit" value="<?php echo( $lang_string[ 'upload_btn' ] ); ?>">
+		</form>
+		<?php
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21,28 +60,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	function page_content() {
-		global $lang_string, $user_colors;
-		
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			
-		ob_start(); ?>
-		
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-		
-		<form enctype="multipart/form-data" action="upload_img_cgi.php" method="post">
-			<?php echo( $lang_string[ 'select_file' ] ); ?><br /><br />
-			<input name="userfile" type="file">			
-			<input type="submit" value="<?php echo( $lang_string[ 'upload_btn' ] ); ?>">
-		</form>
-		<?php
-		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	
-	}
-?>
-<?php 
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

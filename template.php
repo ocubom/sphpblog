@@ -25,6 +25,49 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
 	
+	// -------------
+	// POST PROCESSING
+	// -------------
+	// Validate your GET and POST data here...
+	
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	
+	// Page Content
+	// ----------
+	// Your actual page content will go INSIDE the
+	// page_content() function below. This function gets
+	// called from inside the theme_pagelayout() function
+	// at the bottom of this file...
+	
+	function page_content() {
+		// Page Content
+		// ----------
+		// If you want your content to be wrapped inside the normal
+		// "Entry" box, then use the $entry_array associative array
+		// to pass your content to the theme_staticentry() function
+		// located in themes/{theme_name}/themes.php
+		$entry_array = array();
+		$entry_array[ 'subject' ] = 'Subject Line';
+		$entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
+		
+		echo( theme_staticentry( $entry_array ) );
+		
+		// HTML Content
+		// ----------
+		// You can also break out of PHP here and use HTML:
+		?>
+			Here is some raw HTML content...<br /><br />-- Alex.
+		<?php 
+		// ...now we're back in PHP and we're still inside
+		// the page_content function...
+	}
+	
+	// ----
+	// HTML
+	// ----
+	
 	// Start HTML Page
 	// -------------
 	// You'll notice that some stuff is dynamically included
@@ -46,36 +89,6 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
 	<?php 
-		// Page Content
-		// ----------
-		// Your actual page content will go INSIDE the
-		// page_content() function below. This function gets
-		// called from inside the theme_pagelayout() function
-		// at the bottom of this file...
-		
-		function page_content() {
-			// Page Content
-			// ----------
-			// If you want your content to be wrapped inside the normal
-			// "Entry" box, then use the $entry_array associative array
-			// to pass your content to the theme_staticentry() function
-			// located in themes/{theme_name}/themes.php
-			$entry_array = array();
-			$entry_array[ 'subject' ] = 'Subject Line';
-			$entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
-			
-			echo( theme_staticentry( $entry_array ) );
-			
-			// HTML Content
-			// ----------
-			// You can also break out of PHP here and use HTML:
-			?>
-				Here is some raw HTML content...<br /><br />-- Alex.
-			<?php 
-			// ...now we're back in PHP and we're still inside
-			// the page_content function...
-		}
-		
 		// Generate Page
 		// -----------
 		// The function below is what actually starts outputting all
@@ -84,6 +97,8 @@
 		// page_content() function above...
 		//
 		// Refer to themes/{theme_name}/themes.php for more details.
+		
+		// BEGIN OUTPUT
 		theme_pagelayout();
 	?>
 </html>

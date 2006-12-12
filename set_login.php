@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -7,6 +10,31 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'set_login' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $blog_config;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT
+		$entry_array[ 'entry' ] = $lang_string['explanation'];
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );		
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -33,17 +61,10 @@
 	</script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	function page_content() {
-		global $lang_string, $user_colors;
-		$entry_array = array();
-			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			$entry_array[ 'entry' ] = $lang_string['explanation'];
-			
-			echo( theme_staticentry( $entry_array ) );		
-	}
-?>
-<?php 
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

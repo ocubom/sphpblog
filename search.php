@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
@@ -8,8 +11,47 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'search' );
 	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
 	global $search_string;
 	$search_string = $_GET[ 'q' ];
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $blog_config, $search_string;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start(); ?>
+		<?php
+		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $lang_string[ 'php_charset' ] ), $lang_string[ 'instructions' ] ) . '<br />' );
+		
+		echo( '<hr />' );
+			
+		$output = search( $search_string, @$_GET[ 'n' ] );
+		
+		if ( $output ) {
+			echo ( $output );
+		} else {
+			echo( $lang_string[ 'not_found' ] );
+		}
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );	
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,29 +66,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
-<?php 
-	function page_content() {
-		global $lang_string, $user_colors, $search_string, $logged_in, $theme_vars, $blog_theme;
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-		ob_start(); ?>
-		<?php
-		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $lang_string[ 'php_charset' ] ), $lang_string[ 'instructions' ] ) . '<br />' );
-		
-		echo( '<hr />' );
-			
-		$output = search( $search_string, @$_GET[ 'n' ] );
-		
-		if ( $output ) {
-			echo ( $output );
-		} else {
-			echo( $lang_string[ 'not_found' ] );
-		}
-		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	
-	}
-?>
-<?php 
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

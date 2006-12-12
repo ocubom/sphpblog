@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $ok;
 	$ok = logout();
@@ -10,15 +13,21 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'logout' );
 	
-	// -----------
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
+	// ------------
 	// PAGE CONTENT
-	// -----------
+	// ------------
 	function page_content() {
 		global $lang_string, $ok;
-		
+	
+		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		
+		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok !== true ) {
@@ -29,8 +38,11 @@
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
 		
+		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----
@@ -50,8 +62,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	// BEGIN OUTPUT
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>

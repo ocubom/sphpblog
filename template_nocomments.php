@@ -1,4 +1,7 @@
-<?php
+<?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
@@ -7,6 +10,38 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'index' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $blog_config;
+	
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = 'Subject Line';
+		// $entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		?>
+		Body Content
+	
+		<?php 
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -22,19 +57,9 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
 	<?php 
-		function page_content() {
-			$entry_array = array();
-			$entry_array[ 'subject' ] = 'Subject Line';
-			// $entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
-			
-			ob_start();
-			?>
-			Body Content
-		
-			<?php 
-			$entry_array[ 'entry' ] = ob_get_clean();
-			echo( theme_staticentry( $entry_array ) );
-		}
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
 		theme_pagelayout();
 	?>
 </html>

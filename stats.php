@@ -1,4 +1,7 @@
 <?php 
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
 	require_once('scripts/sb_functions.php');
 	
 	global $logged_in;
@@ -8,8 +11,14 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'stats' );
-	global $lang_string, $sb_info, $blog_config;
-
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
 	function sort_views ( $a, $b ) {
 		if ( $a[ 'views' ] < $b[ 'views' ] ) {
 			return( 1 );
@@ -200,6 +209,14 @@
 			}
 		}
 	}
+	
+	function page_content() {
+		echo( generate_stats() );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -214,11 +231,10 @@
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?></title>
 </head>
-<?php 
-	function page_content() {
-		
-		echo( generate_stats( ));
-	}
-	theme_pagelayout();
-?>
+	<?php 
+		// ------------
+		// BEGIN OUTPUT
+		// ------------
+		theme_pagelayout();
+	?>
 </html>
