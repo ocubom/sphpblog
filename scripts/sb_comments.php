@@ -106,21 +106,19 @@
 
 				// I will probably move this into it's own key/value
 				// pairs instead of sticking it in the subject line.
-				$comment_subject = '';
+				$comment_subject = $comment_entry_data[ 'NAME' ];
 
 				if ( isset( $comment_entry_data[ 'URL' ] ) ) {
 					if ( strpos( strtolower( $comment_entry_data[ 'URL' ] ), 'http://' ) === false ) {
-						$comment_subject .= '[url=http://'.($comment_entry_data[ 'URL' ]).' ]'.($comment_entry_data[ 'NAME' ]).'[/url]';
+						$website = '[url=http://'.($comment_entry_data[ 'URL' ]).' ]'.($comment_entry_data[ 'URL' ]).'[/url]';
 					} else {
-						$comment_subject .= '[url='.($comment_entry_data[ 'URL' ]).' ]'.($comment_entry_data[ 'NAME' ]).'[/url]';
+						$website = '[url='.($comment_entry_data[ 'URL' ]).' ]'.($comment_entry_data[ 'URL' ]).'[/url]';
 					}
+					$entry_array[ 'website' ] = blog_to_html( $website, true, false, true );
 				}
-				else {
-					$comment_subject .= $comment_entry_data[ 'NAME' ];
-				}
+				
 				if ( isset( $comment_entry_data[ 'EMAIL' ] ) ) {
-					$comment_email = sb_display_email( $comment_entry_data[ 'EMAIL' ] );
-					$comment_subject .= ' ' . $comment_email;
+					$entry_array[ 'email' ] = sb_display_email( $comment_entry_data[ 'EMAIL' ] );
 				}
 
 				// blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
@@ -337,7 +335,7 @@
 				$javastr .= "'&lt;at&gt;'+";
 			}
 		}
-		$htmlstr .= "document.write('<a href=\"mailto:'+".$javastr."'\">('+".$javastr."')</a>');";
+		$htmlstr .= "document.write('<a href=\"mailto:'+".$javastr."'\">'+".$javastr."'</a>');";
 		//$htmlstr .= "//-->";
 		$htmlstr .= '</script>';
 

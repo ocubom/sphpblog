@@ -116,6 +116,7 @@
 
 		// Display SUBJECT Line
 		$blog_content .= "\n<!-- BLOG TITLE BEGIN -->\n";
+		
 		$blog_content .= '<div class="blog_title">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
 
 		// Display EDIT and DELETE buttons if the user is logged in.
@@ -165,7 +166,18 @@
 					$blog_content .= ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
 				}
 			}
-
+		
+			if ( array_key_exists( "website", $entry_array ) ) {
+				$blog_content .= ' / ' .$entry_array[ 'website' ] . "\n";
+			}
+			
+			/*
+			// HIDE EMAIL ADDRESS
+			if ( array_key_exists( "email", $entry_array ) ) {
+				$blog_content .= ' / ' .$entry_array[ 'email' ] . "\n";
+			}
+			*/
+			
 			$blog_content .= "</div>\n\t\t";
 		}
 

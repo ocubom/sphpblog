@@ -22,7 +22,8 @@
 			$my_id = $_COOKIE[ 'my_id' ];
 			
 			// Turn off URL SIDs.
-			// ini_set( 'session.use_trans_sid', '0' );
+			ini_set('url_rewriter.tags','');
+			ini_set('session.use_trans_sid', false);
 			
 			// Init the session.
 			session_set_cookie_params(60*60*24*5);
@@ -81,7 +82,8 @@
 			$my_id = $_COOKIE[ 'my_id' ];
 			
 			// Turn off URL SIDs.
-			// ini_set( 'session.use_trans_sid', '0' );
+			ini_set('url_rewriter.tags','');
+			ini_set('session.use_trans_sid', false);
 			
 			// Init the session.
 			session_set_cookie_params(60*60*24*5);
@@ -119,7 +121,9 @@
 		
 		if ( $result ) {
 			// Start Session and Set Cookie
-			// ini_set( 'session.use_trans_sid', '0' );
+			ini_set('url_rewriter.tags','');Ê
+			ini_set('session.use_trans_sid', false);
+			
 			session_set_cookie_params(60*60*24*5);
 			@session_start();
 			
@@ -147,7 +151,9 @@
 		$chkpass = crypt($mypasswd, $hashed); 
 		if ($hashed === $chkpass) { 
 			// Start Session and Set Cookie
-			// ini_set( 'session.use_trans_sid', '0' );
+			ini_set('url_rewriter.tags','');Ê
+			ini_set('session.use_trans_sid', false);
+			
 			session_set_cookie_params(60*60*24*7);
 			@session_start();
 			
@@ -178,7 +184,9 @@
 			if ( crypt( $user, $username ) === $username ) {
 				if ( crypt( $pass, $password ) === $password ) {
 					// Start Session and Set Cookie
-					// ini_set( 'session.use_trans_sid', '0' );
+					ini_set('url_rewriter.tags','');
+					ini_set('session.use_trans_sid', false);
+			
 					session_set_cookie_params(60*60*24*5);
 					@session_start();
 					
