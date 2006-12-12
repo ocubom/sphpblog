@@ -9,6 +9,33 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'logout' );
+	
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $ok;
+		
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		ob_start();
+		
+		if ( $ok !== true ) {
+			echo( $lang_string[ 'error' ] . '<p />' );
+		} else {
+			echo( $lang_string[ 'success' ] . '<p />' );
+		}
+		
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
+		
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,19 +51,7 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
-	function page_content() {
-		global $lang_string, $user_colors, $ok;
-		
-		if ( $ok !== true ) {
-			echo( $lang_string[ 'error' ] . '<p />' );
-		} else {
-			echo( $lang_string[ 'success' ] . '<p />' );
-		}
-		
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
-	}
-?>
-<?php 
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

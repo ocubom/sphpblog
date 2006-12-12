@@ -301,7 +301,7 @@
 				$y = sb_strip_extension( $contents[$i][ 'year' ] );
 				$m = sb_strip_extension( $contents[$i][ 'month' ] );
 
-				if ( $logged_in ) {
+				if ( $logged_in == true ) {
 					$entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
 					$entry_array[ 'edit' ][ 'url' ] = 'preview_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
 					$entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
@@ -320,7 +320,7 @@
 
 				// This is not a real count if some of the items haven't been modded yet...
 				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
-					if ( $logged_in ) {
+					if ( $logged_in == true ) {
 						$comment_count = count( $comment_array );
 					} else if ( $blog_config[ 'blog_comments_moderation' ] != true ) {
 						$comment_count = count( $comment_array );

@@ -56,7 +56,7 @@
 				
 				exit;
 			} else {
-				return ( -1 );
+				return ( false );
 			}
 		}
 		

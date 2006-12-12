@@ -24,6 +24,37 @@
 	
 	$ok = check_password( sb_stripslashes( $_POST['user'] ), sb_stripslashes( $_POST['pass'] ) );
 	$logged_in = $ok;
+
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $ok, $blog_config;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
+		if ( $ok === true ) {
+			echo( $lang_string[ 'success' ] );
+			echo( '<a href="setup.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string[ 'btn_setup' ] . '</a>' );
+		} else {
+			echo( $lang_string[ 'wrong_password' ] );
+			echo( '<a href="install05.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string[ 'btn_try_again' ] . '</a>' );
+		}
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,21 +70,7 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
-	function page_content() {
-		global $lang_string, $user_colors, $ok, $blog_config;
-		
-		if ( $ok === true ) {
-			echo( $lang_string[ 'success' ] );
-			echo( '<a href="setup.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string[ 'btn_setup' ] . '</a><br /><br />' );
-		} else {
-			echo( $lang_string[ 'wrong_password' ] );
-			echo( '<a href="install05.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string[ 'btn_try_again' ] . '</a><br /><br />' );
-		}
-		
-		// echo( '<hr />' );
-	}
-?>
-<?php 
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

@@ -8,9 +8,48 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'login' );
 	
+	// -------------
+	// POST PROCESSING
+	// -------------
 	$ok = check_password( sb_stripslashes( $_POST[ 'user' ] ), sb_stripslashes( $_POST[ 'pass' ] ) );
 	$logged_in = $ok;
 	
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $ok;
+		
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		ob_start();
+		
+		if ( $ok === true ) {
+			echo( $lang_string[ 'success' ] );
+		} else {
+			echo( $lang_string[ 'wrong_password' ] );
+		}
+		
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
+		
+		$upgrade_count = move_all_comment_files( true, true );
+		if ( $upgrade_count > 0 ) {
+			echo( "<hr />" );
+			echo( "<br />" );
+			echo( $lang_string[ 'upgrade' ] );
+			$str = str_replace ( '%n', $upgrade_count, $lang_string[ 'upgrade_count' ] );
+			echo( $str . "<br /><br />" );
+			echo( "<a href=\"upgrade.php\">" . $lang_string[ 'upgrade_url' ] ."</a><br />" );
+		}
+		
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -26,29 +65,7 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
-	function page_content() {
-		global $lang_string, $user_colors, $ok;
-		
-		if ( $ok === true ) {
-			echo( $lang_string[ 'success' ] );
-		} else {
-			echo( $lang_string[ 'wrong_password' ] );
-		}
-		
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br />' );
-		
-		$upgrade_count = move_all_comment_files( true, true );
-		if ( $upgrade_count > 0 ) {
-			echo( "<hr />" );
-			echo( "<br />" );
-			echo( $lang_string[ 'upgrade' ] );
-			$str = str_replace ( '%n', $upgrade_count, $lang_string[ 'upgrade_count' ] );
-			echo( $str . "<br /><br />" );
-			echo( "<a href=\"upgrade.php\">" . $lang_string[ 'upgrade_url' ] ."</a><br />" );
-		}
-	}
-?>
-<?php 
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

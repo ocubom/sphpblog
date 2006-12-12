@@ -44,7 +44,7 @@
 
 	// Handle the moderator flag...
 	// Blank for release, H for hold comment (don't show to regular users)
-	if ( $logged_in ) {
+	if ( $logged_in == true ) {
 		$holdflag = '';
 	} else {
 		$holdflag = 'H';

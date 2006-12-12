@@ -21,6 +21,34 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install01' );
+
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $blog_config;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
+		echo( $lang_string[ 'instructions' ] . '<p />' );
+		
+		echo( '<a href="install02.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['begin'] . '</a><p />' );
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,18 +64,7 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
-	function page_content() {
-		global $lang_string, $user_colors, $blog_config;
-		
-		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
-		echo( $lang_string[ 'instructions' ] . '<p />' );
-		
-		// echo( '<hr />' );
-		
-		echo( '<a href="install02.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['begin'] . '</a><p />' );
-	}
-?>
-<?php 
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

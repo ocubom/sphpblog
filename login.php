@@ -7,6 +7,40 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'login' );
+	
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $logged_in, $theme_vars, $blog_theme;
+		
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+			
+		ob_start(); ?>		
+		
+		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
+		
+		<hr />
+		
+		<form action="login_cgi.php" method="post" onsubmit="return validate(this)">
+			<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />
+			<input type="text" name="user" size="40"><p />
+			
+			<label for="pass"><?php echo( $lang_string[ 'password' ] ); ?></label><br />
+			<input type="password" name="pass" size="40"><p />
+			
+			<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
+		</form>
+		
+		<?php
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	 
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -33,34 +67,6 @@
 	</script>
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
-<?php 
-	function page_content() {
-		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			
-		ob_start(); ?>		
-		
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-		
-		<form action="login_cgi.php" method="post" onsubmit="return validate(this)">
-		
-		<label for="user"><?php echo( $lang_string[ 'username' ] ); ?></label><br />
-		<input type="text" name="user" size="40"><br /><br />
-		
-		<label for="pass"><?php echo( $lang_string[ 'password' ] ); ?></label><br />
-		<input type="password" name="pass" size="40"><br />
-		
-		<hr />
-		
-		<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" />
-		</form>
-		
-		<?php
-		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	 
-	}
-?>
 <?php 
 	theme_pagelayout();
 ?>

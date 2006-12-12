@@ -2,16 +2,20 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
-	if ( !session_id() ) {
-		session_start();
-	}
-	
-	$client_ip_local = getIP();
 	
 	read_config();
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'contact' );
+	
+	// -------------
+	// POST PROCESSING
+	// -------------
+	if ( !session_id() ) {
+		session_start();
+	}
+	
+	$client_ip_local = getIP();
 	
     if (!isset($_SESSION['cookies_enabled'])) {
 		redirect_to_url('errorpage-nocookies.php');
@@ -38,6 +42,35 @@
 		// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
 	}
 	@session_unregister( 'capcha_contact' );
+	
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $ok;
+		
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		ob_start();
+		
+		if ( $ok == true ) { 
+			echo( $lang_string[ 'success' ] );
+		} else {
+			$_SESSION['errornum'] = '403.8';
+			$_SESSION['errortype'] = 'error_emailnotsent';
+			redirect_to_url('errorpage.php');
+			// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
+		}
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
+		
+		$entry_array[ 'entry' ] = ob_get_clean();
+		echo( theme_staticentry( $entry_array ) );	
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -53,21 +86,7 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
-	function page_content() {
-	global $lang_string, $user_colors, $ok;	
-		
-		if ( $ok == true ) { 
-			echo( $lang_string[ 'success' ] );
-		} else {
-			$_SESSION['errornum'] = '403.8';
-			$_SESSION['errortype'] = 'error_emailnotsent';
-			redirect_to_url('errorpage.php');
-			// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
-		}
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
-	}
-?>
-<?php 
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

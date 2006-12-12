@@ -45,7 +45,7 @@
 		$str = '';
 
 		// Put any notifications for the logged in use here
-		if ($logged_in) {
+		if ( $logged_in == true ) {
 			$str .= '<b>' . $lang_string['notice_loggedin'] . '</b><br /><br />';
 			
 			$unmod = get_unmodded_count(True);
@@ -215,7 +215,7 @@
 		global $lang_string, $blog_config, $logged_in;
 
 		$str = '';
-		if ($logged_in === true) {
+		if ( $logged_in == true ) {
 			// $str = $str . '<a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a><br />';
 			$str = $str . '<a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a>';
 		} else {
@@ -239,7 +239,7 @@
 		//
 		global $lang_string, $logged_in, $user_colors;
 
-		if ($logged_in === true) {
+		if ( $logged_in == true ) {
 			$str = '';
 			$str = $str . '<a href="add.php">' . $lang_string[ 'menu_add' ] . '</a><br />';
 			$str = $str . '<a href="add_static.php">' . $lang_string[ 'menu_add_static' ] . '</a><br />';
@@ -339,7 +339,7 @@
 		//
 		global $lang_string, $logged_in, $user_colors, $blog_config;
 
-		if ($logged_in === true) {
+		if ( $logged_in == true ) {
 			$str = '';
 			$str = $str . '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
 			$str = $str . '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
@@ -467,7 +467,7 @@
 
 					$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 
-					$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><p />';
+					$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><br />';
 				}
 			}
 

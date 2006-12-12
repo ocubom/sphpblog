@@ -18,7 +18,7 @@
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'comment_moderation' );
 
-	if ( $logged_in != 1 ) {
+	if ( $logged_in != true ) {
 		redirect_to_url( 'index.php' );
 	}
 

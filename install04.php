@@ -24,6 +24,49 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install04' );
+
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function page_content() {
+		global $lang_string, $ok, $blog_config;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
+		echo( $lang_string[ 'instructions' ] . '<p />' );
+		
+		$hashedUser = crypt( sb_stripslashes( $_POST['user'] ) );
+		$hashedPass = crypt( sb_stripslashes( $_POST['pass'] ) );
+		?>
+		
+		<label for="phpfile"><?php echo( $lang_string['code'] ); ?></label><br />
+<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" name="phpfile" rows="6" cols="40">&lt;?php
+	// Save file as 'password.php' and FTP it into 'config' directory.
+	$username = '<?php echo( $hashedUser ); ?>';
+	$password = '<?php echo( $hashedPass ); ?>';
+?&gt;</textarea>
+		
+		<?php 
+		echo( '<p />' );
+		echo( '<a href="install05.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['continue'] . '</a><p />' );
+		echo( $lang_string['information'] );
+		echo( '<p />' );
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,32 +82,7 @@
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
 <?php 
-	function page_content() {
-		global $lang_string, $user_colors, $ok, $blog_config;
-		
-		$hashedUser = crypt( sb_stripslashes( $_POST['user'] ) );
-		$hashedPass = crypt( sb_stripslashes( $_POST['pass'] ) );
-		?>
-		
-		<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-		
-		<label for="phpfile"><?php echo( $lang_string['code'] ); ?></label><br />
-<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" name="phpfile" rows="6" cols="40">&lt;?php
-	// Save file as 'password.php' and FTP it into 'config' directory.
-	$username = '<?php echo( $hashedUser ); ?>';
-	$password = '<?php echo( $hashedPass ); ?>';
-?&gt;</textarea>
-		
-		<?php 
-		echo( '<p />' );
-		echo( '<a href="install05.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['continue'] . '</a><p />' );
-		echo( $lang_string['information'] );
-		echo( '<p />' );
-		
-	}
-?>
-<?php 
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

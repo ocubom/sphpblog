@@ -21,25 +21,49 @@
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install02' );
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
-	
-	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-	<?php require_once('scripts/sb_javascript.php'); ?>
-	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-	
-	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
-</head>
-<?php 
-	function page_content() {
-		global $lang_string, $user_colors, $blog_config;
+
+	// -----------
+	// PAGE CONTENT
+	// -----------
+	function create_folder( $dir ) {
+		global $lang_string;
+		
+		echo( 'Making <b>' . $dir . '</b> folder: ' );
+		
+		if ( !file_exists( $dir ) ) {
+			// Creating Folder
+			$oldumask = umask( 0 );
+			$ok = mkdir( $dir, 0777 );
+			umask( $oldumask );
 			
-		echo( '<h2>' . $lang_string[ 'title' ] . '</h2>' );
+			if ( !file_exists( $dir ) ) {
+				// Failed
+				echo( '<b style="color: red;">' . $lang_string['folder_failed'] . '</b><br />' );
+				return( -1 );
+				
+			} else {
+				// Worked
+				echo( '<b style="color: green;">' . $lang_string['folder_success'] . '</b><br />' );
+				return( 0 );
+			}
+			
+		} else {
+			// Folder Already Exists
+				echo( '<b style="color: green;">' . $lang_string['folder_exists'] . '</b><br />' );
+			return( 0 );
+		}
+	}
+	
+	function page_content() {
+		global $lang_string, $blog_config;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		
 		echo( '<hr />' );
@@ -76,37 +100,32 @@ deny from all
 			echo( '<a href="install03.php?blog_language=' . $blog_config[ 'blog_language' ] . '">' . $lang_string['continue'] . '</a><p />' );
 		}
 		
-	}
-	function create_folder( $dir ) {
-		global $lang_string;
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
 		
-		echo( 'Making <b>' . $dir . '</b> folder: ' );
-		
-		if ( !file_exists( $dir ) ) {
-			// Creating Folder
-			$oldumask = umask( 0 );
-			$ok = mkdir( $dir, 0777 );
-			umask( $oldumask );
-			
-			if ( !file_exists( $dir ) ) {
-				// Failed
-				echo( '<b style="color: red;">' . $lang_string['folder_failed'] . '</b><br />' );
-				return( -1 );
-				
-			} else {
-				// Worked
-				echo( '<b style="color: green;">' . $lang_string['folder_success'] . '</b><br />' );
-				return( 0 );
-			}
-			
-		} else {
-			// Folder Already Exists
-				echo( '<b style="color: green;">' . $lang_string['folder_exists'] . '</b><br />' );
-			return( 0 );
-		}
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
+	
+	// ----
+	// HTML
+	// ----
 ?>
-<?php 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+	
+	<link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
+	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	<?php require_once('scripts/sb_javascript.php'); ?>
+	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
+	
+	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+</head>
+<?php 	
+	// BEGIN OUTPUT
 	theme_pagelayout();
 ?>
 </html>

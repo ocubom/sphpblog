@@ -70,7 +70,7 @@
 				$entry_array[ 'logged_in' ] = $logged_in;
 				
 				// Author
-				if ( $logged_in ) {
+				if ( $logged_in == true ) {
 					$entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'delete_btn' ];
 					$entry_array[ 'delete' ][ 'url' ] = 'trackback_delete_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;trackback='.$dir.( $contents[$i][ 'entry' ] );
 				}

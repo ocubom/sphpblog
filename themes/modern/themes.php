@@ -48,7 +48,7 @@
 		// Also, the "66" number is somewhat determined by the css
 		// styles that you have applied. If you adjust the margins or
 		// padding then these will change.
-		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 66;
+		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 72;
 
 		// ------------
 		// CUSTOMIZATION
@@ -96,61 +96,61 @@
 		$img_path = "themes/" . $blog_theme . "/images/";
 
 		$blog_content = "";
-		$blog_content = $blog_content . "\n<!-- BLOG ENTRY BEGIN -->\n";
+		$blog_content .= "\n<!-- BLOG ENTRY BEGIN -->\n";
 
 		// New 0.4.4
 		// You must have this if you are using the trackback feature.
 		if ( $blog_config[ "blog_trackback_enabled" ] ) {
-			$blog_content = $blog_content . "<!--\n";
-			$blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
-			$blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
-			$blog_content = $blog_content . '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
-			$blog_content = $blog_content . '<rdf:Description' . "\n";
-			$blog_content = $blog_content . '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-			$blog_content = $blog_content . '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-			$blog_content = $blog_content . '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
-			$blog_content = $blog_content . '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
-			$blog_content = $blog_content . '</rdf:RDF>' . "\n";
-			$blog_content = $blog_content . '-->' . "\n";
+			$blog_content .= "<!--\n";
+			$blog_content .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
+			$blog_content .= '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
+			$blog_content .= '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
+			$blog_content .= '<rdf:Description' . "\n";
+			$blog_content .= '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+			$blog_content .= '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+			$blog_content .= '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
+			$blog_content .= '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
+			$blog_content .= '</rdf:RDF>' . "\n";
+			$blog_content .= '-->' . "\n";
 		}
 
 		// Display SUBJECT Line
-		$blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
+		$blog_content .= "\n<!-- BLOG TITLE BEGIN -->\n";
+		$blog_content .= '<div class="blog_title">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
 
 		// Display EDIT and DELETE buttons if the user is logged in.
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 
-			$blog_content = $blog_content . "\t" . '<span class="blog_title_buttons">' . "\n";
+			$blog_content .= "\t" . '<span class="blog_title_buttons">' . "\n";
 
 			// Show "edit" and "delete" buttons if the user is logged-in...
 			if ( isset( $entry_array[ 'edit' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '"><img src="' . $img_path . 'box_right.png" title="' . $entry_array[ 'edit' ][ 'name' ] . '" alt="' . $entry_array[ 'edit' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
+				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '"><img src="' . $img_path . 'box_right.png" title="' . $entry_array[ 'edit' ][ 'name' ] . '" alt="' . $entry_array[ 'edit' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
 			if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '"><img src="' . $img_path . 'box_delete.png" title="' . $entry_array[ 'ban' ][ 'name' ] . '" alt="' . $entry_array[ 'ban' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
+				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '"><img src="' . $img_path . 'box_delete.png" title="' . $entry_array[ 'ban' ][ 'name' ] . '" alt="' . $entry_array[ 'ban' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" title="' . $entry_array[ 'delete' ][ 'name' ] . '" alt="' . $entry_array[ 'delete' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
+				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" title="' . $entry_array[ 'delete' ][ 'name' ] . '" alt="' . $entry_array[ 'delete' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
 
-			$blog_content = $blog_content . "\t</span>\n";
+			$blog_content .= "\t</span>\n";
 		}
 
-		$blog_content = $blog_content . "</div>\n";
-		$blog_content = $blog_content . "\n<!-- BLOG TITLE END -->\n";
+		$blog_content .= "</div>\n";
+		$blog_content .= "<!-- BLOG TITLE END -->\n\n";
 
-		$blog_content = $blog_content . "\n<!-- BLOG BODY BEGIN -->\n";
-		$blog_content = $blog_content . '<div class="blog_body">' . "\n\t";
+		$blog_content .= "<!-- BLOG BODY BEGIN -->\n";
+		$blog_content .= '<div class="blog_body">' . "\n\t";
 
 		// Display DATE
 		if ( $mode != 'static') { // New 0.4.8
-			$blog_content = $blog_content . "<div class=\"blog_date\">" . $entry_array[ 'date' ];
+			$blog_content .= "<div class=\"blog_date\">" . $entry_array[ 'date' ];
 
 			// Display CATEGORIES
 			// This is an array. There can be multiple categories per entry.
 			if ( array_key_exists( "categories", $entry_array ) ) {
-				$blog_content = $blog_content . " - ";
+				$blog_content .= " - ";
 				for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
 					$blog_content .= '<a href="index.php?category=' . $entry_array[ 'categories_id' ][$i] . '">' . $entry_array[ 'categories' ][$i] . '</a>';
 					if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
@@ -162,19 +162,19 @@
 			// New 0.4.8
 			if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 				if ( array_key_exists( 'ip-address', $entry_array ) && $mode == 'comment' ) {
-					$blog_content = $blog_content . ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
+					$blog_content .= ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
 				}
 			}
 
-			$blog_content = $blog_content . "</div>\n\t\t";
+			$blog_content .= "</div>\n\t\t";
 		}
 
 		// Display BODY TEXT
-		$blog_content = $blog_content . $entry_array[ 'entry' ];
-		$blog_content = $blog_content . "\n\t</div>";
-		$blog_content = $blog_content . "\n<!-- BLOG BODY END -->\n";
+		$blog_content .= $entry_array[ 'entry' ];
+		$blog_content .= "\n\t</div>";
+		$blog_content .= "\n<!-- BLOG BODY END -->\n";
 
-		$blog_content = $blog_content . "\n<!-- BLOG FOOTER BEGIN -->\n";
+		$blog_content .= "\n<!-- BLOG FOOTER BEGIN -->\n";
 
 		// Display ADD COMMENT, COUNT,TRACKBACK, PERMALINK, and RATING
 		$comment_area = "";
@@ -211,14 +211,14 @@
 		}
 
 		if ( $comment_area != "" ) {
-			$blog_content = $blog_content . "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
+			$blog_content .= "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
 		}
 
-		$blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
+		$blog_content .= "\n<!-- BLOG FOOTER END -->\n";
 
-		$blog_content = $blog_content . "<br />";
+		$blog_content .= "<br />";
 
-		$blog_content = $blog_content . "\n<!-- BLOG ENTRY END -->\n";
+		$blog_content .= "\n<!-- BLOG ENTRY END -->\n";
 
 		return $blog_content;
 	}
@@ -246,41 +246,41 @@
 		$img_path = 'themes/' . $blog_theme . '/images/';
 
 		$blog_content = "";
-		$blog_content = $blog_content . "\n" . '<!-- BLOG ENTRY BEGIN -->' . "\n";
+		$blog_content .= "\n" . '<!-- BLOG ENTRY BEGIN -->' . "\n";
 
 		// SUBJECT
-		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'title' ] . "\n";
+		$blog_content .= '<div class="blog_title">' . $entry_array[ 'title' ] . "\n";
 
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
-			$blog_content = $blog_content . "\t" . '<span class="blog_title_buttons">' . "\n";
+			$blog_content .= "\t" . '<span class="blog_title_buttons">' . "\n";
 
 			// Show 'delete' button if the user is logged-in...
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" alt="' . $entry_array[ 'delete' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
+				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" alt="' . $entry_array[ 'delete' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
 
-			$blog_content = $blog_content . "\t" . '</span>' . "\n";
+			$blog_content .= "\t" . '</span>' . "\n";
 		}
 
-		$blog_content = $blog_content . '</div>' . "\n";
+		$blog_content .= '</div>' . "\n";
 
-		$blog_content = $blog_content . '<div class="blog_body">' . "\n\t";
-		$blog_content = $blog_content . '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n\t\t";
+		$blog_content .= '<div class="blog_body">' . "\n\t";
+		$blog_content .= '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n\t\t";
 
 		// Blog content body...
-		$blog_content = $blog_content . $entry_array[ 'excerpt' ] . "<p>\n";
+		$blog_content .= $entry_array[ 'excerpt' ] . "<p>\n";
 
 		if ( (isset( $entry_array[ 'blog_name' ] ) ) && ($entry_array[ 'blog_name' ] != "") ) {
-		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'" target="_blank">[ ' . $entry_array[ 'blog_name' ] . " ]</a><p>\n";
+		   $blog_content .= '<a href="'.$entry_array[ 'url' ].'" target="_blank">[ ' . $entry_array[ 'blog_name' ] . " ]</a><p>\n";
 		} else {
-		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'" target="_blank">[ ' . $entry_array[ 'url' ] . " ]</a><p>\n";
+		   $blog_content .= '<a href="'.$entry_array[ 'url' ].'" target="_blank">[ ' . $entry_array[ 'url' ] . " ]</a><p>\n";
 		}
 
-		$blog_content = $blog_content . "\n\t" . '</div>';
+		$blog_content .= "\n\t" . '</div>';
 
-		$blog_content = $blog_content . "<br />";
+		$blog_content .= "<br />";
 
-		$blog_content = $blog_content . "\n" . '<!-- BLOG ENTRY END -->' . "\n";
+		$blog_content .= "\n" . '<!-- BLOG ENTRY END -->' . "\n";
 
 		return $blog_content;
 	}
@@ -437,49 +437,21 @@
 		// Begin Page Layout HTML
 		?>
 		<body>
-			<br />
-			<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
-				<tr align="left" valign="top">
-					<td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
-						<div id="header_image"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
-						<?php
-						if ( $blog_config['blog_enable_title']) { // New for 0.4.6
-						echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
-						}?>
-						<div id="pagebody">
-							<table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
-								<tr valign="top">
-									<?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
-									<td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>" style="border-right: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;">
-										<div id="sidebar">
-											<?php theme_menu(); ?>
-										</div>
-									</td>
-									<?php } ?>
-									<td width="<?php echo( $content_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
-										<div id="maincontent">
-											<?php page_content(); ?>
-										</div>
-									</td>
-									<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { // New 0.3.8 - Right Menu ?>
-									<td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>" style="border-left: 1px solid #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;">
-										<div id="sidebar">
-											<?php theme_menu(); ?>
-										</div>
-									</td>
-									<?php } ?>
-								</tr>
-								<tr align="left" valign="top">
-									<td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>" colspan="2">
-										<div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<br />
+			<div id="page">
+				<div id="header"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
+				<?php if ( $blog_config['blog_enable_title'] ) { echo('<div id="title">' . $blog_config[ 'blog_title' ] . '</div>'); } ?>
+				<div id="innerpage">
+					<div id="content">
+						<?php page_content(); ?>
+					</div>
+					<div id="sidebar">
+						<?php theme_menu(); ?>
+					</div>
+				</div>
+				<div id="footer">
+					<?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?>
+				</div>
+			</div>
 		</body>
 		<?php
 		// End Page Layout HTML
@@ -569,23 +541,24 @@
 
 			echo( "\n<!-- " . $comment . " -->\n" );
 
-			echo( '<div class="menu_title">' );
+			echo( "<div class=\"menu_title\">\n" );
 			if ( isset( $toggleDiv ) ) {
-				echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty" alt="" /> ' );
+				echo( "\t" . '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');">' );
+				echo( '<img src="' . $img_hide . '" name="twisty" alt="" /> ' );
 			}
 			echo( $blockArray[ 'title' ] );
 			if ( isset( $toggleDiv ) ) {
 				echo( '</a>' );
 			}
-			echo( "</div>\n" );
+			echo( "\n</div>\n" );
 
 			if ( isset( $toggleDiv ) ) {
 				echo( '<div id="toggle' . $toggleDiv . '" class="menu_body">' . "\n" );
 			} else {
-				echo( '<div class="menu_body">' . "\n" );
+				echo( "<div class=\"menu_body\">\n" );
 			}
-			echo( $blockArray[ 'content' ] . "\n" );
-			echo( "</div><br />\n" );
+			echo( "\t" . $blockArray[ 'content' ] . "\n" );
+			echo( "</div>\n<br />\n" );
 
 			return true;
 		} else {
@@ -624,7 +597,6 @@
 		// AVATAR
 		theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
 		
-
 		// LINKS
 		$result = menu_display_links();
 		$loginString = menu_display_login();
@@ -679,14 +651,14 @@
 		echo( '<p />' );
 
 		// WEB BADGES
-		echo( '<div align="center">' );
+		echo( '<div align="center">' . "\n");
 		echo( '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog" title="Powered by Simple PHP Blog" border="0" /></a> ' );
 		echo( '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0" /></a><br />' );
 		echo( '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0" /></a> ' );
 		echo( '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0" /></a><br />' );
-		echo( '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0" /> ' );
+		echo( '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain Text Files" border="0" /> ' );
 		echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />' );
-		echo( '</div>' );
+		echo( '</div>' . "\n" );
 	}
 
 ?>

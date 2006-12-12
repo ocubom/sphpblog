@@ -85,7 +85,7 @@
 			}
 		}
 		
-		if ( $logged_in === true ) {
+		if ( $logged_in == true ) {
 			$str .= '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
 		}
 		
