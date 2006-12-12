@@ -5,10 +5,19 @@
 	
 	read_config();
 	
-	global $blog_config;
-	if ( isset( $_GET[ 'blog_language' ] ) ) {	
-		$blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
+	// Validate Language
+	$temp_lang = '';
+	if ( isset( $_POST['blog_language'] ) ) {
+		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
+	} else if ( array_key_exists( 'blog_language', $_GET ) ) {	
+		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
 	}
+	if (validate_language($temp_lang) == false) {
+		$temp_lang = 'english';
+	}
+	
+	global $blog_config;
+	$blog_config[ 'blog_language' ] = $temp_lang;
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'install06' );

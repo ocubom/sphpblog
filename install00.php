@@ -31,34 +31,23 @@
 		?>
 		<form action="install01.php" method="post">
 			<?php
-				$arr = array();
-				$dir = 'languages/';
+				$translation_arr = get_installed_translations();
 				
-				clearstatcache();
-				if ( is_dir($dir) ) {
-					$dhandle = opendir($dir);
-					if ( $dhandle ) {
-						$sub_dir = readdir( $dhandle );
-						while ( $sub_dir ) {
-							if ( is_dir( $dir . $sub_dir ) == true && $sub_dir != '.' && $sub_dir != '..' ) {
-								$lang_dir = $sub_dir;
-								$lang_name = sb_read_file( $dir . $sub_dir . '/id.txt' );
-								if ( $lang_name ) {
-									$item = array();
-									$item['label'] = $lang_name;
-									$item['value'] = $lang_dir;
-									if ( $blog_config[ 'blog_language' ] == $item['value'] ) {
-										$item['selected'] = true;
-									}
-									array_push( $arr, $item );
-								}
-							}
-							$sub_dir = readdir( $dhandle );
-						}
+				$dropdown_arr = array();
+				for ($i=0; $i < count($translation_arr); $i++) {				
+					$lang_dir = $translation_arr[$i]['directory'];
+					$lang_name = $translation_arr[$i]['name'];
+					
+					$item = array();
+					$item['label'] = $lang_name;
+					$item['value'] = $lang_dir;
+					if ( $blog_config[ 'blog_language' ] == $item['value'] ) {
+						$item['selected'] = true;
 					}
-					closedir( $dhandle );
+					array_push( $dropdown_arr, $item );
+					
 				}
-				echo( HTML_dropdown( $lang_string[ 'blog_choose_language' ], "blog_language", $arr ) );
+				echo( HTML_dropdown( $lang_string[ 'blog_choose_language' ], "blog_language", $dropdown_arr ) );
 			?>
 			<p />
 			
