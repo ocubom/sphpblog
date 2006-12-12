@@ -4,7 +4,7 @@
 	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
-	$logged_in = logged_in( false, true );
+	$logged_in = logged_in( true, true );
 	
 	if ( !session_id() ) {
 		session_start();
@@ -96,15 +96,27 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $ok;
-
+		global $lang_string, $blog_config, $ok;
+	
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
 		if ( $ok !== true ) {
 			echo $lang_string[ 'error_add' ] . $ok . '<p />';
 		} else {
 			echo $lang_string[ 'success_add' ] . '<p />';
 		}
-
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

@@ -21,10 +21,11 @@
 	function page_content() {
 		global $lang_string, $user_colors, $theme_vars, $blog_theme;		
 	
+		// SUBJECT
 		$entry_array = array();
-		
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 	
+		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />		
 		<?php 
@@ -175,13 +176,14 @@
 		</form>
 		
 		<?php
-			$entry_array[ 'entry' ] = ob_get_clean();		
-			if ( $theme_vars[ 'options' ][ 'disallow_colors' ] == 1 ) { 
-				$entry_array[ 'entry' ] = $lang_string['theme_doesnt_allow_colors'];
-				echo( theme_staticentry( $entry_array ) );
-			} else {
-				echo( theme_staticentry( $entry_array ) );
-			}
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		if ( $theme_vars[ 'options' ][ 'disallow_colors' ] == 1 ) { 
+			$entry_array[ 'entry' ] = $lang_string['theme_doesnt_allow_colors'];
+		}
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

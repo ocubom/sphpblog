@@ -36,8 +36,11 @@
 	function page_content() {
 		global $lang_string, $user_colors;
 		
+		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( array_key_exists( "no", $_POST ) || array_key_exists( "yes", $_POST ) ) {
@@ -65,9 +68,13 @@
 			<?php 
 		}
 		
+		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 		
+		// THEME ENTRY
 		$blog_content = read_entry_from_file( 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ] );
 		echo( $blog_content );
 	}

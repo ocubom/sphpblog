@@ -21,11 +21,13 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $ok;
+		global $lang_string, $blog_config, $ok;
 		
+		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		
+		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok === true ) {
@@ -46,8 +48,11 @@
 			echo( "<a href=\"upgrade.php\">" . $lang_string[ 'upgrade_url' ] ."</a><br />" );
 		}
 		
+		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

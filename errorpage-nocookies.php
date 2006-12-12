@@ -32,25 +32,31 @@
 
 	// ------------
 
-		function page_content() {
+	function page_content() {
 
-			global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
+		global $lang_string, $blog_config, $blog_theme;	
 
-			$entry_array = array();
+		// SUBJECT
 
-			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		$entry_array = array();
 
-			$entry_array[ 'entry' ] = '<table width="100%"  border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 
-    		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<td>' . $lang_string[ 'errorline1' ] . '<br><br>';
+		$entry_array[ 'entry' ] = '<table width="100%"  border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
 
-			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'errorline2' ] . '<br><br>';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<td>' . $lang_string[ 'errorline1' ] . '<br><br>';
 
-			$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'clientid' ] . @gethostbyaddr(getIP()) . '</td></tr></table>';
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'errorline2' ] . '<br><br>';
 
-			echo( theme_staticentry( $entry_array ) );			
+		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'clientid' ] . @gethostbyaddr(getIP()) . '</td></tr></table>';
 
-		}
+	
+
+		// THEME ENTRY
+
+		echo( theme_staticentry( $entry_array ) );			
+
+	}
 
 	
 

@@ -27,6 +27,7 @@
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
+		
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 		echo( '<hr />' );
 		sb_editor();

@@ -29,8 +29,8 @@
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
 		
 		// PAGE CONTENT BEGIN
-		ob_start(); ?>
-		<?php
+		ob_start();
+		
 		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $lang_string[ 'php_charset' ] ), $lang_string[ 'instructions' ] ) . '<br />' );
 		
 		echo( '<hr />' );
@@ -42,6 +42,7 @@
 		} else {
 			echo( $lang_string[ 'not_found' ] );
 		}
+		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
 		

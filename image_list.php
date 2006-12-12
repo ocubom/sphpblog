@@ -19,18 +19,23 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $theme_vars, $blog_theme;
+		global $lang_string, $blog_config;
+	
+		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-		ob_start(); ?>
 		
-		<?php echo( $lang_string[ 'instructions' ] ); ?><p />		
-		<hr />		
-		<?php echo image_list(); ?>
-			
-		<?php
-			$entry_array[ 'entry' ] = ob_get_clean();
-			echo( theme_staticentry( $entry_array ) );	
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
+		echo( $lang_string[ 'instructions' ] . '<p /><hr />');
+		echo image_list();
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

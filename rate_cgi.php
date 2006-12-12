@@ -54,7 +54,6 @@
 		} else {
 			echo( $lang_string[ 'success' ] . '<p />' );
 		}
-		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
 		
 		// PAGE CONTENT END

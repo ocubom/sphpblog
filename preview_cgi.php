@@ -19,7 +19,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $ok;
+		global $lang_string, $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
@@ -27,6 +27,7 @@
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
+		
 		echo( $lang_string[ 'instructions_preview' ] . '<p />' );
 		echo( $lang_string[ 'instructions_update' ] . '<p />' );
 		echo( '<hr />' );

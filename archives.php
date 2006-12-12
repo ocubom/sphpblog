@@ -77,10 +77,12 @@
 	function page_content() {
 		global $month, $year, $day, $lang_string, $showall;
 		
+		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string['title'];
 		$entry_array[ 'entry' ] = '<p><a href="archives.php?showall=1">' . $lang_string['showall'] . '</a></p>' . read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
 		
+		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 	}
 	

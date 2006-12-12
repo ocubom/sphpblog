@@ -42,15 +42,27 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $ok;
-
+		global $lang_string, $blog_config, $ok;
+	
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
 		if ( $ok !== true ) {
 			echo $lang_string[ 'error_delete' ] . $ok . '<p />';
 		} else {
 			echo $lang_string[ 'success_delete' ] . '<p />';
 		}
-
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

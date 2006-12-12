@@ -19,8 +19,21 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
+	
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = 'Downgrade';
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
 		echo ( 'Deleted ' . delete_all_trackbacks() . ' trackback files...<p />');
 		echo ( 'Moved ' . move_all_comment_files( false ) . ' comment files...');
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

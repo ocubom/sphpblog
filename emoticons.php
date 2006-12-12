@@ -143,8 +143,11 @@
 			return sb_write_file( 'config/emoticons.txt', $str );
 		}
 		
+		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 		
@@ -187,9 +190,12 @@
 		}
 		
 		echo( emoticons_admin_display() );
-
+		
+		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
-		echo( theme_staticentry( $entry_array ) );	
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

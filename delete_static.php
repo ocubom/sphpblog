@@ -44,7 +44,14 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $lang_string, $blog_config, $ok;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
 		
 		if ( array_key_exists( "no", $_POST ) || array_key_exists( "yes", $_POST ) ) {
 			// Check to see if we're posting data...
@@ -54,30 +61,24 @@
 			} else {
 				echo( $lang_string[ 'success' ] . '<p />' );
 			}
-			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
 		} else {
-			?>
-			
-			<h2><?php echo( $lang_string[ 'title' ] ); ?></h2>
-			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
-			
+			echo( $lang_string[ 'instructions' ] . '<p /><hr />');
+			echo( get_static_entry_by_file( $_GET[ 'entry' ] ) );
+			?>			
 			<hr />
-	
-			<?php
-				$blog_content = get_static_entry_by_file( $_GET[ 'entry' ] );
-				echo( $blog_content );
-			?>
-			
-			<hr />
-			
 			<form action='delete_static.php' method="post">
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 				<input type="submit" name="yes" value="<?php echo( $lang_string[ 'ok_btn' ] ); ?>" />
 				<input type="submit" name="no" value="<?php echo( $lang_string[ 'cancel_btn' ] ); ?>" />
 			</form>
-			
 			<?php 
 		}
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

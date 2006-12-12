@@ -103,8 +103,8 @@
 	function page_content() {
 		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink;
 		
-		$page_content = read_entries( $month, $year, $day, $logged_in, $entry, $category, $is_permalink );
-		echo( $page_content );
+		$content = read_entries( $month, $year, $day, $logged_in, $entry, $category, $is_permalink );
+		echo( $content );
 	}
 	
 	// ----

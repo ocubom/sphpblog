@@ -23,7 +23,8 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = 'Subject Line';
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		// $entry_array[ 'subject' ] = 'Subject Line';
 		// $entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
 		
 		// PAGE CONTENT BEGIN

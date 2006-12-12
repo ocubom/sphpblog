@@ -29,6 +29,13 @@
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme;	
 		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
 		if ( array_key_exists( 'blog_theme', $_POST ) ) {
 			// Check to see if we're posting data...
 			global $ok;
@@ -38,13 +45,10 @@
 				echo( $lang_string[ 'success' ] . '<p />' );
 			}
 			
-			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
+			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
 			
 		} else {
-			$entry_array = array();
-			$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-			
-			ob_start(); ?>
+			?>
 			
 			<?php echo( $lang_string[ 'instructions' ] ); ?><p />
 			
@@ -90,10 +94,13 @@
 				<input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
 			</form>
 			
-			<?php
-			$entry_array[ 'entry' ] = ob_get_clean();
-			echo( theme_staticentry( $entry_array ) );	 
+			<?php 
 		}
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

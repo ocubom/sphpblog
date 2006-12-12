@@ -111,7 +111,14 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $ad_array, $auto_discovery_confirm;
+		global $lang_string, $blog_config, $ad_array, $auto_discovery_confirm;
+		
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
 		
 		if ( array_key_exists( 'no', $_POST ) || array_key_exists( 'yes', $_POST ) || $ok == false ) {
 			// Display error message.
@@ -155,6 +162,11 @@
 			
 			<?php 
 		}
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
 	}
 	
 	// ----

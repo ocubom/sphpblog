@@ -19,7 +19,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $blog_config, $theme_vars;
+		global $lang_string, $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
@@ -31,6 +31,7 @@
 		echo( $lang_string[ 'instructions_preview' ] . '<p />' );
 		echo( $lang_string[ 'instructions_update' ] . '<p />' );
 		echo( '<hr />' );
+		
 		sb_editor( 'static' );
 		
 		// PAGE CONTENT END

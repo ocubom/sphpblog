@@ -40,9 +40,11 @@
 
 	function page_content() {
 
-		global $lang_string, $user_colors, $blog_config, $theme_vars;
+		global $lang_string, $blog_config;
 
 		
+
+		// SUBJECT
 
 		$entry_array = array();
 
@@ -50,7 +52,11 @@
 
 		
 
+		// PAGE CONTENT BEGIN
+
 		ob_start();
+
+		
 
 		echo( $lang_string[ 'instructions' ] . '<p />' );
 
@@ -60,9 +66,13 @@
 
 		
 
+		// PAGE CONTENT END
+
 		$entry_array[ 'entry' ] = ob_get_clean();
 
 		
+
+		// THEME ENTRY
 
 		echo( theme_staticentry( $entry_array ) );
 
