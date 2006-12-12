@@ -4,10 +4,6 @@
 	$logged_in = logged_in( true, true );
 	
 	read_config();
-		
-	if ( array_key_exists( 'blog_language', $_GET ) ) {	
-		$blog_config[ 'blog_language' ] = $_GET[ 'blog_language' ];
-	}
 	
 	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
 	sb_language( 'info' );
