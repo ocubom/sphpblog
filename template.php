@@ -60,7 +60,7 @@
 			"Entry" box, then use the $entry_array associative array
 			to pass your content to the theme_staticentry() function
 			located in themes/{theme_name}/themes.php
-		/*
+		*/
 		$entry_array = array();
 		$entry_array[ 'subject' ] = 'Subject Line';
 		$entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
