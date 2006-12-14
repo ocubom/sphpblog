@@ -3,8 +3,8 @@
 	// INITIALIZE PAGE
 	// ---------------
 	require_once('scripts/sb_functions.php');
-	global $ok;
-	$ok = logout();
+	global $result;
+	$result = logout();
 	
 	$logged_in = logged_in( false, true );
 	
@@ -21,7 +21,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $ok;
+		global $lang_string, $result;
 	
 		// SUBJECT
 		$entry_array = array();
@@ -30,10 +30,16 @@
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		if ( $ok !== true ) {
-			echo( $lang_string[ 'error' ] . '<p />' );
-		} else {
-			echo( $lang_string[ 'success' ] . '<p />' );
+		switch ( $result ) {
+			case 0:
+				echo( $lang_string[ 'error' ] );
+				break;
+			case 1:
+				echo( $lang_string[ 'success' ] );
+				break;
+			case -1:
+				echo( $lang_string[ 'error_no_cookie' ] );
+				break;
 		}
 		
 		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
@@ -43,6 +49,7 @@
 		
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
+		// 
 	}
 	
 	// ----
@@ -61,6 +68,8 @@
 	<script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
 	
 	<title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+	
+	<?php if ($result==1) { echo( '<meta http-equiv="refresh" content="5; URL=index.php" />' ); } ?>
 </head>
 	<?php 
 		// ------------
