@@ -62,7 +62,7 @@
 		}
 	}
 
-	function read_entries ( $m, $y, $d, $logged_in, $start_entry, $category, $is_permalink ) {
+	function read_entries ( $m, $y, $d, $logged_in, $start_entry, $category, $is_permalink=false ) {
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
 		// Used for the main Index page.
@@ -94,6 +94,11 @@
 				break;
 			}
 		}
+		
+		$blog_max_entries = $blog_config[ 'blog_max_entries' ];
+		if ($is_permalink) {
+			$blog_max_entries = 1;
+		}
 
 		// Grab the next X number of entries
 		$file_array = array();
@@ -120,7 +125,7 @@
 					if ( in_arrayr( $cat_array, $cat_sub_arr ) ) {
 						array_push( $file_array, $entry_file_array[ $i ] );
 						// Look for +1 entries (for the next button...)
-						if ( count( $file_array ) >= $blog_config[ 'blog_max_entries' ] + 1 ) {
+						if ( count( $file_array ) >= $blog_max_entries + 1 ) {
 							break;
 						}
 					}
@@ -129,7 +134,7 @@
 						if ( $cat_array[ $j ] == $category ) {
 							array_push( $file_array, $entry_file_array[ $i ] );
 							// Look for +1 entries (for the next button...)
-							if ( count( $file_array ) >= $blog_config[ 'blog_max_entries' ] + 1 ) {
+							if ( count( $file_array ) >= $blog_max_entries + 1 ) {
 								// We've found all X entries.
 								// Break out of the "j" and the "i" loops.
 								break 2;
@@ -149,7 +154,7 @@
 			}
 
 			// Store info for next and previous links...
-			if ( count( $file_array ) > $blog_config[ 'blog_max_entries' ] ) {
+			if ( count( $file_array ) > $blog_max_entries ) {
 				$next_entry = array_pop( $file_array );
 			} else {
 				$next_entry = NULL;
@@ -169,7 +174,7 @@
 							if ( $cat_array[ $j ] == $category ) {
 								array_push( $previous_file_array, $entry_file_array[ $i ] );
 								// Look for +1 entries (for the next button...)
-								if ( count( $previous_file_array ) >= $blog_config[ 'blog_max_entries' ] + 1) {
+								if ( count( $previous_file_array ) >= $blog_max_entries + 1) {
 									// We've found all X entries.
 									// Break out of the "j" and the "i" loops.
 									break 2;
@@ -199,21 +204,21 @@
 			}
 		} else {
 			// No Filtering
-			for ( $i = $entry_index; $i < min( ( $blog_config[ 'blog_max_entries' ] + $entry_index ), count( $entry_file_array ) ); $i++ ) {
+			for ( $i = $entry_index; $i < min( ( $blog_max_entries + $entry_index ), count( $entry_file_array ) ); $i++ ) {
 				array_push( $file_array, $entry_file_array[ $i ] );
 			}
 
 			// Store info for next and previous links...
-			if ( $entry_index + $blog_config[ 'blog_max_entries' ] < count( $entry_file_array ) ) {
-				$next_entry = $entry_file_array[ $entry_index + $blog_config[ 'blog_max_entries' ] ];
+			if ( $entry_index + $blog_max_entries < count( $entry_file_array ) ) {
+				$next_entry = $entry_file_array[ $entry_index + $blog_max_entries ];
 			} else {
 				$next_entry = NULL;
 			}
 			
 			$previous_entry = NULL;
 			if ( $entry_index > 0 ) {
-				if ( $entry_index - $blog_config[ 'blog_max_entries' ] > 0 ) {
-					$previous_entry = $entry_file_array[ $entry_index - $blog_config[ 'blog_max_entries' ] ];
+				if ( $entry_index - $blog_max_entries > 0 ) {
+					$previous_entry = $entry_file_array[ $entry_index - $blog_max_entries ];
 				} else {
 					$previous_entry = $entry_file_array[ 0 ];
 				}
