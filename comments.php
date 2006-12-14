@@ -101,7 +101,7 @@
 				// Blank URL
 				echo('<input type="hidden" name="comment_url" id="comment_url" value="" autocomplete="off" />');
 			}
-			echo('<input type="hidden" name="user_ip" id="user_ip" value="' . GetIP() . '" autocomplete="off" />');
+			echo('<input type="hidden" name="user_ip" id="user_ip" value="' . getIP() . '" autocomplete="off" />');
 			?>
 
 			<!-- NEW -->
