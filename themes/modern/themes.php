@@ -128,9 +128,6 @@
 			if ( isset( $entry_array[ 'edit' ][ 'url' ] ) ) {
 				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '"><img src="' . $img_path . 'box_right.png" title="' . $entry_array[ 'edit' ][ 'name' ] . '" alt="' . $entry_array[ 'edit' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
-			if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
-				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '"><img src="' . $img_path . 'box_delete.png" title="' . $entry_array[ 'ban' ][ 'name' ] . '" alt="' . $entry_array[ 'ban' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
-			}
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
 				$blog_content .= "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '"><img src="' . $img_path . 'box_cancel.png" title="' . $entry_array[ 'delete' ][ 'name' ] . '" alt="' . $entry_array[ 'delete' ][ 'name' ] . '" width="14" height="14" /> </a>' . "\n";
 			}
@@ -163,7 +160,16 @@
 			// New 0.4.8
 			if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 				if ( array_key_exists( 'ip-address', $entry_array ) && $mode == 'comment' ) {
-					$blog_content .= ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
+				
+					if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
+						$blog_content .= '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '" title="' . $entry_array[ 'ban' ][ 'name' ] . '">' . "\n";
+						$blog_content .= ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
+						$blog_content .= '</a>' . "\n";
+						
+					} else {
+						$blog_content .= ' <span class="blog_ip_address">&lt;&nbsp;' . $entry_array[ 'ip-address' ] . '&nbsp;&gt;</span>' . "\n";
+					
+					}
 				}
 			}
 		
