@@ -76,8 +76,7 @@
 	
 	function logout () {
 		// Log Out
-		//
-		// Support for PHP >= 4.1.0
+		
 		if ( isset( $_COOKIE[ 'my_id' ] ) ) {
 			$my_id = $_COOKIE[ 'my_id' ];
 			
@@ -91,10 +90,10 @@
 			session_start();
 			
 			// Check if they're actually logged in (for reporting...)
-			$is_logged_in = false;
+			$was_logged_in = 0;
 			if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
 				if ( $_SESSION[ 'site_path' ] === dirname($_SERVER[ 'PHP_SELF' ]) ) {
-					$is_logged_in = true;
+					$was_logged_in = 1;
 				}
 			}
 			
@@ -102,9 +101,12 @@
 			session_unset($_SESSION[ 'site_path' ]);
 			session_destroy();
 			
-			return ( $is_logged_in );
+			// Delete cookie
+			setcookie('my_id','',time()-60*60);
+			
+			return ( $was_logged_in );
 		} else {
-			return ( false );
+			return ( -1 );
 		}
 	}
 	
@@ -211,8 +213,8 @@
 		return ( false );
 	}
 	
-	//**** BEGIN Ridgarou modification
 	function redirect_to_url( $relative_url = "index.php" ) {
+		// Many thanks to Ridgarou for fixing the port issue.
 	
 		if ( strpos ($_SERVER['HTTP_HOST' ], ":") != false ){
 			$port = '';
@@ -243,6 +245,4 @@
 		}
 		exit;
 	}
-	//**** END Ridgarou modification
-	
 ?>
