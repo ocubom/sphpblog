@@ -307,6 +307,9 @@
 				$lang_string['nocomments'] = "Comments are not available for this entry."; // New for 0.4.9
 				$lang_string['email_moderator'] = "Comments are currently moderated. This comment needs approval before it will be seen by the public."; // New for 0.5.0
 				$lang_string['user_notice_mod'] = "Moderation is turned on for this blog. Your comment will require the administrators approval before it will be visible."; // new for 0.5.0
+				
+				$lang_string['return_to_comments'] = 'Return to Comments';
+				
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
@@ -317,6 +320,15 @@
 				$lang_string['success_ban2'] = "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Name, Comment and Anti-Spam fields.";
 				$lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
+				
+				$lang_string[ 'error_comments_disabled' ] = '<h2>Error!</h2>Hey! Comments are disabled on this blog. Are you a spambot?'; // New 0.5.0
+				$lang_string[ 'error_no_match' ] = '<h2>Error!</h2>You IP address doesn\t match posted IP address. Are you a spambot?'; // New 0.5.0
+				$lang_string[ 'error_fields_missing' ] = '<h2>Error!</h2>Missing the following fields: '; // New 0.5.0
+				$lang_string[ 'error_spambot' ] = '<h2>Error!</h2>Capcha data is missing. Are you a spambot?'; // New 0.5.0
+				$lang_string[ 'error_capcha' ] = '<h2>Error!</h2>The capcha you entered is incorrect.'; // New 0.5.0
+				$lang_string[ 'error_bad_data' ] = '<h2>Error!</h2>Post data is not valid. Are you a hacker?'; // New 0.5.0
+				$lang_string[ 'error_entry_missing' ] = '<h2>Error!</h2>You are trying to comment on an entry that doesn\'t exist'; // New 0.5.0
+				$lang_string[ 'error_empty_text' ] = '<h2>Error!</h2>You didn\'t enter any comments or your name.'; // New 0.5.0
 				break;
 
 			case 'delete':
@@ -389,7 +401,8 @@
 			case 'logout':
 				$lang_string['title'] = "Logout";
 				$lang_string['error'] = "<h2>Goodbye!</h2>You are now logged out. (You weren't logged in anyway!)<p />";
-				$lang_string['success'] = "<h2>Goodbye!</h2>You are now logged out.<p />";
+				$lang_string['error_no_cookie'] = "<h2>Goodbye!</h2>You are now logged out. (No cookie was found. You weren't logged in anyway!)<p />"; // New 0.5.0
+				$lang_string['success'] = "<h2>Goodbye!</h2>You are now logged out.<p />(Redirecting to Home in 5 seconds.)<p />";
 				break;
 
 			case 'forms':
