@@ -32,16 +32,16 @@
 		// Delete the current one so I can create a new one
 		sb_delete_file( $filename );
 
-		// Now create the new file with a modded flag
-		// write_comment( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_remember, $comment_text, $user_ip, $hold_flag )
+		// Now create the new file without a modded flag
+		// write_comment( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_text, $user_ip, $hold_flag, $comment_date )
 		$ok = write_comment( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ],
                                  $comment_entry_data[ 'NAME' ],
                                  $comment_entry_data[ 'EMAIL' ],
                                  $comment_entry_data[ 'URL' ],
-                                 '',
                                  $comment_entry_data[ 'CONTENT' ],
                                  $comment_entry_data['IP-ADDRESS'],
-                                 '' );
+                                 '',
+                                 $comment_entry_data['DATE'] );
 
 	} else {
 		$ok = 'Error! Comment cannot be approved. Unknown error.';
