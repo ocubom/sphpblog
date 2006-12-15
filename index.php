@@ -35,34 +35,45 @@
 	global $is_permalink;
 	$is_permalink = true;
 	
-	$temp_year = NULL;
+	$temp_year = null;
 	if ( array_key_exists( 'y', $_GET ) ) {
 		$is_permalink = false;
-		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 ) {
+		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 ) {
 			$temp_year = $_GET[ 'y' ];
 		}
 	}
-	$temp_month = NULL;
+	$temp_month = null;
 	if ( array_key_exists( 'm', $_GET ) ) {
 		$is_permalink = false;
-		if ( strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'm' ] ) == 2 ) {
+		if ( strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $_GET[ 'm' ] ) == 2 ) {
 			$temp_month = $_GET[ 'm' ];
 		}
 	}
-	$temp_day = NULL;
+	$temp_day = null;
 	if ( array_key_exists( 'd', $_GET ) ) {
 		$is_permalink = false;
-		if ( strpos( $_GET[ 'd' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'd' ] ) == 2 ) {
+		if ( strpos( $_GET[ 'd' ], array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $_GET[ 'd' ] ) == 2 ) {
 			$temp_day = $_GET[ 'd' ];
 		}
 	}
-	$temp_entry = NULL;
+	$temp_entry = null;
 	if ( array_key_exists( 'entry', $_GET ) ) {
-		if ( strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
+		if ( strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
 			$temp_entry = $_GET[ 'entry' ];
 		}
 	} else {
 		$is_permalink = false;
+		
+		// This checks to index.php?entry061209-224649 or just ?entry061209-224649
+		if (isset($_GET) && count($_GET)==1) {
+			$keys = array_keys($_GET);
+			$temp_entry = $keys[0];
+			if ( strpos( $temp_entry, array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $temp_entry ) == 18 ) {
+				$is_permalink = true;
+			} else {
+				$temp_entry = null;
+			}
+		}
 	}
 	
 	// Month / Year
