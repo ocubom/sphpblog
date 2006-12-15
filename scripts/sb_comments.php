@@ -215,7 +215,82 @@
 
 		return ( $output_str );
 	}
+	
+	function get_unmodded_count( $logged_in ) {
+		$comment_array = blog_comment_listing();
+		
+		$results = 0;
+		for ( $i = 0; $i < count($comment_array); $i++ ) {
+			// Get data
+			list( $entry_filename, $year_dir, $month_dir, $comment_filename, $moderation_flag ) = explode( '|', $comment_array[ $i ] );
+			
+			if ( $moderation_flag == 'H') {
+				// Comment is being held
+				$results++;
+			}
+		}
+		
+		return( $results );
+	}
+	
+	function blog_comment_listing () {
+		// Return array of all the blog comment files.
+		
+		// Load cached file array.
+		$filename = 'config/~blog_comment_listing.tmp';
+		$comment_array = sb_read_file( $filename );
+		if ( $comment_array != NULL ) {
+			// Using cached array.
+			// echo("USING CACHED ARRAY");
+			$comment_array = unserialize( $comment_array );
+			rsort( $comment_array ); // Sort array newest to oldest
+		} else {
+			// Rebuild array.
+			// echo("REBUILDING ARRAY");
+			sleep(1); // To avoid server overload
+			
+			$comment_array = array();
+			$entry_file_array = blog_entry_listing();
+	
+			// Loop through entry files
+			for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
+				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
+				// $contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+				// $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+				
+				// Get files in the comments folder.
+				$comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+				
+				// Look through comments.
+				for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
+					$comment_filename =  $comment_file_array[ $k ];
+					// We only want to search inside comments, not the counter file.
+					if ( strpos($comment_filename, 'comment') === 0 ) {
+						$comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+						
+						array_push( $comment_array, implode( '|', array( $entry_filename, $year_dir, $month_dir, $comment_filename, $comment_entry_data[ 'MODERATIONFLAG' ] ) ) );
+					}
+				}			
+			}
+			
+			rsort( $comment_array ); // Sort array newest to oldest
 
+			// Save array if not empty
+			if ( count( $comment_array )>0 ) {
+				sb_write_file( $filename, serialize( $comment_array ) );
+			}
+		}
+		
+		/*
+		echo("<pre>");
+		print_r( $comment_array );
+		echo("</pre>");
+		*/
+		
+		return( $comment_array );
+	}
+	
+	/*
 	function get_unmodded_count ( $logged_in ) {
 		global $lang_string, $blog_config;
 		
@@ -232,9 +307,8 @@
 		// Loop through entry files
 		for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-			$contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-			$j = 0;
-			$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			// $contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			// $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			// Search Comments
 			$comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
 
@@ -254,12 +328,32 @@
 		}
 		return ( $results );
 	}
-
+	*/
+	
+	function get_entry_unmodded_count ( $y, $m, $entry) {
+		$comment_array = blog_comment_listing();
+		
+		$results = 0;
+		for ( $i = 0; $i < count($comment_array); $i++ ) {
+			// Get data
+			list( $entry_filename, $year_dir, $month_dir, $comment_filename, $moderation_flag ) = explode( '|', $comment_array[ $i ] );
+			
+			if ( $entry == $entry_filename ) {
+				if ( $moderation_flag == 'H') {
+					// Comment is being held
+					$results++;
+				}
+			}
+		}
+		
+		return( $results );
+	}
+	
+	/*
 	function get_entry_unmodded_count ( $y, $m, $entry) {
 		global $lang_string, $blog_config;
 
-		// To avoid server overload
-		sleep(1);
+		sleep(1); // To avoid server overload
 		$entry_file_array = blog_entry_listing();
 		$results = 0;
 
@@ -280,6 +374,7 @@
 		}
 		return ( $results );
 	}
+	*/
 
 	function check_for_duplicate ( $y, $m, $entry, $newContent ) {
 
@@ -375,6 +470,8 @@
 	function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_text, $user_ip, $hold_flag='', $comment_date=null ) {
 		// Save new entry or update old entry
 		global $blog_config, $sb_info, $lang_string;
+		
+		sb_delete_file( 'config/~blog_comment_listing.tmp' ); // Delete comment array cache
 
 		// We're going to assume that the y and m directories exist...
 		$basedir = 'content/';
@@ -501,7 +598,8 @@
 
 	function delete_comment ( $filepath ) {
 		// Delete a comment. Also, delete the whole comment folder if it was the only comment.
-		//
+		
+		sb_delete_file( 'config/~blog_comment_listing.tmp' ); // Delete comment array cache
 
 		// Delete comment file
 		$ok = sb_delete_file( $filepath );
