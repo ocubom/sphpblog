@@ -122,14 +122,14 @@
 
 		// Long Date
 		$date_long = '';
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotOneSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotTwoSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotOneSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotTwoSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotThreeSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotFourSeparator' ];
 
 		// Short Date
 		$date_short = '';
@@ -139,53 +139,53 @@
 		$full_century = $dateArray[ 'sDate_fullYear' ];
 		switch ( $dateArray[ 'sDate_order' ] ) {
 			case 'Month/Day/Year':
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 			case 'Day/Month/Year':
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 			case 'Year/Month/Day':
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 			case 'Month/Year/Day':
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 			case 'Day/Year/Month':
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 			case 'Year/Day/Month':
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'month_decimal', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 			case 'Day/MMM/Year':
-				$date_short = $date_short . date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'month_short', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
-				$date_short = $date_short . $separator;
-				$date_short = $date_short . date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= date_convert( 'day', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'month_short', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
+				$date_short  .= $separator;
+				$date_short  .= date_convert( 'year', $leading_zero_day, $leading_zero_month, $full_century, $time_stamp );
 				break;
 		}
 
@@ -199,24 +199,24 @@
 
 		if ( $time_clockFormat == '24' ) {
 			if ( $leading_zero_hour == 'on' ) {
-				$time_str = $time_str . date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
 			} else {
-				$time_str = $time_str . date( 'G', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'G', $time_stamp ) . $separator . date( 'i', $time_stamp );
 			}
 		} else {
 			if ( $leading_zero_hour == 'on' ) {
-				$time_str = $time_str . date( 'h', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'h', $time_stamp ) . $separator . date( 'i', $time_stamp );
 				if ( date( 'a', $time_stamp ) == 'am' ) {
-					$time_str = $time_str . $before_noon;
+					$time_str  .= $before_noon;
 				} else {
-					$time_str = $time_str . $after_noon;
+					$time_str  .= $after_noon;
 				}
 			} else {
-				$time_str = $time_str . date( 'g', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'g', $time_stamp ) . $separator . date( 'i', $time_stamp );
 				if ( date( 'a', $time_stamp ) == 'am' ) {
-					$time_str = $time_str . $before_noon;
+					$time_str  .= $before_noon;
 				} else {
-					$time_str = $time_str . $after_noon;
+					$time_str  .= $after_noon;
 				}
 			}
 		}
@@ -225,29 +225,29 @@
 		$str = '';
 		switch ( $dateArray[ 'eFormat_slotOne' ] ) {
 			case 'long':
-				$str = $str . $date_long;
+				$str  .= $date_long;
 				break;
 			case 'short':
-				$str = $str . $date_short;
+				$str  .= $date_short;
 				break;
 			case 'time':
-				$str = $str . $time_str;
+				$str  .= $time_str;
 				break;
 			case 'none':
 				break;
 		}
 
-		$str = $str . $dateArray[ 'eFormat_separator' ];
+		$str  .= $dateArray[ 'eFormat_separator' ];
 
 		switch ( $dateArray[ 'eFormat_slotTwo' ] ) {
 			case 'long':
-				$str = $str . $date_long;
+				$str  .= $date_long;
 				break;
 			case 'short':
-				$str = $str . $date_short;
+				$str  .= $date_short;
 				break;
 			case 'time':
-				$str = $str . $time_str;
+				$str  .= $time_str;
 				break;
 			case 'none':
 				break;
@@ -277,14 +277,14 @@
 
 		// Long Date
 		$date_long = '';
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotOneSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotTwoSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotThreeSeparator' ];
-		$date_long = $date_long . date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
-		$date_long = $date_long . $dateArray[ 'lDate_slotFourSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotOne' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotOneSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotTwo' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotTwoSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotThree' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotThreeSeparator' ];
+		$date_long  .= date_convert( $dateArray[ 'lDate_slotFour' ], $dateArray[ 'lDate_leadZeroDay' ], 'off', 'on', $time_stamp );
+		$date_long  .= $dateArray[ 'lDate_slotFourSeparator' ];
 
 		// Short Date
 		$date_short = '';
@@ -308,24 +308,24 @@
 
 		if ( $time_clockFormat == '24' ) {
 			if ( $leading_zero_hour == 'on' ) {
-				$time_str = $time_str . date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'H', $time_stamp ) . $separator . date( 'i', $time_stamp );
 			} else {
-				$time_str = $time_str . date( 'G', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'G', $time_stamp ) . $separator . date( 'i', $time_stamp );
 			}
 		} else {
 			if ( $leading_zero_hour == 'on' ) {
-				$time_str = $time_str . date( 'h', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'h', $time_stamp ) . $separator . date( 'i', $time_stamp );
 				if ( date( 'a', $time_stamp ) == 'am' ) {
-					$time_str = $time_str . $before_noon;
+					$time_str  .= $before_noon;
 				} else {
-					$time_str = $time_str . $after_noon;
+					$time_str  .= $after_noon;
 				}
 			} else {
-				$time_str = $time_str . date( 'g', $time_stamp ) . $separator . date( 'i', $time_stamp );
+				$time_str  .= date( 'g', $time_stamp ) . $separator . date( 'i', $time_stamp );
 				if ( date( 'a', $time_stamp ) == 'am' ) {
-					$time_str = $time_str . $before_noon;
+					$time_str  .= $before_noon;
 				} else {
-					$time_str = $time_str . $after_noon;
+					$time_str  .= $after_noon;
 				}
 			}
 		}
@@ -334,22 +334,22 @@
 		$str = '';
 		switch( $whatyouwant ) {
 			case 'NUMDAY':
-				$str = $str . $numeric_day;
+				$str  .= $numeric_day;
 				break;
 			case 'NUMMONTH':
-				$str = $str . $numeric_month;
+				$str  .= $numeric_month;
 				break;
 			case 'NUMYEAR':
-				$str = $str . "'" . $numeric_year;
+				$str  .= "'" . $numeric_year;
 				break;
 			case 'ALPHAMONTH':
-				$str = $str . $alpha_month;
+				$str  .= $alpha_month;
 				break;
 			case 'TIMENORMAL':
-				$str = $str . $time_str;
+				$str  .= $time_str;
 				break;
 			case 'SUFFIXDAY':
-				$str = $str . $numeric_day_suffix;
+				$str  .= $numeric_day_suffix;
 				break;
 		}
 

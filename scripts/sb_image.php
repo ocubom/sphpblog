@@ -30,7 +30,7 @@
 		$str = NULL;
 		if ($contents) {
 			for ( $i = 0; $i < count( $contents ); $i++ ) {
-				$str = $str . '<a href='.$dir.$contents[$i].' target=_blank>'.$contents[$i].'</a><br />';
+				$str  .= '<a href='.$dir.$contents[$i].' target=_blank>'.$contents[$i].'</a><br />';
 			}
 		}
 		

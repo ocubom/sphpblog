@@ -215,7 +215,7 @@
 			var start = obj.selectionStart;
 			var end   = obj.selectionEnd;
 	
-			obj.value = obj.value.substr(0, start) 
+			obj.value .= substr(0, start) 
 				+ text 
 				+ obj.value.substr(end, obj.value.length);
 		}
@@ -295,7 +295,7 @@
 			text = ' ' + text + ' ';
 			if (obj.createTextRange && obj.caretPos) {
 				var caretPos = obj.caretPos;
-				caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+				caretPos.text .= charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
 				return;
 			}
 		} else if (obj.selectionStart!==false) {
@@ -303,7 +303,7 @@
 			var start = obj.selectionStart;
 			var end   = obj.selectionEnd;
 			
-			obj.value = obj.value.substr(0, start) + text + obj.value.substr(end, obj.value.length);
+			obj.value .= substr(0, start) + text + obj.value.substr(end, obj.value.length);
 		}
 		
 		if (start != null) {

@@ -76,9 +76,9 @@
 		// Array( $id_number, $name_str, $space_count );
 		$str = '';
 		for ( $i = 0; $i < count( $catArray ); $i++ ) {
-			$str = $str . implode( '|', $catArray[$i] );
+			$str  .= implode( '|', $catArray[$i] );
 			if ( $i < count( $catArray ) - 1 ) {
-				$str = $str . '|';
+				$str  .= '|';
 			}
 		}
 		

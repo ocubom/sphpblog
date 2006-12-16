@@ -29,12 +29,12 @@
 	
 	$subject=$lang_string['contactsent'] . $blog_config[ 'blog_title' ];
 	$body='<b>' . $lang_string[ 'name' ] . '</b> ' . $_POST[ 'name' ] . '<br />';
-	$body=$body . '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
-	$body=$body . '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
-	$body=$body . '<b>' . $lang_string[ 'email' ] . '</b> ' . $_POST[ 'email' ] . '<br />';
-	$body=$body . '<b>' . $lang_string[ 'subject' ] . '</b> ' . $_POST[ 'subject' ] . '<br /><br />';
-	$body=$body . '<b>' . $lang_string[ 'comment' ] . '</b><br /><br />';
-	$body=$body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
+	$body .= '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
+	$body .= '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
+	$body .= '<b>' . $lang_string[ 'email' ] . '</b> ' . $_POST[ 'email' ] . '<br />';
+	$body .= '<b>' . $lang_string[ 'subject' ] . '</b> ' . $_POST[ 'subject' ] . '<br /><br />';
+	$body .= '<b>' . $lang_string[ 'comment' ] . '</b><br /><br />';
+	$body .= sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
 	$ok=false;
 	if ($_POST[ 'capcha_contact' ] == $_SESSION[ 'capcha_contact' ] AND $_SESSION[ 'capcha_contact' ] != '' ) {
 		$ok=sb_mail( $_POST[ 'email' ], $blog_config[ 'blog_email' ], $subject, $body, false );

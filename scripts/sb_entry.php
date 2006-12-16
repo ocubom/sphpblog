@@ -246,9 +246,9 @@
 		for ( $i = 0; $i < count( $keys ); $i++ ) {
 			$key = $keys[ $i ];
 			if ( $i > 0 ) {
-				$str = $str . $separator;
+				$str  .= $separator;
 			}
-			$str = $str . $key . $separator . $array[ $key ];
+			$str  .= $key . $separator . $array[ $key ];
 		}
 		
 		return ( $str );
@@ -329,9 +329,9 @@
 		for ( $i = 0; $i < count( $keys ); $i++ ) {
 			$key = $keys[ $i ];
 			if ( $i > 0 ) {
-				$str = $str . '|';
+				$str  .= '|';
 			}
-			$str = $str . $key . '|' . $result_array[ $key ];
+			$str  .= $key . '|' . $result_array[ $key ];
 		}
 		
 		$dir = 'content/'.$y.'/'.$m.'/'.$entry;

@@ -26,8 +26,7 @@
 		return ( $str );
 	}
 	
-	function htmlDecode( $temp_str ) {		
-		// $temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+	function htmlDecode( $temp_str ) {
 		$trans_str = get_html_translation_table(HTML_ENTITIES);
 		foreach($trans_str as $k => $v){
 			$ttr[$v] = utf8_encode($k);
@@ -253,7 +252,7 @@
 			$temp_str = str_replace( "\n", '<br />', $temp_str );
 			$temp_str = str_replace( "\r", '<br />', $temp_str );
 			// $temp_str = str_replace( chr(10), '<br />', $temp_str );
-			$str_out = $str_out . $temp_str;
+			$str_out  .= $temp_str;
 			
 			// Store all text AFTER the tag
 			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
@@ -281,14 +280,16 @@
 				//
 				// Decode HTML entities between the tags.
 				if ( $strip_tags === false ) {
-					// $temp_str = html_entity_decode( $temp_str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+					/*
 					$trans_str = get_html_translation_table(HTML_ENTITIES);
 					foreach($trans_str as $k => $v){
 						$ttr[$v] = utf8_encode($k);
 					}
 					$temp_str = strtr($temp_str, $ttr);	
 					
-					$str_out = $str_out . $temp_str;
+					$str_out  .= $temp_str;
+					*/
+					$str_out  .= htmlDecode($temp_str);
 				}
 				
 				// Store sub_string after the tag.
@@ -340,7 +341,7 @@
 		$str_offset = strpos( $str, $tag_begin );
 		while ( $str_offset !== false ) {
 			// Store sub_string before the tag.
-			$str_out = $str_out . substr( $str, 0, $str_offset );
+			$str_out  .= substr( $str, 0, $str_offset );
 			// Store sub_string after the tag.
 			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
 			
@@ -373,26 +374,26 @@
 					// Append HTML tag.
 					if ( isset( $attrib_new ) ) {
 						if ( $attrib_new == 'false' ) {
-							$str_out = $str_out . "<a href=\"" . $str_url . "\" ";
+							$str_out  .= "<a href=\"" . $str_url . "\" ";
 							if ( $add_no_follow == true ) {
-								$str_out = $str_out . "rel=\"nofollow\">";
+								$str_out  .= "rel=\"nofollow\">";
 							} else {
-								$str_out = $str_out . ">";
+								$str_out  .= ">";
 							}
 						} else {
-							$str_out = $str_out . "<a href=\"" . $str_url . "\" target=\"_blank\" ";
+							$str_out  .= "<a href=\"" . $str_url . "\" target=\"_blank\" ";
 							if ( $add_no_follow == true ) {
-								$str_out = $str_out . "rel=\"nofollow\">";
+								$str_out  .= "rel=\"nofollow\">";
 							} else {
-								$str_out = $str_out . ">";
+								$str_out  .= ">";
 							}
 						}
 					} else {
-						$str_out = $str_out . "<a href=\"" . $str_url . "\" target=\"_blank\" ";
+						$str_out  .= "<a href=\"" . $str_url . "\" target=\"_blank\" ";
 						if ( $add_no_follow == true ) {
-							$str_out = $str_out . "rel=\"nofollow\">";
+							$str_out  .= "rel=\"nofollow\">";
 						} else {
-							$str_out = $str_out . ">";
+							$str_out  .= ">";
 						}
 					}
 				}
@@ -406,9 +407,9 @@
 				if ( $str_offset !== false ) {
 					$str_link = substr( $str, 0, $str_offset );
 					if ( $strip_tags == false ) {
-						$str_out = $str_out . $str_link . '</a>';
+						$str_out  .= $str_link . '</a>';
 					} else {
-						$str_out = $str_out . $str_link;
+						$str_out  .= $str_link;
 					}					
 					$str = substr( $str, $str_offset + strlen( $tag_close ) );
 				}
@@ -433,14 +434,14 @@
 					if ( $strip_tags == false ) {
 						// More than 56 characters
 						if ($str_offset >= 56 && (substr( $str, 0, 7)) == "http://"){
-							$str_out = $str_out . $str_link . ' ... ' . $str_link_fine . '</a>';
+							$str_out  .= $str_link . ' ... ' . $str_link_fine . '</a>';
 						} else{
 							// Less than 56 characters
-							$str_out = $str_out . $str_link . '</a>';
+							$str_out  .= $str_link . '</a>';
 						}
 					} else {
 						// Strip tags...
-						$str_out = $str_out . $str_link;
+						$str_out  .= $str_link;
 					}
 					
 					$str = substr( $str, $str_offset + strlen( $tag_close ) );
@@ -474,7 +475,7 @@
 		while ( $str_offset !== false ) {
 		
 			// Store sub_string before the tag.
-			$str_out = $str_out . substr( $str, 0, $str_offset );
+			$str_out  .= substr( $str, 0, $str_offset );
 			
 			// Store sub_string after the tag.
 			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
@@ -575,32 +576,32 @@
 						
 						if ( $attrib_popup == 'true' ) {
 							// Pop Up True
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
+							$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
 							if ( isset( $attrib_float ) ) {
 								switch ( $attrib_float ) {
 									case 'left';
-										$str_out = $str_out . ' id="img_float_left"';
+										$str_out  .= ' id="img_float_left"';
 										break;
 									case 'right';
-										$str_out = $str_out . ' id="img_float_right"';
+										$str_out  .= ' id="img_float_right"';
 										break;
 								}
 							}
-							$str_out = $str_out . ' /></a>';
+							$str_out  .= ' /></a>';
 						} else {
 							// Pop Up False
-							$str_out = $str_out . '<img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
+							$str_out  .= '<img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
 							if ( isset( $attrib_float ) ) {
 								switch ( $attrib_float ) {
 									case 'left';
-										$str_out = $str_out . ' id="img_float_left"';
+										$str_out  .= ' id="img_float_left"';
 										break;
 									case 'right';
-										$str_out = $str_out . ' id="img_float_right"';
+										$str_out  .= ' id="img_float_right"';
 										break;
 								}
 							}
-							$str_out = $str_out . ' />';
+							$str_out  .= ' />';
 						}
 										
 						// Store sub_string after the tag.
@@ -611,12 +612,12 @@
 						// Append HTML tag.
 						if ( isset( $attrib_popup ) ) {
 							if ( $attrib_popup == 'true' ) {
-								$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';
+								$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';
 							} else {
-								$str_out = $str_out . '<img src="' . $str_url . '" border="0" alt="" />';		
+								$str_out  .= '<img src="' . $str_url . '" border="0" alt="" />';		
 							}
 						} else {
-							$str_out = $str_out . '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';	
+							$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';	
 						}
 										
 						// Store sub_string after the tag.
@@ -658,7 +659,7 @@
 				if ( $trim_off_end == true ) {
 					$string = $tmpstr;
 				} else {
-					$tmpstr = $tmpstr . substr( $string, $tagend, strlen( $string ) );
+					$tmpstr  .= substr( $string, $tagend, strlen( $string ) );
 					$string = $tmpstr;
 				}
 			} else {			
@@ -666,7 +667,7 @@
 				//Now put in the More link
 				if ( $url != '' ){
 					$read_more = isset( $lang_string['read_more'] ) ? $lang_string['read_more'] : 'Read more...';
-					$string = $string . ' <a href="' . $url . '">' . $read_more . '</a>';
+					$string  .= ' <a href="' . $url . '">' . $read_more . '</a>';
 				}
 			}
 		}

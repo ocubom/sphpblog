@@ -44,11 +44,11 @@
 
 		$entry_array[ 'entry' ] = '<table width="100%"  border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
 
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<td>' . $lang_string[ 'errorline1' ] . '<br><br>';
+		$entry_array[ 'entry' ]  .= '<td>' . $lang_string[ 'errorline1' ] . '<br><br>';
 
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'errorline2' ] . '<br><br>';
+		$entry_array[ 'entry' ]  .= $lang_string[ 'errorline2' ] . '<br><br>';
 
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . $lang_string[ 'clientid' ] . @gethostbyaddr(getIP()) . '</td></tr></table>';
+		$entry_array[ 'entry' ]  .= $lang_string[ 'clientid' ] . @gethostbyaddr(getIP()) . '</td></tr></table>';
 
 	
 

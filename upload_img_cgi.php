@@ -15,74 +15,61 @@
 	// POST PROCESSING
 	// ---------------
 	
-	global $ok;
-	$ok = false;
-	
-	if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
-		if ( $_FILES[ 'userfile' ][ 'error' ] == 0 ) {
-			if (!file_exists('images')) {
-				$oldumask = umask(0);
-				@mkdir('images', 0777 );
-				@umask($oldumask);
-			}
-						
-			$uploaddir = 'images/';
-			$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name']);
-			
-			if ( @getimagesize($_FILES['userfile']['tmp_name']) == FALSE ){
-				echo('Image is not valid or not an image file.');
-				exit;
-				// redirect_to_url( 'upload_img.php' );
-			}
-			
-			// New code for limiting the files that can be uploaded - provided by ReZEN (rezen@xorcrew.net)
-			$upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
-			$extension = strtolower(substr(strrchr($uploadfile, "."), 1));
-			foreach ($upload_denied_extentions AS $denied_extention) {
-				if($denied_extention == $extension) {
-					echo('That filetype is not allowed');
+	for ($i=0;$i<count($_FILES['userfile']);$i++) {
+		if ($ok == null) {
+			$ok = false;
+		}
+		if (is_uploaded_file($_FILES['userfile']['tmp_name'][$i])) {
+			if ( $_FILES[ 'userfile' ][ 'error' ][$i] == 0 ) {
+				if (!file_exists('images')) {
+					$oldumask = umask(0);
+					@mkdir('images', 0777 );
+					@umask($oldumask);
+				}
+							
+				$uploaddir = 'images/';
+				$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name'][$i]);
+				
+				if ( @getimagesize($_FILES['userfile']['tmp_name'][$i]) == FALSE ){
+					echo('Image is not valid or not an image file.');
 					exit;
-				}    
-			}		
-	
-			if ( move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile ) ) {
-				chmod( $uploadfile, 0777 );
-				$ok = true;
-			} else {
-				$ok = false;
+					// redirect_to_url( 'upload_img.php' );
+				}
+				
+				// New code for limiting the files that can be uploaded - provided by ReZEN (rezen@xorcrew.net)
+				$upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
+				$extension = strtolower(substr(strrchr($uploadfile, "."), 1));
+				foreach ($upload_denied_extentions AS $denied_extention) {
+					if($denied_extention == $extension) {
+						echo('That filetype is not allowed');
+						exit;
+					}    
+				}		
+		
+				if ( move_uploaded_file($_FILES['userfile']['tmp_name'][$i], $uploadfile ) ) {
+					chmod( $uploadfile, 0777 );
+					$ok = true;
+				} else {
+					$ok = false;
+				}
 			}
 		}
 	}
-	
 	if ( $ok === true ) {
 		redirect_to_url( 'index.php' );
 	}
-	
 	// ------------
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $ok;
-		
-		// SUBJECT
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
-		
-		// PAGE CONTENT BEGIN
-		ob_start();
-		
+		global $lang_string, $user_colors;
 		if ( $ok !== true ) {
 			echo( $lang_string[ 'error' ] . $ok . '<p />' );
-		} else {
-			echo( $lang_string[ 'success' ] . '<p />' );
 		}
-		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
-		
-		// PAGE CONTENT END
-		$entry_array[ 'entry' ] = ob_get_clean();
-		
-		// THEME ENTRY
-		echo( theme_staticentry( $entry_array ) );
+		//echo(count($_FILES['userfile']));
+		//print_r($_FILES['userfile']);
+		//echo($_FILES['userfile']['name'][0]);
+		echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a><br /><br />' );
 	}
 	
 	// ----

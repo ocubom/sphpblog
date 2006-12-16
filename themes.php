@@ -73,9 +73,9 @@
 										if ( $lang_name ) {
 											$str = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
 											if ( $blog_theme == $lang_dir ) {
-												$str = $str . ' selected';
+												$str  .= ' selected';
 											}
-											$str = $str . '>' . $lang_name . '</option>';
+											$str  .= '>' . $lang_name . '</option>';
 											
 											echo( $str );
 										}

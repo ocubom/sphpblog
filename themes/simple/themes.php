@@ -333,17 +333,17 @@
 
 	   $blog_content = "\n";
 
-		$blog_content = $blog_content . '<div class="blog_subject">' . $entry_array[ 'title' ] . '</div>' . "\n";
-		$blog_content = $blog_content . '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n";
+		$blog_content  .= '<div class="blog_subject">' . $entry_array[ 'title' ] . '</div>' . "\n";
+		$blog_content  .= '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n";
 
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 			// Show 'delete' button if the user is logged-in...
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">[ ' . $entry_array[ 'delete' ][ 'name' ] . ' ]</a><br /><br />' . "\n";
+				$blog_content  .= '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">[ ' . $entry_array[ 'delete' ][ 'name' ] . ' ]</a><br /><br />' . "\n";
 			}
 		}
 
-		$blog_content = $blog_content . $entry_array[ 'excerpt' ] . "<p>\n";
+		$blog_content  .= $entry_array[ 'excerpt' ] . "<p>\n";
 
 		if ( (isset( $entry_array[ 'blog_name' ] ) ) && ($entry_array[ 'blog_name' ] != "") ) {
 		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'">[ ' . $entry_array[ 'blog_name' ] . " ]</a><p>\n";
@@ -351,7 +351,7 @@
 		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'">[ ' . $entry_array[ 'url' ] . " ]</a><p>\n";
 		}
 
-		$blog_content = $blog_content . '<hr />' . "\n";
+		$blog_content  .= '<hr />' . "\n";
 
 		return $blog_content;
 	}
@@ -723,7 +723,7 @@
 		$result = menu_display_links();
 		$loginString = menu_display_login();
 		if ( $loginString ) {
-			$result[ 'content' ] = $result[ 'content' ] . '<hr />' . $loginString;
+			$result[ 'content' ]  .= '<hr />' . $loginString;
 		}
 		$html = theme_menu_block( $result, 'LINKS', 'SidebarLinks', $template_file );
 		return ( $html );

@@ -80,12 +80,12 @@
 					$string = $color_def[$i][ 'string' ];
 					$str = '';
 					if ( $i == 0 ) {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked> ';
+						$str  .= '<input type="radio" name="area" value="' . $id . '" checked> ';
 					} else {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '"> ';
+						$str  .= '<input type="radio" name="area" value="' . $id . '"> ';
 					}
-					$str = $str . '<span class="swatch" style="background: #' . $color . ';" id="' . $id . '_swatch">&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
-					$str = $str . '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6"> ' . $string . '<br />' . "\n";
+					$str  .= '<span class="swatch" style="background: #' . $color . ';" id="' . $id . '_swatch">&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
+					$str  .= '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6"> ' . $string . '<br />' . "\n";
 					echo ( $str );
 				}
 				echo ('</td>' . "\n");
@@ -97,12 +97,12 @@
 					$string = $color_def[$i][ 'string' ];
 					$str = '';
 					if ( $i == 0 ) {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '" checked> ';
+						$str  .= '<input type="radio" name="area" value="' . $id . '" checked> ';
 					} else {
-						$str = $str . '<input type="radio" name="area" value="' . $id . '"> ';
+						$str  .= '<input type="radio" name="area" value="' . $id . '"> ';
 					}
-					$str = $str . '<span class="swatch" style="background: #' . $color . ';" id="' . $id . '_swatch">&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
-					$str = $str . '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6"> ' . $string . '<br />' . "\n";
+					$str  .= '<span class="swatch" style="background: #' . $color . ';" id="' . $id . '_swatch">&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
+					$str  .= '<input type="text" name="' . $id . '" value="' . $color . '" size="7" maxlength="6"> ' . $string . '<br />' . "\n";
 					echo ( $str );
 				}
 				echo ('</td>' . "\n");
@@ -134,7 +134,7 @@
 							$preset_file = substr( $color_files[ $i ], 0, -4);
 							
 							$str = '<option label="' . $preset_name . '" value="' . $preset_name . '|' . $preset_file . '|' . $result . '"';
-							$str = $str . '>' . $preset_name . '</option>' . "\n";
+							$str  .= '>' . $preset_name . '</option>' . "\n";
 							
 							echo( $str );
 						}
@@ -156,7 +156,7 @@
 								$preset_file = substr( $color_files[ $i ], 0, -4);
 								
 								$str = '<option label="' . $preset_name . '" value="' . $preset_name . '|' . $preset_file . '|' . $result . '"';
-								$str = $str . '>' . $preset_name . '</option>' . "\n";
+								$str  .= '>' . $preset_name . '</option>' . "\n";
 								
 								echo( $str );
 							}

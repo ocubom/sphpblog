@@ -474,9 +474,9 @@
 				
 				$label = '';
 				for ( $j = 0; $j < $space_count; $j++ ) {
-					$label = $label . '&nbsp;';
+					$label  .= '&nbsp;';
 				}
-				$label = $label . $name_str;
+				$label  .= $name_str;
 				
 				$selected = false;
 				for ( $j=0; $j < count( $selected_cat_array ); $j++) {

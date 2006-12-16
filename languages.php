@@ -60,11 +60,11 @@
 									if ( $lang_name ) {
 										$str_temp = '<option label="' . $lang_name . '" value="' . $lang_dir . '"';
 										if ( $blog_config[ 'blog_language' ] == $lang_dir ) {
-											$str_temp = $str_temp . ' selected';
+											$str_temp  .= ' selected';
 										}
-										$str_temp = $str_temp . '>' . $lang_name . "</option>\n";
+										$str_temp  .= '>' . $lang_name . "</option>\n";
 										
-										$str = $str . $str_temp;
+										$str  .= $str_temp;
 									}
 								}
 								$sub_dir = readdir( $dhandle );

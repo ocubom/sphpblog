@@ -54,53 +54,53 @@
 		$img_path = "themes/" . $blog_theme . "/images/";
 
 		$blog_content = "";
-		$blog_content = $blog_content . "\n<!-- BLOG ENTRY BEGIN -->\n";
+		$blog_content  .= "\n<!-- BLOG ENTRY BEGIN -->\n";
 
 		// New 0.4.4
 		// You must have this if you are using the trackback feature.
       if ( $blog_config[ "blog_trackback_enabled" ] ) {
-   		$blog_content = $blog_content . "<!--\n";
-   		$blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
-   		$blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
-   		$blog_content = $blog_content . '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
-   		$blog_content = $blog_content . '<rdf:Description' . "\n";
-   		$blog_content = $blog_content . '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
-   		$blog_content = $blog_content . '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
-   		$blog_content = $blog_content . '</rdf:RDF>' . "\n";
-   		$blog_content = $blog_content . '-->' . "\n";
+   		$blog_content  .= "<!--\n";
+   		$blog_content  .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
+   		$blog_content  .= '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
+   		$blog_content  .= '         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">' . "\n";
+   		$blog_content  .= '<rdf:Description' . "\n";
+   		$blog_content  .= '    rdf:about="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+   		$blog_content  .= '    dc:identifier="' . $entry_array[ 'permalink' ][ 'url' ] . '"' . "\n";
+   		$blog_content  .= '    dc:title="' . $entry_array[ 'subject' ] . '"' . "\n";
+   		$blog_content  .= '    trackback:ping="' . $entry_array[ 'trackback' ][ 'ping_url' ] . '" />' . "\n";
+   		$blog_content  .= '</rdf:RDF>' . "\n";
+   		$blog_content  .= '-->' . "\n";
 	   }
 
 		// Display SUBJECT Line
-		$blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-		$blog_content = $blog_content . '<br clear="all" /><div class="blog_title"><a href="' . $entry_array[ 'comment' ][ 'url' ] . '">' . $entry_array[ 'subject' ];
+		$blog_content  .= "\n<!-- BLOG TITLE BEGIN -->\n";
+		$blog_content  .= '<br clear="all" /><div class="blog_title"><a href="' . $entry_array[ 'comment' ][ 'url' ] . '">' . $entry_array[ 'subject' ];
 
 		if ( isset( $entry_array[ 'comment' ][ 'comment_count' ] ) ) {
-			$blog_content = $blog_content . ' (' . $entry_array[ 'comment' ][ 'comment_count' ] . ')';
+			$blog_content  .= ' (' . $entry_array[ 'comment' ][ 'comment_count' ] . ')';
 		}
 
-		$blog_content = $blog_content . '</a><a name="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "<br />\n";
+		$blog_content  .= '</a><a name="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "<br />\n";
 
-		$blog_content = $blog_content . "</div>\n";
-		$blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
+		$blog_content  .= "</div>\n";
+		$blog_content  .= "\n<!-- BLOG TITLE BEGIN -->\n";
 
-		$blog_content = $blog_content . "\n<!-- BLOG BODY BEGIN -->\n";
-		$blog_content = $blog_content . '<div class="blog_body">' . "\n\t";
+		$blog_content  .= "\n<!-- BLOG BODY BEGIN -->\n";
+		$blog_content  .= '<div class="blog_body">' . "\n\t";
 
 		// Display DATE
-		$blog_content = $blog_content . '<div class="blog_date">' . $entry_array[ 'date' ];
+		$blog_content  .= '<div class="blog_date">' . $entry_array[ 'date' ];
 
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show "( x views )" string...
-			$blog_content = $blog_content . " ( " . $entry_array[ 'comment' ][ 'count' ] . " )";
+			$blog_content  .= " ( " . $entry_array[ 'comment' ][ 'count' ] . " )";
 		}
-		$blog_content = $blog_content . "\n\t";
+		$blog_content  .= "\n\t";
 
 		// Display CATEGORIES
 		// This is an array. There can be multiple categories per entry.
 		if ( array_key_exists( "categories", $entry_array ) ) {
-			$blog_content = $blog_content . " - ";
+			$blog_content  .= " - ";
 			for ( $i = 0; $i < count( $entry_array[ 'categories' ] ); $i++ ) {
 				$blog_content .= '<a href="index.php?category=' . $entry_array[ 'categories_id' ][$i] . '">' . $entry_array[ 'categories' ][$i] . '</a>';
 				if ( $i < count( $entry_array[ 'categories' ] ) - 1 ) {
@@ -108,46 +108,46 @@
 				}
 			}
 		}
-		$blog_content = $blog_content . "</div>\n\t\t";
+		$blog_content  .= "</div>\n\t\t";
 
 		// Display BODY TEXT
-		$blog_content = $blog_content . $entry_array[ 'entry' ];
-		$blog_content = $blog_content . "\n\t</div>";
-		$blog_content = $blog_content . "\n<!-- BLOG BODY END -->\n";
+		$blog_content  .= $entry_array[ 'entry' ];
+		$blog_content  .= "\n\t</div>";
+		$blog_content  .= "\n<!-- BLOG BODY END -->\n";
 
-		$blog_content = $blog_content . "\n<!-- BLOG FOOTER BEGIN -->\n";
+		$blog_content  .= "\n<!-- BLOG FOOTER BEGIN -->\n";
 		// Display ADD COMMENT, COUNT,TRACKBACK, PERMALINK, and RATING
 		$comment_area = "";
 
 		if ( isset( $entry_array[ 'trackback' ][ 'url' ] ) ) {
 			// Show 'trackback' string...
-			$comment_area = $comment_area . '<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
+			$comment_area  .= '<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
 		}
 
 		if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
 			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
 				// Show 'permalink' string...
 				if ( $comment_area != "" ) {
-					$comment_area = $comment_area . '&nbsp;|&nbsp;';
+					$comment_area  .= '&nbsp;|&nbsp;';
 				}
-				$comment_area = $comment_area . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
+				$comment_area  .= '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
 			}
 		}
 
 		if ( isset( $entry_array['relatedlink']['url'] ) ) {
 			// Show 'relatedlink' symbol - New to 0.4.6
 			if ( $comment_area != "" ) {
-					$comment_area = $comment_area . '&nbsp;|&nbsp;';
+					$comment_area  .= '&nbsp;|&nbsp;';
 				}
-			$comment_area = $comment_area . '<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";
+			$comment_area  .= '<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";
 		}
 
 		if ( isset( $entry_array[ 'stars_nototals' ] ) ) {
 			// Show 'rating' stars...
 			if ( $comment_area != "" ) {
-					$comment_area = $comment_area . '&nbsp;|&nbsp;';
+					$comment_area  .= '&nbsp;|&nbsp;';
 				}
-			$comment_area = $comment_area . $entry_array[ 'stars_nototals' ] . "\n";
+			$comment_area  .= $entry_array[ 'stars_nototals' ] . "\n";
 		}
 
 		// Display EDIT and DELETE buttons if the user is logged in.
@@ -155,31 +155,31 @@
 			// Show "edit" and "delete" buttons if the user is logged-in...
 			if ( isset( $entry_array[ 'edit' ][ 'url' ] ) ) {
 				if ( $comment_area != "" ) {
-					$comment_area = $comment_area . '&nbsp;|&nbsp;';
+					$comment_area  .= '&nbsp;|&nbsp;';
 				}
-				$comment_area = $comment_area . "\t\t" . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '">' . $entry_array[ 'edit' ][ 'name' ] . '</a>' . "\n";
+				$comment_area  .= "\t\t" . '<a href="' . $entry_array[ 'edit' ][ 'url' ] . '">' . $entry_array[ 'edit' ][ 'name' ] . '</a>' . "\n";
 			}
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
 				if ( $comment_area != "" ) {
-					$comment_area = $comment_area . '&nbsp;|&nbsp;';
+					$comment_area  .= '&nbsp;|&nbsp;';
 				}
-				$comment_area = $comment_area . "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">' . $entry_array[ 'delete' ][ 'name' ] . '</a>' . "\n";
+				$comment_area  .= "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">' . $entry_array[ 'delete' ][ 'name' ] . '</a>' . "\n";
 			}
 			if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
 				if ( $comment_area != "" ) {
-					$comment_area = $comment_area . '&nbsp;|&nbsp;';
+					$comment_area  .= '&nbsp;|&nbsp;';
 				}
-				$comment_area = $comment_area . "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '">' . $entry_array[ 'ban' ][ 'name' ] . '</a>' . "\n";
+				$comment_area  .= "\t\t" . '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '">' . $entry_array[ 'ban' ][ 'name' ] . '</a>' . "\n";
 			}
 		}
 
 		if ( $comment_area != "" ) {
-			$blog_content = $blog_content . "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
+			$blog_content  .= "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
 		}
 
-		$blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
+		$blog_content  .= "\n<!-- FOOTER ENTRY END -->\n";
 
-		$blog_content = $blog_content . "\n<!-- BLOG ENTRY END -->\n";
+		$blog_content  .= "\n<!-- BLOG ENTRY END -->\n";
 
 		return $blog_content;
 	}
@@ -207,29 +207,29 @@
 		$img_path = 'themes/' . $blog_theme . '/images/';
 
 		$blog_content = "";
-		$blog_content = $blog_content . "\n" . '<!-- BLOG ENTRY BEGIN -->' . "\n";
+		$blog_content  .= "\n" . '<!-- BLOG ENTRY BEGIN -->' . "\n";
 
 		// SUBJECT
-		$blog_content = $blog_content . '<div class="blog_title">' . $entry_array[ 'title' ] . "\n";
+		$blog_content  .= '<div class="blog_title">' . $entry_array[ 'title' ] . "\n";
 
 		if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
-			$blog_content = $blog_content . "\t" . '<span class="blog_title_buttons">' . "\n";
+			$blog_content  .= "\t" . '<span class="blog_title_buttons">' . "\n";
 
 			// Show 'delete' button if the user is logged-in...
 			if ( isset( $entry_array[ 'delete' ][ 'url' ] ) ) {
-				$blog_content = $blog_content . "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">' . $entry_array[ 'delete' ][ 'name' ] . '</a>' . "\n";
+				$blog_content  .= "\t\t" . '<a href="' . $entry_array[ 'delete' ][ 'url' ] . '">' . $entry_array[ 'delete' ][ 'name' ] . '</a>' . "\n";
 			}
 
-			$blog_content = $blog_content . "\t" . '</span>' . "\n";
+			$blog_content  .= "\t" . '</span>' . "\n";
 		}
 
-		$blog_content = $blog_content . '</div>' . "\n";
+		$blog_content  .= '</div>' . "\n";
 
-		$blog_content = $blog_content . '<div class="blog_body">' . "\n\t";
-		$blog_content = $blog_content . '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n\t\t";
+		$blog_content  .= '<div class="blog_body">' . "\n\t";
+		$blog_content  .= '<div class="blog_date">' . $entry_array[ 'date' ] . '</div>' . "\n\t\t";
 
 		// Blog content body...
-		$blog_content = $blog_content . $entry_array[ 'excerpt' ] . "<p>\n";
+		$blog_content  .= $entry_array[ 'excerpt' ] . "<p>\n";
 
 		if ( (isset( $entry_array[ 'blog_name' ] ) ) && ($entry_array[ 'blog_name' ] != "") ) {
 		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'" target="_blank">[ ' . $entry_array[ 'blog_name' ] . " ]</a><p>\n";
@@ -237,11 +237,11 @@
 		   $blog_content = $blog_content . '<a href="'.$entry_array[ 'url' ].'" target="_blank">[ ' . $entry_array[ 'url' ] . " ]</a><p>\n";
 		}
 
-		$blog_content = $blog_content . "\n\t" . '</div>';
+		$blog_content  .= "\n\t" . '</div>';
 
-		$blog_content = $blog_content . "<br />";
+		$blog_content  .= "<br />";
 
-		$blog_content = $blog_content . "\n" . '<!-- BLOG ENTRY END -->' . "\n";
+		$blog_content  .= "\n" . '<!-- BLOG ENTRY END -->' . "\n";
 
 		return $blog_content;
 	}

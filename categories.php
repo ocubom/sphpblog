@@ -148,9 +148,9 @@
 					$name_str = $catArray[$i][1];
 					$space_count = $catArray[$i][2];
 					for ( $j = 0; $j < $space_count; $j++ ) {
-						$str = $str . '&nbsp;';
+						$str  .= '&nbsp;';
 					}
-					$str = $str . $name_str . ' (' . $id_number . ")<br />\n";
+					$str  .= $name_str . ' (' . $id_number . ")<br />\n";
 				}
 				echo( $str );
 			} else {
@@ -170,9 +170,9 @@
 					$name_str = $catArray[$i][1];
 					$space_count = $catArray[$i][2];
 					for ( $j = 0; $j < $space_count; $j++ ) {
-						$str = $str . ' ';
+						$str  .= ' ';
 					}
-					$str = $str . $name_str . ' (' . $id_number . ")\n";
+					$str  .= $name_str . ' (' . $id_number . ")\n";
 				}
 				echo( $str );
 			}
@@ -258,13 +258,13 @@
 									// So far so good... Now get rid of trailing spaces.
 									name_str = line_str.slice( 0, parentheses_start );
 									while ( name_str.charAt( name_str.length-1 ) == " " ) {
-										name_str = name_str.substring( 0, name_str.length-1 );
+										name_str .= substring( 0, name_str.length-1 );
 									}
 									
 									// Count beginning spaces or &nbsp; characters...
 									space_count = 0;
 									while ( name_str.charAt( 0 ) == " " ||  name_str.charCodeAt( 0 ) == 160 ) {
-										name_str = name_str.substring( 1, name_str.length );
+										name_str .= substring( 1, name_str.length );
 										space_count++;
 									}
 									

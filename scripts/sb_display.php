@@ -383,10 +383,10 @@
 						} else {
 							$star_image = 'no_star.png';
 						}
-						$str = $str . '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="" border="0" /></a>';
+						$str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="" border="0" /></a>';
 					}
 					$entry_array[ 'stars_nototals' ] = $str;
-					$str = $str . ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
+					$str  .= ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
 					$entry_array[ 'stars' ] = $str;
 				}
 
@@ -468,33 +468,33 @@
    				$entry_array[ 'logged_in' ] = $logged_in;
 				$entry_array[ 'id' ] = $entry;
 
-   				$blog_content = $blog_content . theme_blogentry( $entry_array );
+   				$blog_content  .= theme_blogentry( $entry_array );
 			}
 		}
 
-		$blog_content = $blog_content . '<br />';
+		$blog_content  .= '<br />';
 
 		if ( $previous_entry != NULL ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $previous_entry );
 			$d = substr( $entry_filename, 9, 2 );
-			$blog_content = $blog_content . ' <span style="float: left;"><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+			$blog_content  .= ' <span style="float: left;"><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
 			if ( $category != NULL ) {
-				$blog_content = $blog_content . '&amp;category=' . $category;
+				$blog_content  .= '&amp;category=' . $category;
 			}
-			$blog_content = $blog_content . '">' . $lang_string[ 'nav_back' ] . '</a></span> ';
+			$blog_content  .= '">' . $lang_string[ 'nav_back' ] . '</a></span> ';
 		}
 
 		if ( $next_entry != NULL ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $next_entry );
 			$d = substr( $entry_filename, 9, 2 );
-			$blog_content = $blog_content . ' <span style="float: right;"><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+			$blog_content  .= ' <span style="float: right;"><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
 			if ( $category != NULL ) {
-				$blog_content = $blog_content . '&amp;category=' . $category;
+				$blog_content  .= '&amp;category=' . $category;
 			}
-			$blog_content = $blog_content . '">' . $lang_string[ 'nav_next' ] . '</a></span> ';
+			$blog_content  .= '">' . $lang_string[ 'nav_next' ] . '</a></span> ';
 		}
 
-		$blog_content = $blog_content . '<br />';
+		$blog_content  .= '<br />';
 
 		return $blog_content;
 	}
@@ -524,8 +524,15 @@
 		$filename = 'config/~blog_entry_listing.tmp';
 		$entry_array = sb_read_file( $filename );
 		if ( $entry_array != NULL ) {
+			// Use cached array
 			$entry_array = unserialize( $entry_array );
+			rsort( $entry_array ); // Sort array newest to oldest
 		} else {
+			// Rebuild array.
+			if ( $blog_config[ 'blog_enable_cache' ] == true ) {
+				sleep(1); // To avoid server overload
+			}
+			
 			$basedir = 'content/';
 
 			// YEAR directories
@@ -575,8 +582,7 @@
 				}
 			}
 
-			// Always store newest to oldest.
-			rsort( $entry_array );
+			rsort( $entry_array ); // Sort array newest to oldest
 
 			// Check the option first to see if we use the cache
 			if ( $blog_config[ 'blog_enable_cache' ] == true ) {
@@ -597,9 +603,6 @@
 				}
 			}
 		}
-		
-		// Flip entry order
-		rsort( $entry_array );
 
 		return( $entry_array );
 	}

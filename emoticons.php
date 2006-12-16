@@ -46,7 +46,7 @@
 					@umask($oldumask);
 				}
 				
-				$uploaddir = $uploaddir.'/';
+				$uploaddir .= '/';
 				$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES[ 'user_emot' ][ 'name' ]);
 		
 				if ( @is_uploaded_file($_FILES['user_emot']['tmp_name'] ) ) {

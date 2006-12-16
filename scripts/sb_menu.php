@@ -151,11 +151,11 @@
 			{
 				if ( $day_start!=0 )
 				{
-					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+0)%7, 1990 ) ) ) . '</td>';
+					$str  .= '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+0)%7, 1990 ) ) ) . '</td>';
 				}
 				else
 				{
-					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+7)%7, 1990 ) ) ) . '</td>';
+					$str  .= '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+7)%7, 1990 ) ) ) . '</td>';
 				}
 			}
 		} else {		
@@ -163,21 +163,21 @@
 			{
 				if ( $day_start!=0 )
 				{
-					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+1)%7, 1990 ) ) ) . '</td>';
+					$str  .= '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+1)%7, 1990 ) ) ) . '</td>';
 				}
 				else
 				{
-					$str = $str . '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+8)%7, 1990 ) ) ) . '</td>';
+					$str  .= '<td>' . ucwords( strftime( '%a', mktime(0, 0, 0, 1, ($i+8)%7, 1990 ) ) ) . '</td>';
 				}
 			}
 		}
 		
-		$str = $str . '</tr><tr>';
+		$str  .= '</tr><tr>';
 		
 		//The empty columns before the 1st day of the week
 		for ( $i = 0; $i<$day_start; $i++ )
 		{
-			$str = $str . '<td>&nbsp;</td>';
+			$str  .= '<td>&nbsp;</td>';
 		}
 		$current_position = $day_start; //The current (column) position of the current day from the loop
 		$total_days_in_month = date( 't', $date_string); //The total days in the month for the end of the loop
@@ -185,27 +185,27 @@
 		//Loop all the days from the month
 		for ( $i = 1; $i<=$total_days_in_month; $i++) {
 			if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
-				$str = $str . '<td align="center"><u>';
+				$str  .= '<td align="center"><u>';
 			} else {
-				$str = $str . '<td align="center">';
+				$str  .= '<td align="center">';
 			}
 			
 			if ( isset($counts[$i-1]) && $counts[$i-1] > 0 ) {
-				$str = $str . '<a href="index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
+				$str  .= '<a href="index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
 			} else {
-				$str = $str . $i;
+				$str  .= $i;
 			}
 			
 			if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
-				$str = $str . '</u></td>';
+				$str  .= '</u></td>';
 			} else {
-				$str = $str . '</td>';
+				$str  .= '</td>';
 			}
 			
 			$current_position++;
 			
 			if ( $current_position == 7 ) {
-				$str = $str . '</tr><tr>';
+				$str  .= '</tr><tr>';
 				$current_position = 0;
 			}
 		}
@@ -214,12 +214,12 @@
 		//Fill the last columns
 		for ( $i = 0; $i<$end_day; $i++ )
 		{
-			$str = $str . '<td></td>';
+			$str  .= '<td></td>';
 		}
-		$str = $str . '</tr><tr>';
+		$str  .= '</tr><tr>';
 		
 		// Fixed per Sverd1 March 17, 2006
-		$str = $str . '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . dateString() ) . '</a></td></tr></table>'; // Close the table
+		$str  .= '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . dateString() ) . '</a></td></tr></table>'; // Close the table
 		return( $str );
 	}
 
@@ -356,19 +356,19 @@
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i = $i + 2 ) {
 				if ( $array[$i+1] == '' ) {
-					$str = $str . '<br />' . $array[$i] . '<br />';
+					$str  .= '<br />' . $array[$i] . '<br />';
 				} else {
 					if ( strpos($array[$i+1], 'http') === 0 ) {
-						$str = $str . '<a href="' . $array[$i+1] . '" target="_blank">' . $array[$i] . '</a><br />';
+						$str  .= '<a href="' . $array[$i+1] . '" target="_blank">' . $array[$i] . '</a><br />';
 					} else {
-						$str = $str . '<a href="' . $array[$i+1] . '">' . $array[$i] . '</a><br />';
+						$str  .= '<a href="' . $array[$i+1] . '">' . $array[$i] . '</a><br />';
 					}
 				}
 			}
 		}
 		
 		if ( $logged_in == true ) {
-			$str = $str . '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
+			$str  .= '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
 		}
 		
 		return ( $str );
@@ -687,9 +687,9 @@
 				
 				$comment_file = 'content/'.$y.'/'.$m.'/'. sb_strip_extension( $blog_entry_id ).'/comments/'.$comment_id;
 				if ( file_exists( $comment_file . '.txt' ) ) {
-					$comment_file = $comment_file . '.txt';
+					$comment_file  .= '.txt';
 				} elseif ( file_exists( $comment_file . '.txt.gz' ) ) {
-					$comment_file = $comment_file . '.txt.gz';
+					$comment_file  .= '.txt.gz';
 				}
 				
 				$comment_entry_data = comment_to_array( $comment_file );
@@ -714,14 +714,14 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_comments = $str_comments . '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
+						$str_comments  .= '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
 					} else {
-						$str_comments = $str_comments . '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
+						$str_comments  .= '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
 					}
 					
 					// $str_comments = $str_comments . format_date_menu( $comment_date ) . '<br />';
-					$str_comments = $str_comments . format_date( $comment_date ) . '<br />';
-					$str_comments = $str_comments . $comment_text . '<p />';
+					$str_comments  .= format_date( $comment_date ) . '<br />';
+					$str_comments  .= $comment_text . '<p />';
 				}
 			}
 		}
@@ -813,9 +813,9 @@
 				
 				$trackback_file = 'content/'.$y.'/'.$m.'/'. sb_strip_extension( $blog_entry_id ).'/trackbacks/'.$trackback_id;
 				if ( file_exists( $trackback_file . '.txt' ) ) {
-					$trackback_file = $trackback_file . '.txt';
+					$trackback_file  .= '.txt';
 				} elseif ( file_exists( $trackback_file . '.txt.gz' ) ) {
-					$trackback_file = $trackback_file . '.txt.gz';
+					$trackback_file  .= '.txt.gz';
 				}
 				
 				$trackback_entry_data = comment_to_array( $trackback_file );
@@ -836,14 +836,14 @@
 					
 					global $blog_config, $theme_vars;
 					if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-						$str_trackbacks = $str_trackbacks . '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
+						$str_trackbacks  .= '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
 					} else {
-						$str_trackbacks = $str_trackbacks . '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
+						$str_trackbacks  .= '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
 					}
 					
 					// $str_trackbacks = $str_trackbacks . format_date_menu( $trackback_date ) . '<br />';
-					$str_trackbacks = $str_trackbacks . format_date( $trackback_date ) . '<br />';
-					$str_trackbacks = $str_trackbacks . $trackback_blogname . '<p />';
+					$str_trackbacks  .= format_date( $trackback_date ) . '<br />';
+					$str_trackbacks  .= $trackback_blogname . '<p />';
 				}
 			}
 		}

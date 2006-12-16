@@ -48,7 +48,7 @@
 		// Also, the "66" number is somewhat determined by the css
 		// styles that you have applied. If you adjust the margins or
 		// padding then these will change.
-		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 72;
+		$theme_vars[ 'max_image_width' ] = $theme_vars[ 'content_width' ] - 70;
 
 		// ------------
 		// CUSTOMIZATION
@@ -198,34 +198,48 @@
 		$comment_area = "";
 		if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
 			// Show "add comment" button if set...
-			$comment_area = $comment_area . '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="" width="14" height="14" align="top"/> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
+			$comment_area .= '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="" width="14" height="14" align="top"/> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
 		}
 
 		if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
 			// Show "( x views )" string...
-			$comment_area = $comment_area . " ( " . $entry_array[ 'comment' ][ 'count' ] . " )\n";
+			$comment_area .= " ( " . $entry_array[ 'comment' ][ 'count' ] . " )\n";
 		}
 
 		if ( isset( $entry_array[ 'trackback' ][ 'url' ] ) ) {
 			// Show 'trackback' string...
-			$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
+			$comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
 		}
 
 		if ( $blog_config['blog_enable_permalink'] ){ // New for 0.4.6
 			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
 				// Show 'permalink' string...
-				$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
+				$comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
 			}
 		}
-
+		
+		/*
+		if ( $blog_config['blog_enable_permalink'] ){
+			if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
+				// apple,baseball,basketball,business_finance,celebrity,design,environment,extreme_sports,football,gadgets,gaming_news,general_sciences,golf,hardware,health,hockey,linux_unix,mods,motorsport,movies,music,offbeat_news,other_sports,playable_web_games,political_opinion,politics,programming,security,soccer,software,space,tech_deals,tech_news,television,tennis,videos_animation,videos_comedy,videos_educational,videos_gaming,videos_music,videos_people,videos_sports,world_news
+				$url = urlencode($entry_array[ 'permalink' ][ 'url' ]);
+				$title = urlencode($entry_array[ 'subject' ]);
+				$bodytext = urlencode(substr( $entry_array[ 'entry' ], 0, 75));
+				$topic = urlencode('tech_news');
+					
+				$comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase=2&url=' . $url . '&title=' . $title . '&bodytext=' . $bodytext . '&topic=' . $topic . '">Digg This!</a>' . "\n";
+			}
+		}
+		*/
+		
 		if ( isset( $entry_array['relatedlink']['url'] ) ) {
 			// Show 'relatedlink' symbol - New to 0.4.6
-			$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";
+			$comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";
 		}
 
 		if ( isset( $entry_array[ 'stars' ] ) ) {
 			// Show 'rating' stars...
-			$comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;' . $entry_array[ 'stars' ] . "\n";
+			$comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;' . $entry_array[ 'stars' ] . "\n";
 		}
 
 		if ( $comment_area != "" ) {
@@ -619,7 +633,7 @@
 		$result = menu_display_links();
 		$loginString = menu_display_login();
 		if ( $loginString ) {
-			$result[ 'content' ] = $result[ 'content' ] . '<hr />' . $loginString;
+			$result[ 'content' ]  .= '<hr />' . $loginString;
 		}
 		theme_menu_block( $result, 'LINKS' );
 		// theme_menu_block( $result, 'LINKS', 'SidebarLinks' ); <-- Use this if you want to be able to Expand/Collapse links.

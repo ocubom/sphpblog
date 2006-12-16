@@ -61,17 +61,17 @@
 		
 		$headers='';
 		if ($text) {
-			$headers=$headers . "Content-Type: text/plain \r\n";
+			$headers .= "Content-Type: text/plain \r\n";
 		} else {
-			$headers=$headers . "MIME-Version: 1.0 \r\n";
-			$headers=$headers . "Content-type: text/html; charset=iso-8859-1 \r\n";
+			$headers .= "MIME-Version: 1.0 \r\n";
+			$headers .= "Content-type: text/html; charset=iso-8859-1 \r\n";
 		}
-		$headers=$headers . 'From: ' . $from . " \r\n";
-		$headers=$headers . 'Reply-To: ' . $from . " \r\n";
-		$headers=$headers . 'Return-Path: ' . $from . " \r\n";
-		$headers=$headers . 'Date: ' . date("r") . " \r\n";
-		$headers=$headers . 'X-Priority: ' . $priority . " \r\n";
-		$headers=$headers . 'X-Mailer: SPHPBLOG/' . $sb_info[ 'version' ] . " \r\n";
+		$headers .= 'From: ' . $from . " \r\n";
+		$headers .= 'Reply-To: ' . $from . " \r\n";
+		$headers .= 'Return-Path: ' . $from . " \r\n";
+		$headers .= 'Date: ' . date("r") . " \r\n";
+		$headers .= 'X-Priority: ' . $priority . " \r\n";
+		$headers .= 'X-Mailer: SPHPBLOG/' . $sb_info[ 'version' ] . " \r\n";
 		
 		ini_set('sendmail_from', $from);
 		for ( $j=0; $j < count($to_array); $j++ ) {
@@ -98,18 +98,18 @@
 		$url = parse_url($url);
 
 		$xml="<?xml version=\"1.0\"?".">\n";
-		$xml=$xml . "<methodCall>\n";
-		$xml=$xml . "\t<methodName>weblogUpdates.ping</methodName>\n";
-		$xml=$xml . "\t<params>\n";
-		$xml=$xml . "\t\t<param><value>" . htmlspecialchars( strip_tags( $blog_config[ 'blog_title' ] ) ) . "</value></param>\n";
+		$xml .= "<methodCall>\n";
+		$xml .= "\t<methodName>weblogUpdates.ping</methodName>\n";
+		$xml .= "\t<params>\n";
+		$xml .= "\t\t<param><value>" . htmlspecialchars( strip_tags( $blog_config[ 'blog_title' ] ) ) . "</value></param>\n";
 		// Use external name (SERVER_NAME) for pings to the outside world!!
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER[ 'SERVER_NAME' ] . "/</value></param>\n";
 		} else {
 		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . "/</value></param>\n";
 		}
-		$xml=$xml . "\t</params>\n";
-		$xml=$xml . "</methodCall>\n";
+		$xml .= "\t</params>\n";
+		$xml .= "</methodCall>\n";
 		$socket = @fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
 		if ( $socket ) { 
 			fwrite( $socket, 'POST ' . $url[ 'scheme' ] . '://' . $url[ 'host' ] . $url[ 'path' ] . " HTTP/1.0\nHost: " . $url[ 'host' ] . "\nUser-Agent:" . $user_agent . " 0.1\nContent-Type: text/xml\nContent-Length: " . strlen ( $xml ) . "\n\n" . $xml . "\n" );
@@ -138,15 +138,15 @@
 		$url = parse_url($url);
 		
 		$data = '';
-		$data = $data . 'title=' . urlencode( strip_tags( $title ) );
+		$data  .= 'title=' . urlencode( strip_tags( $title ) );
 		// Use external name (SERVER_NAME) for pings to the outside world!!
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 		   $data = $data . '&url=http://' . $_SERVER[ 'SERVER_NAME' ] . '/' . urlencode( strip_tags( $permalink ) );
 		} else {
 		   $data = $data . '&url=http://' . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . '/' . urlencode( strip_tags( $permalink ) );
 		}
-		$data = $data . '&excerpt=' . urlencode( strip_tags( $excerpt ) );
-		$data = $data . '&blog_name=' . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
+		$data  .= '&excerpt=' . urlencode( strip_tags( $excerpt ) );
+		$data  .= '&blog_name=' . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
 		
 		// $socket = fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
 		$socket = fsockopen( ( $url[ 'host' ] === $_SERVER[ 'HTTP_HOST' ] ? $_SERVER[ 'SERVER_ADDR' ] : $url[ 'host' ] ), 80, $errno, $errstr, 30);

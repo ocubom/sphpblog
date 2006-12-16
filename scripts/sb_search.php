@@ -61,7 +61,7 @@
 				if ( $found ) {
 					$results++;
 					$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-					$output_str = $output_str . '<a href="index.php?entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $blog_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
+					$output_str  .= '<a href="index.php?entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $blog_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
 				}
 				// Search Comments
 				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
@@ -87,7 +87,7 @@
 								if ( $found == false ) {
 									// list( $blog_subject, $blog_date, $blog_text ) = explode('|', ( $contents ) );
 									$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-									$output_str = $output_str . $blog_entry_data[ 'SUBJECT' ] . '<br />';
+									$output_str  .= $blog_entry_data[ 'SUBJECT' ] . '<br />';
 								}
 								
 								// list( $comment_author, $comment_date, $comment_text ) = explode('|', ( $contents_comment ) );
@@ -95,9 +95,9 @@
 
 								global $theme_vars;
 								if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-									$output_str = $output_str . '&nbsp;&nbsp;&nbsp;<a href="javascript:openpopup(\'comments.php?y='.$year_dir.'&amp;m='.$month_dir.'&amp;entry='. sb_strip_extension($entry_filename).'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">' . $comment_entry_data[ 'NAME' ] . '</a><br />';
+									$output_str  .= '&nbsp;&nbsp;&nbsp;<a href="javascript:openpopup(\'comments.php?y='.$year_dir.'&amp;m='.$month_dir.'&amp;entry='. sb_strip_extension($entry_filename).'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">' . $comment_entry_data[ 'NAME' ] . '</a><br />';
 								} else {
-									$output_str = $output_str . '&nbsp;&nbsp;&nbsp;<a href="comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $comment_entry_data[ 'NAME' ] . '</a><br />';
+									$output_str  .= '&nbsp;&nbsp;&nbsp;<a href="comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $comment_entry_data[ 'NAME' ] . '</a><br />';
 								}
 							}
 						}
@@ -121,7 +121,7 @@
 				if ( $found_in_static ) {
 					$results++;
 					$blog_static_data = static_entry_to_array( 'content/static/' . $static_filename );
-					$output_str = $output_str . '<a href="static.php?page=' . sb_strip_extension( $static_filename ) . '" title="' . format_date( $blog_static_data[ 'DATE' ] ) . '">' . $blog_static_data[ 'SUBJECT' ] . '</a><br />';
+					$output_str  .= '<a href="static.php?page=' . sb_strip_extension( $static_filename ) . '" title="' . format_date( $blog_static_data[ 'DATE' ] ) . '">' . $blog_static_data[ 'SUBJECT' ] . '</a><br />';
 				}
 			}
 		}

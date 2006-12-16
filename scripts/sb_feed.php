@@ -13,7 +13,6 @@
 	function clean_rss_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		//$str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		//$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		
 		return( $str );
@@ -122,7 +121,6 @@
 	function clean_rdf_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		//$str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 		//$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 
 		return( $str );
@@ -213,8 +211,7 @@
 	function clean_atom_output ( $str ) {
 		// Decode/Encode HTML output
 		global $lang_string, $blog_config;
-		// $str = html_entity_decode( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
-		$str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
+		// $str = htmlspecialchars( $str, ENT_QUOTES, $lang_string[ 'php_charset' ] );
 
 		return( $str );
 	}

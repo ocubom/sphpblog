@@ -150,11 +150,11 @@
 
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $lang_string[ 'title' ] . ' - ' . $lang_string[ 'general' ];
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . sprintf( $lang_string[ 'entry_info' ], number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . sprintf( $lang_string[ 'comment_info' ], number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . sprintf( $lang_string[ 'trackback_info' ], number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . sprintf( $lang_string[ 'static_info' ], number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . sprintf( $lang_string[ 'vote_info' ], number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]  .= sprintf( $lang_string[ 'entry_info' ], number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]  .= sprintf( $lang_string[ 'comment_info' ], number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]  .= sprintf( $lang_string[ 'trackback_info' ], number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]  .= sprintf( $lang_string[ 'static_info' ], number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]  .= sprintf( $lang_string[ 'vote_info' ], number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
 		echo( theme_staticentry( $entry_array ) );		
 		
 		if ( $blog_config[ 'blog_enable_voting' ] == true ) {
@@ -163,7 +163,7 @@
 				$entry_array[ 'subject' ] = $lang_string[ 'most_rated_entries' ];
 				usort( $entries, 'sort_rates' );
 				for ( $i=0; $i<min(10, $total_number_entries); $i++) {
-					$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'rates' ], 2 ) . ').<br />';
+					$entry_array[ 'entry' ]  .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'rates' ], 2 ) . ').<br />';
 				}
 				echo( theme_staticentry( $entry_array ) );
 			
@@ -171,7 +171,7 @@
 				$entry_array[ 'subject' ] = $lang_string[ 'most_voted_entries' ];
 				usort( $entries, 'sort_votes' );
 				for ( $i=0; $i<min(10, $total_number_comments); $i++) {
-					$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'votes' ], 0 ) . ').<br />';
+					$entry_array[ 'entry' ]  .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'votes' ], 0 ) . ').<br />';
 				}
 				echo( theme_staticentry( $entry_array ) );
 			}
@@ -183,7 +183,7 @@
 				$entry_array[ 'subject' ] = $lang_string[ 'most_viewed_entries' ];
 				usort( $entries, 'sort_views' );
 				for ( $i=0; $i<min(10, $total_number_entries); $i++) {
-					$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'views' ], 0 ) . ').<br />';
+					$entry_array[ 'entry' ]  .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'views' ], 0 ) . ').<br />';
 				}
 				echo( theme_staticentry( $entry_array ) );
 			
@@ -191,7 +191,7 @@
 				$entry_array[ 'subject' ] = $lang_string[ 'most_commented_entries' ];
 				usort( $entries, 'sort_comments' );
 				for ( $i=0; $i<min(10, $total_number_comments); $i++) {
-					$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'comments' ], 0 ) . ').<br />';
+					$entry_array[ 'entry' ]  .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'comments' ], 0 ) . ').<br />';
 				}
 				echo( theme_staticentry( $entry_array ) );
 			}
@@ -203,7 +203,7 @@
 				$entry_array[ 'subject' ] = $lang_string[ 'most_trackbacked_entries' ];
 				usort( $entries, 'sort_trackbacks' );
 				for ( $i=0; $i<min(10, $total_number_trackbacks); $i++) {
-					$entry_array[ 'entry' ] = $entry_array[ 'entry' ] . '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'trackbacks' ], 0 ) . ').<br />';
+					$entry_array[ 'entry' ]  .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'trackbacks' ], 0 ) . ').<br />';
 				}
 				echo( theme_staticentry( $entry_array ) );
 			}

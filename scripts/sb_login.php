@@ -78,11 +78,10 @@
 				}
 			}
 		}
-		
-		session_unset($_SESSION[ 'logged_in' ]);
-		session_unset($_SESSION[ 'site_path' ]);
-		session_unset($_SESSION[ 'ip' ]);
-		session_destroy();
+				
+		session_unset();
+		session_destroy(); 
+		$_SESSION = array();
 		
 		return ( $was_logged_in );
 	}

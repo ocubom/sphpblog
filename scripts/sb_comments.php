@@ -151,7 +151,7 @@
 				if (( $blog_config[ 'blog_comments_moderation' ] == 1 ) && ( $entry_array[ 'modflag' ] == 'H' ) && ( $logged_in != 1 )) {
 					$blog_content = $blog_content;
 				} else {
-					$blog_content = $blog_content . theme_commententry( $entry_array );
+					$blog_content  .= theme_commententry( $entry_array );
 				}
 			}
 		}
@@ -490,7 +490,7 @@
 			}
 		}
 
-		$dir = $dir.'/comments';
+		$dir .= '/comments';
 
 		if (!file_exists($dir)) {
 			$oldumask = umask(0);
@@ -502,7 +502,7 @@
 			}
 		}
 
-		$dir = $dir . '/';
+		$dir  .= '/';
 
 		if (!isset($comment_date)) {
 			$comment_date = time();
@@ -547,16 +547,16 @@
 
 				$subject=$lang_string[ 'commentposted' ] . ' ' . $blog_config[ 'blog_title' ];
 				$body='<b>' . $lang_string[ 'name' ] . '</b> ' . $save_data[ 'NAME' ] . '<br />';
-				$body=$body . '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
-				$body=$body . '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
+				$body .= '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
+				$body .= '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
 				if ( array_key_exists( 'EMAIL', $save_data ) ) {
-					$body=$body . "<b>" . $lang_string[ 'email' ] . "</b> <a href=\"mailto:" . $save_data[ "EMAIL" ] . "\">" . $save_data[ "EMAIL" ] . "</a><br />\n";
+					$body .= "<b>" . $lang_string[ 'email' ] . "</b> <a href=\"mailto:" . $save_data[ "EMAIL" ] . "\">" . $save_data[ "EMAIL" ] . "</a><br />\n";
 				}
 				if ( array_key_exists( 'URL', $save_data ) ) {
-					$body=$body . "<b>" . $lang_string[ 'homepage' ] . "</b> <a href=\"" . $save_data[ "URL" ] . "\">" . $save_data[ "URL" ] . "</a><br />\n";
+					$body .= "<b>" . $lang_string[ 'homepage' ] . "</b> <a href=\"" . $save_data[ "URL" ] . "\">" . $save_data[ "URL" ] . "</a><br />\n";
 				}
-				$body=$body . "<br />\n";
-				$body=$body . "<b>" . $lang_string[ 'comment' ] . "</b><br />\n";
+				$body .= "<br />\n";
+				$body .= "<b>" . $lang_string[ 'comment' ] . "</b><br />\n";
 
 				$port = ':' . $_SERVER[ 'SERVER_PORT'];
 				if ($port == ':80') {
@@ -570,13 +570,13 @@
 					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 				}
 
-				$body = $body . '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";
-				$body = $body . sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
-				$body = $body . '<br /><br />';
+				$body  .= '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";
+				$body  .= sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
+				$body  .= '<br /><br />';
 
 				if ( $blog_config[ 'blog_comments_moderation' ] ) {
 					if ( $logged_in == false ) {
-						$body = $body . $lang_string['email_moderator'] . "\n";
+						$body  .= $lang_string['email_moderator'] . "\n";
 					}
 				}
 

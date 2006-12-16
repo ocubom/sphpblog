@@ -61,15 +61,15 @@
 			$oBlacklist = new CBlacklist;
 			$oBlacklist->load( 'config/blacklist.txt' );
 			if ( $oBlacklist->isBanned( getIP() ) == false || $logged_in == true  ) {
-				$str = $str . '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
+				$str  .= '<a href="contact.php">' . $lang_string[ 'menu_contact' ] . '</a><br />';
 			}
 		}
 
 		if ( $blog_config['blog_enable_stats']){ // New 0.4.7
-			$str = $str . '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
+			$str  .= '<a href="stats.php">' . $lang_string[ 'menu_stats' ] . '</a><br />';
 		}
 
-		$str = $str . read_links( $logged_in );
+		$str  .= read_links( $logged_in );
 
 		$result = array();
 		$result[ 'title' ] = $lang_string[ 'menu_links' ];
@@ -217,10 +217,10 @@
 		$str = '';
 		if ( $logged_in == true ) {
 			// $str = $str . '<a href="set_login.php">' . $lang_string[ 'menu_change_login' ] . '</a><br />';
-			$str = $str . '<a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a>';
+			$str  .= '<a href="logout.php">' . $lang_string[ 'menu_logout' ] . '</a>';
 		} else {
 			if ( $blog_config[ 'blog_enable_login' ] ) {
-				$str = $str . '<a href="login.php">' . $lang_string[ 'menu_login' ] . '</a>';
+				$str  .= '<a href="login.php">' . $lang_string[ 'menu_login' ] . '</a>';
 			}
 		}
 
@@ -241,9 +241,9 @@
 
 		if ( $logged_in == true ) {
 			$str = '';
-			$str = $str . '<a href="add.php">' . $lang_string[ 'menu_add' ] . '</a><br />';
-			$str = $str . '<a href="add_static.php">' . $lang_string[ 'menu_add_static' ] . '</a><br />';
-			$str = $str . '<a href="upload_img.php">' . $lang_string[ 'menu_upload' ] . '</a>';
+			$str  .= '<a href="add.php">' . $lang_string[ 'menu_add' ] . '</a><br />';
+			$str  .= '<a href="add_static.php">' . $lang_string[ 'menu_add_static' ] . '</a><br />';
+			$str  .= '<a href="upload_img.php">' . $lang_string[ 'menu_upload' ] . '</a>';
 
 			$result = array();
 			$result[ 'title' ] = $lang_string[ 'menu_menu' ];
@@ -301,17 +301,17 @@
 				$name_str = $catArray[$i][1];
 				$space_count = $catArray[$i][2];
 				for ( $j = 0; $j < $space_count; $j++ ) {
-					$str = $str . '&nbsp;';
+					$str  .= '&nbsp;';
 				}
 				if ( $category == $id_number ) {
-					$str = $str . $name_str;
+					$str  .= $name_str;
 				} else {
-					$str = $str . "<a href=\"index.php" . $base_date . $id_number . "\">" . $name_str . "</a>";
+					$str  .= "<a href=\"index.php" . $base_date . $id_number . "\">" . $name_str . "</a>";
 				}
 				if ( $i == count( $catArray ) - 1 ) {
-					$str = $str . "\n";
+					$str  .= "\n";
 				} else {
-					$str = $str . "<br />\n";
+					$str  .= "<br />\n";
 				}
 			}
 		}
@@ -341,18 +341,18 @@
 
 		if ( $logged_in == true ) {
 			$str = '';
-			$str = $str . '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
-			$str = $str . '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
-			$str = $str . '<a href="setup.php">' . $lang_string[ 'menu_setup' ] . '</a><br />';
-			$str = $str . '<a href="emoticons.php">' . $lang_string[ 'menu_emoticons' ] . '</a><br />';
-			$str = $str . '<a href="themes.php">' . $lang_string[ 'menu_themes' ] . '</a><br />';
-			$str = $str . '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
-			$str = $str . '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
-			$str = $str . '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
-			$str = $str . '<hr />';
-			$str = $str . '<a href="moderation.php">' . $lang_string[ 'menu_moderation' ] . '</a><br />';
+			$str  .= '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
+			$str  .= '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
+			$str  .= '<a href="setup.php">' . $lang_string[ 'menu_setup' ] . '</a><br />';
+			$str  .= '<a href="emoticons.php">' . $lang_string[ 'menu_emoticons' ] . '</a><br />';
+			$str  .= '<a href="themes.php">' . $lang_string[ 'menu_themes' ] . '</a><br />';
+			$str  .= '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
+			$str  .= '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
+			$str  .= '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
+			$str  .= '<hr />';
+			$str  .= '<a href="moderation.php">' . $lang_string[ 'menu_moderation' ] . '</a><br />';
 			if ( $blog_config[ 'blog_comments_moderation' ] ) {
-				$str = $str . '<a href="comments_moderation.php">' . $lang_string[ 'menu_commentmoderation' ] . ' (' . get_unmodded_count(1) . ')</a><br />';
+				$str  .= '<a href="comments_moderation.php">' . $lang_string[ 'menu_commentmoderation' ] . ' (' . get_unmodded_count(1) . ')</a><br />';
 			}
 			$result = array();
 			$result[ 'title' ] = $lang_string[ 'menu_setup' ];
@@ -401,9 +401,9 @@
 		global $lang_string;
 
 		$str = '<form method="get" action="search.php">';
-		$str = $str . '<input type="text" size="16" name="q" />&nbsp;';
-		$str = $str . '<input type="submit" value="' . $lang_string[ 'search_go' ] . '" />';
-		$str = $str . '</form>';
+		$str  .= '<input type="text" size="16" name="q" />&nbsp;';
+		$str  .= '<input type="submit" value="' . $lang_string[ 'search_go' ] . '" />';
+		$str  .= '</form>';
 
 		$result = array();
 		$result[ 'title' ] = $lang_string[ 'search_title' ];
@@ -419,7 +419,7 @@
 		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $lang_string[ 'page_generated_in' ] );
 
 		if ( $blog_config[ 'blog_footer_counter'] ) {
-			$str = $str . '&nbsp;|&nbsp;' . $lang_string[ 'counter_total' ] . stat_total();
+			$str  .= '&nbsp;|&nbsp;' . $lang_string[ 'counter_total' ] . stat_total();
 		}
 
 		return ( $str );
@@ -471,7 +471,7 @@
 
 					$entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 
-					$str = $str . '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><br />';
+					$str  .= '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'subject' ] . '</a><br />';
 				}
 			}
 

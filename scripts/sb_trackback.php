@@ -113,7 +113,7 @@
 				return ( $dir );
 			}
 		}
-		$dir = $dir . '/';
+		$dir  .= '/';
 		
 		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/trackbacks';
 		
@@ -129,7 +129,7 @@
 				return ( $dir );
 			}
 		}
-		$dir = $dir . '/';
+		$dir  .= '/';
 		
 		$trackback_date = time();
 		
@@ -217,8 +217,8 @@
 					$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 				}
 				
-				$body=$body . '<a href="' . $base_url . 'trackback.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;__mode=html">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "&amp;__mode=html</a><br /><br />\n\n";
-				$body=$body . '<i>On ' . format_date( $trackback_date ) . ', the following trackback was received from '.$save_data[ 'DOMAIN' ].' ('.$save_data[ 'IP' ].')'.":</i><br /><br />\n\n" . blog_to_html( $save_data[ 'TITLE' ].'<br />'.$save_data[ 'EXCERPT' ], false, false );
+				$body .= '<a href="' . $base_url . 'trackback.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;__mode=html">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "&amp;__mode=html</a><br /><br />\n\n";
+				$body .= '<i>On ' . format_date( $trackback_date ) . ', the following trackback was received from '.$save_data[ 'DOMAIN' ].' ('.$save_data[ 'IP' ].')'.":</i><br /><br />\n\n" . blog_to_html( $save_data[ 'TITLE' ].'<br />'.$save_data[ 'EXCERPT' ], false, false );
 				sb_mail( $blog_config[ 'blog_email' ], $blog_config[ 'blog_email' ], $subject, $body, false );
 	 		}
 	 	}

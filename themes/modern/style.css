@@ -84,10 +84,10 @@ code, pre {
 }
 
 pre {
-	width: 430px;
+	width: 480px;
 	overflow: auto;
 	border: 1px dotted #777;
-	padding: 1em;
+	padding: 10px;
 }
 
 blockquote
@@ -220,7 +220,7 @@ img { border: 0; }
 {
 	line-height: 1.3em;
 	background-color: #FFF;
-	padding: 1em;
+	padding: 10px;
 	margin: 0;
 	border: 1px solid #660;
 	color: #663;
@@ -279,7 +279,7 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 
 #sidebar .menu_body
 {
-	padding: 1em;
+	padding: 10px;
 	background-color: #FFF;
 	margin: 0;
 	border-color: #A6A6A6;

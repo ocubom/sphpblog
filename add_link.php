@@ -59,24 +59,24 @@
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i = $i + 2 ) {
 				if ( $array[$i+1] == '' ) {
-					$str = $str . ( 1 + ( $i / 2 ) ) . ' - ' . $array[$i] . '<br />';
+					$str  .= ( 1 + ( $i / 2 ) ) . ' - ' . $array[$i] . '<br />';
 				} else {
-					$str = $str . ( 1 + ( $i / 2 ) ) . ' - ' . $array[$i] . ' ( ' . $array[$i+1] . ' ) ' . '<br />';
+					$str  .= ( 1 + ( $i / 2 ) ) . ' - ' . $array[$i] . ' ( ' . $array[$i+1] . ' ) ' . '<br />';
 				}
-				$str = $str . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				$str  .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 0 ) {
-					$str = $str . '<a href="add_link.php?action=up&link_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
+					$str  .= '<a href="add_link.php?action=up&link_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
 				} else {
-					$str = $str . $lang_string[ 'up' ] . ' | ';
+					$str  .= $lang_string[ 'up' ] . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str = $str . '<a href="add_link.php?action=down&link_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
+					$str  .= '<a href="add_link.php?action=down&link_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
 				} else {
-					$str = $str . $lang_string[ 'down' ] . ' | ';
+					$str  .= $lang_string[ 'down' ] . ' | ';
 				}
-				$str = $str . '<a href="add_link.php?action=edit&link_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
-				$str = $str . '<a href="add_link.php?action=delete&link_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> ';
-				$str = $str . '<br /><br />';
+				$str  .= '<a href="add_link.php?action=edit&link_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
+				$str  .= '<a href="add_link.php?action=delete&link_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> ';
+				$str  .= '<br /><br />';
 			}
 			
 			if ( isset( $link_id ) ) {
@@ -114,7 +114,7 @@
 					for ( $i = 0; $i < count( $static_files ); $i++ ) {
 						$filename = sb_strip_extension( $static_files[$i] );
 						$str = '<option label="' . $filename . '" value="' . $filename . '"';
-						$str = $str . '>' . $filename . '</option>' . "\n";
+						$str  .= '>' . $filename . '</option>' . "\n";
 						
 						echo( $str );
 					}

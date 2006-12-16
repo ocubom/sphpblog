@@ -72,23 +72,23 @@
 				// Create HTML
 				
 				// 1 - Name of Block
-				$str = $str . ( 1 + ($i/2) ) . ' - ' . $array[$i] . '<br />';
+				$str  .= ( 1 + ($i/2) ) . ' - ' . $array[$i] . '<br />';
 				
 				//  up | down | edit | delete
-				$str = $str . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				$str  .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 1 ) {
-					$str = $str . '<a href="add_block.php?action=up&block_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
+					$str  .= '<a href="add_block.php?action=up&block_id='.$i.'">' . $lang_string[ 'up' ] . '</a> | ';
 				} else {
-					$str = $str . $lang_string[ 'up' ] . ' | ';
+					$str  .= $lang_string[ 'up' ] . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str = $str . '<a href="add_block.php?action=down&block_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
+					$str  .= '<a href="add_block.php?action=down&block_id='.$i.'">' . $lang_string[ 'down' ] . '</a> | ';
 				} else {
-					$str = $str . $lang_string[ 'down' ] . ' | ';
+					$str  .= $lang_string[ 'down' ] . ' | ';
 				}
-				$str = $str . '<a href="add_block.php?action=edit&block_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
-				$str = $str . '<a href="add_block.php?action=delete&block_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> ';
-				$str = $str . '<br /><br />';
+				$str  .= '<a href="add_block.php?action=edit&block_id='.$i.'">' . $lang_string[ 'edit' ] . '</a> | ';
+				$str  .= '<a href="add_block.php?action=delete&block_id='.$i.'">' . $lang_string[ 'delete' ] . '</a> ';
+				$str  .= '<br /><br />';
 				if ( $action === "edit" && $i == $block_id ) {
 					$block_name = $array[$i];
 					$block_content = $array[$i+1];
