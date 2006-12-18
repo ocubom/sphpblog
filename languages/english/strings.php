@@ -253,6 +253,19 @@
 				$lang_string['entry_border'] = "Entry Border";
 				$lang_string['entry_title_text'] = "Entry Title Text";
 				$lang_string['entry_text'] = "Entry Text";
+				
+				$lang_string['static_bg'] = "Static BG"; // 0.5.0
+				$lang_string['static_title_bg'] = "Static Title BG"; // 0.5.0
+				$lang_string['static_border'] = "Static Border"; // 0.5.0
+				$lang_string['static_title_text'] = "Static Title Text"; // 0.5.0
+				$lang_string['static_text'] = "Static Text"; // 0.5.0
+				
+				$lang_string['comment_bg'] = "Comment BG"; // 0.5.0
+				$lang_string['comment_title_bg'] = "Comment Title BG"; // 0.5.0
+				$lang_string['comment_border'] = "Comment Border"; // 0.5.0
+				$lang_string['comment_title_text'] = "Comment Title Text"; // 0.5.0
+				$lang_string['comment_text'] = "Comment Text"; // 0.5.0
+				
 				$lang_string['menu_bg'] = "Menu BG";
 				$lang_string['menu_title_bg'] = "Menu Title BG";
 				$lang_string['menu_border'] = "Menu Border";
