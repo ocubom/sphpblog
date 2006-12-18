@@ -18,6 +18,132 @@
 	// Config Functions
 	// ----------------
 
+	/*
+	function read_config() {
+		// Read config information from file.
+		
+		// NOTE: strings.php can't be loaded until after read_config
+		// is call so some default values are English. :(
+		
+		global $blog_config;
+		$blog_config = array();
+		
+		// --------------
+		// DEFAULT VALUES
+		// --------------
+		
+		// config.txt
+		$blog_config['blog_language'] = 'english';
+		$blog_config['blog_title'] = 'No Title';
+		$blog_config['blog_author'] = 'No Author';
+		$blog_config['blog_email'] = 'email@myblog.com';
+		$blog_config['blog_avatar'] = '';
+		$blog_config['blog_footer'] = 'No Footer'; // $lang_string[ 'sb_default_footer' ];
+		$blog_config['blog_entry_order'] = 'new_to_old';
+		$blog_config['blog_comment_order'] = 'new_to_old';
+		$blog_config['blog_enable_comments'] = 1;
+		$blog_config['blog_max_entries'] = 5;
+		$blog_config['blog_comments_popup'] = 1;
+		$blog_config['comment_tags_allowed'] = explode(',', 'b,i,strong,em,url');
+		$blog_config['blog_enable_gzip_txt'] = 0;
+		$blog_config['blog_enable_gzip_output'] = 0;
+		$blog_config['blog_email_notification'] = 0;
+		$blog_config['blog_send_pings'] = 0;
+		$blog_config['blog_ping_urls'] = '';
+		$blog_config['blog_enable_voting'] = 1;
+		$blog_config['blog_trackback_enabled'] = 0;
+		$blog_config['blog_trackback_auto_discovery'] = 0;
+		$blog_config['blog_enable_cache'] = 1;
+		$blog_config['blog_enable_calendar'] = 1;
+		$blog_config['blog_calendar_start'] = 'sunday';
+		$blog_config['blog_enable_title'] = ;
+		$blog_config['blog_enable_permalink'] = 1;
+		$blog_config['blog_enable_stats'] = 1;
+		$blog_config['blog_enable_lastcomments'] = 1;
+		$blog_config['blog_enable_lastentries'] = 1;
+		$blog_config['blog_enable_capcha'] = 1;
+		$blog_config['blog_comment_days_expiry'] = 0;
+		$blog_config['blog_enable_capcha_image'] = function_exists( 'imagecreate' );
+		$blog_config['blog_enable_archives'] = 1;
+		$blog_config['blog_enable_login'] = 1;
+		$blog_config['blog_enable_counter'] = 1;
+		$blog_config['blog_footer_counter'] = 1;
+		$blog_config['blog_counter_hours'] = 24;
+		$blog_config['blog_comments_moderation'] = 0;
+		
+		// metainfo.txt
+		$blog_config['info_keywords'] = '';
+		$blog_config['info_description'] = '';
+		$blog_config['info_copyright'] = '';
+		
+		// blacklist.txt
+		$blog_config['banned_address_list'] = '';
+		
+		// bannedwordlist.txt
+		$blog_config['banned_word_list'] = '';
+		
+		// theme.txt
+		global $blog_theme;
+		$blog_config[ 'blog_theme' ] = 'default';
+		$blog_theme = $blog_config[ 'blog_theme' ];
+		
+		// --------------
+		// LOAD REAL DATA
+		// --------------
+		
+		// config.txt
+		$str = sb_read_file( 'config/config.txt' );
+		if ( $str ) {
+			$arr = explode_with_keys($str);
+			for ($arr as $key => $val) {
+				$blog_config[$key] = $val;
+			}
+		}
+
+		// metainfo.txt
+		$str = sb_read_file( 'config/metainfo.txt' );
+		if ( $str ) {
+			$arr = explode_with_keys($str);
+			for ($arr as $key => $val) {
+				$blog_config[$key] = $val;
+			}
+		}
+
+		// blacklist.txt
+		$str = sb_read_file( 'config/blacklist.txt' );
+		if ( $str ) {
+			$blog_config[ 'banned_address_list' ] = $contents;
+		}
+
+		// bannedwordlist.txt
+		$contents = sb_read_file( 'config/bannedwordlist.txt' );
+		if ( $contents ) {
+			$blog_config[ 'banned_word_list' ] = $contents;
+		}
+
+		// theme.txt
+		$contents = sb_read_file( 'config/theme.txt' );
+		if ( $contents ) {
+			$blog_theme = $contents;
+			$blog_config[ 'blog_theme' ] = $contents;
+		}
+		
+		// -----
+		// SETUP
+		// -----
+		
+		require_once('themes/' . $blog_theme . '/themes.php');
+
+		// Load colors
+		read_colors();
+
+		// Start GZIP Output
+		if ( $blog_config[ 'blog_enable_gzip_output' ] ) {
+			sb_gzoutput ();
+		}
+	}
+	*/
+
 	function read_config ( ) {
 		// Read config information from file.
 		//
@@ -62,9 +188,9 @@
 									'blog_enable_capcha_image',
 									'blog_enable_archives',
 									'blog_enable_login',
-                  'blog_enable_counter',
-                  'blog_footer_counter',
-                  'blog_counter_hours',
+								  'blog_enable_counter',
+								  'blog_footer_counter',
+								  'blog_counter_hours',
 									'blog_comments_moderation' );
 
 			for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
@@ -275,9 +401,13 @@
 		}
 
 		// LOAD THEME
-		read_theme();
-
 		global $blog_theme;
+		$blog_theme = 'default';
+		$contents = sb_read_file( 'config/theme.txt' );
+		if ( $contents ) {
+			$blog_theme = $contents;
+			$blog_config[ 'blog_theme' ] = $blog_theme;
+		}
 		require_once('themes/' . $blog_theme . '/themes.php');
 
 		// LOAD COLORS
@@ -535,25 +665,6 @@
 				$str = 'Could not create file: '.$filename.'<br />';
 			}
 			return ( $str );
-		}
-	}
-
-	function read_theme ( ) {
-		// Read theme information from file.
-		//
-		global $blog_theme;
-
-		$blog_theme = 'default';
-
-		$filename = 'config/theme.txt';
-		$result = sb_read_file( $filename );
-
-		if ( $result ) {
-			list( $blog_theme ) = explode('|', $result);
-		} else {
-			// Error:
-			// Probably couldn't read file.
-			return ( $filename );
 		}
 	}
 
