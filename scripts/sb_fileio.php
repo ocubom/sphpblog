@@ -127,7 +127,7 @@
 		return true;
 	}
 	
-	function sb_folder_listing( $dir, $ext_array ) {
+	function sb_folder_listing( $dir, $ext_array=Array() ) {
 		// Return an array of files in a directory.
 		// On fail returns an empty array.
 		//
