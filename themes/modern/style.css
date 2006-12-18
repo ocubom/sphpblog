@@ -36,7 +36,6 @@ font-family: Lucida Console, Monaco, monospace;
 */
 
 /* GENERAL SETTINGS */
-
 body
 {
 	font-family: Arial, Helvetica, Sans-Serif;
@@ -62,7 +61,6 @@ hr
 }
 
 /* TYPEOGRAPHY */
-
 a { text-decoration: none; }
 a:link, a:visited { color: #933; }
 a:hover { color: #F33; }
@@ -99,7 +97,6 @@ blockquote
 }
 
 /* HEADERS */
-
 h1, h2, h3, h4, h5, h6
 {
 	font-family: Arial, Helvetica, Sans-Serif;
@@ -114,7 +111,6 @@ h5 { font-size: 1.2em; }
 h6 { font-size: 1.1em; }
 
 /* IMAGES */
-
 img { border: 0; }
 
 #img_float_left
@@ -132,10 +128,17 @@ img { border: 0; }
 }
 
 /* LAYOUT / PLACEMENT */
-
 #page
 {
 	width: 750px;
+	margin: 10px auto 10px auto;
+	border: 1px solid #80804d;
+	background-color: #ffffe6;
+}
+
+#popup
+{
+	width: 550px;
 	margin: 10px auto 10px auto;
 	border: 1px solid #80804d;
 	background-color: #ffffe6;
@@ -189,8 +192,16 @@ img { border: 0; }
 }
 
 /* CONTENT */
+#content .entry,
+#content .static,
+#content .comment
+{
+	padding-bottom: 10px;
+}
 
-#content .blog_title
+#content .entry .blog_title,
+#content .static .blog_title,
+#content .comment .blog_title
 {
 	font-size: 1.3em;
 	color: #FFF;
@@ -211,12 +222,9 @@ img { border: 0; }
 	display: inline;
 }
 
-.blog_ip_address
-{
-	font-size: 0.8em;
-}
-
-#content .blog_body
+#content .entry .blog_body,
+#content .static .blog_body,
+#content .comment .blog_body
 {
 	line-height: 1.3em;
 	background-color: #FFF;
@@ -226,14 +234,23 @@ img { border: 0; }
 	color: #663;
 }
 
-#content .blog_date
+#content .entry .blog_date,
+#content .static .blog_date,
+#content .comment .blog_date
 {
 	font-size: .9em;
 	color: #999;
 	margin-bottom: 1em;
 }
 
-#content .blog_comment
+.blog_ip_address
+{
+	font-size: 0.8em;
+}
+
+#content .entry .blog_comment,
+#content .static .blog_comment,
+#content .comment .blog_comment
 {
 	padding: .5em;
 	color: #663;
@@ -244,7 +261,6 @@ img { border: 0; }
 }
 
 /* SIDEBAR */
-
 #sidebar .menu_body a { text-decoration: none; }
 #sidebar .menu_body a:link, #sidebar .menu_body a:visited { color: #933; }
 #sidebar .menu_body a:hover { color: #F33; }

@@ -97,6 +97,19 @@
 
 		$blog_content = "";
 		$blog_content .= "\n<!-- BLOG ENTRY BEGIN -->\n";
+		
+		switch($mode) {
+			case 'static':
+				$blog_content .= "<div class=\"static\">\n";
+				break;
+			case 'comment':
+				$blog_content .= "<div class=\"comment\">\n";
+				break;
+			case 'entry':
+			default:
+				$blog_content .= "<div class=\"entry\">\n";
+				break;
+		}
 
 		// New 0.4.4
 		// You must have this if you are using the trackback feature.
@@ -248,8 +261,10 @@
 
 		$blog_content .= "\n<!-- BLOG FOOTER END -->\n";
 
-		$blog_content .= "<br />";
+		// $blog_content .= "<br />";
 
+		$blog_content .= "</div>\n";
+				
 		$blog_content .= "\n<!-- BLOG ENTRY END -->\n";
 
 		return $blog_content;
@@ -368,6 +383,8 @@
 		array_push( $color_def, array( 'id' => 'inner_border_color',
 								'string' => $lang_string[ 'inner_border_color' ],
 								'default' => '9A9A8C' ) );
+								
+		// Text Colors
 		array_push( $color_def, array( 'id' => 'header_txt_color',
 								'string' => $lang_string[ 'header_txt_color' ],
 								'default' => 'FFFFFF' ) );
@@ -384,6 +401,7 @@
 								'string' => $lang_string[ 'date_txt_color' ],
 								'default' => 'A6A695' ) );
 
+		// Regular Entries
 		array_push( $color_def, array( 'id' => 'entry_bg',
 								'string' => $lang_string[ 'entry_bg' ],
 								'default' => 'F2F2EB' ) );
@@ -401,6 +419,43 @@
 								'string' => $lang_string[ 'entry_text' ],
 								'default' => '4F4F48' ) );
 
+		// Static Entries
+		array_push( $color_def, array( 'id' => 'static_bg',
+								'string' => $lang_string[ 'static_bg' ],
+								'default' => 'F2F2EB' ) );
+		array_push( $color_def, array( 'id' => 'static_title_bg',
+								'string' => $lang_string[ 'static_title_bg' ],
+								'default' => 'BEBEB5' ) );
+		array_push( $color_def, array( 'id' => 'static_border',
+								'string' => $lang_string[ 'static_border' ],
+								'default' => '95958C' ) );
+
+		array_push( $color_def, array( 'id' => 'static_title_text',
+								'string' => $lang_string[ 'static_title_text' ],
+								'default' => '666661' ) );
+		array_push( $color_def, array( 'id' => 'static_text',
+								'string' => $lang_string[ 'static_text' ],
+								'default' => '4F4F48' ) );
+
+		// Comment Entries
+		array_push( $color_def, array( 'id' => 'comment_bg',
+								'string' => $lang_string[ 'comment_bg' ],
+								'default' => 'F2F2EB' ) );
+		array_push( $color_def, array( 'id' => 'comment_title_bg',
+								'string' => $lang_string[ 'comment_title_bg' ],
+								'default' => 'BEBEB5' ) );
+		array_push( $color_def, array( 'id' => 'comment_border',
+								'string' => $lang_string[ 'comment_border' ],
+								'default' => '95958C' ) );
+
+		array_push( $color_def, array( 'id' => 'comment_title_text',
+								'string' => $lang_string[ 'comment_title_text' ],
+								'default' => '666661' ) );
+		array_push( $color_def, array( 'id' => 'comment_text',
+								'string' => $lang_string[ 'comment_text' ],
+								'default' => '4F4F48' ) );
+								
+		// Menu / Sidebar
 		array_push( $color_def, array( 'id' => 'menu_bg',
 								'string' => $lang_string[ 'menu_bg' ],
 								'default' => 'ACACA0' ) );
@@ -418,6 +473,7 @@
 								'string' => $lang_string[ 'menu_text' ],
 								'default' => 'FFFFFF' ) );
 
+		// Links
 		array_push( $color_def, array( 'id' => 'link_reg_color',
 								'string' => $lang_string[ 'link_reg_color' ],
 								'default' => '59594F' ) );
@@ -427,6 +483,7 @@
 		array_push( $color_def, array( 'id' => 'link_down_color',
 								'string' => $lang_string[ 'link_down_color' ],
 								'default' => '6329F7' ) );
+		
 
 		array_push( $color_def, array( 'id' => 'menu_link_reg_color',
 								'string' => $lang_string[ 'menu_link_reg_color' ],
@@ -500,7 +557,7 @@
 	// the image list pop-up.
 	//
 	function theme_popuplayout () {
-		global $user_colors, $blog_config, $theme_vars;
+		global $user_colors, $blog_theme, $blog_config, $theme_vars;
 
 		// New 0.3.8
 		//
@@ -509,35 +566,23 @@
 		// this file.
 		$popup_width = $theme_vars[ 'popup_window' ][ 'content_width' ];
 
-		// Begin Popup Layout HTML
+		// Begin Page Layout HTML
 		?>
-		<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
-			<br />
-			<table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
-				<tr align="left" valign="top">
-					<td bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
-						<div id="header">
-							<?php echo($blog_config[ 'blog_title' ]); ?><br />
-						</div>
-					</td>
-				</tr>
-				<tr align="left" valign="top">
-					<td bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
-						<div id="maincontent">
-							<?php page_content(); ?>
-						</div>
-					</td>
-				</tr>
-				<tr align="left" valign="top">
-					<td bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>">
-						<div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
-					</td>
-				</tr>
-			</table>
-			<br />
+		<body>
+			<div id="popup">
+				<?php if ( $blog_config['blog_enable_title'] ) { echo('<div id="title">' . $blog_config[ 'blog_title' ] . '</div>'); } ?>
+				<div id="innerpage">
+					<div id="content">
+						<?php page_content(); ?>
+					</div>
+				</div>
+				<div id="footer">
+					<?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?>
+				</div>
+			</div>
 		</body>
 		<?php
-		// End Popup Layout HTML
+		// End Page Layout HTML
 	}
 
 	function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
