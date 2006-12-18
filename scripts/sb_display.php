@@ -495,6 +495,35 @@
 		}
 
 		$blog_content  .= '<br />';
+			
+		// Figure out page count
+		$pages_array = array();
+		$current_page = 0;
+		for ( $p = 0; $p < count( $entry_file_array ); $p += $blog_config[ 'blog_max_entries' ] ) {
+			array_push( $pages_array, $entry_file_array[ $p ] );
+			if ($entry_index >= $p && $entry_index < $p + $blog_config[ 'blog_max_entries' ]) {
+				$current_page = count($pages_array)-1;
+			}
+		}
+		
+		// Display page count
+		if (count($pages_array) > 0) {
+			$blog_content .= '<span> | ';
+			for ( $p = 0; $p < count( $pages_array ); $p++ ) {
+				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[$p] );
+				$d = substr( $entry_filename, 9, 2 );
+				if ($current_page == $p) {
+					$blog_content  .= ($p + 1) . '</a> | ';
+				} else {
+					$blog_content  .= '<a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+					if ( $category != NULL ) {
+						$blog_content  .= '&amp;category=' . $category;
+					}
+					$blog_content  .= '">' . ($p + 1) . '</a> | ';
+				}
+			}
+			$blog_content .= '</span>';
+		}
 
 		return $blog_content;
 	}
@@ -507,7 +536,7 @@
 		// Returns nothing but sets $GLOBALS[ 'month' ] and $GLOBALS[ 'year' ]
 		//
 		$entry_array = blog_entry_listing();
-		
+
 		if ( count( $entry_array>0 ) ) {
 			$GLOBALS[ 'year' ] = substr($entry_array[0], 5, 2);
 			$GLOBALS[ 'month' ] = substr($entry_array[0], 7, 2);
