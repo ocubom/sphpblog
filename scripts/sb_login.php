@@ -9,12 +9,20 @@
 	// Session & Login Functions
 	// -------------------------
 	function logged_in ( $redirect_to_login, $redirect_to_setup ) {
+				
 		// Turn off URL SIDs.
 		ini_set('url_rewriter.tags','');
 		ini_set('session.use_trans_sid', false);
-		
+			
 		// Init the session.
 		session_set_cookie_params(60*60*24*5);
+		
+		// Check if the user has a client-side cookie.
+		if ( isset( $_COOKIE[ 'sid' ] ) ) {
+			session_id($_COOKIE[ 'sid' ]);
+		}
+		
+		// Start the session.
 		session_start ();
 		
 		// Check if user is logged in.
@@ -60,13 +68,20 @@
 		}
 	}
 	
-	function logout () {			
+	function logout () {
 		// Turn off URL SIDs.
 		ini_set('url_rewriter.tags','');
 		ini_set('session.use_trans_sid', false);
 		
 		// Init the session.
 		session_set_cookie_params(60*60*24*5);
+		
+		// Check if the user has a client-side cookie.
+		if ( isset( $_COOKIE[ 'sid' ] ) ) {
+			session_id($_COOKIE[ 'sid' ]);
+		}
+		
+		// Start the session.
 		session_start();
 		
 		// Check if user is logged in (just for reporting...)
@@ -110,7 +125,7 @@
 					$_SESSION[ 'logged_in' ] = 'yes';
 					$_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
 					$_SESSION[ 'ip' ] = getIP();
-					// setcookie('my_id',session_id(),time()+60*60*24*5);
+					setcookie('sid',session_id(),time()+60*60*24*5);
 					
 					// Clear variables (why not...)
 					$username = null;
@@ -180,7 +195,7 @@
 			// Support for PHP >= 4.1.0
 			$_SESSION[ 'logged_in' ] = 'yes';
 			$_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
-			setcookie('my_id',session_id(),time()+60*60*24*7);
+			setcookie('sid',session_id(),time()+60*60*24*7);
 			
 			return ( true );
 		} else {
@@ -210,7 +225,7 @@
 			// Support for PHP >= 4.1.0
 			$_SESSION[ 'logged_in' ] = 'yes';
 			$_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
-			setcookie('my_id',session_id(),time()+60*60*24*7);
+			setcookie('sid',session_id(),time()+60*60*24*7);
 			
 			return ( true );
 		} else { 
