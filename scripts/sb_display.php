@@ -94,7 +94,7 @@
 				break;
 			}
 		}
-		
+
 		$blog_max_entries = $blog_config[ 'blog_max_entries' ];
 		if ($is_permalink) {
 			$blog_max_entries = 1;
@@ -214,7 +214,7 @@
 			} else {
 				$next_entry = NULL;
 			}
-			
+
 			$previous_entry = NULL;
 			if ( $entry_index > 0 ) {
 				if ( $entry_index - $blog_max_entries > 0 ) {
@@ -233,7 +233,7 @@
 											'year' => $year_dir,
 											'month' => $month_dir ) );
 		}
-		
+
 		// Flip entry order
 		if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
 			$contents = array_reverse( $contents );
@@ -243,7 +243,7 @@
 		$port = ':' . $_SERVER[ 'SERVER_PORT'];
 		if ($port == ':80') {
 			$port = '';
-		}		
+		}
 		if ( $contents ) {
 			if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 				// Hosted at root.
@@ -252,7 +252,7 @@
 				// Hosted in sub-directory.
 				$base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
 			}
-			
+
 			// I'm putting this check in here for people who have made
 			// custom themes before I added these values...
 			global $theme_vars;
@@ -302,8 +302,10 @@
 				}
 
 				// Read More link
+				if ( array_key_exists( 'relatedlink', $blog_entry_data ) ) {
 				$entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
-				$entry_array[ 'relatedlink' ][ 'url' ] = array_key_exists( 'relatedlink', $blog_entry_data ) ? $blog_entry_data[ 'relatedlink' ] : '';
+				$entry_array[ 'relatedlink' ][ 'url' ] = $blog_entry_data[ 'relatedlink' ];
+				}
 
 				// Author edit and delete
 				$entry = sb_strip_extension( $contents[$i][ 'entry' ] );
@@ -495,7 +497,7 @@
 		}
 
 		$blog_content  .= '<br />';
-			
+
 		// Figure out page count
 		$pages_array = array();
 		$current_page = 0;
@@ -505,7 +507,7 @@
 				$current_page = count($pages_array)-1;
 			}
 		}
-		
+
 		// Display page count
 		if (count($pages_array) > 0) {
 			$blog_content .= '<span> | ';
@@ -561,7 +563,7 @@
 			if ( $blog_config[ 'blog_enable_cache' ] == true ) {
 				sleep(1); // To avoid server overload
 			}
-			
+
 			$basedir = 'content/';
 
 			// YEAR directories
@@ -621,7 +623,7 @@
 				}
 			}
 		}
-		
+
 		// Remove "future" entries
 		$now = date('ymd-His', time());
 		if ($GLOBALS['logged_in']==false) {
