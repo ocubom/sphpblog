@@ -253,19 +253,19 @@
 				$lang_string['entry_border'] = "Entry Border";
 				$lang_string['entry_title_text'] = "Entry Title Text";
 				$lang_string['entry_text'] = "Entry Text";
-				
+
 				$lang_string['static_bg'] = "Static BG"; // 0.5.0
 				$lang_string['static_title_bg'] = "Static Title BG"; // 0.5.0
 				$lang_string['static_border'] = "Static Border"; // 0.5.0
 				$lang_string['static_title_text'] = "Static Title Text"; // 0.5.0
 				$lang_string['static_text'] = "Static Text"; // 0.5.0
-				
+
 				$lang_string['comment_bg'] = "Comment BG"; // 0.5.0
 				$lang_string['comment_title_bg'] = "Comment Title BG"; // 0.5.0
 				$lang_string['comment_border'] = "Comment Border"; // 0.5.0
 				$lang_string['comment_title_text'] = "Comment Title Text"; // 0.5.0
 				$lang_string['comment_text'] = "Comment Text"; // 0.5.0
-				
+
 				$lang_string['menu_bg'] = "Menu BG";
 				$lang_string['menu_title_bg'] = "Menu Title BG";
 				$lang_string['menu_border'] = "Menu Border";
@@ -320,9 +320,9 @@
 				$lang_string['nocomments'] = "Comments are not available for this entry."; // New for 0.4.9
 				$lang_string['email_moderator'] = "Comments are currently moderated. This comment needs approval before it will be seen by the public."; // New for 0.5.0
 				$lang_string['user_notice_mod'] = "Moderation is turned on for this blog. Your comment will require the administrators approval before it will be visible."; // new for 0.5.0
-				
+
 				$lang_string['return_to_comments'] = 'Return to Comments';
-				
+
 				// Error Response
 				$lang_string['error_add'] = "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your comment.<br /><br />Server Reported:<br />";
 				$lang_string['error_delete'] = "<h2>Whoops!</h2>Comment not deleted. I ran into a problem while deleting your comment.<br /><br />Server Reported:<br />";
@@ -333,7 +333,7 @@
 				$lang_string['success_ban2'] = "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."; // New for 0.4.8.1
 				$lang_string['form_error'] = "Please complete the Name, Comment and Anti-Spam fields.";
 				$lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
-				
+
 				$lang_string[ 'error_comments_disabled' ] = '<h2>Error!</h2>Hey! Comments are disabled on this blog. Are you a spambot?'; // New 0.5.0
 				$lang_string[ 'error_no_match' ] = '<h2>Error!</h2>You IP address doesn\t match posted IP address. Are you a spambot?'; // New 0.5.0
 				$lang_string[ 'error_fields_missing' ] = '<h2>Error!</h2>Missing the following fields: '; // New 0.5.0
@@ -640,7 +640,7 @@
 				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
 				$lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
 				$lang_string['banned_address_list_title'] = "<h2>Banned IP Addresses</h2>";
-				$lang_string['banned_address_list'] = "Below is a list of numerical ip addresses that have been banned from entering comments. Each ip is on a separate line and must be numbers (not DNS names). When logged in, IP's canned be banned directly from the comments view.";
+				$lang_string['banned_address_list'] = "Below is a list of numerical ip addresses that have been banned from entering comments. Each ip is on a separate line and must be numbers (not DNS names). When logged in, IP's can be banned directly from the comments view.";
 				$lang_string['banned_word_list_title'] = "<h2>Banned Words</h2>";
 				$lang_string['banned_word_list'] = "Below is a list of words that are not allowed to be in the url or the text. Each word or group of words is on a separate line. The comments will attempt to match each line exactly in order to enact the ban.";
 				break;
