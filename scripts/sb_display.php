@@ -729,6 +729,7 @@
 		$entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
 		$entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
 		$entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br clear="all" />';
+		$entry_array[ 'categories_id'] = $temp_cat_array;
 
 		$blog_content = theme_blogentry( $entry_array );
 
