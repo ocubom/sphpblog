@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
-	// You are free to use and modify the Simple PHP Blog. All changes 
+	// You are free to use and modify the Simple PHP Blog. All changes
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
 
@@ -25,19 +25,19 @@
 
 		return ( $str );
 	}
-	
+
 	function htmlDecode( $temp_str ) {
 		$trans_str = get_html_translation_table(HTML_ENTITIES);
 		foreach($trans_str as $k => $v){
 			$ttr[$v] = utf8_encode($k);
 		}
 		$temp_str = strtr($temp_str, $ttr);
-		
+
 		$temp_str = str_replace( '&#039;', '\'', $temp_str );
-		
+
 		return( $temp_str );
 	}
-	
+
 	function blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false ) {
 		// Convert Simple Blog tags to HTML.
 		//
@@ -46,9 +46,9 @@
 		//
 		// ( Could use str_ireplace() but it's only supported in PHP 5. )
 		global $blog_config;
-		
+
 		$str = str_replace( '&amp;#124;', '|', $str );
-		
+
 		if ( $comment_mode ) {
 			$tag_arr = array();
 			if ( in_array( 'i', $blog_config[ 'comment_tags_allowed' ] ) ) { array_push( $tag_arr, 'i' ); }
@@ -65,7 +65,7 @@
 		} else {
 			$tag_arr = array('i', 'b', 'blockquote', 'strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'ins', 'strike', 'pre', 'code' );
 		}
-		
+
 		// Build search and replace arrays.
 		$search_arr = array();
 		$replace_arr = array();
@@ -84,7 +84,7 @@
 				array_push( $replace_arr, '</' . strtolower( $tag ) . '>', '</' . strtoupper( $tag ) . '>' );
 			}
 		}
-		
+
 		// Special QUOTE shortcut to BLOCKQUOTE tag.
 		if ( $comment_mode ) {
 			if ( in_array( 'blockquote', $blog_config[ 'comment_tags_allowed' ] ) ) {
@@ -115,34 +115,34 @@
 					array_push( $replace_arr, '</blockquote>', '</BLOCKQUOTE>' );
 				}
 		}
-		
+
 		// Emoticons
 		if ( !$strip_all_tags ) {
 			if ($emoticon_replace) {
 				$emote_arr = emoticons_load_tags();
-				
+
 				for ( $i = 0; $i < count($emote_arr); $i++) {
-				
+
 					$emotetag_arr = explode( ' ', $emote_arr[$i]['TAGS'] );
 					for ( $j = 0; $j < count( $emotetag_arr ); $j++ ) {
 						$html_safe_tag = @htmlspecialchars( addslashes($emotetag_arr[$j]), ENT_QUOTES, $lang_string[ 'php_charset' ] );
-						
+
 						array_push( $search_arr, $emotetag_arr[$j] );
 						array_push( $replace_arr, '<img src="' . $emote_arr[$i]['PATH'] . '" alt="' . $html_safe_tag . '" />' );
 					}
 				}
 			}
 		}
-		
+
 		$str = str_replace( $search_arr, $replace_arr, $str);
-		
+
 		// Replace [url] Tags:
 		// The [url] tag has an optional "new" attribute. The "new"
 		// attribute determines whether to open the link in the
 		// same window or a new window.
 		// new   - (true/false)
 		//
-		// [url=http://xxx]xxx[/url] 
+		// [url=http://xxx]xxx[/url]
 		// [url=http://xxx new=true]xxx[/url]
 		if ( $comment_mode ) {
 			if ( in_array( 'url', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false ) {
@@ -161,7 +161,7 @@
 				$str = replace_url_tag( $str, '[URL=', ']', '[/URL]', false, $add_no_follow );
 			}
 		}
-		
+
 		// Replace [img] Tags:
 		// The [img] tag has an number of optional attributes -
 		// width  - width of image in pixels
@@ -188,9 +188,9 @@
 				$str = replace_img_tag( $str, '[IMG=', ']', false );
 			}
 		}
-		
+
 		// Selectively replace line breaks and/or decode html entities.
-		if ( $comment_mode ) {		
+		if ( $comment_mode ) {
 			if ( in_array( 'html', $blog_config[ 'comment_tags_allowed' ] ) && $strip_all_tags === false ) {
 				$str = replace_html_tag( $str, false );
 			} else {
@@ -203,10 +203,10 @@
 				$str = replace_html_tag( $str, false );
 			}
 		}
-		
+
 		return ( $str );
 	}
-	
+
 	function replace_html_tag( $str, $strip_tags ) {
 		// Replacements for HTML tags. Sub-function of blog_to_html.
 		//
@@ -214,11 +214,11 @@
 		// HTML tags. Also, inserts <br />'s for new lines only if blocks
 		// are outside the HTML tags.
 		global $lang_string;
-		
+
 		$str_out = NULL;
 		$tag_begin = '[html]';
 		$tag_end = '[/html]';
-		
+
 		// Search for the openning HTML tag. Tag could be either upper or
 		// lower case so we want to find the nearest one.
 		//
@@ -238,7 +238,7 @@
 				$str_offset = min( $temp_upper, $temp_lower );
 			}
 		}
-		
+
 		// Loop
 		while ( $str_offset !== false ) {
 			// Store all the text BEFORE the openning HTML tag.
@@ -253,10 +253,10 @@
 			$temp_str = str_replace( "\r", '<br />', $temp_str );
 			// $temp_str = str_replace( chr(10), '<br />', $temp_str );
 			$str_out  .= $temp_str;
-			
+
 			// Store all text AFTER the tag
 			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
-		
+
 			// Search for the closing HTML tag. Find the nearest one.
 			$temp_lower = strpos( $str, strtolower( $tag_end ) );
 			$temp_upper = strpos( $str, strtoupper( $tag_end ) );
@@ -273,7 +273,7 @@
 					$str_offset = min( $temp_upper, $temp_lower );
 				}
 			}
-			
+
 			if ( $str_offset !== false ) {
 				// Store all the text BETWEEN the HTML tags.
 				$temp_str = substr( $str, 0, $str_offset );
@@ -285,16 +285,16 @@
 					foreach($trans_str as $k => $v){
 						$ttr[$v] = utf8_encode($k);
 					}
-					$temp_str = strtr($temp_str, $ttr);	
-					
+					$temp_str = strtr($temp_str, $ttr);
+
 					$str_out  .= $temp_str;
 					*/
 					$str_out  .= htmlDecode($temp_str);
 				}
-				
+
 				// Store sub_string after the tag.
 				$str = substr( $str, $str_offset + strlen( $tag_end ) );
-				
+
 				// Search for openning HTML tag again.
 				$temp_lower = strpos( $str, strtolower( $tag_begin ) );
 				$temp_upper = strpos( $str, strtoupper( $tag_begin ) );
@@ -313,7 +313,7 @@
 				}
 			}
 		}
-		
+
 		// Append remainder of text.
 		//
 		// All this text will be outside of any HTML tags so
@@ -326,17 +326,17 @@
 		$str = str_replace( "\r", '<br />', $str );
 		// $str = str_replace( chr(10), '<br />', $str );
 		$str = $str_out . $str;
-		
+
 		return ( $str );
 	}
-	
+
 	function replace_url_tag( $str, $tag_begin, $tag_end, $tag_close, $strip_tags, $add_no_follow = false ) {
 		// Replacements for URL tags. Sub-function of blog_to_html.
 		//
 		// If $strip_tags == true then it will strip out the tag
 		// instead of making them HTML.
 		$str_out = NULL;
-		
+
 		// Search for the beginning part of the tag.
 		$str_offset = strpos( $str, $tag_begin );
 		while ( $str_offset !== false ) {
@@ -344,19 +344,19 @@
 			$str_out  .= substr( $str, 0, $str_offset );
 			// Store sub_string after the tag.
 			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
-			
+
 			// Search for the ending part of the tag.
 			$str_offset = strpos( $str, $tag_end );
 			if ( $str_offset !== false ) {
-				
+
 				if ( $strip_tags == false ) {
 					// Store attribues BETWEEN between the tags.
 					$attrib_array = explode( ' ', substr( $str, 0, $str_offset ) );
 					$attrib_new = NULL;
-					
+
 					if ( is_array( $attrib_array ) ) {
 						$str_url = $attrib_array[0];
-						
+
 						for ( $i = 1; $i < count( $attrib_array ); $i++ ) {
 							$temp_arr = explode( '=', $attrib_array[$i] );
 							if ( is_array( $temp_arr ) && count( $temp_arr ) == 2 ) {
@@ -370,7 +370,7 @@
 					} else {
 						$str_url = $attrib_array;
 					}
-					
+
 					// Append HTML tag.
 					if ( isset( $attrib_new ) ) {
 						if ( $attrib_new == 'false' ) {
@@ -397,10 +397,10 @@
 						}
 					}
 				}
-				
+
 				// Store sub_string AFTER the tag.
 				$str = substr( $str, $str_offset + strlen( $tag_end ) );
-				
+
 				/*
 				// Look for closing tag.
 				$str_offset = strpos( $str, $tag_close );
@@ -410,16 +410,16 @@
 						$str_out  .= $str_link . '</a>';
 					} else {
 						$str_out  .= $str_link;
-					}					
+					}
 					$str = substr( $str, $str_offset + strlen( $tag_close ) );
 				}
 				*/
-				
+
 				// Look for closing tag.
 				// HACK "CUT-URL" BY DRUDO ( drudo3  jumpy  it )
 				$str_offset = strpos( $str, $tag_close );
 				if ( $str_offset !== false ) {
-				
+
 					// If the address contains more than 56 characters and begins with "HTTP://"
 					if ($str_offset >= 56 && (substr( $str, 0, 7)) == "http://"){
 						// Store the URL up to the 39th character
@@ -430,7 +430,7 @@
 						// If the URL is less than 56 characters, store the whole URL
 						$str_link = substr( $str, 0, $str_offset );
 					}
-					
+
 					if ( $strip_tags == false ) {
 						// More than 56 characters
 						if ($str_offset >= 56 && (substr( $str, 0, 7)) == "http://"){
@@ -443,67 +443,67 @@
 						// Strip tags...
 						$str_out  .= $str_link;
 					}
-					
+
 					$str = substr( $str, $str_offset + strlen( $tag_close ) );
 				}
-				
+
 				// Search for next beginning tag.
 				$str_offset = strpos( $str, $tag_begin );
 			}
 		}
-		
+
 		// Append remainder of tag.
 		$str = $str_out . $str;
-		
+
 		return ( $str );
 	}
-	
+
 	function replace_img_tag( $str, $tag_begin, $tag_end, $strip_tags ) {
 		// Replacements for IMG tags. Sub-function of blog_to_html.
-		// 
+		//
 		// I made this another function because I wanted to be able
 		// to call it for upper and lower case '[img=]' tags...
 		//
 		// If $strip_tags == true then it will strip out the tag
 		// instead of making them HTML.
 		global $theme_vars;
-		
+
 		$str_out = NULL;
-		
+
 		// Search for the beginning part of the tag.
 		$str_offset = strpos( $str, $tag_begin );
 		while ( $str_offset !== false ) {
-		
+
 			// Store sub_string before the tag.
 			$str_out  .= substr( $str, 0, $str_offset );
-			
+
 			// Store sub_string after the tag.
 			$str = substr( $str, $str_offset + strlen( $tag_begin ) );
-			
+
 			// Search for the ending part of the tag.
 			$str_offset = strpos( $str, $tag_end );
 			if ( $str_offset !== false ) {
-			
+
 				if ( $strip_tags == true ) {
-					
+
 					// Store sub_string after the tag.
 					$str = substr( $str, $str_offset + strlen( $tag_end ) );
-					
+
 					// Search for next beginning tag.
 					$str_offset = strpos( $str, $tag_begin );
-					
+
 				} else {
-				
+
 					// Store attribues between between the tags.
 					$attrib_array = explode( ' ', substr( $str, 0, $str_offset ) );
 					$attrib_width = NULL;
 					$attrib_height = NULL;
 					$attrib_popup = NULL;
 					$attrib_float = NULL;
-					
+
 					if ( is_array( $attrib_array ) ) {
 						$str_url = $attrib_array[0];
-						
+
 						for ( $i = 1; $i < count( $attrib_array ); $i++ ) {
 							$temp_arr = explode( '=', $attrib_array[$i] );
 							if ( is_array( $temp_arr ) && count( $temp_arr ) == 2 ) {
@@ -526,17 +526,17 @@
 					} else {
 						$str_url = $attrib_array;
 					}
-				
+
 					// Grab image size and calculate scaled sizes
-					
+
 					// if ( file_exists( $str_url ) !== false ) {
 					$img_size = @getimagesize( $str_url );
 					if ( $img_size !== false ) {
 						$width = $img_size[0];
 						$height = $img_size[1];
-						
+
 						$max_image_width = $theme_vars[ 'max_image_width' ];
-						
+
 						$auto_resize = true;
 						if ( isset( $attrib_width ) && isset( $attrib_height ) ) {
 							// Both width and height are set.
@@ -550,7 +550,7 @@
 								$width = $attrib_width;
 								$auto_resize = false;
 							}
-							
+
 							if ( isset( $attrib_height ) ) {
 								// Only height is set. Calculate relative width.
 								$width = round( $width * ( $attrib_height / $height ) );
@@ -558,22 +558,22 @@
 								$auto_resize = false;
 							}
 						}
-						
+
 						if ( $auto_resize == true ) {
 							if ( $width > $max_image_width ) {
 								$height = round( $height * ( $max_image_width / $width ) );
 								$width = $max_image_width;
 							}
 						}
-						
+
 						if ( !isset( $attrib_popup ) ) {
 							if ( $width != $img_size[0] || $height != $img_size[1] ) {
-								$attrib_popup == 'true';
+								$attrib_popup = 'true';
 							} else {
-								$attrib_popup == 'false';
+								$attrib_popup = 'false';
 							}
 						}
-						
+
 						if ( $attrib_popup == 'true' ) {
 							// Pop Up True
 							$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\','.$img_size[0].','.$img_size[1].',false);"><img src="' . $str_url . '" width="'.$width.'" height="'.$height.'" border="0" alt=""';
@@ -603,7 +603,7 @@
 							}
 							$str_out  .= ' />';
 						}
-										
+
 						// Store sub_string after the tag.
 						$str = substr( $str, $str_offset + strlen( $tag_end ) );
 						// Search for next beginning tag.
@@ -614,12 +614,12 @@
 							if ( $attrib_popup == 'true' ) {
 								$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';
 							} else {
-								$str_out  .= '<img src="' . $str_url . '" border="0" alt="" />';		
+								$str_out  .= '<img src="' . $str_url . '" border="0" alt="" />';
 							}
 						} else {
-							$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';	
+							$str_out  .= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" border="0" alt="" /></a>';
 						}
-										
+
 						// Store sub_string after the tag.
 						$str = substr( $str, $str_offset + strlen( $tag_end ) );
 						// Search for next beginning tag.
@@ -628,15 +628,15 @@
 				}
 			}
 		}
-		
+
 		// Append remainder of tag.
 		$str = $str_out .  $str;
-		
+
 		return ( $str );
 	}
-	
+
 	function sb_parse_url ( $text ) {
-	    // Con espacios 
+	    // Con espacios
 	    $text = eregi_replace("([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=\\2]\\2[/url]", $text); //http
 	    $text = eregi_replace("([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=http://\\2]\\2[/url]", $text); // www.
 	    $text = eregi_replace("([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
@@ -646,10 +646,10 @@
 	    $text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","[url=mailto:\\1]\\1[/url]", $text); // mail
 	    return ( $text );
 	}
-	
+
 	function replace_more_tag ( $string, $strip_tags=true, $url='', $trim_off_end=false ) {
 		global $lang_string;
-		
+
 		$tagpos = strpos( strtoupper($string), '[MORE]' );
 		if ( $tagpos != false ) {
 			if ( $strip_tags == true ) {
@@ -662,7 +662,7 @@
 					$tmpstr  .= substr( $string, $tagend, strlen( $string ) );
 					$string = $tmpstr;
 				}
-			} else {			
+			} else {
 				$string = substr( $string, 0, $tagpos );
 				//Now put in the More link
 				if ( $url != '' ){
