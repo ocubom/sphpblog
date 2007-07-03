@@ -102,6 +102,10 @@
   }
   
   function check_password ( $user, $pass ) {
+    // Error codes:
+    // 100 - Bad login or password (primary or secondary)
+    // 101 - Inactive account (secondary only)
+
     // Check password against hashed password file
     $username = null;
     $password = null;
@@ -127,6 +131,7 @@
           $_SESSION[ 'fulladmin' ] = 'yes';
           $_SESSION[ 'ip' ] = getIP();
           $_SESSION[ 'user' ] = 'Administrator';
+          $_SESSION[ 'username' ] = 'admin';
           setcookie('sid',session_id(),time()+60*60*24*5);
           
           // Clear variables (why not...)
@@ -143,11 +148,18 @@
     $password = null;
 
     // OK, now check for a secondary login (non-admin)
-    if ( check_secondary_password($user, $pass) ) {
+    $secondary = check_secondary_password($user, $pass);
+
+    // Handle error codes
+    if ( $secondary > 99 ) {
+      return ( $secondary );
+    }
+
+    if ( $secondary == true ) {
       return ( true );
     }
-    
-    return ( false );
+
+    return ( 100 );
   }
   
   function redirect_to_url( $relative_url = "index.php" ) {
@@ -197,31 +209,36 @@
     $pfile = fopen("config/users.php","a+");
     rewind($pfile);
     while (!feof($pfile)) {
-          $line = fgets($pfile);
-          $tmp = explode('|', $line);
-          if ( $tmp[1] == $user ) {
-          // OK, we've found the right secondary user - check their password
-          $chkpass = crypt($user, $pass);
-          if ($tmp[2] === $chkpass) {
-            ini_set('url_rewriter.tags','');
-            ini_set('session.use_trans_sid', false);
-
-            session_set_cookie_params(60*60*24*7);
-            @session_start();
-
-            // Support for PHP >= 4.1.0
-            $_SESSION[ 'logged_in' ] = 'yes';
-            $_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
-            $_SESSION[ 'fulladmin' ] = 'no';
-            $_SESSION[ 'ip' ] = getIP();
-            $_SESSION[ 'user' ] = $tmp[0];
-            setcookie('sid',session_id(),time()+60*60*24*7);
-            return ( true );
-          } else {
-            return ( false );
-          }
+      $line = fgets($pfile);
+      $tmp = explode('|', $line);
+      if ( $tmp[1] == $user ) {
+        // Is this user active?
+        if ( $tmp[4] == 'N' ) {
+          return ( 101 );
         }
 
+        // OK, we've found the right secondary user - check their password
+        $chkpass = crypt($user, $pass);
+        if ($tmp[2] === $chkpass) {
+          ini_set('url_rewriter.tags','');
+          ini_set('session.use_trans_sid', false);
+
+          session_set_cookie_params(60*60*24*7);
+          @session_start();
+
+          // Support for PHP >= 4.1.0
+          $_SESSION[ 'logged_in' ] = 'yes';
+          $_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
+          $_SESSION[ 'fulladmin' ] = 'no';
+          $_SESSION[ 'ip' ] = getIP();
+          $_SESSION[ 'user' ] = $tmp[0];
+          $_SESSION[ 'username' ] = $tmp[1];
+          setcookie('sid',session_id(),time()+60*60*24*7);
+          return ( true );
+        } else {
+          return ( false );
+        }
+      }
     }
     fclose($pfile);
   }

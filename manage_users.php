@@ -78,6 +78,20 @@
           $active = "Y";
         } else { $active = "N"; }
 
+        if ( $_POST[ 'sModComments' ] == 'on' ) {
+          $modcomments = "Y";
+        } else { $modcomments = "N"; }
+
+        if ( $_POST[ 'sDeleteEntries' ] == 'on' ) {
+          $deleteentries = "Y";
+        } else { $deleteentries = "N"; }
+
+        if ( $_POST[ 'sEditAny' ] == 'on' ) {
+          $editany = "Y";
+        } else { $editany = "N"; }
+
+        $blankfield = "";
+
         // Create the record structure
         if ( $_GET[ 'type' ] == "edit" ) {
           // Now deal with the passwords - since we dont have the decrypt possibility
@@ -87,9 +101,9 @@
             $password = crypt( $_GET[ 'user' ], $_POST[ 'sPassword' ] );
           }
 
-          $array = array($_POST[ 'sFullname' ], $_GET[ 'user' ], $password, $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ]);
+          $array = array($_POST[ 'sFullname' ], $_GET[ 'user' ], $password, $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
         } else {
-          $array = array($_POST[ 'sFullname' ], $_POST[ 'sUsername' ], crypt( $_POST[ 'sUsername' ], $_POST[ 'sPassword' ] ), $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ]);
+          $array = array($_POST[ 'sFullname' ], $_POST[ 'sUsername' ], crypt( $_POST[ 'sUsername' ], $_POST[ 'sPassword' ] ), $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
         }
         $str = implode('|', $array);
         $newfile = $newfile . $str . "\n";
@@ -141,13 +155,16 @@
       echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_avatar'] . '</td><td><input type="text" name="sAvatar" value="' . $tmp[3] . '" autocomplete="OFF" size="60";"></td></tr>');
       echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_state'] . '</td><td><input type="checkbox" name="sActive"');
       if ( $tmp[4] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
-      echo( '</td></tr>');
-      echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_sec_Moderate'] . '</td><td><input type="checkbox" name="sModeration"');
-      echo( '</td></tr>');
-      echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_sec_Delete'] . '</td><td><input type="checkbox" name="sDeleteEntry"');
-      echo( '</td></tr>');
-      echo( '<tr class="data2"><td></td><td>' .  $lang_string['prop_sec_Edit'] . '</td><td><input type="checkbox" name="sEditEntry"');
-      echo( '</td></tr>');
+      echo( '></td></tr>');
+      echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_sec_Moderate'] . '</td><td><input type="checkbox" name="sModComments"');
+      if ( $tmp[6] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
+      echo( '></td></tr>');
+      echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_sec_Delete'] . '</td><td><input type="checkbox" name="sDeleteEntries"');
+      if ( $tmp[7] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
+      echo( '></td></tr>');
+      echo( '<tr class="data2"><td></td><td>' .  $lang_string['prop_sec_Edit'] . '</td><td><input type="checkbox" name="sEditAny"');
+      if ( $tmp[8] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
+      echo( '></td></tr>');
 
       echo('</table>');
       echo('<hr />');

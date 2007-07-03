@@ -339,7 +339,8 @@
     //
     global $lang_string, $logged_in, $user_colors, $blog_config;
 
-    if ( $logged_in == true ) {
+    $admin = $_SESSION[ 'fulladmin' ];
+    if (( $logged_in == true ) and ( $admin == 'yes' )) {
       $str = '';
       $str  .= '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
       $str  .= '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
@@ -349,10 +350,7 @@
       $str  .= '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';
       $str  .= '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
       $str  .= '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
-      // Only if administrator
-      $admin = $_SESSION[ 'fulladmin' ];
-      if ( $admin == 'yes' ) {
-        $str  .= '<a href="manage_users.php">' . $lang_string[ 'manage_users' ] . '</a><br />'; }
+      $str  .= '<a href="manage_users.php">' . $lang_string[ 'manage_users' ] . '</a><br />';
       $str  .= '<hr />';
       $str  .= '<a href="moderation.php">' . $lang_string[ 'menu_moderation' ] . '</a><br />';
       if ( $blog_config[ 'blog_comments_moderation' ] ) {

@@ -80,6 +80,7 @@
     $lang_string['sb_delete'] = 'delete';
     $lang_string['sb_permalink'] = 'permalink';
     $lang_string['sb_trackback'] = 'trackbacks';
+    $lang_string['sb_postedby'] = 'Posted by';
     $lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 
     $lang_string['sb_add_comment_btn'] = 'add comment';
@@ -409,6 +410,7 @@
         $lang_string['success'] = "<h2>Success!</h2>You are now logged in. Happy blogging!<p />";
         // Wrong Password
         $lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
+        $lang_string['inactive_account'] = "<h2>Whoops!</h2>You are not logged in. Your account has been disabled by the administrator for some reason.<p />";
         $lang_string['form_error'] = "Please complete the Username and Password fields.";
         break;
 
