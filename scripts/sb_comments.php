@@ -128,7 +128,10 @@
         $entry_array[ 'logged_in' ] = $logged_in;
 
         // Author
-        if ( $logged_in == true ) {
+        $admin = $_SESSION[ 'fulladmin' ];
+        if( (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'MOD' ) == true ) ) or
+            (( $logged_in == true) and ( $admin == 'yes' )))
+        {
           $entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'delete_btn' ];
           $entry_array[ 'delete' ][ 'url' ] = 'comment_delete_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;comment=' . ( $contents[$i][ 'entry' ] );
 

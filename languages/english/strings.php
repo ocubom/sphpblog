@@ -2,8 +2,8 @@
   // English Language File
   // (c) 2004 Alexander Palmo, apalmo <at> bigevilbrain <dot> com
 
-  // Simple PHP Version: 0.4.9
-  // Language Version:   0.4.9.0
+  // Simple PHP Version: 0.5.0
+  // Language Version:   0.5.0
 
   function sb_language( $page ) {
     global $language, $html_charset, $php_charset, $lang_string;
@@ -80,7 +80,8 @@
     $lang_string['sb_delete'] = 'delete';
     $lang_string['sb_permalink'] = 'permalink';
     $lang_string['sb_trackback'] = 'trackbacks';
-    $lang_string['sb_postedby'] = 'Posted by';
+    $lang_string['sb_postedby'] = 'Posted by'; // 0.5.0
+    $lang_string['sb_admin'] = 'Administrator'; // 0.5.0
     $lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 
     $lang_string['sb_add_comment_btn'] = 'add comment';
@@ -827,6 +828,7 @@
         $lang_string['prop_sec_Edit'] = "Edit Any Entry?";
         $lang_string['btn_SaveChanges'] = "Save Changes";
         $lang_string['btn_CreateUser'] = "Create User";
+        $lang_string['btn_Cancel'] = "Cancel";  
         $lang_string['grid_header'] = "User Listing";
         $lang_string['grid_login'] = 'Login';
         $lang_string['grid_email'] = 'Email';

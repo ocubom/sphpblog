@@ -311,13 +311,23 @@
         $entry = sb_strip_extension( $contents[$i][ 'entry' ] );
         $y = sb_strip_extension( $contents[$i][ 'year' ] );
         $m = sb_strip_extension( $contents[$i][ 'month' ] );
-
-        if ( $logged_in == true ) {
+        //$blog_entry_data[ 'CREATEDBY' ]
+        $admin = $_SESSION[ 'fulladmin' ];
+        if ( (( $logged_in == true ) and ( $admin == 'yes' )) or
+           (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'EDIT' ) == true ) and ( $blog_entry_data[ 'CREATEDBY' ] != $_SESSION[ 'username' ]) ) or
+           (( $logged_in == true) and ( $admin == 'no' ) and ( $blog_entry_data[ 'CREATEDBY' ] == $_SESSION[ 'username' ]) ))
+        {
           $entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
           $entry_array[ 'edit' ][ 'url' ] = 'preview_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
+        }
+
+        if ( (( $logged_in == true ) and ( $admin == 'yes' )) or
+           (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'DEL' ) == true ) ))
+        {
           $entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
           $entry_array[ 'delete' ][ 'url' ] = 'delete.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
         }
+
         $entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
         $entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 
@@ -535,9 +545,17 @@
   }
 
   function get_fullname( $username ) {
+    global $lang_string;
+
+    // admin only
+    if ( $username == 'admin' ) {
+      $fullname = $lang_string['sb_admin'];
+      return ( $fullname );
+    }
+
     // Go to the users database and get the user name
     if ( $username == '' ) {
-      $fullname = 'Administrator';
+      $fullname = $lang_string['sb_admin'];
       return ( $fullname );
     } else {
       $pfile = fopen("config/users.php","a+");
@@ -553,7 +571,7 @@
       }
     }
     fclose($pfile);
-    return ( 'N/A' );
+    return ( $lang_string['sb_admin'] );
   }
 
   function get_avatarurl( $username ) {
@@ -572,6 +590,33 @@
       }
     }
     fclose($pfile);
+  }
+
+  function CheckUserSecurity( $username, $type ) {
+    // Go to the users database and get the user name
+    if ( $username != '' ) {
+      $answer = false;
+      $pfile = fopen("config/users.php","a+");
+      rewind($pfile);
+      while (!feof($pfile)) {
+        $line = fgets($pfile);
+        $tmp = explode('|', $line);
+        if ( $tmp[1] == $username ) {
+          if ( ($type == 'MOD') and ($tmp[6] == 'Y')) {
+            $answer = true;
+          } elseif ( ($type == 'DEL') and ($tmp[7] == 'Y')) {
+            $answer = true;
+          } elseif ( ($type == 'EDIT') and ($tmp[8] == 'Y')) {
+            $answer = true;
+          }
+
+          fclose($pfile);
+          return ( $answer );
+        }
+      }
+    }
+    fclose($pfile);
+    return ( $answer );
   }
 
   function get_latest_entry () {

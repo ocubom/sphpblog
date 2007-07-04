@@ -18,6 +18,14 @@
   sb_language( 'manage_users' );
 
   // -----------
+  // PRE-PROCESSING
+  // -----------
+  // Handle cancel button
+  if ( array_key_exists( 'cancel', $_POST ) ) {
+    redirect_to_url('manage_users.php');
+  }
+
+  // -----------
   // PAGE CONTENT
   // -----------
   function page_content() {
@@ -147,6 +155,10 @@
       echo( '<tr class="header"><th></th><th>' . $lang_string['header_property'] . '</th><th>' . $lang_string['header_value'] . '</th></tr>');
 
       if ( $_GET[ 'type' ] == "new" ) {
+        // Populate default values
+        $tmp[4] = 'Y'; // Active
+        $tmp[6] = 'Y'; // Allow moderation
+
         echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_username'] . '</td><td><input type="text" name="sUsername" value="" autocomplete="OFF" size="40";"></td></tr>');
       }
       echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_fullname'] . '</td><td><input type="text" name="sFullname" value="' . $tmp[0] . '" autocomplete="OFF" size="40";"></td></tr>');
@@ -173,6 +185,7 @@
       } else {
         echo('<input type="submit" name="submit" value="' . $lang_string['btn_CreateUser'] . '" />');
       }
+      echo('<input type="submit" name="cancel" value="' . $lang_string['btn_Cancel'] . '" />');
       echo('</form>');
     }
 
@@ -252,9 +265,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
 
         <style type="text/css">
-        .header th{background-color: #C6C7E7;}
-        .data1 td{background-color: #E7E7E7;}
-        .data2 td{background-color: #D7D7D7;}
+        .header th{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
+        .data1 td{background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>}
+        .data2 td{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
         </style>
 
         <link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
