@@ -542,19 +542,57 @@
     }
 
     // Check for intervening static entries to be shown before current entries...
+
+    // 2) Selected block (with or without border ie using CSS - without border handy for those with wide ads)
+    if ( $blog_config[ 'blog_enable_static_block' ] == true ) {
+    $entry_array = array();
+    $spec_block = get_specific_block( $blog_config[ 'static_block_options' ] );
+      if ( is_array( $spec_block ) ) {
+        $entry_array[ 'entry' ] = $spec_block[ 'text' ];
+        $entry_array[ 'subject' ] = $spec_block[ 'title' ];
+        $bordertype = $blog_config[ 'static_block_border' ];
+        if ( $bordertype == 'noborder' ) {
+          $blog_content = theme_genericentry( $entry_array, 'clear' ) . $blog_content;
+        } else {
+          $blog_content = theme_blogentry( $entry_array ) . $blog_content;
+        }
+      }
+    }
+
     // 1) Search box
     if ( $blog_config[ 'blog_search_top' ] == true ) {
       $entry_array = array();
       $search = array();
       $search = menu_search_field_horiz();
       $entry_array[ 'entry' ] = $search[ 'content' ];
-      $blog_content = theme_genericentry( $entry_array ) . $blog_content;
+      $blog_content = theme_genericentry( $entry_array, 'solid' ) . $blog_content;
     }
 
-    // 2) Selected block (with or without border ie using CSS - without border handy for those with wide ads)
-    
-
     return $blog_content;
+  }
+
+  function get_specific_block ( $title ) {
+    // Create the right-hand block. Return single entry
+    global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in;
+    global $lang_string;
+
+    // Read blocks file.
+    $filename = 'config/blocks.txt';
+    $result = sb_read_file( $filename );
+
+    // Match against title - nothing else to match against (no keys used)
+    // Append new blocks.
+    $block = array();
+    if ( $result ) {
+      $array = explode('|', $result);
+      for ( $i = 0; $i < count( $array ); $i+=2 ) {
+        $block[ 'title' ] = blog_to_html( $array[$i], false, false, false, true );
+        $block[ 'text' ] = blog_to_html( $array[$i+1], false, false, false, true );
+        if ( $block[ 'title' ] == $title ) {
+          return ( $block );
+        }
+      }
+    }
   }
 
   function get_fullname( $username ) {

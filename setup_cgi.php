@@ -89,7 +89,10 @@
             ( $_POST[ 'blog_footer_counter' ] == 'on' ),
             $temp_blog_counter_hours,
             ( $_POST[ 'blog_comments_moderation' ] == 'on' ),
-            ( $_POST[ 'blog_search_top' ] == 'on' ));
+            ( $_POST[ 'blog_search_top' ] == 'on' ),
+            ( $_POST[ 'blog_enable_static_block' ] == 'on' ),
+            $_POST[ 'static_block_options' ],
+            $_POST[ 'static_block_border' ] );
 
   if ( $ok === true ) {
     redirect_to_url( 'index.php' );

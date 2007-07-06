@@ -193,7 +193,10 @@
                   'blog_footer_counter',
                   'blog_counter_hours',
                   'blog_comments_moderation',
-                  'blog_search_top' );
+                  'blog_search_top',
+                  'blog_enable_static_block',
+                  'static_block_options',
+                  'static_block_border' );
 
       for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
         $key = $config_keys[ $i ];
@@ -301,6 +304,18 @@
 
     if ( !isset( $blog_config[ 'blog_search_top' ] ) ) {
       $blog_config[ 'blog_search_top' ] = 0;
+    }
+
+    if ( !isset( $blog_config[ 'blog_enable_static_block' ] ) ) {
+      $blog_config[ 'blog_enable_static_block' ] = 0;
+    }
+
+    if ( !isset( $blog_config[ 'static_block_border' ] ) ) {
+      $blog_config[ 'static_block_border' ] = 'border';
+    }
+
+    if ( !isset( $blog_config[ 'static_block_options' ] ) ) {
+      $blog_config[ 'static_block_options' ] = '';
     }
 
     if ( !isset( $blog_config[ 'blog_enable_title' ] ) ) {
@@ -434,7 +449,8 @@
                           $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats,
                           $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha,
                           $blog_comment_days_expiry, $blog_enable_capcha_image, $blog_enable_archives,
-                          $blog_enable_login, $blog_enable_counter, $blog_footer_counter, $blog_counter_hours, $blog_comments_moderation, $blog_search_top ) {
+                          $blog_enable_login, $blog_enable_counter, $blog_footer_counter, $blog_counter_hours,
+                          $blog_comments_moderation, $blog_search_top, $blog_enable_static_block, $static_block_options, $static_block_border ) {
     // Save config information to file.
     //
     $array = array( clean_post_text( $blog_title ),
@@ -474,7 +490,10 @@
             $blog_footer_counter,
             $blog_counter_hours,
             $blog_comments_moderation,
-            $blog_search_top );
+            $blog_search_top,
+            $blog_enable_static_block,
+            $static_block_options,
+            $static_block_border );
 
     $str = implode('|', $array);
 
@@ -727,5 +746,25 @@
         $user_colors[ $id ] = $color;
       }
     }
+  }
+
+  function get_block_list () {
+    // Create the right-hand block. Return array
+    global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in;
+    global $lang_string;
+
+    // Read blocks file.
+    $filename = 'config/blocks.txt';
+    $result = sb_read_file( $filename );
+
+    $blocklist = array();
+    if ( $result ) {
+      $blocklist = explode('|', $result);
+      for ( $i = 0; $i < count( $blocklist ); $i+=2 ) {
+        $blocklist[ 'title' ] = blog_to_html( $blocklist[$i], false, false, false, true );
+        $blocklist[ 'text' ] = blog_to_html( $blocklist[$i+1], false, false, false, true );
+      }
+    }
+    return ( $blocklist );
   }
 ?>

@@ -244,10 +244,16 @@
     $blog_content = '';
     $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY START -->\n";
 
-    $blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-
     // Text of entry
-    $blog_content = $blog_content . '<div class="blog_body_solid">' . "\n\t";
+
+    if ( $style == 'solid' ) {
+      $blog_content = $blog_content . '<div class="blog_body_solid">' . "\n\t";
+    } elseif ( $style == 'clear' ) {
+      $blog_content = $blog_content . '<div class="blog_body_clear">' . "\n\t";
+    } else {
+      $blog_content = $blog_content . '<div class="blog_body_framed">' . "\n\t";
+    }
+
     $blog_content = $blog_content . $entry_array[ 'entry' ];
     $blog_content = $blog_content . "\n\t</div>";
 

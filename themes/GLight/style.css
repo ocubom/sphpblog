@@ -265,9 +265,9 @@ input, select, option, textarea
 
 #maincontent .blog_body_clear
 {
-  padding: 10px;
+  padding: 0px;
   border-color: #FFF;
-  border-width: 3px;
+  border-width: 0px;
   border-style: solid;
 }
 
