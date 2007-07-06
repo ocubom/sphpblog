@@ -6,6 +6,31 @@ Version History
 
 ---------------
 
+0.5.0
+
+===============
+
+- Added Moderator Approve/Delete functionality
+  - Optional functionality defined in Preferences - off by default.
+  - When turned on, all new comment entries are marked as On Hold / Unmodded. These are only visible
+    to logged in users.
+  - Added Unmodded Comments option to sidebar. This will show how many unmodded comments are pending.
+  - Added Unmodded Comments screen. This is where the user can review the unmodded comments and
+    take action on them.
+  - Slightly re-arranged the menu to accomodate the new option.
+  - Notice on bottom of notification email if item need moderation intervention
+  - Notice above Post Comment button to let user know that, if the option is on, the comment will not
+    show right away.
+  - Logged in user's comments automatically approved.
+  - Added logged in and Comment Notifications at the top of the links menu.
+
+- Added User (non-Admin) accounts.
+
+- Added new GLight theme - compliant with 0.5.0+
+
+- Added option to show search at top instead of in the sidebar (more "Google"-like) 
+  Warning: Requires updates to custom themes to use.
+
 0.4.8.1
 
 ===============
