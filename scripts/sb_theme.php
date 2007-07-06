@@ -400,9 +400,32 @@
     // Search
     // --------- [go]
     //
+    global $lang_string, $blog_config;
+
+    if ( $blog_config[ 'blog_search_top' ] == false ) {
+      $str = '<form method="get" action="search.php">';
+      $str  .= '<input type="text" size="16" name="q" />&nbsp;';
+      $str  .= '<input type="submit" value="' . $lang_string[ 'search_go' ] . '" />';
+      $str  .= '</form>';
+
+      $result = array();
+      $result[ 'title' ] = $lang_string[ 'search_title' ];
+      $result[ 'content' ] = $str;
+    }
+    return ( $result );
+  }
+
+  function menu_search_field_horiz () {
+    // Returns the search field text box.
+    //
+    // Example:
+    // --------
+    // Search
+    // --------- [go]
+    //
     global $lang_string;
 
-    $str = '<form method="get" action="search.php">';
+    $str = '<form method="get" action="search.php"><b>' . $lang_string[ 'search_title' ] . '</b>:&nbsp;&nbsp;';
     $str  .= '<input type="text" size="16" name="q" />&nbsp;';
     $str  .= '<input type="submit" value="' . $lang_string[ 'search_go' ] . '" />';
     $str  .= '</form>';

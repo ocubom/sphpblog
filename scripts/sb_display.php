@@ -541,6 +541,19 @@
       $blog_content .= '</span>';
     }
 
+    // Check for intervening static entries to be shown before current entries...
+    // 1) Search box
+    if ( $blog_config[ 'blog_search_top' ] == true ) {
+      $entry_array = array();
+      $search = array();
+      $search = menu_search_field_horiz();
+      $entry_array[ 'entry' ] = $search[ 'content' ];
+      $blog_content = theme_genericentry( $entry_array ) . $blog_content;
+    }
+
+    // 2) Selected block (with or without border ie using CSS - without border handy for those with wide ads)
+    
+
     return $blog_content;
   }
 

@@ -236,6 +236,28 @@
     return $blog_content;
   }
 
+  function theme_genericentry ( $entry_array, $style='normal' ) { // New 0.5.0
+    global $user_colors, $blog_theme, $blog_config;
+
+    // init vars
+    $img_path = "themes/" . $blog_theme . "/images/";
+    $blog_content = '';
+    $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY START -->\n";
+
+    $blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
+
+    // Text of entry
+    $blog_content = $blog_content . '<div class="blog_body_solid">' . "\n\t";
+    $blog_content = $blog_content . $entry_array[ 'entry' ];
+    $blog_content = $blog_content . "\n\t</div>";
+
+    $blog_content = $blog_content . "<br />";
+
+    $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY END -->\n";
+
+    return $blog_content;
+  }
+
   function theme_staticentry ( $entry_array ) {
     // Display STATIC entry page.
     //
@@ -788,5 +810,4 @@
     echo( '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />' );
     echo( '</div>' );
   }
-
 ?>
