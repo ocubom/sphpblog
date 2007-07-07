@@ -173,13 +173,13 @@
         </select><p />
         <input type="checkbox" id="blog_search_top" name="blog_search_top"<?php if ( $blog_config[ 'blog_search_top' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_search_top' ] ); ?><br />
         <input type="checkbox" id="blog_enable_static_block" name="blog_enable_static_block"<?php if ( $blog_config[ 'blog_enable_static_block' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_static_block' ] ); ?>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <select name="static_block_options">
           <?php
             $blocktitles = get_block_list();
             for ( $i = 0; $i < count( $blocktitles ); $i+=2 ) {
             if ( isset( $blocktitles[ $i ] ) ) {
-              echo( '<option label="item' . $i . '" value="' . $blocktitles[ $i ] . '"' );
+              echo( '<option label="' . $blocktitles[ $i ] . '" value="' . $blocktitles[ $i ] . '"' );
                 if ( $blog_config[ 'static_block_options' ] == $blocktitles[ $i ] ) {
                   echo( ' selected>' );
                 } else {
