@@ -10,7 +10,7 @@ Version History
 
 ===============
 
-- Added Moderator Approve/Delete functionality
+- Added Moderator Approve/Delete functionality (experimental)
   - Optional functionality defined in Preferences - off by default.
   - When turned on, all new comment entries are marked as On Hold / Unmodded. These are only visible
     to logged in users.
@@ -30,7 +30,11 @@ Version History
 
 - Added option to show search at top instead of in the sidebar (more "Google"-like) 
   Warning: Requires updates to custom themes to use.
-
+  
+- Added option for static entry at the top of each blog page before the first entry of that page.
+  Uses the blocks to figure out which items to show.
+  Allows normal border or no border (for ads and/or graphics)
+  
 0.4.8.1
 
 ===============
