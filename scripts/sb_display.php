@@ -402,14 +402,16 @@
           $entry_array[ 'stars' ] = $str;
         }
 
+        // Has to be populated regardless - used by the more tag
+        if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+          $entry_array[ 'comment' ][ 'url' ] = 'javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
+        } else {
+          $entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
+        }
+
         // Comments
         if ( $blog_config[ 'blog_enable_comments' ] == true ) {
           // Add comment buttons
-          if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
-            $entry_array[ 'comment' ][ 'url' ] = 'javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
-          } else {
-            $entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
-          }
 
           if ( $comment_count == 0) {
             // [ add comment ]
@@ -444,11 +446,7 @@
 
         // OK now support the [more] tag - front page only - only works if comments are turned on
 
-        if ( $blog_config[ 'blog_enable_comments' ] == true ) {
-          $entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
-        } else {
-          $entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , true, '' );
-        }
+        $entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
 
         // Trackback
         if ( $blog_config[ 'blog_trackback_enabled' ] == true ) {
