@@ -409,42 +409,47 @@
           $entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
         }
 
-        // Comments
+        // Comments / Read - will show regardless of comments being enabled
         if ( $blog_config[ 'blog_enable_comments' ] == true ) {
-          // Add comment buttons
+          $commenttext = $lang_string[ 'sb_comment_btn' ];
+          $commentplural = $lang_string[ 'sb_comments_plural_btn' ];
+          $comment = $lang_string[ 'sb_add_comment_btn' ];
+        } else {
+          $commenttext = $lang_string[ 'sb_comment_view' ];
+          $commentplural = $lang_string['sb_comments_plural_view'];
+          $comment = $lang_string['sb_read_entry_btn'];
+        }
 
-          if ( $comment_count == 0) {
-            // [ add comment ]
-            $entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_add_comment_btn' ];
-          } else if ( $comment_count == 1) {
-            // [ 1 comment ] (In Russian the number should come last.)
-            if ( $lang_string[ 'sb_comment_btn_number_first' ] == true ) {
-              $entry_array[ 'comment' ][ 'name' ] = $comment_count . ' ' . $lang_string[ 'sb_comment_btn' ];
-            } else {
-              $entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_comment_btn' ] . ' ' . $comment_count;
-            }
+        // Add comment buttons
+        if ( $comment_count == 0) {
+          // [ add comment ]
+          $entry_array[ 'comment' ][ 'name' ] = $comment;
+        } else if ( $comment_count == 1) {
+          // [ 1 comment ] (In Russian the number should come last.)
+          if ( $lang_string[ 'sb_comment_btn_number_first' ] == true ) {
+            $entry_array[ 'comment' ][ 'name' ] = $comment_count . ' ' . $commenttext;
           } else {
-            // [ n comments ] (In Russian the number should come last.)
-            if ( $lang_string[ 'sb_comments_plural_btn_number_first' ] == true ) {
-              $entry_array[ 'comment' ][ 'name' ] = $comment_count . ' ' . $lang_string[ 'sb_comments_plural_btn' ];
-            } else {
-              $entry_array[ 'comment' ][ 'name' ] = $lang_string[ 'sb_comments_plural_btn' ] . ' ' . $comment_count;
-            }
+            $entry_array[ 'comment' ][ 'name' ] = $commenttext . ' ' . $comment_count;
           }
-
-          $entry_array[ 'comment' ][ 'comment_count' ] = $comment_count;
-
-          // Add view counter
-          if ( $view_counter > 0 ) {
-            if ( $view_counter == 1) {
-              $entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_post' ];
-            } else {
-              $entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_plural_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_plural_post' ];
-            }
+        } else {
+          // [ n comments ] (In Russian the number should come last.)
+          if ( $lang_string[ 'sb_comments_plural_btn_number_first' ] == true ) {
+            $entry_array[ 'comment' ][ 'name' ] = $comment_count . ' ' . $commentplural;
+          } else {
+            $entry_array[ 'comment' ][ 'name' ] = $commentplural . ' ' . $comment_count;
           }
         }
 
-        // OK now support the [more] tag - front page only - only works if comments are turned on
+        $entry_array[ 'comment' ][ 'comment_count' ] = $comment_count;
+
+        // Add view counter
+        if ( $view_counter > 0 ) {
+          if ( $view_counter == 1) {
+            $entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_post' ];
+          } else {
+            $entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_plural_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_plural_post' ];
+          }
+        }
 
         $entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
 

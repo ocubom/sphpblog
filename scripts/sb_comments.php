@@ -73,13 +73,16 @@
 
     // View Count
     if ( $logged_in == false ) {
-    $view_counter = 1;
-    $view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
-    for ( $i = 0; $i < count( $view_array ); $i++ ) {
-      if ( $view_array[$i] === 'view_counter.txt' ) {
-        $view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
+      $view_counter = 1;
+      $view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
+      for ( $i = 0; $i < count( $view_array ); $i++ ) {
+        if ( $view_array[$i] === 'view_counter.txt' ) {
+          $view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
+        }
       }
-    }
+
+      // Create one regardless - this is so it works when comments are turned off
+      sb_write_file( $dir . '../view_counter.txt' , $view_counter );
     }
 
     $contents = array();
@@ -90,11 +93,6 @@
     }
 
     if ( $contents ) {
-      // Store Counter
-      if ( $logged_in == false ) {
-      sb_write_file( $dir . '../view_counter.txt' , $view_counter );
-      }
-
       // Display comments Oldest to Newest to. Oldest Comments will be at the top of the page.
       for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
 

@@ -85,10 +85,13 @@
     $lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 
     $lang_string['sb_add_comment_btn'] = 'add comment';
+    $lang_string['sb_read_entry_btn'] = 'view entry';
     $lang_string['sb_comment_btn_number_first'] = true;
     $lang_string['sb_comment_btn'] = 'comment';
+    $lang_string['sb_comment_view'] = 'view';
     $lang_string['sb_comments_plural_btn_number_first'] = true;
     $lang_string['sb_comments_plural_btn'] = 'comments';
+    $lang_string['sb_comments_plural_view'] = 'views';
 
     // ( 1 view )
     $lang_string['sb_view_counter_pre'] = '';
