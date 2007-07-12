@@ -39,9 +39,10 @@
       echo( $lang_string[ 'success' ] );
     } else {
       switch ($ok) {
-        case 100: echo( $lang_string[ 'wrong_password' ] );
-        case 101: echo( $lang_string[ 'inactive_account' ] );
+        case 100: $errortext = $lang_string[ 'wrong_password' ];
+        case 101: $errortext = $lang_string[ 'inactive_account' ];
       }
+      echo( $errortext );
     }
     
     echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
