@@ -35,6 +35,8 @@ Version History
   Uses the blocks to figure out which items to show.
   Allows normal border or no border (for ads and/or graphics)
   
+- Fixed Read More link not working when comments turned off.
+  
 0.4.8.1
 
 ===============
