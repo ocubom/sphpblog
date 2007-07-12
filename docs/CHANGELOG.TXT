@@ -36,6 +36,9 @@ Version History
   Allows normal border or no border (for ads and/or graphics)
   
 - Fixed Read More link not working when comments turned off.
+
+- Fixed number of views not showing unless there were comments entered. Also changed the wording - if comments turned off,
+  link only shows as View Entry - not Add Comment...
   
 0.4.8.1
 
