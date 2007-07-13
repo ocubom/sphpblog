@@ -234,7 +234,7 @@
     }
 
     if ( !isset( $blog_config[ 'blog_footer' ] ) ) {
-      $blog_config[ 'blog_footer' ] = 'No Footer'; // $lang_string[ 'sb_default_footer' ];
+      $blog_config[ 'blog_footer' ] = 'No Footer';
     }
 
     if ( !isset( $blog_config[ 'blog_entry_order' ] ) ) {
@@ -386,7 +386,8 @@
       $temp_configs = explode('|', $contents);
       $config_keys = array(   'info_keywords',
                   'info_description',
-                  'info_copyright', );
+                  'info_copyright',
+                  'tracking_code' );
 
       for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
         $key = $config_keys[ $i ];
@@ -404,6 +405,15 @@
 
     if ( !isset( $blog_config[ 'info_copyright' ] ) ) {
       $blog_config[ 'info_copyright' ] = '';
+    }
+
+    if ( !isset( $blog_config[ 'tracking_code' ] ) ) {
+      $blog_config[ 'tracking_code' ] = '';
+    }
+
+    // Hack to put in Google Analytics, etc
+    if ( isset( $blog_config[ 'tracking_code' ] ) ) {
+    $blog_config[ 'blog_footer' ] .= $blog_config[ 'tracking_code' ];
     }
 
     // READ BLACKLIST
@@ -529,12 +539,13 @@
   // Meta Information
   // ----------------
 
-  function write_metainfo ( $info_keywords, $info_description, $info_copyright ) {
+  function write_metainfo ( $info_keywords, $info_description, $info_copyright, $tracking_code ) {
     // Save information to file.
     //
     $array = array( clean_post_text( $info_keywords ),
             clean_post_text( $info_description ),
-            clean_post_text( $info_copyright ) );
+            clean_post_text( $info_copyright ),
+            $tracking_code );
 
     $str = implode('|', $array);
 

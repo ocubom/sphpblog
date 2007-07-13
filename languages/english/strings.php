@@ -382,6 +382,7 @@
         $lang_string['info_keywords'] = "Keywords: (List of keywords separated by commas.)";
         $lang_string['info_description'] = "Description: (An abstract or a free-text description of your site.)";
         $lang_string['info_copyright'] = "Rights: (Copyright statement, or link to document containing information.)";
+        $lang_string['tracking_code'] = "External Tracking Code: (HTML code that needs to be run on the main page (in the header tags for safety) only for every user that comes to the page i.e. Google Analytics)";
         $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
