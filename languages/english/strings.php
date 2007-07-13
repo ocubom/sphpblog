@@ -560,6 +560,8 @@
         $lang_string['title'] = "Preferences";
         $lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
         $lang_string['blog_title'] = "Blog Name:";
+        $lang_string['blog_header'] = "Header Graphic URL: images/blogheader.jpg (Leave blank for default theme graphic).";
+        $lang_string['blog_title'] = "Blog Name:";
         $lang_string['blog_author'] = "Author:";
         $lang_string['blog_email'] = "Email: (Separate email address should be separated by a , comma - blank disables Contact Me option)"; // Updated 0.4.7
         $lang_string['blog_avatar'] = "Avatar URL: images/avatar.jpg (Leave blank for none)."; // <-- New 0.4.7

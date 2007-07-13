@@ -96,6 +96,9 @@
       <div id="toggleSetupGeneral" class="toggleBody"><p />
         <input type="checkbox" id="blog_enable_title" name="blog_enable_title"<?php if ( $blog_config[ 'blog_enable_title' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_title' ] ); ?><p />
 
+        <label for="blog_header_graphic"><?php echo( $lang_string[ 'blog_header' ] ); ?></label><br />
+        <input type="text" name="blog_header_graphic" value="<?php echo($blog_config[ 'blog_header_graphic' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
+
         <label for="blog_title"><?php echo( $lang_string[ 'blog_title' ] ); ?></label><br />
         <input type="text" name="blog_title" value="<?php echo($blog_config[ 'blog_title' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
 

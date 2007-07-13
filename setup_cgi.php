@@ -92,7 +92,8 @@
             ( $_POST[ 'blog_search_top' ] == 'on' ),
             ( $_POST[ 'blog_enable_static_block' ] == 'on' ),
             $_POST[ 'static_block_options' ],
-            $_POST[ 'static_block_border' ] );
+            $_POST[ 'static_block_border' ],
+            $_POST[ 'blog_header_graphic' ] );
 
   if ( $ok === true ) {
     redirect_to_url( 'index.php' );

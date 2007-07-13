@@ -567,6 +567,11 @@
     // Default image path.
     $img_path = "themes/" . $blog_theme . "/images/";
 
+    $header_graphic = $blog_config[ 'blog_header_graphic' ];
+    if ( $header_graphic == '' ) {
+      $header_graphic = $img_path . 'header750x100.jpg';
+    }
+
     // Begin Page Layout HTML
     ?>
     <body>
@@ -574,7 +579,7 @@
       <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
         <tr align="left" valign="top">
           <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
-            <div id="header_image"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
+            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
             <?php
             if ( $blog_config['blog_enable_title']) { // New for 0.4.6
             echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
