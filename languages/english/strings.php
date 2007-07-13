@@ -1,6 +1,7 @@
 <?php
   // English Language File
   // (c) 2004 Alexander Palmo, apalmo <at> bigevilbrain <dot> com
+  // Edits: 2007 Bill Bateman, Alexander Palmo
 
   // Simple PHP Version: 0.5.0
   // Language Version:   0.5.0
@@ -85,13 +86,13 @@
     $lang_string['sb_relatedlink'] = 'related link'; // <-- New in 0.4.6
 
     $lang_string['sb_add_comment_btn'] = 'add comment';
-    $lang_string['sb_read_entry_btn'] = 'view entry';
+    $lang_string['sb_read_entry_btn'] = 'view entry'; // 0.5.0
     $lang_string['sb_comment_btn_number_first'] = true;
     $lang_string['sb_comment_btn'] = 'comment';
-    $lang_string['sb_comment_view'] = 'view';
+    $lang_string['sb_comment_view'] = 'view'; // 0.5.0
     $lang_string['sb_comments_plural_btn_number_first'] = true;
     $lang_string['sb_comments_plural_btn'] = 'comments';
-    $lang_string['sb_comments_plural_view'] = 'views';
+    $lang_string['sb_comments_plural_view'] = 'views'; // 0.5.0
 
     // ( 1 view )
     $lang_string['sb_view_counter_pre'] = '';
@@ -117,6 +118,7 @@
       $lang_string['label_entry'] = "Entry:";
       $lang_string['btn_preview'] = "&nbsp;Preview&nbsp;";
       $lang_string['btn_post'] = "&nbsp;Post&nbsp;";
+      $lang_string['chk_visiblemenu'] = "Visible (Show in menu)";
       $lang_string['file_name'] = "Static File Name: (no spaces or file extensions)";
 
       // Javascript Strings
@@ -184,7 +186,6 @@
         break;
 
       case 'add_block':
-
         // Add / Manage Blocks
         $lang_string['title'] = "Add / Manage Blocks";
         $lang_string['instructions'] = "Use the form below to add custom 'Blocks' which will appear in the sidebar menu.";

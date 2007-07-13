@@ -366,14 +366,28 @@
         }
       }
     }
-    
+
+    // Show invisible links when logged in.
+    if ( $logged_in == true ) {
+      $dir = 'content/static/';
+      $contents = sb_folder_listing( $dir, array( '.txt','.gz' ) );
+      for ( $i = 0; $i < count( $contents ); $i++ ) {
+        $staticfile = sb_read_file( $dir . $contents[ $i ] );
+        $exploded_array = explode( '|', $staticfile );
+        $blog_entry_data = explode_with_keys( $exploded_array );
+        if ( $blog_entry_data[ 'MENU_VISIBLE' ] == false ) {
+          $str .= '<a href="static.php?page=' . sb_strip_extension( $contents[ $i ] ) . '">*' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
+        }
+      }
+    }
+
     if ( $logged_in == true ) {
       $str  .= '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
     }
-    
+
     return ( $str );
   }
-  
+
   function write_link ( $link_name, $link_url, $link_id ) {
     // Save new link. Update links file
     //
@@ -387,7 +401,7 @@
     
     // Clean up link url and make safe text database storage.
     $link_url = str_replace( '|', ':', $link_url );
-    
+
     // Read old links file.
     $filename = 'config/links.txt';
     $result = sb_read_file( $filename );

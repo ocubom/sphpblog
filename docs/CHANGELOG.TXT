@@ -40,6 +40,10 @@ Version History
 - Fixed number of views not showing unless there were comments entered. Also changed the wording - if comments turned off,
   link only shows as View Entry - not Add Comment...
   
+- Added visibility to the static pages - if not visible, won't show in the menu for regular users - logged in users
+  will see the name with a * in front (so it can still be edited). Note: Existing static pages will need to be 
+  edited before this feature is useable.
+  
 0.4.8.1
 
 ===============
