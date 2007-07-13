@@ -44,6 +44,10 @@ Version History
   will see the name with a * in front (so it can still be edited). Note: Existing static pages will need to be 
   edited before this feature is useable.
   
+- Added header graphic configuration to preferences - if blank, uses default theme graphic.
+
+- Fixed sb_date issue (0.4.9 line 69) with regional dates as reported on the forums.
+  
 0.4.8.1
 
 ===============
