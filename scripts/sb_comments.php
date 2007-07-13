@@ -338,8 +338,8 @@
     for ( $i = 0; $i < count($comment_array); $i++ ) {
       // Get data
       list( $entry_filename, $year_dir, $month_dir, $comment_filename, $moderation_flag ) = explode( '|', $comment_array[ $i ] );
-      
-      if ( $entry == $entry_filename ) {
+
+      if ( $entry == sb_strip_extension( $entry_filename ) ) {
         if ( $moderation_flag == 'H') {
           // Comment is being held
           $results++;
