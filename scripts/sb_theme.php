@@ -47,10 +47,13 @@
     // Put any notifications for the logged in use here
     if ( $logged_in == true ) {
       $str .= '<b>' . $_SESSION[ 'user' ] . '<br />' . $lang_string['notice_loggedin'] . '</b><br /><br />';
-      
-      $unmod = get_unmodded_count(True);
-      if ( $unmod != 0 ) {
-        $str .= '<a href="comments_moderation.php">' . $lang_string['notice_moderator1'] . $unmod . $lang_string['notice_moderator2'] . '</a><br /><br />';
+
+      // Check mods being turned on
+      if ( $blog_config[ 'blog_comments_moderation' ] ) {
+        $unmod = get_unmodded_count(True);
+        if ( $unmod != 0 ) {
+          $str .= '<a href="comments_moderation.php">' . $lang_string['notice_moderator1'] . $unmod . $lang_string['notice_moderator2'] . '</a><br /><br />';
+        }
       }
     }
 
