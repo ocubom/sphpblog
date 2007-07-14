@@ -621,17 +621,14 @@
       umask( $oldumask );
     }
 
-    // Used this instead of sb_write_file because the PHP 4 compatible code
-    // there adds characters to the actual code being written to the file
-    // This code leaves it untouched.
     $filename = 'config/tracking_code.txt';
-    $f = @fopen($filename,"w");
+    $result = sb_write_file( $filename, $trackingcode );
 
-    if ( $f ) {
-      fwrite( $f,$trackingcode );
-      fclose( $f );
+    if ( $result ) {
       return ( true );
     } else {
+      // Error:
+      // Probably couldn't create file...
       return ( $filename );
     }
   }
@@ -643,7 +640,8 @@
     $filename = 'config/tracking_code.txt';
     if ( file_exists( $filename ) ) {
       $trackingcode = sb_read_file( $filename );
-      return ($trackingcode);
+      $trackcode = sb_stripslashes( $trackingcode );
+      return ($trackcode);
     }
   }
 
