@@ -386,8 +386,7 @@
       $temp_configs = explode('|', $contents);
       $config_keys = array(   'info_keywords',
                   'info_description',
-                  'info_copyright',
-                  'tracking_code' );
+                  'info_copyright' );
 
       for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
         $key = $config_keys[ $i ];
@@ -407,9 +406,7 @@
       $blog_config[ 'info_copyright' ] = '';
     }
 
-    if ( !isset( $blog_config[ 'tracking_code' ] ) ) {
-      $blog_config[ 'tracking_code' ] = '';
-    }
+    $blog_config[ 'tracking_code' ] = read_trackingcode();
 
     // Hack to put in Google Analytics, etc
     if ( isset( $blog_config[ 'tracking_code' ] ) ) {
@@ -544,8 +541,7 @@
     //
     $array = array( clean_post_text( $info_keywords ),
             clean_post_text( $info_description ),
-            clean_post_text( $info_copyright ),
-            $tracking_code );
+            clean_post_text( $info_copyright ), );
 
     $str = implode('|', $array);
 
@@ -557,6 +553,9 @@
 
     $filename = 'config/metainfo.txt';
     $result = sb_write_file( $filename, $str );
+
+    // OK now write the tracking code
+    write_trackingcode( $tracking_code );
 
     if ( $result ) {
       return ( true );
@@ -610,6 +609,41 @@
       // Error:
       // Probably couldn't create file...
       return ( $filename );
+    }
+  }
+
+  function write_trackingcode ( $trackingcode ) {
+    // Save information to file.
+    //
+    if (!file_exists('config')) {
+      $oldumask = umask(0);
+      $ok = mkdir( 'config', 0777 );
+      umask( $oldumask );
+    }
+
+    // Used this instead of sb_write_file because the PHP 4 compatible code
+    // there adds characters to the actual code being written to the file
+    // This code leaves it untouched.
+    $filename = 'config/tracking_code.txt';
+    $f = @fopen($filename,"w");
+
+    if ( $f ) {
+      fwrite( $f,$trackingcode );
+      fclose( $f );
+      return ( true );
+    } else {
+      return ( $filename );
+    }
+  }
+
+  function read_trackingcode () {
+    // Read information from file.
+    //
+    $trackingcode = '';
+    $filename = 'config/tracking_code.txt';
+    if ( file_exists( $filename ) ) {
+      $trackingcode = sb_read_file( $filename );
+      return ($trackingcode);
     }
   }
 
