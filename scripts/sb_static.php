@@ -183,6 +183,8 @@
               break;
             }
           }
+          // Was not in the file for some reason - add it
+          write_link( $save_data[ 'SUBJECT' ], 'static.php?page='.sb_strip_extension( $entryFile ), $i );
         } else {
           // The file was empty because all of the links were invisible!
           write_link( $save_data[ 'SUBJECT' ], 'static.php?page='.sb_strip_extension( $entryFile ), 0 );
