@@ -153,7 +153,7 @@
       } else {
         $entryFile = $file_name.'.txt';
       }
-      
+
     }
 
     // Implode the array
@@ -161,8 +161,8 @@
     
     // Save the file
     $result = sb_write_file( 'content/static/'.$entryFile, $str );
-    
-    if ( $blog_entry_data[ 'MENU_VISIBLE' ] == false ) {
+
+    if ( $save_data[ 'MENU_VISIBLE' ] != 'on' ) {
       modify_link( 'delete_static', 'static.php?page='.sb_strip_extension( $entryFile ), '' );
       return ( true );
     } else if ( $result ) {
@@ -183,6 +183,9 @@
               break;
             }
           }
+        } else {
+          // The file was empty because all of the links were invisible!
+          write_link( $save_data[ 'SUBJECT' ], 'static.php?page='.sb_strip_extension( $entryFile ), 0 );
         }
       }
       return ( true );
