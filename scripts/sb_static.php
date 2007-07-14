@@ -180,7 +180,7 @@
           for ( $i = 0; $i < count( $array ); $i++ ) {
             if ( $link_url == $array[$i] ) {
               write_link( $save_data[ 'SUBJECT' ], 'static.php?page='.sb_strip_extension( $entryFile ), $i-1 );
-              break;
+              return ( true );
             }
           }
           // Was not in the file for some reason - add it
