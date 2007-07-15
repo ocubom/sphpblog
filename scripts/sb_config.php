@@ -407,7 +407,7 @@
     }
 
     $blog_config[ 'tracking_code' ] = read_trackingcode();
-
+    $blog_config[ 'blog_footer_only' ] = $blog_config[ 'blog_footer' ];
     // Hack to put in Google Analytics, etc
     if ( isset( $blog_config[ 'tracking_code' ] ) ) {
     $blog_config[ 'blog_footer' ] .= $blog_config[ 'tracking_code' ];

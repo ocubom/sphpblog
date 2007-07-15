@@ -112,7 +112,7 @@
         <input type="text" name="blog_avatar" value="<?php echo($blog_config[ 'blog_avatar' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
 
         <label for="blog_footer"><?php echo( $lang_string[ 'blog_footer' ] ); ?></label><br />
-        <input type="text" name="blog_footer" value="<?php echo($blog_config[ 'blog_footer' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
+        <input type="text" name="blog_footer" value="<?php echo($blog_config[ 'blog_footer_only' ]); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
       </div>
 
       <p />
