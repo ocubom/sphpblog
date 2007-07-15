@@ -573,7 +573,7 @@
         $lang_string['blog_search_top'] = "Show Search In Entries (instead of in sidebar)"; // New for 0.5.0
         $lang_string['blog_enable_static_block'] = "Show a defined block as the first entry of blog entries: "; // New for 0.5.0
         $lang_string['static_block_border'] = 'Show Border'; // New for 0.5.0
-        $lang_string['static_block_noborder'] = 'No Border'; // New for 0.5.0 
+        $lang_string['static_block_noborder'] = 'No Border'; // New for 0.5.0
         $lang_string['blog_enable_voting'] = "Enable Users to Rate Entries";
         $lang_string['blog_enable_cache'] = "Enable Blog Entry Cache (may provide speed increase on some servers)"; // New for 0.4.6
         $lang_string['blog_enable_calendar'] = "Enable Calendar"; // New for 0.4.6
