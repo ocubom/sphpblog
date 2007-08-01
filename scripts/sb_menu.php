@@ -9,7 +9,7 @@
   // ------------------------
   // "Archive Menu" Functions
   // ------------------------
-  
+
   /**************************************************************************
   MODIFICACIONES PARA LA GESTION DE LOS BLOQUES FIJOS DEL SPHPBLOG
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -681,16 +681,26 @@
       sb_write_file( $filename, $str );
     }
   }
-  
+
+  function confirm_unmod( $modflag ) {
+    global $blog_config;
+    $result = true;
+    if ($blog_config[ 'blog_comments_moderation' ] == 1) {
+      if ( $modflag == 'H' ) { $result = false; }
+    }
+
+    return( $result );
+  }
+
   function get_most_recent () {
     // Read last updated items from disk, return HTML
     //
     global $lang_string, $user_colors;
-    
+
     // Read links file.
     $filename = 'config/last_updated.txt';
     $result = sb_read_file( $filename );
-    
+
     // Append new links.
     $str_comments = NULL;
     if ( $result ) {
@@ -710,13 +720,12 @@
         }
         
         $comment_entry_data = comment_to_array( $comment_file );
-        if ( $comment_entry_data !== false) {
+        if ( ($comment_entry_data !== false) && ( confirm_unmod($comment_entry_data[ 'MODERATIONFLAG' ]) ) ) {
           global $blog_config;
           
           $comment_name = $comment_entry_data[ 'NAME' ];
           $comment_date = $comment_entry_data[ 'DATE' ];
           $comment_text = $comment_entry_data[ 'CONTENT' ];
-          
           $comment_text = blog_to_html( $comment_text, false, true );
           
           if ( strlen( $comment_name ) > 40 ) {
