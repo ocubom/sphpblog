@@ -219,7 +219,7 @@
     // 2. Only show list when not modifying, adding or deleting an entry
     if ( ($_SESSION[ 'fulladmin' ] == 'yes' ) AND ( $_GET[ 'action' ] == "" ))  {
       // Button to add new user - only available to Administrator
-      echo( '<a href="manage_users.php?action=modify&type=new">Create New User</a><p />');
+      echo( '<a href="manage_users.php?action=modify&type=new">' . $lang_string['create_user'] . '</a><p />');
       echo( '<table width=100% cellspacing="0" cellpadding="2">' );
       echo( '<tr class="header"><th></th><th><i>' . $lang_string['grid_header'] . '</i></th><th></th><th></th><th></th></tr>');
       echo( '<tr class="header"><th></th><th>' . $lang_string['grid_login'] . '</th><th>' . $lang_string['grid_email'] . '</th><th>' . $lang_string['grid_avatar'] . '</th><th>' . $lang_string['grid_state'] . '</th></tr>');

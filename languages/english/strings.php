@@ -37,6 +37,7 @@
     $lang_string['menu_categories'] = "Categories";
     $lang_string['menu_info'] = "Meta Tags";
     $lang_string['manage_users'] = "User Manager";
+    $lang_string['manage_php_config'] = "View PHP Configuration"; // New in 0.5.0.1
     $lang_string['menu_options'] = "Date &amp; Time";
     $lang_string['menu_themes'] = "Themes";
     $lang_string['menu_colors'] = "Colors";
@@ -66,12 +67,14 @@
     $lang_string['nav_next'] = 'Next';
     $lang_string['nav_back'] = 'Back';
     $lang_string['nav_first'] = 'First'; // New in 0.5.0.1
-    $lang_string['nav_last'] = 'Last'; // New in 0.5.0.1 
+    $lang_string['nav_last'] = 'Last'; // New in 0.5.0.1
     $lang_string['search_title'] = 'Search';
     $lang_string['search_go'] = 'Go';
     $lang_string['page_generated_in'] = 'Page Generated in %s seconds';
     $lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
     $lang_string['read_more'] = 'Read More...'; // New in 0.4.8
+    $lang_String['randomentry'] = 'Random Entry'; // New in 0.5.0.1
+    $lang_string['randomquote'] = 'Random Quote'; // New in 0.5.0.1
 
     // SB Functions
     $lang_string['sb_months'] = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
@@ -847,7 +850,8 @@
         $lang_string['grid_avatar'] = 'Avatar';
         $lang_string['grid_state'] = 'Active?';
         $lang_string['btn_modify'] = 'Modify';
-        $lang_string['btn_delete'] = 'Delete';  
+        $lang_string['btn_delete'] = 'Delete';
+        $lang_string['create_user'] = 'Create New User';
         break;
 
       default:

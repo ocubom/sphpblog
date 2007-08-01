@@ -121,16 +121,16 @@
         $base_permalink_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/';
       }
       */
-      
+
       // Strip the file extension
       $entry_no_ext = sb_strip_extension( $entry_filename );
       $link = $base_permalink_url . 'index.php?entry=' . $entry_no_ext;
-      
+
       // Create array for proper 'widget' format
       $result = array();
-      $result[ 'title' ] = 'Random Entry';
+      $result[ 'title' ] = $lang_String['randomentry'];
       $result[ 'content' ] = '<a href="'.$link.'">'.$subject.'</a>';
-        
+
       return($result);
     }
   }
@@ -164,7 +164,7 @@
     $rquote = array_rand($quotes); // Random NumberÊ
 
     $result = array();
-    $result[ 'title' ] = 'Random Quote';
+    $result[ 'title' ] = $lang_string['randomquote'];
     $result[ 'content' ] = $quotes[$rquote];
 
     return ( $result );
@@ -354,7 +354,7 @@
       $str  .= '<a href="options.php">' . $lang_string[ 'menu_options' ] . '</a><br />';
       $str  .= '<a href="info.php">' . $lang_string[ 'menu_info' ] . '</a><br />';
       $str  .= '<a href="manage_users.php">' . $lang_string[ 'manage_users' ] . '</a><br />';
-      $str  .= '<a href="phpinfo.php">View PHP Configuration</a><br />';
+      $str  .= '<a href="phpinfo.php">' . $lang_string['manage_php_config'] . '</a><br />';
       $str  .= '<hr />';
       $str  .= '<a href="moderation.php">' . $lang_string[ 'menu_moderation' ] . '</a><br />';
       if ( $blog_config[ 'blog_comments_moderation' ] ) {
