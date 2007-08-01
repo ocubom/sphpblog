@@ -81,7 +81,11 @@
         echo('<label for="comment_name">' . $lang_string[ 'comment_name' ] . '</label><br />');
         echo('<input type="text" name="comment_name" id="comment_name" value="' . $_COOKIE[ 'comment_name' ] . '" autocomplete="off" /><br />');
       } else {
-        echo('<input type="hidden" name="comment_name" id="comment_name" value="' . $blog_config[ 'blog_author' ] . '" autocomplete="off" />');
+        $admin = $_SESSION[ 'fulladmin' ];
+        if ($admin == 'yes' ) {
+          echo('<input type="hidden" name="comment_name" id="comment_name" value="' . $_SESSION[ 'user' ] . ' (' . $blog_config[ 'blog_author' ] . ')" autocomplete="off" />');
+        } else {
+          echo('<input type="hidden" name="comment_name" id="comment_name" value="' . $_SESSION[ 'user' ] . '" autocomplete="off" />'); }
       }
 
       if ($GLOBALS['logged_in']==false ) {

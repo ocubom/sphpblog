@@ -9,7 +9,7 @@
   // read_entries ( $m, $y, $d, $logged_in, $start_entry, $category )
   // get_latest_entry ()
   // blog_entry_listing ()
-  // entry_exists ( $y, $m, $entry )
+  // entry_exists ( $y, $m, $entry )                 
   // preview_entry ( $blog_subject, $blog_text, $tb_ping, $temp_relatedlink, $timestamp )
   // preview_static_entry ( $blog_subject, $blog_text )
   // read_entry_from_file ( $entry_id )
