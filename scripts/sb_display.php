@@ -535,6 +535,7 @@
       if ( $remainingpages < $pagestoshow ) {
         $startpage = $current_page - ($pagestoshow - $remainingpages);
       }
+      if ( $startpage < 0 ) { $startpage = 0; }
 
       for ( $p = $startpage; $p < count( $pages_array ); $p++ ) {
         list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[$p] );
