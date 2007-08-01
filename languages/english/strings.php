@@ -344,7 +344,7 @@
         $lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
 
         $lang_string[ 'error_comments_disabled' ] = '<h2>Error!</h2>Hey! Comments are disabled on this blog. Are you a spambot?'; // New 0.5.0
-        $lang_string[ 'error_no_match' ] = '<h2>Error!</h2>You IP address doesn\t match posted IP address. Are you a spambot?'; // New 0.5.0
+        $lang_string[ 'error_no_match' ] = "<h2>Error!</h2>Your IP address doesn\'t match posted IP address. Are you a spambot?"; // New 0.5.0
         $lang_string[ 'error_fields_missing' ] = '<h2>Error!</h2>Missing the following fields: '; // New 0.5.0
         $lang_string[ 'error_spambot' ] = '<h2>Error!</h2>Capcha data is missing. Are you a spambot?'; // New 0.5.0
         $lang_string[ 'error_capcha' ] = '<h2>Error!</h2>The capcha you entered is incorrect.'; // New 0.5.0
@@ -564,7 +564,6 @@
         $lang_string['instructions'] = "You can change the name of your blog, and your personal information below.";
         $lang_string['blog_title'] = "Blog Name:";
         $lang_string['blog_header'] = "Header Graphic URL: images/blogheader.jpg (Leave blank for default theme graphic).";
-        $lang_string['blog_title'] = "Blog Name:";
         $lang_string['blog_author'] = "Author:";
         $lang_string['blog_email'] = "Email: (Separate email address should be separated by a , comma - blank disables Contact Me option)"; // Updated 0.4.7
         $lang_string['blog_avatar'] = "Avatar URL: images/avatar.jpg (Leave blank for none)."; // <-- New 0.4.7
@@ -638,7 +637,7 @@
         break;
       case 'comment_moderation':
         $lang_string['title'] = "Unmodded Comments";
-        $lang_string['instructions'] = "This is a list of all comments are not available to users that are not logged into the
+        $lang_string['instructions'] = "This is a list of all comments not available to users that are not logged into the
           blog because they have not been approved by a moderator.";
         $lang_string['header'] = "Moderation Listing";
         $lang_string['enteredby'] = "Entered By: ";
