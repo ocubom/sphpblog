@@ -4,7 +4,7 @@
   // You are free to use and modify the Simple PHP Blog. All changes
   // must be uploaded to SourceForge.net under Simple PHP Blog or
   // emailed to apalmo <at> bigevilbrain <dot> com
-  
+
   // -------------------------
   // Session & Login Functions
   // -------------------------
@@ -24,7 +24,7 @@
 
     // Start the session.
     session_start ();
-    
+
     // Check if user is logged in.
     if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
       if ( $_SESSION[ 'site_path' ] === dirname($_SERVER[ 'PHP_SELF' ]) ) {
@@ -95,7 +95,7 @@
     }
         
     session_unset();
-    session_destroy(); 
+    session_destroy();
     $_SESSION = array();
     
     return ( $was_logged_in );
@@ -111,7 +111,7 @@
     $password = null;
     
     @include('config/password.php');
-    
+
     if ( $username == null || $password == null ) {
       // Missing password.php file...
     } else {
@@ -119,9 +119,13 @@
       if ( crypt( $user, $username ) === $username ) {
         if ( crypt( $pass, $password ) === $password ) {
           // Start Session and Set Cookie
+          session_unset();
+          session_destroy();
+          $_SESSION = array();
+
           ini_set('url_rewriter.tags','');
           ini_set('session.use_trans_sid', false);
-      
+
           session_set_cookie_params(60*60*24*5);
           @session_start();
 
@@ -220,6 +224,10 @@
         // OK, we've found the right secondary user - check their password
         $chkpass = crypt($user, $pass);
         if ($tmp[2] === $chkpass) {
+          session_unset();
+          session_destroy();
+          $_SESSION = array();
+          
           ini_set('url_rewriter.tags','');
           ini_set('session.use_trans_sid', false);
 
