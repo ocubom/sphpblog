@@ -3,32 +3,32 @@
   // INITIALIZE PAGE
   // ---------------
   require_once('scripts/sb_functions.php');
-  global $logged_in;
+  global $logged_in, $blog_config;
   $logged_in = logged_in( true, true );
 
-  read_config();
-  
-  // ---------------
-  // POST PROCESSING
-  // ---------------
-  
   // Validate Language
   $temp_lang = '';
   if ( isset( $_POST['blog_language'] ) ) {
     $temp_lang = sb_stripslashes( $_POST['blog_language'] );
-  } else if ( array_key_exists( 'blog_language', $_GET ) ) {  
+  } else if ( array_key_exists( 'blog_language', $_GET ) ) {
     $temp_lang = sb_stripslashes( $_GET['blog_language'] );
   }
   if (validate_language($temp_lang) == false) {
     $temp_lang = 'english';
   }
-  
-  global $blog_config;
+
   $blog_config[ 'blog_language' ] = $temp_lang;
 
   require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
   sb_language( 'setup' );
+
+  read_config();
+
+  // ---------------
+  // POST PROCESSING
+  // ---------------
   
+
   // ------------
   // PAGE CONTENT
   // ------------
