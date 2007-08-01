@@ -3,8 +3,8 @@
   // (c) 2004 Alexander Palmo, apalmo <at> bigevilbrain <dot> com
   // Edits: 2007 Bill Bateman, Alexander Palmo
 
-  // Simple PHP Version: 0.5.0
-  // Language Version:   0.5.0
+  // Simple PHP Version: 0.5.0.1
+  // Language Version:   0.5.0.1
 
   function sb_language( $page ) {
     global $language, $html_charset, $php_charset, $lang_string;
@@ -65,6 +65,8 @@
     $lang_string['home'] = 'Return to Home';
     $lang_string['nav_next'] = 'Next';
     $lang_string['nav_back'] = 'Back';
+    $lang_string['nav_first'] = 'First'; // New in 0.5.0.1
+    $lang_string['nav_last'] = 'Last'; // New in 0.5.0.1 
     $lang_string['search_title'] = 'Search';
     $lang_string['search_go'] = 'Go';
     $lang_string['page_generated_in'] = 'Page Generated in %s seconds';

@@ -493,29 +493,7 @@
 
     $blog_content  .= '<br />';
 
-    if ( $previous_entry != NULL ) {
-      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $previous_entry );
-      $d = substr( $entry_filename, 9, 2 );
-      $blog_content  .= ' <span style="float: left;"><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
-      if ( $category != NULL ) {
-        $blog_content  .= '&amp;category=' . $category;
-      }
-      $blog_content  .= '">' . $lang_string[ 'nav_back' ] . '</a></span> ';
-    }
-
-    if ( $next_entry != NULL ) {
-      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $next_entry );
-      $d = substr( $entry_filename, 9, 2 );
-      $blog_content  .= ' <span style="float: right;"><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
-      if ( $category != NULL ) {
-        $blog_content  .= '&amp;category=' . $category;
-      }
-      $blog_content  .= '">' . $lang_string[ 'nav_next' ] . '</a></span> ';
-    }
-
-    $blog_content  .= '<br />';
-
-    // Figure out page count
+    // Figure out page count - need this first for the First and Last links
     $pages_array = array();
     $current_page = 0;
     for ( $p = 0; $p < count( $entry_file_array ); $p += $blog_config[ 'blog_max_entries' ] ) {
@@ -525,24 +503,77 @@
       }
     }
 
+    $blog_content  .= '<center><b>';
+
+    // Display First link if we are not on the first page
+    if ($current_page > 0) {
+      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[0] );
+      $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+      $blog_content  .= '">&#60;&#60;' . $lang_string['nav_first'] . '&#32;&#32;</a></span>';
+    }
+
+    // Display Back lin if required
+    if ( $previous_entry != NULL ) {
+      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $previous_entry );
+      $d = substr( $entry_filename, 9, 2 );
+      $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+      if ( $category != NULL ) {
+        $blog_content  .= '&amp;category=' . $category;
+      }
+      $blog_content  .= '"> &#60;' . $lang_string[ 'nav_back' ] . '&#32;&#32;</a></span> ';
+    }
+
     // Display page count
+    $pagestoshow = 10;
     if (count($pages_array) > 0) {
-      $blog_content .= '<span> | ';
-      for ( $p = 0; $p < count( $pages_array ); $p++ ) {
+      $blog_content .= '<span>|&#32;';
+
+      $startpage = $current_page;
+
+      // Test to see if we need to show previous pages in order to show all of the current visible pages
+      $remainingpages = (count($pages_array) - $current_page);
+      if ( $remainingpages < $pagestoshow ) {
+        $startpage = $current_page - ($pagestoshow - $remainingpages);
+      }
+
+      for ( $p = $startpage; $p < count( $pages_array ); $p++ ) {
         list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[$p] );
         $d = substr( $entry_filename, 9, 2 );
+
+        // Only show a limited number of page links at the bottom
+        if ( $pagestoshow < 1 ) { Break; }
+
         if ($current_page == $p) {
-          $blog_content  .= ($p + 1) . '</a> | ';
+          $blog_content  .= ($p + 1) . ' | ';
         } else {
           $blog_content  .= '<a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
           if ( $category != NULL ) {
             $blog_content  .= '&amp;category=' . $category;
           }
-          $blog_content  .= '">' . ($p + 1) . '</a> | ';
+          $blog_content  .= '">' . ($p + 1) . '</a>&#32;|&#32;';
         }
+        $pagestoshow = $pagestoshow - 1;
       }
       $blog_content .= '</span>';
     }
+
+    if ( $next_entry != NULL ) {
+      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $next_entry );
+      $d = substr( $entry_filename, 9, 2 );
+      $blog_content  .= ' <span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+      if ( $category != NULL ) {
+        $blog_content  .= '&amp;category=' . $category;
+      }
+      $blog_content  .= '">' . $lang_string[ 'nav_next' ] . '&#62;&#32;&#32;</a></span> ';
+    }
+
+    // Display Last link if we are not on the last page
+    if ( $next_entry != NULL ) {
+      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[count($pages_array)-1] );
+      $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+      $blog_content  .= '">&#32;&#32;' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
+    }
+    $blog_content  .= '</center></b><br />';
 
     // Check for intervening static entries to be shown before current entries...
 
