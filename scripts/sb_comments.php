@@ -82,6 +82,10 @@
       }
 
       // Create one regardless - this is so it works when comments are turned off
+      // Make sure that the folder exists for old users
+      if (!file_exists($dir)) {
+        @mkdir($dir, 0777, TRUE);
+      }
       sb_write_file( $dir . '../view_counter.txt' , $view_counter );
     }
 
