@@ -674,7 +674,8 @@
         }
       }
     }
-    fclose($pfile);
+    if (isset($pfile)) {
+      fclose($pfile);}
   }
 
   function CheckUserSecurity( $username, $type ) {

@@ -5,7 +5,7 @@
   // You are free to use and modify the Simple PHP Blog. All changes 
   // must be uploaded to SourceForge.net under Simple PHP Blog or
   // emailed to apalmo <at> bigevilbrain <dot> com
-  
+
   // blog_entry_to_array ( $entryFile )
   // write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_relatedlink, $blog_date=NULL )
   // implode_with_keys( $array, $separator = '|' )
@@ -51,7 +51,7 @@
         //
         // VERSION, SUBJECT, DATE, CONTENT, (MOOD, SONG, CATEGORY, etc...)
         // Total count will be 14 items...
-        
+
         $blog_entry_data = explode_with_keys( $exploded_array );
       }
       return( $blog_entry_data );
@@ -61,13 +61,13 @@
     }
   }
   
-  function write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_relatedlink, $blog_date=NULL ) {
+  function write_entry ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_relatedlink, $blog_date=NULL) {
     // Save new entry or update old entry
     //
     // $updateFile will either be NULL or the name of the file
     // which is being updated (i.e. entry040603-140634)
     global $blog_config, $sb_info;
-    
+
     $filename='config/~blog_entry_listing.tmp';
     sb_delete_file( $filename );
     
@@ -82,14 +82,13 @@
     if ( $tb_ping !== '' ) {
       $save_data[ 'TB_PING' ] = clean_post_text( $tb_ping );
     }
-    
+
     // Read more link
     if ( $blog_relatedlink !== '' ) {
       $save_data[ 'relatedlink' ] = clean_post_text( $blog_relatedlink );
     }
     
     $save_data[ 'IP-ADDRESS' ] = getIP(); // New 0.4.8
-    $save_data[ 'CREATEDBY' ] = $_SESSION[ 'username' ]; // New 0.5.0
 
     if ( $updateFile == true ) {
       // Updating an entry
@@ -102,6 +101,8 @@
       }
       
       $oldEntryArray = blog_entry_to_array( $oldEntryFile );
+
+      $save_data[ 'CREATEDBY' ] = $oldEntryArray[ 'CREATEDBY' ]; // New 0.5.0
       $save_data[ 'DATE' ] = $oldEntryArray[ 'DATE' ];
       $y = date('y', $save_data[ 'DATE' ] );
       $m = date('m', $save_data[ 'DATE' ] );
@@ -135,6 +136,7 @@
       }
       
       $save_data[ 'DATE' ] = $blog_date;
+      $save_data[ 'CREATEDBY' ] = $_SESSION[ 'username' ]; // New 0.5.0
       
       if (!file_exists('content')) {
         $oldumask = umask(0);
@@ -379,6 +381,6 @@
   
   function write_modifica ( $blog_subject, $blog_text, $tb_ping, $updateFile, $blog_categories, $blog_date=NULL, $filename) {
     sb_delete_file( $filename );
-    write_entry( sb_stripslashes( $_POST['blog_subject'] ), sb_stripslashes( $_POST['blog_text'] ), sb_stripslashes( $_POST['tb_ping'] ), $_POST['entry'], $_POST[ "catlist" ], $faketime );
+    write_entry( sb_stripslashes( $_POST['blog_subject'] ), sb_stripslashes( $_POST['blog_text'] ), sb_stripslashes( $_POST['tb_ping'] ), $_POST['entry'], $_POST[ "catlist" ], $faketime);
   }
 ?>
