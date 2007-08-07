@@ -265,7 +265,7 @@
         
         // Get files in the comments folder.
         $comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
-        
+
         // Look through comments.
         for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
           $comment_filename =  $comment_file_array[ $k ];
@@ -601,9 +601,30 @@
     }
   }
 
+  function set_comment_holdflag ( $filename, $hold_flag='') {
+    // Save new entry or update old entry
+    global $blog_config, $sb_info, $lang_string;
+
+    sb_delete_file( 'config/~blog_comment_listing.tmp' );
+
+    $comment_entry_data = comment_to_array( $filename );
+
+    // Now update the flag
+    $comment_entry_data[ 'MODERATIONFLAG' ] = $hold_flag;
+    $str = implode_with_keys( $comment_entry_data );
+
+    $result = sb_write_file( $filename, $str );
+
+    if ($hold_flag == '') {
+      add_most_recent( 'comment'.$stamp, $y, $m, $entry );
+    }
+
+    return ( true );
+  }
+
   function delete_comment ( $filepath ) {
     // Delete a comment. Also, delete the whole comment folder if it was the only comment.
-    
+
     sb_delete_file( 'config/~blog_comment_listing.tmp' ); // Delete comment array cache
 
     // Delete comment file
