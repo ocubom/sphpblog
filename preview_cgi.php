@@ -31,7 +31,7 @@
     echo( $lang_string[ 'instructions_preview' ] . '<p />' );
     echo( $lang_string[ 'instructions_update' ] . '<p />' );
     echo( '<hr />' );
-    
+
     sb_editor();
     
     // PAGE CONTENT END
@@ -45,16 +45,8 @@
   // HTML
   // ----
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
-  
-  <link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
+  <?php echo( get_init_code() ); ?>
   <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-  <?php require_once('scripts/sb_javascript.php'); ?>
-  <script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
   
   <?php require_once('scripts/sb_editor.php'); ?>
   <title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title_preview' ] ); ?></title>

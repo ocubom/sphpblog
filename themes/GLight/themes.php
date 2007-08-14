@@ -649,13 +649,6 @@
       <br />
       <table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
         <tr align="left" valign="top">
-          <td bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
-            <div id="header">
-              <?php echo($blog_config[ 'blog_title' ]); ?><br />
-            </div>
-          </td>
-        </tr>
-        <tr align="left" valign="top">
           <td bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
             <div id="maincontent">
               <?php page_content(); ?>

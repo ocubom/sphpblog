@@ -258,35 +258,27 @@
   // ----
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=<?php echo( $lang_string[ 'html_charset' ] ); ?>" />
+  <?php echo( get_init_code() ); ?>
+  <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 
-        <style type="text/css">
-        .header th{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
-        .data1 td{background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>}
-        .data2 td{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
-        </style>
+  <style type="text/css">
+  .header th{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
+  .data1 td{background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>}
+  .data2 td{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
+  </style>
 
-        <link rel="stylesheet" type="text/css" href="themes/<?php echo( $blog_theme ); ?>/style.css" />
-        <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-        <?php require_once('scripts/sb_javascript.php'); ?>
-        <script language="javascript" src="scripts/sb_javascript.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
-                <!--
-                function validate(theform) {
-                        if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-                                alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
-                                return false;
-                        } else {
-                                return true;
-                        }
-                }
-                //-->
-        </script>
+  <script type="text/javascript">
+          <!--
+          function validate(theform) {
+                  if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
+                          alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+                          return false;
+                  } else {
+                          return true;
+                  }
+          }
+          //-->
+  </script>
         <title><?php echo( $blog_config[ 'blog_title' ] ); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
 </head>
         <?php 
