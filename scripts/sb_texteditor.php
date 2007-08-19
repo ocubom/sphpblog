@@ -505,4 +505,39 @@
     
     echo( $str );
   }
+	
+	function category_combo_box ( $fieldname, $selected_item ) {
+    // Returns categories HTML.
+    global $lang_string;
+    
+		$str = NULL;
+    $catArray = get_category_array();
+    if ( count($catArray) > 0) {
+      $itemArray = array();
+      for ( $i = 0; $i < count( $catArray ); $i++ ) {
+        $id_number = $catArray[$i][0];
+        $name_str = $catArray[$i][1];
+        $space_count = $catArray[$i][2];
+        
+        $label = '';
+        for ( $j = 0; $j < $space_count; $j++ ) {
+          $label  .= '&nbsp;';
+        }
+        $label  .= $name_str;
+        
+        $selected = false;
+        if ( $selected_item == $id_number ) {
+						$selected = true;
+            //break;
+        }
+        
+        $item = array( 'label' => $label, 'value' => $id_number, 'selected' => $selected );
+        array_push( $itemArray, $item );
+      }
+      $str = HTML_dropdown( false, $fieldname, $itemArray);
+    }
+    
+    echo( $str );
+  }
+
 ?>

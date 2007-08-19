@@ -149,6 +149,11 @@
           array_push( $arr, array( 'label' => $lang_string[ 'select_old_to_new' ], 'value' => 'old_to_new', 'selected' => $blog_config[ 'blog_comment_order' ] == 'old_to_new' ) );
           echo( HTML_dropdown( $lang_string[ 'label_comment_order' ], "blog_comment_order", $arr ) );
         ?>
+				<input type="checkbox" id="blog_enable_start_category" name="blog_enable_start_category"<?php if ( $blog_config[ 'blog_enable_start_category' ] == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $lang_string[ 'blog_enable_start_category' ] ); ?>
+          <?php
+            category_combo_box( 'blog_enable_start_category_selection', intval($blog_config[ 'blog_enable_start_category_selection' ]) );             
+          ?>
+        </select></br>
       </div>
 
       <p />

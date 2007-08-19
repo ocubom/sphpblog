@@ -197,7 +197,9 @@
                   'blog_enable_static_block',
                   'static_block_options',
                   'static_block_border',
-                  'blog_header_graphic' );
+                  'blog_header_graphic',
+									'blog_enable_start_category',
+									'blog_enable_start_category_selection' );
 
       for ( $i = 0; $i < count( $temp_configs ); $i++ ) {
         $key = $config_keys[ $i ];
@@ -227,6 +229,14 @@
 
     if ( !isset( $blog_config[ 'blog_avatar' ] ) ) {
       $blog_config[ 'blog_avatar' ] = '';
+    }
+		
+		if ( !isset( $blog_config[ 'blog_enable_start_category_selection' ] ) ) {
+      $blog_config[ 'blog_enable_start_category_selection' ] = '';
+    }
+		
+		if ( !isset( $blog_config[ 'blog_enable_start_category' ] ) ) {
+      $blog_config[ 'blog_enable_start_category' ] = 0;
     }
 
     if ( !isset( $blog_config[ 'blog_header_graphic' ] ) ) {
@@ -463,7 +473,7 @@
                           $blog_comment_days_expiry, $blog_enable_capcha_image, $blog_enable_archives,
                           $blog_enable_login, $blog_enable_counter, $blog_footer_counter, $blog_counter_hours,
                           $blog_comments_moderation, $blog_search_top, $blog_enable_static_block, $static_block_options,
-                          $static_block_border, $blog_header_graphic ) {
+                          $static_block_border, $blog_header_graphic, $blog_enable_start_category, $blog_enable_start_category_selection ) {
     // Save config information to file.
     //
     $array = array( clean_post_text( $blog_title ),
@@ -507,9 +517,11 @@
             $blog_enable_static_block,
             $static_block_options,
             $static_block_border,
-            $blog_header_graphic );
+            $blog_header_graphic,
+						$blog_enable_start_category, 
+						$blog_enable_start_category_selection );
 
-    $str = implode('|', $array);
+		$str = implode('|', $array);
 
     if (!file_exists('config')) {
       $oldumask = umask(0);
