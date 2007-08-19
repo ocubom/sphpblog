@@ -574,6 +574,7 @@
         $lang_string['blog_choose_language'] = "Choose Language:";
         $lang_string['blog_enable_comments'] = "Enable User Comments";
         $lang_string['blog_comments_popup'] = "Open Comments in Popup Window";
+				$lang_string['blog_enable_start_category'] = "Use specific category for first page of entries: "; // Now for 0.5.1
         $lang_string['blog_search_top'] = "Show Search In Entries (instead of in sidebar)"; // New for 0.5.0
         $lang_string['blog_enable_static_block'] = "Show a defined block as the first entry of blog entries: "; // New for 0.5.0
         $lang_string['static_block_border'] = 'Show Border'; // New for 0.5.0
