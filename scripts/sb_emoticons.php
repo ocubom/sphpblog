@@ -36,7 +36,7 @@
 	}
 
 	function emoticons_load_tags () {
-		$str = sb_read_file( 'config/emoticons.txt' );
+		$str = sb_read_file( CONFIG_DIR.'emoticons.txt' );
 		
 		$emote_arr = array();
 		if ($str) {
@@ -65,7 +65,7 @@
 		$emotepath_arr = Array();
 		array_push( $emotepath_arr, 'themes/' . $blog_theme . '/images/emoticons/' );
 		array_push( $emotepath_arr, 'interface/emoticons/' );
-		array_push( $emotepath_arr, 'images/emoticons/' );
+		array_push( $emotepath_arr, IMAGES_DIR.'emoticons/' );
 		
 		$emoteimage_arr = Array();
 		for ( $i = 0; $i < count( $emotepath_arr ); $i++) {

@@ -219,7 +219,7 @@
   function check_secondary_password ( $user, $pass ) {
     // Check password against hashed password file
     //
-    $pfile = fopen("config/users.php","a+");
+    $pfile = fopen(CONFIG_DIR."users.php","a+");
     rewind($pfile);
     while (!feof($pfile)) {
       $line = fgets($pfile);

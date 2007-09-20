@@ -41,10 +41,10 @@
         $default_entry = $_GET[ 'entry' ];
     
         // Read Saved Static Entry
-        if ( file_exists( 'content/static/' . $default_entry . '.txt' ) ) {
-          $filename = 'content/static/' . $default_entry . '.txt';
-        } elseif ( file_exists( 'content/static/' . $default_entry . '.txt.gz' ) ) {
-          $filename = 'content/static/' . $default_entry . '.txt.gz';
+        if ( file_exists( CONTENT_DIR.'static/' . $default_entry . '.txt' ) ) {
+          $filename = CONTENT_DIR.'static/' . $default_entry . '.txt';
+        } elseif ( file_exists( CONTENT_DIR.'static/' . $default_entry . '.txt.gz' ) ) {
+          $filename = CONTENT_DIR.'static/' . $default_entry . '.txt.gz';
         }
         $blog_entry_data = static_entry_to_array( $filename );
         
@@ -98,7 +98,7 @@
         $default_m = $_GET[ 'm' ];
         $default_entry = $_GET[ 'entry' ];
       
-        $entry = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
+        $entry = CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
         
         // Read Saved Entry
         if ( file_exists( $entry . ".txt" ) ) {
@@ -351,7 +351,7 @@
     // Changed this to only display Image files. This function
     // is used in comment.php if the blog owner has img tag
     // enabled for comments. (09/08/05 - alex)
-    $dir = 'images/';
+    $dir = IMAGES_DIR;
     $contents = sb_folder_listing( $dir, array( '.jpg', '.jpeg', '.gif', '.png' ) );
     
     $str = NULL;

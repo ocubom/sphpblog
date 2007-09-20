@@ -69,7 +69,7 @@
     }
     $str = implode( '|', $result_array );
     
-    sb_write_file( 'config/temp_language1.txt', $str );
+    sb_write_file( CONFIG_DIR.'temp_language1.txt', $str );
     redirect_to_url( 'languages_cgi.php?store_data=1&lang2=' . $_POST[ 'blog_language2' ] . '&lang1=' . $_POST[ 'blog_language1' ] );
     
   } else {
@@ -86,7 +86,7 @@
       }
       $str = implode( '|', $result_array );
       
-      sb_write_file( 'config/temp_language2.txt', $str );
+      sb_write_file( CONFIG_DIR.'temp_language2.txt', $str );
       redirect_to_url( 'languages_cgi.php?display_results=1&lang2=' . $_GET[ 'lang2' ] . '&lang1=' . $_GET[ 'lang1' ] );
       
     } else {
@@ -125,8 +125,8 @@
     if ( array_key_exists( "display_results", $_GET ) ) {
     
       // Recall all the data
-      $lang1_string = sb_read_file( "config/temp_language1.txt" );
-      $lang2_string = sb_read_file( "config/temp_language2.txt" );
+      $lang1_string = sb_read_file( CONFIG_DIR."temp_language1.txt" );
+      $lang2_string = sb_read_file( CONFIG_DIR."temp_language2.txt" );
       
       $lang1_array = explode( "|", $lang1_string );
       $lang2_array = explode( "|", $lang2_string );

@@ -53,7 +53,7 @@
     
     <label for="phpfile"><?php echo( $lang_string['code'] ); ?></label><br />
 <textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" name="phpfile" rows="6" cols="40">&lt;?php
-  // Save file as 'password.php' and FTP it into 'config' directory.
+  // Save file as 'password.php' and FTP it into the 'config' directory.
   $username = '<?php echo( $hashedUser ); ?>';
   $password = '<?php echo( $hashedPass ); ?>';
 ?&gt;</textarea>

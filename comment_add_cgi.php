@@ -68,7 +68,7 @@
   if ($ok) {
     // Check IP against Blacklist
     $oBlacklist = new CBlacklist;
-    $oBlacklist->load( 'config/blacklist.txt' );
+    $oBlacklist->load( CONFIG_DIR.'blacklist.txt' );
     if ( $oBlacklist->isBanned( getIP() ) == true ) {
       $notBlackListed = false;
       $ok = false;
@@ -122,7 +122,7 @@
   if ($ok) {
     // Banned Word Check (New 0.4.9)
     $oBannedWords = new CBannedWords;
-    $oBannedWords->load( 'config/bannedwordlist.txt' );
+    $oBannedWords->load( CONFIG_DIR.'bannedwordlist.txt' );
     if ( $oBannedWords->ContainsBannedWord( $_POST[ 'comment_name' ], $_POST[ 'comment_email' ], $_POST[ 'comment_url' ], $_POST[ 'comment_text' ] ) ) {
       $noBannedWords = false;
       $ok = false;

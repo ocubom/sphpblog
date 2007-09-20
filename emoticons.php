@@ -35,7 +35,7 @@
 
     function upload_emoticons() {
       // Emoticon upload form results
-      $path = 'images/emoticons';
+      $path = IMAGES_DIR.'emoticons';
       $uploaddir = $path;
       
       $ok = false;
@@ -140,7 +140,7 @@
       }
       $str = implode( '|', $emote_arr );
       
-      return sb_write_file( 'config/emoticons.txt', $str );
+      return sb_write_file( CONFIG_DIR.'emoticons.txt', $str );
     }
     
     // SUBJECT

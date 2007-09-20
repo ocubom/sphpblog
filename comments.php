@@ -220,7 +220,7 @@
     <?php
     // New 0.4.8
     $oBlacklist = new CBlacklist;
-    $oBlacklist->load( 'config/blacklist.txt' );
+    $oBlacklist->load( CONFIG_DIR.'blacklist.txt' );
     if ( $oBlacklist->isBanned( getIP() ) == true ) {
       // Check Blacklist
       ob_end_clean();

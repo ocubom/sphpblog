@@ -75,9 +75,9 @@
     
     echo( '<hr />' );
     
-    $result = create_folder( 'config' );
-    $result = $result + create_folder( 'content' );
-    $result = $result + create_folder( 'images' );
+    $result = create_folder( CONFIG_DIR );
+    $result = $result + create_folder( CONTENT_DIR );
+    $result = $result + create_folder( IMAGES_DIR );
 
     // Create a .htaccess file as part of the install process...
     $htaccess_str = "IndexIgnore *
@@ -92,9 +92,9 @@ order allow,deny
 deny from all
 </Files>";
 
-    sb_write_file( "config/.htaccess", $htaccess_str );
-    sb_write_file( "content/.htaccess", $htaccess_str );
-    sb_write_file( "images/.htaccess", $htaccess_str );
+    sb_write_file( CONFIG_DIR.".htaccess", $htaccess_str );
+    sb_write_file( CONTENT_DIR.".htaccess", $htaccess_str );
+    sb_write_file( IMAGES_DIR.".htaccess", $htaccess_str );
     
     echo( '<hr />' );
     echo( '<br />' );

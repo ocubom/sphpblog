@@ -29,6 +29,7 @@
 				$str  .= '<a href="categories.php">' . $GLOBALS[ 'lang_string' ][ 'menu_categories' ] . '</a><br />';
 				$str  .= '<a href="add_block.php">' . $GLOBALS[ 'lang_string' ][ 'menu_add_block' ] . '</a><br />';
 				$str  .= '<a href="setup.php">' . $GLOBALS[ 'lang_string' ][ 'menu_setup' ] . '</a><br />';
+				$str  .= '<a href="plugins.php">' . $GLOBALS[ 'lang_string' ][ 'menu_plugins' ] . '</a><br />';
 				$str  .= '<a href="emoticons.php">' . $GLOBALS[ 'lang_string' ][ 'menu_emoticons' ] . '</a><br />';
 				$str  .= '<a href="themes.php">' . $GLOBALS[ 'lang_string' ][ 'menu_themes' ] . '</a><br />';
 				$str  .= '<a href="colors.php">' . $GLOBALS[ 'lang_string' ][ 'menu_colors' ] . '</a><br />';

@@ -48,7 +48,7 @@
 				}
 			
 				list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-				$contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+				$contents = sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 				$j = 0;
 				$found = true;
 				$text = strtoupper( $contents );
@@ -60,19 +60,19 @@
 				}
 				if ( $found ) {
 					$results++;
-					$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+					$blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 					$output_str  .= '<a href="index.php?entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $blog_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
 				}
 				// Search Comments
 				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
-					$comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+					$comment_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
 	 
 					for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
 						$comment_filename =  $comment_file_array[ $k ];
 						//We only want to search inside comments, not the counter
 						if ( strpos($comment_filename, 'comment') === 0 )
 						{
-							$contents_comment = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+							$contents_comment = sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
 							$found_in_comment = true;
 							$l = 0;
 							$text = strtoupper( $contents_comment );
@@ -86,12 +86,12 @@
 								$results++;
 								if ( $found == false ) {
 									// list( $blog_subject, $blog_date, $blog_text ) = explode('|', ( $contents ) );
-									$blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+									$blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 									$output_str  .= $blog_entry_data[ 'SUBJECT' ] . '<br />';
 								}
 								
 								// list( $comment_author, $comment_date, $comment_text ) = explode('|', ( $contents_comment ) );
-								$comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+								$comment_entry_data = comment_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
 
 								global $theme_vars;
 								if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
@@ -105,10 +105,10 @@
 				}
 			}
 			// Search static pages
-			$static_file_array = sb_folder_listing( 'content/static/', array( '.txt', '.gz' ) );
+			$static_file_array = sb_folder_listing( CONTENT_DIR.'static/', array( '.txt', '.gz' ) );
 			for ( $i = 0; $i < count( $static_file_array ); $i++ ) {
 				$static_filename =  $static_file_array[ $i ];
-				$contents_static = sb_read_file( 'content/static/' . $static_filename );
+				$contents_static = sb_read_file( CONTENT_DIR.'static/' . $static_filename );
 				$found_in_static = true;
 				$j = 0;
 				$text = strtoupper( $contents_static );
@@ -120,7 +120,7 @@
 				}
 				if ( $found_in_static ) {
 					$results++;
-					$blog_static_data = static_entry_to_array( 'content/static/' . $static_filename );
+					$blog_static_data = static_entry_to_array( CONTENT_DIR.'static/' . $static_filename );
 					$output_str  .= '<a href="static.php?page=' . sb_strip_extension( $static_filename ) . '" title="' . format_date( $blog_static_data[ 'DATE' ] ) . '">' . $blog_static_data[ 'SUBJECT' ] . '</a><br />';
 				}
 			}

@@ -87,15 +87,15 @@
     for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
       list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
       $total_number_entries++;
-      $contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+      $contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
       $entries[ $i ][ 'subject' ]=$contents[ 'SUBJECT' ];
-      $total_words_entries+=str_word_count( sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename ) );
-      $total_bytes_entries+=filesize( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+      $total_words_entries+=str_word_count( sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename ) );
+      $total_bytes_entries+=filesize( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
       $entries[ $i ][ 'filename' ]=$entry_filename;
 
       //Count votes
       $rating_array = read_rating( $year_dir, $month_dir, sb_strip_extension( $entry_filename, array( '.txt', '.gz' ) ) );
-      $total_bytes_votes+=@filesize( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename, array( '.txt', '.gz' ) ) . '/rating.txt' );
+      $total_bytes_votes+=@filesize( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename, array( '.txt', '.gz' ) ) . '/rating.txt' );
       $total_number_votes+=$rating_array[ 'votes' ];
       $entries[ $i ][ 'votes' ] = $rating_array[ 'votes' ];
       if ($rating_array[ 'votes' ]>0) {
@@ -108,14 +108,14 @@
       
       // Count comments
       if ( $blog_config[ 'blog_enable_comments' ] == true ) {
-        $comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+        $comment_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
         for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
           $total_number_comments++;
-          $total_words_comments+=str_word_count( sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_file_array[ $k ] ) );
-          $total_bytes_comments+=filesize( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_file_array[ $k ] );
+          $total_words_comments+=str_word_count( sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_file_array[ $k ] ) );
+          $total_bytes_comments+=filesize( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_file_array[ $k ] );
         }
         $entries[ $i ][ 'comments' ]=$k;
-        $entries[ $i ][ 'views' ]=sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/view_counter.txt');
+        $entries[ $i ][ 'views' ]=sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/view_counter.txt');
       }
       else {
         $entries[ $i ][ 'comments' ]=0;
@@ -125,10 +125,10 @@
       
       // Count trackbacks
       if ( $blog_config[ 'blog_trackback_enabled' ] == true ) {
-        $trackback_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/', array( '.txt', '.gz' ) );
+        $trackback_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/', array( '.txt', '.gz' ) );
         for ( $k = 0; $k < count( $trackback_file_array ); $k++ ) {
           $total_number_trackbacks++;
-          $total_bytes_trackbacks+=filesize( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/' . $trackback_file_array[ $k ] );
+          $total_bytes_trackbacks+=filesize( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/' . $trackback_file_array[ $k ] );
         }
         $entries[ $i ][ 'trackbacks' ]=$k;
       }
@@ -140,11 +140,11 @@
     unset( $entry_file_array );
     
     // Count static pages
-    $static_file_array = sb_folder_listing( 'content/static/', array( '.txt', '.gz' ) );
+    $static_file_array = sb_folder_listing( CONTENT_DIR.'static/', array( '.txt', '.gz' ) );
     for ( $i = 0; $i < count( $static_file_array ); $i++ ) {
       $total_number_statics++;
-      $total_words_statics+=str_word_count( sb_read_file( 'content/static/' . $static_file_array[ $i ] ) );
-      $total_bytes_statics+=filesize( 'content/static/' . $static_file_array[ $i ] );
+      $total_words_statics+=str_word_count( sb_read_file( CONTENT_DIR.'static/' . $static_file_array[ $i ] ) );
+      $total_bytes_statics+=filesize( CONTENT_DIR.'static/' . $static_file_array[ $i ] );
     }
     unset( $static_file_array );
 

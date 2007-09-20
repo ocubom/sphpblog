@@ -65,7 +65,7 @@
     $ok = false;
     if ( $oldtime != $newtime ) {
       // Different date
-      $entry = 'content/'.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
+      $entry = CONTENT_DIR.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
       if ( file_exists( $entry . ".txt" ) ) {
         $filename = $entry . ".txt";
       } elseif ( file_exists( $entry . ".txt.gz" ) ) {
@@ -81,7 +81,7 @@
       // Delete Old Entry
       sb_delete_file($filename);
     } else {
-      $entry = 'content/'.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
+      $entry = CONTENT_DIR.$_POST['y'].'/'.$_POST['m'].'/'.$_POST['entry'];
     
       // Update Entry
       $ok = write_entry( sb_stripslashes( $_POST[ 'blog_subject' ] ), sb_stripslashes( $_POST[ 'blog_text' ] ), sb_stripslashes( $_POST[ 'tb_ping' ] ), $entry, $_POST[ 'catlist' ], sb_stripslashes( $_POST[ 'blog_relatedlink' ] ), $oldtime );

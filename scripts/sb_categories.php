@@ -17,7 +17,7 @@
 	function get_category_array () {
 		// Load category information from file
 		//
-		$contents = sb_read_file( 'config/categories.txt' );
+		$contents = sb_read_file( CONFIG_DIR.'categories.txt' );
 		
 		$catArray = Array();
 		if ( $contents ) {
@@ -82,7 +82,7 @@
 			}
 		}
 		
-		$ok = sb_write_file( 'config/categories.txt', $str );
+		$ok = sb_write_file( CONFIG_DIR.'categories.txt', $str );
 		
 		if ( $ok ) {
 			return true;

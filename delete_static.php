@@ -21,7 +21,7 @@
     } else {
       if ( array_key_exists( 'yes', $_POST ) ) {
         $entry = $_POST[ 'entry' ];
-        $path = 'content/static/';
+        $path = CONTENT_DIR.'static/';
         
         global $ok;
         if ( file_exists( $path . $entry . '.txt' ) ) {

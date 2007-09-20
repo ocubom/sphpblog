@@ -24,7 +24,7 @@
   $ok = true;
   if (isset( $_GET[ "comment" ] ) ) {
     // Get the filename of the comment file to be approved
-    $filename = 'content/' . $_GET[ 'y' ] . '/' . $_GET[ 'm' ] . '/' . sb_strip_extension( $_GET[ "entry" ] ) . '/comments/' . $_GET[ "comment" ];
+    $filename = CONTENT_DIR . $_GET[ 'y' ] . '/' . $_GET[ 'm' ] . '/' . sb_strip_extension( $_GET[ "entry" ] ) . '/comments/' . $_GET[ "comment" ];
     $ok = set_comment_holdflag( $filename, '');
   } else {
     $ok = 'Error! Comment cannot be approved. Unknown error.';

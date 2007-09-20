@@ -46,7 +46,7 @@
     echo( $lang_string[ 'instructions' ] . '<p />' );
     
     // Read links file.
-    $filename = 'config/links.txt';
+    $filename = CONFIG_DIR.'links.txt';
     $result = sb_read_file( $filename );
     
     // Create array.
@@ -108,7 +108,7 @@
         echo( '<option label="--" value="--">--</option>' . "\n");
         
         // Saved User Colors
-        $dir = 'content/static/';
+        $dir = CONTENT_DIR.'static/';
         $static_files = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
         if ( count( $static_files ) > 0 ) {
           for ( $i = 0; $i < count( $static_files ); $i++ ) {

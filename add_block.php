@@ -54,7 +54,7 @@
     ob_start();
     
     // Read blocks file.
-    $filename = 'config/blocks.txt';
+    $filename = CONFIG_DIR.'blocks.txt';
     $result = sb_read_file( $filename );
     
     // Create array.

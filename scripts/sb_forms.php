@@ -108,7 +108,21 @@
 		return $str;
 	}
 	
-	function HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false, $autocomplete=false ) {
+	function HTML_checkbox( $label=false, $id, $value=null, $add_returns=true, $onchange=null, $checked=false, $disabled=false ) {
+		$str = HTML_input( false, $id, $value, false, 'checkbox', null, null, $onchange, 0, $disabled, false, $checked );
+		
+		if ( isset( $label ) && $label !== false ) {
+			$str .= '<label for="'.$id.'">'.$label.'</label>';
+			if ( $add_returns ) {
+				$str .= '<br />';
+			}
+			$str .= "\n";
+		}
+		
+		return $str;
+	}
+	
+	function HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false, $autocomplete=false, $checked=false ) {
 		// This function creates a standard HTML input form.
 		
 		$str = '';
@@ -142,6 +156,9 @@
 		}
 		if ( $disabled ) {
 			$str .= ' disabled';
+		}
+		if ( $checked ) {
+			$str .= ' checked';
 		}
 		$str .= '>' . "\n";
 		

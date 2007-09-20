@@ -52,9 +52,12 @@
     $lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
     $lang_string['menu_moderation'] = "Word/IP Moderation"; // New for 0.4.9
     $lang_string['menu_commentmoderation'] = "Unmodded Comments"; // New for 0.5.0
+	$lang_string['menu_random_entry'] = "Random Entry"; // New for 0.5.2
+	$lang_string['menu_plugins'] = "Plugins"; // New for 0.5.2
     $lang_string['notice_moderator1'] = "You have ";
     $lang_string['notice_moderator2'] = " comment(s) that require approval.";
     $lang_string['notice_loggedin'] = "You are currently logged in.";
+    
 
     // Counter
     $lang_string['counter_today'] = "Today:"; // New for 0.4.8

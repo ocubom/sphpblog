@@ -2,8 +2,8 @@
 	// Originally based on a script by Wingnut.
 		
 	// database files
-	$count = "content/counter/hits.txt"; 
-	$ipfile = "content/counter/counterip.txt";
+	$count = CONTENT_DIR."counter/hits.txt"; 
+	$ipfile = CONTENT_DIR."counter/counterip.txt";
 	
 	// ip address
 	$phpversion = phpversion();
@@ -26,10 +26,10 @@
 		// Basically, try to create and/or open the files first
 		
 		// If 'content' folder does not exist yet, then blog has not been 'initialized'
-		if ( file_exists( 'content' ) ) {
+		if ( file_exists( CONTENT_DIR ) ) {
 		
-			if ( file_exists( 'content/counter' ) == false ) {
-				sb_create_folder( 'content/counter' );
+			if ( file_exists( CONTENT_DIR.'counter' ) == false ) {
+				sb_create_folder( CONTENT_DIR.'counter' );
 			}
 			
 			if ( file_exists( $count ) == false ) {

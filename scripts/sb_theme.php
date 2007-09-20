@@ -99,6 +99,7 @@
 			$str  .= '<a href="categories.php">' . $lang_string[ 'menu_categories' ] . '</a><br />';
 			$str  .= '<a href="add_block.php">' . $lang_string[ 'menu_add_block' ] . '</a><br />';
 			$str  .= '<a href="setup.php">' . $lang_string[ 'menu_setup' ] . '</a><br />';
+			$str  .= '<a href="plugins.php">' . $lang_string[ 'menu_plugins' ] . '</a><br />';
 			$str  .= '<a href="emoticons.php">' . $lang_string[ 'menu_emoticons' ] . '</a><br />';
 			$str  .= '<a href="themes.php">' . $lang_string[ 'menu_themes' ] . '</a><br />';
 			$str  .= '<a href="colors.php">' . $lang_string[ 'menu_colors' ] . '</a><br />';

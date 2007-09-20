@@ -26,7 +26,7 @@
     if ( strpos( $_GET[ "y" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["y"] ) == 2 ) {
       if ( strpos( $_GET[ "m" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["m"] ) == 2 ) {
         if ( strpos( $_GET[ "entry" ], array( "/", ".", "\\", "%" ) ) === false && strlen( $_GET["entry"] ) == 18 ) {
-          $ok = delete_comment( 'content/'.$_GET['y'].'/'.$_GET['m'].'/'.$_GET['entry'].'/comments/'.$_GET["comment"] );
+          $ok = delete_comment( CONTENT_DIR . $_GET['y'].'/'.$_GET['m'].'/'.$_GET['entry'].'/comments/'.$_GET["comment"] );
         }
       }
     }
@@ -38,7 +38,8 @@
     if ($_GET[ "sourcepage" ] == 'm') {
       redirect_to_url( 'comments_moderation.php' );
     } else {
-      redirect_to_url( $relative_url ); }
+      redirect_to_url( $relative_url );
+    }
   }
   
   // ------------

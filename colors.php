@@ -142,7 +142,7 @@
         }
         
         // Saved User Colors
-        $dir = 'config/schemes/';
+        $dir = CONFIG_DIR.'schemes/';
         $color_files = sb_folder_listing( $dir, array( '.txt' ) );
         if ( count( $color_files ) > 0 ) {
           echo( '<option label="--" value="--">--</option>' . "\n");

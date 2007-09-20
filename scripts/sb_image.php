@@ -14,16 +14,16 @@
 		// Get a list of images in the image folder. Return HTML.
 		//
 		
-		if (!file_exists('images')) {
+		if (!file_exists(IMAGES_DIR)) {
 			$oldumask = umask(0);
-			$ok = mkdir('images', 0777 );
+			$ok = mkdir(IMAGES_DIR, 0777 );
 			umask($oldumask);
 		}
 		
 		// Changed this to only display Image files. This function
 		// is used in comment.php if the blog owner has img tag
 		// enabled for comments. (09/08/05 - alex)
-		$dir = 'images/';
+		$dir = IMAGES_DIR;
 		$contents = sb_folder_listing( $dir, array( '.jpg', '.jpeg', '.gif', '.png' ) );
 		// $contents = sb_folder_listing( $dir, array() );
 		

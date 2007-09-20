@@ -79,7 +79,7 @@
 		$i=0;
 		while ( ( $entries<$max_entries ) && ( $i<count( $entry_file_array ) ) ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			$cats = split( ',', $contents[ 'CATEGORIES' ] );
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
 				if ( ( empty( $category ) ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
@@ -192,7 +192,7 @@
 
 		for ( $i = 0; $i < $max_entries; $i++ ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			echo "\t<item rdf:about=\"" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "\">\n";
 			//Required item fields
 			echo "\t\t<title>" . clean_rdf_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
@@ -269,7 +269,7 @@
 		$i=0;
 		while ( ( $entries<$max_entries ) && ( $i<count( $entry_file_array ) ) ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-			$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+			$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 			$cats = split( ',', $contents[ 'CATEGORIES' ] );
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
 				if ( ( empty( $category ) ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {

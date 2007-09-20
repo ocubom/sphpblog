@@ -80,7 +80,7 @@
       $previous_month = 12;
     }
     
-    //$entries = sb_folder_listing( 'content/' . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
+    //$entries = sb_folder_listing( CONTENT_DIR . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
     $entries = blog_entry_listing();
     if ( $blog_config[ 'blog_entry_order' ] != 'old_to_new' )
     {
@@ -297,7 +297,7 @@
         if ( $curr_y == $y && $curr_m == $m || $showall == true ) {
           
           // Build Day List
-          $blog_entry_data = blog_entry_to_array( 'content/' . $curr_y . '/' . $curr_m . '/' . $curr_filename );
+          $blog_entry_data = blog_entry_to_array( CONTENT_DIR . $curr_y . '/' . $curr_m . '/' . $curr_filename );
           
           $curr_array = Array();
           $curr_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, true );
@@ -339,7 +339,7 @@
     global $lang_string;
     
     // Read links file.
-    $filename = 'config/links.txt';
+    $filename = CONFIG_DIR.'links.txt';
     $result = sb_read_file( $filename );
     
     // Append new links.
@@ -361,7 +361,7 @@
 
     // Show invisible links when logged in.
     if ( $logged_in == true ) {
-      $dir = 'content/static/';
+      $dir = CONTENT_DIR.'static/';
       $contents = sb_folder_listing( $dir, array( '.txt','.gz' ) );
       for ( $i = 0; $i < count( $contents ); $i++ ) {
         $staticfile = sb_read_file( $dir . $contents[ $i ] );
@@ -396,7 +396,7 @@
     $link_url = str_replace( '|', ':', $link_url );
 
     // Read old links file.
-    $filename = 'config/links.txt';
+    $filename = CONFIG_DIR.'links.txt';
     $result = sb_read_file( $filename );
   
     // Append new links.
@@ -432,7 +432,7 @@
     // Move links up or down, edit or delete.
     
     // Read links file.
-    $filename = 'config/links.txt';
+    $filename = CONFIG_DIR.'links.txt';
     $result = sb_read_file( $filename );
     
     // Append new links.
@@ -492,7 +492,7 @@
     global $lang_string;
 
     // Read blocks file.
-    $filename = 'config/blocks.txt';
+    $filename = CONFIG_DIR.'blocks.txt';
     $result = sb_read_file( $filename );
 
     // Append new blocks.
@@ -525,7 +525,7 @@
     $block_content = clean_post_text(str_replace( '|', ':', $block_content ));
 
     // Read old blocks file.
-    $filename = 'config/blocks.txt';
+    $filename = CONFIG_DIR.'blocks.txt';
     $result = sb_read_file( $filename );
 
     // Append new blocks.
@@ -561,7 +561,7 @@
     // Move blocks up or down, edit or delete.
     
     // Read blocks file.
-    $filename = 'config/blocks.txt';
+    $filename = CONFIG_DIR.'blocks.txt';
     $result = sb_read_file( $filename );
     
     // Append new blocks.
@@ -620,7 +620,7 @@
     //
     
     // Read links file.
-    $filename = 'config/last_updated.txt';
+    $filename = CONFIG_DIR.'last_updated.txt';
     $result = sb_read_file( $filename );
     
     // Append new links.
@@ -648,7 +648,7 @@
     //
     
     // Read links file.
-    $filename = 'config/last_updated.txt';
+    $filename = CONFIG_DIR.'last_updated.txt';
     $result = sb_read_file( $filename );
 
     $blog_entry_id = str_replace( '/', '', sb_strip_extension( strrchr( $item_filename, '/') ) );
@@ -686,13 +686,14 @@
     return( $result );
   }
 
+/*
   function get_most_recent () {
     // Read last updated items from disk, return HTML
     //
     global $lang_string, $user_colors;
 
     // Read links file.
-    $filename = 'config/last_updated.txt';
+    $filename = CONFIG_DIR.'last_updated.txt';
     $result = sb_read_file( $filename );
 
     // Append new links.
@@ -706,7 +707,7 @@
         $m = $array[$i+2];
         $blog_entry_id = $array[$i+3];
         
-        $comment_file = 'content/'.$y.'/'.$m.'/'. sb_strip_extension( $blog_entry_id ).'/comments/'.$comment_id;
+        $comment_file = CONTENT_DIR.$y.'/'.$m.'/'. sb_strip_extension( $blog_entry_id ).'/comments/'.$comment_id;
         if ( file_exists( $comment_file . '.txt' ) ) {
           $comment_file  .= '.txt';
         } elseif ( file_exists( $comment_file . '.txt.gz' ) ) {
@@ -748,6 +749,7 @@
     
     return ( $str_comments );
   }
+  */
   
   function add_most_recent_trackback ( $trackback_id, $y, $m, $blog_entry_id ) {
     global $blog_config;
@@ -756,7 +758,7 @@
     //
     
     // Read links file.
-    $filename = 'config/last_updated_trackback.txt';
+    $filename = CONFIG_DIR.'last_updated_trackback.txt';
     $result = sb_read_file( $filename );
     
     // Append new links.
@@ -784,7 +786,7 @@
     //
     
     // Read links file.
-    $filename = 'config/last_updated_trackback.txt';
+    $filename = CONFIG_DIR.'last_updated_trackback.txt';
     $result = sb_read_file( $filename );
 
     $blog_entry_id = str_replace( '/', '', sb_strip_extension( strrchr( $item_filename, '/') ) );
@@ -817,7 +819,7 @@
     global $lang_string, $user_colors;
     
     // Read links file.
-    $filename = 'config/last_updated_trackback.txt';
+    $filename = CONFIG_DIR.'last_updated_trackback.txt';
     $result = sb_read_file( $filename );
     
     // Append new links.
@@ -831,7 +833,7 @@
         $m = $array[$i+2];
         $blog_entry_id = $array[$i+3];
         
-        $trackback_file = 'content/'.$y.'/'.$m.'/'. sb_strip_extension( $blog_entry_id ).'/trackbacks/'.$trackback_id;
+        $trackback_file = CONTENT_DIR.$y.'/'.$m.'/'. sb_strip_extension( $blog_entry_id ).'/trackbacks/'.$trackback_id;
         if ( file_exists( $trackback_file . '.txt' ) ) {
           $trackback_file  .= '.txt';
         } elseif ( file_exists( $trackback_file . '.txt.gz' ) ) {

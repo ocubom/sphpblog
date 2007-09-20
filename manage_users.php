@@ -65,7 +65,7 @@
       } else {
 
         // First read and remove the offending line
-        $pfile = fopen("config/users.php","a+");
+        $pfile = fopen(CONFIG_DIR."users.php","a+");
         rewind($pfile);
         while (!feof($pfile)) {
           $line = fgets($pfile);
@@ -117,7 +117,7 @@
         $newfile = $newfile . $str . "\n";
 
         // Now post the new file with the updated information
-        $pfile = fopen("config/users.php","w");
+        $pfile = fopen(CONFIG_DIR."users.php","w");
         fwrite($pfile, $newfile);
         fclose($pfile);
 
@@ -132,7 +132,7 @@
       // Only do this if we are editing - otherwise leave the fields blank
       if ( $_GET[ 'type' ] == "edit" ) {
         // Now get the information about this user
-        $pfile = fopen("config/users.php","a+");
+        $pfile = fopen(CONFIG_DIR."users.php","a+");
         rewind($pfile);
         while (!feof($pfile)) {
           $line = fgets($pfile);
@@ -192,7 +192,7 @@
     // DELETE USER
     // Basically read the whole file leaving out the user's line we're deleting
     if ( ($_SESSION[ 'fulladmin' ] == 'yes' ) AND ( $_GET[ 'action' ] == "delete" )) {
-      $pfile = fopen("config/users.php","a+");
+      $pfile = fopen(CONFIG_DIR."users.php","a+");
       rewind($pfile);
       while (!feof($pfile)) {
         $line = fgets($pfile);
@@ -206,7 +206,7 @@
       // Now post the new file
       fclose($pfile);
 
-      $pfile = fopen("config/users.php","w");
+      $pfile = fopen(CONFIG_DIR."users.php","w");
       fwrite($pfile, $newfile);
       fclose($pfile);
 
@@ -224,7 +224,7 @@
       echo( '<tr class="header"><th></th><th><i>' . $lang_string['grid_header'] . '</i></th><th></th><th></th><th></th></tr>');
       echo( '<tr class="header"><th></th><th>' . $lang_string['grid_login'] . '</th><th>' . $lang_string['grid_email'] . '</th><th>' . $lang_string['grid_avatar'] . '</th><th>' . $lang_string['grid_state'] . '</th></tr>');
 
-      $pfile = fopen("config/users.php","a+");
+      $pfile = fopen(CONFIG_DIR."users.php","a+");
       rewind($pfile);
       $linecount = 0;
       while (!feof($pfile)) {

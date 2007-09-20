@@ -68,7 +68,7 @@
       
       <form action='delete.php' method="post">
         <input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
-        <input type="hidden" name="path" value="<?php echo( 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/' ); ?>">
+        <input type="hidden" name="path" value="<?php echo( CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/' ); ?>">
         <input type="submit" name="yes" value="<?php echo( $lang_string[ 'ok_btn' ] ); ?>" />
         <input type="submit" name="no" value="<?php echo( $lang_string[ 'cancel_btn' ] ); ?>" />
       </form>
@@ -82,7 +82,7 @@
     echo( theme_staticentry( $entry_array ) );
     
     // THEME ENTRY
-    $blog_content = read_entry_from_file( 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ] );
+    $blog_content = read_entry_from_file( CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ] );
     echo( $blog_content );
   }
   

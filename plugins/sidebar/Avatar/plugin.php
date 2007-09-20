@@ -70,7 +70,7 @@
 			$str = '';
 			
 			if ( !empty( $this->prefs['url'] ) ) {
-				$str = sprintf( '<img src="%s" alt="" />', $this->prefs['url'] );
+				$str = sprintf( '<img src="%s" alt="%s" />', $this->prefs['url'], $GLOBALS[ 'lang_string' ][ 'menu_avatar' ] );
 			}
 			
 			return $str;

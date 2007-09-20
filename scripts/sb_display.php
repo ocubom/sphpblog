@@ -118,7 +118,7 @@
 
       for ( $i = $entry_index; $i < count( $entry_file_array ); $i++ ) {
         list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-        $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+        $blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
         if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
           $cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
 
@@ -167,7 +167,7 @@
         $previous_file_array = array();
         for ( $i = $entry_index; $i >= 0; $i-- ) {
           list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-          $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+          $blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
           if ( array_key_exists( 'CATEGORIES', $blog_entry_data ) ) {
             $cat_array = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
             for ( $j=0; $j < count($cat_array); $j++ ) {
@@ -275,7 +275,7 @@
 
       for ( $i = 0; $i <= count( $contents ) - 1; $i++ ) {
         // Read and Parse Blog Entry
-        $blog_entry_data = blog_entry_to_array( 'content/' . $contents[$i][ 'year' ] . '/' . $contents[$i][ 'month' ] . '/' . $contents[$i][ 'entry' ] );
+        $blog_entry_data = blog_entry_to_array( CONTENT_DIR . $contents[$i][ 'year' ] . '/' . $contents[$i][ 'month' ] . '/' . $contents[$i][ 'entry' ] );
 
         $entry_array = array();
 
@@ -335,7 +335,7 @@
         $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
 
         // Comments link and count
-        $comment_trackback_base = 'content/'.$y.'/'.$m.'/'.$entry.'/';
+        $comment_trackback_base = CONTENT_DIR.$y.'/'.$m.'/'.$entry.'/';
         $comment_path = $comment_trackback_base.'comments/';
         $comment_array = sb_folder_listing( $comment_path, array( '.txt', '.gz' ) );
 
@@ -612,7 +612,7 @@
     global $lang_string;
 
     // Read blocks file.
-    $filename = 'config/blocks.txt';
+    $filename = CONFIG_DIR.'blocks.txt';
     $result = sb_read_file( $filename );
 
     // Match against title - nothing else to match against (no keys used)
@@ -644,7 +644,7 @@
       $fullname = $lang_string['sb_admin'];
       return ( $fullname );
     } else {
-      $pfile = fopen("config/users.php","a+");
+      $pfile = fopen(CONFIG_DIR."users.php","a+");
       rewind($pfile);
       while (!feof($pfile)) {
         $line = fgets($pfile);
@@ -663,7 +663,7 @@
   function get_avatarurl( $username ) {
     // Go to the users database and get the user name
     if ( $username != '' ) {
-      $pfile = fopen("config/users.php","a+");
+      $pfile = fopen(CONFIG_DIR."users.php","a+");
       rewind($pfile);
       while (!feof($pfile)) {
         $line = fgets($pfile);
@@ -683,7 +683,7 @@
     // Go to the users database and get the user name
     if ( $username != '' ) {
       $answer = false;
-      $pfile = fopen("config/users.php","a+");
+      $pfile = fopen(CONFIG_DIR."users.php","a+");
       rewind($pfile);
       while (!feof($pfile)) {
         $line = fgets($pfile);
@@ -728,7 +728,7 @@
     // Return listing of all the blog entries in order
     // of newest to oldest.
 
-    $filename = 'config/~blog_entry_listing.tmp';
+    $filename = CONFIG_DIR.'~blog_entry_listing.tmp';
     $entry_array = sb_read_file( $filename );
     if ( $entry_array != NULL ) {
       // Use cached array
@@ -740,7 +740,7 @@
         // sleep(1); // To avoid server overload
       }
 
-      $basedir = 'content/';
+      $basedir = CONTENT_DIR;
 
       // YEAR directories
       $entry_array = array();
@@ -819,7 +819,7 @@
   // -----------------
 
   function entry_exists ( $y, $m, $entry ) {
-    $entry_id = 'content/'.$y.'/'.$m.'/'.$entry;
+    $entry_id = CONTENT_DIR.$y.'/'.$m.'/'.$entry;
 
     $exists = false;
     if ( file_exists( $entry_id . '.txt' ) ) {
@@ -834,7 +834,7 @@
   function get_entry_title ( $y, $m, $entry ) {
     global $lang_string, $blog_config, $user_colors, $theme_vars;
 
-    $entry_id = 'content/' . $y . '/' . $m . '/' . $entry;
+    $entry_id = CONTENT_DIR . $y . '/' . $m . '/' . $entry;
 
     if ( file_exists( $entry_id . '.txt' ) ) {
       $filename = $entry_id . '.txt';

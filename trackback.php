@@ -41,7 +41,7 @@
    // trackback ping contains entry in the URI
   $redirect = true;
   if ( isset( $_GET[ 'y' ] ) && isset( $_GET[ 'm' ] ) && isset( $_GET[ 'entry' ] ) ) {
-    $entry_id = 'content/'.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
+    $entry_id = CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
     $entry = $_GET[ 'entry' ];
     $year = $_GET[ 'y' ];
     $month = $_GET[ 'm' ];

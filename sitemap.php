@@ -64,7 +64,7 @@
 	$i=0;
 	while ( $i<$max_entries ) {
 		list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-		$contents=blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+		$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 		write_map( $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', $contents[ 'DATE' ] ), 'weekly', 0.5 );
 		if ( $blog_config[ 'blog_enable_comments' ] ) {
 			write_map( $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', time() ), 'daily', 0.7 );

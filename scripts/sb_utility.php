@@ -70,7 +70,7 @@
 
 		//clearstatcache();
 
-		$basedir = 'content/';
+		$basedir = CONTENT_DIR;
 
 		// YEAR directories
 		$counter = 0;
@@ -277,7 +277,7 @@
 	function move_all_comment_files( $is_upgrade = true, $dont_move_files = false ) {
 		// Use the "$dont_move_files" flag to check if any files need to be moved but
 		// don't actually move them. This is used on the "login_cgi.php" page.
-		$basedir = 'content/';
+		$basedir = CONTENT_DIR;
 		$count = 0;
 
 		$dir = $basedir;
@@ -365,7 +365,7 @@
 
 	// Support function for downgrading from trackback enabled version
 	function delete_all_trackbacks() {
-		$basedir = 'content/';
+		$basedir = CONTENT_DIR;
 		$count = 0;
 
 		$dir = $basedir;

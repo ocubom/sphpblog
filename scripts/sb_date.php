@@ -20,13 +20,13 @@
     //
     $str = implode('|', $array);
 
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir('config', 0777 );
+      $ok = mkdir(CONFIG_DIR, 0777 );
       umask($oldumask);
     }
 
-    $filename = 'config/date_format.txt';
+    $filename = CONFIG_DIR.'date_format.txt';
     $result = sb_write_file( $filename, $str );
 
     if ( $result ) {
@@ -40,7 +40,7 @@
 
   function read_dateFormat () {
 
-    $contents = sb_read_file( 'config/date_format.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'date_format.txt' );
     if ( $contents ) {
       $array = explode('|', $contents);
 

@@ -21,13 +21,13 @@
     }
     if (is_uploaded_file($_FILES['userfile']['tmp_name'][$i])) {
       if ( $_FILES[ 'userfile' ][ 'error' ][$i] == 0 ) {
-        if (!file_exists('images')) {
+        if (!file_exists(IMAGES_DIR)) {
           $oldumask = umask(0);
-          @mkdir('images', 0777 );
+          @mkdir(IMAGES_DIR, 0777 );
           @umask($oldumask);
         }
               
-        $uploaddir = 'images/';
+        $uploaddir = IMAGES_DIR;
         $uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name'][$i]);
         
         if ( @getimagesize($_FILES['userfile']['tmp_name'][$i]) == FALSE ){

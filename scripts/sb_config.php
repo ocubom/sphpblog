@@ -93,7 +93,7 @@
     // --------------
     
     // config.txt
-    $str = sb_read_file( 'config/config.txt' );
+    $str = sb_read_file( CONFIG_DIR.'config.txt' );
     if ( $str ) {
       $arr = explode_with_keys($str);
       for ($arr as $key => $val) {
@@ -102,7 +102,7 @@
     }
 
     // metainfo.txt
-    $str = sb_read_file( 'config/metainfo.txt' );
+    $str = sb_read_file( CONFIG_DIR.'metainfo.txt' );
     if ( $str ) {
       $arr = explode_with_keys($str);
       for ($arr as $key => $val) {
@@ -111,19 +111,19 @@
     }
 
     // blacklist.txt
-    $str = sb_read_file( 'config/blacklist.txt' );
+    $str = sb_read_file( CONFIG_DIR.'blacklist.txt' );
     if ( $str ) {
       $blog_config[ 'banned_address_list' ] = $contents;
     }
 
     // bannedwordlist.txt
-    $contents = sb_read_file( 'config/bannedwordlist.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'bannedwordlist.txt' );
     if ( $contents ) {
       $blog_config[ 'banned_word_list' ] = $contents;
     }
 
     // theme.txt
-    $contents = sb_read_file( 'config/theme.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'theme.txt' );
     if ( $contents ) {
       $blog_theme = $contents;
       $blog_config[ 'blog_theme' ] = $contents;
@@ -153,7 +153,7 @@
     $blog_config = array();
 
     // LOAD CONFIG INFORMATION
-    $contents = sb_read_file( 'config/config.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'config.txt' );
     if ( $contents ) {
       $temp_configs = explode('|', $contents);
       $config_keys = array(   'blog_title',
@@ -391,7 +391,7 @@
     }
 
     // READ META-DATA INFORMATION
-    $contents = sb_read_file( 'config/metainfo.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'metainfo.txt' );
     if ( $contents ) {
       $temp_configs = explode('|', $contents);
       $config_keys = array(   'info_keywords',
@@ -424,7 +424,7 @@
     }
 
     // READ BLACKLIST
-    $contents = sb_read_file( 'config/blacklist.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'blacklist.txt' );
     if ( $contents ) {
       $blog_config[ 'banned_address_list' ] = $contents;
     }
@@ -434,7 +434,7 @@
     }
 
     // READ BANNED WORD LIST
-    $contents = sb_read_file( 'config/bannedwordlist.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'bannedwordlist.txt' );
     if ( $contents ) {
       $blog_config[ 'banned_word_list' ] = $contents;
     }
@@ -446,7 +446,7 @@
     // LOAD THEME
     global $blog_theme;
     $blog_theme = 'default';
-    $contents = sb_read_file( 'config/theme.txt' );
+    $contents = sb_read_file( CONFIG_DIR.'theme.txt' );
     if ( $contents ) {
       $blog_theme = $contents;
       $blog_config[ 'blog_theme' ] = $blog_theme;
@@ -523,16 +523,16 @@
 
 		$str = implode('|', $array);
 
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir( 'config', 0777 );
+      $ok = mkdir( CONFIG_DIR, 0777 );
       umask( $oldumask );
     }
 
-    $filename = 'config/config.txt';
+    $filename = CONFIG_DIR.'config.txt';
     $result = sb_write_file( $filename, $str );
 
-    $filename='config/~blog_entry_listing.tmp';
+    $filename=CONFIG_DIR.'~blog_entry_listing.tmp';
     sb_delete_file( $filename );
 
     if ( $result ) {
@@ -557,13 +557,13 @@
 
     $str = implode('|', $array);
 
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir( 'config', 0777 );
+      $ok = mkdir( CONFIG_DIR, 0777 );
       umask( $oldumask );
     }
 
-    $filename = 'config/metainfo.txt';
+    $filename = CONFIG_DIR.'metainfo.txt';
     $result = sb_write_file( $filename, $str );
 
     // OK now write the tracking code
@@ -585,13 +585,13 @@
   function write_blacklist ( $address_list ) {
     // Save information to file.
     //
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir( 'config', 0777 );
+      $ok = mkdir( CONFIG_DIR, 0777 );
       umask( $oldumask );
     }
 
-    $filename = 'config/blacklist.txt';
+    $filename = CONFIG_DIR.'blacklist.txt';
     $result = sb_write_file( $filename, $address_list );
 
     if ( $result ) {
@@ -606,13 +606,13 @@
   function write_bannedwordlist ( $banned_word_list ) {
     // Save information to file.
     //
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir( 'config', 0777 );
+      $ok = mkdir( CONFIG_DIR, 0777 );
       umask( $oldumask );
     }
 
-    $filename = 'config/bannedwordlist.txt';
+    $filename = CONFIG_DIR.'bannedwordlist.txt';
     $result = sb_write_file( $filename, $banned_word_list );
 
     if ( $result ) {
@@ -627,13 +627,13 @@
   function write_trackingcode ( $trackingcode ) {
     // Save information to file.
     //
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir( 'config', 0777 );
+      $ok = mkdir( CONFIG_DIR, 0777 );
       umask( $oldumask );
     }
 
-    $filename = 'config/tracking_code.txt';
+    $filename = CONFIG_DIR.'tracking_code.txt';
     $result = sb_write_file( $filename, $trackingcode );
 
     if ( $result ) {
@@ -649,7 +649,7 @@
     // Read information from file.
     //
     $trackingcode = '';
-    $filename = 'config/tracking_code.txt';
+    $filename = CONFIG_DIR.'tracking_code.txt';
     if ( file_exists( $filename ) ) {
       $trackingcode = sb_read_file( $filename );
       $trackcode = sb_stripslashes( $trackingcode );
@@ -660,12 +660,12 @@
   function add_to_blacklist ( $new_address ) {
     // Save information to file.
     //
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir( 'config', 0777 );
+      $ok = mkdir( CONFIG_DIR, 0777 );
       umask( $oldumask );
     }
-    $filename = 'config/blacklist.txt';
+    $filename = CONFIG_DIR.'blacklist.txt';
     $old_address_list = sb_read_file( $filename );
 
     $result = sb_write_file( $filename, trim( $new_address . chr(13) .$old_address_list  ) );
@@ -734,13 +734,13 @@
 
     $str = implode('|', $array);
 
-    if (!file_exists('config')) {
+    if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir('config', 0777 );
+      $ok = mkdir(CONFIG_DIR, 0777 );
       umask($oldumask);
     }
 
-    $filename = 'config/theme.txt';
+    $filename = CONFIG_DIR.'theme.txt';
     $result = sb_write_file( $filename, $str );
 
     if ( $result ) {
@@ -768,16 +768,16 @@
     $str = implode('|', $post_array);
 
     if ( isset( $user_file ) ) {
-      if (!file_exists('config/schemes')) {
+      if (!file_exists(CONFIG_DIR.'schemes')) {
         $oldumask = umask(0);
-        $ok = mkdir('config/schemes', 0777 );
+        $ok = mkdir(CONFIG_DIR.'schemes', 0777 );
         umask($oldumask);
       }
-      $custom_file = 'config/schemes/' . $user_file . '.txt';
+      $custom_file = CONFIG_DIR.'schemes/' . $user_file . '.txt';
       $result = sb_write_file( $custom_file, $str );
     }
 
-    $filename = 'config/colors-' . $blog_theme . '.txt';
+    $filename = CONFIG_DIR.'colors-' . $blog_theme . '.txt';
     $result = sb_write_file( $filename, $str );
 
     if ( $result ) {
@@ -798,7 +798,7 @@
       $user_colors[ $color_def[$i][ 'id' ] ] = $color_def[$i][ 'default' ];
     }
 
-    $filename = 'config/colors-' . $blog_theme . '.txt';
+    $filename = CONFIG_DIR.'colors-' . $blog_theme . '.txt';
     $result = sb_read_file( $filename );
     if ( $result ) {
       $saved_colors = explode('|', $result);
@@ -816,7 +816,7 @@
     global $lang_string;
 
     // Read blocks file.
-    $filename = 'config/blocks.txt';
+    $filename = CONFIG_DIR.'blocks.txt';
     $result = sb_read_file( $filename );
 
     $blocklist = array();

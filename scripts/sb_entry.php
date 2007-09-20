@@ -70,7 +70,7 @@
     // which is being updated (i.e. entry040603-140634)
     global $blog_config, $sb_info;
 
-    $filename='config/~blog_entry_listing.tmp';
+    $filename=CONFIG_DIR.'~blog_entry_listing.tmp';
     sb_delete_file( $filename );
     
     $save_data = array();
@@ -140,13 +140,13 @@
       $save_data[ 'DATE' ] = $blog_date;
       $save_data[ 'CREATEDBY' ] = $_SESSION[ 'username' ]; // New 0.5.0
       
-      if (!file_exists('content')) {
+      if (!file_exists(CONTENT_DIR)) {
         $oldumask = umask(0);
-        $ok = mkdir('content', 0777 );
+        $ok = mkdir(CONTENT_DIR, 0777 );
         umask($oldumask);
       }
       
-      $dir = 'content/';
+      $dir = CONTENT_DIR;
       $y = date('y', $blog_date);
       if (!file_exists($dir.$y)) {
         $oldumask = umask(0);
@@ -213,12 +213,12 @@
     global $blog_config, $sb_info;
     
     // Delete blog entry cache file.
-    sb_delete_file( 'config/~blog_entry_listing.tmp' );
+    sb_delete_file( CONFIG_DIR.'~blog_entry_listing.tmp' );
     
     // Create directory structure for new entry:
     // content/YY/MM/entryYYMMDD-HHMMSS.txt
     
-    $dir = 'content/';
+    $dir = CONTENT_DIR;
     
     $oldY = date('y', $oldTime);
     $oldM = date('m', $oldTime);
@@ -270,7 +270,7 @@
   }
   
   function delete_entry( $entry, $path ) {
-    $filename='config/~blog_entry_listing.tmp';
+    $filename=CONFIG_DIR.'~blog_entry_listing.tmp';
     sb_delete_file( $filename );
 
     // Delete Entry File
@@ -314,7 +314,7 @@
       $str  .= $key . '|' . $result_array[ $key ];
     }
     
-    $dir = 'content/'.$y.'/'.$m.'/'.$entry;
+    $dir = CONTENT_DIR.$y.'/'.$m.'/'.$entry;
     if ( !file_exists( $dir ) ) {
       $oldumask = umask( 0 );
       $ok = mkdir( $dir, 0777 );
@@ -324,7 +324,7 @@
       }
     }
     
-    $filename = 'content/'.$y.'/'.$m.'/'.$entry.'/rating.txt';
+    $filename = CONTENT_DIR.$y.'/'.$m.'/'.$entry.'/rating.txt';
     sb_write_file( $filename, $str );
   }
   
@@ -332,7 +332,7 @@
     // Read the rating.txt file and return the stored data.
     //
     // Returns NULL on fail.
-    $rating_path = 'content/'.$y.'/'.$m.'/'.$entry.'/';
+    $rating_path = CONTENT_DIR.$y.'/'.$m.'/'.$entry.'/';
     $contents = sb_read_file( $rating_path . 'rating.txt' );
     
     if ( $contents ) {

@@ -25,7 +25,7 @@
 		$blog_content = '';
 
 		// Trackbacks
-		$basedir = 'content/';
+		$basedir = CONTENT_DIR;
 		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/trackbacks/';
 		$file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
 		if ( $blog_config[ 'blog_comment_order' ] == 'new_to_old' ) {
@@ -98,7 +98,7 @@
 		//clearstatcache();
 		
 		// We're going to assume that the y and m directories exist...
-		$basedir = 'content/';
+		$basedir = CONTENT_DIR;
 		$dir = $basedir.$y.'/'.$m.'/'.$entry;
 		
 		if (!file_exists($dir)) {

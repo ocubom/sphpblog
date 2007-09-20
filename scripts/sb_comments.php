@@ -64,13 +64,13 @@
   function read_comments ( $y, $m, $entry, $logged_in ) {
     global $blog_content, $blog_config, $lang_string, $user_colors;
 
-    $filename = 'content/'.$y.'/'.$m.'/'.$entry;
+    $filename = CONTENT_DIR.$y.'/'.$m.'/'.$entry;
 
     $blog_content = read_entry_from_file( $filename );
     $blog_content = replace_more_tag ( $blog_content , true, '' );
 
     // Comments
-    $basedir = 'content/';
+    $basedir = CONTENT_DIR;
     $dir = $basedir.$y.'/'.$m.'/'.$entry.'/comments/';
     $file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
     if ( $blog_config[ 'blog_comment_order' ] == 'new_to_old' ) {
@@ -186,18 +186,18 @@
     // Loop through entry files
     for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
       list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-      $contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+      $contents = sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
       $j = 0;
-      $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+      $blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
       // Search Comments
-      $comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+      $comment_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
 
       for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
         $comment_filename =  $comment_file_array[ $k ];
         //We only want to search inside comments, not the counter
         if ( strpos($comment_filename, 'comment') === 0 ) {
-          // $contents_comment = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
-          $comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+          // $contents_comment = sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+          $comment_entry_data = comment_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
 
           // check to see if our comment is on hold right now (from a mod point of view)
           if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
@@ -248,7 +248,7 @@
     // Return array of all the blog comment files.
     
     // Load cached file array.
-    $filename = 'config/~blog_comment_listing.tmp';
+    $filename = CONFIG_DIR.'~blog_comment_listing.tmp';
     $comment_array = sb_read_file( $filename );
     if ( $comment_array != NULL ) {
       // Using cached array.
@@ -266,18 +266,18 @@
       // Loop through entry files
       for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
         list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-        // $contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-        // $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+        // $contents = sb_read_file( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+        // $blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
         
         // Get files in the comments folder.
-        $comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
+        $comment_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
 
         // Look through comments.
         for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
           $comment_filename =  $comment_file_array[ $k ];
           // We only want to search inside comments, not the counter file.
           if ( strpos($comment_filename, 'comment') === 0 ) {
-            $comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
+            $comment_entry_data = comment_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
             
             array_push( $comment_array, implode( '|', array( $entry_filename, $year_dir, $month_dir, $comment_filename, $comment_entry_data[ 'MODERATIONFLAG' ] ) ) );
           }
@@ -322,7 +322,7 @@
 
   function check_for_duplicate ( $y, $m, $entry, $newContent ) {
     // Comments
-    $basedir = 'content/';
+    $basedir = CONTENT_DIR;
     $dir = $basedir.$y.'/'.$m.'/'.$entry.'/comments/';
     $file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
 
@@ -414,10 +414,10 @@
     // Save new entry or update old entry
     global $blog_config, $sb_info, $lang_string;
     
-    sb_delete_file( 'config/~blog_comment_listing.tmp' ); // Delete comment array cache
+    sb_delete_file( CONFIG_DIR.'~blog_comment_listing.tmp' ); // Delete comment array cache
 
     // We're going to assume that the y and m directories exist...
-    $basedir = 'content/';
+    $basedir = CONTENT_DIR;
     $dir = $basedir.$y.'/'.$m.'/'.$entry;
 
     if (!file_exists($dir)) {
@@ -543,7 +543,7 @@
     // Save new entry or update old entry
     global $blog_config, $sb_info, $lang_string;
 
-    sb_delete_file( 'config/~blog_comment_listing.tmp' );
+    sb_delete_file( CONFIG_DIR.'~blog_comment_listing.tmp' );
 
     $comment_entry_data = comment_to_array( $filename );
 
@@ -562,8 +562,8 @@
 
   function delete_comment ( $filepath ) {
     // Delete a comment. Also, delete the whole comment folder if it was the only comment.
-
-    sb_delete_file( 'config/~blog_comment_listing.tmp' ); // Delete comment array cache
+	
+    sb_delete_file( CONFIG_DIR.'~blog_comment_listing.tmp' ); // Delete comment array cache
 
     // Delete comment file
     $ok = sb_delete_file( $filepath );
@@ -581,7 +581,7 @@
         sb_delete_directory( $dirpath );
       }
 
-        $pos = strrpos( $dirpath, '/' );
+      $pos = strrpos( $dirpath, '/' );
       if ($pos !== false) {
         $dirpath = substr( $dirpath, 0, $pos );
 
@@ -589,14 +589,14 @@
         $file_array = sb_folder_listing( $dirpath . '/', array( '.txt', '.gz' ) );
         if ( count( $file_array ) == 0 ) {
           // Directory is empty, delete it...
-          sb_delete_directory( $dirpath );
+          sb_delete_directory( $dirpath.'/' );
         } else {
           if ( $file_array[0] == 'view_counter.txt' ) {
             // There is one file and it's the 'view_counter.txt' file.
             //
             // Delete it and then delete the directory.
             sb_delete_file( $dirpath . '/view_counter.txt' );
-            $result = sb_delete_directory( $dirpath );
+            $result = sb_delete_directory( $dirpath.'/' );
           }
         }
       }

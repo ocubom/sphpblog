@@ -47,16 +47,16 @@
     // Used for the main Index page.
     global $lang_string, $blog_config, $user_colors;
     
-    $dir = 'content/static/';
+    $dir = CONTENT_DIR.'static/';
     
-    if ( file_exists( 'content/static/' . $entry_id . '.txt' ) ) {
-      $filename = 'content/static/' . $entry_id . '.txt';
-    } else if ( file_exists( 'content/static/' . $entry_id . '.txt.gz' ) ) {
-      $filename = 'content/static/' . $entry_id . '.txt.gz';
-    } else if ( file_exists( 'content/static/_404.txt.gz' ) ) {
-      $filename = 'content/static/_404.txt.gz';
-    } else if ( file_exists( 'content/static/_404.txt' ) ) {
-      $filename = 'content/static/_404.txt';
+    if ( file_exists( CONTENT_DIR.'static/' . $entry_id . '.txt' ) ) {
+      $filename = CONTENT_DIR.'static/' . $entry_id . '.txt';
+    } else if ( file_exists( CONTENT_DIR.'static/' . $entry_id . '.txt.gz' ) ) {
+      $filename = CONTENT_DIR.'static/' . $entry_id . '.txt.gz';
+    } else if ( file_exists( CONTENT_DIR.'static/_404.txt.gz' ) ) {
+      $filename = CONTENT_DIR.'static/_404.txt.gz';
+    } else if ( file_exists( CONTENT_DIR.'static/_404.txt' ) ) {
+      $filename = CONTENT_DIR.'static/_404.txt';
     } else {
       redirect_to_url( 'index.php' );
       return;
@@ -99,23 +99,23 @@
       // Updating a static entry
       //
       // We need to grab the date of the old entry
-      if ( file_exists( 'content/static/' . $updateFile . '.txt' ) ) {
-        $oldEntryFile = 'content/static/' . $updateFile . '.txt';
-      } elseif ( file_exists( 'content/static/' . $updateFile . '.txt.gz' ) ) {
-        $oldEntryFile = 'content/static/' . $updateFile . '.txt.gz';
+      if ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt' ) ) {
+        $oldEntryFile = CONTENT_DIR.'static/' . $updateFile . '.txt';
+      } elseif ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' ) ) {
+        $oldEntryFile = CONTENT_DIR.'static/' . $updateFile . '.txt.gz';
       }
       
       $oldEntryArray = static_entry_to_array( $oldEntryFile );
       $save_data[ 'DATE' ] = $oldEntryArray[ 'DATE' ];
       
       if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
-        if ( file_exists( 'content/static/' . $updateFile . '.txt.gz' ) ) {
-          sb_delete_file( 'content/static/' . $updateFile . '.txt.gz' );
+        if ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' ) ) {
+          sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' );
         }
         $entryFile = $file_name . '.txt.gz';
       } else {
-        if ( file_exists( 'content/static/' . $updateFile . '.txt' ) ) {
-          sb_delete_file( 'content/static/' . $updateFile . '.txt' );
+        if ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt' ) ) {
+          sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt' );
         }
         $entryFile = $file_name . '.txt';
       }
@@ -132,18 +132,18 @@
       $blog_date = time();
       $save_data[ 'DATE' ] = $blog_date;
 
-      if (!file_exists('content')) {
+      if (!file_exists(CONTENT_DIR)) {
         $oldumask = umask(0);
-        $ok = mkdir('content', 0777 );
+        $ok = mkdir(CONTENT_DIR, 0777 );
         umask($oldumask);
       }
       
-      if (!file_exists('content/static')) {
+      if (!file_exists(CONTENT_DIR.'static')) {
         $oldumask = umask(0);
-        $ok = mkdir('content/static', 0777 );
+        $ok = mkdir(CONTENT_DIR.'static', 0777 );
         umask($oldumask);
         if (!$ok) {
-          return ( 'Couldn\'t creating directory: '.'content/static' );
+          return ( 'Couldn\'t creating directory: '.CONTENT_DIR.'static' );
         }
       }
 
@@ -160,7 +160,7 @@
     $str = implode_with_keys( $save_data );
     
     // Save the file
-    $result = sb_write_file( 'content/static/'.$entryFile, $str );
+    $result = sb_write_file( CONTENT_DIR.'static/'.$entryFile, $str );
 
     if ( $save_data[ 'MENU_VISIBLE' ] != 'on' ) {
       modify_link( 'delete_static', 'static.php?page='.sb_strip_extension( $entryFile ), '' );
@@ -172,7 +172,7 @@
       } else {
         // Rename link
         $link_url = 'static.php?page='.sb_strip_extension( $updateFile );
-        $result = sb_read_file( 'config/links.txt' );
+        $result = sb_read_file( CONFIG_DIR.'links.txt' );
 
         // Append new links.
         if ( $result ) {
@@ -194,7 +194,7 @@
     } else {
       // Error:
       // Probably couldn't create file...
-      return ( 'content/static/'.$entryFile );
+      return ( CONTENT_DIR.'static/'.$entryFile );
     }
   }
   
@@ -203,10 +203,10 @@
     //
     global $logged_in;
 
-    if ( file_exists( 'content/static/' . $entry_id . '.txt' ) ) {
-      $filename = 'content/static/' . $entry_id . '.txt';
-    } elseif ( file_exists( 'content/static/' . $entry_id . '.txt.gz' ) ) {
-      $filename = 'content/static/' . $entry_id . '.txt.gz';
+    if ( file_exists( CONTENT_DIR.'static/' . $entry_id . '.txt' ) ) {
+      $filename = CONTENT_DIR.'static/' . $entry_id . '.txt';
+    } elseif ( file_exists( CONTENT_DIR.'static/' . $entry_id . '.txt.gz' ) ) {
+      $filename = CONTENT_DIR.'static/' . $entry_id . '.txt.gz';
     }
 
     $blog_entry_data = static_entry_to_array( $filename );

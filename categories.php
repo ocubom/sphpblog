@@ -22,7 +22,7 @@
     if ($catArray !== false ) {
       if ($catArray === -1 ) {
         // Delete all categories.
-        $ok = sb_delete_file( 'config/categories.txt' );
+        $ok = sb_delete_file( CONFIG_DIR.'categories.txt' );
       } else {
         $ok = write_categories( $catArray );
       }
