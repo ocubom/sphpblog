@@ -34,6 +34,7 @@
     return ( implode("/", $dateString) );
   }
   
+  /*
   function read_menus_calendar ( $m, $y, $d ) {
     global $lang_string, $user_colors, $blog_config;
     
@@ -222,6 +223,7 @@
     $str  .= '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . dateString() ) . '</a></td></tr></table>'; // Close the table
     return( $str );
   }
+  */
 
   function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false ) {
     // Create the right-hand navigation menu and Archives page. Return HTML
@@ -325,16 +327,6 @@
     }       
     return( $str );
   }
-  
-  // ----------------------
-  // "Counter" functions
-  // ----------------------
-  
-  function show_counter_totals ( $logged_in ) {
-    $str = '';
-    $str = stat_all();
-    return ( $str );
-  }
 
   // ----------------------
   // "Links Menu" Functions
@@ -388,6 +380,7 @@
     return ( $str );
   }
 
+/*
   function write_link ( $link_name, $link_url, $link_id ) {
     // Save new link. Update links file
     //
@@ -485,6 +478,7 @@
       return ( $filename );
     }
   }
+  */
   
   // ----------------------------
   // "Blocks" Functions

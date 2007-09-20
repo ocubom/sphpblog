@@ -114,7 +114,7 @@
 	require_once(SCRIPTS_DIR.'sb_counter.php');
 	require_once(SCRIPTS_DIR.'sb_blacklist.php');
 	
-	// require_once(SCRIPTS_DIR.'sb_sidebar.php');
+	require_once(SCRIPTS_DIR.'sb_sidebar.php');
 	
 	require_once(CLASSES_DIR.'fileio.php');
 	require_once(CLASSES_DIR.'arrays.php');

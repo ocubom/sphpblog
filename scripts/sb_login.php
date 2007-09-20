@@ -40,7 +40,7 @@
     $username = null;
     $password = null;
     
-    @include('config/password.php');
+	@include( CONFIG_DIR . 'password.php' );
     
     if ( $username == null || $password == null ) {
     
@@ -109,8 +109,8 @@
     // Check password against hashed password file
     $username = null;
     $password = null;
-    
-    @include('config/password.php');
+		
+		@include( CONFIG_DIR . 'password.php' );
 
     if ( $username == null || $password == null ) {
       // Missing password.php file...
@@ -167,6 +167,12 @@
   }
   
   function redirect_to_url( $relative_url = "index.php" ) {
+		$baseurl = baseurl();
+		header('Location: ' . $baseurl . $relative_url);
+		exit;
+	}
+	
+	function baseurl() {
     // Many thanks to Ridgarou for fixing the port issue.
   
     if ( strpos ($_SERVER['HTTP_HOST' ], ":") != false ){
@@ -174,6 +180,9 @@
     } else {
       $port = ':' . $_SERVER[ 'SERVER_PORT'];
       if ($port == ':80') {
+        $port = '';
+      }
+      if ($port == ':8080') {
         $port = '';
       }
     }
@@ -188,10 +197,10 @@
 
     if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
       // Hosted at root.
-      header('Location: '.$proto.$_SERVER['HTTP_HOST' ].$port.'/'.$relative_url);
+      return($proto.$_SERVER[ 'HTTP_HOST' ].$port.'/');
     } else {
       // Hosted in sub-directory.
-      header('Location: '.$proto.$_SERVER['HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF']).'/'.$relative_url);
+      return($proto.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/');
     }
     exit;
   }
