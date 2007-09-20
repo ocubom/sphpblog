@@ -8,9 +8,15 @@
 
   // comment_to_array ( $entryFile )
   // read_comments ( $y, $m, $entry, $logged_in )
+  // read_unmodded_comments ( $logged_in )
+  // get_unmodded_count ( $logged_in )
+  // blog_comment_listing ()
+  // get_entry_unmodded_count ( $y, $m, $entry)
+  // are_comments_expired ($month, $day, $year)  
   // sb_display_email ($email)
   // sb_str_to_ascii ($str)
-  // write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_text, $user_ip, $hold_flag, $comment_date=null )
+  // write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_text, $user_ip, $hold_flag='', $comment_date=null )
+  // set_comment_holdflag ( $filename, $hold_flag='')
   // delete_comment ( $filepath )
 
   // ----------------------
@@ -252,7 +258,7 @@
     } else {
       // Rebuild array.
       // echo("REBUILDING ARRAY");
-      sleep(1); // To avoid server overload
+      // sleep(1); // To avoid server overload
       
       $comment_array = array();
       $entry_file_array = blog_entry_listing();
@@ -295,47 +301,7 @@
     return( $comment_array );
   }
   
-  /*
-  function get_unmodded_count ( $logged_in ) {
-    global $lang_string, $blog_config;
-    
-    if ( $blog_config[ 'blog_enable_comments' ] != true ) {
-      return(0);
-    }
-
-    // To avoid server overload
-    sleep(1);
-    $output_str = '';
-    $entry_file_array = blog_entry_listing();
-    $results = 0;
-
-    // Loop through entry files
-    for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
-      list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
-      // $contents = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-      // $blog_entry_data = blog_entry_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-      // Search Comments
-      $comment_file_array = sb_folder_listing( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
-
-      for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
-        $comment_filename =  $comment_file_array[ $k ];
-        //We only want to search inside comments, not the counter
-        if ( strpos($comment_filename, 'comment') === 0 ) {
-          // $contents_comment = sb_read_file( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
-          $comment_entry_data = comment_to_array( 'content/' . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
-
-          // check to see if our comment is on hold right now (from a mod point of view)
-          if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
-            $results++;
-          }
-        }
-      }     
-    }
-    return ( $results );
-  }
-  */
-  
-  function get_entry_unmodded_count ( $y, $m, $entry) {
+  function get_entry_unmodded_count ( $y, $m, $entry ) {
     $comment_array = blog_comment_listing();
     
     $results = 0;
@@ -353,36 +319,8 @@
     
     return( $results );
   }
-  
-  /*
-  function get_entry_unmodded_count ( $y, $m, $entry) {
-    global $lang_string, $blog_config;
-
-    sleep(1); // To avoid server overload
-    $entry_file_array = blog_entry_listing();
-    $results = 0;
-
-    $comment_file_array = sb_folder_listing( 'content/' . $y . '/' . $m . '/' . sb_strip_extension( $entry ) . '/comments/', array( '.txt', '.gz' ) );
-
-    for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
-      $comment_filename =  $comment_file_array[ $k ];
-      //We only want to search inside comments, not the counter
-      if ( strpos($comment_filename, 'comment') === 0 ) {
-        // $contents_comment = sb_read_file( 'content/' . $y . '/' . $m . '/' . sb_strip_extension( $entry ) . '/comments/' . $comment_filename );
-        $comment_entry_data = comment_to_array( 'content/' . $y . '/' . $m . '/' . sb_strip_extension( $entry ) . '/comments/' . $comment_filename );
-
-        // check to see if our comment is on hold right now (from a mod point of view)
-        if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
-          $results++;
-        }
-      }
-    }
-    return ( $results );
-  }
-  */
 
   function check_for_duplicate ( $y, $m, $entry, $newContent ) {
-
     // Comments
     $basedir = 'content/';
     $dir = $basedir.$y.'/'.$m.'/'.$entry.'/comments/';

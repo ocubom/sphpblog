@@ -737,7 +737,7 @@
     } else {
       // Rebuild array.
       if ( $blog_config[ 'blog_enable_cache' ] == true ) {
-        sleep(1); // To avoid server overload
+        // sleep(1); // To avoid server overload
       }
 
       $basedir = 'content/';
