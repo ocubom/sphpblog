@@ -54,9 +54,11 @@
 
         $blog_entry_data = explode_with_keys( $exploded_array );
       }
+      
       return( $blog_entry_data );
     } else {
       // Exploded array only contained 1 item, so something is wrong...
+      
       return( false );
     }
   }
@@ -244,40 +246,13 @@
     }
   }
   
-  function implode_with_keys( $array, $separator = '|' ) {
-    // Implode an associative array
-    $str = '';
-    $keys = array_keys( $array );
-    for ( $i = 0; $i < count( $keys ); $i++ ) {
-      $key = $keys[ $i ];
-      if ( $i > 0 ) {
-        $str  .= $separator;
-      }
-      $str  .= $key . $separator . $array[ $key ];
-    }
-    
-    return ( $str );
-  } 
+	function implode_with_keys( $arr, $delim='|' ) {
+		return arrays::implode_key($arr, $delim);
+	} 
   
-  function explode_with_keys( $str, $separator = '|' ) {
-    // Explode an associative array
-    //
-    // For historical reasons, accepts either
-    // a string or an array
-    $output = array();
-    if ( is_array( $str ) ) {
-      $array = $str;
-    } else {
-      $array = explode( $separator, $str );
-    }
-    
-    for ( $i = 0; $i < count( $array ); $i = $i + 2 ) {
-      $key = $array[ $i ];
-      $output[ $key ] = $array[ $i+1 ];
-    }
-        
-    return ( $output );
-  }
+	function explode_with_keys( $str, $delim='|' ) {	
+		return arrays::explode_key($str, $delim);
+	}
 
   function delete_dir( $dir ) {
     // Get listing of files in folder.

@@ -88,6 +88,7 @@
 	define('SESSION_SAVE_PATH', $sessionpath); // Default is '/tmp'
 	
 	// Load all the other functions.
+	
 	require_once(SCRIPTS_DIR.'sb_fileio.php');
 	require_once(SCRIPTS_DIR.'sb_config.php');
 	require_once(SCRIPTS_DIR.'sb_login.php');
@@ -112,4 +113,19 @@
 	require_once(SCRIPTS_DIR.'sb_texteditor.php');
 	require_once(SCRIPTS_DIR.'sb_counter.php');
 	require_once(SCRIPTS_DIR.'sb_blacklist.php');
+	
+	// require_once(SCRIPTS_DIR.'sb_sidebar.php');
+	
+	require_once(CLASSES_DIR.'fileio.php');
+	require_once(CLASSES_DIR.'arrays.php');
+	
+	// require_once(CLASSES_DIR.'login.php');
+	// require_once(CLASSES_DIR.'template.php');
+	// require_once(CLASSES_DIR.'utility.php');
+	// require_once(CLASSES_DIR.'html.php');
+	// require_once(CLASSES_DIR.'logging.php');
+	// require_once(CLASSES_DIR.'datawrapper.php');
+	// require_once(CLASSES_DIR.'datacontainer.php');
+	// require_once(CLASSES_DIR.'posts.php');
+	// require_once(CLASSES_DIR.'entry.php');
 ?>
