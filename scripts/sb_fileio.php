@@ -1,248 +1,339 @@
 <?php
+	// Simple PHP Blog is released under the GNU Public License.
+	//
+	// You are free to use and modify Simple PHP Blog. Changes 
+	// should be uploaded to http://sourceforge.net/projects/sphpblog/
+	// or emailed to apalmo <at> bigevilbrain <dot> com
+	
 
-  // The Simple PHP Blog is released under the GNU Public License.
-  //
-  // You are free to use and modify the Simple PHP Blog. All changes 
-  // must be uploaded to SourceForge.net under Simple PHP Blog or
-  // emailed to apalmo <at> bigevilbrain <dot> com
+	/**
+	* Wrappers for legacy functions. New code should just call the class.
+	*/
+	function sb_read_file( $filename ) {
+		return fileio::read_file($filename);
+	}
+	
+	function sb_write_file( $filename, $str ) {
+		return fileio::write_file($filename, $str);
+	}
+  
+	function sb_create_folder( $newFolder, $permissions ) {
+		return fileio::make_dir($newFolder, $permissions);
+	}
+  
+	function sb_copy( $source, $dest ) {
+		return fileio::copy_dir($source, $dest);
+	}
+	
+	function sb_folder_listing( $dir, $ext_array ) {
+		return fileio::file_listing($dir, $ext_array);
+	}
+  
+	function sb_delete_file( $filename ) {
+		return fileio::delete_file($filename);
+	}
+  
+	function sb_delete_directory( $dirname ) {
+		return fileio::remove_dir($dirname);
+	}
+  
+	function sb_strip_extension ( $filename ) {
+		return fileio::strip_extension($filename);
+	}
+	
+	
+	/**
+	* File IO and file system related functions.
+	*
+	* @access		public static
+	*
+	* read_file( $filename )
+	* write_file( $filename, $str )
+	* delete_file( $filename )
+	* make_dir( $dir, $mode=0777 )
+	* copy_dir( $source, $dest )
+	* remove_dir( $dir )
+	* file_listing( $dir, $ext_array=array() )
+	* folder_listing( $dir )
+	* strip_extension( $filename )
+	*/
+	class fileio {
+		
+		/**
+		* Read file. Transparently gunzips file based on file extension.
+		*
+		* Example Usage:
+		* $str = fileio::read_file( "folder/something.txt" );
+		* $str = fileio::read_file( "folder/something.txt.gz" );
+		*	
+		* @param		string $filename
+		* @return		string contents of file or NULL on error.
+		*/
+		function read_file( $filename ) {
+			if ( file_exists($filename) ) {
+				if ( function_exists('file_get_contents') ) { // PHP 4 >= 4.3.0, PHP 5
+					$str = file_get_contents( $filename );
+					if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
+						$str = gzinflate( substr( $str, 10 ) );
+					}
+					return $str;
+				} else {
+					if ( file_exists( $filename ) ) {
+						$handle = @fopen( $filename, 'r' );
+						if ( $handle ) {
+							$str = fread( $handle, filesize( $filename ) );
+							if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
+								$str = gzinflate( substr( $str, 10 ) );
+							}
+							fclose( $handle );
+							return $str;
+						}
+					}
+				}
+			}
+		}
+		
+		/**
+		* Write file. Transparently gzips file based on file extension.
+		*
+		* Example Usage:
+		* $bytes = fileio::write_file( "folder/something.txt", "foobar" );
+		* $bytes = fileio::write_file( "folder/something.txt.gz", "foobar" );
+		*
+		* @param		string $filename
+		* @param		string $str
+		* @return		integer/false (bytes written or FALSE on error)
+		*/
+		function write_file( $filename, $str ) {
+			if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
+				$str = gzencode( $str, 9 );
+			}
+			
+			fileio::make_dir(dirname($filename));
+			
+			@umask(0);
+			
+			$length = strlen($str);
+			if ( function_exists('file_put_contents') ) { // PHP 5
+				$bytes_written = file_put_contents( $filename, $str );
+			} else {
+				$handle = @fopen( $filename, 'w' );
+				if ( $handle ) {
+					$bytes_written = fwrite( $handle, $str, $length );
+					fclose( $handle );
+				}
+			}
+			
+			if ( $length == $bytes_written ) {
+				@chmod($filename, 0777);
+				return $bytes_written;
+			} else {
+				return false;
+			}
+		}
+		
+		/**
+		* Delete file.
+		*
+		* Example Usage:
+		* $success = fileio::delete_file( "folder/something.txt" );
+		*
+		* @param		string $filename
+		* @return		boolean
+		*/
+		function delete_file( $filename ) {
+			if ( file_exists($filename) ) {
+				$result = @unlink( $filename );
+				clearstatcache();
+				return $result;
+			}
+			return false;
+		}
+		
+		/**
+		* Recursive create directory.
+		*
+		* Example Usage:
+		* $success = fileio::make_dir( "folder/foo/" ); // Creates 'folder' and 'folder/foo'
+		*
+		* @param		string $dir
+		* @return		boolean
+		*/
+		function make_dir( $dir, $mode=0777 ) {
+			
+			@umask(0);
+			if (is_dir($dir) || @mkdir($dir,$mode)) {
+				return true;
+			}
+			if (!fileio::make_dir(dirname($dir),$mode)) {
+				return false;
+			}
+			if (@mkdir($dir,$mode)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		/**
+		* Copy a file, or recursively copy a folder and its contents
+		*
+		* Example Usage:
+		* $files = fileio::copy_dir( "folder/", array('.txt','.jpg') );
+		*
+		* @author		Aidan Lister <aidan@php.net>
+		* @version	1.0.1
+		* @link			http://aidanlister.com/repos/v/function.copyr.php
+		*
+		* @param		string $source    Source path
+		* @param		string $dest      Destination path
+		* @return		boolean
+		*/
+		function copy_dir( $source, $dest ) {
+			
+			// Simple copy for a file
+			if (is_file($source)) {
+				if ( copy($source, $dest) ) {
+					@unlink($source);
+					return true;
+				} else {
+					return false;
+				}
+			}
+		
+			// Make destination directory
+			if ( !is_dir($dest) ) {
+				@umask(0);
+				mkdir($dest, 0777);
+			}
+		
+			// Loop through the folder
+			$dir = opendir($source);
+			while ($file = readdir($dir) ) {
+				if ($file == '.' || $file == '..') {
+					continue;
+				}
+		
+				// Deep copy directories
+				if ($dest !== $source.'/'.$file) {
+					fileio::copy_dir($source.'/'.$file, $dest.'/'.$file);
+				}
+			}
+		
+			// Clean up
+			closedir($dir);
+			rmdir($source);
+			
+			clearstatcache();
+			
+			return true;
+		}
+	
+		/**
+		* Recursive delete directory.
+		*
+		* Example Usage:
+		* $success = fileio::remove_dir( "folder/foo" ); // Recursively deletes contents of 'foo' and 'foo' directory.
+		* $success = fileio::remove_dir( "folder/foo/" ); // Recursively deletes contents of 'foo' (but not the directory itself.)
+		*
+		* @param		string $filename
+		* @return		null
+		*/
+		function remove_dir( $dir ) {
+			if ($handle = @opendir("$dir")) {
+				while (false !== ($item = readdir($handle))) {
+					if ($item != "." && $item != "..") {
+						if (is_dir("$dir/$item")) {
+							fileio::remove_dir("$dir/$item");
+						} else {
+							@unlink("$dir/$item");
+						}
+					}
+				}
+				closedir($handle);
+				return @rmdir($dir);
+			}
+		}
+		
+		/**
+		* Return an array of files in a directory.
+		*
+		* Example Usage:
+		* $files = fileio::file_listing( "folder/", array('.txt','.jpg') );
+		*
+		* @param		string $dir
+		* @param		array $ext_array all lower-case
+		* @return		array
+		*/
+		function file_listing( $dir, $ext_array=array() ) {
+			if (substr($dir, -1, 1) != "/") { // Must have trailing slash
+				$dir .= "/";
+			}
 
-  // ------------------
-  // File I/O Functions
-  // ------------------
-  function sb_read_file( $filename ) {
-    // Safely read a file.
-    //
-    // Returns either the contents of the file or NULL on fail.
+			$result = array();
+			if ($handle = @opendir($dir)) {
+				while (false !== ($filename = readdir($handle))) {
+					if ($filename != "." && $filename != ".." && is_file( $dir . $filename )) {
+						if ( count( $ext_array ) > 0 ) { // Extension filter
+							if ( in_array( strtolower( strrchr( $filename, '.' ) ), $ext_array ) ) {
+								array_push( $result, $filename );
+							}
+						} else { // No filter
+							array_push( $result, $filename );
+						}
+					}
+				}
+				closedir( $handle );
+			}
+			sort( $result );
+			return $result;
+		}
+		
+		/**
+		* Return an array of folders in a directory.
+		*
+		* Example Usage:
+		* $files = fileio::folder_listing( "folder/" );
+		*
+		* @param		string $dir
+		* @param		array $ext_array all lower-case
+		* @return		array
+		*/
+		function folder_listing( $dir ) {
+			if (substr($dir, -1, 1) != "/") { // Must have trailing slash
+				$dir .= "/";
+			}
 
-    $result = NULL;
-    if ( version_compare( phpversion(), '4.3.0' ) == -1 ) {
-      if ( file_exists( $filename ) ) {
-        $fp = @fopen( $filename, 'r' );
-        if ( $fp ) {
-          flock( $fp, LOCK_SH );
-          $result = fread( $fp, filesize( $filename )*100 );
-          if ( ( strpos( $filename, '.gz' ) !== false ) && ( extension_loaded( 'zlib' ) ) ) {
-            $result = gzinflate( substr( $result, 10 ) );
-          }
-          flock( $fp, LOCK_UN );
-          fclose( $fp );
-        }
-      }
-    }
-    else {
-      $result=@file_get_contents( $filename );
-      if ( ( strpos( $filename, '.gz' ) !== false ) && ( extension_loaded( 'zlib' ) ) ) {
-        $result = gzinflate( substr( $result, 10 ) );
-      }
-    }
-    
-    return( $result );
-  }
-  
-  function sb_write_file( $filename, $str ) {
-    // Safely write a file.
-    //
-    // Returns the number of bytes written, or FALSE or 0 on error.
-
-    if ( ( strpos( $filename, '.gz' )!==false ) && ( extension_loaded( 'zlib' ) ) ) {
-      $str=gzencode( $str, 9 );
-    }
-    
-    if ( version_compare( phpversion(), '5.0.0' ) == -1 ) {
-      $result = false;
-      $fp = @fopen( $filename, 'w' );
-      if ( $fp ) {
-        flock( $fp, LOCK_EX );
-        $result = fwrite( $fp, $str );
-        $lock = flock( $fp, LOCK_UN );
-        fclose( $fp );
-      }
-    }
-    else {
-      $result = file_put_contents( $filename, $str );
-    }
-    
-    return( $result );
-  }
-  
-  function sb_create_folder($newFolder, $permissions=0777) {
-    // Create a new folder or do nothing if one exists
-    //
-    // The folder path should NOT have a trailing slash
-    // or the mkdir command will fail under Windows.
-    //
-    $ok = true;
-    if ( file_exists($newFolder) == false ) {
-      $oldumask = umask(0);
-      $ok = mkdir($newFolder, $permissions);
-      umask($oldumask);
-    }
-    return $ok;
-  }
-  
-  function sb_copy($source, $dest) {
-    // Copy a file, or recursively copy a folder and its contents
-    //
-    // @author      Aidan Lister <aidan@php.net>
-    // @version     1.0.1
-    // @link        http://aidanlister.com/repos/v/function.copyr.php
-    // @param       string   $source    Source path
-    // @param       string   $dest      Destination path
-    // @return      bool     Returns TRUE on success, FALSE on failure
-    
-    // Simple copy for a file
-    if (is_file($source)) {
-      if ( copy($source, $dest) ) {
-        unlink($source);
-        return true;
-      } else {
-        return false;
-      }
-    }
-  
-    // Make destination directory
-    if ( !is_dir($dest) ) {
-      $oldumask = umask(0);
-      mkdir($dest, 0777);
-      umask($oldumask);
-    }
-  
-    // Loop through the folder
-    $dir = opendir($source);
-    while ($file = readdir($dir) ) {
-      if ($file == '.' || $file == '..') {
-        continue;
-      }
-  
-      // Deep copy directories
-      if ($dest !== $source.'/'.$file) {
-        sb_copy($source.'/'.$file, $dest.'/'.$file);
-      }
-    }
-  
-    // Clean up
-    closedir($dir);
-    rmdir($source);
-    
-    return true;
-  }
-  
-  function sb_folder_listing( $dir, $ext_array=Array() ) {
-    // Return an array of files in a directory.
-    // On fail returns an empty array.
-    //
-    // Optionally you can pass an array of file
-    // extensions to match. Pass an empty array
-    // if you want it to return all files.
-    //
-    $result = array();
-    
-    if ( is_dir($dir) ) {
-      $dhandle = opendir($dir);
-      if ( $dhandle ) {
-        // Loop through files
-        $filename = readdir( $dhandle );
-        while ( $filename ) {
-          if ( is_file( $dir . $filename ) ) {
-            if ( count( $ext_array ) > 0 ) {
-              $ok = false;
-              for ( $i = 0; $i < count( $ext_array ); $i++ ) {
-                if ( strtolower( strrchr( $filename, '.' ) ) == strtolower( $ext_array[$i] ) ) {
-                  $ok = true;
-                  break;
-                }
-              }
-            } else {
-              $ok = true;
-            }
-            if ( $ok == true ) {
-              array_push( $result, $filename );
-            }
-          }
-          $filename = readdir( $dhandle );
-        }
-      }
-      closedir( $dhandle );
-    }
-    sort( $result );
-    return( $result );
-  }
-  
-  function sb_delete_file ( $filename ) {
-    // Delete a file.
-    //
-    // I'm guessing that we don't need to lock a file to delete it. Who knows?
-    clearstatcache();
-    if ( file_exists( $filename ) ) {
-      $result = @unlink( $filename );
-    } else {
-      $result = 'File "' . $filename . '" does not exist.';
-    }
-    return( $result );
-  }
-  
-  function sb_delete_directory ( $dirname ) {
-    // Delete a directory. Only works if directory is empty.
-    //
-    // Returns true or false
-    clearstatcache();
-    $result = @rmdir( $dirname );
-    return( $result );
-  }
-  
-  function sb_strip_extension ( $filename ) {
-    $temp_pos = strpos( $filename, '.' );
-    if ( $temp_pos !== false ) {
-      $filename = substr( $filename, 0, $temp_pos );
-    }
-    return( $filename );
-  }
-  
-  function get_permissions( $filename ) {
-    $perms = fileperms( $filename );
-    
-    if (($perms & 0xC000) == 0xC000) {
-      // Socket
-      $info = 's';
-    } elseif (($perms & 0xA000) == 0xA000) {
-      // Symbolic Link
-      $info = 'l';
-    } elseif (($perms & 0x8000) == 0x8000) {
-      // Regular
-      $info = '-';
-    } elseif (($perms & 0x6000) == 0x6000) {
-      // Block special
-      $info = 'b';
-    } elseif (($perms & 0x4000) == 0x4000) {
-      // Directory
-      $info = 'd';
-    } elseif (($perms & 0x2000) == 0x2000) {
-      // Character special
-      $info = 'c';
-    } elseif (($perms & 0x1000) == 0x1000) {
-      // FIFO pipe
-      $info = 'p';
-    } else {
-      // Unknown
-      $info = 'u';
-    }
-    
-    // Owner
-    $info .= (($perms & 0x0100) ? 'r' : '-');
-    $info .= (($perms & 0x0080) ? 'w' : '-');
-    $info .= (($perms & 0x0040) ? (($perms & 0x0800) ? 's' : 'x' ) : (($perms & 0x0800) ? 'S' : '-'));
-    
-    // Group
-    $info .= (($perms & 0x0020) ? 'r' : '-');
-    $info .= (($perms & 0x0010) ? 'w' : '-');
-    $info .= (($perms & 0x0008) ? (($perms & 0x0400) ? 's' : 'x' ) : (($perms & 0x0400) ? 'S' : '-'));
-    
-    // World
-    $info .= (($perms & 0x0004) ? 'r' : '-');
-    $info .= (($perms & 0x0002) ? 'w' : '-');
-    $info .= (($perms & 0x0001) ? (($perms & 0x0200) ? 't' : 'x' ) : (($perms & 0x0200) ? 'T' : '-'));
-    
-    return( $info );
-  }
-
-  ?>
+			$result = array();
+			if ($handle = @opendir($dir)) {
+				while (false !== ($filename = readdir($handle))) {
+					if ($filename != "." && $filename != ".." && is_dir( $dir . $filename )) {
+						array_push( $result, $filename );
+					}
+				}
+				closedir( $handle );
+			}
+			sort( $result );
+			return $result;
+		}
+		
+		/**
+		* Return filename without extensions.
+		*
+		* Example Usage:
+		* $filename = fileio::strip_extension( "folder/index.txt.gz" ); // Returns "index"
+		*
+		* @param		string $filename
+		* @return		string
+		*/
+		function strip_extension( $filename ) {
+			$filename = basename($filename);
+			$temp_pos = strpos( $filename, '.' );
+			if ( $temp_pos !== false ) {
+				$filename = substr( $filename, 0, $temp_pos );
+			}
+			return $filename;
+		}
+		
+	}
+?>

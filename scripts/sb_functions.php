@@ -1,28 +1,16 @@
-<?php 	
-	// Simple PHP Blog
-	// ------------------------------
-	// Created by: Alexander Palmo, apalmo <at> bigevilbrain <dot> com
+<?php
+	// Simple PHP Blog is released under the GNU Public License.
 	//
-	// RSS/PING/GZIP/EMAIL/SEARCH Code:
-	// Contributed by: Javier Gutierrez, guti <at> ya <dot> com
-	//
-	
-	// The Simple PHP Blog is released under the GNU Public License.
-	//
-	// You are free to use and modify the Simple PHP Blog. All changes 
-	// must be uploaded to SourceForge.net under Simple PHP Blog or
-	// emailed to apalmo <at> bigevilbrain <dot> com
-	//
-	// Credit should be give to the original authors and the Simple PHP Blog
-	// logo graphic must appear on the site and link to the project
-	// on SourceForge.net
+	// You are free to use and modify Simple PHP Blog. Changes 
+	// should be uploaded to http://sourceforge.net/projects/sphpblog/
+	// or emailed to apalmo <at> bigevilbrain <dot> com
 	
 	
 	// Last version and update information.
 	//
 	global $sb_info;
-	$sb_info[ 'version' ] = "0.4.8";
-	$sb_info[ 'last_update' ] = '6/10/06';	
+	$sb_info[ 'version' ] = "0.5.0";
+	$sb_info[ 'last_update' ] = '9/20/07';	
 	
 	// Error reporting should be set to 0 in production environments.
 	//
@@ -38,8 +26,7 @@
 		if ( version_compare( phpversion(), '5.0.0' ) == -1 ) {
 			list($usec, $sec) = explode(' ', microtime()); 
 			return ((float)$usec + (float)$sec); 
-		}
-		else {
+		} else {
 			return( microtime( true ) );
 		}
 	}
@@ -78,32 +65,51 @@
 		}
 	}
 	
+	// BASE URL
+	define('BASEURL', '');
+	
+	// ROOT DIRECTORY
+	define('ROOT_DIR', '');
+	
+	// FOLDER LOCATIONS
+	define('CONTENT_DIR',	ROOT_DIR.'content/');
+	define('IMAGES_DIR',	ROOT_DIR.'images/');
+	define('TEMPLATE_DIR',	ROOT_DIR.'templates/');
+	define('CONFIG_DIR',	ROOT_DIR.'config/');
+	define('CACHE_DIR',		CONFIG_DIR.'cache/');
+	define('SCRIPTS_DIR',	ROOT_DIR.'scripts/');
+	define('CLASSES_DIR',	SCRIPTS_DIR.'classes/');
+	
+	// SESSION LOCATION
+	$sessionpath = session_save_path();
+	if (strpos($sessionpath, ";") !== FALSE) {
+		$sessionpath = substr($sessionpath, strpos ($sessionpath, ";")+1); // '5;/tmp'
+	}
+	define('SESSION_SAVE_PATH', $sessionpath); // Default is '/tmp'
+	
 	// Load all the other functions.
-	require_once('scripts/sb_fileio.php');
-	require_once('scripts/sb_config.php');
-	require_once('scripts/sb_login.php');
-	require_once('scripts/sb_theme.php');
-	require_once('scripts/sb_formatting.php');
-	require_once('scripts/sb_emoticons.php');
-	require_once('scripts/sb_date.php');
-	require_once('scripts/sb_communicate.php');
-	require_once('scripts/sb_comments.php');
-	require_once('scripts/sb_static.php');
-	require_once('scripts/sb_utility.php');
-	require_once('scripts/sb_menu.php');
-	require_once('scripts/sb_search.php');
-	require_once('scripts/sb_entry.php');
-	require_once('scripts/sb_image.php');
-	require_once('scripts/sb_display.php');
-	require_once('scripts/sb_color.php'); // These functions don't get used
-	require_once('scripts/sb_trackback.php');
-	require_once('scripts/sb_feed.php');
-	require_once('scripts/sb_categories.php');
-	require_once('scripts/sb_forms.php');
-	require_once('scripts/sb_texteditor.php');
-	require_once('scripts/sb_counter.php');
-	
-	// New 0.4.8 - deathwish
-	require_once('scripts/sb_blacklist.php');
-	
+	require_once(SCRIPTS_DIR.'sb_fileio.php');
+	require_once(SCRIPTS_DIR.'sb_config.php');
+	require_once(SCRIPTS_DIR.'sb_login.php');
+	require_once(SCRIPTS_DIR.'sb_theme.php');
+	require_once(SCRIPTS_DIR.'sb_formatting.php');
+	require_once(SCRIPTS_DIR.'sb_emoticons.php');
+	require_once(SCRIPTS_DIR.'sb_date.php');
+	require_once(SCRIPTS_DIR.'sb_communicate.php');
+	require_once(SCRIPTS_DIR.'sb_comments.php');
+	require_once(SCRIPTS_DIR.'sb_static.php');
+	require_once(SCRIPTS_DIR.'sb_utility.php');
+	require_once(SCRIPTS_DIR.'sb_menu.php');
+	require_once(SCRIPTS_DIR.'sb_search.php');
+	require_once(SCRIPTS_DIR.'sb_entry.php');
+	require_once(SCRIPTS_DIR.'sb_image.php');
+	require_once(SCRIPTS_DIR.'sb_display.php');
+	require_once(SCRIPTS_DIR.'sb_color.php'); // These functions don't get used
+	require_once(SCRIPTS_DIR.'sb_trackback.php');
+	require_once(SCRIPTS_DIR.'sb_feed.php');
+	require_once(SCRIPTS_DIR.'sb_categories.php');
+	require_once(SCRIPTS_DIR.'sb_forms.php');
+	require_once(SCRIPTS_DIR.'sb_texteditor.php');
+	require_once(SCRIPTS_DIR.'sb_counter.php');
+	require_once(SCRIPTS_DIR.'sb_blacklist.php');
 ?>
