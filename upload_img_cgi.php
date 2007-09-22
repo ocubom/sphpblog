@@ -16,9 +16,11 @@
   // ---------------
   
   for ($i=0;$i<count($_FILES['userfile']);$i++) {
+  
     if ($ok == null) {
       $ok = false;
     }
+    
     if (is_uploaded_file($_FILES['userfile']['tmp_name'][$i])) {
       if ( $_FILES[ 'userfile' ][ 'error' ][$i] == 0 ) {
         if (!file_exists(IMAGES_DIR)) {
@@ -33,12 +35,23 @@
         if ( @getimagesize($_FILES['userfile']['tmp_name'][$i]) == FALSE ){
           echo('Image is not valid or not an image file.');
           exit;
-          // redirect_to_url( 'upload_img.php' );
         }
         
         // New code for limiting the files that can be uploaded - provided by ReZEN (rezen@xorcrew.net)
         $upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
+        
+        if (strrchr($uploadfile, ".") === false) {
+          echo('File does not have an extension');
+          exit;
+        }
+        
         $extension = strtolower(substr(strrchr($uploadfile, "."), 1));
+        
+        if (strlen($extension) == 0) {
+          echo('File ends with "." and does not have an extension');
+          exit;
+        }
+        
         foreach ($upload_denied_extentions AS $denied_extention) {
           if($denied_extention == $extension) {
             echo('That filetype is not allowed');
@@ -56,7 +69,7 @@
     }
   }
   if ( $ok === true ) {
-    // redirect_to_url( 'index.php' );
+    redirect_to_url( 'index.php' );
   }
   // ------------
   // PAGE CONTENT
