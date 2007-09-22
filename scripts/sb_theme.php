@@ -165,4 +165,16 @@
 
 		return ( $str );
 	}
+	
+	function get_user_color( $key, $default="ff0000") {
+		$color = $GLOBALS['user_colors'][$key];
+		if (isColor($color,0)) { return $color;	}
+		return $default;
+	}
+		
+	function isColor($value, $empty) {
+		if (strlen($value) == 3) { return preg_match('/^[a-f0-9]{3}$/i', $value); }
+		if (strlen($value) == 6) { return preg_match('/^[a-f0-9]{6}$/i', $value); }
+		return $empty;
+	}
 ?>

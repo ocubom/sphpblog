@@ -52,7 +52,7 @@
       
       <?php echo( $lang_string[ 'instructions' ] ); ?><p />
       
-      <hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+      <hr noshade size="1" color="#<?php echo(get_user_color('inner_border_color')); ?>" />
       
       <form action="themes.php" method="post" name="setup" name="setup">
         
@@ -89,7 +89,7 @@
         
         </select><br />
         
-        <hr noshade size="1" color="#<?php echo( $user_colors[ 'inner_border_color' ] ); ?>" />
+        <hr noshade size="1" color="#<?php echo(get_user_color('inner_border_color')); ?>" />
         
         <input type="submit" name="submit" value="<?php echo( $lang_string[ 'submit_btn' ] ); ?>" /><br /><br />
       </form>

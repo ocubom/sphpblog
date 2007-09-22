@@ -262,9 +262,9 @@
   <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
 
   <style type="text/css">
-  .header th{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
-  .data1 td{background-color: #<?php echo( $user_colors[ 'menu_bg' ] ); ?>}
-  .data2 td{background-color: #<?php echo( $user_colors[ 'menu_border' ] ); ?>;}
+  .header th{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
+  .data1 td{background-color: #<?php echo(get_user_color('menu_bg')); ?>}
+  .data2 td{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
   </style>
 
   <script type="text/javascript">

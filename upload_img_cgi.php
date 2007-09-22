@@ -56,7 +56,7 @@
     }
   }
   if ( $ok === true ) {
-    redirect_to_url( 'index.php' );
+    // redirect_to_url( 'index.php' );
   }
   // ------------
   // PAGE CONTENT

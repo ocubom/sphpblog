@@ -576,9 +576,9 @@
     ?>
     <body>
       <br />
-      <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
+      <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
         <tr align="left" valign="top">
-          <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo( $user_colors[ 'header_bg_color' ] ); ?>">
+          <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
             <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
             <?php
             if ( $blog_config['blog_enable_title']) { // New for 0.4.6
@@ -588,19 +588,19 @@
               <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
                 <tr valign="top">
                   <?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>">
+                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>">
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
                   </td>
                   <?php } ?>
-                  <td width="<?php echo( $content_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
+                  <td width="<?php echo( $content_width ); ?>" bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
                     <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
                   </td>
                   <?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { // New 0.3.8 - Right Menu ?>
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'menu_bg_color' ] ); ?>">
+                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>">
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
@@ -608,7 +608,7 @@
                   <?php } ?>
                 </tr>
                 <tr align="left" valign="top">
-                  <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>" colspan="2">
+                  <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
                     <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
@@ -647,16 +647,16 @@
     ?>
     <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
       <br />
-      <table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo( $user_colors[ 'border_color' ] ); ?>;">
+      <table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
         <tr align="left" valign="top">
-          <td bgcolor="#<?php echo( $user_colors[ 'main_bg_color' ] ); ?>">
+          <td bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
             <div id="maincontent">
               <?php page_content(); ?>
             </div>
           </td>
         </tr>
         <tr align="left" valign="top">
-          <td bgcolor="#<?php echo( $user_colors[ 'footer_bg_color' ] ); ?>">
+          <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
             <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
           </td>
         </tr>

@@ -302,7 +302,7 @@
     div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
     {
       padding: 0px 10px 0px 10px;
-      border-color: #<?php echo( $user_colors[ 'inner_border_color' ] ); ?>;
+      border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
       border-width: 1px;
       border-style: dashed;
       display: block;
