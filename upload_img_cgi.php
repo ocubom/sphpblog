@@ -37,27 +37,44 @@
           exit;
         }
         
-        // New code for limiting the files that can be uploaded - provided by ReZEN (rezen@xorcrew.net)
-        $upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
-        
-        if (strrchr($uploadfile, ".") === false) {
+        if (strpos($uploadfile, ".") === false) {
           echo('File does not have an extension');
+          exit;
+        }
+        
+        if (strpos($uploadfile, ".") == 0) {
+          echo('File begins with "."');
+          exit;
+        }
+        
+        if (strrpos($uploadfile, ".") == strlen($uploadfile)-1) {
+          echo('File ends with "."');
           exit;
         }
         
         $extension = strtolower(substr(strrchr($uploadfile, "."), 1));
         
-        if (strlen($extension) == 0) {
+        if (strlen($extension) == 0) { // Not really needed...
           echo('File ends with "." and does not have an extension');
           exit;
         }
         
+        // Allowed files
+        $upload_valid_extentions = array( "jpg", "gif", "png" );
+        $extension = strtolower(substr(strrchr($uploadfile, "."), 1));
+        if (!in_array($extension, $upload_valid_extentions)) {
+          echo('That filetype is not allowed');
+          exit;
+        }
+        
+        // Explicitly denied files (we don't really need this anymore...) - provided by ReZEN (rezen@xorcrew.net)
+        $upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
         foreach ($upload_denied_extentions AS $denied_extention) {
           if($denied_extention == $extension) {
             echo('That filetype is not allowed');
             exit;
           }    
-        }   
+        }
     
         if ( move_uploaded_file($_FILES['userfile']['tmp_name'][$i], $uploadfile ) ) {
           chmod( $uploadfile, 0777 );
