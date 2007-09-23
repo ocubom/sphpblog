@@ -240,6 +240,7 @@
               <input type="checkbox" id="b" name="b"<?php if ( in_array( 'b', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [b] = Bold<br />
               <input type="checkbox" id="i" name="i"<?php if ( in_array( 'i', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [i] = Italic<br />
               <input type="checkbox" id="strong" name="strong"<?php if ( in_array( 'strong', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [strong] = Strong<br />
+							<input type="checkbox" id="center" name="center"<?php if ( in_array( 'center', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [center] = Center<br />
               <input type="checkbox" id="em" name="em"<?php if ( in_array( 'em', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [em] = Emphasis<br />
               <br />
               <input type="checkbox" id="del" name="del"<?php if ( in_array( 'del', $blog_config[ 'comment_tags_allowed' ] ) ) { echo ( ' checked' ); } ?>> [del] = Delete<br />

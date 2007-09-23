@@ -62,12 +62,13 @@
       if ( in_array( 'strike', $blog_config[ 'comment_tags_allowed' ] ) ) { array_push( $tag_arr, 'strike' ); }
       if ( in_array( 'pre', $blog_config[ 'comment_tags_allowed' ] ) ) { array_push( $tag_arr, 'pre' ); }
       if ( in_array( 'code', $blog_config[ 'comment_tags_allowed' ] ) ) { array_push( $tag_arr, 'code' ); }
+			if ( in_array( 'center', $blog_config[ 'comment_tags_allowed' ] ) ) { array_push( $tag_arr, 'center' ); }
     } else {
-      $tag_arr = array('i', 'b', 'blockquote', 'strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'ins', 'strike', 'pre', 'code' );
+      $tag_arr = array('i', 'b', 'blockquote', 'strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'ins', 'strike', 'pre', 'code', 'center' );
     }
 
     // Build search and replace arrays.
-    $search_arr = array();
+		$search_arr = array();
     $replace_arr = array();
     for ( $i = 0; $i < count( $tag_arr ); $i++ ) {
       $tag = $tag_arr[$i];

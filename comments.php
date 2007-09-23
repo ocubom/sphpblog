@@ -119,6 +119,10 @@
       if ( in_array( 'i', $blog_config[ 'comment_tags_allowed' ] ) ) {
         ?><input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_italic' ] ); ?>" onclick="ins_styles(this.form.comment_text,'i','');" /><?php
       }
+			if ( in_array( 'center', $blog_config[ 'comment_tags_allowed' ] ) ) {
+        ?><input type="button" class="bginput" value="center" onclick="ins_styles(this.form.comment_text,'center','');" /><?php
+      }
+
       if ( in_array( 'url', $blog_config[ 'comment_tags_allowed' ] ) ) {
         ?><input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_url' ] ); ?>" onclick="ins_url_no_options(this.form.comment_text);" /><?php
       }

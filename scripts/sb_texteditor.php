@@ -299,8 +299,9 @@
     ?>
       <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
       <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_italic' ] ); ?>" onclick="ins_styles(this.form.blog_text,'i','');" />
+			<input type="button" class="bginput" value="Center" onclick="ins_styles(this.form.blog_text,'center','');" />
       <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_url' ] ); ?>" onclick="ins_url(this.form.blog_text);" />
-      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/>
+      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/>			
     <?php
     if ( $mode == 'entry' ) {
     ?>
@@ -313,7 +314,7 @@
     // Style Tag Dropdown
     global $lang_string;
 
-    ?>
+    ?><br />
       <select name="style_dropdown" onchange="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);">
         <option label="--" value="--">--</option>
         <option label="[blockquote]xxx[/blockquote]" value="blockquote">[blockquote]xxx[/blockquote]</option>

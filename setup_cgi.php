@@ -30,8 +30,8 @@
     $temp_blog_counter_hours = 1;
   }
 
-  $tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html' );
-  $temp_array = array();
+  $tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html','center' );  
+	$temp_array = array();
   for ( $i = 0; $i < count( $tag_array ); $i++ ) {
     $tag = $tag_array[$i];
     if ( $_POST[ $tag ] == 'on' ) {
