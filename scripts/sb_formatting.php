@@ -668,7 +668,7 @@
         //Now put in the More link
         if ( $url != '' ){
           $read_more = isset( $lang_string['read_more'] ) ? $lang_string['read_more'] : 'Read more...';
-          $string  .= ' <a href="' . $url . '">' . $read_more . '</a>';
+          $string  .= ' <a href="' . $url . '">' . $read_more . '</a><br />';
         }
       }
     }
