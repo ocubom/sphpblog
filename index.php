@@ -98,15 +98,25 @@
     global $entry;
     $entry = $temp_entry;
   }
-  
-  // Category
+	
+	// Category
   if ( array_key_exists( 'category', $_GET ) ) {
     global $category;
     $category = $_GET[ 'category' ];
     $is_permalink = false;
   }
   
-  global $lang_string, $sb_info, $blog_config;
+	global $lang_string, $sb_info, $blog_config;
+	
+	// Check the option for specific category on first page...
+	// If nothing was passed into this page, then use the default
+	// category (cause it has to be the first page). WILL NEVER
+	// OVERRIDE THE CATEGORY IF PASSED IN
+	if ( array_key_exists( 'category', $_GET ) == FALSE ) {
+		if ( $blog_config[ 'blog_enable_start_category' ] == 1 ) { 
+		  $category = $blog_config[ 'blog_enable_start_category_selection' ];
+		}
+	}    
   
   // ------------
   // PAGE CONTENT
