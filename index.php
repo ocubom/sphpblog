@@ -147,6 +147,11 @@
     // ------------
     // BEGIN OUTPUT
     // ------------
-    theme_pagelayout();
+
+    if ( array_key_exists( 'print', $_GET ) && $_GET['print'] == true ) {
+      theme_popuplayout();
+    } else {
+      theme_pagelayout();
+    }
   ?>
 </html>

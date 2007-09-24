@@ -94,8 +94,9 @@
             $_POST[ 'static_block_options' ],
             $_POST[ 'static_block_border' ],
             $_POST[ 'blog_header_graphic' ],
-						( $_POST[ 'blog_enable_start_category' ] == 'on' ),
-						$_POST[ 'blog_enable_start_category_selection' ] );	
+            ( $_POST[ 'blog_enable_start_category' ] == 'on' ),
+            $_POST[ 'blog_enable_start_category_selection' ],
+            ( $_POST[ 'blog_enable_print' ] == 'on' ) );	
 
   if ( $ok === true ) {
     redirect_to_url( 'index.php' );

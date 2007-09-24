@@ -58,7 +58,6 @@
     $lang_string['notice_moderator2'] = " comment(s) that require approval.";
     $lang_string['notice_loggedin'] = "You are currently logged in.";
     
-
     // Counter
     $lang_string['counter_today'] = "Today:"; // New for 0.4.8
     $lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
@@ -101,6 +100,7 @@
     $lang_string['sb_comments_plural_btn_number_first'] = true;
     $lang_string['sb_comments_plural_btn'] = 'comments';
     $lang_string['sb_comments_plural_view'] = 'views'; // 0.5.0
+    $lang_string['print_article'] = 'print article'; // New in 0.5.2
 
     // ( 1 view )
     $lang_string['sb_view_counter_pre'] = '';
@@ -591,6 +591,7 @@
         $lang_string['blog_enable_login'] = "Enable Login Link (Please bookmark \"login.php\" first...)"; // New for 0.4.8
         $lang_string['blog_enable_title'] = "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"; // New for 0.4.6
         $lang_string['blog_enable_permalink'] = "Enable Permalink on Blog Entries"; // New for 0.4.6
+        $lang_string['blog_enable_print'] = "Enable Print Article link on Blog Entries"; // New for 0.5.2
         $lang_string['blog_enable_capcha'] = "Enable Anti-Spam"; // New for 0.4.8
         $lang_string['blog_footer_counter'] = "Enable Counter in Footer"; // New for 0.4.8
         $lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8

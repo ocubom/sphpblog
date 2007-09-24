@@ -230,6 +230,13 @@
       }
     }
 
+    if ( $blog_config['blog_enable_print'] ){ // New for 0.5.2
+      if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
+        // Show 'print article' string...
+        $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
+      }
+    }
+
     if ( isset( $entry_array['relatedlink']['url'] ) ) {
       // Show 'relatedlink' symbol - New to 0.4.6
       $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";

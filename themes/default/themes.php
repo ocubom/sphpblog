@@ -183,6 +183,14 @@
       }
     }
 
+    // PRINT ARTICLE
+    if ( $blog_config['blog_enable_print']){// New for 0.4.6
+      if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
+        // Show 'print article' link
+        $blog_content  .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article']. '</a>';
+      }
+    }
+
     // RELATED LINK
     if ( isset( $entry_array['relatedlink']['url'] ) ) {
       // Show 'relatedlink' symbol - New to 0.4.6
