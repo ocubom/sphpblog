@@ -229,6 +229,20 @@
         $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
       }
     }
+    	
+/*
+if ( $blog_config['blog_enable_permalink'] ){
+if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
+// apple,baseball,basketball,business_finance,celebrity,design,environment,extreme_sports,football,gadgets,gaming_news,general_sciences,golf,hardware,health,hockey,linux_unix,mods,motorsport,movies,music,offbeat_news,other_sports,playable_web_games,political_opinion,politics,programming,security,soccer,software,space,tech_deals,tech_news,television,tennis,videos_animation,videos_comedy,videos_educational,videos_gaming,videos_music,videos_people,videos_sports,world_news
+$url = urlencode($entry_array[ 'permalink' ][ 'url' ]);
+$title = urlencode($entry_array[ 'subject' ]);
+$bodytext = urlencode(substr( $entry_array[ 'entry' ], 0, 75));
+$topic = urlencode('tech_news');
+
+$comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase=2&url=' . $url . '&title=' . $title . '&bodytext=' . $bodytext . '&topic=' . $topic . '">Digg This!</a>' . "\n";
+}
+}
+*/
 
     if ( $blog_config['blog_enable_print'] ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
@@ -543,27 +557,49 @@
     // Default image path.
     $img_path = "themes/" . $blog_theme . "/images/";
 
-    // Begin Page Layout HTML
-    ?>
-    <body>
-      <div id="page">
-        <div id="header"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
-        <?php if ( $blog_config['blog_enable_title'] ) { echo('<div id="title">' . $blog_config[ 'blog_title' ] . '</div>'); } ?>
-        <div id="innerpage">
-          <div id="content">
-            <?php page_content(); ?>
-          </div>
-          <div id="sidebar">
-            <?php theme_menu(); ?>
-          </div>
-        </div>
-        <div id="footer">
-          <?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?>
-        </div>
-      </div>
-    </body>
-    <?php
-    // End Page Layout HTML
+	// Begin Page Layout HTML
+	?>
+	<body>
+		<div id="page">
+			<div id="header"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
+			<?php if ( $blog_config['blog_enable_title'] ) { echo('<div id="title">' . $blog_config[ 'blog_title' ] . '</div>'); } ?>
+			<div id="innerpage">
+			
+			<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { ?>
+				<div id="content">
+					<td width="<?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+						<?php page_content(); ?>
+					</td>
+				</div>
+				<div id="sidebar">
+					<td width="<?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
+						<?php theme_menu(); ?>
+					</td>
+				</div>
+			<?php } ?>
+			
+			<?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { ?>
+				<div id="sidebar" style="border-width: 0 1px 1px 0; border-style: none solid solid none;">
+					<td width="<?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
+						<?php theme_menu(); ?>
+					</td>
+				</div>
+				<div id="content">
+					<td width="<?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+						<?php page_content(); ?>
+					</td>
+				</div>
+			<?php } ?>
+		
+			</div>
+			<div id="footer">
+				<?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?>
+			</div>
+		</div>
+	</body>
+	<?php
+	// End Page Layout HTML
+    
   }
 
   // Function:

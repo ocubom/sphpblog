@@ -21,6 +21,7 @@
   function page_content() {
     global $lang_string, $blog_config;
     
+    /*
     // SUBJECT
     $entry_array = array();
     $entry_array[ 'subject' ] = $lang_string[ 'title_preview' ];
@@ -39,6 +40,23 @@
     
     // THEME ENTRY
     echo( theme_staticentry( $entry_array ) );
+    */
+    
+    // INSTRUCTIONS
+    $entry_array = array();
+    $entry_array[ 'subject' ] = $lang_string[ 'title_preview' ];
+    $entry_array[ 'entry' ] = $lang_string[ 'instructions_preview' ] . '<p />' . $lang_string[ 'instructions_update' ] . '<p />';
+    echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
+    
+    // PREVIEW
+    $editor = sb_editor();
+    echo( $editor['preview'] );
+    
+    // EDITOR
+    $entry_array = array();
+    $entry_array[ 'subject' ] = $lang_string[ 'title' ];
+    $entry_array[ 'entry' ] = $editor['form'];
+    echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
   }
   
   // ----

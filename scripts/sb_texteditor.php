@@ -11,7 +11,7 @@
   function sb_editor( $mode='entry' ) {
     // The "Text Editor Interface" for Simple PHP Blog
     //
-    // This is used on the "add.php", "preview_cgi.php", "add_static.php", "preview_static_cgi.php" pages. I'm planning on using it for static and comments pages also...
+    // This is used on the "add.php", "preview_cgi.php", "add_static.php", "preview_static_cgi.php" pages. I'm planning on using it for comments page also...
     global $lang_string, $user_colors, $blog_config, $theme_vars;
     
     // Include Supporting Java Script
@@ -28,6 +28,11 @@
     $default_m = null; // Only in "Edit" mode...
     $default_entry = null; // Only in "Edit" mode...
     $default_filename = null; // Only for Static Entries
+    
+    
+    // ----- Preview Begin -----
+    ob_start();
+    
     
     if ( $mode == 'static' ) {
       // ------------
@@ -171,6 +176,12 @@
       
     }
     
+    
+    // ----- Preview End -----
+    $preview = ob_get_clean();
+    $preview = ($preview === false) ? '' : $preview;
+    
+    
     // --------------
     // Misc. Form Values
     // --------------
@@ -191,6 +202,12 @@
     // --------
     // Begin Form
     // --------
+    
+    
+    // ----- Form Begin -----
+    ob_start();
+    
+    
     ?>
     <form action='<?php echo( $submit_page ); ?>' method="post" name="editor" id="editor" onsubmit="return <?php echo( $validate_script ); ?>(this)">
       <?php
@@ -279,6 +296,17 @@
       <input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='<?php echo( $submit_page ); ?>';" /><p />
     </form>
     <?php
+    
+    
+    // ----- Form End -----
+    $form = ob_get_clean();
+    $form = ($form === false) ? '' : $form;
+    
+    
+    // Return Resules
+    $results = array('preview' => $preview, 'form' => $form);
+    
+    return $results;
   }
   
   function editor_static_file( $filename ) {
