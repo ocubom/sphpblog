@@ -22,7 +22,7 @@
 		}
 		
 		function getContent () {
-			$str = sprintf('<form method="get" action="search.php"><b>%s</b><input type="text" size="16" name="q" />&nbsp;<input type="submit" value="%s" /></form>', $GLOBALS[ 'lang_string' ][ 'search_title' ], $GLOBALS[ 'lang_string' ][ 'search_go' ] );
+			$str = sprintf('<form method="get" action="search.php">%s <input type="text" size="16" name="q" />&nbsp;<input type="submit" value="%s" /></form>', $GLOBALS[ 'lang_string' ][ 'search_title' ], $GLOBALS[ 'lang_string' ][ 'search_go' ] );
 			return $str;
 		}
 	}

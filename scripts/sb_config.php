@@ -500,8 +500,8 @@
             $blog_send_pings,
             clean_post_text( $blog_ping_urls ),
             $blog_enable_voting,
-                $blog_trackback_enabled,
-                $blog_trackback_auto_discovery,
+            $blog_trackback_enabled,
+            $blog_trackback_auto_discovery,
             $blog_enable_cache,
             $blog_enable_calendar,
             $blog_calendar_start,
@@ -524,9 +524,9 @@
             $static_block_options,
             $static_block_border,
             $blog_header_graphic,
-						$blog_enable_start_category, 
-						$blog_enable_start_category_selection, 
-						$blog_enable_print );
+            $blog_enable_start_category,
+            $blog_enable_start_category_selection, 
+            $blog_enable_print );
 
 		$str = implode('|', $array);
 
@@ -539,8 +539,9 @@
     $filename = CONFIG_DIR.'config.txt';
     $result = sb_write_file( $filename, $str );
 
-    $filename=CONFIG_DIR.'~blog_entry_listing.tmp';
-    sb_delete_file( $filename );
+	// Clear caches
+	fileio::delete_file( CONFIG_DIR . '~blog_entry_listing.tmp' );
+	fileio::delete_file( CONFIG_DIR . '~blog_comment_listing.tmp' );
 
     if ( $result ) {
       return ( true );

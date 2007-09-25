@@ -207,11 +207,11 @@
     }
 
     // PRINT ARTICLE
-    $permalink = "";
+    $printlink = "";
     if ( $blog_config['blog_enable_print'] ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article'
-        $permalink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>';
+        $printlink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>';
       }
     }
 
@@ -302,6 +302,8 @@
     array_push( $replace, $trackbacks );
     array_push( $search, '%permalink%' );
     array_push( $replace, $permalink );
+    array_push( $search, '%printlink%' );
+    array_push( $replace, $printlink );
     array_push( $search, '%relatedlink%' );
     array_push( $replace, $relatedlink );
     array_push( $search, '%ipaddress%' );
