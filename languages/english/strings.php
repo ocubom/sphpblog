@@ -743,6 +743,7 @@
         $lang_string['instructions'] = "Click on the button below to select a file to upload.";
         $lang_string['select_file'] = "Select file:";
         $lang_string['upload_btn'] = "Upload";
+        $lang_string['howmany'] = "How many images do you wish to upload?"; // New for 0.5.2
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Couldn't upload image. Here's some more information:<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Image Uploaded!</h2>The image has been successfully saved."; // New for 0.4.8.1

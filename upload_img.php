@@ -31,10 +31,7 @@
     <?php
     $formstate = $_REQUEST['formstate'];
     if($formstate !="showuploaders"){
-echo <<<EOF
-    <form action="upload_img.php" method="get">
-      How many images do you wish to upload? <select id="howmany" name="howmany">
-EOF;
+	echo('<form action="upload_img.php" method="get">'.$lang_string[ 'howmany' ].' <select id="howmany" name="howmany"'>);
     for($i=1;$i<=10;$i++){
       echo('<option value="'.$i.'">'.$i.'</option>');
     }
