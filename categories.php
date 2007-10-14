@@ -250,7 +250,7 @@
                   // So far so good... Now get rid of trailing spaces.
                   name_str = line_str.slice( 0, parentheses_start );
                   while ( name_str.charAt( name_str.length-1 ) == " " ) {
-                    name_str .= substring( 0, name_str.length-1 );
+                    name_str += substring( 0, name_str.length-1 );
                   }
                   
                   // Count beginning spaces or &nbsp; characters...
