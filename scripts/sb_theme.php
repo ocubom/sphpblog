@@ -166,7 +166,7 @@
 		return ( $str );
 	}
 	
-	function get_user_color( $key, $default="ff0000") {
+	function get_user_color( $key, $default="") {
 		$color = $GLOBALS['user_colors'][$key];
 		if (isColor($color,0)) { return $color;	}
 		return $default;
