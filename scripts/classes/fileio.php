@@ -137,7 +137,7 @@
 		* Copy a file, or recursively copy a folder and its contents
 		*
 		* Example Usage:
-		* $files = fileio::copy_dir( "folder/", array('.txt','.jpg') );
+		* $files = fileio::copy_dir( "folder1/", "folder2/" );
 		*
 		* @author		Aidan Lister <aidan@php.net>
 		* @version	1.0.1
