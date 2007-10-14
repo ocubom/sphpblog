@@ -81,6 +81,7 @@
     if ( $logged_in == false ) {
       $view_counter = 1;
       $view_array = sb_folder_listing( $dir.'../', array( '.txt' ) );
+      // $view_array = sb_folder_listing( $basedir.$y.'/'.$m.'/'.$entry.'../', array( '.txt' ) ); // http://forums.simplephpblog.com/viewtopic.php?t=2821
       for ( $i = 0; $i < count( $view_array ); $i++ ) {
         if ( $view_array[$i] === 'view_counter.txt' ) {
           $view_counter = intval( sb_read_file( $dir . '../' . $view_array[$i] ) ) + 1;
@@ -480,8 +481,6 @@
     $result = sb_write_file( $entryFile, $str );
 
     if ( $result ) {
-      // Update Most Recent List
-      add_most_recent( 'comment'.$stamp, $y, $m, $entry );
 
       if ( $blog_config[ 'blog_email_notification' ] ) {
         // Send Email Notification:
@@ -553,10 +552,6 @@
 
     $result = sb_write_file( $filename, $str );
 
-    if ($hold_flag == '') {
-      add_most_recent( 'comment'.$stamp, $y, $m, $entry );
-    }
-
     return ( true );
   }
 
@@ -600,10 +595,6 @@
           }
         }
       }
-    }
-
-    if ( $ok ) {
-      delete_most_recent( $filepath );
     }
 
     return ( $ok );
