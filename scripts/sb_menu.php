@@ -612,69 +612,6 @@
   // ----------------------------
   // "Most Recent Menu" Functions
   // ----------------------------
-  
-  function add_most_recent ( $comment_id, $y, $m, $blog_entry_id ) {
-    global $blog_config;
-    
-    // Add an item to the 'Last Updated' List
-    //
-    
-    // Read links file.
-    $filename = CONFIG_DIR.'last_updated.txt';
-    $result = sb_read_file( $filename );
-    
-    // Append new links.
-    if ( $result ) {
-      $array = explode('|', $result);
-      array_push( $array, $blog_entry_id, $m, $y, $comment_id );
-    } else {
-      $array = array( $blog_entry_id, $m, $y, $comment_id );
-    }
-    
-    $max_comments = $blog_config[ 'blog_max_entries' ];
-    if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
-      // $array = array_reverse( $array );
-      $array = array_slice( $array, $max_comments * -4, $max_comments * 4);
-      // $array = array_reverse( $array );
-    }
-    
-    // Save links to file.
-    $str = implode( '|', $array );
-    sb_write_file( $filename, $str );
-  }
-  
-  function delete_most_recent ( $item_filename ) {
-    // Delete an item to the 'Last Updated' List
-    //
-    
-    // Read links file.
-    $filename = CONFIG_DIR.'last_updated.txt';
-    $result = sb_read_file( $filename );
-
-    $blog_entry_id = str_replace( '/', '', sb_strip_extension( strrchr( $item_filename, '/') ) );
-    
-    // Append new links.
-    $str = NULL;
-    $update_file = false;
-    if ( $result ) {
-      $array = explode('|', $result);
-      $array = array_reverse( $array );
-      for ( $i = 0; $i < count( $array ); $i = $i + 4 ) {
-        if ( $blog_entry_id == $array[$i] ) {
-          array_splice( $array, $i, 4 );
-          $update_file = true;
-          break;
-        }
-      }
-    }
-    
-    // Save links to file.
-    if ( $update_file ) {
-      $array = array_reverse( $array );
-      $str = implode('|', $array);
-      sb_write_file( $filename, $str );
-    }
-  }
 
   function confirm_unmod( $modflag ) {
     global $blog_config;
