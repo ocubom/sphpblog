@@ -150,8 +150,10 @@
       }
 
       if ( isset( $entry_array[ 'ban' ][ 'url' ] ) ) {
-        $blog_content  .= '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '">[ ' . $entry_array[ 'ban' ][ 'name' ] . ' ]</a><br /><br />' . "\n";
+        $blog_content  .= '<a href="' . $entry_array[ 'ban' ][ 'url' ] . '">[ ' . $entry_array[ 'ban' ][ 'name' ] . ' ]</a>' . "\n";
       }
+      
+      $blog_content  .= '<br /><br />' . "\n";
     }
 
     // BLOG ENTRY
