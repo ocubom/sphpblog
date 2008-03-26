@@ -1,53 +1,59 @@
 <?php
-  // ---------------
-  // INITIALIZE PAGE
-  // ---------------
-  require_once('scripts/sb_functions.php');
-  global $logged_in;
-  $logged_in = logged_in( false, true );
-  if ( !session_id() ) {
-    session_start();
-  }
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
+	require_once('scripts/sb_functions.php');
+	global $logged_in;
+	$logged_in = logged_in( false, true );
+	if ( !session_id() ) {
+		session_start();
+	}
 
-  read_config();
+	read_config();
 
-  require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
-  sb_language( 'errorpage' );
+	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
+	sb_language( 'errorpage' );
 
-  // ---------------
-  // POST PROCESSING
-  // ---------------
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 
-  // ------------
-  // PAGE CONTENT
-  // ------------
-  function page_content() {
-    global $lang_string, $blog_config, $blog_theme;
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $blog_config, $blog_theme;
 
-    // SUBJECT
-    $entry_array = array();
-    $entry_array[ 'subject' ] = $lang_string[ $_SESSION['errornum'] ];
-    $entry_array[ 'entry' ] = '<table width="100%"  border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
-    $entry_array[ 'entry' ]  .= '<td>' . $lang_string[ $_SESSION['errortype'] ] . '<br><br>';
-    $entry_array[ 'entry' ]  .= $lang_string[ 'clientid' ] . @gethostbyaddr(getIP()) . '</td></tr></table>';
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $lang_string[ $_SESSION['errornum'] ];
+		$entry_array[ 'entry' ] = '<table width="100%"	border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
+		$entry_array[ 'entry' ]	 .= '<td>' . $lang_string[ $_SESSION['errortype'] ] . '<br><br>';
+		$entry_array[ 'entry' ]	 .= $GLOBALS['lang_string']['clientid'] . @gethostbyaddr(getIP()) . '</td></tr></table>';
 
-    // THEME ENTRY
-    echo( theme_staticentry( $entry_array ) );
-  }
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
 
-  // ----
-  // HTML
-  // ----
+	// ----
+	// HTML
+	// ----
+	
+	// Main Page Template
+	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
+	
+	// Meta Data
+	get_init_code($page_template);
+	
+	// Page Title
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	
+	// Theme Layout
+	ob_start();
+	theme_pagelayout(); 
+	$page_template->setTag('{BODY}', ob_get_clean());
+		
+	// Final Output
+	$output = $page_template->getHTML();
+	echo($output);
 ?>
-  <?php echo( get_init_code() ); ?>
-  <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-
-  <title><?php echo($blog_config[ 'blog_title' ]); ?></title>
-</head>
-  <?php
-    // ------------
-    // BEGIN OUTPUT
-    // ------------
-    theme_pagelayout();
-  ?>
-</html>

@@ -14,7 +14,7 @@
 
 	read_config();
 
-	require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'manage_users' );
 	
 
@@ -138,7 +138,7 @@
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ 'title' ];
+		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
 
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -149,11 +149,11 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $lang_string[ 'error' ] . $ok . '<p />' );
+				echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
 			} else {
-				echo( $lang_string[ 'success' ] . '<p />' );
+				echo( $GLOBALS['lang_string']['success'] . '<p />' );
 			}
-			echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
+			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
 		} else {
 			echo( $lang_string['instructions'] . '<p />' );
 		}
@@ -263,38 +263,54 @@
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 	}
-
 	// ----
 	// HTML
 	// ----
-?>
-	<?php echo( get_init_code() ); ?>
-	<?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
+	
+	// Main Page Template
+	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
+	
+	// Meta Data
+	get_init_code($page_template);
 
+	// Extra CSS
+	ob_start();
+?>
 	<style type="text/css">
 		.header th{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
 		.data1 td{background-color: #<?php echo(get_user_color('menu_bg')); ?>}
 		.data2 td{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
 	</style>
+<?php
+	$page_template->appendTag('{CSS}', ob_get_clean());
 
+	// Extra Javascript
+	ob_start();
+?>
 	<script type="text/javascript">
-		<!--
+		// <!--
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+				alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
 				return false;
 			} else {
 				return true;
 			}
 		}
-		//-->
+		// -->
 	</script>
-	<title><?php echo( $blog_config[ 'blog_title' ] ); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
-	</head>
-		<?php 
-		// ------------
-		// BEGIN OUTPUT
-		// ------------
-		theme_pagelayout();
-		?>
-	</html>
+<?php
+	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
+	
+	// Page Title
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	
+	// Theme Layout
+	ob_start();
+	theme_pagelayout(); 
+	$page_template->setTag('{BODY}', ob_get_clean());
+		
+	// Final Output
+	$output = $page_template->getHTML();
+	echo($output);
+?>

@@ -8,7 +8,7 @@
   
   read_config();
   
-  require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+  require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
   sb_language( 'index' );
   
   // ---------------
@@ -23,7 +23,7 @@
   
     // SUBJECT
     $entry_array = array();
-    $entry_array[ 'subject' ] = $lang_string[ 'title' ];
+    $entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
     // $entry_array[ 'subject' ] = 'Subject Line';
     // $entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
     
@@ -39,20 +39,26 @@
     // THEME ENTRY
     echo( theme_staticentry( $entry_array ) );
   }
-  
-  // ----
-  // HTML
-  // ----
+
+	// ----
+	// HTML
+	// ----
+	
+	// Main Page Template
+	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
+	
+	// Meta Data
+	get_init_code($page_template);
+	
+	// Page Title
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	
+	// Theme Layout
+	ob_start();
+	theme_pagelayout(); 
+	$page_template->setTag('{BODY}', ob_get_clean());
+		
+	// Final Output
+	$output = $page_template->getHTML();
+	echo($output);
 ?>
-  <?php echo( get_init_code() ); ?>
-  <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-  
-  <title><?php echo($blog_config[ 'blog_title' ]); ?></title>
-</head>
-  <?php 
-    // ------------
-    // BEGIN OUTPUT
-    // ------------
-    theme_pagelayout();
-  ?>
-</html>

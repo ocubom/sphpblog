@@ -1,147 +1,161 @@
 <?php
-  // ---------------
-  // INITIALIZE PAGE
-  // ---------------
-  require_once('scripts/sb_functions.php');
-  global $logged_in;
-  $logged_in = logged_in( true, true );
+	// ---------------
+	// INITIALIZE PAGE
+	// ---------------
+	require_once('scripts/sb_functions.php');
+	global $logged_in;
+	$logged_in = logged_in( true, true );
 
-  read_config();
+	read_config();
 
-  require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
-  sb_language( 'setup' );
-  
-  // ---------------
-  // POST PROCESSING
-  // ---------------
+	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
+	sb_language( 'setup' );
+	
+	// ---------------
+	// POST PROCESSING
+	// ---------------
 
-  $temp_max_entries = intval( $_POST[ 'blog_max_entries' ] );
-  if ( $temp_max_entries <= 0) {
-    $temp_max_entries = 5;
-  }
+	$temp_max_entries = intval($_POST['blog_max_entries' ] );
+	if ( $temp_max_entries <= 0) {
+		$temp_max_entries = 5;
+	}
 
-  $temp_blog_comment_days_expiry = intval( $_POST[ 'blog_comment_days_expiry' ] );
-  if ( $temp_blog_comment_days_expiry < 0) {
-    $temp_blog_comment_days_expiry = 0;
-  }
+	$temp_blog_comment_days_expiry = intval($_POST['blog_comment_days_expiry' ] );
+	if ( $temp_blog_comment_days_expiry < 0) {
+		$temp_blog_comment_days_expiry = 0;
+	}
 
-  $temp_blog_counter_hours = intval( $_POST[ 'blog_counter_hours' ] );
-  if ( $temp_blog_counter_hours < 1) {
-    $temp_blog_counter_hours = 1;
-  }
+	$temp_blog_counter_hours = intval($_POST['blog_counter_hours' ] );
+	if ( $temp_blog_counter_hours < 1) {
+		$temp_blog_counter_hours = 1;
+	}
 
-  $tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html','center' );  
+	$tag_array = array( 'b', 'i', 'strong', 'em', 'del', 'ins', 'strike', 'img', 'url', 'blockquote', 'hN', 'pre', 'code', 'html','center' );	 
 	$temp_array = array();
-  for ( $i = 0; $i < count( $tag_array ); $i++ ) {
-    $tag = $tag_array[$i];
-    if ( $_POST[ $tag ] == 'on' ) {
-      array_push( $temp_array, $tag );
-    }
-  }
-  $comment_tags_allowed = implode( ',', $temp_array );
+	for ( $i = 0; $i < count( $tag_array ); $i++ ) {
+		$tag = $tag_array[$i];
+		if ( $_POST[ $tag ] == 'on' ) {
+			array_push( $temp_array, $tag );
+		}
+	}
+	$comment_tags_allowed = implode( ',', $temp_array );
 
-  // Clean up the Blog Email list...
-  $temp_email = explode( ',', sb_stripslashes( $_POST[ 'blog_email' ] ) );
-  if ( $temp_email === false ) {
-    $temp_email = '';
-  } else if ( is_array( $temp_email ) ) {
-    for ( $i=0; $i < count($temp_email); $i++ ) {
-      $temp_email[$i] = trim( $temp_email[$i] );
-    }
-    $temp_email = implode( ',', $temp_email );
-  }
+	// Clean up the Blog Email list...
+	$temp_email = explode( ',', sb_stripslashes($_POST['blog_email' ] ) );
+	if ( $temp_email === false ) {
+		$temp_email = '';
+	} else if ( is_array( $temp_email ) ) {
+		for ( $i=0; $i < count($temp_email); $i++ ) {
+			$temp_email[$i] = trim( $temp_email[$i] );
+		}
+		$temp_email = implode( ',', $temp_email );
+	}
+	
+	$new_config = new Configuration();
+	$new_config->read_file();
+	
+	// @htmlspecialchars( $str, ENT_QUOTES, $GLOBALS['lang_string']['php_charset'] );
+	$new_config->setTag('BLOG_TITLE', 				sb_stripslashes($_POST['blog_title']));
+	$new_config->setTag('BLOG_AUTHOR', 				sb_stripslashes($_POST['blog_author']));
+	$new_config->setTag('BLOG_FOOTER', 				sb_stripslashes($_POST['blog_footer']));
+	$new_config->setTag('BLOG_LANGUAGE', 			$_POST['blog_language']);
+	$new_config->setTag('BLOG_ENTRY_ORDER', 		$_POST['blog_entry_order']);
+	$new_config->setTag('BLOG_COMMENT_ORDER', 		$_POST['blog_comment_order']);
+	$new_config->setTag('BLOG_ENABLE_COMMENTS', 	$_POST['blog_enable_comments'] == 'on');
+	$new_config->setTag('BLOG_MAX_ENTRIES', 		$temp_max_entries);
+	$new_config->setTag('BLOG_COMMENTS_POPUP', 		$_POST['blog_comments_popup'] == 'on');
+	$new_config->setTag('COMMENT_TAGS_ALLOWED', 	$comment_tags_allowed);
+	$new_config->setTag('BLOG_EMAIL', 				sb_stripslashes($_POST['blog_email']));
+	$new_config->setTag('BLOG_AVATAR', 				$_POST['blog_avatar']);
+	$new_config->setTag('BLOG_ENABLE_GZIP_TXT', 	$_POST['blog_enable_gzip_txt'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_GZIP_OUTPUT', 	$_POST['blog_enable_gzip_output'] == 'on');
+	$new_config->setTag('BLOG_EMAIL_NOTIFICATION', 	$_POST['blog_email_notification'] == 'on');
+	$new_config->setTag('BLOG_SEND_PINGS', 			$_POST['blog_send_pings'] == 'on');
+	$new_config->setTag('BLOG_PING_URLS', 			sb_stripslashes($_POST['blog_ping_urls']));
+	$new_config->setTag('BLOG_ENABLE_VOTING', 		$_POST['blog_enable_voting'] == 'on');
+	$new_config->setTag('BLOG_TRACKBACK_ENABLED', 	$_POST['blog_trackback_enabled'] == 'on');
+	$new_config->setTag('BLOG_TRACKBACK_AUTO_DISCOVERY', $_POST['blog_trackback_auto_discovery'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_CACHE', 		$_POST['blog_enable_cache'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_CALENDAR', 	$_POST['blog_enable_calendar'] == 'on');
+	$new_config->setTag('BLOG_CALENDAR_START', 		$_POST['blog_calendar_start']);
+	$new_config->setTag('BLOG_ENABLE_TITLE', 		$_POST['blog_enable_title'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_PERMALINK', 	$_POST['blog_enable_permalink'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_STATS', 		$_POST['blog_enable_stats'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_LASTCOMMENTS', $_POST['blog_enable_lastcomments'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_LASTENTRIES', 	$_POST['blog_enable_lastentries'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_CAPCHA', 		$_POST['blog_enable_capcha'] == 'on');
+	$new_config->setTag('BLOG_COMMENT_DAYS_EXPIRY', $temp_blog_comment_days_expiry);
+	$new_config->setTag('BLOG_ENABLE_CAPCHA_IMAGE', $_POST['blog_enable_capcha_image'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_ARCHIVES', 	$_POST['blog_enable_archives'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_LOGIN', 		$_POST['blog_enable_login'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_COUNTER', 		$_POST['blog_enable_counter'] == 'on');
+	$new_config->setTag('BLOG_FOOTER_COUNTER', 		$_POST['blog_footer_counter'] == 'on');
+	$new_config->setTag('BLOG_COUNTER_HOURS', 		$temp_blog_counter_hours);
+	$new_config->setTag('BLOG_COMMENTS_MODERATION', $_POST['blog_comments_moderation'] == 'on');
+	$new_config->setTag('BLOG_SEARCH_TOP', 			$_POST['blog_search_top'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_STATIC_BLOCK', $_POST['blog_enable_static_block'] == 'on');
+	$new_config->setTag('STATIC_BLOCK_OPTIONS', 	$_POST['static_block_options']);
+	$new_config->setTag('STATIC_BLOCK_BORDER', 		$_POST['static_block_border']);
+	$new_config->setTag('BLOG_HEADER_GRAPHIC', 		$_POST['blog_header_graphic']);
+	$new_config->setTag('BLOG_ENABLE_START_CATEGORY', $_POST['blog_enable_start_category'] == 'on');
+	$new_config->setTag('BLOG_ENABLE_START_CATEGORY_SELECTION', $_POST['blog_enable_start_category_selection']);
+	$new_config->setTag('BLOG_ENABLE_PRINT', 		$_POST['blog_enable_print'] == 'on');
+	// $new_config->setTag('BANNED_ADDRESS_LIST','');
+	// $new_config->setTag('BANNED_WORD_LIST','');
 
-  global $ok;
-  $ok = write_config( sb_stripslashes( $_POST[ 'blog_title' ] ),
-            sb_stripslashes( $_POST[ 'blog_author' ] ),
-            sb_stripslashes( $_POST[ 'blog_email' ] ),
-            $_POST[ 'blog_avatar' ],
-            sb_stripslashes( $_POST[ 'blog_footer' ] ),
-            $_POST[ 'blog_language' ],
-            $_POST[ 'blog_entry_order' ],
-            $_POST[ 'blog_comment_order' ],
-            ( $_POST[ 'blog_enable_comments' ] == 'on' ),
-            $temp_max_entries,
-            ( $_POST[ 'blog_comments_popup' ] == 'on' ),
-            $comment_tags_allowed,
-            ( $_POST[ 'blog_enable_gzip_txt' ] == 'on' ),
-            ( $_POST[ 'blog_enable_gzip_output' ] == 'on' ),
-            ( $_POST[ 'blog_email_notification' ] == 'on' ),
-            ( $_POST[ 'blog_send_pings' ] == 'on' ),
-            sb_stripslashes( $_POST[ 'blog_ping_urls' ] ),
-            ( $_POST[ 'blog_enable_voting' ] == 'on' ),
-            ( $_POST[ 'blog_trackback_enabled' ] == 'on' ),
-            ( $_POST[ 'blog_trackback_auto_discovery' ] == 'on' ),
-            ( $_POST[ 'blog_enable_cache' ] == 'on' ),
-            ( $_POST[ 'blog_enable_calendar' ] == 'on' ),
-            $_POST[ 'blog_calendar_start' ],
-            ( $_POST[ 'blog_enable_title' ] == 'on' ),
-            ( $_POST[ 'blog_enable_permalink' ] == 'on' ),
-            ( $_POST[ 'blog_enable_stats' ] == 'on' ),
-            ( $_POST[ 'blog_enable_lastcomments' ] == 'on' ),
-            ( $_POST[ 'blog_enable_lastentries' ] == 'on' ),
-            ( $_POST[ 'blog_enable_capcha' ] == 'on' ),
-            $temp_blog_comment_days_expiry,
-            ( $_POST[ 'blog_enable_capcha_image' ] == 'on' ),
-            ( $_POST[ 'blog_enable_archives' ] == 'on' ),
-            ( $_POST[ 'blog_enable_login' ] == 'on' ),
-            ( $_POST[ 'blog_enable_counter' ] == 'on' ),
-            ( $_POST[ 'blog_footer_counter' ] == 'on' ),
-            $temp_blog_counter_hours,
-            ( $_POST[ 'blog_comments_moderation' ] == 'on' ),
-            ( $_POST[ 'blog_search_top' ] == 'on' ),
-            ( $_POST[ 'blog_enable_static_block' ] == 'on' ),
-            $_POST[ 'static_block_options' ],
-            $_POST[ 'static_block_border' ],
-            $_POST[ 'blog_header_graphic' ],
-            ( $_POST[ 'blog_enable_start_category' ] == 'on' ),
-            $_POST[ 'blog_enable_start_category_selection' ],
-            ( $_POST[ 'blog_enable_print' ] == 'on' ) );	
+	global $ok;
+	$ok = $new_config->write_file();
 
-  if ( $ok === true ) {
-    redirect_to_url( 'index.php' );
-  }
-  
-  // ------------
-  // PAGE CONTENT
-  // ------------
-  function page_content() {
-    global $lang_string, $blog_config, $ok;
-  
-    // SUBJECT
-    $entry_array = array();
-    $entry_array[ 'subject' ] = $lang_string[ 'title' ];
-    
-    // PAGE CONTENT BEGIN
-    ob_start();
-    
-    if ( $ok !== true ) {
-      echo( $lang_string[ 'error' ] . $ok . '<p />' );
-    } else {
-      echo( $lang_string[ 'success' ] . '<p />' );
-    }
-    echo( '<a href="index.php">' . $lang_string[ 'home' ] . '</a>' );
-    
-    // PAGE CONTENT END
-    $entry_array[ 'entry' ] = ob_get_clean();
-    
-    // THEME ENTRY
-    echo( theme_staticentry( $entry_array ) );
-  }
-  
-  // ----
-  // HTML
-  // ----
+	if ( $ok === true ) {
+		redirect_to_url( 'index.php' );
+	}
+	
+	// ------------
+	// PAGE CONTENT
+	// ------------
+	function page_content() {
+		global $lang_string, $blog_config, $ok;
+	
+		// SUBJECT
+		$entry_array = array();
+		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		
+		// PAGE CONTENT BEGIN
+		ob_start();
+		
+		if ( $ok !== true ) {
+			echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+		} else {
+			echo( $GLOBALS['lang_string']['success'] . '<p />' );
+		}
+		echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+		
+		// PAGE CONTENT END
+		$entry_array[ 'entry' ] = ob_get_clean();
+		
+		// THEME ENTRY
+		echo( theme_staticentry( $entry_array ) );
+	}
+
+	// ----
+	// HTML
+	// ----
+	
+	// Main Page Template
+	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
+	
+	// Meta Data
+	get_init_code($page_template);
+	
+	// Page Title
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	
+	// Theme Layout
+	ob_start();
+	theme_pagelayout(); 
+	$page_template->setTag('{BODY}', ob_get_clean());
+		
+	// Final Output
+	$output = $page_template->getHTML();
+	echo($output);
 ?>
-  <?php echo( get_init_code() ); ?>
-  <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>
-
-  <title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
-</head>
-  <?php 
-    // ------------
-    // BEGIN OUTPUT
-    // ------------
-    theme_pagelayout();
-  ?>
-</html>

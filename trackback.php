@@ -8,7 +8,7 @@
   
   read_config();
   
-  require_once('languages/' . $blog_config[ 'blog_language' ] . '/strings.php');
+  require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
   sb_language( 'trackbacks' );
   
   // ---------------
@@ -60,7 +60,7 @@
   $blog_name = $_POST[ 'blog_name' ];
 
   // No such entry exists OR trackback is disabled
-  if ( ($redirect === true ) || ( !$blog_config[ 'blog_trackback_enabled' ] ) ) {
+  if ( ($redirect === true ) || ( !$blog_config->getTag('BLOG_TRACKBACK_ENABLED'); ) ) {
     redirect_to_url( 'index.php' );
   }
 
@@ -81,7 +81,7 @@
     $ok = write_trackback( $_GET[ 'y' ], $_GET[ 'm' ], $entry = $_GET[ 'entry' ], $tb_url, $title, $excerpt, $blog_name, $user_ip, $user_domain );
     
     if (!$ok) {
-      trackback_response(1, $lang_string[ 'error_add' ] );
+      trackback_response(1, $GLOBALS['lang_string']['error_add'] );
     } else {
       trackback_response(0, '');
     }
@@ -95,7 +95,7 @@
   <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>  
   <?php require_once('scripts/sb_editor.php'); ?>
 
-  <title><?php echo($blog_config[ 'blog_title' ]); ?> - <?php echo( $lang_string[ 'title' ] ); ?></title>
+  <title><?php echo($blog_config->getTag('BLOG_TITLE');); ?> - <?php echo( $GLOBALS['lang_string']['title'] ); ?></title>
 </head>
 <?php
   function page_content() {
@@ -113,8 +113,8 @@
       $base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
     }
     
-    $tb[ 'subject' ] = $lang_string[ 'title' ];
-    $tb[ 'entry' ] = $lang_string[ 'header' ] . '<br />' . '<input type="text" style="width: ' . $theme_vars[ 'max_image_width' ] . 'px;" OnMouseOver=this.select() value="'.$base_url.'trackback.php?y='.$_GET[ 'y' ].'&m='.$_GET[ 'm' ].'&entry='.$_GET[ 'entry' ] . '">' . "<p />\n";
+    $tb[ 'subject' ] = $GLOBALS['lang_string']['title'];
+    $tb[ 'entry' ] = $GLOBALS['lang_string']['header'] . '<br />' . '<input type="text" style="width: ' . $theme_vars[ 'max_image_width' ] . 'px;" OnMouseOver=this.select() value="'.$base_url.'trackback.php?y='.$_GET[ 'y' ].'&m='.$_GET[ 'm' ].'&entry='.$_GET[ 'entry' ] . '">' . "<p />\n";
     echo ( theme_blogentry( $tb ) );
     
       echo ( read_trackbacks ( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in, true ) );
@@ -122,7 +122,7 @@
   }
 
   global $blog_config;
-  if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+  if ( $blog_config->getTag('BLOG_COMMENTS_POPUP'); == 1 ) {
     theme_popuplayout();
   } else {
     theme_pagelayout();
@@ -154,10 +154,10 @@
     echo "<response>\n";
     echo "<error>0</error>\n";
     echo '<rss version="0.91"><channel>'."\n";
-    echo "<title>" . $blog_config[ 'blog_title' ] . "</title>\n";
+    echo "<title>" . $blog_config->getTag('BLOG_TITLE'); . "</title>\n";
     echo "<link>" . $base_url . "index.php</link>\n";
-    echo "<description>". $blog_config[ 'blog_footer' ] . "</description>\n";
-    echo "<language>" . str_replace( '_', '-', $lang_string[ 'locale' ] ) . "</language>\n";
+    echo "<description>". $blog_config->getTag('BLOG_FOOTER'); . "</description>\n";
+    echo "<language>" . str_replace( '_', '-', $GLOBALS['lang_string']['locale'] ) . "</language>\n";
     
     $results = read_trackbacks ( $year, $month, $entry, $logged_in, false );
     
