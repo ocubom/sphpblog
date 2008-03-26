@@ -50,27 +50,27 @@
 		echo "<rss version=\"2.0\">\n";
 		echo "\t<channel>\n";
 		//Required channel fields
-		echo "\t\t<title>" . clean_rss_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
+		echo "\t\t<title>" . clean_rss_output( $blog_config->getTag('BLOG_TITLE') ) . "</title>\n";
 		echo "\t\t<link>" . $base_url . "index.php</link>\n";
-		echo "\t\t<description><![CDATA[" . clean_rss_output( $blog_config[ 'blog_footer' ] ) . "]]></description>\n";
+		echo "\t\t<description><![CDATA[" . clean_rss_output( $blog_config->getTag('BLOG_FOOTER') ) . "]]></description>\n";
 		// Read custom channel image
 		if ( file_exists( 'interface/feed.png' ) ) {
 			echo "\t\t<image>\n";
 			echo "\t\t\t<url>" . $base_url . "interface/feed.png</url>\n";
 			echo "\t\t\t<link>" . $base_url . "index.php</link>\n";
-			echo "\t\t\t<title>" . clean_rss_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
-			echo "\t\t\t<description><![CDATA[" . clean_rss_output( $blog_config[ 'blog_title' ] ) . "]]></description>\n";
+			echo "\t\t\t<title>" . clean_rss_output( $blog_config->getTag('BLOG_TITLE') ) . "</title>\n";
+			echo "\t\t\t<description><![CDATA[" . clean_rss_output( $blog_config->getTag('BLOG_TITLE') ) . "]]></description>\n";
 			echo "\t\t</image>\n";
 		}
 		//Optional channel fields
-		echo "\t\t<copyright>" . clean_rss_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
-		echo "\t\t<managingEditor>" . $blog_config[ 'blog_author' ] . "</managingEditor>\n";
+		echo "\t\t<copyright>" . clean_rss_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config->getTag('BLOG_AUTHOR') ) . "</copyright>\n";
+		echo "\t\t<managingEditor>" . $blog_config->getTag('BLOG_AUTHOR') . "</managingEditor>\n";
 		echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'rss_locale' ] ) . "</language>\n";
 		echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) );
+			$max_entries=min( $blog_config->getTag('BLOG_MAX_ENTRIES')<<1, count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
@@ -100,11 +100,11 @@
 					}
 					echo "</category>\n";
 					echo "\t\t\t<guid isPermaLink=\"true\">" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
-					echo "\t\t\t<author>" . $blog_config[ 'blog_author' ]  . "</author>\n";
+					echo "\t\t\t<author>" . $blog_config->getTag('BLOG_AUTHOR')  . "</author>\n";
 					echo "\t\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
 
 					// Only output if <comments> if they are enabled.
-					if ( $blog_config[ 'blog_enable_comments' ] ) {
+					if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') ) {
 						echo "\t\t\t<comments>" . $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . "</comments>\n";
 					}
 					echo "\t\t</item>\n";
@@ -158,22 +158,22 @@
 		echo '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ref="http://purl.org/rss/1.0/modules/reference/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://purl.org/rss/1.0/">' . "\n";
 		echo "\t<channel rdf:about=\"" . $base_url . "rss.rdf\">\n";
 		//Required channel fields
-		echo "\t\t<title>" . clean_rdf_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
+		echo "\t\t<title>" . clean_rdf_output( $blog_config->getTag('BLOG_TITLE') ) . "</title>\n";
 		echo "\t\t<link>" . $base_url . "index.php</link>\n";
-		echo "\t\t<description><![CDATA[" . clean_rdf_output( $blog_config[ 'blog_footer' ] ) . "]]></description>\n";
+		echo "\t\t<description><![CDATA[" . clean_rdf_output( $blog_config->getTag('BLOG_FOOTER') ) . "]]></description>\n";
 		//Optional channel fields
 		// Read custom channel image
 		if ( file_exists( 'interface/feed.png' ) ) {
 			echo "\t\t<image rdf:resource=\"" . $base_url . "interface/feed.png\" />";
 		}
-		//echo "\t\t<copyright>" . clean_rdf_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
-		//echo "\t\t<managingEditor>" . clean_rdf_output($blog_config[ 'blog_email' ] . ' (' . $blog_config[ 'blog_author' ] . ')' ) . "</managingEditor>\n";
+		//echo "\t\t<copyright>" . clean_rdf_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config->getTag('BLOG_AUTHOR') ) . "</copyright>\n";
+		//echo "\t\t<managingEditor>" . clean_rdf_output($blog_config->getTag('BLOG_EMAIL') . ' (' . $blog_config->getTag('BLOG_AUTHOR') . ')' ) . "</managingEditor>\n";
 		//echo "\t\t<language>" . str_replace( '_', '-', $lang_string[ 'rss_locale' ] ) . "</language>\n";
 		//echo "\t\t<generator>SPHPBLOG " . $sb_info[ 'version' ] . "</generator>\n";
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) );
+			$max_entries=min( $blog_config->getTag('BLOG_MAX_ENTRIES')<<1, count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
@@ -201,7 +201,7 @@
 			
 			//Optional item fields
 			//echo "\t\t<guid isPermaLink=\"true\">" . $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ) . "</guid>\n"; /* Changed the guid URL */
-			//echo "\t\t<author>" . clean_rdf_output( $blog_config[ 'blog_email' ] ) . "</author>\n";
+			//echo "\t\t<author>" . clean_rdf_output( $blog_config->getTag('BLOG_EMAIL') ) . "</author>\n";
 			//echo "\t\t<pubDate>" . gmdate( 'D, d M Y H:i:s', $contents[ 'DATE' ] ) . " GMT</pubDate>\n";
 			echo "\t</item>\n";
 		}
@@ -247,20 +247,20 @@
 		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
 		echo '<feed version="0.3" xmlns="http://purl.org/atom/ns#" xml:lang="' . str_replace('_', '-', $lang_string[ 'rss_locale' ]) . "\">\n";
 		//Required channel fields
-		echo "\t<title>" . clean_atom_output( $blog_config[ 'blog_title' ] ) . "</title>\n";
+		echo "\t<title>" . clean_atom_output( $blog_config->getTag('BLOG_TITLE') ) . "</title>\n";
 		echo "\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php\" />\n";
 		echo "\t<modified>" . gmdate( 'Y-m-d' ) . 'T' . gmdate( 'H:i:s' ) . "Z</modified>\n";
 		//Optional channel fields
 		echo "\t<author>\n";
-		echo "\t\t<name>" . clean_atom_output( $blog_config[ 'blog_author' ] ) . "</name>\n";
-		// echo "\t\t<email>" . clean_atom_output( $blog_config[ 'blog_email' ] ) . "</email>\n";
+		echo "\t\t<name>" . clean_atom_output( $blog_config->getTag('BLOG_AUTHOR') ) . "</name>\n";
+		// echo "\t\t<email>" . clean_atom_output( $blog_config->getTag('BLOG_EMAIL') ) . "</email>\n";
 		echo "\t</author>\n";
-		echo "\t<copyright>" . clean_atom_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config[ 'blog_author' ] ) . "</copyright>\n";
+		echo "\t<copyright>" . clean_atom_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config->getTag('BLOG_AUTHOR') ) . "</copyright>\n";
 		echo "\t<generator url=\"http://www.sourceforge.net/projects/sphpblog\" version=\"" . $sb_info[ 'version' ] . "\">SPHPBLOG</generator>\n";
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config[ 'blog_max_entries' ]<<1, count( $entry_file_array ) );
+			$max_entries=min( $blog_config->getTag('BLOG_MAX_ENTRIES')<<1, count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );
@@ -285,7 +285,7 @@
 					echo "\t\t<issued>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</issued>\n";
 					echo "\t\t<modified>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</modified>\n";
 					// Only output if <comments> if they are enabled.
-					if ( $blog_config[ 'blog_enable_comments' ] ) {
+					if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') ) {
 						//echo "\t\t<comments>" . $base_url . "comments.php?y=" . $year_dir . "&amp;m=" . $month_dir . "&amp;entry=" . sb_strip_extension( $entry_filename ) . "</comments>\n";
 					}
 					echo "\t</entry>\n";

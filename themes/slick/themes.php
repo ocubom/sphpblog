@@ -133,7 +133,7 @@
       $comment_area  .= '<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
     }
 
-    if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK');){// New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'permalink' string...
         if ( $comment_area != "" ) {
@@ -143,7 +143,7 @@
       }
     }
 
-    if ( $blog_config['blog_enable_print']){ // New for 0.5.2
+    if ( $blog_config->getTag('BLOG_ENABLE_PRINT');){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' string...
         if ( $comment_area != "" ) {
@@ -432,8 +432,8 @@
                     <div id="HeaderLeft"></div>
                     <div id="HeaderCenter">
 
-               <?php if ( $blog_config['blog_enable_title']){// New for 0.4.6
-                  echo( '<a href="index.php">' . $blog_config[ 'blog_title' ] . '</a>' );} ?>
+               <?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE');){// New for 0.4.6
+                  echo( '<a href="index.php">' . $blog_config->getTag('BLOG_TITLE'); . '</a>' );} ?>
               </div>
                     <div id="HeaderRight"></div>
           </div>
@@ -458,7 +458,7 @@
                 </tr>
                 <tr align="left" valign="top">
                   <td width="100%" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
-                    <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
+                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
               </table>
@@ -500,7 +500,7 @@
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
             <div id="header">
-              <?php echo($blog_config[ 'blog_title' ]); ?><br />
+              <?php echo($blog_config->getTag('BLOG_TITLE');); ?><br />
             </div>
           </td>
         </tr>
@@ -513,7 +513,7 @@
         </tr>
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
-            <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
+            <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?></div>
           </td>
         </tr>
       </table>
@@ -616,7 +616,7 @@
     //
     // However, this function now displays a calendar
     // rather then the "tree view"....
-    if( $blog_config[ 'blog_enable_calendar' ] ) {
+    if( $blog_config->getTag('BLOG_ENABLE_CALENDAR'); ) {
       echo( "\n<!-- ARCHIVE -->\n" );
       $result = menu_display_blognav();
       echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
@@ -664,7 +664,7 @@
     echo( "</div><br />\n" );
 
     // New 0.3.8
-    if ( $blog_config['blog_enable_lastentries']){
+    if ( $blog_config->getTag('BLOG_ENABLE_LASTENTRIES');){
       $result = menu_most_recent_entries();
       if ( $result[ 'content' ] != "" ) {
         echo( "\n<!-- RECENT ENTRIES -->\n" );
@@ -676,7 +676,7 @@
     }
 
     // Retained from 0.3.7c
-    if ( $blog_config['blog_enable_lastcomments']){
+    if ( $blog_config->getTag('BLOG_ENABLE_LASTCOMMENTS');){
       $result = menu_most_recent_comments();
       if ( $result[ 'content' ] != "" ) {
        echo( "\n<!-- RECENT COMMENTS -->\n" );
@@ -688,7 +688,7 @@
     }
 
     // New 0.3.8
-    if( $blog_config[ 'blog_trackback_enabled' ] ) {
+    if( $blog_config->getTag('BLOG_TRACKBACK_ENABLED'); ) {
       $result = menu_most_recent_trackbacks();
       if ( $result[ 'content' ] != "" ) {
         echo( "\n<!-- RECENT TRACKBACKS -->\n" );

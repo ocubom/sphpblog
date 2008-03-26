@@ -101,7 +101,7 @@
 		$xml .= "<methodCall>\n";
 		$xml .= "\t<methodName>weblogUpdates.ping</methodName>\n";
 		$xml .= "\t<params>\n";
-		$xml .= "\t\t<param><value>" . htmlspecialchars( strip_tags( $blog_config[ 'blog_title' ] ) ) . "</value></param>\n";
+		$xml .= "\t\t<param><value>" . htmlspecialchars( strip_tags( $blog_config->getTag('BLOG_TITLE') ) ) . "</value></param>\n";
 		// Use external name (SERVER_NAME) for pings to the outside world!!
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 		   $xml=$xml . "\t\t<param><value>http://" . $_SERVER[ 'SERVER_NAME' ] . "/</value></param>\n";
@@ -146,7 +146,7 @@
 		   $data = $data . '&url=http://' . $_SERVER[ 'SERVER_NAME' ] . dirname( $_SERVER[ 'PHP_SELF' ] ) . '/' . urlencode( strip_tags( $permalink ) );
 		}
 		$data  .= '&excerpt=' . urlencode( strip_tags( $excerpt ) );
-		$data  .= '&blog_name=' . urlencode( strip_tags( $blog_config[ 'blog_title' ] ) );
+		$data  .= '&blog_name=' . urlencode( strip_tags( $blog_config->getTag('BLOG_TITLE') ) );
 		
 		// $socket = fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
 		$socket = fsockopen( ( $url[ 'host' ] === $_SERVER[ 'HTTP_HOST' ] ? $_SERVER[ 'SERVER_ADDR' ] : $url[ 'host' ] ), 80, $errno, $errstr, 30);

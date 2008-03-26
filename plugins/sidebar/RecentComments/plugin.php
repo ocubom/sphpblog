@@ -124,7 +124,8 @@
 						$date = $comment_data[ 'DATE' ];
 						
 						// HTML
-						if ( $GLOBALS[ 'blog_config' ][ 'blog_comments_popup' ] == 1 ) {
+						
+						if ( $GLOBALS['blog_config']->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
 							$width = $GLOBALS[ 'theme_vars' ][ 'popup_window' ][ 'width' ];
 							$height = $GLOBALS[ 'theme_vars' ][ 'popup_window' ][ 'height' ];
 							$str  .= '<a href="javascript:openpopup(\'comments.php?y='.$year_dir.'&amp;m='.$month_dir.'&amp;entry='.fileio::strip_extension( $entry_filename ).'\','.$width.','.$height.',true)">'.$name.'</a><br />';

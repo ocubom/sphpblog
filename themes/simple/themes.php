@@ -199,7 +199,7 @@
 
     // PERMALINK
     $permalink = "";
-    if ( $blog_config['blog_enable_permalink'] ){ // New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK'); ){ // New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'permalink'
         $permalink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
@@ -208,7 +208,7 @@
 
     // PRINT ARTICLE
     $printlink = "";
-    if ( $blog_config['blog_enable_print'] ){ // New for 0.5.2
+    if ( $blog_config->getTag('BLOG_ENABLE_PRINT'); ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article'
         $printlink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>';
@@ -231,7 +231,7 @@
 
     // TRACKBACKS (RDF)
     $rdf_string = "";
-    if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+    if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED'); ) {
       // This is the trackback link
       ob_start();
 ?>
@@ -525,11 +525,11 @@
 
     // BLOG CONTENT
     array_push( $search, '%blog_title%' );
-    array_push( $replace, $blog_config[ 'blog_title' ] );
+    array_push( $replace, $blog_config->getTag('BLOG_TITLE'); );
     array_push( $search, '%menu%' );
     array_push( $replace, "theme_menu()" );
     array_push( $search, '%footer%' );
-    array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
+    array_push( $replace, $blog_config->getTag('BLOG_FOOTER'); . " - " . page_generated_in() );
 
     // MENU WIDGETS (NO CUSTOM PATH)
     array_push( $search, '%widget_avatar%' );
@@ -663,9 +663,9 @@
     }
 
     array_push( $search, '%blog_title%' );
-    array_push( $replace, $blog_config[ 'blog_title' ] );
+    array_push( $replace, $blog_config->getTag('BLOG_TITLE'); );
     array_push( $search, '%footer%' );
-    array_push( $replace, $blog_config[ 'blog_footer' ] . " - " . page_generated_in() );
+    array_push( $replace, $blog_config->getTag('BLOG_FOOTER'); . " - " . page_generated_in() );
 
     // MAIN CONTENT
     array_push( $search, '%content%' );

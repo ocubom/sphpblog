@@ -203,14 +203,14 @@
       $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
     }
 
-    if ( $blog_config['blog_enable_permalink'] ){ // New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK'); ){ // New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'permalink' string...
         $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
       }
     }
 
-    if ( $blog_config['blog_enable_print'] ){ // New for 0.5.2
+    if ( $blog_config->getTag('BLOG_ENABLE_PRINT'); ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' string...
         $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
@@ -574,7 +574,7 @@
     // Default image path.
     $img_path = "themes/" . $blog_theme . "/images/";
 
-    $header_graphic = $blog_config[ 'blog_header_graphic' ];
+    $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
     if ( $header_graphic == '' ) {
       $header_graphic = $img_path . 'header750x100.jpg';
     }
@@ -588,8 +588,8 @@
           <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
             <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
             <?php
-            if ( $blog_config['blog_enable_title']) { // New for 0.4.6
-            echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
+            if ( $blog_config->getTag('BLOG_ENABLE_TITLE');) { // New for 0.4.6
+            echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE'); . '</div>');
             }?>
             <div id="pagebody">
               <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
@@ -616,7 +616,7 @@
                 </tr>
                 <tr align="left" valign="top">
                   <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
-                    <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
+                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
               </table>
@@ -664,7 +664,7 @@
         </tr>
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
-            <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
+            <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?></div>
           </td>
         </tr>
       </table>

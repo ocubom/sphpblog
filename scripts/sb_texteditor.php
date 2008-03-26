@@ -268,9 +268,9 @@
           
         // Trackback Input
         if ( $mode == 'entry' ) {
-          if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+          if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
             $value = $default_tb_ping;
-            if ( $blog_config[ 'blog_trackback_auto_discovery' ] ) {
+            if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') ) {
               if ( $default_tb_ping ) {
                 $value = $default_tb_ping;
               } else {

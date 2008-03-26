@@ -73,7 +73,7 @@
     $basedir = CONTENT_DIR;
     $dir = $basedir.$y.'/'.$m.'/'.$entry.'/comments/';
     $file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
-    if ( $blog_config[ 'blog_comment_order' ] == 'new_to_old' ) {
+    if ( $blog_config->getTag('BLOG_COMMENT_ORDER') == 'new_to_old' ) {
       $file_array = array_reverse( $file_array );
     }
 
@@ -160,7 +160,7 @@
 
         // Check if moderation is on - if it is, then don't show this item
         // unless the user is logged in or the item is marked as 'H'
-        if (( $blog_config[ 'blog_comments_moderation' ] == 1 ) && ( $entry_array[ 'modflag' ] == 'H' ) && ( $logged_in != 1 )) {
+        if (( $blog_config->getTag('BLOG_COMMENTS_MODERATION') == 1 ) && ( $entry_array[ 'modflag' ] == 'H' ) && ( $logged_in != 1 )) {
           $blog_content = $blog_content;
         } else {
           $blog_content  .= theme_commententry( $entry_array );
@@ -174,7 +174,7 @@
   function read_unmodded_comments ( $logged_in ) {
     global $lang_string, $blog_config;
     
-    if ( $blog_config[ 'blog_enable_comments' ] != true ) {
+    if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') != true ) {
       return('Comments are not enabled. Check the Preferences page.');
     }
 
@@ -204,7 +204,7 @@
           if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
             global $theme_vars;
             $results++;
-            if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+            if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
               $output_str .= '<b>' . $lang_string['enteredby'] . $comment_entry_data[ 'NAME' ]  . '</b><br />';
               $output_str .= $lang_string['entrydate'] . format_date( $comment_entry_data[ 'DATE' ] ) . '<br />';
               $output_str .= $lang_string['blogentrytitle'] . '<a href="javascript:openpopup(\'comments.php?y='.$year_dir.'&amp;m='.$month_dir.'&amp;entry='. sb_strip_extension($entry_filename).'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
@@ -385,14 +385,14 @@
     // in the preferences
     global $blog_config;
 
-    $tmp_expiry = intval( $blog_config[ 'blog_comment_days_expiry' ] );
+    $tmp_expiry = intval( $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') );
     if ( $tmp_expiry < 1 ) {
       return ( false );
     } else {
       $blog_entry_date = mktime(0,0,0,$month,$day,$year);
       $todays_date = mktime(0,0,0,date('m'),date('d'),date('Y'));
       $days_elapsed = Round((($todays_date - $blog_entry_date)/86400), 0) ;
-      $tmp_expiry = intval( $blog_config[ 'blog_comment_days_expiry' ] );
+      $tmp_expiry = intval( $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') );
       if ( ($days_elapsed) >= $tmp_expiry ) {
         return ( true );
       } else {
@@ -453,7 +453,7 @@
     }
 
     $stamp = date('ymd-His');
-    if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
+    if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
       $entryFile = $dir.'comment'.$stamp.'.txt.gz';
     } else {
       $entryFile = $dir.'comment'.$stamp.'.txt';
@@ -482,12 +482,12 @@
 
     if ( $result ) {
 
-      if ( $blog_config[ 'blog_email_notification' ] ) {
+      if ( $blog_config->getTag('BLOG_EMAIL_NOTIFICATION') ) {
         // Send Email Notification:
 
         $client_ip_local = getIP();
 
-        $subject=$lang_string[ 'commentposted' ] . ' ' . $blog_config[ 'blog_title' ];
+        $subject=$lang_string[ 'commentposted' ] . ' ' . $blog_config->getTag('BLOG_TITLE');
         $body='<b>' . $lang_string[ 'name' ] . '</b> ' . $save_data[ 'NAME' ] . '<br />';
         $body .= '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
         $body .= '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
@@ -516,7 +516,7 @@
         $body  .= sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
         $body  .= '<br /><br />';
 
-        if ( $blog_config[ 'blog_comments_moderation' ] ) {
+        if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
           if ( $logged_in == false ) {
             $body  .= $lang_string['email_moderator'] . "\n";
           }
@@ -524,9 +524,9 @@
 
         // Send the Email
         if ( array_key_exists( 'EMAIL', $save_data ) ) {
-          sb_mail( $save_data[ 'EMAIL' ], $blog_config[ 'blog_email' ], $subject, $body, false );
+          sb_mail( $save_data[ 'EMAIL' ], $blog_config->getTag('BLOG_EMAIL'), $subject, $body, false );
         } else {
-          sb_mail( $blog_config[ 'blog_email' ], $blog_config[ 'blog_email' ], $subject, $body, false );
+          sb_mail( $blog_config->getTag('BLOG_EMAIL'), $blog_config->getTag('BLOG_EMAIL'), $subject, $body, false );
         }
       }
 
@@ -560,39 +560,28 @@
 	
     sb_delete_file( CONFIG_DIR.'~blog_comment_listing.tmp' ); // Delete comment array cache
 
-    // Delete comment file
-    $ok = sb_delete_file( $filepath );
+    // Delete the comment file:
+    $ok = sb_delete_file( $filepath ); // content/07/10/entry071016-093727/comments/comment071016-095416.txt.gz
 
     // Trim off filename and leave path to last directory.
     $dirpath = $filepath;
+    
     $pos = strrpos( $dirpath, '/' );
     if ($pos !== false) {
-      $dirpath = substr( $dirpath, 0, $pos );
-
-      // Get listing of files in folder.
+      $dirpath = substr( $dirpath, 0, $pos ); // content/07/10/entry071016-093727/comments
+      
+      // Get listing of all comment files in folder.
       $file_array = sb_folder_listing( $dirpath . '/', array( '.txt', '.gz' ) );
+      
       if ( count( $file_array ) == 0 ) {
-        // Directory is empty, delete it...
         sb_delete_directory( $dirpath );
-      }
-
-      $pos = strrpos( $dirpath, '/' );
-      if ($pos !== false) {
-        $dirpath = substr( $dirpath, 0, $pos );
-
-        // Get listing of files in folder.
-        $file_array = sb_folder_listing( $dirpath . '/', array( '.txt', '.gz' ) );
-        if ( count( $file_array ) == 0 ) {
-          // Directory is empty, delete it...
-          sb_delete_directory( $dirpath.'/' );
-        } else {
-          if ( $file_array[0] == 'view_counter.txt' ) {
-            // There is one file and it's the 'view_counter.txt' file.
-            //
-            // Delete it and then delete the directory.
-            sb_delete_file( $dirpath . '/view_counter.txt' );
-            $result = sb_delete_directory( $dirpath.'/' );
-          }
+        
+        // Delete the entry071016-093727 which contains the view_counter.txt file also
+        $pos = strrpos( $dirpath, '/' );
+        if ($pos !== false) {
+          $dirpath = substr( $dirpath, 0, $pos ); // content/07/10/entry071016-093727
+           
+          sb_delete_directory( $dirpath );
         }
       }
     }

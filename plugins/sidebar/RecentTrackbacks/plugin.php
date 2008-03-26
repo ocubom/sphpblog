@@ -24,7 +24,7 @@
 		function getContent () {
 			$str = '';
 			
-			if ( $GLOBALS[ 'blog_config' ][ 'blog_trackback_enabled' ] ) {
+			if ( $GLOBALS['blog_config']->getTag('BLOG_TRACKBACK_ENABLED') ) {
 				$str = get_most_recent_trackback();
 			}
 			

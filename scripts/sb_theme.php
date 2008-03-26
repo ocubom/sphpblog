@@ -109,7 +109,7 @@
 			$str  .= '<a href="phpinfo.php">' . $lang_string['manage_php_config'] . '</a><br />';
 			$str  .= '<hr />';
 			$str  .= '<a href="moderation.php">' . $lang_string[ 'menu_moderation' ] . '</a><br />';
-			if ( $blog_config[ 'blog_comments_moderation' ] ) {
+			if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
 				$str  .= '<a href="comments_moderation.php">' . $lang_string[ 'menu_commentmoderation' ] . ' (' . get_unmodded_count(1) . ')</a><br />';
 			}
 			
@@ -158,8 +158,8 @@
 		global $page_timestamp;
 
 		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $GLOBALS[ 'lang_string' ][ 'page_generated_in' ] );
-
-		if ( $GLOBALS[ 'blog_config' ][ 'blog_footer_counter'] ) {
+		
+		if ( $GLOBALS['blog_config']->getTag('BLOG_FOOTER_COUNTER') ) {
 			$str  .= '&nbsp;|&nbsp;' . $GLOBALS[ 'lang_string' ][ 'counter_total' ] . stat_total();
 		}
 

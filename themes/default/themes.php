@@ -89,7 +89,7 @@
     $blog_content = "\n";
 
     // TRACKBACKS (RDF)
-    if ( $blog_config[ 'blog_trackback_enabled' ] ) {
+    if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
       $blog_content  .= '<!--' . "\n";
       $blog_content  .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
       $blog_content  .= '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
@@ -178,7 +178,7 @@
     }
 
     // PERMALINK
-    if ( $blog_config['blog_enable_permalink']){// New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK')){// New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'permalink' symbol
         $blog_content  .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>';
@@ -186,7 +186,7 @@
     }
 
     // PRINT ARTICLE
-    if ( $blog_config['blog_enable_print']){// New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PRINT')){// New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' link
         $blog_content  .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article']. '</a>';
@@ -383,8 +383,8 @@
             <div id="header_image"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
 
             <?php
-            if ( $blog_config['blog_enable_title']) { // New for 0.4.6
-            echo('<div id="header">' . $blog_config[ 'blog_title' ] . '</div>');
+            if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
+            echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE') . '</div>');
             }?>
 
             <div id="pagebody">
@@ -412,7 +412,7 @@
                 </tr>
                 <tr align="left" valign="top">
                   <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
-                    <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
+                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
               </table>
@@ -449,7 +449,7 @@
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
             <div id="header">
-              <?php echo($blog_config[ 'blog_title' ]); ?><br />
+              <?php echo($blog_config->getTag('BLOG_TITLE')); ?><br />
             </div>
           </td>
         </tr>
@@ -462,7 +462,7 @@
         </tr>
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
-            <div id="footer"><?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?></div>
+            <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
           </td>
         </tr>
       </table>

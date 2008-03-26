@@ -108,7 +108,7 @@
       $oldEntryArray = static_entry_to_array( $oldEntryFile );
       $save_data[ 'DATE' ] = $oldEntryArray[ 'DATE' ];
       
-      if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
+      if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
         if ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' ) ) {
           sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' );
         }
@@ -148,7 +148,7 @@
       }
 
       $stamp = date('ymd-His');
-      if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
+      if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
         $entryFile = $file_name.'.txt.gz';
       } else {
         $entryFile = $file_name.'.txt';

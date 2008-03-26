@@ -53,7 +53,7 @@
 		global $blog_config, $ipfile;
 		
 		// duration of IP lock in minutes
-		$duration = $blog_config[ 'blog_counter_hours' ]; 
+		$duration = $blog_config->getTag('BLOG_COUNTER_HOURS'); 
 		
 		checkforfiles();
 		

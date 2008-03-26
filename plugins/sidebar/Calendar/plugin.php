@@ -89,7 +89,8 @@
 		function getContent () {
 			$str = '';
 	
-			if ( $GLOBALS[ 'blog_config' ][ 'blog_enable_calendar' ] ) {
+	
+			if ($GLOBALS['blog_config']->getTag('BLOG_ENABLE_CALENDAR')) {
 				$str = $this->getCalendar( $GLOBALS['month'], $GLOBALS['year'], $GLOBALS['day'] );
 			}
 		

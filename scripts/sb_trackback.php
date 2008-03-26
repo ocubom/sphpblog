@@ -28,7 +28,7 @@
 		$basedir = CONTENT_DIR;
 		$dir = $basedir.$y.'/'.$m.'/'.$entry.'/trackbacks/';
 		$file_array = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
-		if ( $blog_config[ 'blog_comment_order' ] == 'new_to_old' ) {
+		if ( $blog_config->getTag('BLOG_COMMENT_ORDER') == 'new_to_old' ) {
 			$file_array = array_reverse( $file_array );
 		}
 		
@@ -134,7 +134,7 @@
 		$trackback_date = time();
 		
 		$stamp = date('ymd-His');
-		if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
+		if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
 			$entryFile = $dir.'trackback'.$stamp.'.txt.gz';
 		} else {
 			$entryFile = $dir.'trackback'.$stamp.'.txt';
@@ -158,7 +158,7 @@
 		   $save_data = trackback_to_array( $entryFile );
 
 			// Delete the old file
-			if ( $blog_config[ 'blog_enable_gzip_txt' ] ) {
+			if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
 				if ( file_exists( $entryFile ) ) {
 					sb_delete_file( $entryFile );
 				}
@@ -196,12 +196,12 @@
 	 		   add_most_recent_trackback( 'trackback'.$stamp, $y, $m, $entry );
 	 		}
 	 		
-	 		if ( $blog_config[ 'blog_email_notification' ] ) {
+	 		if ( $blog_config->getTag('BLOG_EMAIL_NOTIFICATION') ) {
 				// Send Email Notification:
 				if( $found ) {
-					$subject='New trackback received at ' . $blog_config[ 'blog_title' ];
+					$subject='New trackback received at ' . $blog_config->getTag('BLOG_TITLE');
 				} else {
-					$subject='Updated trackback received at ' . $blog_config[ 'blog_title' ];
+					$subject='Updated trackback received at ' . $blog_config->getTag('BLOG_TITLE');
 				}
 				$body='From: ' . $save_data[ 'BLOGNAME' ] . "<br />\n";
 				
@@ -219,7 +219,7 @@
 				
 				$body .= '<a href="' . $base_url . 'trackback.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;__mode=html">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "&amp;__mode=html</a><br /><br />\n\n";
 				$body .= '<i>On ' . format_date( $trackback_date ) . ', the following trackback was received from '.$save_data[ 'DOMAIN' ].' ('.$save_data[ 'IP' ].')'.":</i><br /><br />\n\n" . blog_to_html( $save_data[ 'TITLE' ].'<br />'.$save_data[ 'EXCERPT' ], false, false );
-				sb_mail( $blog_config[ 'blog_email' ], $blog_config[ 'blog_email' ], $subject, $body, false );
+				sb_mail( $blog_config->getTag('BLOG_EMAIL'), $blog_config->getTag('BLOG_EMAIL'), $subject, $body, false );
 	 		}
 	 	}
 	 	
@@ -330,7 +330,7 @@
 		if ( is_array( $url_array ) ) {
 			for ( $i = 0; $i < count( $url_array ); $i++ ) {
 				if ( $url_array[$i] === $lang_string[ 'label_tb_autodiscovery' ] ) {
-					if( $blog_config[ 'blog_trackback_auto_discovery' ] ) {
+					if( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') ) {
 					   // The actual ping URIs are to be confirmed by the user
 					   $auto_discovery_confirm[ 'text' ]      = $blog_text;
 					   $auto_discovery_confirm[ 'title' ]     = $title;

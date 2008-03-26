@@ -1,10 +1,7 @@
 <?php
 	// Simple PHP Blog is released under the GNU Public License.
-	//
-	// You are free to use and modify Simple PHP Blog. Changes 
-	// should be uploaded to http://sourceforge.net/projects/sphpblog/
-	// or emailed to apalmo <at> bigevilbrain <dot> com
 	
+	require_once('setup/setup.php');
 	
 	// Last version and update information.
 	//
@@ -13,7 +10,6 @@
 	$sb_info[ 'last_update' ] = '9/23/07';	
 	
 	// Error reporting should be set to 0 in production environments.
-	//
 	error_reporting( E_ALL ^ E_NOTICE );
 	// error_reporting( 0 );
 	
@@ -21,7 +17,6 @@
 	@set_time_limit( 0 );
 	
 	// Store "time" for benchmarking.
-	//
 	function getmicrotime() { 
 		if ( version_compare( phpversion(), '5.0.0' ) == -1 ) {
 			list($usec, $sec) = explode(' ', microtime()); 
@@ -65,21 +60,6 @@
 		}
 	}
 	
-	// BASE URL
-	define('BASEURL', '');
-	
-	// ROOT DIRECTORY
-	define('ROOT_DIR', '');
-	
-	// FOLDER LOCATIONS
-	define('CONTENT_DIR',	ROOT_DIR.'content/');
-	define('IMAGES_DIR',	ROOT_DIR.'images/');
-	define('TEMPLATE_DIR',	ROOT_DIR.'templates/');
-	define('CONFIG_DIR',	ROOT_DIR.'config/');
-	define('CACHE_DIR',		CONFIG_DIR.'cache/');
-	define('SCRIPTS_DIR',	ROOT_DIR.'scripts/');
-	define('CLASSES_DIR',	SCRIPTS_DIR.'classes/');
-	
 	// SESSION LOCATION
 	$sessionpath = session_save_path();
 	if (strpos($sessionpath, ";") !== FALSE) {
@@ -118,6 +98,9 @@
 	
 	require_once(CLASSES_DIR.'fileio.php');
 	require_once(CLASSES_DIR.'arrays.php');
+	require_once(CLASSES_DIR.'template.php');
+	require_once(CLASSES_DIR.'container.php');
+	require_once(CLASSES_DIR.'configuration.php');
 	
 	// require_once(CLASSES_DIR.'login.php');
 	// require_once(CLASSES_DIR.'template.php');

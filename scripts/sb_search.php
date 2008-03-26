@@ -64,7 +64,7 @@
 					$output_str  .= '<a href="index.php?entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $blog_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
 				}
 				// Search Comments
-				if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+				if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
 					$comment_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
 	 
 					for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
@@ -94,7 +94,7 @@
 								$comment_entry_data = comment_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
 
 								global $theme_vars;
-								if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+								if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
 									$output_str  .= '&nbsp;&nbsp;&nbsp;<a href="javascript:openpopup(\'comments.php?y='.$year_dir.'&amp;m='.$month_dir.'&amp;entry='. sb_strip_extension($entry_filename).'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">' . $comment_entry_data[ 'NAME' ] . '</a><br />';
 								} else {
 									$output_str  .= '&nbsp;&nbsp;&nbsp;<a href="comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $comment_entry_data[ 'NAME' ] . '</a><br />';

@@ -223,7 +223,7 @@
       $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
     }
 
-    if ( $blog_config['blog_enable_permalink'] ){ // New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK'); ){ // New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'permalink' string...
         $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
@@ -231,7 +231,7 @@
     }
     	
 /*
-if ( $blog_config['blog_enable_permalink'] ){
+if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK'); ){
 if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
 // apple,baseball,basketball,business_finance,celebrity,design,environment,extreme_sports,football,gadgets,gaming_news,general_sciences,golf,hardware,health,hockey,linux_unix,mods,motorsport,movies,music,offbeat_news,other_sports,playable_web_games,political_opinion,politics,programming,security,soccer,software,space,tech_deals,tech_news,television,tennis,videos_animation,videos_comedy,videos_educational,videos_gaming,videos_music,videos_people,videos_sports,world_news
 $url = urlencode($entry_array[ 'permalink' ][ 'url' ]);
@@ -244,7 +244,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 }
 */
 
-    if ( $blog_config['blog_enable_print'] ){ // New for 0.5.2
+    if ( $blog_config->getTag('BLOG_ENABLE_PRINT'); ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' string...
         $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
@@ -562,7 +562,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 	<body>
 		<div id="page">
 			<div id="header"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
-			<?php if ( $blog_config['blog_enable_title'] ) { echo('<div id="title">' . $blog_config[ 'blog_title' ] . '</div>'); } ?>
+			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE'); ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE'); . '</div>'); } ?>
 			<div id="innerpage">
 			
 			<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { ?>
@@ -593,7 +593,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 		
 			</div>
 			<div id="footer">
-				<?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?>
+				<?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?>
 			</div>
 		</div>
 	</body>
@@ -626,14 +626,14 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     ?>
     <body>
       <div id="popup">
-        <?php if ( $blog_config['blog_enable_title'] ) { echo('<div id="title">' . $blog_config[ 'blog_title' ] . '</div>'); } ?>
+        <?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE'); ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE'); . '</div>'); } ?>
         <div id="innerpage">
           <div id="content">
             <?php page_content(); ?>
           </div>
         </div>
         <div id="footer">
-          <?php echo($blog_config[ 'blog_footer' ]); ?> - <?php echo( page_generated_in() ); ?>
+          <?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?>
         </div>
       </div>
     </body>

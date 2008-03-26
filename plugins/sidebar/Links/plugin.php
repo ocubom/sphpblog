@@ -23,16 +23,18 @@
 		
 		function getContent () {
 			$str = '';
+			
+			global $blog_config;
 		
 			if ( $GLOBALS[ 'logged_in' ] == true ) {
 				// You are logged in.
 				$str .= sprintf( '<b>%s<br />%s</b><br /><br />', $_SESSION[ 'user' ], $GLOBALS[ 'lang_string' ][ 'notice_loggedin' ] );
 				
 				// There are x unmodded comments.
-				if ( $GLOBALS['blog_config']['blog_comments_moderation'] ) {
+				if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
 					$unmodCount = get_unmodded_count(true);
 					if ( $unmodCount > 0 ) {
-						if ( $GLOBALS['blog_config']['blog_comments_popup'] == 1 ) {
+						if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
 							$width = $GLOBALS[ 'theme_vars' ][ 'popup_window' ][ 'width' ];
 							$height = $GLOBALS[ 'theme_vars' ][ 'popup_window' ][ 'height' ];
 							$str .= sprintf( '<a href="javascript:openpopup(\'comments_moderation.php\',%s,%s,true)">%s%d%s</a><br /><br />', $width, $height, $GLOBALS[ 'lang_string' ]['notice_moderator1'], $unmodCount, $GLOBALS[ 'lang_string' ]['notice_moderator2'] );
@@ -47,7 +49,8 @@
 			$str .= sprintf( '<a href="index.php">%s</a><br />', $GLOBALS[ 'lang_string' ][ 'menu_home' ] );
 			
 			// Contact.
-			if ( !empty( $GLOBALS[ 'blog_config' ][ 'blog_email' ] ) ) {
+			$temp = ($blog_config->getTag('BLOG_EMAIL'));
+			if ( !empty( $temp ) ) {
 				$oBlacklist = new CBlacklist;
 				$oBlacklist->load( CONFIG_DIR . 'blacklist.txt' );
 				if ( $oBlacklist->isBanned( getIP() ) == false || $GLOBALS[ 'logged_in' ] == true  ) {
@@ -56,7 +59,7 @@
 			}
 			
 			// Stats.
-			if ( $GLOBALS[ 'blog_config' ]['blog_enable_stats']) {
+			if ( $blog_config->getTag('BLOG_ENABLE_STATS') ) {
 				$str .= sprintf( '<a href="stats.php">%s</a><br />', $GLOBALS[ 'lang_string' ][ 'menu_stats' ] );
 			}
 			
@@ -87,7 +90,7 @@
 				$str = $str . '<a href="add_link.php">[ ' . $GLOBALS[ 'lang_string' ][ 'sb_add_link_btn' ]  . ' ]</a><br />';
 				$str .= '<hr /><a href="logout.php">' . $GLOBALS[ 'lang_string' ][ 'menu_logout' ] . '</a>';
 			} else {
-				if ( $GLOBALS[ 'blog_config' ][ 'blog_enable_login' ] ) {
+				if ( $blog_config->getTag('BLOG_ENABLE_LOGIN') ) {
 					$str .= '<hr /><a href="login.php">' . $GLOBALS[ 'lang_string' ][ 'menu_login' ] . '</a>';
 				}
 			}

@@ -95,7 +95,7 @@
       }
     }
 
-    $blog_max_entries = $blog_config[ 'blog_max_entries' ];
+    $blog_max_entries = $blog_config->getTag('BLOG_MAX_ENTRIES');
     if ($is_permalink) {
       $blog_max_entries = 1;
     }
@@ -235,7 +235,7 @@
     }
 
     // Flip entry order
-    if ( $blog_config[ 'blog_entry_order' ] == 'old_to_new' ) {
+    if ( $blog_config->getTag('BLOG_ENTRY_ORDER') == 'old_to_new' ) {
       $contents = array_reverse( $contents );
     }
 
@@ -340,10 +340,10 @@
         $comment_array = sb_folder_listing( $comment_path, array( '.txt', '.gz' ) );
 
         // This is not a real count if some of the items haven't been modded yet...
-        if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+        if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
           if ( $logged_in == true ) {
             $comment_count = count( $comment_array );
-          } else if ( $blog_config[ 'blog_comments_moderation' ] != true ) {
+          } else if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') != true ) {
             $comment_count = count( $comment_array );
           } else {
             // Cycle through the comments if there are some and find out how many are modded
@@ -370,7 +370,7 @@
         }
 
         // Entry Rating
-        if ( $blog_config[ 'blog_enable_voting' ] == true ) {
+        if ( $blog_config->getTag('BLOG_ENABLE_VOTING') == true ) {
           $rating_array = read_rating( $y, $m, $entry );
           if ( $rating_array ) {
             $points = $rating_array[ 'points' ];
@@ -403,14 +403,14 @@
         }
 
         // Has to be populated regardless - used by the more tag
-        if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+        if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
           $entry_array[ 'comment' ][ 'url' ] = 'javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
         } else {
           $entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
         }
 
         // Comments / Read - will show regardless of comments being enabled
-        if ( $blog_config[ 'blog_enable_comments' ] == true ) {
+        if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
           $commenttext = $lang_string[ 'sb_comment_btn' ];
           $commentplural = $lang_string[ 'sb_comments_plural_btn' ];
           $comment = $lang_string[ 'sb_add_comment_btn' ];
@@ -454,8 +454,8 @@
         $entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
 
         // Trackback
-        if ( $blog_config[ 'blog_trackback_enabled' ] == true ) {
-          if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+        if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == true ) {
+          if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
             $entry_array[ 'trackback' ][ 'url' ] = 'javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
           } else {
             $entry_array[ 'trackback' ][ 'url' ] = 'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;__mode=html';
@@ -496,9 +496,9 @@
     // Figure out page count - need this first for the First and Last links
     $pages_array = array();
     $current_page = 0;
-    for ( $p = 0; $p < count( $entry_file_array ); $p += $blog_config[ 'blog_max_entries' ] ) {
+    for ( $p = 0; $p < count( $entry_file_array ); $p += $blog_config->getTag('BLOG_MAX_ENTRIES') ) {
       array_push( $pages_array, $entry_file_array[ $p ] );
-      if ($entry_index >= $p && $entry_index < $p + $blog_config[ 'blog_max_entries' ]) {
+      if ($entry_index >= $p && $entry_index < $p + $blog_config->getTag('BLOG_MAX_ENTRIES')) {
         $current_page = count($pages_array)-1;
       }
     }
@@ -579,13 +579,13 @@
     // Check for intervening static entries to be shown before current entries...
 
     // 2) Selected block (with or without border ie using CSS - without border handy for those with wide ads)
-    if ( $blog_config[ 'blog_enable_static_block' ] == true ) {
+    if ( $blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == true ) {
     $entry_array = array();
-    $spec_block = get_specific_block( $blog_config[ 'static_block_options' ] );
+    $spec_block = get_specific_block( $blog_config->getTag('STATIC_BLOCK_OPTIONS') );
       if ( is_array( $spec_block ) ) {
         $entry_array[ 'entry' ] = $spec_block[ 'text' ];
         $entry_array[ 'subject' ] = $spec_block[ 'title' ];
-        $bordertype = $blog_config[ 'static_block_border' ];
+        $bordertype = $blog_config->getTag('STATIC_BLOCK_BORDER');
         if ( $bordertype == 'noborder' ) {
           $blog_content = theme_genericentry( $entry_array, 'clear' ) . $blog_content;
         } else {
@@ -595,7 +595,7 @@
     }
 
     // 1) Search box
-    if ( $blog_config[ 'blog_search_top' ] == true ) {
+    if ( $blog_config->getTag('BLOG_SEARCH_TOP') == true ) {
       $entry_array = array();
       $search = array();
       $search = menu_search_field_horiz();
@@ -736,7 +736,7 @@
       rsort( $entry_array ); // Sort array newest to oldest
     } else {
       // Rebuild array.
-      if ( $blog_config[ 'blog_enable_cache' ] == true ) {
+      if ( $blog_config->getTag('BLOG_ENABLE_CACHE') == true ) {
         // sleep(1); // To avoid server overload
       }
 
@@ -792,7 +792,7 @@
       rsort( $entry_array ); // Sort array newest to oldest
 
       // Check the option first to see if we use the cache
-      if ( $blog_config[ 'blog_enable_cache' ] == true ) {
+      if ( $blog_config->getTag('BLOG_ENABLE_CACHE') == true ) {
         // Do not create cache if empty
         if ( count( $entry_array )>0 ) {
           sb_write_file( $filename, serialize( $entry_array ) );

@@ -48,7 +48,7 @@
       $d = date( 'd' );
     }
     
-    if( $blog_config[ 'blog_calendar_start' ] == 'sunday' ) {
+    if( $blog_config->getTag('BLOG_CALENDAR_START'); == 'sunday' ) {
     $date_string = mktime(0, 0, 0, $m, 2, $y ); // Use this for starting the calendar on Sunday
     } else {
     $date_string = mktime(0, 0, 0, $m, 1, $y ); //The date string we need for some info... saves space ^_^
@@ -82,7 +82,7 @@
     
     //$entries = sb_folder_listing( CONTENT_DIR . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
     $entries = blog_entry_listing();
-    if ( $blog_config[ 'blog_entry_order' ] != 'old_to_new' )
+    if ( $blog_config->getTag('BLOG_ENTRY_ORDER'); != 'old_to_new' )
     {
       sort ( $entries );
     }
@@ -146,7 +146,7 @@
     </tr>
     <tr>';
     
-    if( $blog_config[ 'blog_calendar_start' ] == 'sunday' ) {   
+    if( $blog_config->getTag('BLOG_CALENDAR_START'); == 'sunday' ) {   
       // This is for the Sunday starting date
       for ( $i=0; $i<7; $i++ )
       {
@@ -501,8 +501,8 @@
       $array = explode('|', $result);
       for ( $i = 0; $i < count( $array ); $i+=2 ) {
         // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
-        if ( (($blog_config[ 'blog_enable_static_block' ] == true) and ( $array[$i] != $blog_config[ 'static_block_options' ] ))
-           or ($blog_config[ 'blog_enable_static_block' ] == false) ) {
+        if ( (($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == true) and ( $array[$i] != $blog_config->getTag('STATIC_BLOCK_OPTIONS') ))
+           or ($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == false) ) {
           $block_array[$i] = blog_to_html( $array[$i], false, false, false, true );
           $block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false, false, true );
         }
@@ -616,7 +616,7 @@
   function confirm_unmod( $modflag ) {
     global $blog_config;
     $result = true;
-    if ($blog_config[ 'blog_comments_moderation' ] == 1) {
+    if ($blog_config->getTag('BLOG_COMMENTS_MODERATION') == 1) {
       if ( $modflag == 'H' ) { $result = false; }
     }
 
@@ -671,7 +671,7 @@
           }
           
           global $blog_config, $theme_vars;
-          if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+          if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
             $str_comments  .= '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
           } else {
             $str_comments  .= '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
@@ -706,7 +706,7 @@
       $array = array( $blog_entry_id, $m, $y, $trackback_id );
     }
     
-    $max_comments = $blog_config[ 'blog_max_entries' ];
+    $max_comments = $blog_config->getTag('BLOG_MAX_ENTRIES');
     if ( count( $array ) > ( ( $max_comments * 4 ) - 1 ) ) {
       // $array = array_reverse( $array );
       $array = array_slice( $array, $max_comments * -4, $max_comments * 4);
@@ -794,7 +794,7 @@
           }
           
           global $blog_config, $theme_vars;
-          if ( $blog_config[ 'blog_comments_popup' ] == 1 ) {
+          if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
             $str_trackbacks  .= '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
           } else {
             $str_trackbacks  .= '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
