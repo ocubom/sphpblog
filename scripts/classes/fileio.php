@@ -15,6 +15,7 @@
 	* folder_listing( $dir )
 	* strip_extension( $filename )
 	*/
+	
 	class fileio {
 		
 		/**
@@ -27,12 +28,43 @@
 		* @param		string $filename
 		* @return		string contents of file or NULL on error.
 		*/
-		function read_file( $filename ) {
+		function read_file($filename, $use_cache=false) {
+			global $filecache, $filecount, $filecachecount;
+			
+			if (!isset($filecache)) {
+				$filecache = array();
+			}
+			
+			if (array_key_exists($filename, $filecache)) {
+				if ($use_cache) {
+					if ($filecache[$filename]['lastmodified'] == @filemtime($filename)) {					
+						if (!isset($filecachecount)) {
+							$filecachecount = 1;
+						} else {
+							$filecachecount++;
+						}
+						return $filecache[$filename]['content'];
+					}
+				}
+			}
+			
 			if ( file_exists($filename) ) {
 				if ( function_exists('file_get_contents') ) { // PHP 4 >= 4.3.0, PHP 5
 					$str = file_get_contents( $filename );
 					if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
 						$str = gzinflate( substr( $str, 10 ) );
+					}
+					
+					// Cache file data...
+					$cache = array();
+					$cache['lastmodified'] = @filemtime($filename);
+					$cache['content'] = $str;
+					$filecache[$filename] = $cache;
+					
+					if (!isset($filecount)) {
+						$filecount = 1;
+					} else {
+						$filecount++;
 					}
 					return $str;
 				} else {
@@ -44,6 +76,18 @@
 								$str = gzinflate( substr( $str, 10 ) );
 							}
 							fclose( $handle );
+							
+							// Cache file data...
+							$cache = array();
+							$cache['lastmodified'] = @filemtime($filename);
+							$cache['content'] = $str;
+							$filecache[$filename] = $cache;
+					
+							if (!isset($filecount)) {
+								$filecount = 1;
+							} else {
+								$filecount++;
+							}
 							return $str;
 						}
 					}
@@ -63,6 +107,7 @@
 		* @return		integer/false (bytes written or FALSE on error)
 		*/
 		function write_file( $filename, $str ) {
+			
 			if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
 				$str = gzencode( $str, 9 );
 			}
@@ -100,6 +145,7 @@
 		* @return		boolean
 		*/
 		function delete_file( $filename ) {
+			
 			if ( file_exists($filename) ) {
 				$result = @unlink( $filename );
 				clearstatcache();
