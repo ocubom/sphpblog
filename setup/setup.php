@@ -18,11 +18,17 @@
 	// FOLDER LOCATIONS
 	define('CONTENT_DIR',	ROOT_DIR.'content/');
 	define('IMAGES_DIR',	ROOT_DIR.'images/');
+	
 	define('TEMPLATE_DIR',	ROOT_DIR.'templates/');
+	
 	define('CONFIG_DIR',	ROOT_DIR.'config/');
 	define('CACHE_DIR',		CONFIG_DIR.'cache/');
+	define('USER_DIR',		CONFIG_DIR.'users/');
+	
 	define('SCRIPTS_DIR',	ROOT_DIR.'scripts/');
 	define('CLASSES_DIR',	SCRIPTS_DIR.'classes/');
+	
+	
 	
 	// Server
 	$sessionpath = session_save_path();

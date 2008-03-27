@@ -48,7 +48,7 @@
       $d = date( 'd' );
     }
     
-    if( $blog_config->getTag('BLOG_CALENDAR_START'); == 'sunday' ) {
+    if( $blog_config->getTag('BLOG_CALENDAR_START') == 'sunday' ) {
     $date_string = mktime(0, 0, 0, $m, 2, $y ); // Use this for starting the calendar on Sunday
     } else {
     $date_string = mktime(0, 0, 0, $m, 1, $y ); //The date string we need for some info... saves space ^_^
@@ -82,7 +82,7 @@
     
     //$entries = sb_folder_listing( CONTENT_DIR . $y . '/' . $m . '/', array( '.txt', '.gz' ) );
     $entries = blog_entry_listing();
-    if ( $blog_config->getTag('BLOG_ENTRY_ORDER'); != 'old_to_new' )
+    if ( $blog_config->getTag('BLOG_ENTRY_ORDER') != 'old_to_new' )
     {
       sort ( $entries );
     }
@@ -146,7 +146,7 @@
     </tr>
     <tr>';
     
-    if( $blog_config->getTag('BLOG_CALENDAR_START'); == 'sunday' ) {   
+    if( $blog_config->getTag('BLOG_CALENDAR_START') == 'sunday' ) {   
       // This is for the Sunday starting date
       for ( $i=0; $i<7; $i++ )
       {

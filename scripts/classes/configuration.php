@@ -80,6 +80,10 @@
 			array_push($this->tags, 'BANNED_WORD_LIST');
 			array_push($this->tags, 'BLOG_THEME');
 			
+			// Cache Excluded Tags
+			// $this->do_not_cache_tags = array();
+			// array_push($this->do_not_cache_tags, 'example');
+			
 			// Default Values
 			foreach ($this->tags as $key) {
 				$this->setTag($key, '');

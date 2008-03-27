@@ -14,8 +14,8 @@
 
 		function load( $sBlacklistPathFileName  ) {
 			$bReturnCode = false;
-
-			$sContent = sb_read_file( $sBlacklistPathFileName );
+			
+			$sContent = $GLOBALS['blog_config']->getTag('BANNED_ADDRESS_LIST'); // sb_read_file( $sBlacklistPathFileName );
 			if ( $sContent !== false ) {
 				$this->aEntries = explode( chr(13), trim( $sContent ) );
 				$bReturnCode = true;
@@ -43,7 +43,7 @@
 		function load( $sBannedWordsPathFileName  ) {
 			$bReturnCode = false;
 
-			$sContent = sb_read_file( $sBannedWordsPathFileName );
+			$sContent = $GLOBALS['blog_config']->getTag('BANNED_WORD_LIST'); // sb_read_file( $sBannedWordsPathFileName );
 			if ( $sContent !== false ) {
 				$this->aEntries = explode( chr(13), trim( $sContent ) );
 				$bReturnCode = true;

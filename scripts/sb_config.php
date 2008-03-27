@@ -7,10 +7,6 @@
 	// emailed to apalmo <at> bigevilbrain <dot> com
 
 	// read_config ( )
-	// write_config ( $blog_title, $blog_author, $blog_email, $blog_avatar, $blog_footer, $blog_language, $blog_entry_order, $blog_comment_order, $blog_enable_comments, $blog_max_entries, $blog_comments_popup, $comment_tags_allowed, $blog_enable_gzip_txt, $blog_enable_gzip_output, $blog_email_notification, $blog_send_pings, $blog_ping_urls, $blog_enable_voting, $blog_trackback_enabled, $blog_trackback_auto_discovery, $blog_enable_cache, $blog_enable_calendar, $blog_calendar_start, $blog_enable_title, $blog_enable_permalink, $blog_enable_stats, $blog_enable_lastcomments, $blog_enable_lastentries, $blog_enable_capcha_image )
-	// write_metainfo ( $info_keywords, $info_description, $info_copyright )
-	// write_theme ( $blog_theme )
-	// read_theme ( )
 	// write_colors ( $post_array, $user_file )
 	// read_colors ( )
 
@@ -31,7 +27,7 @@
 		$blog_config->read_file();
 		
 		/*
-		if ( !isset( $blog_config->getTag('COMMENT_TAGS_ALLOWED'); ) ) {
+		if ( !isset( $blog_config->getTag('COMMENT_TAGS_ALLOWED') ) ) {
 			$blog_config->setTag('COMMENT_TAGS_ALLOWED') = explode(',', 'b,i,strong,em,url');
 		} else {
 			$blog_config->setTag('COMMENT_TAGS_ALLOWED') = explode(',', $blog_config->getTag('COMMENT_TAGS_ALLOWED'));
@@ -41,7 +37,7 @@
 		/*
 		// Hack to put in Google Analytics, etc
 		$blog_config->getTag('BLOG_FOOTER_ONLY') = $blog_config->getTag('BLOG_FOOTER');
-		if ( isset( $blog_config->getTag('TRACKING_CODE'); ) ) {
+		if ( isset( $blog_config->getTag('TRACKING_CODE') ) ) {
 			$blog_config->gstrTag('BLOG_FOOTER'); .= $blog_config->getTag('TRACKING_CODE');
 		}
 		*/
@@ -64,68 +60,16 @@
 	// Blacklist
 	// ----------------
 
-	function write_blacklist( $address_list ) {
-		// Save information to file.
-		//
-		if (!file_exists(CONFIG_DIR)) {
-			$oldumask = umask(0);
-			$ok = mkdir( CONFIG_DIR, 0777 );
-			umask( $oldumask );
-		}
-
-		$filename = CONFIG_DIR.'blacklist.txt';
-		$result = sb_write_file( $filename, $address_list );
-
-		if ( $result ) {
-			return ( true );
-		} else {
-			// Error:
-			// Probably couldn't create file...
-			return ( $filename );
-		}
-	}
-
-	function write_bannedwordlist( $banned_word_list ) {
-		// Save information to file.
-		//
-		if (!file_exists(CONFIG_DIR)) {
-			$oldumask = umask(0);
-			$ok = mkdir( CONFIG_DIR, 0777 );
-			umask( $oldumask );
-		}
-
-		$filename = CONFIG_DIR.'bannedwordlist.txt';
-		$result = sb_write_file( $filename, $banned_word_list );
-
-		if ( $result ) {
-			return ( true );
-		} else {
-			// Error:
-			// Probably couldn't create file...
-			return ( $filename );
-		}
-	}
-
 	function add_to_blacklist( $new_address ) {
-		// Save information to file.
-		//
-		if (!file_exists(CONFIG_DIR)) {
-			$oldumask = umask(0);
-			$ok = mkdir( CONFIG_DIR, 0777 );
-			umask( $oldumask );
-		}
-		$filename = CONFIG_DIR.'blacklist.txt';
-		$old_address_list = sb_read_file( $filename );
-
-		$result = sb_write_file( $filename, trim( $new_address . chr(13) .$old_address_list	 ) );
-
-		if ( $result ) {
-			return ( true );
-		} else {
-			// Error:
-			// Probably couldn't create file...
-			return ( $result );
-		}
+		$old_address_list = $GLOBALS['blog_config']->getTag('BANNED_ADDRESS_LIST');
+		
+		$new_address_list = trim($new_address.chr(13).$old_address_list);
+		
+		$GLOBALS['blog_config']->setTag('BANNED_ADDRESS_LIST', $new_address_list);
+		
+		$result = $GLOBALS['blog_config']->write_file();
+		
+		return $result;
 	}
 	
 	function get_installed_translations() {

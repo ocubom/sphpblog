@@ -101,6 +101,7 @@
 	require_once(CLASSES_DIR.'template.php');
 	require_once(CLASSES_DIR.'container.php');
 	require_once(CLASSES_DIR.'configuration.php');
+	require_once(CLASSES_DIR.'user.php');
 	
 	// require_once(CLASSES_DIR.'login.php');
 	// require_once(CLASSES_DIR.'template.php');
