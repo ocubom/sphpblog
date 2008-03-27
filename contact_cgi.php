@@ -37,7 +37,7 @@
 	$body .= sprintf( $GLOBALS['lang_string']['wrote'], format_date( $comment_date ), $_POST[ 'name' ], str_replace( "\r\n", "<br />\r\n", $_POST[ 'comment' ] ) );
 	$ok=false;
 	if ($_POST[ 'capcha_contact' ] == $_SESSION[ 'capcha_contact' ] AND $_SESSION[ 'capcha_contact' ] != '' ) {
-		$ok=sb_mail( $_POST[ 'email' ], $blog_config->getTag('BLOG_EMAIL');, $subject, $body, false );
+		$ok=sb_mail( $_POST[ 'email' ], $blog_config->getTag('BLOG_EMAIL'), $subject, $body, false );
 	} else {
 		$_SESSION['errornum'] = '403.8';
 		$_SESSION['errortype'] = 'error_emailnotsentcapcha';

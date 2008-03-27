@@ -60,7 +60,7 @@
   $blog_name = $_POST[ 'blog_name' ];
 
   // No such entry exists OR trackback is disabled
-  if ( ($redirect === true ) || ( !$blog_config->getTag('BLOG_TRACKBACK_ENABLED'); ) ) {
+  if ( ($redirect === true ) || ( !$blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) ) {
     redirect_to_url( 'index.php' );
   }
 
@@ -95,7 +95,7 @@
   <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>  
   <?php require_once('scripts/sb_editor.php'); ?>
 
-  <title><?php echo($blog_config->getTag('BLOG_TITLE');); ?> - <?php echo( $GLOBALS['lang_string']['title'] ); ?></title>
+  <title><?php echo($blog_config->getTag('BLOG_TITLE')); ?> - <?php echo( $GLOBALS['lang_string']['title'] ); ?></title>
 </head>
 <?php
   function page_content() {
@@ -122,7 +122,7 @@
   }
 
   global $blog_config;
-  if ( $blog_config->getTag('BLOG_COMMENTS_POPUP'); == 1 ) {
+  if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
     theme_popuplayout();
   } else {
     theme_pagelayout();
@@ -154,9 +154,9 @@
     echo "<response>\n";
     echo "<error>0</error>\n";
     echo '<rss version="0.91"><channel>'."\n";
-    echo "<title>" . $blog_config->getTag('BLOG_TITLE'); . "</title>\n";
+    echo "<title>" . $blog_config->getTag('BLOG_TITLE') . "</title>\n";
     echo "<link>" . $base_url . "index.php</link>\n";
-    echo "<description>". $blog_config->getTag('BLOG_FOOTER'); . "</description>\n";
+    echo "<description>". $blog_config->getTag('BLOG_FOOTER') . "</description>\n";
     echo "<language>" . str_replace( '_', '-', $GLOBALS['lang_string']['locale'] ) . "</language>\n";
     
     $results = read_trackbacks ( $year, $month, $entry, $logged_in, false );

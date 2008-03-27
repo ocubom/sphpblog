@@ -47,7 +47,7 @@
 		
 		<hr />
 		
-		<form action="install06.php?blog_language=<?php echo( $blog_config->getTag('BLOG_LANGUAGE'); ); ?>" method="post" onsubmit="return validate(this)">
+		<form action="install06.php?blog_language=<?php echo( $blog_config->getTag('BLOG_LANGUAGE') ); ?>" method="post" onsubmit="return validate(this)">
 			<label for="user"><?php echo( $GLOBALS['lang_string']['username'] ); ?></label><br />
 			<input type="text" name="user" autocomplete="OFF" size="40"><p />
 			

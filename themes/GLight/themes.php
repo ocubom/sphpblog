@@ -97,7 +97,7 @@
 
     // New 0.4.4
     // You must have this if you are using the trackback feature.
-    if ( $blog_config[ "blog_trackback_enabled" ] ) {
+    if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED')) {
       $blog_content = $blog_content . "<!--\n";
       $blog_content = $blog_content . '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' . "\n";
       $blog_content = $blog_content . '         xmlns:dc="http://purl.org/dc/elements/1.1/"' . "\n";
@@ -203,14 +203,14 @@
       $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'trackback' ][ 'url' ] . '">' . $entry_array[ 'trackback' ][ 'name' ] . '</a>' . "\n";
     }
 
-    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK'); ){ // New for 0.4.6
+    if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK') ){ // New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'permalink' string...
         $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '">' . $entry_array[ 'permalink' ][ 'name' ] . '</a>' . "\n";
       }
     }
 
-    if ( $blog_config->getTag('BLOG_ENABLE_PRINT'); ){ // New for 0.5.2
+    if ( $blog_config->getTag('BLOG_ENABLE_PRINT') ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' string...
         $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
@@ -588,8 +588,8 @@
           <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
             <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
             <?php
-            if ( $blog_config->getTag('BLOG_ENABLE_TITLE');) { // New for 0.4.6
-            echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE'); . '</div>');
+            if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
+            echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE') . '</div>');
             }?>
             <div id="pagebody">
               <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
@@ -616,7 +616,7 @@
                 </tr>
                 <tr align="left" valign="top">
                   <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
-                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?></div>
+                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
               </table>
@@ -664,7 +664,7 @@
         </tr>
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
-            <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER');); ?> - <?php echo( page_generated_in() ); ?></div>
+            <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
           </td>
         </tr>
       </table>

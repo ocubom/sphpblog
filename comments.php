@@ -83,7 +83,7 @@
 			} else {
 				$admin = $_SESSION[ 'fulladmin' ];
 				if ($admin == 'yes' ) {
-					echo('<input type="hidden" name="comment_name" id="comment_name" value="' . $_SESSION[ 'user' ] . ' (' . $blog_config->getTag('BLOG_AUTHOR'); . ')" autocomplete="off" />');
+					echo('<input type="hidden" name="comment_name" id="comment_name" value="' . $_SESSION[ 'user' ] . ' (' . $blog_config->getTag('BLOG_AUTHOR') . ')" autocomplete="off" />');
 				} else {
 					echo('<input type="hidden" name="comment_name" id="comment_name" value="' . $_SESSION[ 'user' ] . '" autocomplete="off" />'); }
 			}
@@ -195,14 +195,14 @@
 			if ($GLOBALS['logged_in']==true ) {
 				echo('<!-- Logged in user -->');
 				echo('<input type="hidden" name="comment_capcha" id="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="off" maxlength="6" />');
-			} else if ($blog_config->getTag('BLOG_ENABLE_CAPCHA');==0) {
+			} else if ($blog_config->getTag('BLOG_ENABLE_CAPCHA')==0) {
 				echo('<!-- Anti-spam disabled -->');
 				echo('<input type="hidden" name="comment_capcha" id="comment_capcha" value="' . $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] . '" autocomplete="off" maxlength="6" />');
 			} else {
 				echo('<!-- Not logged in! Show capcha -->');
 				echo('<label for="comment_capcha">');
 
-				if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE'); ) {
+				if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') ) {
 					printf( $GLOBALS['lang_string']['comment_capcha'], '<br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
 				} else {
 					printf( $GLOBALS['lang_string']['comment_capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) );
@@ -211,7 +211,7 @@
 				echo('</label><br />');
 				echo('<input type="text" name="comment_capcha" id="comment_capcha" value="" autocomplete="off" maxlength="6" /><br /><br />');
 
-				if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION'); ) {
+				if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
 					if ( $logged_in == false ) {
 						echo($lang_string['user_notice_mod'] . '<br /><br />');
 					}
@@ -231,14 +231,14 @@
 			// Check Blacklist
 			ob_end_clean();
 			$entry_array[ 'entry' ] = $lang_string['blacklisted'];
-		} else if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS'); == false ) {
+		} else if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == false ) {
 			ob_end_clean(); // Don't show anything to do with the comment editing.
 			$entry_array[ 'entry' ] = $lang_string['nocomments']; 
 		} else if ( are_comments_expired( $GLOBALS[ 'month' ], $GLOBALS[ 'day' ], $GLOBALS[ 'year' ] ) ) {
 			// Check Expiration Date
 			ob_end_clean();
-			$entry_array[ 'entry' ] = $lang_string['expired_comment1'] . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY'); . $lang_string['expired_comment2'];
-		} else if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS'); == 0 ){
+			$entry_array[ 'entry' ] = $lang_string['expired_comment1'] . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') . $lang_string['expired_comment2'];
+		} else if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == 0 ){
 			ob_end_clean();
 			$entry_array[ 'entry' ] = $lang_string['nocomments'];
 		} else {
@@ -291,7 +291,7 @@
 	
 	// Theme Layout
 	ob_start();	
-	if ( $GLOBALS['blog_config'][ 'blog_comments_popup' ] == 1 ) {
+	if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
 		theme_popuplayout();
 	} else {
 		theme_pagelayout();

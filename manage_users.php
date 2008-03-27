@@ -21,7 +21,7 @@
 	// --------------
 	// PRE-PROCESSING
 	// --------------
-	
+
 	
 	// ---------- CANCEL ----------
 	if ( array_key_exists( 'cancel', $_POST ) ) {
@@ -76,6 +76,7 @@
 			} else { $editany = "N"; }
 
 			$blankfield = "";
+			
 
 			// Create the record structure
 			if ( $_GET[ 'type' ] == "edit" ) {
@@ -185,7 +186,11 @@
 			} else {
 				echo('<form action="manage_users.php?action=update&type=new" method="post" name="manage_users" id="manage_users">');
 			}
-			echo( '<table width=100% cellspacing="0" cellpadding="2">' );
+			
+			// $GLOBALS['theme_vars']['content_width']
+			// $GLOBALS['theme_vars']['max_image_width']
+			
+			echo( '<table width="'.$GLOBALS['theme_vars']['content_width'].'" cellspacing="0" cellpadding="2">' );
 			if ( $_GET[ 'type' ] == "edit" ) {
 			echo( '<tr class="header"><th></th><th>' . $lang_string['header_user'] . $tmp[1] . '</th><th></th></tr>'); }
 			echo( '<tr class="header"><th></th><th>' . $lang_string['header_property'] . '</th><th>' . $lang_string['header_value'] . '</th></tr>');
@@ -231,7 +236,7 @@
 		if ( ($_SESSION[ 'fulladmin' ] == 'yes' ) AND ( $_GET[ 'action' ] == "" ))	{
 			// Button to add new user - only available to Administrator
 			echo( '<a href="manage_users.php?action=modify&type=new">' . $lang_string['create_user'] . '</a><p />');
-			echo( '<table width=100% cellspacing="0" cellpadding="2">' );
+			echo( '<table width="'.$GLOBALS['theme_vars']['content_width'].'" cellspacing="0" cellpadding="2">' );
 			echo( '<tr class="header"><th></th><th><i>' . $lang_string['grid_header'] . '</i></th><th></th><th></th><th></th></tr>');
 			echo( '<tr class="header"><th></th><th>' . $lang_string['grid_login'] . '</th><th>' . $lang_string['grid_email'] . '</th><th>' . $lang_string['grid_avatar'] . '</th><th>' . $lang_string['grid_state'] . '</th></tr>');
 

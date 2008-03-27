@@ -14,18 +14,9 @@
 	// ---------------
 	// POST PROCESSING
 	// ---------------
-	if ( array_key_exists( 'banned_address_list', $_POST )) {
-		global $ok;
+	
+	if ( array_key_exists( 'banned_address_list', $_POST ) && array_key_exists( 'banned_word_list', $_POST ) ) {
 		
-		// @htmlspecialchars( $str, ENT_QUOTES, $GLOBALS['lang_string']['php_charset'] );
-		$ok = write_blacklist( sb_stripslashes( $_POST[ 'banned_address_list' ] ) );
-		$ok = write_bannedwordlist( $_POST[ 'banned_word_list' ] );
-		
-		
-		// Note:
-		// I'm saving the data here twice. The above functions need to be eliminated
-		// but that will require redirecting the CBlacklist class to pull from it's data
-		// from a Configuration instance rather that from a file.
 		$new_config = new Configuration();
 		$new_config->read_file();
 		
@@ -35,7 +26,6 @@
 		
 		global $ok;
 		$ok = $new_config->write_file();
-		
 								
 		if ( $ok === true ) { 
 			redirect_to_url( 'index.php' );

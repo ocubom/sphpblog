@@ -107,7 +107,7 @@
 			unset( $rating_array );
 			
 			// Count comments
-			if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS'); == true ) {
+			if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
 				$comment_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/', array( '.txt', '.gz' ) );
 				for ( $k = 0; $k < count( $comment_file_array ); $k++ ) {
 					$total_number_comments++;
@@ -124,7 +124,7 @@
 			unset( $comment_file_array );
 			
 			// Count trackbacks
-			if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED'); == true ) {
+			if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == true ) {
 				$trackback_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/', array( '.txt', '.gz' ) );
 				for ( $k = 0; $k < count( $trackback_file_array ); $k++ ) {
 					$total_number_trackbacks++;
@@ -157,7 +157,7 @@
 		$entry_array[ 'entry' ]	 .= sprintf( $GLOBALS['lang_string']['vote_info'], number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
 		echo( theme_staticentry( $entry_array ) );		
 		
-		if ( $blog_config->getTag('BLOG_ENABLE_VOTING'); == true ) {
+		if ( $blog_config->getTag('BLOG_ENABLE_VOTING') == true ) {
 			if ( is_array( $entries ) ) {
 				$entry_array = array();
 				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_rated_entries'];
@@ -177,7 +177,7 @@
 			}
 		}
 		
-		if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS'); == true ) {
+		if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
 			if ( is_array( $entries ) ) {
 				$entry_array = array();
 				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_viewed_entries'];
@@ -197,7 +197,7 @@
 			}
 		}
 
-		if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED'); ) {
+		if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
 			if ( is_array( $entries ) ) {
 				$entry_array = array();
 				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_trackbacked_entries'];

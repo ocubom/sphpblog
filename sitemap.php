@@ -66,10 +66,10 @@
 		list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 		$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
 		write_map( $base_url . 'index.php?entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', $contents[ 'DATE' ] ), 'weekly', 0.5 );
-		if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS'); ) {
+		if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') ) {
 			write_map( $base_url . 'comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ), gmdate( 'Y-m-d', time() ), 'daily', 0.7 );
 		}
-		if ( $blog_config->getTag('BLOG_ENABLE_TRACKBACKS'); ) {
+		if ( $blog_config->getTag('BLOG_ENABLE_TRACKBACKS') ) {
 			write_map( $base_url . 'trackback.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;__mode=html', gmdate( 'Y-m-d', time() ), 'daily', 0.1 );
 		}
 		$i++;

@@ -26,7 +26,7 @@
 
 	if ($ok) {
 		// Check if comments are disabled. If so, this is probably a spam bot.
-		if ($blog_config->getTag('BLOG_ENABLE_COMMENTS'); == 0) {
+		if ($blog_config->getTag('BLOG_ENABLE_COMMENTS') == 0) {
 			$commentsEnabled = false;
 			$ok = false;
 			$error_message = $GLOBALS['lang_string']['error_comments_disabled'];
@@ -163,7 +163,7 @@
 		if ( are_comments_expired( $month, $dday, $year ) ) {
 			$notExpired = false;
 			$ok = false;
-			$error_message = $lang_string['expired_comment1'] . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY'); . $lang_string['expired_comment2'];
+			$error_message = $lang_string['expired_comment1'] . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') . $lang_string['expired_comment2'];
 		} else {
 			$notExpired = true;
 		}
@@ -172,7 +172,7 @@
 	
 	if ($ok) {
 		// Comment Moderation
-		if ( $logged_in == false && $blog_config->getTag('BLOG_ENABLE_COMMENTS'); ) {
+		if ( $logged_in == false && $blog_config->getTag('BLOG_ENABLE_COMMENTS') ) {
 			// Hold comment (don't show to regular users)
 			$moderationFlag = 'H';
 		} else {
@@ -236,7 +236,7 @@
 		if ( $ok == true ) {
 			echo( $GLOBALS['lang_string']['success_add'] . '<p />' );
 			
-			if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION'); ) {
+			if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
 				if ( $logged_in == false ) {
 					echo($lang_string['user_notice_mod'] . '<p />');
 				}

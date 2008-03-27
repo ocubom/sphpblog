@@ -53,12 +53,12 @@
 		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
 		
 		<?php
-		if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA'); == 0 ) {
+		if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA') == 0 ) {
 			echo('<!-- Anti-spam disabled -->');
 			echo('<input type="hidden" name="capcha_contact" id="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6" /><br /><br />'); 
 		} else {
 			echo('<label for="capcha_contact">');
-			if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE'); ) {
+			if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') ) {
 				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<br /><img src="capcha.php?entry=contact" />' );
 			} else {
 				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );

@@ -56,7 +56,7 @@
 						$item = array();
 						$item['label'] = $lang_name;
 						$item['value'] = $lang_dir;
-						if ( $blog_config->getTag('BLOG_LANGUAGE'); == $item['value'] ) {
+						if ( $blog_config->getTag('BLOG_LANGUAGE') == $item['value'] ) {
 							$item['selected'] = true;
 						}
 						array_push( $dropdown_arr, $item );
