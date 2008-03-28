@@ -9,6 +9,22 @@
 	// -----------------
 	// Utility Functions
 	// -----------------
+	
+
+	/**
+	* Return the microtime.
+	*
+	* @return		float
+	*/
+	function microtime_float() { 
+		if ( version_compare( phpversion(), '5.0.0' ) == -1 ) {
+			list($usec, $sec) = explode(' ', microtime()); 
+			return ((float)$usec + (float)$sec); 
+		} else {
+			return( microtime( true ) );
+		}
+	}
+	
 
 	// Activate PHP's GZ compression output, if not currently activated.
 	// Must be called before any header output.

@@ -5,37 +5,84 @@
 	// must be uploaded to SourceForge.net under Simple PHP Blog or
 	// emailed to apalmo <at> bigevilbrain <dot> com
 
-	// --------------------
+	// -------------------------
 	// Form Validation Functions
-	// --------------------
+	// -------------------------
 	
-	
-	// ----------------
-	// Form Utility Functions
-	// ----------------
-	function sb_stripslashes( $str ) {
-		// Strip slashes from POST data if magic_quote_gpc is on...
+	function isInt($value, $empty) {
+		if (strlen($value) == 0) { return $empty; }
 		
+		return preg_match('!^\d+$!', $value);
+	}
+	
+	function isNumber($value, $empty) {
+		if (strlen($value) == 0) { return $empty; }
+		
+		return preg_match('!^\d+(\.\d+)?$!', $value);
+	}
+	
+	function isDate($value, $empty) {
+		if (strlen($value) == 0) { return $empty; }
+	
+		return strtotime($value) != -1;
+	}
+	
+	function isEmail($value, $empty) {
+		if (strlen($value) == 0) { return $empty; }
+	
+		// in case value is several addresses separated by newlines
+		$_addresses = preg_split('![\n\r]+!', $value);
+	
+		foreach($_addresses as $_address) {
+			$_is_valid = !(preg_match('!@.*@|\.\.|\,|\;!', $_address) ||
+				!preg_match('!^.+\@(\[?)[a-zA-Z0-9\.\-]+\.([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$!', $_address));
+			
+			if (!$_is_valid) { return false; }
+		}
+		return true;
+	}
+	
+	function notEmpty($value, $empty) {
+		return strlen($value) > 0;
+	}
+	
+	// ----------------------
+	// Form Utility Functions
+	// ----------------------
+	
+	
+	/**
+	* Strips slashes if magic quotes is on.
+	*
+	* @param		string $str
+	* @return		string
+	*/
+	function smartstripslashes($str) {
 		if ( get_magic_quotes_gpc() == true ) {
 			$str = stripslashes($str);
-		} else {
-			$str = $str;
 		}
-		
 		return $str;
+	}
+	function sb_stripslashes($str) {
+		return smartstripslashes($str);
 	}
 	
-	function sb_addslashes( $str ) {
-		// Add slashes if magic_quote_gpc is on...
-		
-		if ( get_magic_quotes_gpc() == true ) {
-			$str = $str;
-		} else {
+	/**
+	* Adds slashes if magic quotes is on.
+	*
+	* @param		string $str
+	* @return		string
+	*/
+	function smartaddslashes($str) {
+		if ( get_magic_quotes_gpc() == false ) {
 			$str = addslashes( $str );
 		}
-		
 		return $str;
 	}
+	function sb_addslashes($str) {
+		return smartaddslashes($str);
+	}
+	
 	
 	function encode_input_value( $str ) {
 	
@@ -45,9 +92,10 @@
 		return ( $str );
 	}
 
-	// ------------------
+	// ---------------------
 	// HTML Markup Functions
-	// ------------------
+	// ---------------------
+	
 	function HTML_dropdown( $label=false, $id, $itemArray, $add_returns=true, $onchange=null, $width=0, $size=0, $multiple=false, $disabled=false ) {
 		// This function creates a standard HTML select form.
 		// Can be used for drop-downs, or selection boxes.

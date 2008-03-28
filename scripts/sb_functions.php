@@ -99,6 +99,7 @@
 	require_once(CLASSES_DIR.'fileio.php');
 	require_once(CLASSES_DIR.'arrays.php');
 	require_once(CLASSES_DIR.'template.php');
+	require_once(CLASSES_DIR.'html.php');
 	require_once(CLASSES_DIR.'container.php');
 	require_once(CLASSES_DIR.'configuration.php');
 	require_once(CLASSES_DIR.'user.php');
