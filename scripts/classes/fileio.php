@@ -340,4 +340,62 @@
 		}
 		
 	}
+	
+	
+	/**
+	* Wrappers for legacy functions. New code should just call the above class directly.
+	*/
+	function sb_read_file( $filename ) {
+		return fileio::read_file($filename);
+	}
+	
+	function sb_write_file( $filename, $str ) {
+		return fileio::write_file($filename, $str);
+	}
+  
+	function sb_create_folder( $dir, $mode=0777 ) {
+		return fileio::make_dir($dir, $mode);
+	}
+  
+	function sb_copy( $source, $dest ) {
+		return fileio::copy_dir($source, $dest);
+	}
+	
+	function sb_folder_listing( $dir, $ext_array ) {
+		return fileio::file_listing($dir, $ext_array=array());
+	}
+  
+	function sb_delete_file( $filename ) {
+		return fileio::delete_file($filename);
+	}
+  
+	function sb_delete_directory( $dir ) {
+		return fileio::remove_dir($dir);
+	}
+  
+	function sb_strip_extension( $filename ) {
+		return fileio::strip_extension($filename);
+	}
+	
+	
+	
+	
+		
+	/**
+	* Returns memory usage, file usage and execution time information for debugging
+	*
+	* @return		string		html
+	*/
+	function resource_report() {
+		$end_time = microtime_float();
+		if (function_exists('memory_get_usage')) {
+			$memory_usage = 'Memory Usage: '.(memory_get_usage(true)/1024).' KB';
+		} else {
+			$memory_usage = 'Memory Usage: (Not Supported)';
+		}
+		$execution_time = 'Execution Time: '.($end_time-$GLOBALS['start_time']).' seconds';
+		$files_accessed = 'Files Accessed: '.count($GLOBALS['filecache']).' unique files / '.$GLOBALS['filecachecount'].' from cache / '.$GLOBALS['filecount'].' from disk';
+		
+		return("$memory_usage<br />$execution_time<br />$files_accessed");
+	}
 ?>
