@@ -62,8 +62,6 @@
 						$str = $this->html_return_escape($str);
 					}
 				}
-				
-				
 				$template->setTag('{'.$key.'}', $str);
 			}
 			
@@ -213,4 +211,22 @@
 		}
 		
 	}
+	
+	/* -------------------- SORT -------------------- */
+		
+	/**
+	* Set records by an arbitrary tag.
+	*
+	* @param		string $tag
+	* @param		array $arr
+	* @return		sorted array
+	*/
+	function sort_by_arbitrary_tag(&$record_arr, $tag, $reverse=false) {
+		if ($reverse) {
+			usort($record_arr,create_function('$a,$b','$aa=$a->getTag(\''.$tag.'\');$bb=$b->getTag(\''.$tag.'\');if($aa==$bb){return 0;}return ($aa<$bb)?1:-1;'));
+		} else {
+			usort($record_arr,create_function('$a,$b','$aa=$a->getTag(\''.$tag.'\');$bb=$b->getTag(\''.$tag.'\');if($aa==$bb){return 0;}return ($aa<$bb)?-1:1;'));
+		}
+	}
+	
 ?>
