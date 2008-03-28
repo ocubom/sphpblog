@@ -24,7 +24,7 @@
 	}
 	
 	global $blog_config;
-	$blog_config->getTag('BLOG_LANGUAGE') = $temp_lang;
+	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
 	
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'install00' );

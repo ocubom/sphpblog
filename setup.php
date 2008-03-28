@@ -19,6 +19,7 @@
 
 	read_config();
 	
+	global $blog_config;
 	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
 
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
