@@ -66,6 +66,15 @@
 			$t->setTag('{DELETE_BUTTON}', $delete_button); // Delete button
 			$t->setTag('{EDIT_DELETE}','<span>'.$edit_button.'&nbsp;'.$delete_button.'</span>'); // Both together
 			
+			// Get Group name by ID
+			$group_record = find_group_by_id($record->getTag('GROUP'));
+			if (isset($group_record)) {
+				$t->setTag('GROUP_NAME', $group_record->getTag('GROUP_NAME'));
+			} else {
+				
+				$t->setTag('GROUP_NAME', 'nope');
+			}
+			
 			$str = $record->getHTML($t);
 			$t_table->appendTag('{MAIN}', $str); // Append Row
 		}

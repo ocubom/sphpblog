@@ -69,7 +69,7 @@
 				}
 			}
 			// Checkboxes are a special case
-			$record->setTag('ACTIVE', 				smartstripslashes($_POST['active'])=='on'?				'1':'0');
+			$record->setTag('ACTIVE', smartstripslashes($_POST['active'])=='on'? '1':'0');
 			
 			// Save record
 			$result = $record->write_file();
@@ -82,7 +82,8 @@
 				foreach ($record->data as $key => $val) { // Populate from entered data
 					$form_template->setTag('{'.$key.'}', @htmlspecialchars($val, ENT_QUOTES));
 				}
-				$form_template->setTag('{ACTIVE_CHECKED}', 					($record->getTag('ACTIVE')=='1'?' checked="checked"':''));
+				$form_template->setTag('{ACTIVE_CHECKED}', ($record->getTag('ACTIVE')=='1'?' checked="checked"':''));
+				$form_template->setTag('{GROUP_DROPDOWN}', groups_to_drop_down($record->getTag('GROUP')));
 			}
 			
 		} else {
@@ -103,7 +104,8 @@
 					foreach ($record->data as $key => $val) { // Populate from record data
 						$form_template->setTag('{'.$key.'}', @htmlspecialchars($val, ENT_QUOTES));
 					}
-					$form_template->setTag('{ACTIVE_CHECKED}', 					($record->getTag('ACTIVE')=='1'?' checked="checked"':''));
+					$form_template->setTag('{ACTIVE_CHECKED}', ($record->getTag('ACTIVE')=='1'?' checked="checked"':''));
+					$form_template->setTag('{GROUP_DROPDOWN}', groups_to_drop_down($record->getTag('GROUP')));
 				}
 			} else {
 				// ----- Default -----
@@ -113,7 +115,8 @@
 				foreach ($record->data as $key => $val) { // Populate from default data
 					$form_template->setTag('{'.$key.'}', @htmlspecialchars($val, ENT_QUOTES));
 				}
-				$form_template->setTag('{ACTIVE_CHECKED}', 					($record->getTag('ACTIVE')=='1'?' checked="checked"':''));
+				$form_template->setTag('{ACTIVE_CHECKED}', ($record->getTag('ACTIVE')=='1'?' checked="checked"':''));
+				$form_template->setTag('{GROUP_DROPDOWN}', groups_to_drop_down($record->getTag('GROUP')));
 			}
 		}
 		
