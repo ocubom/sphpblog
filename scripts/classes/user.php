@@ -2,10 +2,10 @@
 	/**
 	* Feature story class.
 	*
-	* @author		Alexander Palmo <alex dot palmo at fahlgren dot com>
+	* @author		Alexander Palmo <apalmo at bigevilbrain dot com>
 	* @access		public
 	*/
-	class user extends container {
+	class User extends container {
 		var $path, $html_template, $tags;
 		
 		/**
@@ -14,7 +14,7 @@
 		* @param		string $filename
 		* @return		null
 		*/
-		function user($filename='',$is_cached=false) {
+		function User($filename='',$is_cached=false) {
 			$this->path = USER_DIR;
 			$this->html_template = TEMPLATE_DIR.'data/user.tpl';
 		
@@ -33,32 +33,20 @@
 			array_push($this->tags, 'PASSWORD');
 			array_push($this->tags, 'EMAIL');
 			array_push($this->tags, 'AVATAR');
+			array_push($this->tags, 'GROUP');
 			array_push($this->tags, 'ACTIVE');
-			array_push($this->tags, 'MODERATE_COMMENTS');
-			array_push($this->tags, 'DELETE_BLOG_ENTRIES');
-			array_push($this->tags, 'EDIT_ANY_ENTRY');
 			
 			// Cache Excluded Tags
 			// $this->do_not_cache_tags = array();
 			// array_push($this->do_not_cache_tags, 'USER_NAME');
-			// array_push($this->do_not_cache_tags, 'DISPLAY_NAME');
-			array_push($this->do_not_cache_tags, 'PASSWORD');
-			array_push($this->do_not_cache_tags, 'EMAIL');
-			array_push($this->do_not_cache_tags, 'AVATAR');
-			array_push($this->do_not_cache_tags, 'ACTIVE');
-			array_push($this->do_not_cache_tags, 'MODERATE_COMMENTS');
-			array_push($this->do_not_cache_tags, 'DELETE_BLOG_ENTRIES');
-			array_push($this->do_not_cache_tags, 'EDIT_ANY_ENTRY');
 			
 			// Default Values
 			foreach ($this->tags as $key) {
 				$this->setTag($key, '');
 			}
 
-			$this->setTag('ACTIVE', 'N');
-			$this->setTag('MODERATE_COMMENTS', 'N');
-			$this->setTag('DELETE_BLOG_ENTRIES', 'N');
-			$this->setTag('EDIT_ANY_ENTRY', 'N');
+			$this->setTag('GROUP', 		'guest');
+			$this->setTag('ACTIVE', 	'0');
 		}
 		
 		function write_file() {
@@ -90,7 +78,7 @@
 		for ($i=0; $i<count($filearr); $i++) {
 			$filename = $filearr[$i];
 			
-			$record = new user($filename);
+			$record = new User($filename);
 			$record->read_file();
 			
 			array_push($arr, $record->getCacheData());
@@ -118,7 +106,7 @@
 			for ($i=0; $i<count($arr); $i++) {
 				$data = $arr[$i];
 				
-				$record = new user($data['ID'].'.txt', true);
+				$record = new User($data['ID'].'.txt', true);
 				$record->data = $data;
 				
 				array_push($record_arr, $record);
@@ -147,7 +135,7 @@
 			if ($user_name == $name || $user_name == $url) {
 				if ($admin_mode) {
 					return $record;
-				} else if ($record->getTag('ACTIVE')=='Y') {
+				} else if ($record->getTag('ACTIVE')=='1') {
 					return $record;
 				} else {
 					return;
@@ -164,7 +152,7 @@
 		for ($i=0; $i<count($record_arr); $i++) {
 			$record = $record_arr[$i];
 			
-			if (!$admin_mode && $record->getTag('ACTIVE')=='Y') {
+			if (!$admin_mode && $record->getTag('ACTIVE')=='1') {
 				continue;
 			}
 			

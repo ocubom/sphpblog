@@ -24,6 +24,7 @@
 	define('CONFIG_DIR',	ROOT_DIR.'config/');
 	define('CACHE_DIR',		CONFIG_DIR.'cache/');
 	define('USER_DIR',		CONFIG_DIR.'users/');
+	define('GROUP_DIR',		CONFIG_DIR.'groups/');
 	
 	define('SCRIPTS_DIR',	ROOT_DIR.'scripts/');
 	define('CLASSES_DIR',	SCRIPTS_DIR.'classes/');

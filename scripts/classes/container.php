@@ -2,7 +2,7 @@
 	/**
 	* Data container class.
 	*
-	* @author		Alexander Palmo <alex dot palmo at fahlgren dot com>
+	* @author		Alexander Palmo <apalmo at bigevilbrain dot com>
 	* @access		public
 	*/
 	class container {
