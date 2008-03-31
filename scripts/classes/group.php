@@ -192,40 +192,43 @@
 	
 	/* -------------------- SEARCH -------------------- */
 	
-	function find_group_by_group_name($admin_mode=false, $group_name='') {
+	function find_group_by_id($group_id='') {
 		$record_arr = get_groups_cache();
-		// rsort($record_arr);
+		
+		for ($i=0; $i<count($record_arr); $i++) {
+			$record = $record_arr[$i];
+			
+			$id = $record->getTag('ID');
+			if ($group_id == $id) {
+				return $record;
+			}
+			unset($record);
+		}	
+	}
+	
+	function find_group_by_group_name($group_name='') {
+		$record_arr = get_groups_cache();
 		
 		for ($i=0; $i<count($record_arr); $i++) {
 			$record = $record_arr[$i];
 			
 			$name = $record->getTag('GROUP_NAME');
 			if ($group_name == $name) {
-				if ($admin_mode) {
-					return $record;
-				} else if ($record->getTag('ACTIVE')=='Y') {
-					return $record;
-				} else {
-					return;
-				}
+				return $record;
 			}
 			unset($record);
 		}	
 	}
 	
-	function groups_to_drop_down($admin_mode=false, $sel=null) {
+	function groups_to_drop_down($sel=null) {
 		$record_arr = get_groups_cache();
 		
 		$arr = array();
 		for ($i=0; $i<count($record_arr); $i++) {
 			$record = $record_arr[$i];
 			
-			if (!$admin_mode && $record->getTag('ACTIVE')=='Y') {
-				continue;
-			}
-			
 			$key = $record->getTag('ID');
-			$val = $record->getTag('DISPLAY NAME');
+			$val = $record->getTag('GROUP_NAME');
 			
 			$arr[$key] = $val;
 			unset($record);
