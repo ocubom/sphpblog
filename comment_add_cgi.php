@@ -37,7 +37,7 @@
 	
 	if ($ok) {
 		// Verify required fields exist (except comment_remember which is a check box...)
-		$requiredFields = Array( 'y', 'm', 'entry', 'comment_capcha', 'comment_name', 'comment_email', 'comment_url', 'comment_text', 'user_ip' );
+		$requiredFields = Array( 'y', 'm', 'entry', 'comment_capcha', 'comment_name', 'comment_email', 'comment_url', 'comment_text');
 		$missingFields = Array();
 		foreach ( $requiredFields as $fieldName ) {
 			if ( !array_key_exists( $fieldName, $_POST ) ) {
@@ -51,17 +51,6 @@
 			$allFieldsExist = false;
 			$ok = false;
 			$error_message = $GLOBALS['lang_string']['error_fields_missing'] . implode ( ', ', $missingFields );
-		}
-	}
-	
-	if ($ok) {
-		// Verify that posted IP and actual IP matches.
-		if ( getIP() === $_POST['user_ip'] ) {
-			$ipMatches = true;
-		} else {
-			$ipMatches = false;
-			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_no_match'];
 		}
 	}
 	
@@ -190,7 +179,7 @@
 			$comment_email,
 			$comment_url,
 			$comment_text,
-			$_POST[ 'user_ip' ],
+			getIP(),
 			$moderationFlag,
 			time() );
 		
