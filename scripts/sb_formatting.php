@@ -639,15 +639,17 @@
 	}
 
 	function sb_parse_url ( $text ) {
-			// Con espacios
-			$text = eregi_replace("([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=\\2]\\2[/url]", $text); //http
-			$text = eregi_replace("([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "\\1[url=http://\\2]\\2[/url]", $text); // www.
-			$text = eregi_replace("([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
-			// Al principio de una cadena
-			$text = eregi_replace("^((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=\\1]\\1[/url]", $text); //http
-			$text = eregi_replace("^(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)", "[url=http://\\1]\\1[/url]", $text); // www
-			$text = eregi_replace("^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})","[url=mailto:\\1]\\1[/url]", $text); // mail
-			return ( $text );
+
+		// eregi_replace is deprecated, use preg_replace with /i instead
+		$text = preg_replace("/([[:space:]])((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)/i", "\\1[url=\\2]\\2[/url]", $text); //http
+		$text = preg_replace("/([[:space:]])(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)/i", "\\1[url=http://\\2]\\2[/url]", $text); // www.
+		$text = preg_replace("/([[:space:]])([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})/i","\\1[url=mailto:\\2]\\2[/url]", $text); // mail
+		// Al principio de una cadena
+		$text = preg_replace("/^((f|ht)tps?:\/\/[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)/i", "[url=\\1]\\1[/url]", $text); //http
+		$text = preg_replace("/^(www\.[a-z0-9~#%@\&:=?+\/\.,_-]+[a-z0-9~#%@\&=?+\/_.;-]+)/i", "[url=http://\\1]\\1[/url]", $text); // www
+		$text = preg_replace("/^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6})/i","[url=mailto:\\1]\\1[/url]", $text); // mail
+
+		return ( $text );
 	}
 
 	function replace_more_tag ( $string, $strip_tags=true, $url='', $trim_off_end=false ) {
