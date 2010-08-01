@@ -449,7 +449,7 @@
     // Month Drop Down
     $itemArray = array();
     for ( $i = 12; $i >= 1; $i-- ) {
-      $timestamp = mktime(0, 0, 0, $i, date('d'), date('Y'));
+      $timestamp = mktime(0, 0, 0, $i, 1, date('Y'));
       
       $item = array( 'label' => strftime('%B', $timestamp), 'value' => date('m', $timestamp) );
       if ( $i == $e_month ) {
