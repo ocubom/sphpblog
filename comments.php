@@ -4,6 +4,17 @@
 	// ---------------
 	require_once('scripts/sb_functions.php');
 
+	function strposa($haystack ,$needles=array(),$offset=0){
+		$chr = array();
+		foreach($needles as $needle){
+			if (strpos($haystack,$needle,$offset) !== false) {
+				$chr[] = strpos($haystack,$needle,$offset);
+			}
+		}
+		if(empty($chr)) return false;
+		return min($chr);
+	}
+
 	// Login
 	global $logged_in;
 	$logged_in = logged_in( false, true );
@@ -31,9 +42,9 @@
 		// user is not able to back-up a directory.
 		//
 		// Make sure the string lengths are correct.
-		if ( strpos( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 &&
-				strpos( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'm' ] ) == 2 &&
-				strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
+		if ( strposa( $_GET[ 'y' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'y' ] ) == 2 &&
+				strposa( $_GET[ 'm' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'm' ] ) == 2 &&
+				strposa( $_GET[ 'entry' ], array( '/', '.', '\\', '%' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
 
 			// Verify that the file exists.
 			if ( entry_exists ( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ] ) ) {
