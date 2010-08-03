@@ -36,6 +36,7 @@
   
   /*
   function read_menus_calendar ( $m, $y, $d ) {
+    // hint: $d isn't used for anything anymore
     global $lang_string, $user_colors, $blog_config;
     
     if ( !isset( $m ) ) {
@@ -43,9 +44,6 @@
     }
     if ( !isset( $y ) ) {
       $y = date( 'y' );
-    }
-    if ( !isset( $d ) ) {
-      $d = date( 'd' );
     }
     
     if( $blog_config->getTag('BLOG_CALENDAR_START') == 'sunday' ) {
@@ -227,7 +225,7 @@
 
   function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false ) {
     // Create the right-hand navigation menu and Archives page. Return HTML
-    //
+    // hint: $d isn't used for anything anymore
     global $lang_string;
     
     $entry_array = blog_entry_listing();
