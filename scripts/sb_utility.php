@@ -11,6 +11,21 @@
 	// -----------------
 	
 
+	function open_basedir_check($dir) {
+		$basedir = ini_get('open_basedir');
+		if (empty($basedir))
+			return true;
+
+		$root = dirname(dirname(__FILE__));
+		$baselist = explode(PATH_SEPARATOR, $basedir);
+		foreach ($baselist as $base) {
+			if (strstr(realpath($dir), realpath($base)) !== FALSE) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	* Return the microtime.
 	*

@@ -43,8 +43,22 @@
 		ob_start();
 		
 		echo( $GLOBALS['lang_string']['instructions'] . '<p />' );
-		
+
 		echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $lang_string['begin'] . '</a><p />' );
+
+		// TODO translations
+		// TODO more PHP checks here
+		print "<p>PHP Pre-install Configuration Checks:</p>";
+		if (strnatcmp(phpversion(),'4.1') < 0)
+			echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
+		if (!open_basedir_check(CONFIG_DIR))
+			echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONFIG_DIR) . ".</p>";
+		if (!open_basedir_check(CONTENT_DIR))
+			echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONTENT_DIR) . ".</p>";
+		if (!open_basedir_check(IMAGES_DIR))
+			echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(IMAGES_DIR) . ".</p>";
+		if (!function_exists('getimagesize'))
+			echo "<p>WARNING: GD library is not installed.</p>";
 		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
