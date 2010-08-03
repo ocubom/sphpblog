@@ -274,7 +274,7 @@
          $link = 'http://'.$_SERVER[ 'HTTP_HOST' ].$link;
       	$url = parse_url($link);
       }
-      if( $url[ 'scheme' ] === 'http' ) {
+      if( $url[ 'scheme' ] === 'http' && ini_get('allow_url_fopen')) {
 	      // $socket = fsockopen( $url[ 'host' ], 80, $errno, $errstr, 30);
 	      $socket = fsockopen( ( $url[ 'host' ] === $_SERVER[ 'HTTP_HOST' ] ? $_SERVER[ 'SERVER_ADDR' ] : $url[ 'host' ] ), 80, $errno, $errstr, 30);
 			if ( $socket ) { 

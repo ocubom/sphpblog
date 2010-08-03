@@ -209,7 +209,6 @@
 			</div>
 
 			<p />
-
 			<!-- TRACKBACK -->
 			<a id="linkSetupTrackbacks" href="javascript:toggleBlock('SetupTrackbacks');">
 				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
@@ -217,6 +216,10 @@
 			</a><p />
 			<div id="toggleSetupTrackbacks" class="toggleBody"><p />
 				<?php echo( $GLOBALS['lang_string']['blog_trackback_about'] ); ?><p />
+			<?php // TODO translation for this
+			if (!ini_get('allow_url_fopen')) { ?>
+				WARNING: These settings will not take effect until <a href='http://www.php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen'>allow_url_fopen</a> has been enabled in php.ini.<p />
+			<?php } ?>
 				<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_enabled'] ); ?><br />
 				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_auto_discovery'] ); ?><p />
 			</div>

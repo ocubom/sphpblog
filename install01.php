@@ -58,7 +58,9 @@
 		if (!open_basedir_check(IMAGES_DIR))
 			echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(IMAGES_DIR) . ".</p>";
 		if (!function_exists('getimagesize'))
-			echo "<p>WARNING: GD library is not installed.</p>";
+			echo "<p>WARNING: GD library is not installed.  This is used, but not required, for image uploads.</p>";
+		if (!ini_get('allow_url_fopen'))
+			echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
 		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
