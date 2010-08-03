@@ -32,11 +32,6 @@
 		$uploaddir = IMAGES_DIR;
 		$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES['userfile']['name'][$i]);
 		
-		if ( @getimagesize($_FILES['userfile']['tmp_name'][$i]) == FALSE ){
-			echo('Image is not valid or not an image file.');
-			exit;
-		}
-		
 		if (strpos($uploadfile, ".") === false) {
 			echo('File does not have an extension');
 			exit;
@@ -82,6 +77,14 @@
 		} else {
 			$ok = false;
 		}
+
+		if (function_exists('getimagesize')) {
+			if ( @getimagesize($_FILES['userfile']['tmp_name'][$i]) == FALSE ){
+				echo('Image is not valid or not an image file.');
+				exit;
+			}
+		}
+	
 		}
 	}
 	}
