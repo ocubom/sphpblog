@@ -30,9 +30,12 @@
 
 		<?php
 		$formstate = $_REQUEST['formstate'];
-		if($formstate !="showuploaders"){
-	echo('<form action="upload_img.php" method="get">'.$GLOBALS['lang_string']['howmany'].' <select id="howmany" name="howmany">');
-		for($i=1;$i<=10;$i++){
+		if (!ini_get('file_uploads')) {
+			echo( $GLOBALS['lang_string']['error'] . 'php.ini file_uploads = Off.<p />' );
+		}
+		elseif($formstate !="showuploaders"){
+	echo('<form action="upload_img.php" method="get">'.$GLOBALS['lang_string']['howmany'].' (Total Max: ' . intval(ini_get('post_max_size'))/(1024*1024) . ' MB) <select id="howmany" name="howmany">');
+		for($i=1;$i<=intval(ini_get('max_file_uploads'));$i++){
 			echo('<option value="'.$i.'">'.$i.'</option>');
 		}
 echo <<<EOF
@@ -46,11 +49,11 @@ EOF;
 			$formstate = "notshowuploaders";
 			
 			echo( $GLOBALS['lang_string']['instructions'] );
-			echo("<p />");
+			echo(' (Total Max: ' . intval(ini_get('post_max_size'))/(1024*1024) . ' MB) <p />');
 		
 			echo('<form enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">');
 			echo( $GLOBALS['lang_string']['select_file'] );
-			echo("<br /><br />");
+			echo(' (Max ' . intval(ini_get('upload_max_filesize'))/(1024*1024) . ' MB each)<br /><br />');
 			for($i=1;$i<=$howmany;$i++){
 				echo("<input name=\"userfile[]\" type=\"file\"><br />");			
 			}
