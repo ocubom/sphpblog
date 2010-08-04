@@ -83,6 +83,9 @@
 				echo('Image is not valid or not an image file.');
 				exit;
 			}
+		} else {
+			echo('Image cannot be validated.  Do you have the PHP GD library installed?');
+			exit;
 		}
 	
 		}
