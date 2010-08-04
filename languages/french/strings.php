@@ -1,0 +1,1133 @@
+<?php
+
+	// Translation File
+
+	// (c) 2004 Thibaud Chon, thibaud <dot> chone <at> insa-lyon <dot> fr
+
+	//
+
+	// Simple PHP Version: 0.3.7
+
+	// Language Version:   0.3.7.1
+
+	
+
+	
+
+	function sb_language( $page ) {
+
+		global $language, $html_charset, $php_charset, $lang_string;
+
+			
+
+		// Language: Francais
+
+		$lang_string['locale'] = 'fr_FR'; // <-- New 0.3.7
+
+		$lang_string['language'] = 'french';
+
+		
+
+		// ISO Charset: ISO-8859-1
+
+		$lang_string['html_charset'] = 'ISO8859-1';
+
+		$lang_string['php_charset'] = 'ISO8859-1';
+
+		
+
+		setlocale( LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
+
+		
+
+		// Some Global Strings
+
+		
+
+		// Menu
+
+		$lang_string['menu_links'] = "Liens";
+
+		$lang_string['menu_home'] = "Home";
+
+		$lang_string['menu_contact'] = "Contact Me"; // <-- New 0.3.8
+
+		$lang_string['menu_stats'] = "Stats"; // <-- New 0.3.7r
+
+		$lang_string['menu_archive'] = "Archives"; // <-- New
+
+		$lang_string['menu_menu'] = "Menu";
+
+		$lang_string['menu_add'] = "Ajout Contenu";
+
+		$lang_string['menu_add_static'] = "Ajout Page";
+
+		$lang_string['menu_upload'] = "Upload Image";
+
+		$lang_string['menu_setup'] = "Setup";
+
+		$lang_string['menu_categories'] = "Categories";
+
+		$lang_string['menu_info'] = "Information"; // <-- New 0.3.7
+
+		$lang_string['menu_options'] = "Options";
+
+		$lang_string['menu_themes'] = "Themes";
+
+		$lang_string['menu_colors'] = "Couleurs";
+
+		$lang_string['menu_change_login'] = "Changer de Login";
+
+		$lang_string['menu_logout'] = "Se Déloguer";
+
+		$lang_string['menu_login'] = "Login";
+
+		$lang_string['menu_most_recent'] = "Derniers Commentaires";
+
+		$lang_string['menu_most_recent_entries'] = "Most Recent Entries";
+
+		$lang_string['menu_most_recent_trackback'] = "Most Recent Trackbacks"; // <-- New 0.3.8
+
+		// DATOH_ADD
+
+		$lang_string['menu_add_block'] = "Blocs";
+
+		// DATOH_END
+
+		
+
+		// Other
+
+		$lang_string['home'] = "Retour Accueil";
+
+		$lang_string['nav_next'] = 'Next'; // <-- New 0.3.7
+
+		$lang_string['nav_back'] = 'Back'; // <-- New 0.3.7
+
+		$lang_string['search_title'] = 'Search:'; // <-- New 0.3.7
+
+		$lang_string['search_go'] = 'Go'; // <-- New 0.3.7
+
+		$lang_string['page_generated_in'] = 'Page Generated in %s seconds'; // <-- New 0.3.7
+
+		
+
+		// SB Functions
+
+		$lang_string['sb_months'] = array( 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' );
+
+		$lang_string['sb_default_title'] = 'Sans Titre';
+
+		$lang_string['sb_default_author'] = 'x';
+
+		$lang_string['sb_default_footer'] = 'x';
+
+		
+
+		$lang_string['sb_edit'] = 'Editer';
+
+		$lang_string['sb_delete'] = 'Supprimer';
+
+		$lang_string['sb_permalink'] = 'permalink'; // <-- New 0.3.8
+
+		$lang_string['sb_trackback'] = 'trackbacks'; // <-- New 0.3.8
+
+		
+
+		$lang_string['sb_add_comment_btn'] = 'ajout commentaire';
+
+		$lang_string['sb_comment_btn_number_first'] = true;
+
+		$lang_string['sb_comment_btn'] = 'commentaire';
+
+		$lang_string['sb_comments_plural_btn_number_first'] = true;
+
+		$lang_string['sb_comments_plural_btn'] = 'commentaires';
+
+		
+
+		// ( 1 view )
+
+		$lang_string['sb_view_counter_pre'] = '( ';
+
+		$lang_string['sb_view_counter_post'] = ' vue )';
+
+		// ( 2 views )
+
+		$lang_string['sb_view_counter_plural_pre'] = '( ';
+
+		$lang_string['sb_view_counter_plural_post'] = ' vues )';
+
+		
+
+		$lang_string['sb_add_link_btn'] = '+ lien';
+
+		
+
+		$lang_string['sb_rate_entry_btn'] = 'Click to Rate Entry';
+
+		
+
+		// Entry Text Editor
+
+		// DATOH_REPLACE
+
+		if ( $page == 'add' || $page == 'add_static' || $page == 'comments' || $page == 'add_block' ) {
+
+		// DATOH_END
+
+				$lang_string['label_subject'] = "Sujet :";
+
+				$lang_string['label_insert'] = "Insertion Spéciale :";
+
+				$lang_string['btn_bold'] = " b ";
+
+				$lang_string['btn_italic'] = " i ";
+
+				$lang_string['btn_image'] = "img";
+
+				$lang_string['btn_url'] = "url";
+
+				$lang_string['view_images'] = "Voir les Images Uploadées";
+
+				$lang_string['label_entry'] = "Contenu :";
+
+				$lang_string['btn_preview'] = "&nbsp;Apercu&nbsp;";
+
+				$lang_string['btn_post'] = "&nbsp;Poster&nbsp;";
+
+				$lang_string['file_name'] = "Static File Name: (no spaces or file extensions)"; // <-- New 0.3.8
+
+				// Javascript Strings <-- Need Translation
+
+				$lang_string['insert_styles'] = "Entrez le texte a formater";
+
+				$lang_string['insert_image'] = "Entrez l\'URL de l\'image";
+
+				$lang_string['insert_url1'] = "Entrez le texte associé au lien (optionnel)";
+
+				$lang_string['insert_url2'] = "Entrez l URL complète du lien";
+
+				$lang_string['insert_url3'] = "Open URL in new window (Optional):"; // <-- New 0.3.6
+
+				$lang_string['form_error'] = "Complétez les champs Sujet et Contenu";
+
+				// More Javascript Strings <-- New 0.3.6
+
+				$lang_string['insert_image_optional'] = 'Optional:';
+
+				$lang_string['insert_image_width'] = 'Width (Optional):';
+
+				$lang_string['insert_image_height'] = 'Height (Optional):';
+
+				$lang_string['insert_image_popup'] = 'View full-size in pop-up when clicked (Optional):';
+
+				$lang_string['insert_image_float'] = 'Float (Optional):';
+
+		}
+
+	
+
+		switch ($page) {
+
+			case 'add':
+
+				// Add Entry
+
+				$lang_string['title'] = "Ajout de Contenu";
+
+				$lang_string['instructions'] = "Etes vous prêt a bloguer ? Remplissez le formulaire ci dessous, puis cliquez sur 'Apercu'pour vérifier la mise en page, ou sur 'Poster' pour sauvegarder votre post.";
+
+				$lang_string['title_ad'] = "Confirm Trackback Pings"; // <-- New 0.3.8
+
+				$lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all."; // <-- New 0.3.8
+
+				$lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)"; // <-- New 0.3.8
+
+				$lang_string['label_tb_autodiscovery'] = "autodiscovery"; // <-- New 0.3.8
+
+				// Preview / Edit Entry
+
+				$lang_string['title_preview'] = "Apercu / Edition de contenu";
+
+				$lang_string['instructions_preview'] = "Voici à quoi ressemble votre post. Si vous utilisez différents styles de texte ou si vous incluez des images, veillez à bien fermer toutes vos balises.";
+
+				$lang_string['title_update'] = "Mettre à jour";
+
+				$lang_string['instructions_update'] = "Vous pouvez mettre à jour les informations en utilisant le formulaire ci dessous. Cliquez sur 'Apercu' ou sur 'Poster' lorque vous avez fini.";
+
+				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;"; // <-- New 0.3.8
+
+				$lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;"; // <-- New 0.3.8
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Contenu non sauvegardé. Une erreur est apparue lors de la sauvegarde.<br /><br />le serveur a rapporté :<br />";
+
+				break;
+
+			case 'add_static':
+
+				// Add Entry
+
+				$lang_string['title'] = "Ajouter une entrée statique";
+
+				$lang_string['instructions'] = "Remplissez le formulaire suivant pour créer une page statique. Contrairement à une entrée classique de blog, les pages statiques apparaissent en lien dans le menu de droite. Elles servent pour des pages toujours accessibles comme par exemple un CV, une page de contact, un agenda, etc. Cliquez sur 'Apercu' pour voir à quoi cette page ressemblera, ou sur 'Poster' pour la sauvegarder.";
+
+				// Preview / Edit Entry
+
+				$lang_string['title_preview'] = "Apercu / Edition de contenu";
+
+				$lang_string['instructions_preview'] = "Voici a quoi ressemble votre post. Si vous utilisez différents styles de texte ou si vous incluez des images, veillez à bien fermer toutes vos balises.";
+
+				$lang_string['title_update'] = "Mettre à jour";
+
+				$lang_string['instructions_update'] = "Vous pouvez mettre a jour les informations en utilisant le formulaire ci dessous. Cliquez sur 'Apercu' ou sur 'Poster' lorque vous avez fini.";
+
+				$lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";	
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Contenu non sauvegardé. Une erreur est apparue lors de la sauvegarde.<br /><br />le serveur a rapporté :<br />";
+
+				break;
+
+			case 'add_block':
+
+				// Add / Manage Blocks
+
+				$lang_string['title'] = "Add / Manage Links";
+
+				$lang_string['instructions'] = "Add custom Blocks";
+
+				$lang_string['up'] = "up";
+
+				$lang_string['down'] = "down";
+
+				$lang_string['edit'] = "edit";
+
+				$lang_string['delete'] = "delete";
+
+				$lang_string['block_name'] = "Block Name:";
+
+				$lang_string['block_content'] = "Block content:";
+
+				$lang_string['instructions_edit'] = "You are currently editing block:";
+
+				$lang_string['instructions_modify'] = "Click below to modify a block:";
+
+				$lang_string['submit_btn_edit'] = "Edit Block";
+
+				$lang_string['submit_btn_add'] = "Add Block";
+
+				$lang_string['form_error'] = "Please complete the Name field.";
+
+				break;
+
+			case 'add_link':
+
+				$lang_string['static_pages'] = "Static Pages:";
+
+				// Add / Manage Links
+
+				$lang_string['title'] = "Ajouter / Gérer Les Liens";
+
+				$lang_string['instructions'] = "Ajouter des Liens vers d'autres sites. Remplissez le formulaire ci dessous and cliquez sur 'Ajouter le Lien' pour l'ajouter. Utilisez les boutons 'haut' et 'bas' pour changer l'ordre des liens. Cliquez sur le bouton 'Editer' pour modifier un lien. Cliquez sur le bouton 'Effacer' pour enlever un lien.";
+
+				$lang_string['up'] = "haut";
+
+				$lang_string['down'] = "bas";
+
+				$lang_string['edit'] = "éditer";
+
+				$lang_string['delete'] = "effacer";
+
+				$lang_string['link_name'] = "Nom du Lien :";
+
+				$lang_string['link_url'] = "Adresse du Lien : (Optionnel. Laissez vide pour créer une sous categorie.)";
+
+				$lang_string['instructions_edit'] = "Vous éditez actuellement le lien :";
+
+				$lang_string['instructions_modify'] = "Cliquez ci dessous pour modifier le lien :";
+
+				$lang_string['submit_btn_edit'] = "Editer";
+
+				$lang_string['submit_btn_add'] = "Ajouter";
+
+				$lang_string['form_error'] = "Complètez le champ Nom";
+
+				break;
+
+			case 'categories':
+
+				// Add / Manage Links
+
+				$lang_string['title'] = "Add / Manage Categories";
+
+				$lang_string['instructions'] = "Use the form below to add and edit your categories. Each category item should be in this format 'category name (id number)'. Indent items with spaces to create heirarchies.<br /><br /><b>Example:</b><br />General (1)<br />News (3)<br />&nbsp;&nbsp;Announcements (6)<br />&nbsp;&nbsp;Events (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Misc (7)<br />Technology (2)<br />";
+
+				$lang_string['error'] = "Error";
+
+				$lang_string['current_categories'] = "Current Categories";
+
+				$lang_string['no_categories_found'] = "No Categories Found";
+
+				$lang_string['category_list'] = "Category List:";
+
+				$lang_string['validate'] = "Validate";
+
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+
+				break;
+
+			case 'colors':
+
+				// Change Colors
+
+				$lang_string['title'] = "Changer les Couleurs";
+
+				$lang_string['instructions'] = "Vous pouvez changer les couleurs de texte et de fond de votre blog. Utilisez la palette pour choisir votre couleur, puis recopier la valeur HEX de cette couleur dans les champs correspondants.";
+
+				$lang_string['bg_color'] = "Fond du Site";
+
+				$lang_string['main_bg_color'] = "Fond de Page";
+
+				$lang_string['border_color'] = "Bordure de Page";
+
+				$lang_string['inner_border_color'] = "Inner Bordure";
+
+				$lang_string['header_bg_color'] = "Fond de l'entête";
+
+				$lang_string['header_txt_color'] = "Texte de l entête";
+
+				$lang_string['menu_bg_color'] = "Fond du menu";
+
+				$lang_string['footer_bg_color'] = "Fond du pied de page";
+
+				$lang_string['txt_color'] = "Texte principal";
+
+				$lang_string['headline_txt_color'] = "Texte Titre";
+
+				$lang_string['date_txt_color'] = "Date";
+
+				$lang_string['footer_txt_color'] = "Texte Pied de Page";
+
+				$lang_string['link_reg_color'] = "Lien";
+
+				$lang_string['link_hi_color'] = "Lien Choisi";
+
+				$lang_string['link_down_color'] = "Clic sur Lien";
+
+				// More Colors
+
+				$lang_string['entry_bg'] = "Entry BG";
+
+				$lang_string['entry_title_bg'] = "Entry Title BG";
+
+				$lang_string['entry_border'] = "Entry Border";
+
+				$lang_string['entry_title_text'] = "Entry Title Text";
+
+				$lang_string['entry_text'] = "Entry Text";
+
+				$lang_string['menu_bg'] = "Menu BG";
+
+				$lang_string['menu_title_bg'] = "Menu Title BG";
+
+				$lang_string['menu_border'] = "Menu Border";
+
+				$lang_string['menu_title_text'] = "Menu Title Text";
+
+				$lang_string['menu_text'] = "Menu Text";
+
+				$lang_string['menu_link_reg_color'] = "Menu Link Default";
+
+				$lang_string['menu_link_hi_color'] = "Menu Link Hover";
+
+				$lang_string['menu_link_down_color'] = "Menu Link Active";
+
+				// Submit
+
+				$lang_string['color_preset'] = "Color Schemes:"; // 0.3.7q
+
+				$lang_string['scheme_name'] = "Enter a custom color scheme name:"; // 0.3.7q
+
+				$lang_string['scheme_file'] = "Enter scheme file name: (no spaces or file extensions)"; // 0.3.7q
+
+				$lang_string['save_btn'] = "&nbsp;Save&nbsp;"; // 0.3.7q
+
+				$lang_string['form_error'] = "Please enter a name for your custom color scheme."; // 0.3.7q
+
+				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Paramètres de configuration non sauvegardés. Problème rencontré durant l opération de sauvegarde.<br /><br />le Serveur a reporté :<br />";
+
+				break;
+
+			case 'comments':
+
+				// Comments
+
+				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+
+				$lang_string['title'] = "Commentaires";
+
+				$lang_string['header'] = "Ajouter Commentaire";
+
+				$lang_string['instructions'] = "Remplissez ce formulaire pour ajouter un commentaire.";
+
+				$lang_string['comment_name'] = "Votre Nom :";
+
+				$lang_string['comment_email'] = "Email:"; // 0.3.8
+
+				$lang_string['comment_url'] = "URL:"; // 0.3.8
+
+				$lang_string['comment_remember'] = "Remember me:"; // 0.3.8
+
+				$lang_string['comment_text'] = "Votre Commentaire :";
+
+				$lang_string['post_btn'] = "&nbsp;Poster&nbsp;";
+
+				$lang_string['delete_btn'] = "Effacer";
+
+				// Error Response
+
+				$lang_string['error_add'] = "<h2>Whoops!</h2>Commentaire non sauvegardé. Problème recontré durant l'éxecution du script.<br /><br />Le Serveur a reporté :<br />";
+
+				$lang_string['error_delete'] = "<h2>Whoops!</h2>Commentaire non détruit. Problème rencontré durant l'opération de suppression de votre commentaire.<br /><br />le Serveur a reporté :<br />";
+
+				$lang_string['form_error'] = "Veuillez remplir les champs NOM et COMMENTAIRE"; // <-- Need Translation
+
+				break;
+
+			case 'delete':
+
+				$lang_string['title'] = "Effacer";
+
+				$lang_string['instructions'] = "Voici un apercu de ce que vous souhaitez effacer. Soyez certain de ce que vous faites, il n'y a pas de marche arrière possible...";
+
+				$lang_string['ok_btn'] = "&nbsp;Je suis sur&nbsp;";
+
+				$lang_string['cancel_btn'] = "&nbsp;J'annule&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Impossible de Supprimer<br /><br />Le Serveur a reporté :<br />";
+
+				break;
+
+			case 'delete_static':
+
+				$lang_string['title'] = "Effacer une page statique";
+
+				$lang_string['instructions'] = "Voici un apercu de la page que vous souhaitez effacer. Soyez certain de ce que vous faites, il n'a pas de marche arrière possible...";
+
+				$lang_string['ok_btn'] = "&nbsp;Je suis sur&nbsp;";
+
+				$lang_string['cancel_btn'] = "&nbsp;J'annule&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Impossible de supprimer la page.<br /><br />Le Serveur a reporté :<br />";
+
+				break;
+
+			case 'image_list':
+
+				$lang_string['title'] = "Liste des Images";
+
+				$lang_string['instructions'] = "Cliquez sur ces liens pour voir les images.<br><br>Pour ajouter une image :<br>1) Copier l URL de votre image.<br>2) Retournez à la page d'ajout ou d'édition.<br>3) Cliquez sur le bouton 'img' et collez l'URL de l'image dans la fenetre.";
+
+				break;
+
+			case 'info': // New 0.3.7
+
+				$lang_string['title'] = "Meta-Data Information";
+
+				$lang_string['instructions'] = "The information below is used for &quot;meta-data&quot;, which helps search engines correctly find and identify your site. Information may also be used in RSS feeds.";
+
+				$lang_string['info_keywords'] = "Keywords: (List of keywords separated by commas.)";
+
+				$lang_string['info_description'] = "Description: (An abstract or a free-text description of your site.)";
+
+				$lang_string['info_copyright'] = "Rights: (Copyright statement, or link to document containing information.)";
+
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+
+				$lang_string['form_error'] = "Please complete the Title and Author fields.";
+
+				break;
+
+			case 'index':
+
+				// Index
+
+				break;
+
+			case 'static':
+
+				// Index
+
+				break;
+
+			case 'rating': // New 0.3.8
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+
+				break;
+
+			case 'login':
+
+				$lang_string['upgrade'] = "<h2>Upgrade</h2>"; // New 0.3.8
+
+				$lang_string['upgrade_count'] = "%n comment files need to be upgraded:"; // New 0.3.8
+
+				$lang_string['upgrade_url'] = "Upgrade Comments"; // New 0.3.8
+
+				$lang_string['title'] = "Login";
+
+				$lang_string['instructions'] = "Veuillez entrez votre nom d'utilisateur et votre mot de passe ci dessous.";
+
+				$lang_string['username'] = "Nom d'utilisateur :";
+
+				$lang_string['password'] = "Mot de passe :";
+
+				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
+
+				// Success
+
+				$lang_string['success'] = "<h2>Ok !</h2>Vous etes maintenant logué ! Bloggez Bien !<p />";
+
+				// Wrong Password
+
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Erreur de Log. Vérifiez que vous avez entré correctement votre nom d'utilsateur et votre mot de passe, et réessayez.<p />";
+
+				$lang_string['form_error'] = "Complétez les champs NOM et MOT DE PASSE"; // <-- Need Translation
+
+				break;
+
+			case 'logout':
+
+				$lang_string['title'] = "Se Déloguer";
+
+				$lang_string['instructions'] = "<h2>Whoops!</h2>Impossible de se déloguer. Pas Possible de détruire le cookie. Pourquoi etes vous encore loggé ?<p />";
+
+				break;
+
+			case 'forms':
+
+				$lang_string['title'] = "";
+
+				$lang_string['instructions'] = "";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Sauvegarde impossible.<br /><br />Le Serveur a reporté :<br />";
+
+				break;
+
+			case 'set_login': // <-- New
+
+				$lang_string['title'] = "Change Username &amp; Password";
+
+				$lang_string['instructions'] = "Use the form below to change your Username and/or Password. Enter the Username and Password that you want to use.";
+
+				$lang_string['username'] = "Username:";
+
+				$lang_string['password'] = "Password:";
+
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+
+				// Success
+
+				$lang_string['success'] = "<h2>Success!</h2>Your Username and/or Password is active. Happy blogging!<p />";
+
+				// Wrong Password
+
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
+
+				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+
+				break;
+
+			case 'install00':
+
+				$lang_string['title'] = "Welcome";
+
+				$lang_string['instructions'] = "Thank you for choosing Simple PHP Blog!";
+
+				$lang_string['blog_choose_language'] = "Choose Language:";
+
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+
+				break;
+
+			case 'install01':
+
+				$lang_string['title'] = "Welcome";
+
+				$lang_string['instructions'] = "
+
+				Thank you for choosing Simple PHP Blog!<br /><br />Simple PHP Blog is a light-weight blogging system. It requires PHP 4.1 or greater, and write-permissions on the server. All information is stored in flat-files, so no database is required.<br /><br />
+
+				In order to begin, Simple PHP Blog needs to create three folders (<b>config</b>, <b>content</b>, and <b>images</b>) in which to store your information. After that, you will create your password and then you can start blogging.<br /><br />
+
+				<b>Click below to begin setup:</b>";
+
+				$lang_string['begin'] = "[ Begin Setup ]";
+
+				break;
+
+			case 'install02':
+
+				$lang_string['title'] = "Setup";
+
+				$lang_string['instructions'] = "Trying to create <b>config</b>, <b>content</b>, and <b>images</b> folders:";
+
+				$lang_string['folder_exists'] = "Okay! Folder already exists. No changes made...";
+
+				$lang_string['folder_failed'] = "Whoops! Could not create folder...";
+
+				$lang_string['folder_success'] = "Success! Folder created...";
+
+				// Help
+
+				$lang_string['help'] = "
+
+				<h2>Whoops!</h2>
+
+				Could not create one or more folders!<br /><br />This is most likely because:<br />
+
+				<ol>
+
+				<li><b>Write Permissions</b> aren't set to allow <b>Read/Write</b> access.</li>
+
+				<li>The <b>UID</b>'s (user ID's) of all files and folder must match.</li>
+
+				</ol>
+
+				Follow the trouble-shooting instructions below and click <b>Try Again</b>:<br />
+
+				<ol>
+
+				<li>Manually create the following folders: <b>config</b>, <b>content</b>, and <b>images</b>.</li>
+
+				<li>Enabled <b>Write Permissions</b> on the folders: In your FTP program, Owner, User, and World should have <b>Read</b> and <b>Write</b> access. <i>(You may need to contact your service provider to change these...)</i></li>
+
+				<li>Make sure the UID's of all your files and folders are the same. <i>(You may need to contact your service provider to change these...)</i></li>
+
+				</ol>";
+
+				$lang_string['try_again'] = "[ Try Again ]";
+
+				// Success
+
+				$lang_string['success'] = "<h2>Success!</h2>Folders created successfully!<p /><b>Click below to continue:</b>";
+
+				$lang_string['continue'] = "[ Continue ]";
+
+				break;
+
+			case 'install03':
+
+				$lang_string['title'] = "Create Username &amp; Password";
+
+				$lang_string['instructions'] = "Use the form below to Create a Username and Password.";
+
+				$lang_string['username'] = "Username:";
+
+				$lang_string['password'] = "Password:";
+
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+
+				// Success
+
+				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in. Click below to visit the Setup page, where you can name your blog. Happy blogging!<p />";
+
+				$lang_string['btn_setup'] = "[ Setup ]";
+
+				// Wrong Password
+
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />Server Reported:<br />";
+
+				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+
+				break;
+
+			case 'install04':
+
+				$lang_string['title'] = "Create Password File";
+
+				$lang_string['instructions'] = "Here's the tricky part:<br />
+
+				<ol>
+
+				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li>
+
+				<li>Create a New Text Document.</li>
+
+				<li>Copy and paste the code in the box below into your document.</li>
+
+				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li>
+
+				<li>Open a FTP application.</li>
+
+				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li>
+
+				<li>Delete the <b>password.php</b> from your hard drive.</li>
+
+				</ol>
+
+				";
+
+				$lang_string['information'] = "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>";
+
+				$lang_string['code'] = "Code for <b>password.php</b> file:";
+
+				$lang_string['continue'] = "[ Continue ]";
+
+				break;
+
+			case 'install05':
+
+			case 'install06':
+
+				$lang_string['title'] = "Login";
+
+				$lang_string['instructions'] = "Please enter your Username and Password below";
+
+				$lang_string['username'] = "Username:";
+
+				$lang_string['password'] = "Password";
+
+				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+
+				// Success
+
+				$lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
+
+				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
+
+				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />";
+
+				// Wrong Password
+
+				$lang_string['wrong_password'] = "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />";
+
+				$lang_string['form_error'] = "Please complete the Username and Password fields.";
+
+				// Success
+
+				$lang_string['btn_setup'] = "[ Setup ]";
+
+				$lang_string['btn_try_again'] = "[ Try Again ]";
+
+				break;
+
+			case 'setup':
+
+				$lang_string['title'] = "Installation";
+
+				$lang_string['instructions'] = "Vous pouvez modifier le nom de votre blog ainsi que vos informations personnelles.";
+
+				$lang_string['blog_title'] = "Nom du Blog :";
+
+				$lang_string['blog_author'] = "Auteur :";
+
+				$lang_string['blog_email'] = "Email:"; // <-- New 0.3.7
+
+				$lang_string['blog_footer'] = "Pied de Page :";
+
+				$lang_string['blog_choose_language'] = "Choisissez votre Langue :";
+
+				$lang_string['blog_enable_comments'] = "Enable User Comments"; // <-- New 0.3.6
+
+				$lang_string['blog_comments_popup'] = "Open Comments in Popup Window"; // <-- New 0.3.6
+
+				$lang_string['blog_enable_voting'] = "Enable Users to Rate Entries"; // <-- New 0.3.8
+
+				$lang_string['blog_email_notification'] = "Send email notification when comments are posted"; // <-- New 0.3.7
+
+				$lang_string['blog_send_pings'] = "Send weblog &quot;pings&quot;"; // <-- New 0.3.7
+
+				$lang_string['blog_ping_urls'] = "Enter full URL (i.e. http://rpc.weblogs.com/RPC2) of service to &quot;ping&quot;.<br />(You can enter more than one address separated by commas.)"; // <-- New 0.3.7
+
+				$lang_string['blog_trackback_about'] = "Trackback provides a method of notification between blogs. Let another
+
+					blog know that you are linking to them by sending them a trackback ping. See who is linking to 
+
+					your blog by receiving trackback pings.<br />
+
+				   You can either enter the URIs to ping manually, or try to do it automatically through 
+
+				   Auto-Discovery."; // <-- New 0.3.8
+
+				$lang_string['blog_trackback_enabled'] = "Enable trackback in my blog"; // <-- New 0.3.8
+
+				$lang_string['blog_trackback_auto_discovery'] = "Enable Auto-Discovery when submitting a post containing URLs"; // <-- New 0.?.?
+
+				$lang_string['blog_max_entries'] = "Maximum Entries to Display:"; // <-- New 0.3.6
+
+				$lang_string['blog_comment_tags'] = "Tags to Allow in Comments:"; // <-- New 0.3.6
+
+				$lang_string['blog_gzip_about'] = "
+
+					Depuis PHP 4.0.4, PHP a eu la capacité de lire et écrire les dossiers de gzip (gz), 
+
+					ainsi l'disque-espace comprimés d'économie. Il peut également d'une manière transparente 
+
+					comprimer les pages qui sont envoyées aux navigateurs qui soutiennent la compression de 
+
+					gzip, ainsi largeur de bande d'économie.<br />
+
+					<br />
+
+					L'appui de Zlib dans PHP n'est pas permis par défaut. Si les checkboxes sont handicapés, 
+
+					alors votre installation de PHP ne soutient pas la prolongation de Zlib."; // <-- New 0.3.7
+
+				$lang_string['blog_enable_gzip_txt'] = "Enable GZIP Compression for Database Files"; // <-- New 0.3.7
+
+				$lang_string['blog_enable_gzip_output'] = "Enable GZIP Compression for HTTP Output"; // <-- New 0.3.7
+
+				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Sauvegarde des paramètres de configuration impossibles. Problème recontré durant l'éxecution du script.<br /><br />Le Serveur a reporté :<br />";
+
+				$lang_string['form_error'] = "Veuillez compléter les champs AUTEUR et TITRE";
+
+				$lang_string['label_entry_order'] = "Ordre d'apparition :";
+
+				$lang_string['select_new_to_old'] = "Plus recents en premier";
+
+				$lang_string['select_old_to_new'] = "Plus anciens en premier";
+
+				$lang_string['label_comment_order'] = "Ordre des Commentaires:";
+
+				break;
+
+			case 'trackbacks':  // <-- New 0.3.8
+
+				// Trackbacks
+
+				$lang_string['title'] = "Trackbacks";
+
+				$lang_string['header'] = "Trackback URL for this entry:";
+
+				$lang_string['delete_btn'] = "delete";
+
+				// Error Response
+
+				$lang_string['error_add'] = "Error storing trackback data.";
+
+				break;
+
+			case 'options':
+
+				$lang_string['title'] = "Options";
+
+				$lang_string['instructions'] = "Utilisez ce formulaire pour paramétrer les formats de date et de temps utilisés dans votre blog. Vous pouvez choisir une horloge a 12 ou a 24 heures, une date à format long ou court. Les champs d'apercu se mettent automatiquement a jour et affichent le formatage choisi.";
+
+				// Long Date
+
+				$lang_string['ldate_title'] = "Format d une date longue :";
+
+				$lang_string['weekday'] = "Jour de la Semaine";
+
+				$lang_string['month'] = "Mois";
+
+				$lang_string['day'] = "Jour";
+
+				$lang_string['year'] = "Année";
+
+				$lang_string['none'] = "Aucun";
+
+				// Short Date
+
+				$lang_string['sdate_title'] = "Format d une date courte :";
+
+				$lang_string['s_month'] = "Mois";
+
+				$lang_string['s_mon'] = "MMM";
+
+				$lang_string['s_day'] = "Jour";
+
+				$lang_string['s_year'] = "Année";
+
+				$lang_string['zero_day'] = "Laissez les zéros des jours";
+
+				$lang_string['show_century'] = "Show century";
+
+				// Time
+
+				$lang_string['time_title'] = "Format de l'heure:";
+
+				$lang_string['12hour'] = "Horloge à 12 heures";
+
+				$lang_string['24hour'] = "Horloge à 24 heures";
+
+				$lang_string['before_noon'] = "Matin";
+
+				$lang_string['after_noon'] = "Après Midi";
+
+				// Date
+
+				$lang_string['date_title'] = "Format d'affichage de la date :";
+
+				$lang_string['long_date'] = "Date Longue";
+
+				$lang_string['short_date'] = "Date Courte";
+
+				$lang_string['time'] = "Horloge";
+
+				// Menu
+
+				$lang_string['menu_title'] = "Menu Date Display Format:";
+
+				$lang_string['long_date'] = "Long Date";
+
+				$lang_string['short_date'] = "Short Date";
+
+				// Used in multiple places
+
+				$lang_string['zero_day'] = "Laisser le zéro des jours";
+
+				$lang_string['zero_month'] = "Laisser le zéro des mois";
+
+				$lang_string['zero_hour'] = "Laisser le zéro des heures";
+
+				$lang_string['separator'] = "Séparateur :";
+
+				$lang_string['preview'] = "Apercu :";
+
+				$lang_string['server_offset'] = "Server Offset:";
+
+				// Buttons
+
+				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Sauvegarde des paramètres de configuration impossibles. Problème recontré durant l'éxecution du script.<br /><br />Le Serveur a reporté :<br />";
+
+				break;
+
+			case 'themes':
+
+				$lang_string['title'] = "Thèmes";
+
+				$lang_string['instructions'] = "Employez le menu drop-down pour choisir un thème différent.";
+
+				// Themes
+
+				$lang_string['choose_theme'] = "Thèmes:";
+
+				// Buttons
+
+				$lang_string['submit_btn'] = "&nbsp;Envoyer&nbsp;";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+
+				break;
+
+			case 'upload_img':
+
+				$lang_string['title'] = "Upload d'image";
+
+				$lang_string['instructions'] = "Cliquez sur le bouton ci dessous pour choisir un fichier à uploader.";
+
+				$lang_string['select_file'] = "Choisir un fichier";
+
+				$lang_string['upload_btn'] = "Upload";
+
+				// Error Response
+
+				$lang_string['error'] = "<h2>Whoops!</h2>Upload d'image impossible. Voici quelques informations : <br /><br />Le Serveur a reporté :<br />";
+
+				break;
+
+			case 'search': // <-- New 0.3.7
+
+				$lang_string['title'] = "Résultats De Recherche";
+
+				$lang_string['instructions'] = "Résultats de recherche pour <b>%string</b>:";
+
+				$lang_string['not_found'] = "Résultat n'a pas trouvé";
+
+				break;
+
+			case 'contact': // <-- New 0.3.8
+
+				$lang_string['title'] = "Contactez-Moi";
+
+				$lang_string['instructions'] = "Complétez la forme :";
+
+				$lang_string['form_error'] = "Veuillez accomplir les champs de sujet et de commentaire.";
+
+				$lang_string['name'] = "Nom:";
+
+				$lang_string['email'] = "Email:";
+
+				$lang_string['subject'] = "Sujet:";
+
+				$lang_string['comment'] = "Commentaire:";
+
+				$lang_string['submit_btn'] = "&nbsp;Soumettez&nbsp;";
+
+				$lang_string['success'] = "<h2>Succès !</h2>Votre message a été envoyé.<p />";
+
+				$lang_string['contact_capcha'] = "Anti-Spam: Entrez <b>%s</b>"; // 0.4.2
+
+				$lang_string['failure'] = "<h2>Erreur !</h2>Votre message n'a pas été envoyé. Très probablement anti le Spam n'a pas été écrit correctement.<p />";
+
+				break;
+
+			case 'stats':
+
+				$lang_string['title'] = "<h2>Statistiques</h2>";
+
+				$lang_string['general'] = "<h3>Généralités</h3>";
+
+				$lang_string['entry_info'] = "<b>%s</b> employer d'entrées <b>%s</b> mots stockés dedans <b>%s</b> bytes";
+
+				$lang_string['comment_info'] = "<b>%s</b> employer de commentaires <b>%s</b> mots stockés dedans <b>%s</b> bytes";
+
+				$lang_string['trackback_info'] = "<b>%s</b> trackbacks stockés dedans <b>%s</b> bytes";
+
+				$lang_string['static_info'] = "<b>%s</b> employer statique de pages <b>%s</b> mots stockés dedans <b>%s</b> bytes";
+
+				$lang_string['most_viewed_entries'] = "<h3>10 entrées les plus vues</h3>";
+
+				$lang_string['most_commented_entries'] = "<h3>10 entrées les plus commentées</h3>";
+
+				$lang_string['most_trackbacked_entries'] = "<h3>10 trackbacked plus des entrées</h3>";
+
+				$lang_string['vote_info'] = "<b>%s</b> voix stockées dedans <b>%s</b> bytes"; // 0.4.1
+
+				$lang_string["most_voted_entries"] = "<h3>10 entrées les plus votées</h3>"; // 0.4.1
+
+				$lang_string["most_rated_entries"] = "<h3>La plupart des entrées évaluées</h3>"; // 0.4.1
+
+				break;
+
+			default:
+
+				break;
+
+		}
+
+	}
+
+		
+
+?>
