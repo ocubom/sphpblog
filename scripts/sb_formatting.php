@@ -693,10 +693,13 @@
 		
 		
 		if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
-			$page_template->setTag('{URI}', 'http://'.$_SERVER[ 'HTTP_HOST' ].'/index.php'); // Blog is root level
+			$page_template->setTag('{URI}', curPageURL().'/index.php'); // Blog is root level
 		} else {
-			$page_template->setTag('{URI}', 'http://'.$_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]).'/index.php'); // Blog is in sub-directory
+			$page_template->setTag('{URI}', dirname(curPageURL()).'/index.php'); // Blog is in sub-directory
 		}
+
+		$page_template->setTag('{SEARCH_URI}', dirname($page_template->getTag('{URI}')) . '/plugins/search.php');
+
 		
 		// Theme Style Sheet
 		$page_template->setTag('{BLOG_THEME}', $GLOBALS['blog_theme']);

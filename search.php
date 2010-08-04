@@ -37,8 +37,11 @@
 		// PAGE CONTENT BEGIN
 		ob_start();
 
+?>
+		<input style="float: right" type="button" VALUE="Add to Search Bar" onClick='window.external.AddSearchProvider("<?php echo dirname(curPageURL()) ?>/plugins/search.php");'>
+<?php
 		print $search->getContent();
-	
+
 		if (!empty($search_string)) {			
 		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $GLOBALS['lang_string']['php_charset'] ), $GLOBALS['lang_string']['instructions'] ) . '<br />' );
 		

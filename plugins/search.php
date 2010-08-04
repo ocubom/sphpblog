@@ -1,5 +1,7 @@
 <?php
 
+// opensearch standard
+
 require_once("../setup/setup.php");
 require_once("../scripts/classes/container.php");
 require_once("../scripts/classes/configuration.php");
