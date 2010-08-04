@@ -33,16 +33,12 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-	 	$port = ':' . $_SERVER[ 'SERVER_PORT'];
-		if ($port == ':80') {
-			$port = '';
-		}
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ].$port. '/';
+			$base_url = curPageURL() . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]) . '/';
+			$base_url = dirname(curPageURL()) . '/';
 		}
 		
 		header('Content-type: application/xml');
@@ -141,16 +137,12 @@
 
 		$entry_file_array = blog_entry_listing();
 
-		$port = ':' . $_SERVER[ 'SERVER_PORT'];
-		if ($port == ':80') {
-			$port = '';
-		}		
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
+			$base_url = curPageURL() . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
+			$base_url = dirname(curPageURL()) . '/';
 		}
 
 		header('Content-type: application/xml');
@@ -231,16 +223,12 @@
 		
 		$entry_file_array = blog_entry_listing();
 
-		$port = ':' . $_SERVER[ 'SERVER_PORT'];
-		if ($port == ':80') {
-			$port = '';
-		}		
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.'/';
+			$base_url = curPageURL() . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = 'http://'.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/';
+			$base_url = dirname(curPageURL()) . '/';
 		}
 		
 		header('Content-type: application/xml');
