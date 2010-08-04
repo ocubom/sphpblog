@@ -23,24 +23,34 @@
 	// ------------
 	function page_content() {
 		global $lang_string, $blog_config, $search_string;
-		
-		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$search = new Search();
+
+		if (empty($search_string)) {
+			// search start page
+			$entry_array[ 'subject' ] = $search->getTitle();
+		} else {	
+			// SUBJECT
+			$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		}
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
-		
+
+		print $search->getContent();
+	
+		if (!empty($search_string)) {			
 		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $GLOBALS['lang_string']['php_charset'] ), $GLOBALS['lang_string']['instructions'] ) . '<br />' );
 		
 		echo( '<hr />' );
-			
+
 		$output = search( $search_string, @$_GET[ 'n' ] );
 		
 		if ( $output ) {
 			echo ( $output );
 		} else {
 			echo( $GLOBALS['lang_string']['not_found'] );
+		}
 		}
 		
 		// PAGE CONTENT END

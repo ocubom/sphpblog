@@ -11,6 +11,7 @@
 	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php" />
 	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php" />
 	<link rel="alternate" type="application/atom+xml" title="Get Atom 0.3 Feed" href="atom.php" />
+	<link rel="search" type="application/opensearchdescription+xml" title="{BLOG_TITLE}" href="plugins/search.php">
 	
 	<!-- Meta Data -->
 	<!-- http://dublincore.org/documents/dces/ -->
