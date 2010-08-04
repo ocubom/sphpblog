@@ -175,13 +175,13 @@
 		// [img=http://xxx]
 		// [img=http://xxx width=xxx height=xxx popup=true float=left]
 		if ( $comment_mode ) {
-			if ( in_array( 'img', $allowed ) && $strip_all_tags === false	) {
+		/*	if ( in_array( 'img', $allowed ) && $strip_all_tags === false	) {
 				$str = replace_img_tag( $str, '[img=', ']', false );
 				$str = replace_img_tag( $str, '[IMG=', ']', false );
-			} else {
+			} else { */
 				$str = replace_img_tag( $str, '[img=', ']', true );
 				$str = replace_img_tag( $str, '[IMG=', ']', true );
-			}
+/*			}*/
 		} else {
 			if ( $strip_all_tags ) {
 				$str = replace_img_tag( $str, '[img=', ']', true );
@@ -194,11 +194,11 @@
 
 		// Selectively replace line breaks and/or decode html entities.
 		if ( $comment_mode ) {
-			if ( in_array( 'html', $allowed ) && $strip_all_tags === false ) {
+			/*if ( in_array( 'html', $allowed ) && $strip_all_tags === false ) {
 				$str = replace_html_tag( $str, false );
-			} else {
+			} else {*/
 				$str = replace_html_tag( $str, true );
-			}
+			/*}*/
 		} else {
 			if ( $strip_all_tags ) {
 				$str = replace_html_tag( $str, true );

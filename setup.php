@@ -255,7 +255,7 @@
 							<input type="checkbox" id="strike" name="strike"<?php if ( in_array( 'strike', $allowed ) ) { echo ( ' checked' ); } ?>> [strike] = Strike-out<br />
 						</td>
 						<td width="50%">
-							<input type="checkbox" id="img" name="img"<?php if ( in_array( 'img', $allowed ) ) { echo ( ' checked' ); } ?>> [img] = Image<br />
+							<!--<input type="checkbox" id="img" name="img"<?php if ( in_array( 'img', $allowed ) ) { echo ( ' checked' ); } ?>> [img] = Image<br />-->
 							<input type="checkbox" id="url" name="url"<?php if ( in_array( 'url', $allowed ) ) { echo ( ' checked' ); } ?>> [url] = URL<br />
 							<br />
 							<input type="checkbox" id="blockquote" name="blockquote"<?php if ( in_array( 'blockquote', $allowed ) ) { echo ( ' checked' ); } ?>> [blockquote] = Block Quote<br />
@@ -263,7 +263,7 @@
 							<br />
 							<input type="checkbox" id="pre" name="pre"<?php if ( in_array( 'pre', $allowed ) ) { echo ( ' checked' ); } ?>> [pre] = Preformatted<br />
 							<input type="checkbox" id="code" name="code"<?php if ( in_array( 'code', $allowed ) ) { echo ( ' checked' ); } ?>> [code] = Code<br />
-							<input type="checkbox" id="html" name="html"<?php if ( in_array( 'html', $allowed ) ) { echo ( ' checked' ); } ?>> [html] = HTML<br />
+<!--							<input type="checkbox" id="html" name="html"<?php if ( in_array( 'html', $allowed ) ) { echo ( ' checked' ); } ?>> [html] = HTML<br />-->
 						</td>
 					</tr>
 				</table><p />
