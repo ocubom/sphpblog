@@ -17,30 +17,8 @@
 	
 	// This is so I can start to track IPs
 	function getIP() {
-		if ( !empty ( $_SERVER[ 'HTTP_CLIENT_IP' ] ) ) {
-			$ip = $_SERVER[ 'HTTP_CLIENT_IP' ];
-		}
-		else if ( !empty ( $_SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) ) {
-			$ip = $_SERVER[ 'HTTP_X_FORWARDED_FOR' ];
-		}
-		else if ( !empty ( $_SERVER[ 'REMOTE_ADDR' ] ) ) {
-			$ip = $_SERVER[ 'REMOTE_ADDR' ];
-		}
-		else if ( getenv( "HTTP_CLIENT_IP" ) ) {
-			$ip = getenv( "HTTP_CLIENT_IP" );
-		}
-		else if ( getenv( "HTTP_X_FORWARDED_FOR" ) ) {
-			$ip = getenv( "HTTP_X_FORWARDED_FOR" );
-		}
-		else if ( getenv( "REMOTE_ADDR") ) {
-			$ip = getenv( "REMOTE_ADDR" );
-		}
-		else { 
-			$ip = "UNKNOWN";
-		}
-		return( $ip );
+		return $_SERVER[ 'REMOTE_ADDR' ];
 	}
-	
 	
 	function sb_mail ($from, $to, $subject, $body, $text=true, $priority=3) {
 		// Contributed by: Javier Gutierrez, guti <at> ya <dot> com
