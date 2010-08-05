@@ -153,7 +153,8 @@
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
-		
+
+		<?php if (ini_get('upload_files')) { ?>		
 		<hr />		
 		<!-- Upload New Emoticon Form -->
 		<form enctype="multipart/form-data" name="emoticons_up" method="post" action="emoticons.php">
@@ -162,6 +163,8 @@
 		<!-- Upload New Emoticon Form -->
 		
 		<?php 
+		}
+
 		if ($_FILES["user_emot"]) {
 			// User is trying to upload a graphic.
 			$ok = upload_emoticons();
