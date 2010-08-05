@@ -41,7 +41,11 @@
 	
 	$array = array();
 	for ( $i = 0; $i < count( $key_array ); $i++ ) {
-		array_push( $array, str_replace( '|', ':', $_POST[ $key_array[$i] ] ) );
+		if (in_array($key_array[$i], array('time_AM', 'time_PM'))) {
+			array_push( $array, str_replace( '|', ':', htmlspecialchars($_POST[ $key_array[$i] ]) ) );			
+		} else {
+			array_push( $array, str_replace( '|', ':', $_POST[ $key_array[$i] ] ) );
+		}
 	}
 	
 	global $ok;

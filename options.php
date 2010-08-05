@@ -129,8 +129,8 @@
 						<input type="checkbox" id="time_leadZeroHour" name="time_leadZeroHour" onClick="time_view();"<?php if ( $dateArray[ 'time_leadZeroHour' ] == 'on') { echo ( ' checked'); } ?>><?php echo( $GLOBALS['lang_string']['zero_hour'] ); ?><br />
 					</td>
 					<td>
-						<input type="text" id="time_AM" name="time_AM" value="<?php echo ( $dateArray[ 'time_AM' ] ); ?>" autocomplete="OFF" size="6" onBlur="time_view();"> <?php echo( $GLOBALS['lang_string']['before_noon'] ); ?><br />
-						<input type="text" id="time_PM" name="time_PM" value="<?php echo ( $dateArray[ 'time_PM' ] ); ?>" autocomplete="OFF" size="6" onBlur="time_view();"> <?php echo( $GLOBALS['lang_string']['after_noon'] ); ?><br />
+						<input type="text" id="time_AM" name="time_AM" value="<?php echo ( htmlspecialchars($dateArray[ 'time_AM' ]) ); ?>" autocomplete="OFF" size="6" onBlur="time_view();"> <?php echo( $GLOBALS['lang_string']['before_noon'] ); ?><br />
+						<input type="text" id="time_PM" name="time_PM" value="<?php echo ( htmlspecialchars($dateArray[ 'time_PM' ]) ); ?>" autocomplete="OFF" size="6" onBlur="time_view();"> <?php echo( $GLOBALS['lang_string']['after_noon'] ); ?><br />
 						<input type="text" id="time_separator" name="time_separator" value="<?php echo ( $dateArray[ 'time_separator' ] ); ?>" autocomplete="OFF" size="6" onBlur="time_view();"> <?php echo( $GLOBALS['lang_string']['separator'] ); ?><br /><br />
 						
 						<?php echo( $GLOBALS['lang_string']['preview'] ); ?><br />

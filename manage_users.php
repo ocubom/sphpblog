@@ -92,7 +92,7 @@
 				$array = array($_POST[ 'sFullname' ], $_POST[ 'sUsername' ], crypt( $_POST[ 'sUsername' ], $_POST[ 'sPassword' ] ), $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
 			}
 			$str = implode('|', $array);
-			$newfile = $newfile . $str . "\n";
+			$newfile = $newfile . htmlspecialchars($str) . "\n";
 
 			// Now post the new file with the updated information
 			$pfile = fopen(CONFIG_DIR."users.php","w");
@@ -202,10 +202,10 @@
 
 				echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_username'] . '</td><td><input type="text" name="sUsername" value="" autocomplete="OFF" size="40";"></td></tr>');
 			}
-			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_fullname'] . '</td><td><input type="text" name="sFullname" value="' . $tmp[0] . '" autocomplete="OFF" size="40";"></td></tr>');
-			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_password'] . '</td><td><input type="password" name="sPassword" value="' . $tmp[2] . '" autocomplete="OFF" size="60";"></td></tr>');
-			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_email'] . '</td><td><input type="text" name="sEmail" value="' . $tmp[5] . '" autocomplete="OFF" size="40";"></td></tr>');
-			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_avatar'] . '</td><td><input type="text" name="sAvatar" value="' . $tmp[3] . '" autocomplete="OFF" size="60";"></td></tr>');
+			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_fullname'] . '</td><td><input type="text" name="sFullname" value="' . htmlspecialchars($tmp[0]) . '" autocomplete="OFF" size="40";"></td></tr>');
+			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_password'] . '</td><td><input type="password" name="sPassword" value="' . htmlspecialchars($tmp[2]) . '" autocomplete="OFF" size="60";"></td></tr>');
+			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_email'] . '</td><td><input type="text" name="sEmail" value="' . htmlspecialchars($tmp[5]) . '" autocomplete="OFF" size="40";"></td></tr>');
+			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_avatar'] . '</td><td><input type="text" name="sAvatar" value="' . htmlspecialchars($tmp[3]) . '" autocomplete="OFF" size="60";"></td></tr>');
 			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_state'] . '</td><td><input type="checkbox" name="sActive"');
 			if ( $tmp[4] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
 			echo( '></td></tr>');
