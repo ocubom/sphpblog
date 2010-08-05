@@ -62,15 +62,6 @@
 			exit;
 		}
 		
-		// Explicitly denied files (we don't really need this anymore...) - provided by ReZEN (rezen@xorcrew.net)
-		$upload_denied_extentions = array( "exe", "pl", "php", "php3", "php4", "php5", "phps", "asp","cgi", "html", "htm", "dll", "bat", "cmd" );
-		foreach ($upload_denied_extentions AS $denied_extention) {
-			if($denied_extention == $extension) {
-			echo('That filetype is not allowed');
-			exit;
-			}		 
-		}
-	
 		if ( move_uploaded_file($_FILES['userfile']['tmp_name'][$i], $uploadfile ) ) {
 			chmod( $uploadfile, 0777 );
 			$ok = true;
@@ -78,16 +69,6 @@
 			$ok = false;
 		}
 
-		if (function_exists('getimagesize')) {
-			if ( @getimagesize($_FILES['userfile']['tmp_name'][$i]) == FALSE ){
-				echo('Image is not valid or not an image file.');
-				exit;
-			}
-		} else {
-			echo('Image cannot be validated.  Do you have the PHP GD library installed?');
-			exit;
-		}
-	
 		}
 	}
 	}

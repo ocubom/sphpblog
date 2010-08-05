@@ -50,8 +50,11 @@
 				$uploadfile = $uploaddir . preg_replace("/ /","_",$_FILES[ 'user_emot' ][ 'name' ]);
 		
 				if ( @is_uploaded_file($_FILES['user_emot']['tmp_name'] ) ) {
-					if ( @getimagesize($_FILES['user_emot']['tmp_name'] ) == FALSE ){
-						$ok = -1;
+			                // Allowed files
+			                $upload_valid_extentions = array( "jpg", "gif", "png" );
+			                $extension = strtolower(substr(strrchr($_FILES['user_emot']['tmp_name'], "."), 1));
+			                if (!in_array($extension, $upload_valid_extentions)) {
+                        			$ok = -1;
 					} else {
 						if ( @move_uploaded_file($_FILES[ 'user_emot' ][ 'tmp_name' ], $uploadfile ) ) {
 							chmod( $uploadfile, 0777 );
@@ -151,14 +154,12 @@
 		ob_start(); ?>
 		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
 		
-		<hr />
-		
+		<hr />		
 		<!-- Upload New Emoticon Form -->
 		<form enctype="multipart/form-data" name="emoticons_up" method="post" action="emoticons.php">
 			<?php echo( $lang_string['upload_instructions'] ); ?> <input name="user_emot" type="file" /><input type="submit" value="Upload" />
 		</form>
 		<!-- Upload New Emoticon Form -->
-		
 		
 		<?php 
 		if ($_FILES["user_emot"]) {

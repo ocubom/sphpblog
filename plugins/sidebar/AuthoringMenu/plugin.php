@@ -27,7 +27,7 @@
 			if ( $GLOBALS[ 'logged_in' ] == true ) {
 				$str .= '<a href="add.php">' . $GLOBALS[ 'lang_string' ][ 'menu_add' ] . '</a><br />';
 				$str .= '<a href="add_static.php">' . $GLOBALS[ 'lang_string' ][ 'menu_add_static' ] . '</a><br />';
-				if (ini_get('file_uploads') and function_exists('getimagesize'))
+				if (ini_get('file_uploads'))
 					$str .= '<a href="upload_img.php">' . $GLOBALS[ 'lang_string' ][ 'menu_upload' ] . '</a>';
 			}
 			

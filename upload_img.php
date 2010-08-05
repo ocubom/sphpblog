@@ -33,9 +33,6 @@
 		if (!ini_get('file_uploads')) {
 			echo( $GLOBALS['lang_string']['error'] . 'php.ini file_uploads = Off.<p />' );
 		}
-		elseif(!function_exists('getimagesize')){
-			echo( $GLOBALS['lang_string']['error'] . 'PHP GD library is not installed.<p />' );
-		}
 		elseif($formstate !="showuploaders"){
 	echo('<form action="upload_img.php" method="get">'.$GLOBALS['lang_string']['howmany'].' (Total Max: ' . intval(ini_get('post_max_size'))/(1024*1024) . ' MB) <select id="howmany" name="howmany">');
 		for($i=1;$i<=intval(ini_get('max_file_uploads'));$i++){
