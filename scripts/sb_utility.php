@@ -10,7 +10,23 @@
 	// Utility Functions
 	// -----------------
 
-        function write_users($user_list) {
+	function write_users($user_list) {
+		new_write_users($user_list);
+	}
+
+	function read_users() {
+		// check if old format file exists, if so, read and convert
+		if (file_exists(CONFIG_DIR . "users.php")) {
+			$user_list = old_read_users();
+			new_write_users($user_list);
+			// delete users.php here
+			unlink(CONFIG_DIR . "users.php");
+			return $user_list;
+		}
+		return new_read_users();
+	}
+
+        function old_write_users($user_list) {
                 $newfile = '';
                 foreach ($user_list as $user) {
                         $str = implode('|', $user);
@@ -24,37 +40,38 @@
         }
 
         function new_write_users($user_list) {
-                $newfile = '<?php $users = "';
+                $newfile = '';
                 foreach ($user_list as $user) {
                         $str = implode('|', $user);
                         $newfile .= htmlspecialchars(trim($str)) . "\n";
                 }
 
                 // Now post the new file with the updated information
-                $pfile = fopen(CONFIG_DIR."users.php","w");
-                fwrite($pfile, base64_encode(trim($newfile)) . '"; ?>');
+                $pfile = fopen(CONFIG_DIR."users2.php","w");
+                fwrite($pfile, "<?php \$users = \"" . base64_encode(trim($newfile)) . '"; ?>');
                 fclose($pfile);
         }
 
         function new_read_users() {
-                // First read
                 $users = '';
-                @include(CONFIG_DIR."users.php");
+                @include(CONFIG_DIR."users2.php");
                 $user_list = array();
 
+		if (empty($users)) {
+			return $user_list;
+		}
                 $userstr = base64_decode($users);
                 $users = explode("\n", $userstr);
 
                 foreach ($users as $line) {
                         $tmp = explode('|', trim($line));
-                        $user_list[] = $tmp;
+                       	$user_list[] = $tmp;
                 }
 
                 return $user_list;
         }
 
-        function read_users() {
-                        // First read
+        function old_read_users() {
                         $user_list = array();
                         $pfile = @fopen(CONFIG_DIR."users.php","r");
                         if ($pfile === FALSE) {
