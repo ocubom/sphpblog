@@ -16,7 +16,32 @@
 
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'manage_users' );
-	
+
+	function write_users($user_list) {
+		$newfile = '';
+		foreach ($user_list as $user) {
+			$str = implode('|', $user);
+                        $newfile .= htmlspecialchars(trim($str)) . "\n";
+		}
+
+                // Now post the new file with the updated information
+                $pfile = fopen(CONFIG_DIR."users.php","w");
+                fwrite($pfile, trim($newfile));
+                fclose($pfile);
+	}
+
+	function read_users() {
+                        // First read
+                        $pfile = fopen(CONFIG_DIR."users.php","r");
+			$user_list = array();
+                        while (!feof($pfile)) {
+                                $line = fgets($pfile);
+                                $tmp = explode('|', trim($line));
+				$user_list[] = $tmp;
+                        }
+                        fclose($pfile);
+		return $user_list;
+	}	
 
 	// --------------
 	// PRE-PROCESSING
@@ -41,20 +66,17 @@
 			echo($lang_string['fulladminerror']);
 		} else {
 
-			// First read and remove the offending line
-			$pfile = fopen(CONFIG_DIR."users.php","a+");
-			rewind($pfile);
-			while (!feof($pfile)) {
-				$line = fgets($pfile);
-				$tmp = explode('|', $line);
-
-				if ( $_GET[ 'type' ] == "edit" ) {
-					if ( $tmp[1] != $_GET[ 'user' ] ) { $newfile = $newfile . $line; }
-				} else {
-					$newfile = $newfile . $line;
+	                $user_list = read_users();
+        	        $new_user_list = array();
+                	foreach ($user_list as $user) {
+                        	if ($_GET[ 'type' ] == "edit") {
+					if ($user[1] != $_GET[ 'user' ]) {
+                                		$new_user_list[] = $user;
+					}
+                       		} else {
+                                	$new_user_list[] = $user;
 				}
-			}
-			fclose($pfile);
+	                }
 
 			// Add our new record onto the end of the structure
 
@@ -77,7 +99,6 @@
 
 			$blankfield = "";
 			
-
 			// Create the record structure
 			if ( $_GET[ 'type' ] == "edit" ) {
 				// Now deal with the passwords - since we dont have the decrypt possibility
@@ -91,13 +112,8 @@
 			} else {
 				$array = array($_POST[ 'sFullname' ], $_POST[ 'sUsername' ], crypt( $_POST[ 'sUsername' ], $_POST[ 'sPassword' ] ), $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
 			}
-			$str = implode('|', $array);
-			$newfile = $newfile . htmlspecialchars($str) . "\n";
-
-			// Now post the new file with the updated information
-			$pfile = fopen(CONFIG_DIR."users.php","w");
-			fwrite($pfile, $newfile);
-			fclose($pfile);
+			$new_user_list[] = $array;
+			write_users($new_user_list);
 
 			redirect_to_url("manage_users.php");
 		}
@@ -108,23 +124,14 @@
 	// ---------- DELETE USER ----------
 	// Basically read the whole file leaving out the user's line we're deleting
 	if ( ($_SESSION[ 'fulladmin' ] == 'yes' ) AND ( $_GET[ 'action' ] == "delete" )) {
-		$pfile = fopen(CONFIG_DIR."users.php","a+");
-		rewind($pfile);
-		while (!feof($pfile)) {
-			$line = fgets($pfile);
-			$tmp = explode('|', $line);
-			if ( $tmp[1] != $_GET[ 'user' ] ) {
-				$newfile = $newfile . $line;
-			} else {
-				$deleted_user = $tmp[0];
+		$user_list = read_users();
+		$new_user_list = array();
+		foreach ($user_list as $user) {
+			if ($user[1] != $_GET[ 'user' ]) {
+				$new_user_list[] = $user;
 			}
 		}
-		// Now post the new file
-		fclose($pfile);
-	
-		$pfile = fopen(CONFIG_DIR."users.php","w");
-		fwrite($pfile, $newfile);
-		fclose($pfile);
+		write_users($new_user_list);
 	
 		redirect_to_url("manage_users.php");
 	}
@@ -169,11 +176,8 @@
 			// Only do this if we are editing - otherwise leave the fields blank
 			if ( $_GET[ 'type' ] == "edit" ) {
 				// Now get the information about this user
-				$pfile = fopen(CONFIG_DIR."users.php","a+");
-				rewind($pfile);
-				while (!feof($pfile)) {
-					$line = fgets($pfile);
-					$tmp = explode('|', $line);
+				$user_list = read_users();
+				foreach($user_list as $tmp) {
 					if ( $tmp[1] == $_GET[ 'user' ] ) {
 						Break;
 					}
@@ -240,13 +244,14 @@
 			echo( '<tr class="header"><th></th><th><i>' . $lang_string['grid_header'] . '</i></th><th></th><th></th><th></th></tr>');
 			echo( '<tr class="header"><th></th><th>' . $lang_string['grid_login'] . '</th><th>' . $lang_string['grid_email'] . '</th><th>' . $lang_string['grid_avatar'] . '</th><th>' . $lang_string['grid_state'] . '</th></tr>');
 
-			$pfile = fopen(CONFIG_DIR."users.php","a+");
-			rewind($pfile);
-			$linecount = 0;
-			while (!feof($pfile)) {
-				$line = fgets($pfile);
-				if ($line != '') {
-					$tmp = explode('|', $line);
+			$user_list = read_users();
+
+			// sort user listing by login, array index 1
+			$sort_col = array();
+			foreach ($user_list as $sub) $sort_col[] = $sub[1];
+			array_multisort($sort_col, $user_list);
+
+			foreach ($user_list as $tmp) {
 					if (($linecount % 2) == 0) {
 						echo( '<tr class="data1"><td></td><td><b>' . $tmp[0] . '</b></td><td></td><td><b><a href="manage_users.php?action=modify&type=edit&user=' . $tmp[1] . '">' . $lang_string['btn_modify'] . '</a>&nbsp|&nbsp<a href="manage_users.php?action=delete&user=' . $tmp[1] . '">' . $lang_string['btn_delete'] . '</a></b></td><td></td></tr>');
 						echo( '<tr class="data1"><td></td><td>' . $tmp[1] . '</td><td>' . $tmp[5] . '</td><td>' . $tmp[3] . '</td><td>' . $tmp[4] . '</td></tr>');
@@ -255,9 +260,7 @@
 						echo( '<tr class="data2"><td></td><td>' . $tmp[1] . '</td><td>' . $tmp[5] . '</td><td>' . $tmp[3] . '</td><td>' . $tmp[4] . '</td></tr>');
 					}
 					$linecount = $linecount + 1;
-				}
 			}
-			fclose($pfile);
 			echo( '</table>' );
 			// END USER GRID
 		}
