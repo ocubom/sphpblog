@@ -10,6 +10,65 @@
 	// Utility Functions
 	// -----------------
 
+        function write_users($user_list) {
+                $newfile = '';
+                foreach ($user_list as $user) {
+                        $str = implode('|', $user);
+                        $newfile .= htmlspecialchars(trim($str)) . "\n";
+                }
+
+                // Now post the new file with the updated information
+                $pfile = fopen(CONFIG_DIR."users.php","w");
+                fwrite($pfile, trim($newfile));
+                fclose($pfile);
+        }
+
+        function new_write_users($user_list) {
+                $newfile = '<?php $users = "';
+                foreach ($user_list as $user) {
+                        $str = implode('|', $user);
+                        $newfile .= htmlspecialchars(trim($str)) . "\n";
+                }
+
+                // Now post the new file with the updated information
+                $pfile = fopen(CONFIG_DIR."users.php","w");
+                fwrite($pfile, base64_encode(trim($newfile)) . '"; ?>');
+                fclose($pfile);
+        }
+
+        function new_read_users() {
+                // First read
+                $users = '';
+                @include(CONFIG_DIR."users.php");
+                $user_list = array();
+
+                $userstr = base64_decode($users);
+                $users = explode("\n", $userstr);
+
+                foreach ($users as $line) {
+                        $tmp = explode('|', trim($line));
+                        $user_list[] = $tmp;
+                }
+
+                return $user_list;
+        }
+
+        function read_users() {
+                        // First read
+                        $user_list = array();
+                        $pfile = @fopen(CONFIG_DIR."users.php","r");
+                        if ($pfile === FALSE) {
+                                return $user_list;
+                        }
+                        while (!feof($pfile)) {
+                                $line = fgets($pfile);
+                                $tmp = explode('|', trim($line));
+                                $user_list[] = $tmp;
+                        }
+                        fclose($pfile);
+                return $user_list;
+        }
+
 function curPageURL() {
  $pageURL = 'http';
  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}

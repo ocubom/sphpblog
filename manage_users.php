@@ -17,32 +17,6 @@
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'manage_users' );
 
-	function write_users($user_list) {
-		$newfile = '';
-		foreach ($user_list as $user) {
-			$str = implode('|', $user);
-                        $newfile .= htmlspecialchars(trim($str)) . "\n";
-		}
-
-                // Now post the new file with the updated information
-                $pfile = fopen(CONFIG_DIR."users.php","w");
-                fwrite($pfile, trim($newfile));
-                fclose($pfile);
-	}
-
-	function read_users() {
-                        // First read
-                        $pfile = fopen(CONFIG_DIR."users.php","r");
-			$user_list = array();
-                        while (!feof($pfile)) {
-                                $line = fgets($pfile);
-                                $tmp = explode('|', trim($line));
-				$user_list[] = $tmp;
-                        }
-                        fclose($pfile);
-		return $user_list;
-	}	
-
 	// --------------
 	// PRE-PROCESSING
 	// --------------

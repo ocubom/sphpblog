@@ -640,11 +640,8 @@
       $fullname = $lang_string['sb_admin'];
       return ( $fullname );
     } else {
-      $pfile = fopen(CONFIG_DIR."users.php","a+");
-      rewind($pfile);
-      while (!feof($pfile)) {
-        $line = fgets($pfile);
-        $tmp = explode('|', $line);
+      $user_list = read_users();
+      foreach ($user_list as $tmp) {
         if ( $tmp[1] == $username ) {
           $fullname = $tmp[0];
           fclose($pfile);
@@ -652,18 +649,14 @@
         }
       }
     }
-    fclose($pfile);
     return ( $lang_string['sb_admin'] );
   }
 
   function get_avatarurl( $username ) {
     // Go to the users database and get the user name
     if ( $username != '' ) {
-      $pfile = fopen(CONFIG_DIR."users.php","a+");
-      rewind($pfile);
-      while (!feof($pfile)) {
-        $line = fgets($pfile);
-        $tmp = explode('|', $line);
+      $user_list = read_users();
+      foreach ($user_list as $tmp) {
         if ( $tmp[1] == $username ) {
           $avatarurl = $tmp[3];
           fclose($pfile);
@@ -679,11 +672,8 @@
     // Go to the users database and get the user name
     if ( $username != '' ) {
       $answer = false;
-      $pfile = fopen(CONFIG_DIR."users.php","a+");
-      rewind($pfile);
-      while (!feof($pfile)) {
-        $line = fgets($pfile);
-        $tmp = explode('|', $line);
+      $user_list = read_users();
+      foreach ($user_list as $tmp) {
         if ( $tmp[1] == $username ) {
           if ( ($type == 'MOD') and ($tmp[6] == 'Y')) {
             $answer = true;
@@ -698,7 +688,6 @@
         }
       }
     }
-    fclose($pfile);
     return ( $answer );
   }
 

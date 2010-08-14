@@ -219,11 +219,10 @@
   function check_secondary_password ( $user, $pass ) {
     // Check password against hashed password file
     //
-    $pfile = fopen(CONFIG_DIR."users.php","a+");
-    rewind($pfile);
-    while (!feof($pfile)) {
-      $line = fgets($pfile);
-      $tmp = explode('|', $line);
+
+    $user_list = read_users();
+
+    foreach ($user_list as $tmp) {
       if ( $tmp[1] == $user ) {
         // Is this user active?
         if ( $tmp[4] == 'N' ) {
@@ -257,6 +256,5 @@
         }
       }
     }
-    fclose($pfile);
   }
 ?>
