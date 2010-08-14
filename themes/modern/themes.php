@@ -557,11 +557,16 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     // Default image path.
     $img_path = "themes/" . $blog_theme . "/images/";
 
+    $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
+    if ( $header_graphic == '' ) {
+      $header_graphic = $img_path . 'header750x100.jpg';
+    }
+
 	// Begin Page Layout HTML
 	?>
 	<body>
 		<div id="page">
-			<div id="header"><img src="<?php echo( $img_path ); ?>header750x100.jpg" alt="" border="0" /></div>
+			<div id="header"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
 			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE') . '</div>'); } ?>
 			<div id="innerpage">
 			
