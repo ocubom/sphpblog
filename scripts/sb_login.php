@@ -127,6 +127,8 @@
 
           ini_set('url_rewriter.tags','');
           ini_set('session.use_trans_sid', false);
+          // the session was expiring before the cookie, this way they are in sync
+          ini_set('session.session.gc_maxlifetime', 60*60*24*5);
 
           session_set_cookie_params(60*60*24*5);
           @session_start();
@@ -240,6 +242,8 @@
           
           ini_set('url_rewriter.tags','');
           ini_set('session.use_trans_sid', false);
+          // the session was expiring before the cookie, this way they are in sync
+          ini_set('session.session.gc_maxlifetime', 60*60*24*5);
 
           session_set_cookie_params(60*60*24*7);
           @session_start();
