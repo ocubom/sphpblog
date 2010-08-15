@@ -108,15 +108,12 @@
       $oldEntryArray = static_entry_to_array( $oldEntryFile );
       $save_data[ 'DATE' ] = $oldEntryArray[ 'DATE' ];
       
+      sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' );
+      sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt' );
+
       if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
-        if ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' ) ) {
-          sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' );
-        }
         $entryFile = $file_name . '.txt.gz';
       } else {
-        if ( file_exists( CONTENT_DIR.'static/' . $updateFile . '.txt' ) ) {
-          sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt' );
-        }
         $entryFile = $file_name . '.txt';
       }
       
