@@ -213,9 +213,9 @@
 				echo('<label for="comment_capcha">');
 
 				if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') ) {
-					printf( $GLOBALS['lang_string']['comment_capcha'], '<br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
+					printf( $GLOBALS['lang_string']['comment_capcha'] . ' <br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
 				} else {
-					printf( $GLOBALS['lang_string']['comment_capcha'], sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) );
+					printf( $GLOBALS['lang_string']['comment_capcha'] . ' ' .sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) );
 				}
 
 				echo('</label><br />');
