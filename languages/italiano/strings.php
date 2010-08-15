@@ -261,7 +261,7 @@
 				$lang_string['useragent'] = "User-Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>In data %s, %s ha scritto:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				$lang_string['commentposted'] = "Nuovo commento inviato da: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "[anti-spam] Inserisci <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "[anti-spam] Inserisci "; // 0.4.2
 				$lang_string['title'] = "Commenti";
 				$lang_string['header'] = "Aggiungi commento";
 				$lang_string['instructions'] = "Compilare i campi sottostanti per inserire un commento.<br /><br />";

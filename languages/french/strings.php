@@ -262,7 +262,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				$lang_string['commentposted'] = "Nouveau commentaire &agrave;: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "Anti-Pourriel: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Pourriel: Enter "; // 0.4.2
 				$lang_string['title'] = "Commentaires";
 				$lang_string['header'] = "Ajouter commentaire";
 				$lang_string['instructions'] = "Remplissez ce formulaire pour ajouter un commentaire.";
@@ -610,7 +610,7 @@
 				$lang_string['comment'] = "Commentaire:";
 				$lang_string['submit_btn'] = "&nbsp;Soumettre&nbsp;";
 				$lang_string['success'] = "<h2>Succ&egrave;s !</h2>Votre message a &eacute;t&eacute; envoy&eacute;.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Entrez <b>%s</b>"; // 0.4.2
+				$lang_string['contact_capcha'] = "Anti-Spam: Entrez "; // 0.4.2
 				$lang_string['failure'] = "<h2>Erreur !</h2> Votre message n'a pas &eacute;t&eacute; envoy&eacute;. Tr&egrave;s probablement car vous n'avez pas saisi correctement le code anti-spam<p />";
 				$lang_string['contactsent'] = "Contact envoy&eacute; &agrave; travers: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Adresse IP:";  // New for 0.4.6

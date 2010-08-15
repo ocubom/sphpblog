@@ -542,7 +542,7 @@
 
 				$lang_string['wrote'] = "<i>Â %s, %s íàïèñà:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-				$lang_string['comment_capcha'] = "Âúâåäè Anti-Spam êîäà: <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Âúâåäè Anti-Spam êîäà: "; // 0.4.2
 
 				$lang_string['title'] = "Êîìåíòàðè";
 
@@ -1238,7 +1238,7 @@
 
 			case 'contact':
 
-				$lang_string['contact_capcha'] = "Âúâåäè Anti-Spam êîäà:"; // 0.4.2
+				$lang_string['contact_capcha'] = "Âúâåäè Anti-Spam êîäà: "; // 0.4.2
 
 				$lang_string['title'] = "Çà êîíòàêòè";
 

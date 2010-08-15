@@ -276,7 +276,7 @@
 				$lang_string['useragent'] = "Uporabnikov brskalnik:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>%s, je %s napisal:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-				$lang_string['comment_capcha'] = "Anti-Spam: Vnesi <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Vnesi "; // 0.4.2
 				$lang_string['title'] = "Komentarji";
 				$lang_string['header'] = "Dodaj komentar";
 				$lang_string['instructions'] = "Izpolni spodnji obrazec in dodaj svoj komentar.";

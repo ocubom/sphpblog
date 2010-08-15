@@ -277,7 +277,7 @@
 				$lang_string['useragent'] = "Browser";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>U %s, %s je napisao:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-				$lang_string['comment_capcha'] = "Anti-Spam: Unesite <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Unesite "; // 0.4.2
 				$lang_string['title'] = "Komentari";
 				$lang_string['header'] = "Dodaj komentar";
 				$lang_string['instructions'] = "Popunite formu ispod da bi ste dodali komentar.";
@@ -625,7 +625,7 @@
 				$lang_string['not_found'] = "Nista nije pronadjeno";
 				break;
 			case 'contact':
-				$lang_string['contact_capcha'] = "Anti-Spam: Unesite <b>%s</b>"; // 0.4.2
+				$lang_string['contact_capcha'] = "Anti-Spam: Unesite "; // 0.4.2
 				$lang_string['title'] = "Kontaktirajte me";
 				$lang_string['instructions'] = "Popunite formu:";
 				$lang_string['form_error'] = "Unesite naslov i komentar.";

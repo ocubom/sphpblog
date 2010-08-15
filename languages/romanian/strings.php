@@ -277,7 +277,7 @@
 				$lang_string['useragent'] = "Browser:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>În %s, %s a scris:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				
-				$lang_string['comment_capcha'] = "Anti-Spam: Introdu <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Introdu "; // 0.4.2
 				$lang_string['title'] = "Comentarii";
 				$lang_string['header'] = "Adaugã comentariu";
 				$lang_string['instructions'] = "Fill out the form below to add your own comments.";

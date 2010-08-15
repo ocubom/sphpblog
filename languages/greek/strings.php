@@ -261,7 +261,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>Τη %s, %s έγραψε:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				$lang_string['commentposted'] = "Το Νέο Σχόλιο δημοσιεύθηκε στις: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "Anti-Spam: Εισάγετε <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Εισάγετε "; // 0.4.2
 				$lang_string['title'] = "Σχόλια";
 				$lang_string['header'] = "Προσθήκη Σχολίου";
 				$lang_string['instructions'] = "Συμπληρώστε την παρακάτω φόρμα για την προσθήκη των δικών σας σχολίων.";
@@ -611,7 +611,7 @@
 				$lang_string['comment'] = "Σχόλιο:";
 				$lang_string['submit_btn'] = "&nbsp;Υποβολή&nbsp;";
 				$lang_string['success'] = "<h2>Επιτυχές !</h2>Το μήνυμά σας εστάλη επιτυχώς.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Εισάγετε <b>%s</b>"; // 0.4.2
+				$lang_string['contact_capcha'] = "Anti-Spam: Εισάγετε "; // 0.4.2
 				$lang_string['failure'] = "<h2>Σφάλμα !</h2>Το μήνυμά σας δεν εστάλη. Κατά πάσα πιθανότητα το Αnti Spam δεν συμπληρώθηκε σωστά.<p />";
 				$lang_string['contactsent'] = "Η επαφή εστάλη μέσω: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Διεύθυνση IP:";  // New for 0.4.6

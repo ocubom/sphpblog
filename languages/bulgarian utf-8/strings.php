@@ -273,7 +273,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>В %s, %s написа:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-				$lang_string['comment_capcha'] = "Въведи Anti-Spam кода: <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Въведи Anti-Spam кода: "; // 0.4.2
 				$lang_string['title'] = "Коментари";
 				$lang_string['header'] = "Добавяне на коментар";
 				$lang_string['instructions'] = "Попълни формата по-долу.";

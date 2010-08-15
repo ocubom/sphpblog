@@ -265,7 +265,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "防止垃圾留言驗證碼 <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "防止垃圾留言驗證碼 "; // 0.4.2
 				$lang_string['title'] = "回應";
 				$lang_string['header'] = "發表回應";
 				$lang_string['instructions'] = "填寫下面來發表回應。";
@@ -620,7 +620,7 @@
 				$lang_string['submit_btn'] = "&nbsp;發送&nbsp;";
 				$lang_string['success'] = "<h2>發送成功!</h2>你的訊息已經寄出摟.<p />";
 				$lang_string['failure'] = "<h2>錯誤!</h2>你的訊息沒有被送出. 請檢查你是否有填入防止垃圾信驗證碼.<p />";
-				$lang_string['contact_capcha'] = "防止垃圾信驗證碼: <b>%s</b>"; // 0.4.2	
+				$lang_string['contact_capcha'] = "防止垃圾信驗證碼: "; // 0.4.2	
 				$lang_string['contactsent'] = "信件傳送過程: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP 位址:";  // New for 0.4.6
 				$lang_string['useragent'] = "使用者來源身份:";  // New for 0.4.6

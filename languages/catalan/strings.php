@@ -260,7 +260,7 @@
 				$lang_string['IPAddress'] = "Direcci&oacute; IP:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['comment_url'] = "Web:"; // 0.3.8
-				$lang_string['comment_capcha'] = "Anti-Spam: Introdu&iuml;sca <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Introdu&iuml;sca "; // 0.4.2
 				$lang_string['form_error'] = "Per favor ompliga els camps Nom, Comentari i el camp Anti-Spam."; //0.4.2
 				$lang_string['comment_remember'] = "Recordar la meua informaci&oacute; personal:"; // 0.3.8
 				$lang_string['comment_text'] = "Comentari:";
@@ -603,7 +603,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				$lang_string['success'] = "<h2>Preparat!</h2>El seu missatge ha estat enviat.<p />";
 				$lang_string['failure'] = "<h2>¡Ups!</h2>El seu missatge no ha estat enviat. Probablement el camp Anti-Spam no s'ha omplert correctament.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Introdu&iuml;sca <b>%s</b>"; // 0.4.2	
+				$lang_string['contact_capcha'] = "Anti-Spam: Introdu&iuml;sca "; // 0.4.2	
 				$lang_string['contactsent'] = "Contacte enviat des de: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Direcci&oacute; IP:";  // New for 0.4.6
 				$lang_string['useragent'] = "Agent Emprat:";  // New for 0.4.6

@@ -277,7 +277,7 @@
 				$lang_string['useragent'] = "Browser:";
 				$lang_string['wrote'] = "<i>Den %s skrev %s:</i><br />\n<br />\n%s";
 
-				$lang_string['comment_capcha'] = "Anti-spam: Indtast <b>%s</b>";
+				$lang_string['comment_capcha'] = "Anti-spam: Indtast ";
 				$lang_string['title'] = "Kommentarer";
 				$lang_string['header'] = "Tilføj kommentar";
 				$lang_string['instructions'] = "Udfyld formularen herunder for at tilføje dine egne kommentarer.";

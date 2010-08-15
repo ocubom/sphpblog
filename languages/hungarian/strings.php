@@ -270,7 +270,7 @@
 				$lang_string['useragent'] = "A felhasználó programa:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>%s -kor, %s ezt írta:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				
-				$lang_string['comment_capcha'] = "Anti-Spam: Írd be ezt a számot: <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Írd be ezt a számot: "; // 0.4.2
 				$lang_string['title'] = "Megjegyzések";
 				$lang_string['header'] = "Megjegyzés hozzáadása";
 				$lang_string['instructions'] = "Töltsd ki az alábbi kérdõívet a megjegyzés hozzáadásához.";

@@ -264,7 +264,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Enter "; // 0.4.2
 				$lang_string['title'] = "Reacties";
 				$lang_string['header'] = "Plaats reactie";
 				$lang_string['instructions'] = "Vul het formulier in om een reactie te plaatsen.";
@@ -619,7 +619,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Leg voor&nbsp;";
 				$lang_string['success'] = "<h2>Succes!</h2>Uw bericht is verzonden.<p />";
 				$lang_string['failure'] = "<h2>Fout!</h2>Uw bericht is niet verzonden. Waarschijnlijkst was Antispam niet behoorlijk ingegaan.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Ga binnen <b>%s</b>"; // 0.4.2
+				$lang_string['contact_capcha'] = "Anti-Spam: Ga binnen "; // 0.4.2
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6

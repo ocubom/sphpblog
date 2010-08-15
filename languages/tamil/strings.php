@@ -260,7 +260,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				$lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
-				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Enter "; // 0.4.2
 				$lang_string['title'] = "மறுமொழிகள்";
 				$lang_string['header'] = "மறுமொழி சேர்";
 				$lang_string['instructions'] = "மறுமொழி சேர்க்க கீழுள்ள படிவத்தை நிரப்பவும்.";
@@ -607,7 +607,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
 				$lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
 				$lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2	
+				$lang_string['contact_capcha'] = "Anti-Spam: Enter "; // 0.4.2	
 				$lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP Address:";  // New for 0.4.6
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6

@@ -277,7 +277,7 @@
 				$lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				
-				$lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Enter "; // 0.4.2
 				$lang_string['title'] = "Kommentit";
 				$lang_string['header'] = "Lisää kommentti";
 				$lang_string['instructions'] = "Fill out the form below to add your own comments.";
