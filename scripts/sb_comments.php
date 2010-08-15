@@ -262,6 +262,7 @@
       // sleep(1); // To avoid server overload
       
       $comment_array = array();
+      $comment_array_time = array();
       $entry_file_array = blog_entry_listing();
   
       // Loop through entry files
@@ -280,12 +281,14 @@
           if ( strpos($comment_filename, 'comment') === 0 ) {
             $comment_entry_data = comment_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/comments/' . $comment_filename );
             
+            array_push( $comment_array_time, $comment_entry_data[ 'DATE' ] );
             array_push( $comment_array, implode( '|', array( $entry_filename, $year_dir, $month_dir, $comment_filename, $comment_entry_data[ 'MODERATIONFLAG' ] ) ) );
           }
         }     
       }
       
-      rsort( $comment_array ); // Sort array newest to oldest
+      // this needs to be a 2D array sort!
+      array_multisort($comment_array_time, SORT_DESC, $comment_array);
 
       // Save array if not empty
       if ( count( $comment_array )>0 ) {
