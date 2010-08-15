@@ -6,8 +6,12 @@
 	global $logged_in, $blog_config;
 	$logged_in = logged_in( true, true );
 
+	read_config();
+	
+	global $blog_config;
+
 	// Validate Language
-	$temp_lang = '';
+	$temp_lang = $blog_config->getTag('BLOG_LANGUAGE');
 	if ( isset( $_POST['blog_language'] ) ) {
 		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
 	} else if ( array_key_exists( 'blog_language', $_GET ) ) {
@@ -17,9 +21,6 @@
 		$temp_lang = 'english';
 	}
 
-	read_config();
-	
-	global $blog_config;
 	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
 
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
@@ -115,7 +116,7 @@
 				<input type="text" name="blog_avatar" value="<?php echo($blog_config->getTag('BLOG_AVATAR')); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
 
 				<label for="blog_footer"><?php echo( $GLOBALS['lang_string']['blog_footer'] ); ?></label><br />
-				<input type="text" name="blog_footer" value="<?php echo($blog_config->getTag('BLOG_FOOTER_ONLY')); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
+				<input type="text" name="blog_footer" value="<?php echo($blog_config->getTag('BLOG_FOOTER')); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
 			</div>
 
 			<p />
