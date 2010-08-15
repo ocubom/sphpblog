@@ -1,6 +1,10 @@
 <?php
 	// Simple PHP Blog is released under the GNU Public License.
-	
+
+	// Error reporting should be set to 0 in production environments.
+	error_reporting( E_ALL ^ E_NOTICE );
+	error_reporting( 0 );
+		
 	require_once('setup/setup.php');
 	
 	// Last version and update information.
@@ -8,10 +12,6 @@
 	global $sb_info;
 	$sb_info[ 'version' ] = "0.6.0";
 	$sb_info[ 'last_update' ] = '8/14/10';	
-	
-	// Error reporting should be set to 0 in production environments.
-	error_reporting( E_ALL ^ E_NOTICE );
-	// error_reporting( 0 );
 	
 	//Remove timeout limit
 	@set_time_limit( 0 );
