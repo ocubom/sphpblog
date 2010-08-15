@@ -27,6 +27,8 @@
 		// Added functionality to send mass *individual* emails by
 		// passing $to as an array. (Or, use a comma delimited string...)
 		global $sb_info;
+
+		$from = str_replace(array("\r", "\n"), "", $from);
 	
 		$to_array = array();
 		if ( is_array( $to ) ) {
@@ -48,7 +50,7 @@
 		$headers .= 'Reply-To: ' . $from . " \r\n";
 		$headers .= 'Return-Path: ' . $from . " \r\n";
 		$headers .= 'Date: ' . date("r") . " \r\n";
-		$headers .= 'X-Priority: ' . $priority . " \r\n";
+		$headers .= 'X-Priority: ' . strval(intval($priority)) . " \r\n";
 		$headers .= 'X-Mailer: SPHPBLOG/' . $sb_info[ 'version' ] . " \r\n";
 		
 		ini_set('sendmail_from', $from);
