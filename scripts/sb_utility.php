@@ -10,6 +10,27 @@
 	// Utility Functions
 	// -----------------
 
+        function phpini_check() {
+                // TODO translations
+                // TODO more PHP checks here
+                print "<p>PHP Configuration Checks:</p>";
+                if (strnatcmp(phpversion(),'4.1') < 0)
+                        echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
+                if (!open_basedir_check(CONFIG_DIR))
+                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONFIG_DIR) . ".</p>";
+                if (!open_basedir_check(CONTENT_DIR))
+                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONTENT_DIR) . ".</p>";
+                if (!open_basedir_check(IMAGES_DIR))
+                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(IMAGES_DIR) . ".</p>";
+                if (!ini_get('allow_url_fopen'))
+                        echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
+                if (!ini_get('file_uploads'))
+                        echo "<p>WARNING: php.ini config value file_uploads is set to Off.  This is needed for uploading images and emoticons.</p>";
+                if (!function_exists('gzcompress'))
+                        echo "<p>WARNING: Zlib module not present.  This is needed for compressing database files and web pages in transit.</p>";
+                echo "<p>NOTE: Maximum size for image uploads is " . min(intval(ini_get('upload_max_filesize')), intval(ini_get('post_max_size')))/(1024*1024) . " MB.  Adjust upload_max_filesize and post_max_size in php.ini to larger values if you need to upload bigger files.</p>";
+        }
+
 	function write_users($user_list) {
 		new_write_users($user_list);
 	}

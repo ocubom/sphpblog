@@ -27,6 +27,7 @@
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
+		phpini_check();
 		phpinfo();
 		
 		// PAGE CONTENT END
