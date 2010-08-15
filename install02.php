@@ -94,7 +94,7 @@ deny from all
 
 		sb_write_file( CONFIG_DIR.".htaccess", $htaccess_str );
 		sb_write_file( CONTENT_DIR.".htaccess", $htaccess_str );
-		sb_write_file( IMAGES_DIR.".htaccess", $htaccess_str );
+		//sb_write_file( IMAGES_DIR.".htaccess", $htaccess_str );
 		
 		echo( '<hr />' );
 		echo( '<br />' );
