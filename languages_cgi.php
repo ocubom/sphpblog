@@ -59,7 +59,7 @@
 	if ( array_key_exists( 'blog_language1', $_POST ) ) {
 	
 		// Store all the data from language 1
-		require_once('languages/' . preg_replace("/[^a-z0-9-]/i", "", $_POST['blog_language1']) . '/strings.php');
+		require_once('languages/' . preg_replace("/[^a-z0-9- _]/i", "", $_POST['blog_language1']) . '/strings.php');
 		
 		$result_array = Array();
 		for ( $i=0; $i < count( $pages ); $i++ ) {
