@@ -533,33 +533,33 @@
 
     // MENU WIDGETS (NO CUSTOM PATH)
     array_push( $search, '%widget_avatar%' );
-    array_push( $replace, theme_widget_avatar() );
+    array_push( $replace, '');
     array_push( $search, '%widget_links%' );
-    array_push( $replace, theme_widget_links() );
+    array_push( $replace, '');
     array_push( $search, '%widget_user%' );
-    array_push( $replace, theme_widget_user() );
+    array_push( $replace, '');
     array_push( $search, '%widget_setup%' );
-    array_push( $replace, theme_widget_setup() );
+    array_push( $replace, '');
     array_push( $search, '%widget_custom%' );
     array_push( $replace, theme_widget_custom() );
     array_push( $search, '%widget_calendar%' );
-    array_push( $replace, theme_widget_calendar() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_random_entry%' );
-    array_push( $replace, theme_widget_random_entry() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_archive_tree%' );
-    array_push( $replace, theme_widget_archive_tree() );
+    array_push( $replace, '');
     array_push( $search, '%widget_categories%' );
-    array_push( $replace, theme_widget_categories() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_search%' );
-    array_push( $replace, theme_widget_search() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_counter%' );
-    array_push( $replace, theme_widget_counter() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_recent_entries%' );
-    array_push( $replace, theme_widget_recent_entries() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_recent_comments%' );
-    array_push( $replace, theme_widget_recent_comments() );
+    array_push( $replace, '' );
     array_push( $search, '%widget_recent_trackbacks%' );
-    array_push( $replace, theme_widget_recent_trackbacks() );
+    array_push( $replace, '');
 
     // MENU WIDGETS (CUSTOM PATH)
     $pattern_arr = Array();
@@ -732,20 +732,7 @@
     // ----------------
     $html = "";
     $html .= "\n<!-- SIDEBAR MENU BEGIN -->\n";
-    $html .= theme_widget_avatar();
-    $html .= theme_widget_links();
-    $html .= theme_widget_user();
-    $html .= theme_widget_setup();
     $html .= theme_widget_custom();
-    $html .= theme_widget_calendar();
-    $html .= theme_widget_random_entry();
-    $html .= theme_widget_archive_tree();
-    $html .= theme_widget_categories();
-    $html .= theme_widget_search();
-    $html .= theme_widget_counter();
-    $html .= theme_widget_recent_entries();
-    $html .= theme_widget_recent_comments();
-    $html .= theme_widget_recent_trackbacks();
     $html .= '<p />';
     $html .= theme_widget_badges();
     $html .= "\n<!-- SIDEBAR MENU END -->\n";
@@ -758,35 +745,6 @@
   // Sidebar Menu "Widgets"
   // ------------------
 
-  // LINKS
-  function theme_widget_links( $template_file='menu_block.html' ) {
-    $result = menu_display_links();
-    $loginString = menu_display_login();
-    if ( $loginString ) {
-      $result[ 'content' ]  .= '<hr />' . $loginString;
-    }
-    $html = theme_menu_block( $result, 'LINKS', 'SidebarLinks', $template_file );
-    return ( $html );
-  }
-
-  // AVATAR
-  function theme_widget_avatar( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar', $template_file );
-    return ( $html );
-  }
-
-  // MENU
-  function theme_widget_user( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu', $template_file );
-    return ( $html );
-  }
-
-  // SETUP
-  function theme_widget_setup( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences', $template_file );
-    return ( $html );
-  }
-
   // CUSTOM BLOCKS
   function theme_widget_custom( $template_file='menu_block.html' ) {
     global $logged_in;
@@ -797,63 +755,9 @@
       $result = Array();
       $result[ 'title' ] = $array[$i];
       $result[ 'content' ] = $array[$i+1];
-      $html .= theme_menu_block( $result, 'CUSTOM BLOCK', null, $template_file );
+      $html .= theme_menu_block( $result, $result[ 'title' ], 'Sidebar' . $result[ 'title' ], $template_file );
     }
 
-    return ( $html );
-  }
-
-  // CALENDAR
-  function theme_widget_calendar( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar', $template_file );
-    return ( $html );
-  }
-
-  // RANDOM ENTRY
-  function theme_widget_random_entry( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_random_entry(), 'RANDOM ENTRY', 'SidebarRandomEntry', $template_file );
-    return ( $html );
-  }
-
-  // ARCHIVE TREE
-  function theme_widget_archive_tree( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives', $template_file );
-    return ( $html );
-  }
-
-  // CATEGORIES
-  function theme_widget_categories( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories', $template_file );
-    return ( $html );
-  }
-
-  // SEARCH
-  function theme_widget_search( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch', $template_file );
-    return ( $html );
-  }
-
-  // COUNTER
-  function theme_widget_counter( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter', $template_file );
-    return ( $html );
-  }
-
-  // RECENT ENTRIES
-  function theme_widget_recent_entries( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries', $template_file );
-    return ( $html );
-  }
-
-  // RECENT COMMENTS
-  function theme_widget_recent_comments( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments', $template_file );
-    return ( $html );
-  }
-
-  // RECENT TRACKBACKS
-  function theme_widget_recent_trackbacks( $template_file='menu_block.html' ) {
-    $html = theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks', $template_file );
     return ( $html );
   }
 

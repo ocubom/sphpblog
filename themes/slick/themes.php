@@ -559,45 +559,6 @@
 
     echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
 
-    $result = menu_display_avatar();
-    if( $result[ 'content' ] != '') {
-      echo( '<span class="menu_title">' . $result[ 'title' ] . '</span><br/>' );
-      echo( $result[ 'content' ] . '' );
-      echo( '<hr />' );
-    }
-
-    // Retained from 0.3.7c
-    echo( "\n<!-- LINKS -->\n" );
-    $result = menu_display_links();
-    echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-    echo( "<div class=\"menu_body\">\n" );
-    echo( $result[ 'content' ] . "\n" );
-    $loginString = menu_display_login();
-    if ( $loginString ) {
-      echo( "<br />" . $loginString . "\n" );
-    }
-    echo( "</div><br />\n" );
-
-    // Retained from 0.3.7c
-    $result = menu_display_user();
-    if ( $result[ 'content' ] != "" ) {
-      echo( "\n<!-- USER MENU -->\n" );
-      echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-      echo( "<div class=\"menu_body\">\n" );
-      echo( $result[ 'content' ] . "\n" );
-      echo( "</div><br />\n" );
-    }
-
-    // Retained from 0.3.7c
-    $result = menu_display_setup();
-    if ( $result[ 'content' ] != "" ) {
-      echo( "\n<!-- SETUP MENU -->\n" );
-      echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-      echo( "<div class=\"menu_body\">\n" );
-      echo( $result[ 'content' ] . "\n" );
-      echo( "</div><br />\n" );
-    }
-
     // New 0.3.8
     //
     // The ADD BLOCKS page lets you insert your own
@@ -608,93 +569,6 @@
         echo("<div class=\"menu_title\">" . $array[$i] . "</div>\n" );
         echo( "<div class=\"menu_body\">\n" );
         echo( $array[$i+1] . "\n" );
-        echo( "</div><br />\n" );
-      }
-    }
-
-    // Retained from 0.3.7c
-    //
-    // However, this function now displays a calendar
-    // rather then the "tree view"....
-    if( $blog_config->getTag('BLOG_ENABLE_CALENDAR') ) {
-      echo( "\n<!-- ARCHIVE -->\n" );
-      $result = menu_display_blognav();
-      echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-      echo( "<div class=\"menu_body\">\n" );
-      echo( $result[ 'content' ] . "\n" );
-      echo( "</div><br />\n" );
-    }
-    
-    // RANDOM ENTRY
-    $result = menu_random_entry();
-    if ( $result[ 'content' ] != "" ) {
-      echo( "\n<!-- RANDOM ENTRY -->\n" );
-      echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-      echo( "<div class=\"menu_body\">\n" );
-      echo( $result[ 'content' ] . "\n" );
-      echo( "</div><br />\n" );
-    }
-
-    // New 0.4.7
-    $result = menu_display_blognav_tree();
-    if ( $result[ 'content' ] != "" ) {
-      echo( "\n<!-- RECENT ENTRIES -->\n" );
-      echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-      echo( "<div class=\"menu_body\">\n" );
-      echo( $result[ 'content' ] . "\n" );
-      echo( "</div><br />\n" );
-    }
-
-    // New 0.3.8
-    $result = menu_display_categories();
-    if ( $result[ 'content' ] != "" ) {
-      echo( "\n<!-- RECENT ENTRIES -->\n" );
-      echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-      echo( "<div class=\"menu_body\">\n" );
-      echo( $result[ 'content' ] . "\n" );
-      echo( "</div><br />\n" );
-    }
-
-    // Retained from 0.3.7c
-    echo( "\n<!-- SEARCH -->\n" );
-    $result = menu_search_field();
-    echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-    echo( "<div class=\"menu_body\">\n" );
-    echo( $result[ 'content' ] . "\n" );
-    echo( "</div><br />\n" );
-
-    // New 0.3.8
-    if ( $blog_config->getTag('BLOG_ENABLE_LASTENTRIES')){
-      $result = menu_most_recent_entries();
-      if ( $result[ 'content' ] != "" ) {
-        echo( "\n<!-- RECENT ENTRIES -->\n" );
-        echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-        echo( "<div class=\"menu_body\">\n" );
-        echo( $result[ 'content' ] . "\n" );
-        echo( "</div><br />\n" );
-      }
-    }
-
-    // Retained from 0.3.7c
-    if ( $blog_config->getTag('BLOG_ENABLE_LASTCOMMENTS')){
-      $result = menu_most_recent_comments();
-      if ( $result[ 'content' ] != "" ) {
-       echo( "\n<!-- RECENT COMMENTS -->\n" );
-       echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-       echo( "<div class=\"menu_body\">\n" );
-       echo( $result[ 'content' ] . "\n" );
-       echo( "</div><br />\n" );
-      }
-    }
-
-    // New 0.3.8
-    if( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
-      $result = menu_most_recent_trackbacks();
-      if ( $result[ 'content' ] != "" ) {
-        echo( "\n<!-- RECENT TRACKBACKS -->\n" );
-        echo("<div class=\"menu_title\">" . $result[ 'title' ] . "</div>\n" );
-        echo( "<div class=\"menu_body\">\n" );
-        echo( $result[ 'content' ] . "\n" );
         echo( "</div><br />\n" );
       }
     }

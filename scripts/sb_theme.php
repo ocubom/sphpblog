@@ -18,7 +18,7 @@
 	// ------------------
 	// Theme Menu Display
 	// ------------------
-	
+
 	function menu_display_links () {
 		$plugin = new Links;
 		$arr = $plugin->display();
@@ -148,6 +148,13 @@
 
 	function menu_most_recent_entries () {
 		$plugin = new RecentEntries;
+		$arr = $plugin->display();
+		unset( $plugin );
+		return ( $arr );
+	}
+
+	function menu_bookmarks () {
+		$plugin = new Bookmarks;
 		$arr = $plugin->display();
 		unset( $plugin );
 		return ( $arr );

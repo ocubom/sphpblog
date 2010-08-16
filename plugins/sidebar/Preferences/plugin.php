@@ -22,6 +22,7 @@
 		}
 		
 		function getContent () {
+			global $blog_config;
 			$str = '';
 	
 			if ( $GLOBALS[ 'logged_in' ] == true ) {
@@ -37,7 +38,7 @@
 				$str  .= '<a href="info.php">' . $GLOBALS[ 'lang_string' ][ 'menu_info' ] . '</a><br />';
 				$str  .= '<hr />';
 				$str  .= '<a href="moderation.php">' . $GLOBALS[ 'lang_string' ][ 'menu_moderation' ] . '</a><br />';
-				if ( $GLOBALS[ 'blog_config' ][ 'blog_comments_moderation' ] ) {
+				if ( $blog_config->getTag( 'blog_comments_moderation' ) ) {
 					$str  .= '<a href="comments_moderation.php">' . $GLOBALS[ 'lang_string' ][ 'menu_commentmoderation' ] . ' (' . get_unmodded_count(1) . ')</a><br />';
 				}
 			}

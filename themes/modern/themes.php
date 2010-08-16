@@ -732,59 +732,14 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 
     echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
     
-    // AVATAR
-    theme_menu_block( menu_display_avatar(), 'AVATAR', 'SidebarAvatar' );
-    
-    // LINKS
-    $result = menu_display_links();
-    $loginString = menu_display_login();
-    if ( $loginString ) {
-      $result[ 'content' ]  .= '<hr />' . $loginString;
-    }
-    theme_menu_block( $result, 'LINKS' );
-    // theme_menu_block( $result, 'LINKS', 'SidebarLinks' ); <-- Use this if you want to be able to Expand/Collapse links.
-
-    // MENU
-    theme_menu_block( menu_display_user(), 'USER MENU', 'SidebarMenu' );
-
-    // SETUP
-    theme_menu_block( menu_display_setup(), 'SETUP MENU', 'SidebarPreferences' );
-
     // CUSTOM BLOCKS
     $array = read_blocks($logged_in);
     for ($i=0 ; $i<count($array) ; $i+=2) {
       $result = Array();
       $result[ 'title' ] = $array[$i];
       $result[ 'content' ] = $array[$i+1];
-      theme_menu_block( $result, 'CUSTOM BLOCK' );
+      theme_menu_block( $result, $result[ 'title' ], 'Sidebar' . $result[ 'title' ] );
     }
-
-    // CALENDAR
-    theme_menu_block( menu_display_blognav(), 'CALENDAR', 'SidebarCalendar' );
-
-    // RANDOM ENTRY
-    theme_menu_block( menu_random_entry(), 'RANDOM ENTRY', 'SidebarRandomEntry' );
-
-    // ARCHIVE TREE
-    theme_menu_block( menu_display_blognav_tree(), 'ARCHIVE TREE', 'SidebarArchives' );
-
-    // CATEGORIES
-    theme_menu_block( menu_display_categories(), 'CATEGORIES', 'SidebarCategories' );
-
-    // SEARCH
-    theme_menu_block( menu_search_field(), 'SEARCH', 'SidebarSearch' );
-
-    // Counter Totals
-    theme_menu_block( menu_display_countertotals(), 'COUNTER', 'SidebarCounter');
-
-    // RECENT ENTRIES
-    theme_menu_block( menu_most_recent_entries(), 'RECENT ENTRIES', 'SidebarRecentEntries' );
-
-    // RECENT COMMENTS
-    theme_menu_block( menu_most_recent_comments(), 'RECENT COMMENTS', 'SidebarRecentComments' );
-
-    // RECENT TRACKBACKS
-    theme_menu_block( menu_most_recent_trackbacks(), 'RECENT TRACKBACKS', 'SidebarRecentTrackbacks' );
 
     echo( '<p />' );
 

@@ -477,6 +477,46 @@
     }
   }
   */
+
+function get_blocks() {
+    //default order
+    $plugin_array = array('Avatar', 'Links', 'AuthoringMenu', 'Preferences', 'Calendar', 'RandomEntry', 'Archives', 'Categories', 'Search', 'CounterTotals', 'RecentEntries', 'RecentComments', 'RecentTrackbacks');
+
+    // Read blocks file.
+    $filename = CONFIG_DIR.'blocks.txt';
+    $result = sb_read_file( $filename );
+
+    $arrlist = array();
+    if ( $result ) {
+      $arrlist = array_merge($arrlist, explode('|', $result));
+    }
+
+    //add on plugins that aren't in the list
+    $plugins = scandir('plugins/sidebar/');
+    foreach ($plugins as $plugin) {
+        if (is_dir('plugins/sidebar/' . $plugin) && $plugin[0] != '.') {
+            if (array_search($plugin, $plugin_array) === FALSE) {
+                $plugin_array[] = $plugin;
+            }
+        }
+    }
+
+    $add = array();
+    foreach ($plugin_array as $plugin) {
+        $plugin_obj = new $plugin;
+        $result = array_search($plugin, $arrlist);
+        if ($result === FALSE && $plugin_obj->getEnabled()) {
+            $add[] = $plugin;
+            $add[] = 'plugin';
+        }
+        elseif($result !== FALSE && !$plugin_obj->getEnabled()) {
+        // Remove disabled plugins here
+            array_splice($arrlist, $result, 2);
+        }
+    }
+
+    return array_merge($add, $arrlist);
+}
   
   // ----------------------------
   // "Blocks" Functions
@@ -489,23 +529,25 @@
     global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in, $blog_config;
     global $lang_string;
 
-    // Read blocks file.
-    $filename = CONFIG_DIR.'blocks.txt';
-    $result = sb_read_file( $filename );
-
     // Append new blocks.
     $block_array = array();
-    if ( $result ) {
-      $array = explode('|', $result);
+      $array = get_blocks();
       for ( $i = 0; $i < count( $array ); $i+=2 ) {
         // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
-        if ( (($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == true) and ( $array[$i] != $blog_config->getTag('STATIC_BLOCK_OPTIONS') ))
+        if ($array[$i + 1] == 'plugin') {
+          // handle as a plugin
+                        $plugin = new $array[$i];
+			$val = $plugin->display();
+			$block_array[$i] = $val['title'];
+                        $block_array[$i+1] = $val['content'];
+                        unset( $plugin );
+        }
+        elseif ( (($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == true) and ( $array[$i] != $blog_config->getTag('STATIC_BLOCK_OPTIONS') ))
            or ($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == false) ) {
           $block_array[$i] = blog_to_html( $array[$i], false, false, false, true );
           $block_array[$i + 1] = blog_to_html( $array[$i + 1], false, false, false, true );
         }
       }
-    }
 
     return ( $block_array );
   }
@@ -560,11 +602,12 @@
     
     // Read blocks file.
     $filename = CONFIG_DIR.'blocks.txt';
-    $result = sb_read_file( $filename );
+    //$result = sb_read_file( $filename );
     
     // Append new blocks.
-    if ( $result ) {
-      $array = explode('|', $result);
+//    if ( $result ) {
+  //    $array = explode('|', $result);
+      $array = get_blocks();
       
       if ( $action === 'up' ) {
         if ( count( $array ) > 2 && $block_id != 0 ) {
@@ -591,7 +634,7 @@
           }
         }
       }
-    }
+   // }
     
     // Save blocks to file.
     $str = implode('|', $array);

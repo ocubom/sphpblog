@@ -35,6 +35,8 @@
 		if ( $action === 'edit' ) {
 			$block_id = sb_stripslashes( $_GET[ 'block_id' ] );
 			// nothing
+		} elseif ($action === 'enable') {
+		} elseif ($action === 'disable') {
 		} else {
 			$ok = modify_block( $action, sb_stripslashes( $_GET[ 'block_id' ] ) );
 		}
@@ -53,13 +55,10 @@
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		// Read blocks file.
-		$filename = CONFIG_DIR.'blocks.txt';
-		$result = sb_read_file( $filename );
 		
 		// Create array.
 		$str = NULL;
-		if ( $result ) {	
+		//if ( $result ) {	
 	
 			$block_content = '';
 			$block_name = '';
@@ -67,12 +66,19 @@
 				$block_id = NULL;
 			}
 			
-			$array = explode('|', $result);
+			$array = get_blocks();
 			for ( $i = 0; $i < count( $array ); $i+=2 ) {
 				// Create HTML
+				$hasoptions = FALSE;
 				
 				// 1 - Name of Block
-				$str	.= ( 1 + ($i/2) ) . ' - ' . $array[$i] . '<br />';
+				$str	.= ( 1 + ($i/2) ) . ' - ' . $array[$i];
+				if ($array[$i+1] == 'plugin') {
+					$plugin = new $array[$i];
+					$hasoptions = $plugin->getOptions();
+					$str	.= ' <a href="plugins.php">(Plugin)</a> ';
+				}
+				$str	.= '<br />';
 				
 				//	up | down | edit | delete
 				$str	.= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -82,12 +88,16 @@
 					$str	.= $GLOBALS['lang_string']['up'] . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str	.= '<a href="add_block.php?action=down&block_id='.$i.'">' . $GLOBALS['lang_string']['down'] . '</a> | ';
+					$str	.= '<a href="add_block.php?action=down&block_id='.$i.'">' . $GLOBALS['lang_string']['down'] . '</a>';
 				} else {
-					$str	.= $GLOBALS['lang_string']['down'] . ' | ';
+					$str	.= $GLOBALS['lang_string']['down'];
 				}
-				$str	.= '<a href="add_block.php?action=edit&block_id='.$i.'">' . $GLOBALS['lang_string']['edit'] . '</a> | ';
-				$str	.= '<a href="add_block.php?action=delete&block_id='.$i.'">' . $GLOBALS['lang_string']['delete'] . '</a> ';
+				if ($array[$i+1] != 'plugin') {
+					$str	.= ' | <a href="add_block.php?action=edit&block_id='.$i.'">' . $GLOBALS['lang_string']['edit'] . '</a> | ';
+					$str	.= '<a href="add_block.php?action=delete&block_id='.$i.'">' . $GLOBALS['lang_string']['delete'] . '</a> ';
+				} elseif ($hasoptions) {
+					$str	.= ' | <a href="plugins.php?options=' . $array[$i] . '">options</a>';
+				}
 				$str	.= '<br /><br />';
 				if ( $action === "edit" && $i == $block_id ) {
 					$block_name = $array[$i];
@@ -101,9 +111,9 @@
 			} else {
 				echo $GLOBALS['lang_string']['instructions_modify'] . '<p />';
 			}
-		} else {
-			echo $GLOBALS['lang_string']['instructions'] . '<p />';
-		}
+		//} else {
+		//	echo $GLOBALS['lang_string']['instructions'] . '<p />';
+		//}
 		
 		echo( $str );
 		
