@@ -927,6 +927,7 @@
         array_push( $temp_cat_names, get_category_by_id ( $temp_cat_array[$j] ) );
       }
       $entry_array[ 'categories' ] = $temp_cat_names;
+      $entry_array[ 'categories_id'] = $temp_cat_array;
     }
 
     $blog_content = theme_blogentry( $entry_array );
