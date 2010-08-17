@@ -144,6 +144,13 @@
 		$str = $blog_config->getTag('BLOG_TITLE').' - '.get_entry_title(substr($_GET['entry'], 5, 2), substr($_GET['entry'], 7, 2), $_GET['entry']);
 		$page_template->setTag('{PAGE_TITLE}', $str);
 	}
+
+	// Category RSS
+	$cat = '';
+	if (isset($_GET['category'])) {
+		$cat = '?c=' . $_GET['category'];
+	}
+	$page_template->setTag('{CATEGORY_ID}', $cat);
 	
 	// Theme Layout
 	ob_start();
