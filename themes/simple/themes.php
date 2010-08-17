@@ -564,7 +564,7 @@
     // MENU WIDGETS (CUSTOM PATH)
     $pattern_arr = Array();
     $function_arr = Array();
-    array_push( $pattern_arr, 'widget_avatar' );
+/*    array_push( $pattern_arr, 'widget_avatar' );
     array_push( $function_arr, 'theme_widget_avatar' );
     array_push( $pattern_arr, 'widget_links' );
     array_push( $function_arr, 'theme_widget_links' );
@@ -572,9 +572,9 @@
     array_push( $function_arr, 'theme_widget_user' );
     array_push( $pattern_arr, 'widget_setup' );
     array_push( $function_arr, 'theme_widget_setup' );
-    array_push( $pattern_arr, 'widget_custom' );
+*/    array_push( $pattern_arr, 'widget_custom' );
     array_push( $function_arr, 'theme_widget_custom' );
-    array_push( $pattern_arr, 'widget_calendar' );
+/*    array_push( $pattern_arr, 'widget_calendar' );
     array_push( $function_arr, 'theme_widget_calendar' );
     array_push( $pattern_arr, 'widget_random_entry' );
     array_push( $function_arr, 'theme_widget_random_entry' );
@@ -592,7 +592,7 @@
     array_push( $function_arr, 'theme_widget_recent_comments' );
     array_push( $pattern_arr, 'widget_recent_trackbacks' );
     array_push( $function_arr, 'theme_widget_recent_trackbacks' );
-
+*/
     for ($i=0; $i<count($pattern_arr); $i++) {
 
       $pattern = $pattern_arr[$i];
@@ -610,9 +610,6 @@
         }
       }
     }
-
-    array_push( $search, '%widget_badges%' );
-    array_push( $replace, theme_widget_badges() );
 
     // MAIN CONTENT
     array_push( $search, '%content%' );
@@ -733,8 +730,6 @@
     $html = "";
     $html .= "\n<!-- SIDEBAR MENU BEGIN -->\n";
     $html .= theme_widget_custom();
-    $html .= '<p />';
-    $html .= theme_widget_badges();
     $html .= "\n<!-- SIDEBAR MENU END -->\n";
 
     // RETURN HTML
@@ -761,17 +756,4 @@
     return ( $html );
   }
 
-  // BADGES
-  function theme_widget_badges() {
-    $html = '';
-    // $html .= '<div align="center">';
-    $html .= '<a href="http://sourceforge.net/projects/sphpblog/"><img style="margin-bottom: 5px;" src="interface/button_sphpblog.png" alt="Powered by Simple PHP Blog" title="Powered by Simple PHP Blog" border="0" /></a> ';
-    $html .= '<a href="rss.php"><img style="margin-bottom: 5px;" src="interface/button_rss20.png" alt="Get RSS 2.0 Feed" title="Get RSS 2.0 Feed" border="0" /></a><br />';
-    $html .= '<a href="http://php.net/"><img style="margin-bottom: 5px;" src="interface/button_php.png" alt="Powered by PHP ' . phpversion() . '" title="Powered by PHP ' . phpversion() . '" border="0" /></a> ';
-    $html .= '<a href="atom.php"><img style="margin-bottom: 5px;" src="interface/button_atom03.png" alt="Get Atom 0.3 Feed" title="Get Atom 0.3 Feed" border="0" /></a><br />';
-    $html .= '<img style="margin-bottom: 5px;" src="interface/button_txt.png" alt="Powered by Plain text files" title="Powered by Plain text files" border="0" /> ';
-    $html .= '<a href="rdf.php"><img style="margin-bottom: 5px;" src="interface/button_rdf10.png" alt="Get RDF 1.0 Feed" title="Get RDF 1.0 Feed" border="0" /></a><br />';
-    // $html .= '</div>';
-    return ( $html );
-  }
 ?>

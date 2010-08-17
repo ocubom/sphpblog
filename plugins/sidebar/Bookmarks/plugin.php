@@ -35,7 +35,7 @@
                         ob_start(); ?>
                         <!-- FORM -->
                         <form method="post" onsubmit="return validate(this)">
-                                <label for="provider">Provider:</label><p>
+                                <label for="provider">Bookmark Provider:</label><p>
 				<input type="radio" name="provider" value="addthis" <?php if ($provider == 'addthis') { echo $checked; }  ?>> AddThis
 				<input type="radio" name="provider" value="addtoany" <?php if ($provider == 'addtoany') { echo $checked; }  ?>> AddToAny
 				<input type="radio" name="provider" value="socialmarker" <?php if ($provider == 'socialmarker') { echo $checked; }  ?>> Social Marker</p>

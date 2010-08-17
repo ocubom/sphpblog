@@ -515,7 +515,7 @@ function get_blocks() {
         }
     }
 
-    return array_merge($add, $arrlist);
+    return array_merge($arrlist, $add);
 }
   
   // ----------------------------
