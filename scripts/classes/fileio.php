@@ -49,7 +49,6 @@
 			}
 			
 			if ( file_exists($filename) ) {
-				if ( function_exists('file_get_contents') ) { // PHP 4 >= 4.3.0, PHP 5
 					$str = file_get_contents( $filename );
 					if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
 						$str = gzinflate( substr( $str, 10 ) );
@@ -67,31 +66,6 @@
 						$filecount++;
 					}
 					return $str;
-				} else {
-					if ( file_exists( $filename ) ) {
-						$handle = @fopen( $filename, 'r' );
-						if ( $handle ) {
-							$str = fread( $handle, filesize( $filename ) );
-							if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
-								$str = gzinflate( substr( $str, 10 ) );
-							}
-							fclose( $handle );
-							
-							// Cache file data...
-							$cache = array();
-							$cache['lastmodified'] = @filemtime($filename);
-							$cache['content'] = $str;
-							$filecache[$filename] = $cache;
-					
-							if (!isset($filecount)) {
-								$filecount = 1;
-							} else {
-								$filecount++;
-							}
-							return $str;
-						}
-					}
-				}
 			}
 		}
 		
@@ -117,15 +91,7 @@
 			@umask(0);
 			
 			$length = strlen($str);
-			if ( function_exists('file_put_contents') ) { // PHP 5
-				$bytes_written = file_put_contents( $filename, $str );
-			} else {
-				$handle = @fopen( $filename, 'w' );
-				if ( $handle ) {
-					$bytes_written = fwrite( $handle, $str, $length );
-					fclose( $handle );
-				}
-			}
+			$bytes_written = file_put_contents( $filename, $str );
 			
 			if ( $length == $bytes_written ) {
 				@chmod($filename, 0777);
@@ -388,11 +354,7 @@
 	*/
 	function resource_report() {
 		$end_time = microtime_float();
-		if (function_exists('memory_get_usage')) {
-			$memory_usage = 'Memory Usage: '.(memory_get_usage(true)/1024).' KB';
-		} else {
-			$memory_usage = 'Memory Usage: (Not Supported)';
-		}
+		$memory_usage = 'Memory Usage: '.(memory_get_usage(true)/1024).' KB';
 		$execution_time = 'Execution Time: '.($end_time-$GLOBALS['start_time']).' seconds';
 		$files_accessed = 'Files Accessed: '.count($GLOBALS['filecache']).' unique files / '.$GLOBALS['filecachecount'].' from cache / '.$GLOBALS['filecount'].' from disk';
 		
