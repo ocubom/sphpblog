@@ -213,7 +213,7 @@
     if ( $blog_config->getTag('BLOG_ENABLE_PRINT') ){ // New for 0.5.2
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' string...
-        $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
+        $comment_area = $comment_area . '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true" target="_blank">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
       }
     }
 

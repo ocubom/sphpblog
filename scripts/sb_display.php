@@ -570,7 +570,7 @@
       $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
       $blog_content  .= '">&#32;&#32;' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
     }
-    $blog_content  .= '</center></b><br />';
+    $blog_content  .= '</b></center><br />';
 
     // Check for intervening static entries to be shown before current entries...
 

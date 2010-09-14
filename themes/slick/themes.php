@@ -149,7 +149,7 @@
         if ( $comment_area != "" ) {
           $comment_area  .= '&nbsp;|&nbsp;';
         }
-        $comment_area  .= '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&print=true" target="_blank"">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
+        $comment_area  .= '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true" target="_blank"">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
       }
     }
 
