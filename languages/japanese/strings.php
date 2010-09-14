@@ -14,7 +14,8 @@
 		// ISO Charset: EUC-JP
 		$lang_string['html_charset'] = 'EUC-JP';
 		$lang_string['php_charset'] = 'EUC-JP';
-		
+
+		setlocale(LC_CTYPE, 'Japanese_Japan.20932' );		
 		setlocale(LC_TIME, $lang_string['locale'] ); // <-- New 0.3.7
 		
 		// Some Global Strings
