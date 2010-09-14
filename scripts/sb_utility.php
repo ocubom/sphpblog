@@ -144,12 +144,7 @@ function curPageURL() {
 	* @return		float
 	*/
 	function microtime_float() { 
-		if ( version_compare( phpversion(), '5.0.0' ) == -1 ) {
-			list($usec, $sec) = explode(' ', microtime()); 
-			return ((float)$usec + (float)$sec); 
-		} else {
-			return( microtime( true ) );
-		}
+		return( microtime( true ) );
 	}
 	
 
@@ -165,10 +160,6 @@ function curPageURL() {
 			ob_start( 'ob_gzhandler' );
 			ini_restore( 'zlib.output_compression_level' );
 		}
-	}
-
-	function safe_version_compare( $versionA, $versionB ) {
-		return version_compare($versionA, $versionB);
 	}
 
 	function compress_all_files () {
