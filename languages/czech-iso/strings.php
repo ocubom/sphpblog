@@ -1,25 +1,22 @@
 <?php
-
 	// Czech Language File
 	// (c) 2006 Josef Klimosz, jklimosz <at> gmail <dot> com
-	//
+	// for version 0.5.1 edited by (c) Lupyno, lupyno <at> seznam <dot> cz 
 
-	// Simple PHP Version: 0.4.8
-	// Czech Language Version:   0.4.8.2	
+	// Simple PHP Version: 0.5.1
+	// Czech Language Version: 0.5.1	
 
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;			
 
 		// Language: Czech
-		$lang_string['language'] = 'czech';	
-		
+		$lang_string['language'] = 'czech';
 		$lang_string['locale'] = array('cs_CZ', 'cs','czech');
 		$lang_string['rss_locale'] = 'cs-CZ'; // New 0.4.8
 
-		// ISO Charset: iso-8859-2
-		$lang_string['html_charset'] = 'ISO-8859-2';
-		$lang_string['php_charset'] = 'ISO-8859-2';	
-
+		// Windows Charset: iso-8859-2 
+		$lang_string['html_charset'] = 'iso-8859-2';
+		$lang_string['php_charset'] = 'iso-8859-2 ';
 		setlocale( LC_TIME, $lang_string['locale'] );		
 
 		// Some Global Strings		
@@ -27,7 +24,7 @@
 		// Menu
 		$lang_string['menu_links'] = "Odkazy";
 		$lang_string['menu_home'] = "Hlavní stránka";
-		$lang_string['menu_contact'] = "Kontaktujte mne";
+		$lang_string['menu_contact'] = "Kontakt";
 		$lang_string['menu_stats'] = "Statistiky";
 		$lang_string['menu_calendar'] = "Kalendáø"; // New for 0.4.8
 		$lang_string['menu_archive'] = "Archivy";
@@ -39,6 +36,8 @@
 		$lang_string['menu_setup'] = "Nastavení";
 		$lang_string['menu_categories'] = "Kategorie";
 		$lang_string['menu_info'] = "Meta data";
+		$lang_string['manage_users'] = "Správa u¾ivatelù";
+    $lang_string['manage_php_config'] = "zobrazit PHP nastavení"; // New in 0.5.0.1
 		$lang_string['menu_options'] = "Datum a èas";
 		$lang_string['menu_themes'] = "Vzhledy";
 		$lang_string['menu_colors'] = "Barvy";
@@ -51,8 +50,16 @@
 		$lang_string['menu_add_block'] = "Bloky";
 		$lang_string['menu_emoticons'] = "Smajlíky"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
+		$lang_string['menu_moderation'] = "Práva/IP nastavení"; // New for 0.4.9
+    $lang_string['menu_commentmoderation'] = "Neschválené komentáøe"; // New for 0.5.0
+    $lang_string['menu_random_entry'] = "Náhodný záznam"; // New for 0.5.2
+	  $lang_string['menu_plugins'] = "Pluginy"; // New for 0.5.2
+    $lang_string['notice_moderator1'] = "Máte ";
+    $lang_string['notice_moderator2'] = " komentáø(e/ù), které èekají na schválení.";
+    $lang_string['notice_loggedin'] = "Nyní jste pøihlá¹eni!";
 		
-		// Counter
+		
+    // Counter
 		$lang_string['counter_today'] = "Dnes:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Vèera:"; // New for 0.4.8
 		$lang_string['counter_totalsidebar'] = "Celkem:"; // New for 0.4.8
@@ -62,29 +69,38 @@
 		$lang_string['home'] = 'Zpìt na hlavní stránku';
 		$lang_string['nav_next'] = 'Dal¹í';
 		$lang_string['nav_back'] = 'Zpìt';
-		$lang_string['search_title'] = 'Hledání';
+		$lang_string['nav_first'] = 'První'; // New in 0.5.0.1
+    $lang_string['nav_last'] = 'Poslední'; // New in 0.5.0.1
+		$lang_string['search_title'] = 'Hledej';
 		$lang_string['search_go'] = 'Jdi';
 		$lang_string['page_generated_in'] = 'Stránka generována %s sekund';
 		$lang_string['counter_total'] = 'Zobrazení webu: '; // New in 0.4.8
 		$lang_string['read_more'] = 'Èíst dále...'; // New in 0.4.8
+		$lang_string['randomentry'] = 'Náhodný záznam'; // New in 0.5.0.1
+		$lang_string['randomquote'] = 'Náhodný záznam'; // New in 0.5.0.1
 
 		// SB Functions
 		$lang_string['sb_months'] = array( 'ledna', 'února', 'bøezna', 'dubna', 'kvìtna', 'èervna', 'èervence', 'srpna', 'záøí', 'øíjna', 'listopadu', 'prosince' );
 		$lang_string['sb_default_title'] = 'Bez názvu';
-		$lang_string['sb_default_author'] = 'Neznámý autor';
-		$lang_string['sb_default_footer'] = '';
+		$lang_string['sb_default_author'] = 'Bez autora';
+		$lang_string['sb_default_footer'] = 'Bez patky';
 
 		$lang_string['sb_edit'] = 'editovat';
 		$lang_string['sb_delete'] = 'vymazat';
 		$lang_string['sb_permalink'] = 'trvalý odkaz';
 		$lang_string['sb_trackback'] = 'zpìtné sledování';
+		$lang_string['sb_postedby'] = 'Napsal'; // 0.5.0
+    $lang_string['sb_admin'] = 'Administrator'; // 0.5.0
 		$lang_string['sb_relatedlink'] = 'související odkaz'; // <-- New in 0.4.6		
 
 		$lang_string['sb_add_comment_btn'] = 'pøidat komentáø';
+		$lang_string['sb_read_entry_btn'] = 'ukázat záznam'; // 0.5.0
 		$lang_string['sb_comment_btn_number_first'] = true;
 		$lang_string['sb_comment_btn'] = ' komentáø';
+		$lang_string['sb_comment_view'] = 'zobrazení'; // 0.5.0
 		$lang_string['sb_comments_plural_btn_number_first'] = false;
-		$lang_string['sb_comments_plural_btn'] = 'komentáøe:';		
+		$lang_string['sb_comments_plural_btn'] = 'komentáøe:';
+    $lang_string['sb_comments_plural_view'] = 'zobrazení'; // 0.5.0	
 
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
@@ -110,6 +126,7 @@
 			$lang_string['label_entry'] = "Záznam:";
 			$lang_string['btn_preview'] = "&nbsp;Ukázat&nbsp;";
 			$lang_string['btn_post'] = "&nbsp;Odeslat&nbsp;";
+			$lang_string['chk_visiblemenu'] = "Viditelné (zobrazeno v menu)";
 			$lang_string['file_name'] = "Název souboru (bez mezer a pøípony):";
 
 			// Javascript Strings
@@ -141,7 +158,7 @@
 				$lang_string['title'] = "Pøidat záznam";
 				$lang_string['instructions'] = "Chcet pøidat záznam do stránek? Vyplòte formuláø ní¾e a kliknìte na 'Ukázat' pro náhled nebo na 'Odeslat' pro ulo¾ení záznamu.";
 				$lang_string['title_ad'] = "Potvrzení pingù o odezvách";
-				$lang_string['instructions_ad'] = "Toto jsou automaticky rozpoznané URI, kam mohou být odesílány pingy. Jestli¾e na urèitou URI ping posílat nechcete, odznaète ji. Kliknìte na 'OK' pro odesílání pingù na oznaèené URI, nebo kliknìte na 'Zru¹it' a pingy nebudou odesílány.";
+				$lang_string['instructions_ad'] = "Toto jsou automaticky rozpoznané URL, kam mohou být odesílány pingy. Jestli¾e na urèitou URI ping posílat nechcete, odznaète ji. Kliknìte na 'OK' pro odesílání pingù na oznaèené URI, nebo kliknìte na 'Zru¹it' a pingy nebudou odesílány.";
 				$lang_string['label_tb_ping'] = "Pingy o odezvách odesílat na (oddìlit èárkami):";
 				$lang_string['label_tb_autodiscovery'] = "Autorozpoznání";
 				$lang_string['label_relatedlink'] = "Související odkaz";
@@ -156,8 +173,10 @@
 				$lang_string['cancel_btn'] = "&nbsp;Zru¹it&nbsp;";
 
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Záznam nebyl ulo¾en. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				break;
+				$lang_string['error'] = "<h2>Ouha!</h2>Záznam nebyl ulo¾en. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Záznam ulo¾en!!</h2>Vá¹ záznam byl v poøádku ulo¾en."; // 0.4.8.1
+        break;
+        
 			case 'add_static':
 				// Add Záznam
 				$lang_string['title'] = "Pøidat stránku";
@@ -171,10 +190,10 @@
 				$lang_string['form_error'] = "Vyplòte  pole s názvem, textem a názvem souboru.";	
 
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Záznam nebyl ulo¾en. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
+				$lang_string['error'] = "<h2>Ouha!</h2>Záznam nebyl ulo¾en. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
 				break;
-			case 'add_block':
-
+		
+    	case 'add_block':
 				// Add / Manage Blocks
 				$lang_string['title'] = "Pøidat/upravit bloky";
 				$lang_string['instructions'] = "Pøidání vlastních blokù. Vyplòte formuláø ní¾e a kliknìte na 'Pøidat blok'. Kliknutím na tlaèítka vý¹ a ní¾ upravíte umístìní bloku v postranním sloupci. Kliknutím na tlaèítko editovat blok upravíte. Kliknutím na tlaèítko vymazat blok zru¹íte";
@@ -190,6 +209,7 @@
 				$lang_string['submit_btn_add'] = "Pøidat blok";
 				$lang_string['form_error'] = "Vyplòte pole s názvem bloku.";
 				break;
+				
 			case 'add_link':
 				$lang_string['static_pages'] = "Statické stránky:";
 
@@ -208,11 +228,12 @@
 				$lang_string['submit_btn_add'] = "Pøidat odkaz";
 				$lang_string['form_error'] = "Vyplòte pole s názvem odkazu.";
 				break;
+				
 			case 'categories':
-
+			
 				// Add / Manage Links
 				$lang_string['title'] = "Pøidat/upravit kategorie";
-				$lang_string['instructions'] = "Pou¾ijte formuláø ní¾e pro vytvoøení kategorií. Ka¾dou kategorii zadejte ve formátu 'Název kategorie (id èíslo)'. Hierarchii vytvoøíte odsazením polo¾ek mezerami.<br /><br /><b>Pøíklad:</b><br />Hlavní (1)<br />Novinky (3)<br />&nbsp;&nbsp;Nabídky (6)<br />&nbsp;&nbsp;Události (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;Rùzné (7)<br />Technologie (2)<br />";
+				$lang_string['instructions'] = "Pou¾ijte formuláø ní¾e pro vytvoøení kategorií. Ka¾dou kategorii zadejte ve formátu 'Název kategorie (id èíslo)'. Hierarchii vytvoøíte odsazením polo¾ek mezerami.<br/><br/><b>Pøíklad:</b><br/>Hlavní (1)<br/>Novinky (3)<br/>&nbsp;&nbsp;Nabídky (6)<br/>&nbsp;&nbsp;Události (5)<br/>&nbsp;&nbsp;&nbsp;&nbsp;Rùzné (7)<br/>Technologie (2)<br/>";
 				$lang_string['error'] = "Chyba";
 				$lang_string['current_categories'] = "Vytvoøené kategorie";
 				$lang_string['no_categories_found'] = "Nejsou ¾ádné kategorie";
@@ -220,6 +241,7 @@
 				$lang_string['validate'] = "Ovìøení";
 				$lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
 				break;
+				
 			case 'colors':
 				// Change Colors
 				$lang_string['title'] = "Zmìna barev";
@@ -246,7 +268,20 @@
 				$lang_string['entry_border'] = "Okraj záznamu";
 				$lang_string['entry_title_text'] = "Text názvu záznamu";
 				$lang_string['entry_text'] = "Text záznamu";
-				$lang_string['menu_bg'] = "Pozadí menu";
+			
+			  $lang_string['static_bg'] = "Pozadí statické stránky"; // 0.5.0
+        $lang_string['static_title_bg'] = "Pozadí názvu statické stránky"; // 0.5.0
+        $lang_string['static_border'] = "Okraj statické stránky"; // 0.5.0
+        $lang_string['static_title_text'] = "Text názvu statické stránky"; // 0.5.0
+        $lang_string['static_text'] = "Text statické stránky"; // 0.5.0
+
+        $lang_string['comment_bg'] = "Pozadí komentáøe"; // 0.5.0
+        $lang_string['comment_title_bg'] = "Pozadí názvu komentáøe"; // 0.5.0
+        $lang_string['comment_border'] = "Okraj komentáøe"; // 0.5.0
+        $lang_string['comment_title_text'] = "Text názvu komentáøe"; // 0.5.0
+        $lang_string['comment_text'] = "Text komentáøe"; // 0.5.0
+			
+      	$lang_string['menu_bg'] = "Pozadí menu";
 				$lang_string['menu_title_bg'] = "Pozadí názvu menu";
 				$lang_string['menu_border'] = "Okraj menu";
 				$lang_string['menu_title_text'] = "Text názvu menu";
@@ -265,9 +300,11 @@
 				$lang_string['theme_doesnt_allow_colors'] = 'Vybraný vzhled neumo¾òuje volbu vlastního barevného schéma.';
 
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				break;
-			case 'comments':
+				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+				$lang_string['success'] = "<h2>Barvy ulo¾eny!</h2>Informace byla v poøádku ulo¾ena."; // New for 0.4.8.1
+        break;
+			
+      case 'comments':
 				// Comments
 				$lang_string['name'] = "Jméno:"; //New in 0.4.6.2
 				$lang_string['email'] = "E-mail:"; //New in 0.4.6.2
@@ -275,9 +312,9 @@
 				$lang_string['komentáø'] = "Komentáø:"; //New in 0.4.6.2
 				$lang_string['IPAddress'] = "IP adresa:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "Pou¾íváte:";  // New for 0.4.6.2
-				$lang_string['wrote'] = "<i>Na %s, %s napsal:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>Na %s, %s napsal:</i><br/>\n<br/>\n%s"; // New for 0.4.6.2
 				
-				$lang_string['comment_capcha'] = "Antispam: Vlo¾te øetìzec "; // 0.4.2
+				$lang_string['comment_capcha'] = "Antispam: Vlo¾te øetìzec <b>%s</b>"; // 0.4.2
 				$lang_string['title'] = "Komentáøe";
 				$lang_string['header'] = "Vlo¾it komentáø";
 				$lang_string['instructions'] = "Vyplòte formuláø ní¾e a pøidejte vá¹ vlastní komentáø.";
@@ -289,16 +326,38 @@
 				$lang_string['comment_text'] = "Text komentáøe:";
 				$lang_string['post_btn'] = "&nbsp;Odeslat komentáø&nbsp;";
 				$lang_string['delete_btn'] = "vymazat";
+				$lang_string['ban_btn'] = "Zakázat IP"; // New for 0.4.8
 				$lang_string['expired_comment1'] = "Litujeme. Komentáøe byly umo¾nìny po dobu "; // New for 0.4.8
 				$lang_string['expired_comment2'] = " dní."; // New for 0.4.8
 				
 				$lang_string['blacklisted'] = "Promiòte, va¹e IP adresa byla zablokována. Nemù¾ete vkládat ¾ádné komentáøe."; // New for 0.4.8
+        $lang_string['bannedword'] = "Vá¹ komentáø, url, jméno nebo email obsahují slova, které byly zakázány administrátorem. Vá¹ komentáø proto NEBYL ulo¾en!."; // New for 0.4.8
+        $lang_string['nocomments'] = "Komentáøe jsou pro tento záznam zakázány."; // New for 0.4.9
+        $lang_string['email_moderator'] = "Komentáøe jsou nyní schvalovány. Tento komentáø bude zkontrolován pøedtím, ne¾ se zveøejní."; // New for 0.5.0
+        $lang_string['user_notice_mod'] = "Schvalování je na tomto blogu aktivní. Vá¹ záznam potøebuje kontrolu administrátora pøedtím, ne¾ se zveøejní."; // new for 0.5.0
+
+        $lang_string['return_to_comments'] = 'Návrat ke komentáøùm';
         
 				// Error Response
-				$lang_string['error_add'] = "<h2>Ouha!</h2>Komentáø nebyl ulo¾en. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				$lang_string['error_delete'] = "<h2>Ouha!</h2>Komentáø nebyl vymazán. Bìhem mazání se objevil problém.<br /><br />Server ohlásil:<br />";
-				$lang_string['form_error'] = "Vyplòte pole se jménem, textem komentáøe a Antispamem.";
-				break;
+				$lang_string['error_add'] = "<h2>Ouha!</h2>Komentáø nebyl ulo¾en. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+				$lang_string['error_delete'] = "<h2>Ouha!</h2>Komentáø nebyl vymazán. Bìhem mazání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+				$lang_string['error_ban'] = "<h2>Ouha!</h2>IP nebyla pøidána do seznamu zakázaných IP adres.<br/><br/>Server Reported:<br/>";
+        $lang_string['success_add'] = "<h2>Komentáø pøidán!</h2>Vá¹ komentáø byl úspì¹nì ulo¾en."; // New for 0.4.8.1
+        $lang_string['success_delete'] = "<h2>Komentáø smazán!</h2>Komentáø byl definitivnì smazán."; // New for 0.4.8.1
+        $lang_string['success_ban1'] = "<h2>IP adresa zakázána!";
+        $lang_string['success_ban2'] = "</h2>Pro budoucí odebrání tohoto banu, pou¾ijte mo¾nosti správy v zálo¾ce nastavení."; // New for 0.4.8.1
+        $lang_string['form_error'] = "Vyplòte pole se jménem, textem komentáøe a Antispamem.";
+        $lang_string['error_noip'] = "®ádná IP adresa není zadána v blacklistu.";
+
+        $lang_string[ 'error_comments_disabled' ] = '<h2>Chyba!</h2>Pozor! Komentáøe jsou na tomto blogu zakázány. Chcete snad spamovat?'; // New 0.5.0
+        $lang_string[ 'error_no_match' ] = "<h2>Chyba!</h2>Va¹e IP adresa nesedí se zadanými IP adresami. Chcete snad spamovat?"; // New 0.5.0
+        $lang_string[ 'error_fields_missing' ] = '<h2>Chyba!</h2>Chybí následující pole: '; // New 0.5.0
+        $lang_string[ 'error_spambot' ] = '<h2>Chyba!</h2>Nejsou zadané symboly. Chcete snad spamovat?'; // New 0.5.0
+        $lang_string[ 'error_capcha' ] = '<h2>Chyba!</h2>Symboly, které jste zadali nejsou správné.'; // New 0.5.0
+        $lang_string[ 'error_bad_data' ] = '<h2>Chyba!</h2>Data pro zápis nejsou správná. Jste hacker?'; // New 0.5.0
+        $lang_string[ 'error_entry_missing' ] = '<h2>Chyba!</h2>Sna¾íte se komentovat an záznamu, který neexistuje.'; // New 0.5.0
+        $lang_string[ 'error_empty_text' ] = '<h2>Chyba!</h2>Nenapsali jste ¾ádný záznam nebo jméno.'; // New 0.5.0
+        break;
 
 			case 'delete':
 				$lang_string['title'] = "Vymazat záznam";
@@ -306,40 +365,52 @@
 				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Zru¹it&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Nelze vymazat záznam.<br /><br />Server ohlásil:<br />";
+				$lang_string['error'] = "<h2>Ouha!</h2>Nelze vymazat záznam.<br/><br/>Server ohlásil:<br/>";
+				$lang_string['success'] = "<h2>Záznam smazán!</h2>Tento záznam byl ji¾ smazán."; // New for 0.4.8.1
 				break;
+				
 			case 'delete_static':
 				$lang_string['title'] = "Vymazat stránku";
 				$lang_string['instructions'] = "Chcete vymazat tuto stránku? Ujistìte se, ¾e to opravdu chcete provést, akci nelze vrátit......";
 				$lang_string['ok_btn'] = "&nbsp;OK&nbsp;";
 				$lang_string['cancel_btn'] = "&nbsp;Zru¹it&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Nelze vymazat stránku.<br /><br />Server ohlásil:<br />";
+				$lang_string['error'] = "<h2>Ouha!</h2>Nelze vymazat stránku.<br/><br/>Server ohlásil:<br/>";
+				$lang_string['success'] = "<h2>Statická stránka byla smazána!</h2>Tato statická stránka byla ji¾ smazána."; // New for 0.4.8.1
 				break;
+				
 			case 'image_list':
 				$lang_string['title'] = "Seznam obrázkù";
-				$lang_string['instructions'] = "Kliknutím na odkazy ní¾e zobrazíte obrázky.<br /><br />Pøidání obrázku do záznamu:<br />1) Ctrl (nebo pravý) klik na odkaz, vyberte 'Kopírovat odkaz do schránky'.<br />2) Vra»te se na pøidání nebo editaci záznamu.<br />3) Kliknìte na tlaèítko 'img' a vlo¾te adresu obrázku do formuláøe.";
+				$lang_string['instructions'] = "Kliknutím na odkazy ní¾e zobrazíte obrázky.<br/><br/>Pøidání obrázku do záznamu:<br/>1) Ctrl (nebo pravý) klik na odkaz, vyberte 'Kopírovat odkaz do schránky'.<br/>2) Vra»te se na pøidání nebo editaci záznamu.<br/>3) Kliknìte na tlaèítko 'img' a vlo¾te adresu obrázku do formuláøe.";
 				break;
+				
 			case 'info':
 				$lang_string['title'] = "Meta data";
 				$lang_string['instructions'] = "Informace ní¾e jsou pou¾ity jako &quot;meta data&quot;, která pomáhají vyhledávaèùm v nalezení správných informací o va¹ich stránkách. Informace mohou být vyu¾ívány také v RSS kanálech.";
 				$lang_string['info_keywords'] = "Klíèová slova (seznam klíèových slov, oddìlených èárkami):";
 				$lang_string['info_description'] = "Popis (obsah nebo volný textový popis va¹ich stránek):";
 				$lang_string['info_copyright'] = "Práva (copyright nebo odkaz na pøíslu¹ný dokument):";
-				$lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
+				$lang_string['tracking_code'] = "Externí Kéd: (HTML kód, který je tøeba spustit na hlavní stránce (v tagu hlavièky kvùli bezpeènosti) pro ka¾dého náv¹tìvníka stránky napø.: Google Analytics)";
+        $lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání informací se objevil problém.<br /><br />Server ohlásil:<br />";
-				$lang_string['form_error'] = "Vyplòte pole s názvem a jménem autora.";
+				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání informací se objevil problém.<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Metadata ulo¾ena!</h2>Informace byla v poøádku ulo¾ena."; // New for 0.4.8.1
+        $lang_string['form_error'] = "Vyplòte pole s názvem a jménem autora.";
 				break;
+				
 			case 'index':
 				// Index
 				break;
+				
 			case 'static':
 				// Index
 				break;
+				
 			case 'rating':
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyla ulo¾ena. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				break;
+				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyla ulo¾ena. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Hlas ulo¾en!</h2>Va¹e hlasování bylo v poøádku ulo¾eno."; // New for 0.4.8.1
+        break;
+        
 			case 'login':
 				$lang_string['upgrade'] = "<h2>Obnovení</h2>"; // New 0.3.8
 				$lang_string['upgrade_count'] = "%n komentáøových souborù vy¾aduje obnovení:"; // New 0.3.8
@@ -353,18 +424,24 @@
 				$lang_string['success'] = "<h2>Úspìch!</h2>Jste pøihlá¹en. Pøíjemnou práci se stránkami!<p />";
 				// Wrong Heslo
 				$lang_string['wrong_password'] = "<h2>Ouha!</h2>Nejste pøihlá¹en. Zadejte své pøihla¹ovací jméno a heslo správnì a zkuste to znovu.<p />";
-				$lang_string['form_error'] = "Vyplòte pole se jménem a heslem.";
+        $lang_string['inactive_account'] = "<h2>Ouha!</h2>Nejste pøihlá¹eni. Vá¹ úèet byl z nìjakého dùvodu deaktivován administrátorem.<p />";
+        $lang_string['form_error'] = "Vyplòte pole se jménem a heslem.";
 				break;
+				
 			case 'logout':
 				$lang_string['title'] = "Odhlá¹ení";
-				$lang_string['instructions'] = "<h2>Ouha!</h2>Odhlá¹ení neprobìhlo korektnì. Nelze vymazat cookie. Nebo jste stále pøihlá¹en?<p />";
+        $lang_string['error'] = "<h2>Nashledanou!</h2>Jste odhlá¹eni. (Ani jste nebyli pøihlá¹eni!)<p />";
+        $lang_string['error_no_cookie'] = "<h2>Nashledanou!</h2>Jste odhlá¹eni. (Nebyly nalezeny cookies. Ani jste nebyli pøihlá¹eni!)<p />"; // New 0.5.0
+        $lang_string['success'] = "<h2>Nashledanou!</h2>Jste odhlá¹eni.<p />(Budete pøesmìrováni na hlavní stránku za 5 sekund.)<p />";
+        break;
+
+      case 'forms':
+        $lang_string['title'] = "";
+        $lang_string['instructions'] = "";
+        // Error Response
+        $lang_string['instructions'] = "<h2>Ouha!</h2>Odhlá¹ení neprobìhlo korektnì. Nelze vymazat cookie. Nebo jste stále pøihlá¹en?<p />";
 				break;
-			case 'forms':
-				$lang_string['title'] = "";
-				$lang_string['instructions'] = "";
-				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				break;
+
 			case 'set_login':
 				$lang_string['title'] = "Zmìna pøihla¹ovacího jména a hesla";
 				$lang_string['instructions'] = "Pou¾ijte formuláø ní¾e a zmìòte va¹e pøihla¹ovací jméno a/nebo heslo. Vlo¾te nové pøihla¹ovací jméno a heslo, které chcete pou¾ívat.";
@@ -374,7 +451,7 @@
 				// Success
 				$lang_string['success'] = "<h2>Úspìch!</h2>Your Pøihla¹ovací jméno a/nebo heslo je aktivní. Pøíjemnou práci se stránkami!<p />";
 				// Wrong Heslo
-				$lang_string['wrong_password'] = "<h2>Ouha!</h2>Informace nebyla ulo¾ena. Pøi ukládání va¹eho jména a/nebo hesla se objevil problém.<br /><br />Server ohlásil:<br />";
+				$lang_string['wrong_password'] = "<h2>Ouha!</h2>Informace nebyla ulo¾ena. Pøi ukládání va¹eho jména a/nebo hesla se objevil problém.<br/><br/>Server ohlásil:<br/>";
 				$lang_string['form_error'] = "Vyplòte pole se jménem a heslem.";
 				$lang_string['explanation'] = "V aktuální verzi programu byla zmìnìna struktura pøihla¹ování.  Nadále nelze zmìnit hesla a/nebo pøihlá¹ení pøímo na stránkách. Pokud chcete zmìnit heslo, vyma¾te soubor /config/password.php a ujistìte se, ¾e soubory install*.php jsou ulo¾eny na serveru. Poté obnovte tuto stránku nebo se odhla¹te. Skript, pou¾itý pøi vytváøení stránek, se spustí znovu.";  // New for 0.4.6
 				break;
@@ -384,14 +461,16 @@
 				$lang_string['blog_choose_language'] = "Volba jazyka:";
 				$lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
 				break;
+				
 			case 'install01':
 				$lang_string['title'] = "Vítejte";
 				$lang_string['instructions'] = "
-				Dìkujeme, ¾e jste si vybrali Simple PHP Blog!<br /><br />Simple PHP Blog je jednoduchý blogovací systém. Vy¾aduje PHP 4.1 nebo vy¹¹í a nastavení práv zápisu na serveru. V¹echny informace jsou ulo¾eny v textových souborech, tak¾e není vy¾adována databáze.<br /><br />
-				Nejprve je potøeba vytvoøit tøi adresáøe (<b>config</b>, <b>content</b> a <b>images</b>) pro ukládání va¹ich informací. Pak zadáte heslo a mù¾ete zaèít pracovat.<br /><br />
+				Dìkujeme, ¾e jste si vybrali Simple PHP Blog!<br/><br/>Simple PHP Blog je jednoduchý blogovací systém. Vy¾aduje PHP 4.1 nebo vy¹¹í a nastavení práv zápisu na serveru. V¹echny informace jsou ulo¾eny v textových souborech, tak¾e není vy¾adována databáze.<br/><br/>
+				Nejprve je potøeba vytvoøit tøi adresáøe (<b>config</b>, <b>content</b> a <b>images</b>) pro ukládání va¹ich informací. Pak zadáte heslo a mù¾ete zaèít pracovat.<br/><br/>
 				<b>Kliknìte ní¾e a zahajte nastavení:</b>";
 				$lang_string['begin'] = "[ Zahájit nastavení ]";
 				break;
+				
 			case 'install02':
 				$lang_string['title'] = "Nastavení";
 				$lang_string['instructions'] = "Vytvoøení adresáøù <b>config</b>, <b>content</b> a <b>images</b>:";
@@ -401,12 +480,12 @@
 				// Help
 				$lang_string['help'] = "
 				<h2>Ouha!</h2>
-				Nelze vytvoøit jeden nebo více adresáøù!<br /><br />To mù¾e být zpùsobeno:<br />
+				Nelze vytvoøit jeden nebo více adresáøù!<br/><br/>To mù¾e být zpùsobeno:<br/>
 				<ol>
 				<li><b>Práva zápisu</b> nejsou správnì nastavena na pøístup <b>Read/Write</b>.</li>
 				<li><b>UID</b> (identifikace u¾ivatele) v¹ech souborù a adresáøù musí být toto¾né.</li>
 				</ol>
-				Zkuste provést opravy popsané ní¾e a pak kliknìte na <b>Zkusit znovu</b>:<br />
+				Zkuste provést opravy popsané ní¾e a pak kliknìte na <b>Zkusit znovu</b>:<br/>
 				<ol>
 				<li>Manuálnì vytvoøte následující adresáøe: <b>config</b>, <b>content</b> a <b>images</b>.</li>
 				<li>Zajistìte <b>práva zápisu</b> pro tyto adresáøe: Pou¾ijte vá¹ FTP program: vlastník (Owner), u¾ivatel (User) a svìt (World) by mìli mít pøístup <b>Read</b> a <b>Write</b>. <i>(Pøípadnì mù¾ete kontaktovat va¹eho poskytovatele a po¾ádat o zmìnu...)</i></li>
@@ -417,6 +496,7 @@
 				$lang_string['success'] = "<h2>Úspìch!</h2>Adresáøe byly úspì¹nì vytvoøeny!<p /><b>Kliknìte ní¾e pro pokraèování:</b>";
 				$lang_string['continue'] = "[ Pokraèovat ]";
 				break;
+				
 			case 'install03':
 				$lang_string['supported'] = "<b>Vá¹ webový server podporuje následující kryptokódování:</b>";
 				$lang_string['standard'] = "Standardní DES: ";
@@ -430,7 +510,7 @@
 				$lang_string['using_MD5'] = "<b style=\"color: green;\">Pou¾ito MD5...</b>";
 				$lang_string['using_blowfish'] = "<b style=\"color: green;\">Pou¾ito Blowfish...</b>";
 				$lang_string['using_unknown'] = "<b>Pou¾ito neznámé kódování...</b>";
-				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br />";
+				$lang_string['salt_length'] = " <i>(Salt Length = %string)</i><br/>";
 				$lang_string['title'] = "Zadat pøihla¹ovací jméno a heslo";
 				$lang_string['instructions'] = "Pou¾ijte formuláø ní¾e a zadejte pøihla¹ovací jméno a heslo.";
 				$lang_string['username'] = "Pøihla¹ovací jméno:";
@@ -440,12 +520,13 @@
 				$lang_string['success'] = "<h2>Gratulujeme!</h2>Jste pøihlá¹en. Kliknìte ní¾e a pøjdìte na nastavení, kde mù¾ete zadat název va¹ich stránek. Pøíjemnou práci se stránkami!<p />";
 				$lang_string['btn_setup'] = "[ Nastavení ]";
 				// Wrong Heslo
-				$lang_string['wrong_password'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Pøi ukládání va¹eho pøihla¹ovacího jména a/nebo hesla se objevil problém.<br /><br />Server ohlásil:<br />";
+				$lang_string['wrong_password'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Pøi ukládání va¹eho pøihla¹ovacího jména a/nebo hesla se objevil problém.<br/><br/>Server ohlásil:<br/>";
 				$lang_string['form_error'] = "Vyplòte pole se jménem a heslem.";
 				break;
+				
 			case 'install04':
 				$lang_string['title'] = "Vytvoøení souboru s heslem";
-				$lang_string['instructions'] = "Toto je dùle¾itá èást:<br />
+				$lang_string['instructions'] = "Toto je dùle¾itá èást:<br/>
 				<ol>
 				<li>Spus»e nìjaký textový editor <i>(Notepad, WordPad, Word, BBEdit, Pico, VI atd...).</i></li>
 				<li>Vytvoøte nový textový soubor.</li>
@@ -460,6 +541,7 @@
 				$lang_string['code'] = "Kód pro soubor <b>password.php</b>:";
 				$lang_string['continue'] = "[ Pokraèovat ]";
 				break;
+				
 			case 'install05':
 			case 'install06':
 				$lang_string['title'] = "Pøihlá¹ení";
@@ -478,10 +560,12 @@
 				$lang_string['btn_setup'] = "[ Nastavení ]";
 				$lang_string['btn_try_again'] = "[ Zkusit znovu ]";
 				break;
+				
 			case 'setup':
 				$lang_string['title'] = "Nastavení";
 				$lang_string['instructions'] = "Ní¾e mù¾ete zmìnit název va¹ich stránek a osobní informace.";
 				$lang_string['blog_title'] = "Název stránek:";
+				$lang_string['blog_header'] = "URL pro grafickou hlavièku: images/blogheader.jpg (Nechte prázdné pro základní témata).";
 				$lang_string['blog_author'] = "Autor:";
 				$lang_string['blog_email'] = "E-mail (více e-mailových adres by mìlo být oddìleno èárkami, nevyplnìním vypnete stránku Kontaktujte mne)"; // Updated 0.4.7
 				$lang_string['blog_avatar'] = "URL avataru (ponechte nevyplnìné pro ¾ádný):"; // <-- New 0.4.7
@@ -489,6 +573,11 @@
 				$lang_string['blog_choose_language'] = "Volba jazyka:";
 				$lang_string['blog_enable_comments'] = "Povolit komentáøe";
 				$lang_string['blog_comments_popup'] = "Komentáøe otevírat ve vyskakovacím oknì";
+				$lang_string['blog_enable_start_category'] = "Pou¾ít konkrétní kategorii záznamù pro první stranu: "; // Now for 0.5.1
+        $lang_string['blog_search_top'] = "Zobrazit Hledání v záznamech (místo umístìní v boèní li¹tì)."; // New for 0.5.0
+        $lang_string['blog_enable_static_block'] = "Zobrazit konkrétní blok jako první záznam v blogu: "; // New for 0.5.0
+        $lang_string['static_block_border'] = 'Zobrazit okraj'; // New for 0.5.0
+        $lang_string['static_block_noborder'] = 'Bez okraje'; // New for 0.5.0
 				$lang_string['blog_enable_voting'] = "Povolit ètenáøùm hodnocení záznamù";
 				$lang_string['blog_enable_cache'] = "Povolit ke¹ování záznamù (mù¾e zrychlit naèítání u nìkterých serverù)"; // New for 0.4.6
 				$lang_string['blog_enable_calendar'] = "Zobrazit kalendáø"; // New for 0.4.6
@@ -506,23 +595,20 @@
 				$lang_string['blog_enable_lastentries'] = "Zobrazit seznam nejnovìj¹ích záznamù"; // New for 0.4.7
 				$lang_string['blog_email_notification'] = "Posílat e-mailovou notifikaci komentáøù";
 				$lang_string['blog_send_pings'] = "Posílat &quot;pingy&quot;";
-				$lang_string['blog_ping_urls'] = "Vlo¾te kompletní URL (napø. http://rpc.weblogs.com/RPC2) slu¾by posílání &quot;pingù&quot;.<br />(Mù¾ete vlo¾it více adres, oddìlených èárkami)";
-				$lang_string['blog_trackback_about'] = "Zpìtné sledování (trackbacks) zaji¹»uje notifikaci mezi weby. Web dostane informaci o tom, ¾e je na nìj odkazováno, pomocí odesílaných pingù. Tak lze zjistit, kdo je pøipojen na va¹e stránky.<br />
-				   URI pingù mù¾ete vlo¾it manuálnì, nebo zkusit automatické rozpoznání.";
+				$lang_string['blog_ping_urls'] = "Vlo¾te kompletní URL (napø. http://rpc.weblogs.com/RPC2) slu¾by posílání &quot;pingù&quot;.<br/>(Mù¾ete vlo¾it více adres, oddìlených èárkami)";
+				$lang_string['blog_trackback_about'] = "Zpìtné sledování (trackbacks) zaji¹»uje notifikaci mezi weby. Web dostane informaci o tom, ¾e je na nìj odkazováno, pomocí odesílaných pingù. Tak lze zjistit, kdo je pøipojen na va¹e stránky.<br/> URL pingù mù¾ete vlo¾it manuálnì, nebo zkusit automatické rozpoznání.";
 				$lang_string['blog_trackback_enabled'] = "Povolit zpìtné sledování odkazù a záznamù";
 				$lang_string['blog_trackback_auto_discovery'] = "Povolit automatické rozpoznávání v záznamech, obsahujících URL adresy";
 				$lang_string['blog_max_entries'] = "Nejvy¹¹í poèet zobrazených záznamù:";
 				$lang_string['blog_comment_tags'] = "Tagy, povolené v komentáøích:";
-				$lang_string['blog_gzip_about'] = "
-					Poèínaje PHP 4.0.4 lze èíst a zapisovat soubory, komprimované metodou GZIP (.gz),	a u¹etøit tak diskový prostor. Také lze komprimovat stránky odesílané prohlí¾eèùm, podporujícím tuto kompresi, a tím u¹etøit objem pøenosu dat.<br />
-					<br />
-					Podpora knihovny Zlib v PHP není pøedem zapnuta. Pokud jsou volby neaktivní, va¹e instalace PHP neumo¾òuje GZIP kompresi.";
+				$lang_string['blog_gzip_about'] = "Poèínaje PHP 4.0.4 lze èíst a zapisovat soubory, komprimované metodou GZIP (.gz),	a u¹etøit tak diskový prostor. Také lze komprimovat stránky odesílané prohlí¾eèùm, podporujícím tuto kompresi, a tím u¹etøit objem pøenosu dat.<br/><br/> Podpora knihovny Zlib v PHP není pøedem zapnuta. Pokud jsou volby neaktivní, va¹e instalace PHP neumo¾òuje GZIP kompresi.";
 				$lang_string['blog_enable_gzip_txt'] = "Povolit kompresi GZIP pro databázové soubory";
 				$lang_string['blog_enable_gzip_output'] = "Povolit kompresi GZIP pro HTTP výstup";
 				$lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				$lang_string['form_error'] = "Vyplòte pole s názvem a jménem autora.";
+				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Nastavení ulo¾eno!</h2>Informace byla v poøádku ulo¾ena."; // New for 0.4.8.1
+        $lang_string['form_error'] = "Vyplòte pole s názvem a jménem autora.";
 				$lang_string['label_entry_order'] = "Poøadí záznamù:";
 				$lang_string['select_new_to_old'] = "Od nejnovìj¹ího";
 				$lang_string['select_old_to_new'] = "Od nejstar¹ího";
@@ -538,8 +624,33 @@
 				$lang_string['title_general'] = "V¹eobecné"; // New in 0.4.7
 				$lang_string['title_language'] = "Jazyk"; // New in 0.4.7
 				$lang_string['blog_comment_days_expiry'] = "Kolik dní budou umo¾nìny komentáøe? (0 znamená neomezenì)"; // New in 0.4.8
-				
+				$lang_string['blog_comments_moderation'] = "Zkontrolování komentáøù pøihlá¹eným u¾ivatelem (v¾dy viditelné pro aktivního u¾ivatele)"; // New in 0.5.0
+        $lang_string['comment_moderation'] = "Nastvení moderování komentáøù"; // New in 0.5.0
 				break;
+			case 'comment_moderation':
+        $lang_string['title'] = "Nezkontrolované komentáøe";
+        $lang_string['instructions'] = "Toto je seznam v¹ech komentáøù které nejsou k dispozici nepøihlá¹eným u¾ivatelùm, proto¾e nejsou schváleni Administrátorem.";
+        $lang_string['header'] = "Seznam moderace";
+        $lang_string['enteredby'] = "Zaznamenal: ";
+        $lang_string['entrydate'] = "Datum záznamu: ";
+        $lang_string['blogentrytitle'] = "Název Blogu: ";
+        $lang_string['enteredcontent'] = "Obsah: ";
+        $lang_string['totalunmodded'] = " celkový poèet polo¾ek èekajících na moderaci.";
+        $lang_string['mod_approve'] = "[Schválit] ";
+        $lang_string['mod_delete'] = "[Smazat]";
+        break;
+      case 'moderation':
+        $lang_string['title'] = "Nastavení moderace";
+        $lang_string['instructions'] = "Mù¾ete zmìnit seznam automatické moderace.";
+        $lang_string['submit_btn'] = "&nbsp;Ulo¾it nastavení moderace&nbsp;";
+        // Error Response
+        $lang_string['error'] = "<h2>Ouha!</h2>Informace nebyla ulo¾ena. Vyskytl se problém s ukládáním informací.<br/><br/>Server Reported:<br/>";
+        $lang_string['success'] = "<h2>Nastavení ulo¾ena!</h2>Informace byla v poøádku ulo¾ena."; // New for 0.4.8.1
+        $lang_string['banned_address_list_title'] = "<h2>Zakázané IP adresy</h2>";
+        $lang_string['banned_address_list'] = "Zde je list IP adres, které byly zablokovány pro vkládání komentáøù. Ka¾dá IP je na vlastním øádku a musí být èíselná (ne DNS názvy - ne domény). Pokud jste pøihlá¹eni, IP mohou být blokovány pøímo z prohlí¾ení komentáøù.";
+        $lang_string['banned_word_list_title'] = "<h2>Zakázaná slova</h2>";
+        $lang_string['banned_word_list'] = "Zde je seznam slov, které nejsou povoleny v adresách nebo v textu. Ka¾dé slovo, nebo skupina slov, musí být jen vlastním øádku. Komentáøe budou testovány vzhledem ke ka¾dé øadce ve stejném poøadí pro udìlení banu.";
+        break;
 			case 'trackbacks':
 				// Trackbacks
 				$lang_string['title'] = "Zpìtná sledování (trackbacks)";
@@ -547,7 +658,10 @@
 				$lang_string['delete_btn'] = "vymazat";
 				// Error Response
 				$lang_string['error_add'] = "Chyba pøi ukládání sledování.";
-				break;
+        $lang_string['error_delete'] = "<h2>Ouha!</h2>Zpìtné sledování nebylo vymazáno. Vyskytla se chyba pøi mazání zpìtného sledování.<br/><br/>Server odpovídá:<br/>";
+        $lang_string['success_delete'] = "<h2>Zpìtné sledování smazáno!</h2>Záznam pro zpìtné sledování byl vymazán."; // New for 0.4.8.1
+        break;
+
 			case 'options':
 				$lang_string['title'] = "Volby";
 				$lang_string['instructions'] = "Pou¾ijte formuláø ní¾e pro nastavení formátu data a èasu va¹ich záznamù. Mù¾ete zvolit 12 nebo 24 hodinový formát èasu a  krátký nebo dlouhý formát pro datum. <b>Náhled</b> bude upraven automaticky po ka¾dé zmìnì.";
@@ -591,8 +705,10 @@
 				// Buttons
 				$lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				break;
+				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Nastavení ulo¾eno!</h2>Informace byla v poøádku ulo¾ena."; // New for 0.4.8.1
+        break;
+
 			case 'themes':
 				$lang_string['title'] = "Vzhledy";
 				$lang_string['instructions'] = "Pou¾ijte rozbalovací menu a vyberte vzhled.";
@@ -601,21 +717,26 @@
 				// Buttons
 				$lang_string['submit_btn'] = "&nbsp;Odeslat&nbsp;";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br /><br />Server ohlásil:<br />";
-				break;
+				$lang_string['error'] = "<h2>Ouha!</h2>Informace nebyly ulo¾eny. Bìhem ukládání se objevil problém.<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Téma bylo vybráno!</h2>Informace byla v poøádku ulo¾ena."; // New for 0.4.8.1
+        break;
+          
 			case 'upload_img':
 				$lang_string['title'] = "Nahrát obrázek";
 				$lang_string['instructions'] = "Kliknìte na tlaèítko ní¾e a vyberte soubor k nahrání.";
 				$lang_string['select_file'] = "Vybrat soubor:";
 				$lang_string['upload_btn'] = "Nahrát";
 				// Error Response
-				$lang_string['error'] = "<h2>Ouha!</h2>Nelze nahrát obrázek. Zde jsou podrobnìj¹í informace:<br /><br />Server ohlásil:<br />";
-				break;
+				$lang_string['error'] = "<h2>Ouha!</h2>Nelze nahrát obrázek. Zde jsou podrobnìj¹í informace:<br/><br/>Server ohlásil:<br/>";
+        $lang_string['success'] = "<h2>Obrázek nahrán!</h2>Obrázek byl nahrán a v poøádku ulo¾en."; // New for 0.4.8.1
+        break;
+        
 			case 'search':
 				$lang_string['title'] = "Výsledky hledání";
 				$lang_string['instructions'] = "Výsledky hledání pro <b>%string</b>:";
 				$lang_string['not_found'] = "Nic nebylo nalezeno";
 				break;
+				
 			case 'contact':
 				$lang_string['contact_capcha'] = "Antispam: Vlo¾te "; // 0.4.2
 				$lang_string['title'] = "Kontaktujte mne";
@@ -631,8 +752,9 @@
 				$lang_string['contactsent'] = "Kontakt odeslán ze stránek: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "IP adresa:";  // New for 0.4.6
 				$lang_string['useragent'] = "Pou¾íváte:";  // New for 0.4.6
-				$lang_string['wrote'] = "<i>%s %s napsal:</i><br />\n<br />\n%s"; // New for 0.4.6.2
+				$lang_string['wrote'] = "<i>%s %s napsal:</i><br/>\n<br/>\n%s"; // New for 0.4.6.2
 				break;
+				
 			case 'stats':
 				$lang_string["title"] = "Statistiky";
 				$lang_string["general"] = "V¹eobecné";
@@ -647,12 +769,14 @@
 				$lang_string["most_voted_entries"] = "10 nejvíce hodnocených záznamù"; // 0.4.1
 				$lang_string["most_rated_entries"] = "10 nejlépe hodnocených záznamù"; // 0.4.1
 				break;
+				  
 			case 'errorpage-nocookies':  // New for 0.4.6
 				$lang_string["title"] = 'HTTP chyba 403.8 - Pøístup na stránku/funkci zakázán';
 				$lang_string["errorline1"] = 'Stránka nebo funkce, kterou jste se pokusili vyvolat vy¾aduje pou¾ití cookies.';
 				$lang_string["errorline2"] = 'Obnovte funkènost cookie ve va¹em prohlí¾eèi nebo ochranném software a zkuste vá¹ po¾adavek znovu.';
 				$lang_string["clientid"] = 'ID klienta: ';
 				break;
+				
 			case 'errorpage':  // New for 0.4.6
 				$lang_string["403.8"] = 'HTTP Chyba 403.8 - Pøístup na stránku/funkci zakázán';
 				$lang_string["404"] = 'HTTP Chyba 404 - Stránka/funkce neexistuje';
@@ -662,16 +786,10 @@
 				$lang_string["error_emailnotsentcapcha"] = 'Zpráva, kterou jste se pokusili odeslat, je vadná, proto¾e antispamový øetìzec byl vlo¾en nesprávnì nebo vùbec.';
 				$lang_string["clientid"] = 'ID klienta: ';
 				break;
+				
 			case 'emoticons':  // New for 0.4.7
 				$lang_string['title'] = "Administrace smajlíkù";
-				$lang_string['instructions'] = "
-					Vyberte smajlíky, které chcete pou¾ívat. Do políèek formuláøe zapi¹te øetìzce, které budou nahrazovány smajlíky. Mù¾ete pou¾ít nìkolik rùzných øetìzcù, oddìlených èárkami.<br /><br />
-		
-					Napøíklad:<br />
-					:) :-) :SMILE: :HAPPY:<br /><br />
-					
-					<i>(Doporuèujeme pou¾ívat del¹í ne¾ dvouznakové øetìzce, 
-					aby nedocházelo k nepøedpokládaným náhradám v bì¾ném textu)</i>";
+				$lang_string['instructions'] = "Vyberte smajlíky, které chcete pou¾ívat. Do políèek formuláøe zapi¹te øetìzce, které budou nahrazovány smajlíky. Mù¾ete pou¾ít nìkolik rùzných øetìzcù, oddìlených èárkami.<br/><br/>Napøíklad:<br/>:) :-) :SMILE: :HAPPY:<br/><br/><i>(Doporuèujeme pou¾ívat del¹í ne¾ dvouznakové øetìzce, aby nedocházelo k nepøedpokládaným náhradám v bì¾ném textu)</i>";
 				$lang_string["upload_instructions"] = 'Nahrát nový smajlík:';
 				$lang_string["upload_success"] = 'Úspìch! Obrázek byl úspì¹nì nahrán!';
 				$lang_string["upload_error"] = 'Chyba! Obrázek nebyl nahrán.';
@@ -680,6 +798,41 @@
 				$lang_string["save_error"] = 'Chyba! Nastavení smajlíkù nebylo ulo¾eno.';
 				$lang_string["save_button"] = 'Ulo¾it smajlíky';
 				break;
+				
+				case 'archives': // New for 0.4.8
+        $lang_string['title'] = "Archivy";
+        $lang_string['showall'] = "Ukázat v¹e";
+        break;
+
+      case 'manage_users':
+        $lang_string['title'] = "Upravit správu u¾ivatelù";
+        $lang_string['instructions'] = "Pøidat, upravit, nebo smazat u¾ivatele, kteøí nejsou administrátoøi, ale mají mo¾nost záznamy v blogu a/nebo moderovat komentáøe.";
+        $lang_string['fulladminerror'] = "Pro tuto volbu musíte být pøihlá¹en jako administrátor!";
+        $lang_string['header_user'] = "U¾ivatel: ";
+        $lang_string['header_property'] = "Vlastnictví";
+        $lang_string['header_value'] = "Hodnota";
+        $lang_string['prop_username'] = "Jméno:";
+        $lang_string['prop_fullname'] = "Zobrazované jmíno:";
+        $lang_string['prop_password'] = "Heslo:";
+        $lang_string['prop_email'] = "Email:";
+        $lang_string['prop_avatar'] = "URL obrázku:";
+        $lang_string['prop_state'] = "Aktivní?";
+        $lang_string['prop_sec_Moderate'] = "Moderace komentáøù?";
+        $lang_string['prop_sec_Delete'] = "Mazání záznamù v blogu?";
+        $lang_string['prop_sec_Edit'] = "Editace jakýchkoliv záznamù?";
+        $lang_string['btn_SaveChanges'] = "Ulo¾it zmìny";
+        $lang_string['btn_CreateUser'] = "Vytvoøit u¾ivatele";
+        $lang_string['btn_Cancel'] = "Cancel";  
+        $lang_string['grid_header'] = "Seznam u¾ivatelù";
+        $lang_string['grid_login'] = 'Login';
+        $lang_string['grid_email'] = 'Email';
+        $lang_string['grid_avatar'] = 'Obrázek';
+        $lang_string['grid_state'] = 'Aktivní?';
+        $lang_string['btn_modify'] = 'Zmìnit';
+        $lang_string['btn_delete'] = 'Smazat';
+        $lang_string['create_user'] = 'Vytvoøit nového u¾ivatele';
+        break;
+        
 			default:
 				break;
 		}
