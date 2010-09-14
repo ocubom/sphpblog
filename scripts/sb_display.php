@@ -644,7 +644,7 @@
       foreach ($user_list as $tmp) {
         if ( $tmp[1] == $username ) {
           $fullname = $tmp[0];
-          fclose($pfile);
+          //fclose($pfile);
           return ( $fullname );
         }
       }
@@ -659,14 +659,14 @@
       foreach ($user_list as $tmp) {
         if ( $tmp[1] == $username ) {
           $avatarurl = $tmp[3];
-          fclose($pfile);
+          //fclose($pfile);
           return ( $avatarurl );
         }
       }
     }
-    if (isset($pfile)) {
-      fclose($pfile);}
-  }
+    //if (isset($pfile)) {
+    //  fclose($pfile);}
+  //}
 
   function CheckUserSecurity( $username, $type ) {
     // Go to the users database and get the user name
@@ -683,7 +683,7 @@
             $answer = true;
           }
 
-          fclose($pfile);
+          //fclose($pfile);
           return ( $answer );
         }
       }
