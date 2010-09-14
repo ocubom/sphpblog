@@ -6,20 +6,10 @@
 	$ipfile = CONTENT_DIR."counter/counterip.txt";
 	
 	// ip address
-	$phpversion = phpversion();
-	if ($phpversion < 4.1){
-		global $HTTP_SERVER_VARS;
-		$aktip = $HTTP_SERVER_VARS['REMOTE_ADDR'];
-		if ( ($aktip == "127.0.0.1") && ($HTTP_SERVER_VARS['HTTP_X_FORWARDED_FOR'] != "") ) {
-			$aktip = $HTTP_SERVER_VARS['HTTP_X_FORWARDED_FOR'];
-		}
-	}
-	else{
 		$aktip = $_SERVER['REMOTE_ADDR'];
 		if ( ($aktip=="127.0.0.1") && array_key_exists('HTTP_X_FORWARDED_FOR',$_SERVER) && ($_SERVER['HTTP_X_FORWARDED_FOR'] != "" ) ) {
 			$aktip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		}
-	}
 	
 	function checkforfiles() {
 		global $ipfile, $count;
