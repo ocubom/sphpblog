@@ -14,7 +14,7 @@
                 // TODO translations
                 // TODO more PHP checks here
                 print "<p>PHP Configuration Checks:</p>";
-                if (strnatcmp(phpversion(),'4.1') < 0)
+                if (strnatcmp(phpversion(),'5.0') < 0)
                         echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
                 if (!open_basedir_check(CONFIG_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONFIG_DIR) . ".</p>";
@@ -168,39 +168,7 @@ function curPageURL() {
 	}
 
 	function safe_version_compare( $versionA, $versionB ) {
-		// This is a PHP < 4.1 safe version compare function.
-		// The version_compare function was introduced in 4.1
-		// so there's no way to compare older versions.
-		//
-		// returns -1 if the first version is lower than the second,
-		// 0 if they are equal, and +1 if the second is lower.
-		//
-		// return NULL on error.
-
-		$arrayA = explode( '.', $versionA );
-		$arrayB = explode( '.', $versionB );
-
-		$count = min( count( $arrayA ), count( $arrayB ) );
-
-		$result = NULL;
-		if ( $count > 0) {
-			for ( $i = 0; $i < $count; $i++ ) {
-				$intA = intval( $arrayA[$i] );
-				$intB = intval( $arrayB[$i] );
-				if ( $intA == $intB ) {
-					$result = 0;
-				} else if ( $intA > $intB ) {
-					$result = 1;
-				} else if ( $intA < $intB ) {
-					$result = -1;
-				}
-				if ( $result != 0 ) {
-					break;
-				}
-			}
-		}
-
-		return ( $result );
+		return version_compare($versionA, $versionB);
 	}
 
 	function compress_all_files () {
