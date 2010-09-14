@@ -113,8 +113,15 @@
       // to 1000's of entries.
       //
 
-      $cat_sub_arr = get_sub_categories($category);
-      array_push( $cat_sub_arr, $category );
+      $cats = split( ',', $category);
+      $cat_sub_arr = array();
+      for ($i = 0; $i < count($cats); $i++)
+      {
+        $subcats = get_sub_categories($cats[$i]);
+        for ($j = 0; $j < count($subcats); $j++)
+          array_push($cat_sub_arr, $subcats[$j]);
+        array_push($cat_sub_arr, $cats[$i]);
+      }
 
       for ( $i = $entry_index; $i < count( $entry_file_array ); $i++ ) {
         list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
