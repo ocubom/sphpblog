@@ -81,7 +81,19 @@
 	function page_content() {
 	global $lang_string, $user_colors;
 	if ( $ok !== true ) {
-		echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+ 		switch($_FILES['userfile'][$i]['error'])
+ 		{
+ 			case 0: $errstring = "There is no error, the file uploaded with success."; break;
+ 			case 1: $errstring = "Value: 1; The uploaded file exceeds the upload_max_filesize directive in php.ini."; break;
+ 			case 2: $errstring = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."; break;
+ 			case 3: $errstring = "The uploaded file was only partially uploaded."; break;
+ 			case 4: $errstring = "No file was uploaded."; break;
+ 			case 6: $errstring = "Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3."; break;
+ 			case 7: $errstring = "Failed to write file to disk. Introduced in PHP 5.1.0."; break;
+ 			case 8: $errstring = "File upload stopped by extension. Introduced in PHP 5.2.0."; break;
+ 			default: $errstring = "The reason of error is unknown. <br>Please look after to the "+$_FILES['userfile'][$i]['error']+" error code for the _FILES['userfile']['error'] in the php manual"; break;
+ 		}
+ 		echo( $GLOBALS['lang_string']['error'] . $ok . $errstring . '<p />');
 	}
 	//echo(count($_FILES['userfile']));
 	//print_r($_FILES['userfile']);
