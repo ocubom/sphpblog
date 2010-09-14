@@ -18,47 +18,11 @@
 	
 	// Store "time" for benchmarking.
 	function getmicrotime() { 
-		if ( version_compare( phpversion(), '5.0.0' ) == -1 ) {
-			list($usec, $sec) = explode(' ', microtime()); 
-			return ((float)$usec + (float)$sec); 
-		} else {
-			return( microtime( true ) );
-		}
+		return( microtime( true ) );
 	}
 
 	global $page_timestamp;
 	$page_timestamp = getmicrotime();
-	
-	// Legacy support functions
-	// PHP4 < 4.3.0
-	if (!function_exists("ob_get_clean")) { 
-		function ob_get_clean() { 
-		$ob_contents = ob_get_contents(); 
-		ob_end_clean(); 
-		return $ob_contents; 
-		} 
-	} 
-	
-	if (!function_exists('str_word_count')) {
-		function str_word_count($str,$n = "0"){ 
-			$m=strlen($str)/2;
-			$a=1;
-			while ($a<$m) {
-				$str=str_replace("Ê "," ",$str);
-				$a++;
-			}
-			$b = explode(" ", $str);
-			$i = 0;
-			foreach ($b as $v) { 
-				$i++;
-			}
-			if ($n==1) {
-				return $b;
-			} else {
-				return $i;
-			}
-		}
-	}
 	
 	// SESSION LOCATION
 	$sessionpath = session_save_path();
