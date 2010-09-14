@@ -204,7 +204,7 @@
       return($proto.$_SERVER[ 'HTTP_HOST' ].$port.'/');
     } else {
       // Hosted in sub-directory.
-      return($proto.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/');
+      return(str_replace('\\', '/',$proto.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/'));
     }
     exit;
   }
