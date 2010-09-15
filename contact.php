@@ -42,7 +42,7 @@
 		
 		<?php echo ( $GLOBALS['lang_string']['instructions'] ); ?><p />
 		<form action="contact_cgi.php" method="post" onsubmit="return validate(this)">
-	
+		<p>
 		<label for="name"><?php echo( $GLOBALS['lang_string']['name'] ); ?></label><br />
 		<input type="text" name="name" id="name" size="40" /><br /><br />
 		<label for="email"><?php echo( $GLOBALS['lang_string']['email'] ); ?></label><br />
@@ -50,27 +50,28 @@
 		<label for="subject"><?php echo( $GLOBALS['lang_string']['subject'] ); ?></label><br />
 		<input type="text" name="subject" id="subject" size="40" /><br /><br />
 		<label for="text"><?php echo( $GLOBALS['lang_string']['comment'] ); ?></label><br />
-		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50" autocomplete="OFF"></textarea><br /><br />
+		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50"></textarea><br /><br />
 		
 		<?php
 		if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA') == 0 ) {
 			echo('<!-- Anti-spam disabled -->');
-			echo('<input type="hidden" name="capcha_contact" id="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" autocomplete="OFF" maxlength="6" /><br /><br />'); 
+			echo('<input type="hidden" name="capcha_contact" id="capcha_contact" value="' . $_SESSION[ 'capcha_contact' ] . '" maxlength="6" /><br /><br />'); 
 		} else {
 			echo('<label for="capcha_contact">');
 			if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') ) {
-				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<br /><img src="capcha.php?entry=contact" />' );
+				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<br /><img src="capcha.php?entry=contact" alt="CAPCHA" />' );
 			} else {
 				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
 			}
 			echo('</label><br />');
-			echo('<input type="text" name="capcha_contact" id="capcha_contact" value="" autocomplete="OFF" maxlength="6" /><br /><br />');
+			echo('<input type="text" name="capcha_contact" id="capcha_contact" value="" maxlength="6" /><br /><br />');
 		} 
 		?>
-		
+		</p>
 		<hr />
-	
+		<p>
 		<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
+		</p>
 		</form>
 		<?php
 		// PAGE CONTENT END

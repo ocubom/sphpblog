@@ -132,8 +132,11 @@
     $blog_content = $blog_content . '<div class="blog_title">';
     if ( $entry_array[ 'avatarurl' ] != '' ) {
       $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="border-style: none" />';  }
-    $blog_content .= $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
-
+    if (!empty($entry_array[ 'id' ])) {
+      $blog_content .= $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
+    } else {
+      $blog_content .= $entry_array[ 'subject' ] . '<br />' . "\n";
+    }
     // Display EDIT and DELETE buttons if the user is logged in.
     if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
 

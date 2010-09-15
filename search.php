@@ -38,7 +38,7 @@
 		ob_start();
 
 ?>
-		<input style="float: right" type="button" VALUE="Add to Search Bar" onClick='window.external.AddSearchProvider("<?php echo dirname(curPageURL()) ?>/plugins/search.php");'>
+		<input style="float: right" type="button" value="Add to Search Bar" onclick='window.external.AddSearchProvider("<?php echo dirname(curPageURL()) ?>/plugins/search.php");' />
 <?php
 		print $search->getContent();
 

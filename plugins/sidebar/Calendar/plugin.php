@@ -232,7 +232,7 @@
 			//Loop all the days from the month
 			for ( $i = 1; $i<=$total_days_in_month; $i++) {
 				if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
-					$str .= '<td style="text-align: center"<u>';
+					$str .= '<td style="text-align: center; text-decoration: underline">';
 				} else {
 					$str .= '<td style="text-align: center">';
 				}
@@ -243,11 +243,7 @@
 					$str  .= $i;
 				}
 				
-				if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
-					$str .= '</u></td>';
-				} else {
-					$str .= '</td>';
-				}
+				$str .= '</td>';
 				
 				$current_position++;
 				
