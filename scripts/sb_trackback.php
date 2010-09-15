@@ -227,6 +227,17 @@
 	}
 
 	function delete_trackback ( $entryFile ) {
+		// Security check, don't just delete any file that exists
+                $entryFile = realpath($entryFile);
+		// check that this file is actually in our directory first
+                if (stripos($entryFile, realpath(CONTENT_DIR)) !== 0) {
+			return;
+		}
+                if (strripos($entryFile, '.txt') !== 4) {
+			return;
+		}
+		//CONTENT_DIR  . 'stuff here' . 'trackbacks/trackback'
+
 		// Delete the old file
 		if ( file_exists( $entryFile ) ) {
 			$ok = sb_delete_file( $entryFile );
