@@ -113,15 +113,15 @@
 
     // Display SUBJECT Line
     $blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-    $blog_content = $blog_content . '<div class="entry_top"><table width="100%" cellspacing="0" cellpadding="0"><tr><td>
-                                     <img src="' . $img_path . 'corner_tl.gif" alt="" border="0" align="left" />
-                                     <img src="' . $img_path . 'corner_tr.gif" alt="" border="0" align="right" />
+    $blog_content = $blog_content . '<div class="entry_top"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+                                     <img src="' . $img_path . 'corner_tl.gif" alt="" style="float: left" />
+                                     <img src="' . $img_path . 'corner_tr.gif" alt="" style="float: right" />
                                      </td></tr></table></div>' . "\n";
     $blog_content = $blog_content . '<div class="blog_subject">';
     if ( $entry_array[ 'avatarurl' ] != '' ) {
-      $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" border="0" align="left" />';  }
+      $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="float: left" />';  }
 
-    $blog_content = $blog_content . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "\n";
+    $blog_content = $blog_content . $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "\n";
 
     $blog_content = $blog_content . "</div>\n";
     $blog_content = $blog_content . "\n<!-- BLOG TITLE END -->\n";
@@ -230,9 +230,9 @@
     if ( $comment_area != "" ) {
       $blog_content = $blog_content . "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
     }
-    $blog_content = $blog_content . '<div class="entry_bottom"><table width="100%" cellspacing="0" cellpadding="0"><tr><td>
-                                     <img src="' . $img_path . 'corner_bl.gif" alt="" border="0" align="left" />
-                                     <img src="' . $img_path . 'corner_br.gif" alt="" border="0" align="right" />
+    $blog_content = $blog_content . '<div class="entry_bottom"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+                                     <img src="' . $img_path . 'corner_bl.gif" alt="" style="float: left" />
+                                     <img src="' . $img_path . 'corner_br.gif" alt="" style="float: right" />
                                      </td></tr></table></div>' . "\n";
     $blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
 
@@ -294,11 +294,11 @@
 
     // Display SUBJECT Line
     $blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-    $blog_content = $blog_content . '<div class="entry_top_comment"><table width="100%" cellspacing="0" cellpadding="0"><tr><td>
-                                     <img src="' . $img_path . 'corner_tl.gif" alt="" border="0" align="left" />
-                                     <img src="' . $img_path . 'corner_tr.gif" alt="" border="0" align="right" />
+    $blog_content = $blog_content . '<div class="entry_top_comment"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+                                     <img src="' . $img_path . 'corner_tl.gif" alt="" style="float: left" />
+                                     <img src="' . $img_path . 'corner_tr.gif" alt="" style="float: right" />
                                      </td></tr></table></div>' . "\n";
-    $blog_content = $blog_content . '<div class="blog_subject_comment">' . $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "\n";
+    $blog_content = $blog_content . '<div class="blog_subject_comment">' . $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "\n";
 
     $blog_content = $blog_content . "</div>\n";
     $blog_content = $blog_content . "\n<!-- BLOG TITLE END -->\n";
@@ -366,9 +366,9 @@
       $blog_content = $blog_content . "\n\t<div class=\"blog_comment_comment\">" . $comment_area . "</div>\n";
     }
 
-    $blog_content = $blog_content . '<div class="entry_bottom_comment"><table width="100%" cellspacing="0" cellpadding="0"><tr><td>
-                                     <img src="' . $img_path . 'corner_bl.gif" alt="" border="0" align="left" />
-                                     <img src="' . $img_path . 'corner_br.gif" alt="" border="0" align="right" />
+    $blog_content = $blog_content . '<div class="entry_bottom_comment"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+                                     <img src="' . $img_path . 'corner_bl.gif" alt="" style="float: left" />
+                                     <img src="' . $img_path . 'corner_br.gif" alt="" style="float: right" />
                                      </td></tr></table></div>' . "\n";
     $blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
 
@@ -582,40 +582,40 @@
     // Begin Page Layout HTML
     ?>
     <body>
-      <br />
-      <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+      <div>
+      <table style="margin-left:auto; margin-right:auto; width: <?php echo( $page_width ); ?>; cellspacing: 0px; cellpadding: 0px; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
         <tr align="left" valign="top">
-          <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
-            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
+          <td style="width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('header_bg_color')); ?>" colspan="2">
+            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
             <?php
             if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
             echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE') . '</div>');
             }?>
             <div id="pagebody">
-              <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
+              <table style="width: <?php echo( $page_width ); ?>px; cellspacing: 0px; cellpadding: 0px;">
                 <tr valign="top">
                   <?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>">
+                  <td style="width: <?php echo( $menu_width ); ?>px; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>">
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
                   </td>
                   <?php } ?>
-                  <td width="<?php echo( $content_width ); ?>" bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
+                  <td style="width: <?php echo( $content_width ); ?>px; background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
                     <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
                   </td>
                   <?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { // New 0.3.8 - Right Menu ?>
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>">
+                  <td style="width: <?php echo( $menu_width ); ?>px; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>">
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
                   </td>
                   <?php } ?>
                 </tr>
-                <tr align="left" valign="top">
-                  <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
+                <tr valign="top">
+                  <td style="width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
                     <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
@@ -624,7 +624,7 @@
           </td>
         </tr>
       </table>
-      <br />
+      </div>
     </body>
     <?php
     // End Page Layout HTML
@@ -653,22 +653,20 @@
     // Begin Popup Layout HTML
     ?>
     <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
-      <br />
-      <table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
-        <tr align="left" valign="top">
-          <td bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
+      <table style="margin-left:auto; margin-right:auto; width: <?php echo( $popup_width ); ?>px; cellspacing: 0px; cellpadding: 0px; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+        <tr valign="top">
+          <td style="background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
             <div id="maincontent">
               <?php page_content(); ?>
             </div>
           </td>
         </tr>
-        <tr align="left" valign="top">
-          <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
+        <tr valign="top">
+          <td style="background-color: #<?php echo(get_user_color('footer_bg_color')); ?>">
             <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
           </td>
         </tr>
       </table>
-      <br />
     </body>
     <?php
     // End Popup Layout HTML
@@ -685,7 +683,7 @@
     // With "twisty" arrow
     /*
       <!-- LINKS -->
-      <div class="menu_title"><a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" name="twisty"> Links</a></div>
+      <div class="menu_title"><a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" alt="twisty"> Links</a></div>
       <div id="toggleSidebarLinks" class="menu_body">
       <a href="index.php">Home</a><br />
       </div><br />
@@ -710,7 +708,7 @@
 
       echo( '<div class="menu_title">' );
       if ( isset( $toggleDiv ) ) {
-        echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty" alt="" /> ' );
+        echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" alt="twisty" /> ' );
       }
       echo( $blockArray[ 'title' ] );
       if ( isset( $toggleDiv ) ) {

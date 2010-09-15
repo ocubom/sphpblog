@@ -108,7 +108,7 @@
       $blog_content .= '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" border="0" align="left" />';  }
 
     // SUBJECT
-    $blog_content  .= $entry_array[ 'subject' ]  . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a></div>' . "\n";
+    $blog_content  .= $entry_array[ 'subject' ]  . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a></div>' . "\n";
 
     // DATE
     if ( $mode != 'static' ) { // New 0.4.8
@@ -381,11 +381,11 @@
     // Begin Page Layout HTML
     ?>
     <body>
-      <br />
-      <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+      <div>
+      <table width="<?php echo( $page_width ); ?>" style="margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>; cellspacing: 0px; cellpadding: 0px;">
         <tr align="left" valign="top">
-          <td width="<?php echo( $page_width ); ?>" colspan="2" bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
-            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
+          <td style="width: <?php echo( $page_width ); ?>; background-color: $<?php echo(get_user_color('header_bg_color')); ?>" colspan="2">
+            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
 
             <?php
             if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
@@ -393,22 +393,22 @@
             }?>
 
             <div id="pagebody">
-              <table border="0" width="<?php echo( $page_width ); ?>" cellspacing="0" cellpadding="0" align="left">
+              <table style="border-style: none; cellspacing: 0px; cellpadding: 0px" width="<?php echo( $page_width ); ?>">
                 <tr valign="top">
                   <?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>" style="border-right: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
+                  <td style="width: <?php echo( $menu_width ); ?>; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-right: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
                   </td>
                   <?php } ?>
-                  <td width="<?php echo( $content_width ); ?>" bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
+                  <td style="width: <?php echo( $content_width ); ?>px; background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
                     <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
                   </td>
                   <?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { // New 0.3.8 - Right Menu ?>
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>" style="border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
+                  <td style="width: <?php echo( $menu_width ); ?>; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
@@ -416,7 +416,7 @@
                   <?php } ?>
                 </tr>
                 <tr align="left" valign="top">
-                  <td width="<?php echo( $page_width ); ?>" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
+                  <td style="width: <?php echo( $page_width ); ?>; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
                     <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
@@ -425,7 +425,7 @@
           </td>
         </tr>
       </table>
-      <br />
+      </div>
     </body>
     <?php
     // End Page Layout HTML
@@ -488,7 +488,7 @@
     // With "twisty" arrow
     /*
       <!-- LINKS -->
-      <a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/default/images/minus.gif" name="twisty"> <span class="menu_title">Links</span></a><br />
+      <a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/default/images/minus.gif" alt="twisty"> <span class="menu_title">Links</span></a><br />
       <div id="toggleSidebarLinks" class="menu_body">
       <a href="index.php">Home</a><br />
       </div><br />
@@ -513,7 +513,7 @@
 
       echo( '<div class="menu_title">' );
       if ( isset( $toggleDiv ) ) {
-        echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" name="twisty" alt="" /> ' );
+        echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" alt="twisty" /> ' );
       }
       echo( $blockArray[ 'title' ] );
       if ( isset( $toggleDiv ) ) {

@@ -84,7 +84,7 @@
       $blog_content  .= ' (' . $entry_array[ 'comment' ][ 'comment_count' ] . ')';
     }
 
-    $blog_content  .= '</a><a name="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "<br />\n";
+    $blog_content  .= '</a><a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "<br />\n";
 
     $blog_content  .= "</div>\n";
     $blog_content  .= "\n<!-- BLOG TITLE BEGIN -->\n";
@@ -437,27 +437,27 @@
               </div>
                     <div id="HeaderRight"></div>
           </div>
-      <table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+      <table style="margin-left:auto; margin-right:auto; width: 100%; cellspacing: 0px; cellpadding: 0px; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
         <tr align="left" valign="top">
-          <td width="100%" colspan="2" bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
+          <td colspan="2" style="width: 100%; background-color: #<?php echo(get_user_color('header_bg_color')); ?>">
 
             <div id="pagebody">
-              <table border="0" width="100%" cellspacing="0" cellpadding="0" align="left">
+              <table style="border-style: none; width: 100%; cellspacing: 0px; cellpadding: 0px">
                 <tr valign="top">
-                  <td width="<?php echo( $menu_width ); ?>" bgcolor="#<?php echo(get_user_color('menu_bg_color')); ?>" style="border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
+                  <td style="width: <?php echo( $menu_width ); ?>px;background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
                     <div id="sidebar-top"></div>
                     <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
                   </td>
-                  <td width="100%" bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
+                  <td style="width: 100%; background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
                     <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
                   </td>
                 </tr>
                 <tr align="left" valign="top">
-                  <td width="100%" bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
+                  <td style="width: 100%; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
                     <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
                   </td>
                 </tr>
@@ -466,7 +466,6 @@
           </td>
         </tr>
       </table>
-      <br />
     </body>
     <?php
     // End Page Layout HTML
