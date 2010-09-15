@@ -572,14 +572,14 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 			
 			<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { ?>
 				<div id="content">
-					<td width="<?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+					<div style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
 						<?php page_content(); ?>
-					</td>
+					</div>
 				</div>
 				<div id="sidebar">
-					<td width="<?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
+					<div style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
 						<?php theme_menu(); ?>
-					</td>
+					</div>
 				</div>
 			<?php } ?>
 			
@@ -648,6 +648,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 
   function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
     global $blog_theme;
+    $toggleDiv = str_replace(' ', '', $toggleDiv);
 
     // This function creates the menu "blocks" in the sidebar.
     //

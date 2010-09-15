@@ -682,6 +682,7 @@
   // ----------
   function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null, $template_file='menu_block.html' ) {
     global $blog_theme;
+    $toggleDiv = str_replace(' ', '', $toggleDiv);
 
     if ( $template_file == false ) {
       $template_file = 'menu_block.html';

@@ -676,6 +676,7 @@
 
   function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {
     global $blog_theme;
+    $toggleDiv = str_replace(' ', '', $toggleDiv);
 
     // This function creates the menu "blocks" in the sidebar.
     //
