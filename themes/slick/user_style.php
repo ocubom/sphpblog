@@ -10,6 +10,10 @@
 		background-color: #<?php echo(get_user_color('inner_border_color')); ?>;
 	}
 
+	img {
+		border-style: none;
+	}
+
 	#header_image {
 		border-color: #<?php echo(get_user_color('border_color')); ?>;
 	}

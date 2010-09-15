@@ -74,7 +74,7 @@
 
     // Display SUBJECT Line
     $blog_content  .= "\n<!-- BLOG TITLE BEGIN -->\n";
-    $blog_content  .= '<br clear="all" /><div class="blog_title">';
+    $blog_content  .= '<br /><div class="blog_title">';
     if ( $entry_array[ 'avatarurl' ] != '' ) {
       $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" border="0" align="left" />';  }
 

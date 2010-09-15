@@ -131,8 +131,8 @@
     $blog_content .= "\n<!-- BLOG TITLE BEGIN -->\n";
     $blog_content = $blog_content . '<div class="blog_title">';
     if ( $entry_array[ 'avatarurl' ] != '' ) {
-      $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" border="0" align="left" />';  }
-    $blog_content .= $entry_array[ 'subject' ] . '<a name="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
+      $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="border-style: none" />';  }
+    $blog_content .= $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";
 
     // Display EDIT and DELETE buttons if the user is logged in.
     if ( isset( $entry_array[ 'logged_in' ] ) && $entry_array[ 'logged_in' ] == true ) {
@@ -210,7 +210,7 @@
     $comment_area = "";
     if ( isset( $entry_array[ 'comment' ][ 'url' ] ) ) {
       // Show "add comment" button if set...
-      $comment_area .= '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="" width="14" height="14" align="top"/> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
+      $comment_area .= '<a href="' . $entry_array[ 'comment' ][ 'url' ] . '"><img src="' . $img_path . 'box_add.png" alt="" width="14" height="14" /> ' . $entry_array[ 'comment' ][ 'name' ] . ' </a>' . "\n";
     }
 
     if ( isset( $entry_array[ 'comment' ][ 'count' ] ) ) {
@@ -566,7 +566,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 	?>
 	<body>
 		<div id="page">
-			<div id="header"><img src="<?php echo( $header_graphic ); ?>" alt="" border="0" /></div>
+			<div id="header"><img src="<?php echo( $header_graphic ); ?>" alt="" style="border-style: none" /></div>
 			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE') . '</div>'); } ?>
 			<div id="innerpage">
 			
@@ -657,7 +657,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     // With "twisty" arrow
     /*
       <!-- LINKS -->
-      <div class="menu_title"><a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" name="twisty"> Links</a></div>
+      <div class="menu_title"><a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" alt="twisty"> Links</a></div>
       <div id="toggleSidebarLinks" class="menu_body">
       <a href="index.php">Home</a><br />
       </div><br />
@@ -683,7 +683,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
       echo( "<div class=\"menu_title\">\n" );
       if ( isset( $toggleDiv ) ) {
         echo( "\t" . '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');">' );
-        echo( '<img src="' . $img_hide . '" name="twisty" alt="" /> ' );
+        echo( '<img src="' . $img_hide . '" alt="twisty" /> ' );
       }
       echo( $blockArray[ 'title' ] );
       if ( isset( $toggleDiv ) ) {

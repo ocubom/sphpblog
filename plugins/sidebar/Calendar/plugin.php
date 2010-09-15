@@ -185,15 +185,15 @@
 			}
 	
 			$str = '
-			<table border="0" cellpadding="0" cellspacing="0" align="center" class="calendar">
+			<table style="border-style: none; text-align: center; cellpadding: 0px; cellspacing: 0px;" class="calendar">
 			<tr>
-			<td align="center">';
+			<td style="text-align: center">';
 			if ( ( ( $previous_year%100 )!=$y ) || ( $previous_month!=$m ) ) {
 				$str .= '<a href="index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&amp;m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
 			}
 			$str .= '</td>
-			<td align="center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
-			<td align="center">';
+			<td style="text-align: center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
+			<td style="text-align: center">';
 			if ( ( ( $next_year%100 )!=$y ) || ( $next_month!=$m ) ) {
 				$str .= '<a href="' . baseurl() . 'index.php?y=' . sprintf( '%02d', $next_year % 100 ) . '&amp;m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
 			}
@@ -232,9 +232,9 @@
 			//Loop all the days from the month
 			for ( $i = 1; $i<=$total_days_in_month; $i++) {
 				if ( mktime( 0, 0, 0, $m, $i, $y ) == mktime( 0, 0, 0 ) ) {
-					$str .= '<td align="center"><u>';
+					$str .= '<td style="text-align: center"<u>';
 				} else {
-					$str .= '<td align="center">';
+					$str .= '<td style="text-align: center">';
 				}
 				
 				if ( isset($counts[$i-1]) && $counts[$i-1] > 0 ) {
@@ -265,7 +265,7 @@
 			$str .= '</tr><tr>';
 			
 			// Fixed per Sverd1 March 17, 2006
-			$str .= '<td colspan="7" align="center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . $this->prefs['dateFormat'] ) . '</a></td></tr></table>'; // Close the table
+			$str .= '<td colspan="7" style="text-align: center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . $this->prefs['dateFormat'] ) . '</a></td></tr></table>'; // Close the table
 			return $str;
 		}
 	}

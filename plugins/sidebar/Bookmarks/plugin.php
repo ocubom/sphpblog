@@ -73,7 +73,7 @@
 
 if( $this->prefs['provider'] == 'addtoany' ) {
 			return '<!-- AddToAny BEGIN -->
-<a class="a2a_dd" href="http://www.addtoany.com/share_save"><img src="http://static.addtoany.com/buttons/share_save_106_16.gif" width="106" height="16" border="0" alt="Share/Bookmark"/></a>
+<a class="a2a_dd" href="http://www.addtoany.com/share_save"><img src="http://static.addtoany.com/buttons/share_save_106_16.gif" width="106" height="16" alt="Share/Bookmark"/></a>
 <script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
 <!-- AddToAny END -->';
 }

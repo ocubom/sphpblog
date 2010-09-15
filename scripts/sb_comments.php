@@ -132,7 +132,7 @@
         $entry_array[ 'id' ] = $entry . '_' . sb_strip_extension( $contents[$i][ 'entry' ] );
         $entry_array[ 'subject' ] = blog_to_html( $comment_subject, true, false, true );
         $entry_array[ 'date' ] = blog_to_html( format_date( $comment_entry_data[ 'DATE' ] ), true, false );
-        $entry_array[ 'entry' ] = blog_to_html( $comment_entry_data[ 'CONTENT' ], true, false, true, true ) . '<br clear="all" />';
+        $entry_array[ 'entry' ] = blog_to_html( $comment_entry_data[ 'CONTENT' ], true, false, true, true ) . '<br />';
         $entry_array[ 'modflag' ] = blog_to_html( $comment_entry_data[ 'MODERATIONFLAG' ], true,  false, true );
         $entry_array[ 'logged_in' ] = $logged_in;
 

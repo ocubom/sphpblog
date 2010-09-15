@@ -128,7 +128,7 @@
     }
 
     $str = '
-    <table border="0" cellpadding="0" cellspacing="0" align="center" class="calendar">
+    <table style="border-style: none; cellpadding: 0px; cellspacing: 0px;" class="calendar">
     <tr>
     <td align="center">';
     if ( ( ( $previous_year%100 )!=$y ) || ( $previous_month!=$m ) ) {

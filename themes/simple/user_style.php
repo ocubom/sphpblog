@@ -3,6 +3,10 @@
 		color: #<?php echo(get_user_color('txt_color')); ?>;
 		background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
 	}
+
+	img {
+		border-style: none;
+	}
 	
 	pre {
 		width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;

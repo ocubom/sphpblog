@@ -12,6 +12,10 @@
     color: #<?php echo(get_user_color('inner_border_color')); ?>;
     background-color: #<?php echo(get_user_color('inner_border_color')); ?>;
   }
+
+  img {
+    border-style: none;
+  }
   
   /* TYPEOGRAPHY */
   

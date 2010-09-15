@@ -68,7 +68,7 @@
     $entry_array = array();
     $entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
     $entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
-    $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
+    $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br />';
     $entry_array[ 'menu_visible' ] = $blog_entry_data[ 'MENU_VISIBLE' ];
     $entry_array[ 'logged_in' ] = $logged_in;
     
@@ -212,7 +212,7 @@
     $entry_array = array();
     $entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
     $entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
-    $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
+    $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br />';
     $entry_array[ 'menu_visible' ] = $blog_entry_data[ 'MENU_VISIBLE' ];
 
     $blog_content = theme_staticentry( $entry_array, $logged_in );

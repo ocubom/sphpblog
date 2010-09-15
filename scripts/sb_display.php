@@ -335,7 +335,7 @@
         $entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
 
         // // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
-        $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
+        $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br />';
 
         // Comments link and count
         $comment_trackback_base = CONTENT_DIR.$y.'/'.$m.'/'.$entry.'/';
@@ -398,7 +398,7 @@
             } else {
               $star_image = 'no_star.png';
             }
-            $str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="" border="0" /></a>';
+            $str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="" /></a>';
           }
           $entry_array[ 'stars_nototals' ] = $str;
           $str  .= ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
@@ -506,7 +506,7 @@
       }
     }
 
-    $blog_content  .= '<center><b>';
+    $blog_content  .= '<p style="text-align: center"><b>';
 
     // Display First link if we are not on the first page
     if ($current_page > 0) {
@@ -577,7 +577,7 @@
       $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
       $blog_content  .= '">&#32;&#32;' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
     }
-    $blog_content  .= '</b></center><br />';
+    $blog_content  .= '</b></p><br />';
 
     // Check for intervening static entries to be shown before current entries...
 
@@ -867,7 +867,7 @@
     $entry_array = array();
     $entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
     $entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
-    $entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br clear="all" />';
+    $entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br />';
     if ( $tb_ping !== '' ) {
       $entry_array[ 'tb_ping' ] = blog_to_html( $tb_ping, false, false );
     }
@@ -896,7 +896,7 @@
     $entry_array = array();
     $entry_array[ 'subject' ] = blog_to_html( $blog_subject, false, false, false, true );
     $entry_array[ 'date' ] = blog_to_html( format_date( $blog_date ), false, false );
-    $entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br clear="all" />';
+    $entry_array[ 'entry' ] = blog_to_html( $blog_text, false, false, false, true ) . '<br />';
     $entry_array[ 'categories_id'] = $temp_cat_array;
 
     $blog_content = theme_blogentry( $entry_array );
@@ -923,7 +923,7 @@
     $entry_array = array();
     $entry_array[ 'subject' ] = blog_to_html( $blog_entry_data[ 'SUBJECT' ], false, false, false, true );
     $entry_array[ 'date' ] = blog_to_html( format_date( $blog_entry_data[ 'DATE' ] ), false, false );
-    $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br clear="all" />';
+    $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br />';
     $entry_array[ 'id' ] = substr( $entry_id, strlen( $entry_id )-18, 18 );
 
     // Categories
