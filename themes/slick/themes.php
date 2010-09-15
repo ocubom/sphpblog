@@ -84,7 +84,10 @@
       $blog_content  .= ' (' . $entry_array[ 'comment' ][ 'comment_count' ] . ')';
     }
 
-    $blog_content  .= '</a><a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "<br />\n";
+    if (!empty($entry_array[ 'id' ])) {
+        $blog_content  .= '</a><a id="' . $entry_array[ 'id' ] . '">&nbsp;';
+    }
+    $blog_content  .= '</a>' . "<br />\n";
 
     $blog_content  .= "</div>\n";
     $blog_content  .= "\n<!-- BLOG TITLE BEGIN -->\n";

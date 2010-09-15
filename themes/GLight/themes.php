@@ -121,7 +121,11 @@
     if ( $entry_array[ 'avatarurl' ] != '' ) {
       $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="float: left" />';  }
 
-    $blog_content = $blog_content . $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "\n";
+    $blog_content = $blog_content . $entry_array[ 'subject' ];
+    if (!empty($entry_array[ 'id' ])) {
+        $blog_content .= '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>';
+    }
+    $blog_content .= "\n";
 
     $blog_content = $blog_content . "</div>\n";
     $blog_content = $blog_content . "\n<!-- BLOG TITLE END -->\n";

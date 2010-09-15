@@ -108,7 +108,11 @@
       $blog_content .= '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" border="0" align="left" />';  }
 
     // SUBJECT
-    $blog_content  .= $entry_array[ 'subject' ]  . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a></div>' . "\n";
+    if (!empty($entry_array[ 'id' ])) {
+      $blog_content  .= $entry_array[ 'subject' ]  . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a></div>' . "\n";
+    } else {
+      $blog_content  .= $entry_array[ 'subject' ]  . '</div>' . "\n";
+    }
 
     // DATE
     if ( $mode != 'static' ) { // New 0.4.8
