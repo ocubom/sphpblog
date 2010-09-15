@@ -488,7 +488,7 @@
     // With "twisty" arrow
     /*
       <!-- LINKS -->
-      <a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/default/images/minus.gif" alt="twisty"> <span class="menu_title">Links</span></a><br />
+      <a id="linkSidebarLinks" onclick="toggleBlock('SidebarLinks');"><img src="themes/default/images/minus.gif" alt="twisty"> <span class="menu_title">Links</span></a><br />
       <div id="toggleSidebarLinks" class="menu_body">
       <a href="index.php">Home</a><br />
       </div><br />
@@ -513,7 +513,7 @@
 
       echo( '<div class="menu_title">' );
       if ( isset( $toggleDiv ) ) {
-        echo( '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" alt="twisty" /> ' );
+        echo( '<a id="link' . $toggleDiv . '" onclick="toggleBlock(\'' . $toggleDiv . '\');"><img src="' . $img_hide . '" alt="twisty" /> ' );
       }
       echo( $blockArray[ 'title' ] );
       if ( isset( $toggleDiv ) ) {

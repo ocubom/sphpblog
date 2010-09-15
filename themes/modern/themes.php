@@ -657,7 +657,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     // With "twisty" arrow
     /*
       <!-- LINKS -->
-      <div class="menu_title"><a id="linkSidebarLinks" href="javascript:toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" alt="twisty"> Links</a></div>
+      <div class="menu_title"><a id="linkSidebarLinks" onclick="toggleBlock('SidebarLinks');"><img src="themes/modern/images/minus.gif" alt="twisty"> Links</a></div>
       <div id="toggleSidebarLinks" class="menu_body">
       <a href="index.php">Home</a><br />
       </div><br />
@@ -682,7 +682,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 
       echo( "<div class=\"menu_title\">\n" );
       if ( isset( $toggleDiv ) ) {
-        echo( "\t" . '<a id="link' . $toggleDiv . '" href="javascript:toggleBlock(\'' . $toggleDiv . '\');">' );
+        echo( "\t" . '<a id="link' . $toggleDiv . '" onclick="toggleBlock(\'' . $toggleDiv . '\');" >' );
         echo( '<img src="' . $img_hide . '" alt="twisty" /> ' );
       }
       echo( $blockArray[ 'title' ] );
