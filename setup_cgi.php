@@ -100,6 +100,8 @@
 	$new_config->setTag('BLOG_ENABLE_START_CATEGORY', $_POST['blog_enable_start_category'] == 'on');
 	$new_config->setTag('BLOG_ENABLE_START_CATEGORY_SELECTION', $_POST['blog_enable_start_category_selection']);
 	$new_config->setTag('BLOG_ENABLE_PRINT', 		$_POST['blog_enable_print'] == 'on');
+	$new_config->setTag('HTTPS', $_POST['https']);
+	$new_config->setTag('HTTPS_URL', $_POST['https_url']);
 	// $new_config->setTag('BANNED_ADDRESS_LIST','');
 	// $new_config->setTag('BANNED_WORD_LIST','');
 

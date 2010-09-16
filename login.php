@@ -14,21 +14,43 @@
 	// ---------------
 	// POST PROCESSING
 	// ---------------
+
+		if ($_SERVER["HTTPS"] != 'on') {
+		    if ($blog_config->getTag('HTTPS') == 'REQUIRE') {
+                        $url = $blog_config->getTag('HTTPS_URL');
+                        if (empty($url)) {
+			    $url = str_replace('http://', 'https://', curPageURL()); 
+			}
+			header("Location: $url");
+		    }
+		}
 	
 	// ------------
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $logged_in, $theme_vars, $blog_theme;
+		global $lang_string, $logged_in, $theme_vars, $blog_theme, $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
 			
 		// PAGE CONTENT BEGIN
-		ob_start(); ?>		
-		
-		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+		ob_start(); 
+
+		if ($_SERVER["HTTPS"] != 'on') {
+		    if ($blog_config->getTag('HTTPS') == 'WARN') {
+			print "<p style='background-color: red; color: white'>WARNING: Password will be sent unencrypted!</p>"; 
+                        $url = $blog_config->getTag('HTTPS_URL');
+                        if (empty($url)) {
+			    $url = str_replace('http://', 'https://', curPageURL()); 
+			}
+			print "<p><a href='$url'>Attempt secure mode</a>.</p>"; 
+		    }
+		}
+
+?>
+		<p><?php echo( $GLOBALS['lang_string']['instructions'] ); ?></p>
 		
 		<hr />
 		

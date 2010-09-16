@@ -117,6 +117,19 @@
 
 				<label for="blog_footer"><?php echo( $GLOBALS['lang_string']['blog_footer'] ); ?></label><br />
 				<input type="text" name="blog_footer" value="<?php echo($blog_config->getTag('BLOG_FOOTER')); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><p />
+
+				<p>
+	                        <label for="https">HTTPS Login:</label>
+        	                <select name="https" id="https">
+                	                <option label="NONE" value="NONE"<?php if ($blog_config->getTag('HTTPS') == 'NONE') { echo ' selected'; } ?>>NONE</option>
+                	                <option label="WARN" value="WARN"<?php if ($blog_config->getTag('HTTPS') == 'WARN') { echo ' selected'; } ?>>WARN</option>
+                        	        <option label="REQUIRE" value="REQUIRE"<?php if ($blog_config->getTag('HTTPS') == 'REQUIRE') { echo ' selected'; } ?>>REQUIRE</option>
+                        	</select>
+				</p>
+				<p>
+	                        <label for="https_url">HTTPS Login URL:</label>
+				<input type="text" name="https_url" value="<?php echo($blog_config->getTag('HTTPS_URL')); ?>" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;">
+				</p>
 			</div>
 
 			<p />

@@ -79,6 +79,8 @@
 			array_push($this->tags, 'BANNED_ADDRESS_LIST');
 			array_push($this->tags, 'BANNED_WORD_LIST');
 			array_push($this->tags, 'BLOG_THEME');
+			array_push($this->tags, 'HTTPS');
+			array_push($this->tags, 'HTTPS_URL');
 			
 			// Cache Excluded Tags
 			// $this->do_not_cache_tags = array();
@@ -141,6 +143,8 @@
 			// $this->setTag('BANNED_ADDRESS_LIST', '');
 			// $this->setTag('BANNED_WORD_LIST', '');
 			$this->setTag('BLOG_THEME', 'default');
+			$this->setTag('HTTPS', 'WARN');
+			$this->setTag('HTTPS_URL', '');
 		}
 		
 		function write_file() {
