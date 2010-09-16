@@ -58,7 +58,7 @@
 	}
 	$temp_entry = null;
 	if ( array_key_exists( 'entry', $_GET ) ) {
-		if ( strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $_GET[ 'entry' ] ) == 18 ) {
+		if ( strpos( $_GET[ 'entry' ], array( '/', '.', '\\', '%', '#', ';' ) ) === false) { // && strlen( $_GET[ 'entry' ] ) == 18 ) {
 			$temp_entry = $_GET[ 'entry' ];
 		}
 	} else {
@@ -68,7 +68,7 @@
 		if (isset($_GET) && count($_GET)==1) {
 			$keys = array_keys($_GET);
 			$temp_entry = $keys[0];
-			if ( strpos( $temp_entry, array( '/', '.', '\\', '%', '#', ';' ) ) === false && strlen( $temp_entry ) == 18 ) {
+			if ( strpos( $temp_entry, array( '/', '.', '\\', '%', '#', ';' ) ) === false) { // && strlen( $temp_entry ) == 18 ) {
 				$is_permalink = true;
 			} else {
 				$temp_entry = null;

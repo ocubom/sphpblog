@@ -99,7 +99,8 @@
 			$save_data[ 'DATE' ] = $oldEntryArray[ 'DATE' ];
 			$y = date('y', $save_data[ 'DATE' ] );
 			$m = date('m', $save_data[ 'DATE' ] );
-			$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry='.substr($updateFile,strrpos($updateFile,'/')+1);
+			//$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry='.substr($updateFile,strrpos($updateFile,'/')+1);
+			$permalink = 'index.php?entry=' . str_replace(' ', '-', $save_data[ 'SUBJECT' ]);
 			
 			// Delete the old file
 			sb_delete_file( $updateFile . '.txt' );
@@ -135,7 +136,8 @@
 				$entryFile .= '.gz';
 			}
 			
-			$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry=entry'.$stamp;
+			//$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry=entry'.$stamp;
+			$permalink = 'index.php?entry=' . str_replace(' ', '-', $save_data[ 'SUBJECT' ]);
 		}
 		
 		// Implode the array

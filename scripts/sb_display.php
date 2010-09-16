@@ -80,7 +80,7 @@
     // I'm just using a brute force method, I'm sure there
     // are better ways to do this... :)
     if ( $start_entry != NULL ) {
-      $look_for = $start_entry;
+      $look_for = str_replace(' ', '-', $start_entry);
     } else {
       // 'dummy' entry name...
       $look_for = 'entry' . $y . $m . $d;
@@ -88,7 +88,7 @@
 
     $entry_index = 0;
     for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
-      if ( $look_for == substr( $entry_file_array[ $i ], 0, strlen( $look_for ) ) ) {
+      if ( stristr(str_replace(' ', '-', $entry_file_array[ $i ]), $look_for) !== FALSE) {
         // MATCH!
         $entry_index = $i;
         break;
@@ -332,7 +332,7 @@
         }
 
         $entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
-        $entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . $entry;
+        $entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . str_replace(' ', '-', $blog_entry_data[ 'SUBJECT' ]);
 
         // // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
         $entry_array[ 'entry' ] = blog_to_html( $blog_entry_data[ 'CONTENT' ], false, false, false, true ) . '<br />';
@@ -760,7 +760,8 @@
                               if ( $ext == '.txt' || $ext == '.gz' ) {
 
                                 // Store Blog Entry Information
-                                array_push( $entry_array, implode( '|', array( $entry_filename, $year_dir, $month_dir ) ) );
+				$value = blog_entry_to_array($dir . $year_dir . '/' . $month_dir . '/' . $entry_filename);
+                                array_push( $entry_array, implode( '|', array( $entry_filename, $year_dir, $month_dir, $value['SUBJECT'] ) ) );
                               }
 
                             }
