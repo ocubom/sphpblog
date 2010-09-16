@@ -234,30 +234,43 @@
         if ( $mode == 'entry' ) {
           editor_date_select( $default_time );
         }
-        
-        // Style Tag Buttons
-        editor_style_buttons( $mode );
-        
-        // Style Tag Dropdown
-        editor_style_dropdown();
-        
-        // Emoticon Selection
-        emoticons_show();
-        
-        // Image Selection Dropdown
-        editor_image_dropdown();
-        
-        // Content Text Area
-
         // Static File Name
         if ( $mode == 'static' ) {
            echo( '<input type="checkbox" id="check_visiblemenu" name="check_visiblemenu"' );
            if ( $default_menu_visible == true ) { echo ( ' checked' ); }
            echo( '> ' . $lang_string[ 'chk_visiblemenu' ] . '<p />' );
         }
+
+?>        
+      <label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
+<?php
+        // Image Selection Dropdown
+        editor_image_dropdown();
+        
+        // Emoticon Selection
+        emoticons_show();
+        
+        // Content Text Area
+
       ?>
 
-      <label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
+<noscript>
+<p>Available Tags:</p>
+<ul>
+<li>[blockquote]xxx[/blockquote]</li>
+<li>[pre]xxx[/pre]</li>
+<li>[em]xxx[/em]</li>
+<li>[strong]xxx[/strong]</li>
+<li>[u]xxx[/u]</li>
+<li>[h?]xxx[/h?] (?=1-6)</li>
+<li>[strike]xxx[/strike]</li>
+<li>[img=http://example.com/image.jpg width=x height=x popup=true/false float=left/right]</li>
+<li>[url=http://example.com new=true/false]link text[/url]</li>
+<li>[center]xxx[/center]</li>
+<li>[more] (entry only, not static pages)</li>
+</ul>
+</noscript>
+
       <textarea style="width: <?php echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="blog_text" name="blog_text" rows="20" cols="50" autocomplete="OFF" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);"><?php echo( $default_content ); ?></textarea><p />
       <?php
       
@@ -319,46 +332,28 @@
     <?php
   }
   
-  function editor_style_buttons( $mode ) {
-    // Style Tag Buttons
-    global $lang_string;
-    
-    echo( $lang_string[ 'label_insert' ] . '<br />' );
-    ?>
-      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_bold' ] ); ?>" onclick="ins_styles(this.form.blog_text,'b','');" />
-      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_italic' ] ); ?>" onclick="ins_styles(this.form.blog_text,'i','');" />
-			<input type="button" class="bginput" value="Center" onclick="ins_styles(this.form.blog_text,'center','');" />
-      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_url' ] ); ?>" onclick="ins_url(this.form.blog_text);" />
-      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_image' ] ); ?>" onclick="ins_image_v2(this.form.blog_text);"/>			
-    <?php
-    if ( $mode == 'entry' ) {
-    ?>
-      <input type="button" class="bginput" value="<?php echo( $lang_string[ 'btn_readmore' ] ); ?>" onclick="insertAtCaret(this.form.blog_text,'[more]');"/>
-    <?php
-    }
-  }
-  
-  function editor_style_dropdown() {
+  function editor_style_buttons() {
     // Style Tag Dropdown
     global $lang_string;
 
-    ?><br />
-      <select name="style_dropdown" onchange="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);">
-        <option label="--" value="--">--</option>
-        <option label="[blockquote]xxx[/blockquote]" value="blockquote">[blockquote]xxx[/blockquote]</option>
-        <option label="[pre]xxx[/pre]" value="pre">[pre]xxx[/pre]</option>
-        <option label="[code]xxx[/code]" value="code">[code]xxx[/code]</option>
-        <option label="[strong]xxx[/strong]" value="strong">[strong]xxx[/strong]</option>
-        <option label="[b]xxx[/b]" value="b">[b]xxx[/b]</option>
-        <option label="[em]xxx[/em]" value="em">[em]xxx[/em]</option>
-        <option label="[i]xxx[/i]" value="i">[i]xxx[/i]</option>
-        <option label="[h?]xxx[/h?] (?=1-6)" value="h?">[h?]xxx[/h?] (?=1-6)</option>
-        <option label="[html]xxx[/html]" value="html">[html]xxx[/html]</option>
-        <option label="[del]xxx[/del]" value="del">[del]xxx[/del]</option>
-        <option label="[ins]xxx[/ins]" value="ins">[ins]xxx[/ins]</option>
-        <option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option>
-      </select>
-      <input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.blog_text,this.form.style_dropdown.value);"/><p />
+    ?>
+
+<noscript>
+<p>Available Tags:</p>
+<ul>
+<li>[blockquote]xxx[/blockquote]</li>
+<li>[pre]xxx[/pre]</li>
+<li>[em]xxx[/em]</li>
+<li>[strong]xxx[/strong]</li>
+<li>[u]xxx[/u]</li>
+<li>[h?]xxx[/h?] (?=1-6)</li>
+<li>[strike]xxx[/strike]</li>
+<li>[img=http://example.com/image.jpg width=x height=x popup=true/false float=left/right]</li>
+<li>[url=http://example.com new=true/false]link text[/url]</li>
+<li>[center]xxx[/center] (entry only, not static pages)</li>
+<li>[more]</li>
+</ul>
+</noscript>
     <?php
   }
 
@@ -368,7 +363,7 @@
     
     $str = image_dropdown();
     if ( $str !== NULL ) {
-      echo( '<a href="javascript:openpopup(\'image_list.php\',' . $theme_vars[ 'popup_window' ][ 'width' ] . ',' . $theme_vars[ 'popup_window' ][ 'height' ] . ',true);">' . $lang_string[ 'view_images' ] . '</a><br />' . $str . '<p />' );
+      echo( '<p>' . $str . '<a href="javascript:openpopup(\'image_list.php\',' . $theme_vars[ 'popup_window' ][ 'width' ] . ',' . $theme_vars[ 'popup_window' ][ 'height' ] . ',true);">' . $lang_string[ 'view_images' ] . '</a></p>' );
     }
   }
   
@@ -408,7 +403,7 @@
             */
             $temp_label = $contents[$i].' - '.$width.' x '.$height;
             $temp_value = '[img='.$dir.$contents[$i].' popup=false]';
-            $temp_string = $contents[$i];
+            $temp_string = $dir . $contents[$i];
             
             $item = array( 'label' => $temp_label, 'value' => $temp_value, 'string' => $temp_string );
             array_push( $itemArray, $item );

@@ -55,6 +55,7 @@
 			$tag_arr = array();
 			if ( in_array( 'i', $allowed ) ) { array_push( $tag_arr, 'i' ); }
 			if ( in_array( 'b', $allowed ) ) { array_push( $tag_arr, 'b' ); }
+			if ( in_array( 'u', $allowed ) ) { array_push( $tag_arr, 'u' ); }
 			if ( in_array( 'blockquote', $allowed ) ) { array_push( $tag_arr, 'blockquote' ); }
 			if ( in_array( 'strong', $allowed ) ) { array_push( $tag_arr, 'strong' ); }
 			if ( in_array( 'em', $allowed ) ) { array_push( $tag_arr, 'em' ); }
@@ -66,7 +67,7 @@
 			if ( in_array( 'code', $allowed ) ) { array_push( $tag_arr, 'code' ); }
 			if ( in_array( 'center', $allowed ) ) { array_push( $tag_arr, 'center' ); }
 		} else {
-			$tag_arr = array('i', 'b', 'blockquote', 'strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'ins', 'strike', 'pre', 'code', 'center' );
+			$tag_arr = array('i', 'b', 'blockquote', 'strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'ins', 'strike', 'pre', 'code', 'center', 'u' );
 		}
 
 		// Build search and replace arrays.
