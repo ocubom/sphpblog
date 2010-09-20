@@ -314,7 +314,7 @@ $lang_string['instructions_update'] = "Girdinizi aþaðýdaki form yardýmýyla 
         $lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
         $lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-        $lang_string['comment_capcha'] = "Anti-Spam: Enter <b>%s</b>"; // 0.4.2
+        $lang_string['comment_capcha'] = "Anti-Spam: Enter "; // 0.4.2
         $lang_string['title'] = "Yorumlar";
         $lang_string['header'] = "Yorum Ekle";
         $lang_string['instructions'] = "Yorum eklemek için formu doldurmanýz gerekli.  <b style=\"color: red;\">(LÜTFEN BAYRAKLARI VE RESÝMLERÝ KULLANMAYIN)</b> ";

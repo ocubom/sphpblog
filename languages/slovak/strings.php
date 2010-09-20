@@ -277,7 +277,7 @@
 				$lang_string['useragent'] = "Pouíváte:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>Na %s, %s napísal:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				
-				$lang_string['comment_capcha'] = "Antispam: Vlote reazec <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Antispam: Vlote reazec "; // 0.4.2
 				$lang_string['title'] = "Komentáre";
 				$lang_string['header'] = "Vloi komentár";
 				$lang_string['instructions'] = "Vyplòte formulár niie a pridajte vá vlastný komentár.";

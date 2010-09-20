@@ -294,7 +294,7 @@
 				$lang_string['IPAddress'] = "Direcci&oacute;n IP:";  // New for 0.4.6.2
 				$lang_string['useragent'] = "Agente Usuario:";  // New for 0.4.6.2
 				$lang_string['comment_url'] = "Web:"; // 0.3.8
-				$lang_string['comment_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Introduzca "; // 0.4.2
 				$lang_string['form_error'] = "Por favor rellene los campos Nombre, Comentario y el campo Anti-Spam."; //0.4.2
 				$lang_string['comment_remember'] = "Recordar mi información personal:"; // 0.3.8
 				$lang_string['comment_text'] = "Comentario:";
@@ -726,7 +726,7 @@
 				$lang_string['submit_btn'] = "&nbsp;Enviar&nbsp;";
 				$lang_string['success'] = "<h2>¡Listo!</h2>Su mensaje ha sido enviado.<p />";
 				$lang_string['failure'] = "<h2>¡Ups!</h2>Su mensaje no se ha enviado. Contra el Spam no fue incorporado muy probablemente correctamente.<p />";
-				$lang_string['contact_capcha'] = "Anti-Spam: Introduzca <b>%s</b>"; // 0.4.2	
+				$lang_string['contact_capcha'] = "Anti-Spam: Introduzca "; // 0.4.2	
 				$lang_string['contactsent'] = "Contacto enviado desde: ";  // New for 0.4.6
 				$lang_string['IPAddress'] = "Direcci&oacute;n IP:";  // New for 0.4.6
 				$lang_string['useragent'] = "Agente Usuario:";  // New for 0.4.6

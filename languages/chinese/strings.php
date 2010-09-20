@@ -265,7 +265,7 @@
 				$lang_string['wrote'] = "<i>On %s, %s wrote:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 				
 				// Comments
-				$lang_string[ 'comment_capcha' ] = "反垃圾(Anti-Spam): 输入 <b>%s</b>";
+				$lang_string[ 'comment_capcha' ] = "反垃圾(Anti-Spam): 输入 ";
 				$lang_string[ 'title' ] = "评论";
 				$lang_string[ 'header' ] = "发表评论";
 				$lang_string[ 'instructions' ] = "填写下面的表单来发表您的评论。";

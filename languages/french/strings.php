@@ -313,7 +313,7 @@
 				$lang_string['useragent'] = "Navigateur:";  // New for 0.4.6.2
 				$lang_string['wrote'] = "<i>Le %s, %s a écrit:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-				$lang_string['comment_capcha'] = "Anti-Spam: Entrez <b>%s</b>"; // 0.4.2
+				$lang_string['comment_capcha'] = "Anti-Spam: Entrez "; // 0.4.2
 				$lang_string['title'] = "Commentaires";
 				$lang_string['header'] = "Ajouter un commentaire";
 				$lang_string['instructions'] = "Remplissez ce formulaire pour ajouter votre propre commentaire.";

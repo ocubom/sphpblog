@@ -314,7 +314,7 @@
         $lang_string['useragent'] = "User Agent:";  // New for 0.4.6.2
         $lang_string['wrote'] = "<i>%s, %s escreveu:</i><br />\n<br />\n%s"; // New for 0.4.6.2
 
-        $lang_string['comment_capcha'] = "Anti-Spam: Digite <b>%s</b>"; // 0.4.2
+        $lang_string['comment_capcha'] = "Anti-Spam: Digite "; // 0.4.2
         $lang_string['title'] = "Comentários";
         $lang_string['header'] = "Incluir Comentário";
         $lang_string['instructions'] = "Preencha o formulário abaixo para incluir seus próprios comentários.";
