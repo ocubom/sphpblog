@@ -19,11 +19,11 @@
                 print "<p>PHP Configuration Checks:</p>";
                 if (strnatcmp(phpversion(),'5.0') < 0)
                         echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
-                if (!open_basedir_check(CONFIG_DIR))
+                if (!open_basedir_check($dir . '/' . CONFIG_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONFIG_DIR . ".</p>";
-                if (!open_basedir_check(CONTENT_DIR))
+                if (!open_basedir_check($dir . '/' . CONTENT_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONTENT_DIR . ".</p>";
-                if (!open_basedir_check(IMAGES_DIR))
+                if (!open_basedir_check($dir . '/' . IMAGES_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . IMAGES_DIR . ".</p>";
                 if (!ini_get('allow_url_fopen'))
                         echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
@@ -134,7 +134,7 @@ function curPageURL() {
 		$root = dirname(dirname(__FILE__));
 		$baselist = explode(PATH_SEPARATOR, $basedir);
 		foreach ($baselist as $base) {
-			if (strstr(realpath($dir), realpath($base)) !== FALSE) {
+			if (strstr($dir, $base) !== FALSE) {
 				return true;
 			}
 		}
