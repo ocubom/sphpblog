@@ -9,7 +9,7 @@
 
         read_config();
 
-        require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
+        require_once(ROOT_DIR . 'languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
         sb_language( 'add' );
 
         // ----

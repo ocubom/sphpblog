@@ -41,6 +41,7 @@
 	<link rel="shortcut icon" href="interface/favicon.ico" />
 	
 	<link rel="stylesheet" type="text/css" href="themes/{BLOG_THEME}/style.css" />
+	<link rel="stylesheet" type="text/css" href="themes/{BLOG_THEME}/user_style.php" />
 	{CSS}
 	
 	<script src="scripts/sb_javascript.js" type="text/javascript"></script>

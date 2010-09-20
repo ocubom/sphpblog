@@ -1,7 +1,7 @@
 <?php
 	// Root Directory
 	if (!defined('ROOT_DIR')){
-		define('ROOT_DIR', '');
+		define('ROOT_DIR', dirname(dirname(__file__)) . '/');
 	}
 	
 	// Database
@@ -26,8 +26,7 @@
 	define('USER_DIR',		CONFIG_DIR.'users/');
 	define('GROUP_DIR',		CONFIG_DIR.'groups/');
 	
-	define('SCRIPTS_DIR',	ROOT_DIR.'scripts/');
-	define('CLASSES_DIR',	SCRIPTS_DIR.'classes/');
+	define('CLASSES_DIR',	'classes/');
 	
 	
 	

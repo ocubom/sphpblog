@@ -5,7 +5,7 @@
 // -------------------------------------------------------------------
 
 mySettings = {
-	previewParserPath:	'~/../../../parser.php', // path to your Wiki parser
+	previewParserPath:	'~/../../../../parser.php', // path to your Wiki parser
 	onShiftEnter:		{keepDefault:false, replaceWith:'\n\n'},
 	markupSet: [
 		{name:'Heading 1', key:'1', openWith:'[h1]', closeWith:'[/h1]', placeHolder:'Your title here...' },

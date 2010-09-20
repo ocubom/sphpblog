@@ -13,7 +13,7 @@
 	// Parent Class
 	require_once('plugins/sidebar/Sidebar.php');
 
-	$plugins = scandir('plugins/sidebar/');
+	$plugins = scandir(ROOT_DIR . '/scripts/plugins/sidebar/');
 
         foreach ($plugins as $plugin) {
 		@include_once('plugins/sidebar/' . $plugin . '/plugin.php');

@@ -706,9 +706,9 @@
 		$page_template->setTag('{BLOG_THEME}', $GLOBALS['blog_theme']);
 		
 		// User Color CSS Override
-		ob_start();
-		require_once('themes/'.$GLOBALS['blog_theme'].'/user_style.php');
-		$page_template->setTag('{CSS}', ob_get_clean());
+		//ob_start();
+		//require_once('themes/'.$GLOBALS['blog_theme'].'/user_style.php');
+		//$page_template->setTag('{CSS}', ob_get_clean());
 		
 		// Javascript
 		ob_start();

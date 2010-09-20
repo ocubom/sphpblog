@@ -18,7 +18,7 @@
 	read_config();
 	
 	// Load language strings
-	require_once('languages/' . $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE') . '/strings.php');
+	require_once(ROOT_DIR . '/languages/' . $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'index' );
 	
 	// ---------------

@@ -1,9 +1,9 @@
-<link rel="stylesheet" type="text/css" href="plugins/markitup/markitup/skins/sphpblog/style.css" />
-<link rel="stylesheet" type="text/css" href="plugins/markitup/markitup/sets/sphpblog/style.css" />
+<link rel="stylesheet" type="text/css" href="scripts/plugins/markitup/markitup/skins/sphpblog/style.css" />
+<link rel="stylesheet" type="text/css" href="scripts/plugins/markitup/markitup/sets/sphpblog/style.css" />
 
-<script type="text/javascript" src="plugins/markitup/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="plugins/markitup/markitup/jquery.markitup.js"></script>
-<script type="text/javascript" src="plugins/markitup/markitup/sets/sphpblog/set.js"></script>
+<script type="text/javascript" src="scripts/plugins/markitup/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/markitup/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="scripts/plugins/markitup/markitup/sets/sphpblog/set.js"></script>
 
 <script type="text/javascript">
 <!--

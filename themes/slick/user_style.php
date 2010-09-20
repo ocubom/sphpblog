@@ -1,4 +1,10 @@
-<style type="text/css">
+<?php
+require_once('../../scripts/sb_functions.php');
+
+read_config();
+
+header("Content-Type: text/css");
+?>
 	body {
 		background-color: #<?php echo(get_user_color('bg_color')); ?>;
 		color: #<?php echo(get_user_color('txt_color')); ?>;
@@ -95,4 +101,3 @@
 	#sidebar .menu_body a:active {
 		color: #<?php echo(get_user_color('menu_link_down_color')); ?>;
 	}
-</style>

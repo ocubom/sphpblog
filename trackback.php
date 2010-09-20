@@ -8,7 +8,7 @@
   
   read_config();
   
-  require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
+  require_once(ROOT_DIR . 'languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
   sb_language( 'trackbacks' );
   
   // ---------------
@@ -92,7 +92,7 @@
     //
 ?>
   <?php echo( get_init_code() ); ?>
-  <?php require_once('themes/' . $blog_theme . '/user_style.php'); ?>  
+  <?php //require_once('themes/' . $blog_theme . '/user_style.php'); ?>  
   <?php require_once('scripts/sb_editor.php'); ?>
 
   <title><?php echo($blog_config->getTag('BLOG_TITLE')); ?> - <?php echo( $GLOBALS['lang_string']['title'] ); ?></title>

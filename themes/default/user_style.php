@@ -1,4 +1,11 @@
-<style type="text/css">
+<?php
+require_once('../../scripts/sb_functions.php');
+
+read_config();
+
+header("Content-Type: text/css");
+?>
+
   body {
     background-color: #<?php echo(get_user_color('bg_color')); ?>;
     color: #<?php echo(get_user_color('txt_color')); ?>;
@@ -72,4 +79,3 @@
     width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
     border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
   }
-</style>

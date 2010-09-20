@@ -1,4 +1,10 @@
-<style type="text/css">
+<?php
+require_once('../../scripts/sb_functions.php');
+
+read_config();
+
+header("Content-Type: text/css");
+?>
   /* OVERRIDE COLORS */
 
   /* GENERAL SETTINGS */
@@ -171,4 +177,3 @@
     color: #<?php echo(get_user_color('menu_text')); ?>;
     background-color: #<?php echo(get_user_color('menu_bg')); ?>;
   }
-</style>

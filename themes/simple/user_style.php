@@ -1,4 +1,10 @@
-<style type="text/css">
+<?php
+require_once('../../scripts/sb_functions.php');
+
+read_config();
+
+header("Content-Type: text/css");
+?>
 	body {
 		color: #<?php echo(get_user_color('txt_color')); ?>;
 		background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
@@ -99,4 +105,3 @@
 	entry_border
 	entry_title_text
 	entry_text */
-</style>

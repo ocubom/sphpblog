@@ -45,7 +45,7 @@
 		// LOAD THEME
 		global $blog_theme;
 		$blog_theme = $blog_config->getTag('BLOG_THEME');
-		require_once('themes/' . $GLOBALS['blog_config']->getTag('BLOG_THEME') . '/themes.php');
+		require_once(ROOT_DIR . '/themes/' . $GLOBALS['blog_config']->getTag('BLOG_THEME') . '/themes.php');
 
 		// LOAD COLORS
 		read_colors();
