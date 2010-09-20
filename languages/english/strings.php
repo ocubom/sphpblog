@@ -24,7 +24,7 @@
     // Menu
     $lang_string['menu_links'] = "Links";
     $lang_string['menu_home'] = "Home";
-    $lang_string['menu_contact'] = "Contact Me";
+    $lang_string['menu_contact'] = "Contact";
     $lang_string['menu_stats'] = "Stats";
     $lang_string['menu_calendar'] = "Calendar"; // New for 0.4.8
     $lang_string['menu_archive'] = "Archives";
