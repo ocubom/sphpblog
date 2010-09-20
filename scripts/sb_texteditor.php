@@ -363,7 +363,7 @@
     
     $str = image_dropdown();
     if ( $str !== NULL ) {
-      echo( '<p>' . $str . '<a href="javascript:openpopup(\'image_list.php\',' . $theme_vars[ 'popup_window' ][ 'width' ] . ',' . $theme_vars[ 'popup_window' ][ 'height' ] . ',true);">' . $lang_string[ 'view_images' ] . '</a></p>' );
+      echo( '<p>' . $str . '<a target="_blank" href="image_list.php">' . $lang_string[ 'view_images' ] . '</a></p>' );
     }
   }
   

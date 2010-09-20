@@ -36,6 +36,8 @@
 				$str  .= '<a href="colors.php">' . $GLOBALS[ 'lang_string' ][ 'menu_colors' ] . '</a><br />';
 				$str  .= '<a href="options.php">' . $GLOBALS[ 'lang_string' ][ 'menu_options' ] . '</a><br />';
 				$str  .= '<a href="info.php">' . $GLOBALS[ 'lang_string' ][ 'menu_info' ] . '</a><br />';
+				$str  .= '<a href="manage_users.php">' . $GLOBALS[ 'lang_string' ][ 'manage_users' ] . '</a><br />';
+				$str  .= '<a href="phpinfo.php">' . $GLOBALS[ 'lang_string' ][ 'manage_php_config' ] . '</a><br />';
 				$str  .= '<hr />';
 				$str  .= '<a href="moderation.php">' . $GLOBALS[ 'lang_string' ][ 'menu_moderation' ] . '</a><br />';
 				if ( $blog_config->getTag( 'blog_comments_moderation' ) ) {
