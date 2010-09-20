@@ -13,15 +13,18 @@
         function phpini_check() {
                 // TODO translations
                 // TODO more PHP checks here
+
+		$dir = dirname(dirname(__file__));
+
                 print "<p>PHP Configuration Checks:</p>";
                 if (strnatcmp(phpversion(),'5.0') < 0)
                         echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
                 if (!open_basedir_check(CONFIG_DIR))
-                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONFIG_DIR) . ".</p>";
+                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONFIG_DIR . ".</p>";
                 if (!open_basedir_check(CONTENT_DIR))
-                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(CONTENT_DIR) . ".</p>";
+                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONTENT_DIR . ".</p>";
                 if (!open_basedir_check(IMAGES_DIR))
-                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include " . realpath(IMAGES_DIR) . ".</p>";
+                        echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . IMAGES_DIR . ".</p>";
                 if (!ini_get('allow_url_fopen'))
                         echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
                 if (!ini_get('file_uploads'))
