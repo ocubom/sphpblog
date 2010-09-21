@@ -193,7 +193,7 @@
     if ( $blog_config->getTag('BLOG_ENABLE_PRINT')){// New for 0.4.6
       if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
         // Show 'print article' link
-        $blog_content  .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true" target="_blank">' . $GLOBALS['lang_string']['print_article']. '</a>';
+        $blog_content  .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true">' . $GLOBALS['lang_string']['print_article']. '</a>';
       }
     }
 
@@ -386,7 +386,7 @@
     ?>
     <body>
       <div>
-      <table width="<?php echo( $page_width ); ?>" style="margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>; cellspacing: 0px; cellpadding: 0px;">
+      <table width="<?php echo( $page_width ); ?>" style="margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
         <tr align="left" valign="top">
           <td style="width: <?php echo( $page_width ); ?>; background-color: #<?php echo(get_user_color('header_bg_color')); ?>" colspan="2">
             <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
@@ -397,7 +397,7 @@
             }?>
 
             <div id="pagebody">
-              <table style="border-style: none; cellspacing: 0px; cellpadding: 0px" width="<?php echo( $page_width ); ?>">
+              <table style="border-style: none;" width="<?php echo( $page_width ); ?>">
                 <tr valign="top">
                   <?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
                   <td style="width: <?php echo( $menu_width ); ?>; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-right: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
@@ -454,7 +454,7 @@
     ?>
     <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
       <br />
-      <table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+      <table align="center" style="width: <?php echo( $popup_width ); ?>; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
         <tr align="left" valign="top">
           <td bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
             <div id="header">

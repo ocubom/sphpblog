@@ -366,8 +366,9 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	input[type='text'],
 	input[type='password'],
 	textarea {
-		// color: #2e2812;
-		// background: #fefaec;
+		/* color: #2e2812;
+		background: #fefaec;
+		*/
 		cursor: text;
 		}
 		

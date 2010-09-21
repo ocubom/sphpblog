@@ -54,9 +54,9 @@ header("Content-Type: text/css");
   }
 
   #maincontent .blog_body_solid  {
-    color: #<?php echo(get_user_color('entry_text')); ?>;
+    color: #<?php echo(get_user_color('txt_color')); ?>;
     background-color: #<?php echo(get_user_color('bg_color')); ?>;
-    border-color: #<?php echo(get_user_color('entry_text')); ?>;
+    border-color: #<?php echo(get_user_color('txt_color')); ?>;
   }
   
   #maincontent {
