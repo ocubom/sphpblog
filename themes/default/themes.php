@@ -388,7 +388,7 @@
       <div>
       <table width="<?php echo( $page_width ); ?>" style="margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>; cellspacing: 0px; cellpadding: 0px;">
         <tr align="left" valign="top">
-          <td style="width: <?php echo( $page_width ); ?>; background-color: $<?php echo(get_user_color('header_bg_color')); ?>" colspan="2">
+          <td style="width: <?php echo( $page_width ); ?>; background-color: #<?php echo(get_user_color('header_bg_color')); ?>" colspan="2">
             <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
 
             <?php
