@@ -59,6 +59,14 @@ header("Content-Type: text/css");
     border-color: #<?php echo(get_user_color('entry_text')); ?>;
   }
   
+  #maincontent {
+    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+  }
+
+  #sidebar {
+    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+  }
+
   #sidebar .menu_body {
     border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
   }

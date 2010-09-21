@@ -73,6 +73,14 @@ header("Content-Type: text/css");
 	#maincontent .blog_date {
 		color: #<?php echo(get_user_color('date_txt_color')); ?>;
 	}
+
+  #maincontent {
+    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+  }
+
+  #sidebar {
+    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+  }
 	
 	#sidebar .menu_title {
 		border-color: #<?php echo(get_user_color('menu_border')); ?>;

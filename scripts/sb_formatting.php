@@ -711,8 +711,6 @@
 		//$page_template->setTag('{CSS}', ob_get_clean());
 		
 		// Javascript
-		ob_start();
-		require_once('scripts/sb_javascript.php');
-		$page_template->setTag('{JAVASCRIPT}', ob_get_clean());
+		$page_template->setTag('{JAVASCRIPT}', '');
 	}
 ?>

@@ -44,7 +44,6 @@
 	<link rel="stylesheet" type="text/css" href="themes/{BLOG_THEME}/user_style.php" />
 	{CSS}
 	
-	<script src="scripts/sb_javascript.js" type="text/javascript"></script>
 	{JAVASCRIPT}
 	
 </head>

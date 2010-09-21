@@ -106,6 +106,11 @@ header("Content-Type: text/css");
     background-color: #<?php echo(get_user_color('menu_bg')); ?>;
     border-color: #<?php echo(get_user_color('menu_border')); ?>;
   }
+
+  #maincontent {
+    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+  }
+
   /* Side bar */
 
   #sidebar .menu_title {
@@ -117,6 +122,10 @@ header("Content-Type: text/css");
   #sidebar .menu_body {
     border-color: #<?php echo(get_user_color('menu_border')); ?>;
     background-color: #<?php echo(get_user_color('menu_bg')); ?>;
+  }
+
+  #sidebar {
+    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
   }
 
   a:link, a:visited {

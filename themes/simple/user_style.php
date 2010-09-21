@@ -95,6 +95,11 @@ header("Content-Type: text/css");
 		background-color: #<?php echo(get_user_color('menu_bg')); ?>;
 		border-color: #<?php echo(get_user_color('menu_border')); ?>;
 	}
+
+  #sidebar {
+    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+  }
+
 	
 	.subject {
 		color: #<?php echo(get_user_color('entry_title_text')); ?>;

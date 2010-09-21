@@ -154,6 +154,10 @@ header("Content-Type: text/css");
     background-color: #<?php echo(get_user_color('comment_bg')); ?>;
   }
   
+  #content {
+    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+  }
+
   /* SIDEBAR */
   
   #sidebar {
@@ -176,4 +180,8 @@ header("Content-Type: text/css");
     border-color: #<?php echo(get_user_color('menu_border')); ?>;
     color: #<?php echo(get_user_color('menu_text')); ?>;
     background-color: #<?php echo(get_user_color('menu_bg')); ?>;
+  }
+
+  #sidebar {
+    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
   }
