@@ -35,10 +35,10 @@
 
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = curPageURL() . '/';
+			$base_url = sb_curPageURL() . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = dirname(curPageURL()) . '/';
+			$base_url = dirname(sb_curPageURL()) . '/';
 		}
 		
 		header('Content-type: application/xml');
@@ -139,10 +139,10 @@
 
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = curPageURL() . '/';
+			$base_url = sb_curPageURL() . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = dirname(curPageURL()) . '/';
+			$base_url = dirname(sb_curPageURL()) . '/';
 		}
 
 		header('Content-type: application/xml');
@@ -225,10 +225,10 @@
 
 		if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
 			// Hosted at root.
-			$base_url = curPageURL() . '/';
+			$base_url = sb_curPageURL() . '/';
 		} else {
 			// Hosted in sub-directory.
-			$base_url = dirname(curPageURL()) . '/';
+			$base_url = dirname(sb_curPageURL()) . '/';
 		}
 		
 		header('Content-type: application/xml');

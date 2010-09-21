@@ -11,7 +11,7 @@ $blog_config = new Configuration();
 
 header('Content-type: application/opensearchdescription+xml');
 
-$thispage = curPageURL();
+$thispage = sb_curPageURL();
 
 $rootpage = dirname(dirname($thispage));
 

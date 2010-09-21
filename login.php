@@ -19,7 +19,7 @@
 		    if ($blog_config->getTag('HTTPS') == 'REQUIRE') {
                         $url = $blog_config->getTag('HTTPS_URL');
                         if (empty($url)) {
-			    $url = str_replace('http://', 'https://', curPageURL()); 
+			    $url = str_replace('http://', 'https://', sb_curPageURL()); 
 			}
 			header("Location: $url");
 		    }
@@ -43,7 +43,7 @@
 			print "<p style='background-color: red; color: white'>WARNING: Password will be sent unencrypted!</p>"; 
                         $url = $blog_config->getTag('HTTPS_URL');
                         if (empty($url)) {
-			    $url = str_replace('http://', 'https://', curPageURL()); 
+			    $url = str_replace('http://', 'https://', sb_curPageURL()); 
 			}
 			print "<p><a href='$url'>Attempt secure mode</a>.</p>"; 
 		    }

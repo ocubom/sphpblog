@@ -112,7 +112,7 @@
                 return $user_list;
         }
 
-function curPageURL() {
+function sb_curPageURL() {
  $pageURL = 'http';
  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
  $pageURL .= "://";
