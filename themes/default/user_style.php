@@ -60,7 +60,7 @@ header("Content-Type: text/css");
   }
   
   #maincontent {
-    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+    background-color: #<?php echo(get_user_color('main_bg_color')); ?>
   }
 
   #sidebar {
