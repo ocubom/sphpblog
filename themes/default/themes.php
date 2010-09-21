@@ -509,7 +509,7 @@
 
     if ( isset( $blockArray[ 'content' ] ) && $blockArray[ 'content' ] != '' ) {
       // Default image path.
-      $img_path = "themes/" . $blog_theme . "/images/";
+      $img_path = BASEURL . "themes/" . $blog_theme . "/images/";
       $img_show = $img_path . 'plus.gif';
       $img_hide = $img_path . 'minus.gif';
 

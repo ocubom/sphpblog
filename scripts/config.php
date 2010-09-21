@@ -4,14 +4,15 @@
 		define('ROOT_DIR', dirname(dirname(__file__)) . '/');
 	}
 	
-	// Database
-	// define(MYSQL_USER, '');
-	// define(MYSQL_PASSWORD, '');
-	// define(MYSQL_DATABASE, '');
-	
 	// Base URL
-	define('BASEURL', '');
-	
+	// You need to set this manually if you are using symlinks, sorry, this is a PHP limitation
+	// we will assume this is a directory off of your root
+	if ($_SERVER['SCRIPT_FILENAME'] == realpath($_SERVER['SCRIPT_FILENAME'])) {
+		define('BASEURL', preg_replace("/^" . str_replace("/", "\/", $_SERVER["DOCUMENT_ROOT"]) . "/", "", ROOT_DIR));
+	} else {
+		define('BASEURL', '/' . basename(dirname(dirname(__file__))) . '/');
+	}
+
 	// Variables
 	// define('USE_MOD_REWRITE', false);
 	

@@ -46,7 +46,7 @@
 			}
 			
 			// Home.
-			$str .= sprintf( '<a href="index.php">%s</a><br />', $GLOBALS[ 'lang_string' ][ 'menu_home' ] );
+			$str .= sprintf( '<a href="%sindex.php">%s</a><br />', BASEURL, $GLOBALS[ 'lang_string' ][ 'menu_home' ] );
 			
 			// Contact.
 			$temp = ($blog_config->getTag('BLOG_EMAIL'));
@@ -60,7 +60,7 @@
 			
 			// Stats.
 			if ( $blog_config->getTag('BLOG_ENABLE_STATS') ) {
-				$str .= sprintf( '<a href="stats.php">%s</a><br />', $GLOBALS[ 'lang_string' ][ 'menu_stats' ] );
+				$str .= sprintf( '<a href="%sstats.php">%s</a><br />', BASEURL, $GLOBALS[ 'lang_string' ][ 'menu_stats' ] );
 			}
 			
 			// Read links file.

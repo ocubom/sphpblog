@@ -90,7 +90,7 @@
     global $user_colors, $blog_theme, $blog_config;
 
     // Default image path.
-    $img_path = "themes/" . $blog_theme . "/images/";
+    $img_path = BASEURL . "themes/" . $blog_theme . "/images/";
 
     $blog_content = "";
     $blog_content = $blog_content . "\n<!-- BLOG ENTRY BEGIN -->\n";
