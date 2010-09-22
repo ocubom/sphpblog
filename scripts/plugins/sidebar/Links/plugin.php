@@ -54,7 +54,7 @@
 				$oBlacklist = new CBlacklist;
 				$oBlacklist->load( CONFIG_DIR . 'blacklist.txt' );
 				if ( $oBlacklist->isBanned( getIP() ) == false || $GLOBALS[ 'logged_in' ] == true  ) {
-					$str .= sprintf( '<a href="contact.php">%s</a><br />', $GLOBALS[ 'lang_string' ][ 'menu_contact' ] );
+					$str .= sprintf( '<a href="%scontact.php">%s</a><br />', BASEURL, $GLOBALS[ 'lang_string' ][ 'menu_contact' ] );
 				}
 			}
 			
