@@ -757,7 +757,7 @@
 
       case 'contact':
         $lang_string['contact_capcha'] = "Anti-Spam: Enter "; // 0.4.2
-        $lang_string['title'] = "Contact Me";
+        $lang_string['title'] = "Contact";
         $lang_string['instructions'] = "Fill in the form:";
         $lang_string['form_error'] = "Please complete the Subject and Comment fields.";
         $lang_string['name'] = "Name:";
