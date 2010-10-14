@@ -199,14 +199,7 @@
       }
     }
 
-    if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
-      // Hosted at root.
-      return($proto.$_SERVER[ 'HTTP_HOST' ].$port.'/');
-    } else {
-      // Hosted in sub-directory.
-      return(str_replace('\\', '/',$proto.$_SERVER[ 'HTTP_HOST' ].$port.dirname($_SERVER[ 'PHP_SELF' ]).'/'));
-    }
-    exit;
+    return($proto.$_SERVER[ 'HTTP_HOST' ].$port . BASEURL);
   }
   
   // The rest of this is used for the non-Admin users

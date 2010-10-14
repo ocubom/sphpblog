@@ -492,9 +492,9 @@ function get_blocks() {
     }
 
     //add on plugins that aren't in the list
-    $plugins = scandir('plugins/sidebar/');
+    $plugins = scandir(ROOT_DIR . '/scripts/plugins/sidebar/');
     foreach ($plugins as $plugin) {
-        if (is_dir('plugins/sidebar/' . $plugin) && $plugin[0] != '.') {
+        if (is_dir('scripts/plugins/sidebar/' . $plugin) && $plugin[0] != '.') {
             if (array_search($plugin, $plugin_array) === FALSE) {
                 $plugin_array[] = $plugin;
             }

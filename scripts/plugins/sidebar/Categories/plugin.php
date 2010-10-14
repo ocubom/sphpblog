@@ -70,7 +70,7 @@
 						// This is the current viewing category...
 						$str  .= $name_str;
 					} else {
-						$str  .= "<a href=\"index.php?category=" . $id_number . "\">" . $name_str . "</a>";
+						$str  .= "<a href=\"" . BASEURL . "index.php?category=" . $id_number . "\">" . $name_str . "</a>";
 					}
 					if ( $i == count( $catArray ) - 1 ) {
 						// Last item...
