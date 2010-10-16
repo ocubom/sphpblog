@@ -113,7 +113,7 @@
 	// category (cause it has to be the first page). WILL NEVER
 	// OVERRIDE THE CATEGORY IF PASSED IN
 	if ( array_key_exists( 'category', $_GET ) == FALSE ) {
-		if ( $blog_config->getTag('BLOG_ENABLE_START_CATEGORY') == 1 ) { 
+		if ( $blog_config->getTag('BLOG_ENABLE_START_CATEGORY') == 1 AND empty($_GET['entry'])) { 
 			$category = $blog_config->getTag('BLOG_ENABLE_START_CATEGORY_SELECTION');
 		}
 	}		 
