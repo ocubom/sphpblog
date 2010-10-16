@@ -402,8 +402,8 @@
             }
             */
             $temp_label = $contents[$i].' - '.$width.' x '.$height;
-            $temp_value = '[img='.$dir.$contents[$i].' popup=false]';
-            $temp_string = $dir . $contents[$i];
+            $temp_value = '[img='.basename($dir).'/'.$contents[$i].' popup=false]';
+            $temp_string = $contents[$i];
             
             $item = array( 'label' => $temp_label, 'value' => $temp_value, 'string' => $temp_string );
             array_push( $itemArray, $item );
