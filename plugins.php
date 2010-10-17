@@ -75,7 +75,7 @@
 	// ------------
 	function get_installed_plugins() {
 		
-		$dir = 'plugins/sidebar/';	
+		$dir = ROOT_DIR . '/scripts/plugins/sidebar/';	
 		$plugin_arr = array();
 		
 		if ( is_dir($dir) ) {
