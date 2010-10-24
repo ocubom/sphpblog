@@ -87,20 +87,13 @@
 		}
 		
 		function getContent () {
-			$str = '';
-	
-	
-			if ($GLOBALS['blog_config']->getTag('BLOG_ENABLE_CALENDAR')) {
-				$str = $this->getCalendar( $GLOBALS['month'], $GLOBALS['year'], $GLOBALS['day'] );
-			}
-		
-			return $str;
+			return $this->getCalendar( $GLOBALS['month'], $GLOBALS['year'], $GLOBALS['day'] );
 		}
 		
 		/* ------ CUSTOM ------ */
 		
 		function getCalendar ( $m, $y, $d ) {
-		
+
 			if ( !isset( $m ) ) {
 				$m = date( 'm' );
 			}
