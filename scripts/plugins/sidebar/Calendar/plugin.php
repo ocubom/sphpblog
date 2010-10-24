@@ -182,13 +182,13 @@
 			<tr>
 			<td style="text-align: center">';
 			if ( ( ( $previous_year%100 )!=$y ) || ( $previous_month!=$m ) ) {
-				$str .= '<a href="index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&amp;m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
+				$str .= '<a href="' . BASEURL . 'index.php?y=' . sprintf( '%02d', $previous_year % 100 ) . '&amp;m=' . sprintf( '%02d', $previous_month ) .'">&laquo;</a>';
 			}
 			$str .= '</td>
 			<td style="text-align: center" colspan="5"><b>' . ucwords( strftime( '%B %Y', $date_string) ) . '</b></td>
 			<td style="text-align: center">';
 			if ( ( ( $next_year%100 )!=$y ) || ( $next_month!=$m ) ) {
-				$str .= '<a href="' . baseurl() . 'index.php?y=' . sprintf( '%02d', $next_year % 100 ) . '&amp;m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
+				$str .= '<a href="' . BASEURL . 'index.php?y=' . sprintf( '%02d', $next_year % 100 ) . '&amp;m=' . sprintf( '%02d', $next_month ) .'">&raquo;</a>';
 			}
 			$str .= '</td>
 			</tr>
@@ -231,7 +231,7 @@
 				}
 				
 				if ( isset($counts[$i-1]) && $counts[$i-1] > 0 ) {
-					$str .= '<a href="index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
+					$str .= '<a href="' . BASEURL . 'index.php?d=' . sprintf( '%02d', $i) . '&amp;m=' . sprintf( '%02d', $m ) . '&amp;y=' . sprintf( '%02d', $y % 100 ) . '" title="' . $counts[$i-1] . '">' . $i . '</a>';
 				} else {
 					$str  .= $i;
 				}
@@ -254,7 +254,7 @@
 			$str .= '</tr><tr>';
 			
 			// Fixed per Sverd1 March 17, 2006
-			$str .= '<td colspan="7" style="text-align: center">' . strftime( '<a href="index.php?y=%y&amp;m=%m&amp;d=%d">' . $this->prefs['dateFormat'] ) . '</a></td></tr></table>'; // Close the table
+			$str .= '<td colspan="7" style="text-align: center">' . strftime( '<a href="' . BASEURL . 'index.php?y=%y&amp;m=%m&amp;d=%d">' . $this->prefs['dateFormat'] ) . '</a></td></tr></table>'; // Close the table
 			return $str;
 		}
 	}
