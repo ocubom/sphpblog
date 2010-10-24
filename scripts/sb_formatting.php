@@ -356,7 +356,7 @@
 				if ( $strip_tags == false ) {
 					// Store attribues BETWEEN between the tags.
 					$attrib_array = explode( ' ', substr( $str, 0, $str_offset ) );
-					$attrib_new = NULL;
+					$attrib_new = 'false';
 
 					if ( is_array( $attrib_array ) ) {
 						$str_url = $attrib_array[0];
