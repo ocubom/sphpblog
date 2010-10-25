@@ -25,7 +25,7 @@
         $page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE'));
 
         $text = blog_to_html($_REQUEST['data'], false, false, false, true );
-        $text = '<body>' . $text . '</body>';
+        $text = '<body><div id="maincontent">' . $text . '</div></body>';
         $page_template->setTag('{BODY}', $text);
 
         // Final Output
