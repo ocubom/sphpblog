@@ -1,0 +1,3 @@
+- fix urls in plugins
+- integrate gallery
+- convert templates to CSS only?  converge HTML first, see theme.php
