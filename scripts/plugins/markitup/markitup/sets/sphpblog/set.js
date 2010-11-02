@@ -23,7 +23,7 @@ mySettings = {
 		{name:'Strike through', key:'S', openWith:'[strike]', closeWith:'[/strike]'}, 
 		{separator:'---------------' },
 //		{name:'Picture', key:"R", replaceWith:'[img=[![Source URL:!:http://]!] popup=[![Popup full size?:!:false]!] float=[![Float (left/right):!:left]!] alt=[![Alt text]!]]'}, 
-		{name:'Picture', key:"R", replaceWith:'[img=[![Source URL:!:http://]!] popup=[![Popup full size?:!:false]!] float=[![Float (left/right):!:left]!]'}, 
+		{name:'Picture', key:"R", replaceWith:'[img=[![Source URL:!:http://]!] popup=[![Popup full size?:!:false]!] float=[![Float (left/right):!:left]!]]'}, 
 		{name:'Url', key:"L", openWith:"[url=[![URL:!:http://]!]]", closeWith:'[/url]', placeHolder:'Your text to link here...' },
 		{separator:'---------------' },
 		{name:'Blockquote', key:"Q", openWith:'[blockquote]', closeWith:'[/blockquote]', placeHolder:''},
