@@ -1,3 +1,4 @@
 - fix urls in plugins
+- move install pages to separate directory
 - integrate gallery
 - convert templates to CSS only?  converge HTML first, see theme.php

@@ -31,6 +31,6 @@ mySettings = {
 		{separator:'---------------' },
 		{name:'Read More', key:"M", replaceWith:'[more]'}, 
 		{separator:'---------------' },
-		{name:'Preview', key:"V", call:'preview', className:'preview'}
+		{name:'Preview', key:"P", call:'preview', className:'preview'}
 	]
 }
