@@ -473,7 +473,6 @@
 		global $theme_vars;
 
 		$str_out = NULL;
-
 		// Search for the beginning part of the tag.
 		$str_offset = strpos( $str, $tag_begin );
 		while ( $str_offset !== false ) {
@@ -618,7 +617,12 @@
 							if ( $attrib_popup == 'true' ) {
 								$str_out	.= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" alt="" /></a>';
 							} else {
-								$str_out	.= '<img src="' . $str_url . '" alt="" />';
+								$str_out	.= '<img src="' . $str_url . '" alt="" ';
+								if (!empty($attrib_width))
+									$str_out	.= " width='$attrib_width px'";
+								if (!empty($attrib_height))
+									$str_out	.= " height='$attrib_height px'";
+								$str_out	.= ' />';
 							}
 						} else {
 							$str_out	.= '<a href="javascript:openpopup(\'' . $str_url . '\',800,600,false);"><img src="' . $str_url . '" alt="" /></a>';
