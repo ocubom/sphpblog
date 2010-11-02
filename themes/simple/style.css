@@ -189,7 +189,7 @@ THEME SPECIFIC
 #navigation
 {
 	color: #000;
-	position: relative;
+/*	position: relative; */
 	height: 25px;
 	background: url(images/nav-background.gif) repeat-x;
 }
@@ -216,9 +216,9 @@ THEME SPECIFIC
 #main
 {
 	padding: 20px 20px 20px 20px;
-	float: left;
+	/*float: left;*/
 	/* sidebar total width + 10px + 10px = 220 */
-	margin-right: 220px;
+	/*margin-right: 220px; */
 }
 
 #popup
@@ -295,7 +295,7 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 	padding: 10px;
 	width: 200px;
 	/* padding plus width = 240 */
-  	margin-left: -220px;
+  	/* margin-left: -220px; */
 	float: right;
 }
 

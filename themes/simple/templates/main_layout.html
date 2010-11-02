@@ -1,9 +1,6 @@
 <!-- MAIN LAYOUT START -->
-<body>
-	<table style="height: 100%; border-style: none; cellpadding: 0px; cellspacing: 0px; width: 100%">
-			<tr align="left" valign="top">
-				<td style="background: url('%image_path%background-left.gif'); width: 100px;">&nbsp;</td>
-				<td valign="top">
+<body style="background-image: url('%image_path%background-left.gif'), url('%image_path%background-right.gif'); background-repeat: repeat-y; background-position: top left, top right;">
+	<div id="page" style="margin-left: 100px; margin-right: 100px;">
 				
 					<!-- NAVIGATION -->
 					<div id="navigation">
@@ -15,13 +12,8 @@
 						<div style="float: right;"><img src="%image_path%nav-splitter.gif" alt="" height="25" width="2" /></div>
 					</div>
 					
-					<!-- MAIN CONTENT -->
-					<div id="main">
-						<!-- <h1>%blog_title%</h1> -->
-						<p />
-						%content%
-						<p />
-					</div>
+				<div id="pagebody">
+
 						
 					<!-- SIDEBAR -->
 					<div id="sidebar">
@@ -40,14 +32,19 @@
 						%widget_recent_comments%
 						%widget_recent_trackbacks%
 						%widget_avatar=menu_block_no_expand.html%
-						<div style="text-align: center">%widget_badges%</div>
+					</div>
+
+						<!-- MAIN CONTENT -->
+					<div id="main">
+						<!-- <h1>%blog_title%</h1> -->
+						<p />
+						%content%
+						<p />
 					</div>
 					
 					<div id="footer"><p class="copyright">%footer%</p></div>
 					
-				</td>
-				<td style="background: url('%image_path%background-right.gif'); width: 100px;">&nbsp;</td>
-			</tr>
-	</table>
+				</div>
+	</div>
 </body>
 <!-- MAIN LAYOUT END -->
