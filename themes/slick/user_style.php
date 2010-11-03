@@ -76,6 +76,7 @@ header("Content-Type: text/css");
 
   #maincontent {
     width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+    margin-left: <?php echo $theme_vars[ 'menu_width' ] ?>px;
   }
 
   #sidebar {

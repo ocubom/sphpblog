@@ -391,7 +391,7 @@
 
     ?>
     <body>
-      <div style="background-color: #<?php echo(get_user_color('main_bg_color')); ?>; max-width: <?php echo( $page_width ); ?>px; margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+      <div id='page' style="background-color: #<?php echo(get_user_color('main_bg_color')); ?>; max-width: <?php echo( $page_width ); ?>px; margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
             <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
 
             <?php

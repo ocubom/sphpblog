@@ -574,28 +574,20 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 			<div id="innerpage">
 			
 			<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { ?>
-				<div id="content">
-					<div style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+				<div id="content" style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
 						<?php page_content(); ?>
-					</div>
 				</div>
-				<div id="sidebar">
-					<div style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
+				<div id="sidebar" style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
 						<?php theme_menu(); ?>
-					</div>
 				</div>
 			<?php } ?>
 			
 			<?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { ?>
-				<div id="sidebar" style="border-width: 0 1px 1px 0; border-style: none solid solid none;">
-					<td width="<?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
+				<div id="sidebar" style="border-width: 0 1px 1px 0; border-style: none solid solid none; width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
 						<?php theme_menu(); ?>
-					</td>
 				</div>
-				<div id="content">
-					<td width="<?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+				<div id="content" style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
 						<?php page_content(); ?>
-					</td>
 				</div>
 			<?php } ?>
 		

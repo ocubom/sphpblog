@@ -2,3 +2,63 @@
 - move install pages to separate directory
 - integrate gallery
 - convert templates to CSS only?  converge HTML first, see theme.php
+
+Page layouts
+------------
+
+Proposed: use default
+
+default:
+
+<div id='page'>
+	<div id="header"></div>
+	<div id="pagebody">
+		<div id="sidebar"></div>
+		<div id="maincontent"></div>
+		<div id="footer"></div>
+	</div>
+</div>
+
+modern:
+
+<div id='page'>
+	<div id="header"></div>
+	<div id="innerpage">
+		<div id="sidebar"></div>
+		<div id="content"></div>
+		<div id="footer"></div>
+	</div>
+</div>
+
+GLight:
+
+<div>
+	<div id="header"></div>
+	<div id="pagebody">
+		<div id="sidebar"></div>
+		<div id="maincontent"></div>
+		<div id="footer"></div>
+	</div>
+</div>
+
+simple:
+
+<div id="page">
+	<div id="navigation"></div>
+	<div id="pagebody">
+		<div id="sidebar"></div>
+		<div id="main"></div>
+		<div id="footer"></div>
+	</div>
+</div>
+
+slick:
+
+<div id="page">
+	<div id="HeaderArea"></div>
+	<div id="pagebody">
+		<div id="sidebar"></div>
+		<div id="maincontent"></div>
+		<div id="footer"></div>
+	</div>
+</div>

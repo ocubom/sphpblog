@@ -229,22 +229,12 @@ input, select, option, textarea
 #sidebar
 {
   background-image: url(../slick/images/menu_bg.gif);
-  background-repeat: repeat-x repeat-y;
   height: 100%;
   width: 195px;
   padding: 0px 0px 0px 12px;
   font-size: 11px;
   font-weight: normal;  
-}
-
-#sidebar-top
-{
-  background-image: url(../slick/images/menu_bg-top.gif);
-  background-repeat: repeat-x;
-  background-position: top;
-  height: 30px;
-  margin: 0px;
-  padding: 0px;
+  float: left;
 }
 
 #sidebar .menu_title
