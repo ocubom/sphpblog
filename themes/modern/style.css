@@ -158,13 +158,13 @@ img { border: 0; }
   border-bottom: 1px solid #80804d;
 }
 
-#innerpage
+#pagebody
 {
   margin: 0;
   padding: 0;
 }
 
-#content
+#maincontent
 {
   width: 530px;
   padding: 10px;
@@ -192,16 +192,16 @@ img { border: 0; }
 }
 
 /* CONTENT */
-#content .entry,
-#content .static,
-#content .comment
+#maincontent .entry,
+#maincontent .static,
+#maincontent .comment
 {
   padding-bottom: 10px;
 }
 
-#content .entry .blog_title,
-#content .static .blog_title,
-#content .comment .blog_title
+#maincontent .entry .blog_title,
+#maincontent .static .blog_title,
+#maincontent .comment .blog_title
 {
   font-size: 1.3em;
   color: #FFF;
@@ -212,13 +212,13 @@ img { border: 0; }
   background-color: #B2B286;
 }
 
-#content .blog_title img
+#maincontent .blog_title img
 {
   /* padding: top right bottom left */
   padding: 0px 10px 0px 0px;
 }
 
-#content .blog_title_buttons
+#maincontent .blog_title_buttons
 {
   /* Edit and Delete buttons in the Blog Title */
   float: right;
@@ -228,9 +228,9 @@ img { border: 0; }
   display: inline;
 }
 
-#content .entry .blog_body,
-#content .static .blog_body,
-#content .comment .blog_body
+#maincontent .entry .blog_body,
+#maincontent .static .blog_body,
+#maincontent .comment .blog_body
 {
   line-height: 1.3em;
   background-color: #FFF;
@@ -240,9 +240,9 @@ img { border: 0; }
   color: #663;
 }
 
-#content .entry .blog_body_clear,
-#content .static .blog_body_clear,
-#content .comment .blog_body_clear
+#maincontent .entry .blog_body_clear,
+#maincontent .static .blog_body_clear,
+#maincontent .comment .blog_body_clear
 {
   padding: 0px;
   border-color: #FFF;
@@ -250,9 +250,9 @@ img { border: 0; }
   border-style: solid;
 }
 
-#content .entry .blog_body_solid,
-#content .static .blog_body_solid,
-#content .comment .blog_body_solid
+#maincontent .entry .blog_body_solid,
+#maincontent .static .blog_body_solid,
+#maincontent .comment .blog_body_solid
 {
   padding: 1px;
   border-color: #660;
@@ -261,9 +261,9 @@ img { border: 0; }
   border-style: solid;
 }
 
-#content .entry .blog_date,
-#content .static .blog_date,
-#content .comment .blog_date
+#maincontent .entry .blog_date,
+#maincontent .static .blog_date,
+#maincontent .comment .blog_date
 {
   font-size: .9em;
   color: #999;
@@ -275,9 +275,9 @@ img { border: 0; }
   font-size: 0.8em;
 }
 
-#content .entry .blog_comment,
-#content .static .blog_comment,
-#content .comment .blog_comment
+#maincontent .entry .blog_comment,
+#maincontent .static .blog_comment,
+#maincontent .comment .blog_comment
 {
   padding: .5em;
   color: #663;

@@ -76,56 +76,56 @@ header("Content-Type: text/css");
   /* CONTENT */
   
   /* REGULAR ENTRY */
-  #content .entry .blog_title
+  #maincontent .entry .blog_title
   {
     border-color: #<?php echo(get_user_color('entry_border')); ?>;
     color: #<?php echo(get_user_color('entry_title_text')); ?>;
     background-color: #<?php echo(get_user_color('entry_title_bg')); ?>;
   }
   
-  #content .entry .blog_body
+  #maincontent .entry .blog_body
   {
     border-color: #<?php echo(get_user_color('entry_border')); ?>;
     color: #<?php echo(get_user_color('entry_text')); ?>;
     background-color: #<?php echo(get_user_color('entry_bg')); ?>;
   }
 
-  #content .entry .blog_body_solid  {
+  #maincontent .entry .blog_body_solid  {
     border-color: #<?php echo(get_user_color('entry_border')); ?>;
     color: #<?php echo(get_user_color('entry_text')); ?>;
     background-color: #<?php echo(get_user_color('entry_border')); ?>;
   }
   
-  #content .entry .blog_comment
+  #maincontent .entry .blog_comment
   {
     border-color: #<?php echo(get_user_color('entry_border')); ?>;
     color: #<?php echo(get_user_color('entry_text')); ?>;
     background-color: #<?php echo(get_user_color('entry_bg')); ?>;
   }
   
-  #content .entry .blog_date,
-  #content .static .blog_date,
-  #content .comment .blog_date
+  #maincontent .entry .blog_date,
+  #maincontent .static .blog_date,
+  #maincontent .comment .blog_date
   {
     color: #<?php echo(get_user_color('date_txt_color')); ?>;
   }
   
   /* STATIC ENTRY */
-  #content .static .blog_title
+  #maincontent .static .blog_title
   {
     border-color: #<?php echo(get_user_color('static_border')); ?>;
     color: #<?php echo(get_user_color('static_title_text')); ?>;
     background-color: #<?php echo(get_user_color('static_title_bg')); ?>;
   }
   
-  #content .static .blog_body
+  #maincontent .static .blog_body
   {
     border-color: #<?php echo(get_user_color('static_border')); ?>;
     color: #<?php echo(get_user_color('static_text')); ?>;
     background-color: #<?php echo(get_user_color('static_bg')); ?>;
   }
   
-  #content .static .blog_comment
+  #maincontent .static .blog_comment
   {
     border-color: #<?php echo(get_user_color('static_border')); ?>;
     color: #<?php echo(get_user_color('static_text')); ?>;
@@ -133,28 +133,28 @@ header("Content-Type: text/css");
   }
   
   /* COMMENT ENTRY */
-  #content .comment .blog_title
+  #maincontent .comment .blog_title
   {
     border-color: #<?php echo(get_user_color('comment_border')); ?>;
     color: #<?php echo(get_user_color('comment_title_text')); ?>;
     background-color: #<?php echo(get_user_color('comment_title_bg')); ?>;
   }
   
-  #content .comment .blog_body
+  #maincontent .comment .blog_body
   {
     border-color: #<?php echo(get_user_color('comment_border')); ?>;
     color: #<?php echo(get_user_color('comment_text')); ?>;
     background-color: #<?php echo(get_user_color('comment_bg')); ?>;
   }
   
-  #content .comment .blog_comment
+  #maincontent .comment .blog_comment
   {
     border-color: #<?php echo(get_user_color('comment_border')); ?>;
     color: #<?php echo(get_user_color('comment_text')); ?>;
     background-color: #<?php echo(get_user_color('comment_bg')); ?>;
   }
   
-  #content {
+  #maincontent {
     width: <?php echo $theme_vars[ 'content_width' ] ?>px;
   }
 

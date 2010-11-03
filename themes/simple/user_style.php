@@ -57,11 +57,8 @@ header("Content-Type: text/css");
 		color: #<?php echo(get_user_color('date_txt_color')); ?>;
 	}
 	
-	#navigation {
-		color: #<?php echo(get_user_color('header_txt_color')); ?>;
-	}
-	
 	#header {
+		color: #<?php echo(get_user_color('header_txt_color')); ?>;
 		background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
 	}
 	

@@ -186,7 +186,7 @@ THEME SPECIFIC
 
 /* Navigation */
 
-#navigation
+#header
 {
 	color: #000;
 /*	position: relative; */
@@ -194,7 +194,7 @@ THEME SPECIFIC
 	background: url(images/nav-background.gif) repeat-x;
 }
 
-#navigation a, #navigation a:hover
+#header a, #header a:hover
 {
 	color: inherit;
     font-size: inherit;
@@ -202,18 +202,9 @@ THEME SPECIFIC
 	text-decoration: inherit;
 }
 
-/* Header */
-
-#header
-{
-	/* background-image: url(images/background-header.gif); */
-	width: 100%;
-	background-color: #2b557f;
-}
-
 /* Main */
 
-#main
+#maincontent
 {
 	padding: 20px 20px 20px 20px;
 	/*float: left;*/

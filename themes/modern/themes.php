@@ -571,25 +571,14 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 		<div id="page">
 			<div id="header"><img src="<?php echo( $header_graphic ); ?>" alt="" style="border-style: none" /></div>
 			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE') . '</div>'); } ?>
-			<div id="innerpage">
+			<div id="pagebody">
 			
-			<?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { ?>
-				<div id="content" style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
-						<?php page_content(); ?>
-				</div>
-				<div id="sidebar" style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
+				<div id="sidebar" style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>; float: <?php echo $theme_vars[ 'menu_align' ]; ?>" >
 						<?php theme_menu(); ?>
 				</div>
-			<?php } ?>
-			
-			<?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { ?>
-				<div id="sidebar" style="border-width: 0 1px 1px 0; border-style: none solid solid none; width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>" >
-						<?php theme_menu(); ?>
-				</div>
-				<div id="content" style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+				<div id="maincontent" style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
 						<?php page_content(); ?>
 				</div>
-			<?php } ?>
 		
 			</div>
 			<div id="footer">
