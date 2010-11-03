@@ -432,7 +432,7 @@
     ?>
     <body>
       <div id="page">
-          <div id="HeaderArea">
+          <div id="header">
                <div id="HeaderLeft"></div>
                <div id="HeaderCenter">
 

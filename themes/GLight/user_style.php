@@ -19,10 +19,6 @@ header("Content-Type: text/css");
     border-style: none;
   }
 
-  #header_image {
-    border-color: #<?php echo(get_user_color('border_color')); ?>;
-  }
-
   #header {
     border-color: #<?php echo(get_user_color('border_color')); ?>;
     color: #<?php echo(get_user_color('headline_txt_color')); ?>;

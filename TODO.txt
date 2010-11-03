@@ -38,14 +38,3 @@ simple:
 		<div id="footer"></div>
 	</div>
 </div>
-
-slick:
-
-<div id="page">
-	<div id="HeaderArea"></div>
-	<div id="pagebody">
-		<div id="sidebar"></div>
-		<div id="maincontent"></div>
-		<div id="footer"></div>
-	</div>
-</div>

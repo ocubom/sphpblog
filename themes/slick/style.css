@@ -10,7 +10,7 @@ Version: 0.4.6
 /* Special header graphic - resizeable */
 /* Logo Area */
 
-#HeaderArea {
+#header {
   margin: 0;
   background-position: top;
   /*width: 640px;*/
