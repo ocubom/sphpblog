@@ -179,13 +179,6 @@ input, select, option, textarea
 
 /* Theme Specific */
 
-#header_image
-{
-  border-color: #4D4D45; /* border_color */
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-}
-
 #header
 {
   font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;

@@ -178,21 +178,14 @@ input, select, option, textarea
 
 /* Theme Specific */
 
-#header_image
+#header
 {
   border-color: #4D4D45; /* border_color */
   border-width: 0px 0px 0px 0px;
   border-style: solid;
-}
-
-#header
-{
   font-family: Arial, Helvetica, Sans-Serif;
   color: #FFFFFF; /* header_txt_color */
   margin: 0px;
-  border-color: #4D4D45; /* border_color */
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
   background-color: #999966; /* header_bg_color */
   font-size: 14px;
   font-weight: bold;

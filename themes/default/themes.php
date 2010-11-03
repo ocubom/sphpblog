@@ -392,12 +392,13 @@
     ?>
     <body>
       <div id='page' style="background-color: #<?php echo(get_user_color('main_bg_color')); ?>; max-width: <?php echo( $page_width ); ?>px; margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
-            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
+            <div id="header" style="background-repeat: no-repeat; background-image: url('<?php echo( $header_graphic ); ?>'); min-height: 75px;">
 
             <?php
             if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
-            echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE') . '</div>');
+            echo($blog_config->getTag('BLOG_TITLE'));
             }?>
+	    </div>
 
             <div id="pagebody">
                     <div id="sidebar" style="float: <?php echo $theme_vars[ 'menu_align' ] ?>;width: <?php echo( $menu_width ); ?>; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-<?php echo $oppo; ?>: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>; border-bottom: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">

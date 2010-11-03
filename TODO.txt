@@ -6,9 +6,7 @@
 Page layouts
 ------------
 
-Proposed: use default
-
-default:
+Proposed:
 
 <div id='page'>
 	<div id="header"></div>
@@ -26,17 +24,6 @@ modern:
 	<div id="innerpage">
 		<div id="sidebar"></div>
 		<div id="content"></div>
-		<div id="footer"></div>
-	</div>
-</div>
-
-GLight:
-
-<div>
-	<div id="header"></div>
-	<div id="pagebody">
-		<div id="sidebar"></div>
-		<div id="maincontent"></div>
 		<div id="footer"></div>
 	</div>
 </div>

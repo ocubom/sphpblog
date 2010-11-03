@@ -586,48 +586,23 @@
     // Begin Page Layout HTML
     ?>
     <body>
-      <div>
-      <table style="margin-left:auto; margin-right:auto; width: <?php echo( $page_width ); ?>; cellspacing: 0px; cellpadding: 0px; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
-        <tr align="left" valign="top">
-          <td style="width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('header_bg_color')); ?>" colspan="2">
-            <div id="header_image"><img src="<?php echo( $header_graphic ); ?>" alt="" /></div>
+      <div id="page" style="margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
+            <div id="header" style="margin-left:auto; margin-right:auto; max-width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('header_bg_color')); ?>; min-height: 100px; background-repeat: no-repeat; background-image: url('<?php echo( $header_graphic ); ?>');" />
             <?php
             if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
-            echo('<div id="header">' . $blog_config->getTag('BLOG_TITLE') . '</div>');
+            echo($blog_config->getTag('BLOG_TITLE'));
             }?>
-            <div id="pagebody">
-              <table style="width: <?php echo( $page_width ); ?>px; cellspacing: 0px; cellpadding: 0px;">
-                <tr valign="top">
-                  <?php if ( $theme_vars[ 'menu_align' ] == 'left' ) { // New 0.3.8 - Left Menu ?>
-                  <td style="width: <?php echo( $menu_width ); ?>px; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>">
-                    <div id="sidebar">
+	    </div>
+
+            <div id="pagebody" style="max-width: <?php echo( $page_width ); ?>px; margin-left:auto; margin-right:auto;">
+                    <div id="sidebar" style="width: <?php echo( $menu_width ); ?>px; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; float: <?php echo $theme_vars[ 'menu_align' ]; ?>">
                       <?php theme_menu(); ?>
                     </div>
-                  </td>
-                  <?php } ?>
-                  <td style="width: <?php echo( $content_width ); ?>px; background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
-                    <div id="maincontent">
+                    <div id="maincontent" style="width: <?php echo( $content_width ); ?>px; background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
                       <?php page_content(); ?>
                     </div>
-                  </td>
-                  <?php if ( $theme_vars[ 'menu_align' ] == 'right' ) { // New 0.3.8 - Right Menu ?>
-                  <td style="width: <?php echo( $menu_width ); ?>px; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>">
-                    <div id="sidebar">
-                      <?php theme_menu(); ?>
-                    </div>
-                  </td>
-                  <?php } ?>
-                </tr>
-                <tr valign="top">
-                  <td style="width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>" colspan="2">
-                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
-                  </td>
-                </tr>
-              </table>
+                    <div id="footer" style="width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
             </div>
-          </td>
-        </tr>
-      </table>
       </div>
     </body>
     <?php
