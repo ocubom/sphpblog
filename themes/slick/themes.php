@@ -441,14 +441,14 @@
                </div>
                <div id="HeaderRight"></div>
            </div>
-          <div id="pagebody" style="margin-left:auto; margin-right:auto; width: 100%; cellspacing: 0px; cellpadding: 0px; border: 1px solid #<?php echo(get_user_color('border_color')); ?>; background-color: #<?php echo(get_user_color('header_bg_color')); ?>">
-                    <div id="sidebar" style="width: <?php echo( $menu_width ); ?>px;background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
+          <div id="pagebody">
+                    <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
-                    <div id="maincontent" style="background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
+                    <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
-                    <div id="footer" style="width: 100%; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
+                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
            </div>
       </div>
     </body>

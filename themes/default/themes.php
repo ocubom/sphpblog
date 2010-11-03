@@ -391,8 +391,8 @@
 
     ?>
     <body>
-      <div id='page' style="background-color: #<?php echo(get_user_color('main_bg_color')); ?>; max-width: <?php echo( $page_width ); ?>px; margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
-            <div id="header" style="background-repeat: no-repeat; background-image: url('<?php echo( $header_graphic ); ?>'); min-height: 75px;">
+      <div id='page'>
+            <div id="header">
 
             <?php
             if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
@@ -401,13 +401,13 @@
 	    </div>
 
             <div id="pagebody">
-                    <div id="sidebar" style="float: <?php echo $theme_vars[ 'menu_align' ] ?>;width: <?php echo( $menu_width ); ?>; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; border-<?php echo $oppo; ?>: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>; border-bottom: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;">
+                    <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
-                    <div id="maincontent" style="margin-<?php echo $theme_vars[ 'menu_align' ] ?>: <?php echo( $menu_width ); ?>px; ">
+                    <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
-              <div id="footer" style="clear: both; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
+              <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
         </div>
       </div>
     </body>

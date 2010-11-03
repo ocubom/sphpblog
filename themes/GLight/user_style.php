@@ -3,6 +3,18 @@ require_once('../../scripts/sb_functions.php');
 
 read_config();
 
+   $content_width = $theme_vars[ 'content_width' ];
+    $menu_width = $theme_vars[ 'menu_width' ];
+    $page_width = $content_width + $menu_width;
+
+    // Default image path.
+    $img_path = "images/";
+
+    $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
+    if ( $header_graphic == '' ) {
+      $header_graphic = $img_path . 'header750x100.jpg';
+    }
+
 header("Content-Type: text/css");
 ?>
   body {
@@ -19,16 +31,33 @@ header("Content-Type: text/css");
     border-style: none;
   }
 
+  #page {
+    margin-left:auto; margin-right:auto;
+    border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+  }
+
+  #pagebody {
+    max-width: <?php echo( $page_width ); ?>px;
+    margin-left:auto; margin-right:auto;
+  }
+
   #header {
+    min-height: 100px;
+    background-repeat: no-repeat;
+    background-image: url('<?php echo( $header_graphic ); ?>');
+    margin-left:auto; margin-right:auto;
+    max-width: <?php echo( $page_width ); ?>px;
+    background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
     border-color: #<?php echo(get_user_color('border_color')); ?>;
     color: #<?php echo(get_user_color('headline_txt_color')); ?>;
-    background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
   }
 
   #footer {
     color: #<?php echo(get_user_color('footer_txt_color')); ?>;
     background: #<?php echo(get_user_color('footer_bg_color')); ?>;
     border-top: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+    width: <?php echo( $page_width ); ?>px;
+    background-color: #<?php echo(get_user_color('footer_bg_color')); ?>;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -105,6 +134,7 @@ header("Content-Type: text/css");
 
   #maincontent {
     width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+    background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
   }
 
   /* Side bar */
@@ -122,6 +152,8 @@ header("Content-Type: text/css");
 
   #sidebar {
     width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+    background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
+    float: <?php echo $theme_vars[ 'menu_align' ]; ?>;
   }
 
   a:link, a:visited {

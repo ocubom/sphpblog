@@ -569,15 +569,15 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 	?>
 	<body>
 		<div id="page">
-			<div id="header" style="background-image: url('<?php echo( $header_graphic ); ?>"); background-repeat: no-repeat; border-style: none; height: 100px;" />
+			<div id="header">
 			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo($blog_config->getTag('BLOG_TITLE')); } ?>
 			</div>
 			<div id="pagebody">
 			
-				<div id="sidebar" style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>; float: <?php echo $theme_vars[ 'menu_align' ]; ?>" >
+				<div id="sidebar">
 						<?php theme_menu(); ?>
 				</div>
-				<div id="maincontent" style="width: <?php echo( $theme_vars[ 'content_width' ] ); ?>" >
+				<div id="maincontent">
 						<?php page_content(); ?>
 				</div>
 		

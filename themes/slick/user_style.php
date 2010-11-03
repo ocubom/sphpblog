@@ -3,6 +3,13 @@ require_once('../../scripts/sb_functions.php');
 
 read_config();
 
+    $content_width = $theme_vars[ 'content_width' ];
+    $menu_width = $theme_vars[ 'menu_width' ];
+    $page_width = $content_width + $menu_width;
+
+    // Default image path.
+    $img_path = "images/";
+
 header("Content-Type: text/css");
 ?>
 	body {
@@ -30,6 +37,8 @@ header("Content-Type: text/css");
 		color: #<?php echo(get_user_color('footer_txt_color')); ?>;
 		background: #<?php echo(get_user_color('footer_bg_color')); ?>;
 		border-top: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+		width: 100%;
+		background-color: #<?php echo(get_user_color('footer_bg_color')); ?>;
 	}
 	
 	h1, h2, h3, h4, h5, h6 {
@@ -70,14 +79,24 @@ header("Content-Type: text/css");
 		color: #<?php echo(get_user_color('date_txt_color')); ?>;
 	}
 
-  #maincontent {
-    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
-    margin-left: <?php echo $theme_vars[ 'menu_width' ] ?>px;
-  }
+	#pagebody {
+		margin-left:auto; margin-right:auto;
+		width: 100%;
+		border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+		background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
+	}
 
-  #sidebar {
-    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
-  }
+	#maincontent {
+		background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
+		width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+		margin-left: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+	}
+
+	#sidebar {
+		width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+		background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
+		border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;
+	}
 	
 	#sidebar .menu_title {
 		border-color: #<?php echo(get_user_color('menu_border')); ?>;

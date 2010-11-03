@@ -8,6 +8,9 @@ header("Content-Type: text/css");
 	body {
 		color: #<?php echo(get_user_color('txt_color')); ?>;
 		background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
+		background-image: url('images/background-left.gif'), url('images/background-right.gif');
+		background-position: top left, top right;
+		background-repeat: repeat-y;
 	}
 
 	img {
@@ -69,6 +72,11 @@ header("Content-Type: text/css");
 	#sidebar a:link, #sidebar a:visited
 	{
 		color: #<?php echo(get_user_color('menu_link_reg_color')); ?>;
+	}
+
+	#page
+	{
+		margin-left: 100px; margin-right: 100px;
 	}
 	
 	#sidebar a:hover

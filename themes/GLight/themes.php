@@ -586,22 +586,22 @@
     // Begin Page Layout HTML
     ?>
     <body>
-      <div id="page" style="margin-left:auto; margin-right:auto; border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
-            <div id="header" style="margin-left:auto; margin-right:auto; max-width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('header_bg_color')); ?>; min-height: 100px; background-repeat: no-repeat; background-image: url('<?php echo( $header_graphic ); ?>');" />
+      <div id="page">
+            <div id="header">
             <?php
             if ( $blog_config->getTag('BLOG_ENABLE_TITLE')) { // New for 0.4.6
             echo($blog_config->getTag('BLOG_TITLE'));
             }?>
 	    </div>
 
-            <div id="pagebody" style="max-width: <?php echo( $page_width ); ?>px; margin-left:auto; margin-right:auto;">
-                    <div id="sidebar" style="width: <?php echo( $menu_width ); ?>px; background-color: #<?php echo(get_user_color('menu_bg_color')); ?>; float: <?php echo $theme_vars[ 'menu_align' ]; ?>">
+            <div id="pagebody">
+                    <div id="sidebar">
                       <?php theme_menu(); ?>
                     </div>
-                    <div id="maincontent" style="width: <?php echo( $content_width ); ?>px; background-color: #<?php echo(get_user_color('main_bg_color')); ?>">
+                    <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
-                    <div id="footer" style="width: <?php echo( $page_width ); ?>px; background-color: #<?php echo(get_user_color('footer_bg_color')); ?>"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
+                    <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
             </div>
       </div>
     </body>
