@@ -569,8 +569,9 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 	?>
 	<body>
 		<div id="page">
-			<div id="header"><img src="<?php echo( $header_graphic ); ?>" alt="" style="border-style: none" /></div>
-			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE') . '</div>'); } ?>
+			<div id="header" style="background-image: url('<?php echo( $header_graphic ); ?>"); background-repeat: no-repeat; border-style: none; height: 100px;" />
+			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo($blog_config->getTag('BLOG_TITLE')); } ?>
+			</div>
 			<div id="pagebody">
 			
 				<div id="sidebar" style="width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>; float: <?php echo $theme_vars[ 'menu_align' ]; ?>" >

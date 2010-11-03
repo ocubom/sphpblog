@@ -147,15 +147,11 @@ img { border: 0; }
 #header
 {
   border-bottom: 1px solid #666;
-}
-
-#title
-{
   font-size: 1.3em;
   color: #FFF;
   background-color: #996;
   padding: 5px 10px 5px 10px;
-  border-bottom: 1px solid #80804d;
+/*  border-bottom: 1px solid #80804d;*/
 }
 
 #pagebody
