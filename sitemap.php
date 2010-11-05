@@ -38,16 +38,11 @@
 	
 	$entry_file_array = blog_entry_listing();
 
-	if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
-		// Hosted at root.
-		$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ] . '/';
-	} else {
-		// Hosted in sub-directory.
-		$base_url = 'http://' . $_SERVER[ 'HTTP_HOST' ].dirname($_SERVER[ 'PHP_SELF' ]) . '/';
-	}
-	
-	header('Content-type: application/xml');
+	$base_url = dirname(sb_curPageURL()) . '/';
+
+	header('Content-type: text/xml');
 	echo "<?xml version='1.0' encoding='UTF-8'?>\n";
+	echo "<?xml-stylesheet type='text/xsl' href='templates/gss.xsl'?>\n";
 	echo "<urlset xmlns=\"http://www.google.com/schemas/sitemap/0.84\">\n";
 	write_map( $base_url . 'atom.php', gmdate( 'Y-m-d', time() ), 'always', 0.9 );
 	write_map( $base_url . 'contact.php', gmdate( 'Y-m-d', time() ), 'monthly', 0.1 );
