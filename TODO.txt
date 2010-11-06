@@ -6,3 +6,7 @@
 New config settings:
 - postings in rss feed seperatly from the number of postings shown on the main page. ID: 1392311
 - Show comments by default ID: 2981075 
+- Require login for rating ID: 1785378
+- capcha for rating ID: 1593563
+- setting for number of years to go back for entries ID: 3099421
+- Master Emoticon on/off switch ID: 1433684 

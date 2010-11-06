@@ -78,8 +78,13 @@
 		$entry_array[ 'entry' ] = ob_get_clean();
 		
 		// THEME ENTRY
-		echo( theme_s
+		echo( theme_staticentry( $entry_array ) ); 
 
+		// THEME ENTRY
+		$blog_content = read_entry_from_file( CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ] );
+		echo( $blog_content ); 
+
+	}
 	// ----
 	// HTML
 	// ----
