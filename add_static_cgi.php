@@ -4,13 +4,21 @@
 	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
-	$logged_in = logged_in( true, true );
+        $logged_in = logged_in( false, true );
+
+        if (!$logged_in) {
+                save_post('static');
+                redirect_to_url( 'login.php' );
+                exit;
+        }
 	
 	read_config();
 	
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'add' );
-	
+
+	reset_post();
+
 	// ---------------
 	// POST PROCESSING
 	// ---------------

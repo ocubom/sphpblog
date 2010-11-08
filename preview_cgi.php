@@ -4,13 +4,26 @@
 	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
-	$logged_in = logged_in( true, true );
+
+	$logged_in = logged_in( false, true );
+
+	if (!$logged_in) {
+		save_post('dynamic');
+		redirect_to_url( 'login.php' );
+		exit;
+	}
 	
 	read_config();
 	
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'add' );
-	
+
+	$restored = restore_post();
+	if (!empty($restored) AND empty($_POST)) {
+		$_POST = $restored[1];
+	}
+	reset_post();
+
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -28,7 +41,7 @@
 
 		// PAGE CONTENT BEGIN
 		ob_start();
-		
+
 		echo( $GLOBALS['lang_string']['instructions_preview'] . '<p />' );
 		echo( $GLOBALS['lang_string']['instructions_update'] . '<p />' );
 		echo( '<hr />' );
@@ -71,6 +84,7 @@
 	
 	// Extra Javascript
 	ob_start();
+
 	require_once('scripts/sb_editor.php');
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	

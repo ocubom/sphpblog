@@ -10,6 +10,33 @@
 	// Utility Functions
 	// -----------------
 
+	function save_restore() {
+        	$restore = restore_post();
+	        if ($restore != NULL) {
+        	        // do restore and reset here
+                	$_POST = $restore[1];
+	                reset_post();
+        	}
+       	        save_post();
+	}
+
+	function reset_post() {
+		setcookie('lastposttype', '');
+		setcookie('lastpost', '');
+	}
+
+	function save_post($type) {
+		setcookie('lastposttype', $type);
+		setcookie('lastpost', serialize($_POST));
+	}
+
+	function restore_post() {
+		if (!empty($_COOKIE['lastpost'])) {
+			return array($_COOKIE['lastposttype'], unserialize($_COOKIE['lastpost']));
+		}
+		return NULL;
+	}
+
         function phpini_check() {
                 // TODO translations
                 // TODO more PHP checks here

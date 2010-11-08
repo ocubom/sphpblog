@@ -44,8 +44,20 @@
 			}
 			echo( $errortext );
 		}
-		
-		echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+
+		$restored = restore_post();
+
+		if (empty($restored)) {	
+			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+		} else {
+			$type = $restored[0];
+			$page = 'preview_cgi.php';
+			if ($type == 'static') {
+				$page = 'preview_static_cgi.php';
+			}
+			// TODO add to language file
+			echo( "<a href=\"$page\">Restore your last draft.</a>" );
+		}
 		
 		$upgrade_count = move_all_comment_files( true, true );
 		if ( $upgrade_count > 0 ) {
