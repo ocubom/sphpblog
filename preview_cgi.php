@@ -19,7 +19,7 @@
 	sb_language( 'add' );
 
 	$restored = restore_post();
-	if (!empty($restored) AND empty($_POST)) {
+	if (!empty($restored) AND empty($_POST) AND empty($_GET)) {
 		$_POST = $restored[1];
 	}
 	reset_post();

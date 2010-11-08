@@ -19,7 +19,7 @@
 	sb_language( 'add_static' );
 
         $restored = restore_post();
-        if (!empty($restored) AND empty($_POST)) {
+        if (!empty($restored) AND empty($_POST) AND empty($_GET)) {
                 $_POST = $restored[1];
         }
         reset_post();
