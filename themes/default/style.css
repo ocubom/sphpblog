@@ -21,7 +21,6 @@ body
   font-size: 11px;
   margin: 0px;
   padding: 0px;
-  text-align: left;
   background-color: #CCCC99; /* bg_color */
   
   /* Standard. Readable */
@@ -132,11 +131,6 @@ a:active
 
 /* Images */
 
-img
-{
-  border: 0;
-}
-
 #img_float_left
 {
   /* Used in the [img] tag when float=left */
@@ -157,8 +151,6 @@ hr
 {
   color: #D9D9D9; /* inner_border_color */
   background-color: #D9D9D9; /* inner_border_color */
-  height: 1px;
-  border: 0px;
   margin: 8px 0px 8px 0px; 
 }
 
@@ -167,8 +159,6 @@ hr
 /* NEW */
 form {
   font-size: 11px;
-  margin: 0px;
-  padding: 0px
 }
   
 input, select, option, textarea
@@ -238,11 +228,6 @@ input, select, option, textarea
   border-style: solid;
 }
 
-div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSidebarArchives, #toggleSidebarCategories , #toggleSidebarSearch, #toggleSidebarMenu, #toggleSidebarPreferences, #toggleSidebarRecentComments, #toggleSidebarRecentEntries, #toggleSidebarRecentTrackbacks
-{
-  display: block;
-}
-
 #sidebar
 {
   padding: 10px;
@@ -276,28 +261,10 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
   margin: 8px 0px 8px 0px;
 }
 
-#sidebar .calendar
-{
-  font-size: 10px;
-}
-
 #sidebar .calendar a
 {
   font-weight: bold;
   text-decoration: none;
-}
-
-#sidebar .calendar td
-{
-  padding: 2px;
-}
-
-/* NEW */
-#archive_tree_menu ul 
-{
-  list-style: none inside;
-  padding: 0px 0px 0px 10px;
-  margin: 0px;
 }
 
 /* NEW */

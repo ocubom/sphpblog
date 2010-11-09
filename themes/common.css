@@ -1,0 +1,42 @@
+/* Images */
+img {
+  border: 0;
+}
+
+hr
+{
+        height: 1px;
+        border: 0px;
+}
+
+/* NEW */
+form {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+	text-align: left;
+}
+
+div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSidebarArchives, #toggleSidebarCategories , #toggleSidebarSearch, #toggleSidebarMenu, #toggleSidebarPreferences, #toggleSidebarRecentComments,$toggleSidebarRecentEntries, #toggleSidebarRecentTrackbacks {
+	display: block;
+}
+
+#sidebar .calendar
+{
+  font-size: 10px;
+}
+
+#sidebar .calendar td
+{
+  padding: 2px;
+}
+
+#archive_tree_menu ul
+{
+        list-style: none inside;
+        padding: 0px 0px 0px 10px;
+        margin: 0px;
+}
+

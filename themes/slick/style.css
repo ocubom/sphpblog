@@ -55,17 +55,10 @@ Version: 0.4.6
 
 /* END logo area */
 
-/* Images */
-img {
-  border: 0;
-}
-
 hr  
 {
   color: #9A9A8C;
   background-color: #9A9A8C;
-  height: 1px;
-  border: 0px;
 }
 
 #img_float_left
@@ -90,7 +83,6 @@ body
   font-size: 14px;
   margin: 0px;
   padding: 0px;
-  text-align: left;
   background-color: #CC9;
   font-family: Georgia, serif;
   letter-spacing: 1.5px;  /*font-family: Book Antiqua, Palatino, serif; 
@@ -100,12 +92,6 @@ body
   
   /* Monospace */
   /* font-family: Lucida Console, Monaco, monospace; */
-}
-
-/* NEW */
-form {
-  margin: 0px;
-  padding: 0px
 }
 
 /* NEW */
@@ -119,14 +105,6 @@ pre {
   width: 430px;
   border: 1px dotted #777;
   padding: 5px
-}
-
-/* NEW */
-#archive_tree_menu ul 
-{
-  list-style: none inside;
-  padding: 0px 0px 0px 10px;
-  margin: 0px;
 }
 
 /* NEW */
@@ -256,21 +234,11 @@ input, select, option, textarea
   margin: 0px;
 }
 
-#sidebar .calendar
-{
-  font-size: 10px;
-}
-
 #sidebar .calendar a
 {
 font-size: 11px;
 font-weight: bold;
 text-decoration: none;
-}
-
-#sidebar .calendar td
-{
-  padding: 2px;
 }
 
 /* Links */

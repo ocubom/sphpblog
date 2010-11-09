@@ -41,7 +41,6 @@ body
   font-family: Arial, Helvetica, Sans-Serif;
   color: #000;
   font-size: 0.7em;
-  text-align: left;
   margin: 0;
   padding: 0;
   background-color: #cccc99;
@@ -56,8 +55,6 @@ hr
 {
   color: #cccccc;
   background-color: #cccccc;
-  height: 1px;
-  border: 0;
 }
 
 /* TYPEOGRAPHY */
@@ -65,11 +62,6 @@ a { text-decoration: none; }
 a:link, a:visited { color: #933; }
 a:hover { color: #F33; }
 a:active { color: #33F; }
-
-form {
-  margin: 0;
-  padding: 0
-}
 
 input, select, option, textarea
 {
@@ -109,9 +101,6 @@ h3 { font-size: 1.5em; }
 h4 { font-size: 1.3em; }
 h5 { font-size: 1.2em; }
 h6 { font-size: 1.1em; }
-
-/* IMAGES */
-img { border: 0; }
 
 #img_float_left
 {
@@ -289,11 +278,6 @@ img { border: 0; }
 #sidebar .menu_body a:hover { color: #F33; }
 #sidebar .menu_body a:active { color: #33F; }
 
-div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSidebarArchives, #toggleSidebarCategories , #toggleSidebarSearch, #toggleSidebarMenu, #toggleSidebarPreferences, #toggleSidebarRecentComments, #toggleSidebarRecentEntries, #toggleSidebarRecentTrackbacks
-{
-  display: block;
-}
-
 #sidebar .menu_title
 {
   font-size: 1em;
@@ -335,18 +319,6 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 {
   font-weight: bold;
   text-decoration: none;
-}
-
-#sidebar .calendar td
-{
-  padding: 2px;
-}
-
-#archive_tree_menu ul 
-{
-  list-style: none inside;
-  padding: 0 0 0 10px;
-  margin: 0;
 }
 
 #archive_tree_menu li 
