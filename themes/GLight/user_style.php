@@ -37,7 +37,7 @@ p
   {
     font-family: Arial, Helvetica, Sans-Serif;
     font-weight: bold;
-    text-shadow: #bbb 2px 2px 1px;
+    /* text-shadow: #bbb 2px 2px 1px; */
     margin: 2px 0px 2px 0px;
     color: #<?php echo(get_user_color('headline_txt_color')); ?>;
   }
