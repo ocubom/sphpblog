@@ -41,8 +41,9 @@
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" href="interface/favicon.ico" />
 	
-	<link rel="stylesheet" type="text/css" media="all" href="themes/{BLOG_THEME}/style.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="themes/common.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="themes/{BLOG_THEME}/user_style.php" />
+	<link rel="stylesheet" type="text/css" media="all" href="themes/{BLOG_THEME}/style.css" />
 	<link rel="stylesheet" type="text/css" media="print" href="themes/print.css" />
 	{CSS}
 	
