@@ -145,7 +145,7 @@ blockquote {
   #header {
     background-repeat: no-repeat;
     background-image: url('<?php echo( $header_graphic ); ?>');
-    min-height: 75px;
+    height: 75px;
     border-color: #<?php echo(get_user_color('border_color')); ?>;
     color: #<?php echo(get_user_color('header_txt_color')); ?>;
     background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
@@ -221,14 +221,13 @@ blockquote {
 
   
   #maincontent {
-    margin-<?php echo $theme_vars[ 'menu_align' ] ?>: <?php echo( $menu_width ); ?>px;
+    max-width: <?php echo $theme_vars[ 'content_width' ]-25; ?>px;
     background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
-    padding: 20px;
-    margin: 0px;
+    padding: 10px;
   }
 
   #sidebar {
-    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+    max-width: <?php echo $theme_vars[ 'menu_width' ]-20; ?>px;
     float: <?php echo $theme_vars[ 'menu_align' ] ?>;
     background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
     border-<?php echo $oppo; ?>: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;

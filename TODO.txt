@@ -10,3 +10,5 @@ New config settings:
 - capcha for rating ID: 1593563
 - setting for number of years to go back for entries ID: 3099421
 - Master Emoticon on/off switch ID: 1433684 
+- Static page for main ID: 1463423
+- Enable/disable markitup editor

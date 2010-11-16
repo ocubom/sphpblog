@@ -16,6 +16,11 @@ read_config();
       $header_graphic = $img_path . 'header750x100.jpg';
     }
 
+    $oppo = 'left';
+    if ($theme_vars[ 'menu_align' ] == 'left') {
+        $oppo = 'right';
+    }
+
 header("Content-Type: text/css");
 ?>
   /* OVERRIDE COLORS */
@@ -123,17 +128,14 @@ header("Content-Type: text/css");
     border-bottom: 1px solid #<?php echo(get_user_color('border_color')); ?>;
     font-size: 1.3em;
     background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
+    color: #<?php echo(get_user_color('header_txt_color')); ?>;
+    padding: 10px;
   }
 
   #pagebody
   {
     margin: 0;
     padding: 0;
-  }
-  
-  #title {
-    color: #<?php echo(get_user_color('header_txt_color')); ?>;
-    padding: 10px;
   }
   
   #footer {
@@ -153,7 +155,6 @@ header("Content-Type: text/css");
   {
     max-width: <?php echo( $theme_vars[ 'content_width' ]-25); ?>px;
     padding: 10px;
-    float: left;
   }
 
 #maincontent .entry,

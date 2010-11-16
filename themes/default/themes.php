@@ -370,25 +370,6 @@
   function theme_pagelayout () {
     global $user_colors, $blog_config, $blog_theme, $theme_vars;
 
-    $content_width = $theme_vars[ 'content_width' ];
-    $menu_width = $theme_vars[ 'menu_width' ];
-    $page_width = $content_width + $menu_width;
-
-    // Default image path.
-    $img_path = "themes/" . $blog_theme . "/images/";
-
-    $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
-    if ( $header_graphic == '' ) {
-      $header_graphic = BASEURL . $img_path . 'header750x100.jpg';
-    }
-
-    // Begin Page Layout HTML
-
-    $oppo = 'left';
-    if ($theme_vars[ 'menu_align' ] == 'left') {
-        $oppo = 'right';
-    }
-
     ?>
     <body>
       <div id='page'>

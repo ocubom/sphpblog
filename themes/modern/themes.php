@@ -559,9 +559,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 	<body>
 		<div id="page">
 			<div id="header">
-				<div id="title">
 				<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo($blog_config->getTag('BLOG_TITLE')); } ?>
-				</div>
 			</div>
 			<div id="pagebody">
 			
