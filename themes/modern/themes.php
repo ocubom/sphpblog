@@ -553,24 +553,15 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     // You can change the width of the CONTENT area and MENU areas by
     // editing these variable in the "theme_init()" function at the top of
     // this file.
-    $content_width = $theme_vars[ 'content_width' ];
-    $menu_width = $theme_vars[ 'menu_width' ];
-    $page_width = $content_width + $menu_width;
-
-    // Default image path.
-    $img_path = "themes/" . $blog_theme . "/images/";
-
-    $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
-    if ( $header_graphic == '' ) {
-      $header_graphic = $img_path . 'header750x100.jpg';
-    }
 
 	// Begin Page Layout HTML
 	?>
 	<body>
 		<div id="page">
 			<div id="header">
-			<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo($blog_config->getTag('BLOG_TITLE')); } ?>
+				<div id="title">
+				<?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo($blog_config->getTag('BLOG_TITLE')); } ?>
+				</div>
 			</div>
 			<div id="pagebody">
 			

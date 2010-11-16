@@ -103,7 +103,7 @@ header("Content-Type: text/css");
   
   #page {
     background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
-    width: 800px;
+    max-width: <?php echo $page_width; ?>px;
     margin: 10px auto 10px auto;
     border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
   }
@@ -122,9 +122,7 @@ header("Content-Type: text/css");
     height: 100px;
     border-bottom: 1px solid #<?php echo(get_user_color('border_color')); ?>;
     font-size: 1.3em;
-    color: #FFF;
-    background-color: #996;
-    padding: 5px 10px 5px 10px;
+    background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
   }
 
   #pagebody
@@ -135,15 +133,15 @@ header("Content-Type: text/css");
   
   #title {
     color: #<?php echo(get_user_color('header_txt_color')); ?>;
-    border-color: #<?php echo(get_user_color('border_color')); ?>;
-    background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
+    padding: 10px;
   }
   
   #footer {
     color: #<?php echo(get_user_color('footer_txt_color')); ?>;
     background: #<?php echo(get_user_color('footer_bg_color')); ?>;
     font-size: 0.8em;
-    background-color: #996;
+/*    background-color: #996; */
+    background-color: #<?php echo(get_user_color('footer_bg_color')); ?>;
     padding: 10px;
     border-top: 1px solid #<?php echo(get_user_color('border_color')); ?>;
     clear: both;
@@ -153,7 +151,7 @@ header("Content-Type: text/css");
   /* CONTENT */
   #maincontent
   {
-    width: <?php echo( $theme_vars[ 'content_width' ] ); ?>px;
+    max-width: <?php echo( $theme_vars[ 'content_width' ]-25); ?>px;
     padding: 10px;
     float: left;
   }
@@ -322,10 +320,10 @@ header("Content-Type: text/css");
   /* SIDEBAR */
   
   #sidebar {
-    width: <?php echo( $theme_vars[ 'menu_width' ] ); ?>px;
+    max-width: <?php echo( $theme_vars[ 'menu_width' ]-20); ?>px;
     float: <?php echo $theme_vars[ 'menu_align' ]; ?>;
-    background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
     padding: 10px;
+    background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
     border-left: 1px #<?php echo(get_user_color('inner_border_color')); ?> solid;
     border-bottom: 1px #<?php echo(get_user_color('inner_border_color')); ?> solid;
     border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
