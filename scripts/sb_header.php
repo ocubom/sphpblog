@@ -3,7 +3,7 @@
         // ---------------
         // INITIALIZE PAGE
         // ---------------
-        require_once('scripts/sb_functions.php');
+        require_once('sb_functions.php');
 
         read_config();
 
@@ -79,12 +79,14 @@
 </head>
 <?php
 
-if (array_key_exists('print', $_GET) && $_GET['print']==true && function_exists('theme_popuplayout')) {
-        theme_popuplayout();
-} elseif (function_exists('theme_pagelayout')) {
-        theme_pagelayout();
-} elseif (function_exists('page_content')) {
-    page_content();
+if (function_exists('page_content')) {
+	if (array_key_exists('print', $_GET) && $_GET['print']==true && function_exists('theme_popuplayout')) {
+        	theme_popuplayout();
+	} elseif (function_exists('theme_pagelayout')) {
+        	theme_pagelayout();
+	} else {
+		page_content();
+	}
 }
 
 ?>
