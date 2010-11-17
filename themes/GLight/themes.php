@@ -20,7 +20,7 @@
     // Optional:
     // "content_width" and "menu_width" area used internally
     // within the theme only. (optional but recommended.)
-    $theme_vars[ 'content_width' ] = 550;
+    $theme_vars[ 'content_width' ] = 542;
     $theme_vars[ 'menu_width' ] = 200;
 
     // Required:

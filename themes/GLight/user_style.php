@@ -127,15 +127,15 @@ input, select, option, textarea
   #page {
     margin-left:auto; margin-right:auto;
     border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+    max-width: <?php echo( $page_width ); ?>px;
   }
 
   #pagebody {
-    max-width: <?php echo( $page_width ); ?>px;
-    margin-left:auto; margin-right:auto;
+/*    margin-left:auto; margin-right:auto; */
   }
 
   #header {
-    min-height: 100px;
+    min-height: 78px;
     background-repeat: no-repeat;
     background-image: url('<?php echo( $header_graphic ); ?>');
     margin-left:auto; margin-right:auto;
@@ -146,10 +146,11 @@ input, select, option, textarea
     border-width: 0px 0px 0px 0px;
     border-style: solid;
     font-family: Arial, Helvetica, Sans-Serif;
-    margin: 0px;
+/*    margin: 0px; */
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: -20px;
+/*    margin-bottom: -20px; */
+/*    padding: 10px; */
   }
 
   #footer {
@@ -319,7 +320,7 @@ input, select, option, textarea
   }
 
   #maincontent {
-    width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+    max-width: <?php echo $theme_vars[ 'content_width' ] ?>px;
     background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
     margin: 0px;
     padding: 10px;
@@ -353,7 +354,7 @@ input, select, option, textarea
   }
 
   #sidebar {
-    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+    max-width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
     background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
     float: <?php echo $theme_vars[ 'menu_align' ]; ?>;
     padding: 10px;
