@@ -19,7 +19,7 @@ header("Content-Type: text/css");
   margin: 0px;
   padding: 0px;
   font-family: Georgia, serif;
-  letter-spacing: 1.5px;  /*font-family: Book Antiqua, Palatino, serif;
+  letter-spacing: 1.5px;
 	}
 
 	hr	
@@ -92,7 +92,7 @@ code, pre {
 
 pre {
   overflow: auto;
-  width: 430px;
+  max-width: 430px;
   border: 1px dotted #777;
   padding: 5px
 }
@@ -106,7 +106,7 @@ input, select, option, textarea
 blockquote {
   margin: 15px 30px 0 45px;
   padding: 0 0 0 45px;
-  background: url(../slick/images/blockquote.gif) no-repeat left top;
+  background: url('images/blockquote.gif') no-repeat left top;
   font-style:italic;
 }
 
@@ -123,7 +123,7 @@ blockquote {
 	}
 
 #HeaderLeft {
-  background-image:  url(../slick/images/logo_area_side.gif);
+  background-image: url('images/logo_area_side.gif');
   background-repeat: no-repeat;
   background-position: top;
   height: 41px;
@@ -133,7 +133,7 @@ blockquote {
 }
 
 #HeaderRight {
-  background-image:  url(../slick/images/logo_area_side.gif);
+  background-image:  url('images/logo_area_side.gif');
   background-repeat: no-repeat;
   background-position: top;
   height: 41px;
@@ -143,7 +143,7 @@ blockquote {
 }
 
 #HeaderCenter {
-  background-image: url(../slick/images/logo_area.gif);
+  background-image: url('images/logo_area.gif');
   background-repeat: repeat-x;
   height: 41px;
   width: 100%;
@@ -232,28 +232,27 @@ blockquote {
 	}
 
 	#pagebody {
-		margin-left:auto; margin-right:auto;
-		width: 100%;
+/*		margin-left:auto; margin-right:auto; */
+/*		width: 100%;*/
 		border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
 		background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
 	}
 
 	#maincontent {
 		background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
-		width: <?php echo $theme_vars[ 'content_width' ] ?>px;
-		margin-left: <?php echo $theme_vars[ 'menu_width' ] ?>px;
-		margin: 0px;
+		/*width: <?php echo $theme_vars[ 'content_width' ] ?>px;*/
+		/*margin-left: <?php echo $theme_vars[ 'menu_width' ] ?>px;*/
+		margin-left: auto;
 		padding: 12px;
 		top: 0px;
-
 	}
 
 	#sidebar {
 		width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
 		background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
 		border-left: 1px solid #<?php echo(get_user_color('inner_border_color')); ?>;
-		background-image: url(../slick/images/menu_bg.gif);
-		height: 100%;
+		background-image: url('images/menu_bg.gif');
+/*		height: 100%; */
 		padding: 0px 0px 0px 12px;
 		font-size: 11px;
 		font-weight: normal;
