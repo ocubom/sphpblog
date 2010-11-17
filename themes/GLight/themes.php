@@ -113,10 +113,10 @@
 
     // Display SUBJECT Line
     $blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-    $blog_content = $blog_content . '<div class="entry_top"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+    $blog_content = $blog_content . '<div class="entry_top">
                                      <img src="' . $img_path . 'corner_tl.gif" alt="" style="float: left" />
                                      <img src="' . $img_path . 'corner_tr.gif" alt="" style="float: right" />
-                                     </td></tr></table></div>' . "\n";
+                                     </div>' . "\n";
     $blog_content = $blog_content . '<div class="blog_subject">';
     if ( $entry_array[ 'avatarurl' ] != '' ) {
       $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="float: left" />';  }
@@ -234,10 +234,10 @@
     if ( $comment_area != "" ) {
       $blog_content = $blog_content . "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
     }
-    $blog_content = $blog_content . '<div class="entry_bottom"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+    $blog_content = $blog_content . '<div class="entry_bottom">
                                      <img src="' . $img_path . 'corner_bl.gif" alt="" style="float: left" />
                                      <img src="' . $img_path . 'corner_br.gif" alt="" style="float: right" />
-                                     </td></tr></table></div>' . "\n";
+                                     </div>' . "\n";
     $blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
 
     $blog_content = $blog_content . "<br />";
@@ -298,10 +298,10 @@
 
     // Display SUBJECT Line
     $blog_content = $blog_content . "\n<!-- BLOG TITLE BEGIN -->\n";
-    $blog_content = $blog_content . '<div class="entry_top_comment"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+    $blog_content = $blog_content . '<div class="entry_top_comment">
                                      <img src="' . $img_path . 'corner_tl.gif" alt="" style="float: left" />
                                      <img src="' . $img_path . 'corner_tr.gif" alt="" style="float: right" />
-                                     </td></tr></table></div>' . "\n";
+                                     </div>' . "\n";
     $blog_content = $blog_content . '<div class="blog_subject_comment">' . $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a>' . "\n";
 
     $blog_content = $blog_content . "</div>\n";
@@ -370,10 +370,10 @@
       $blog_content = $blog_content . "\n\t<div class=\"blog_comment_comment\">" . $comment_area . "</div>\n";
     }
 
-    $blog_content = $blog_content . '<div class="entry_bottom_comment"><table style="width: 100%; cellspacing: 0px; cellpadding: 0px;"><tr><td>
+    $blog_content = $blog_content . '<div class="entry_bottom_comment">
                                      <img src="' . $img_path . 'corner_bl.gif" alt="" style="float: left" />
                                      <img src="' . $img_path . 'corner_br.gif" alt="" style="float: right" />
-                                     </td></tr></table></div>' . "\n";
+                                     </div>' . "\n";
     $blog_content = $blog_content . "\n<!-- FOOTER ENTRY END -->\n";
 
     $blog_content = $blog_content . "<br />";

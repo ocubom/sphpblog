@@ -86,7 +86,7 @@ h6
   }
 
   pre {
-    width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+    max-width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
     overflow: auto;
     border: 1px dotted #<?php echo(get_user_color('inner_border_color')); ?>;
     padding: 5px;
@@ -320,12 +320,11 @@ input, select, option, textarea
   }
 
   #maincontent {
-    max-width: <?php echo $theme_vars[ 'content_width' ] ?>px;
+    max-width: <?php echo $theme_vars[ 'content_width' ] -20 ?>px;
     background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
-    margin: 0px;
+    margin-<?php echo $theme_vars[ 'menu_align' ]; ?>: auto;
     padding: 10px;
     border: 5px;
-    empty-cells: show;
   }
 
   /* Side bar */
@@ -351,22 +350,17 @@ input, select, option, textarea
   #sidebar .menu_body {
     border-color: #<?php echo(get_user_color('menu_border')); ?>;
     background-color: #<?php echo(get_user_color('menu_bg')); ?>;
+    padding: 10px;
+    border-width: 3px;
+    border-style: solid;
   }
 
   #sidebar {
-    max-width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+    max-width: <?php echo $theme_vars[ 'menu_width' ]-10 ?>px;
     background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
-    float: <?php echo $theme_vars[ 'menu_align' ]; ?>;
+    float: <?php echo $theme_vars[ 'menu_align' ]; ?>; 
     padding: 10px;
   }
-
-#sidebar .menu_body
-{
-  padding: 10px;
-  border-color: #999;
-  border-width: 3px;
-  border-style: solid;
-}
 
 #sidebar .divider {
   margin: 8px 0px 8px 0px;
