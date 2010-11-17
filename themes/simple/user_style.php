@@ -34,7 +34,7 @@ header("Content-Type: text/css");
 	}
 	
 	pre {
-		width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+		max-width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
         	overflow: auto;
         	border: 1px dotted #<?php echo(get_user_color('inner_border_color')); ?>; /* inner_border_color */
         	padding: 5px;
@@ -201,7 +201,7 @@ input, select, option, textarea
 	}
 
   #sidebar {
-    width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+        max-width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
         padding: 10px;
         float: right;
   }

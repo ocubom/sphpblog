@@ -527,7 +527,7 @@
     array_push( $search, '%blog_title%' );
     array_push( $replace, $blog_config->getTag('BLOG_TITLE') );
     array_push( $search, '%menu%' );
-    array_push( $replace, "theme_menu()" );
+    array_push( $replace, theme_menu() );
     array_push( $search, '%footer%' );
     array_push( $replace, $blog_config->getTag('BLOG_FOOTER') . " - " . page_generated_in() );
 
