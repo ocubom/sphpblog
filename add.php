@@ -6,6 +6,8 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
+        read_config();
+
 	ob_start();
         require_once('scripts/sb_editor.php');
         $head = ob_get_clean();

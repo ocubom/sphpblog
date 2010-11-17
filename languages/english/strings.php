@@ -609,6 +609,7 @@
         $lang_string['blog_trackback_enabled'] = "Enable trackback in my blog";
         $lang_string['blog_trackback_auto_discovery'] = "Enable Auto-Discovery when submitting a post containing URLs";
         $lang_string['blog_max_entries'] = "Maximum Entries to Display:";
+        $lang_string['rss_max_entries'] = "Maximum Entries to Display in Feeds:";
         $lang_string['blog_comment_tags'] = "Tags to Allow in Comments:";
         $lang_string['blog_gzip_about'] = "
           Since PHP 4.0.4, PHP has had the ability to read and write gzip (.gz) compressed files,

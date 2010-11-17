@@ -122,7 +122,7 @@
 
 		// Emoticons
 		if ( !$strip_all_tags ) {
-			if ($emoticon_replace) {
+			if ($emoticon_replace && $blog_config->getTag('USE_EMOTICONS')) {
 				$emote_arr = emoticons_load_tags();
 
 				for ( $i = 0; $i < count($emote_arr); $i++) {

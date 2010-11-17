@@ -66,7 +66,7 @@
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
-			$max_entries=min( $blog_config->getTag('BLOG_MAX_ENTRIES')<<1, count( $entry_file_array ) );
+			$max_entries=min( $blog_config->getTag('RSS_MAX_ENTRIES'), count( $entry_file_array ) );
 		}
 		else {
 			$max_entries=min( $max_entries, count( $entry_file_array ) );

@@ -1,3 +1,9 @@
+<?php
+
+if ($blog_config->getTag('USE_JS_EDITOR')) {
+
+?>
+
 <link rel="stylesheet" type="text/css" href="scripts/plugins/markitup/markitup/skins/sphpblog/style.css" />
 <link rel="stylesheet" type="text/css" href="scripts/plugins/markitup/markitup/sets/sphpblog/style.css" />
 
@@ -14,6 +20,10 @@ $(document).ready(function()	{
 });
 -->
 </script>
+
+<?php
+}
+?>
 
 <script type="text/javascript">
 	<!--

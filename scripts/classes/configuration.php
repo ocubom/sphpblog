@@ -81,6 +81,14 @@
 			array_push($this->tags, 'BLOG_THEME');
 			array_push($this->tags, 'HTTPS');
 			array_push($this->tags, 'HTTPS_URL');
+			array_push($this->tags, 'RSS_MAX_ENTRIES');
+			//array_push($this->tags, 'SHOW_COMMENTS');
+			//array_push($this->tags, 'RATING_LOGIN');
+			//array_push($this->tags, 'CAPCHA_RATING');
+			array_push($this->tags, 'BACK_YEARS');
+			array_push($this->tags, 'USE_EMOTICONS');
+			array_push($this->tags, 'STATIC_HOME');
+			array_push($this->tags, 'USE_JS_EDITOR');
 			
 			// Cache Excluded Tags
 			// $this->do_not_cache_tags = array();
@@ -145,6 +153,14 @@
 			$this->setTag('BLOG_THEME', 'default');
 			$this->setTag('HTTPS', 'WARN');
 			$this->setTag('HTTPS_URL', '');
+			$this->setTag('RSS_MAX_ENTRIES', 10);
+			//$this->setTag('SHOW_COMMENTS', 0);
+			//$this->setTag('RATING_LOGIN', 0);
+			//$this->setTag('CAPCHA_RATING', 0);
+			$this->setTag('BACK_YEARS', 10);
+			$this->setTag('USE_EMOTICONS', 1);
+			$this->setTag('STATIC_HOME', '');
+			$this->setTag('USE_JS_EDITOR', 1);
 		}
 		
 		function write_file() {

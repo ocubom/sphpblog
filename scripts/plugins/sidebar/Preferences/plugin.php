@@ -31,7 +31,9 @@
 				$str  .= '<a href="' . BASEURL . 'add_block.php">' . $GLOBALS[ 'lang_string' ][ 'menu_add_block' ] . '</a><br />';
 				$str  .= '<a href="' . BASEURL . 'setup.php">' . $GLOBALS[ 'lang_string' ][ 'menu_setup' ] . '</a><br />';
 				$str  .= '<a href="' . BASEURL . 'plugins.php">' . $GLOBALS[ 'lang_string' ][ 'menu_plugins' ] . '</a><br />';
-				$str  .= '<a href="' . BASEURL . 'emoticons.php">' . $GLOBALS[ 'lang_string' ][ 'menu_emoticons' ] . '</a><br />';
+				if ($blog_config->getTag('USE_EMOTICONS')) {
+					$str  .= '<a href="' . BASEURL . 'emoticons.php">' . $GLOBALS[ 'lang_string' ][ 'menu_emoticons' ] . '</a><br />';
+				}
 				$str  .= '<a href="' . BASEURL . 'themes.php">' . $GLOBALS[ 'lang_string' ][ 'menu_themes' ] . '</a><br />';
 				$str  .= '<a href="' . BASEURL . 'colors.php">' . $GLOBALS[ 'lang_string' ][ 'menu_colors' ] . '</a><br />';
 				$str  .= '<a href="' . BASEURL . 'options.php">' . $GLOBALS[ 'lang_string' ][ 'menu_options' ] . '</a><br />';

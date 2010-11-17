@@ -248,7 +248,9 @@
         editor_image_dropdown();
         
         // Emoticon Selection
-        emoticons_show();
+	if ($blog_config->getTag('USE_EMOTICONS')) {
+        	emoticons_show();
+	}
         
         // Content Text Area
 
@@ -418,7 +420,7 @@
   
   function editor_date_select( $default_time ) {
     // Date Selection Block
-    global $lang_string;
+    global $lang_string, $blog_config;
     
     // Edit / Select Date
     $default_time = isset( $default_time ) ? $default_time : time();
@@ -456,7 +458,8 @@
     
     // Year Drop Down
     $itemArray = array();
-    for ( $i = 1  ; $i >= -10; $i-- ) {
+
+    for ( $i = 1  ; $i >= -$blog_config->getTag('BACK_YEARS'); $i-- ) {
       $timestamp = mktime(0, 0, 0, date('m'), date('d'), date('Y')+$i);
       
       $item = array( 'label' => strftime('%Y', $timestamp), 'value' => date('Y', $timestamp) );

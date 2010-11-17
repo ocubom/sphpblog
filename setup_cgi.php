@@ -20,6 +20,11 @@
 		$temp_max_entries = 5;
 	}
 
+	$rss_max_entries = intval($_POST['rss_max_entries' ] );
+	if ( $rss_max_entries <= 0) {
+		$rss_max_entries = 10;
+	}
+
 	$temp_blog_comment_days_expiry = intval($_POST['blog_comment_days_expiry' ] );
 	if ( $temp_blog_comment_days_expiry < 0) {
 		$temp_blog_comment_days_expiry = 0;
@@ -49,6 +54,10 @@
 			$temp_email[$i] = trim( $temp_email[$i] );
 		}
 		$temp_email = implode( ',', $temp_email );
+	}
+	$back_years = intval($_POST['back_years']);
+        if ($back_years > 98) {
+		$back_years = 98;
 	}
 	
 	$new_config = new Configuration();
@@ -102,6 +111,12 @@
 	$new_config->setTag('BLOG_ENABLE_PRINT', 		$_POST['blog_enable_print'] == 'on');
 	$new_config->setTag('HTTPS', $_POST['https']);
 	$new_config->setTag('HTTPS_URL', $_POST['https_url']);
+	$new_config->setTag('USE_EMOTICONS', 		$_POST['use_emoticons'] == 'on');
+	$new_config->setTag('USE_JS_EDITOR', 		$_POST['use_js_editor'] == 'on');
+	$new_config->setTag('BACK_YEARS', 		$back_years);
+	$new_config->setTag('RSS_MAX_ENTRIES', 		$rss_max_entries);
+	$new_config->setTag('STATIC_HOME', 		sb_stripslashes($_POST['static_home']));
+
 	// $new_config->setTag('BANNED_ADDRESS_LIST','');
 	// $new_config->setTag('BANNED_WORD_LIST','');
 

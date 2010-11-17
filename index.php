@@ -122,7 +122,14 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink;
+		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink, $blog_config;
+
+		$static = $blog_config->getTag('STATIC_HOME');
+		if (!empty($static) && empty($_SERVER['QUERY_STRING'])) {
+			// read static page here
+			print theme_staticentry (read_static_entry ( $static, $logged_in ));
+                        return;
+		}
 		
 		$content = read_entries( $month, $year, $day, $logged_in, $entry, $category, $is_permalink );
 		echo( $content);

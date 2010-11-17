@@ -130,6 +130,16 @@
 	                        <label for="https_url">HTTPS Login URL:</label>
 				<input type="text" name="https_url" value="<?php echo($blog_config->getTag('HTTPS_URL')); ?>" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;">
 				</p>
+				<p>
+<!-- TODO add to language file -->
+				<input type="checkbox" id="use_emoticons" name="use_emoticons"<?php if ( $blog_config->getTag('USE_EMOTICONS') == 1 ) { echo ( ' checked' ); } ?>> 
+				Enable Emoticons
+				</p>
+				<p>
+<!-- TODO add to language file -->
+				<input type="checkbox" id="use_js_editor" name="use_js_editor"<?php if ( $blog_config->getTag('USE_JS_EDITOR') == 1 ) { echo ( ' checked' ); } ?>> 
+				Enable Advanced Editor
+				</p>
 			</div>
 
 			<p />
@@ -152,6 +162,13 @@
 				<br />
 				<label for="blog_max_entries"><?php echo( $GLOBALS['lang_string']['blog_max_entries'] ); ?></label><br />
 				<input type="text" name="blog_max_entries" value="<?php echo( $blog_config->getTag('BLOG_MAX_ENTRIES') ); ?>" autocomplete="OFF" size="6">
+				<br />
+				<label for="rss_max_entries"><?php echo( $GLOBALS['lang_string']['rss_max_entries'] ); ?></label><br />
+				<input type="text" name="rss_max_entries" value="<?php echo( $blog_config->getTag('RSS_MAX_ENTRIES') ); ?>" autocomplete="OFF" size="6">
+				<br />
+				<!-- TODO language file -->
+				<label for="back_years">Allowed number of years to go back.  WARNING: You may get unexpected behavior when using years before 2000.</label><br />
+				<input type="text" name="back_years" value="<?php echo( $blog_config->getTag('BACK_YEARS') ); ?>" autocomplete="OFF" size="6">
 				<p />
 				<?php
 					// Entry Order Drop Down
@@ -170,6 +187,27 @@
 				<input type="checkbox" id="blog_enable_start_category" name="blog_enable_start_category"<?php if ( $blog_config->getTag('BLOG_ENABLE_START_CATEGORY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_start_category'] ); ?>
 					<?php
 						category_combo_box( 'blog_enable_start_category_selection', intval($blog_config->getTag('BLOG_ENABLE_START_CATEGORY_SELECTION')) );							
+					?>
+				</select></br>
+<!-- TODO language -->
+				<label for="static_home">Use static page for first page:</label>
+				<select id="static_home" name="static_home">
+				<option value="">--No--</option>
+					<?php
+                                // Saved User Colors
+                                $dir = CONTENT_DIR.'static/';
+                                $static_files = sb_folder_listing( $dir, array( '.txt', '.gz' ) );
+                                if ( count( $static_files ) > 0 ) {
+                                        for ( $i = 0; $i < count( $static_files ); $i++ ) {
+                                                $filename = sb_strip_extension( $static_files[$i] );
+                                                $str = '<option label="' . $filename . '" value="' . $filename . '"';
+						if ($blog_config->getTag('STATIC_HOME') == $filename) {
+							$str .= " selected='selected'";
+						}
+                                                $str    .= '>' . $filename . '</option>' . "\n";
+                                                echo( $str );
+                                        }
+                                }
 					?>
 				</select></br>
 			</div>
