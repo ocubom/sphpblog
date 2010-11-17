@@ -129,7 +129,6 @@ header("Content-Type: text/css");
     font-size: 1.3em;
     background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
     color: #<?php echo(get_user_color('header_txt_color')); ?>;
-    padding: 10px;
   }
 
   #pagebody
