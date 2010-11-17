@@ -152,7 +152,8 @@
 		function read_file() {
 			$str = fileio::read_file($this->path . $this->filename);
 			if ($str != null) {
-				$this->data = arrays::explode_key($str);
+				// we have to merge with default settings here, otherwise new settings disappear
+				$this->data = array_merge($this->data, arrays::explode_key($str));
 				$this->is_cached_data = false;
 				return(true);
 			} else {
