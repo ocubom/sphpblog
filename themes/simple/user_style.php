@@ -204,6 +204,7 @@ input, select, option, textarea
         max-width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
         padding: 10px;
         float: right;
+	clear: both;
   }
 
 #maincontent
