@@ -248,13 +248,7 @@
 
     $blog_content = '';
     if ( $contents ) {
-      if ( ( dirname($_SERVER[ 'PHP_SELF' ]) == '\\' || dirname($_SERVER[ 'PHP_SELF' ]) == '/' ) ) {
-        // Hosted at root.
-        $base_permalink_url = sb_curPageURL() . '/';
-      } else {
-        // Hosted in sub-directory.
-        $base_permalink_url = dirname(sb_curPageURL()).'/';
-      }
+      $base_permalink_url = BASEURL;
 
       // I'm putting this check in here for people who have made
       // custom themes before I added these values...
