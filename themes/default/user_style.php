@@ -7,12 +7,11 @@ read_config();
     $menu_width = $theme_vars[ 'menu_width' ];
     $page_width = $content_width + $menu_width;
 
-    // Default image path.
-    $img_path = "images/";
-
     $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
     if ( $header_graphic == '' ) {
-      $header_graphic = $img_path . 'header750x100.jpg';
+       $header_graphic = 'images/header750x100.jpg';
+    } else {
+       $header_graphic = '../../' . $header_graphic;
     }
 
     // Begin Page Layout HTML

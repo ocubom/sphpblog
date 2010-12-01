@@ -7,9 +7,6 @@ read_config();
     $menu_width = $theme_vars[ 'menu_width' ];
     $page_width = $content_width + $menu_width;
 
-    // Default image path.
-    $img_path = "images/";
-
 header("Content-Type: text/css");
 ?>
 	body {
