@@ -96,7 +96,7 @@
     $img_path = BASEURL . "themes/" . $blog_theme . "/images/";
 
     $blog_content = "";
-    $blog_content .= "\n<!-- BLOG ENTRY BEGIN -->\n";
+//    $blog_content .= "\n<!-- BLOG ENTRY BEGIN -->\n";
     
     switch($mode) {
       case 'static':
@@ -128,7 +128,7 @@
     }
 
     // Display SUBJECT Line
-    $blog_content .= "\n<!-- BLOG TITLE BEGIN -->\n";
+//    $blog_content .= "\n<!-- BLOG TITLE BEGIN -->\n";
     $blog_content = $blog_content . '<div class="blog_title">';
     if ( $entry_array[ 'avatarurl' ] != '' ) {
       $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="border-style: none" />';  }
@@ -154,9 +154,9 @@
     }
 
     $blog_content .= "</div>\n";
-    $blog_content .= "<!-- BLOG TITLE END -->\n\n";
+//    $blog_content .= "<!-- BLOG TITLE END -->\n\n";
 
-    $blog_content .= "<!-- BLOG BODY BEGIN -->\n";
+//    $blog_content .= "<!-- BLOG BODY BEGIN -->\n";
     $blog_content .= '<div class="blog_body">' . "\n\t";
 
     // Display DATE
@@ -205,9 +205,9 @@
     // Display BODY TEXT
     $blog_content .= $entry_array[ 'entry' ];
     $blog_content .= "\n\t</div>";
-    $blog_content .= "\n<!-- BLOG BODY END -->\n";
+//    $blog_content .= "\n<!-- BLOG BODY END -->\n";
 
-    $blog_content .= "\n<!-- BLOG FOOTER BEGIN -->\n";
+//    $blog_content .= "\n<!-- BLOG FOOTER BEGIN -->\n";
 
     // Display ADD COMMENT, COUNT,TRACKBACK, PERMALINK, and RATING
     $comment_area = "";
@@ -268,13 +268,13 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
       $blog_content .= "\n\t<div class=\"blog_comment\">" . $comment_area . "</div>\n";
     }
 
-    $blog_content .= "\n<!-- BLOG FOOTER END -->\n";
+  //  $blog_content .= "\n<!-- BLOG FOOTER END -->\n";
 
     // $blog_content .= "<br />";
 
     $blog_content .= "</div>\n";
         
-    $blog_content .= "\n<!-- BLOG ENTRY END -->\n";
+//    $blog_content .= "\n<!-- BLOG ENTRY END -->\n";
 
     return $blog_content;
   }
@@ -285,7 +285,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     // init vars
     $img_path = "themes/" . $blog_theme . "/images/";
     $blog_content = '';
-    $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY START -->\n";
+//    $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY START -->\n";
 
     // Text of entry
 
@@ -302,7 +302,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 
     $blog_content = $blog_content . "<br />";
 
-    $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY END -->\n";
+//    $blog_content = $blog_content . "\n<!-- STATIC NO HEADER ENTRY END -->\n";
 
     return $blog_content;
   }
@@ -330,7 +330,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     $img_path = 'themes/' . $blog_theme . '/images/';
 
     $blog_content = "";
-    $blog_content .= "\n" . '<!-- BLOG ENTRY BEGIN -->' . "\n";
+//    $blog_content .= "\n" . '<!-- BLOG ENTRY BEGIN -->' . "\n";
 
     // SUBJECT
     $blog_content .= '<div class="blog_title">' . $entry_array[ 'title' ] . "\n";
@@ -364,7 +364,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 
     $blog_content .= "<br />";
 
-    $blog_content .= "\n" . '<!-- BLOG ENTRY END -->' . "\n";
+//    $blog_content .= "\n" . '<!-- BLOG ENTRY END -->' . "\n";
 
     return $blog_content;
   }
@@ -652,7 +652,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
       $img_show = $img_path . 'plus.gif';
       $img_hide = $img_path . 'minus.gif';
 
-      echo( "\n<!-- " . $comment . " -->\n" );
+//      echo( "\n<!-- " . $comment . " -->\n" );
 
       echo( "<div class=\"menu_title\">\n" );
       if ( isset( $toggleDiv ) ) {
@@ -705,7 +705,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
     //    echo( 'this \'is\' a test' );  // displays: this 'is' a test
     
 
-    echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
+//    echo( "\n<!-- SIDEBAR MENU BEGIN -->\n" );
     
     // CUSTOM BLOCKS
     $array = read_blocks($logged_in);

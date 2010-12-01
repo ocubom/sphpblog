@@ -500,13 +500,13 @@
       }
     }
 
-    $blog_content  .= '<p style="text-align: center"><b>';
+    $blog_content  .= '<p style="text-align: center; font-weight: bold">';
 
     // Display First link if we are not on the first page
     if ($current_page > 0) {
       list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[0] );
       $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
-      $blog_content  .= '">&#60;&#60;' . $lang_string['nav_first'] . '&#32;&#32;</a></span>';
+      $blog_content  .= '">&#60;&#60;' . $lang_string['nav_first'] . ' </a></span>';
     }
 
     // Display Back lin if required
@@ -517,13 +517,13 @@
       if ( $category != NULL ) {
         $blog_content  .= '&amp;category=' . $category;
       }
-      $blog_content  .= '"> &#60;' . $lang_string[ 'nav_back' ] . '&#32;&#32;</a></span> ';
+      $blog_content  .= '"> &#60;' . $lang_string[ 'nav_back' ] . ' </a></span> ';
     }
 
     // Display page count
     $pagestoshow = 10;
     if (count($pages_array) > 0) {
-      $blog_content .= '<span>|&#32;';
+      $blog_content .= '<span>| ';
 
       $startpage = $current_page;
 
@@ -548,7 +548,7 @@
           if ( $category != NULL ) {
             $blog_content  .= '&amp;category=' . $category;
           }
-          $blog_content  .= '">' . ($p + 1) . '</a>&#32;|&#32;';
+          $blog_content  .= '">' . ($p + 1) . '</a> | ';
         }
         $pagestoshow = $pagestoshow - 1;
       }
@@ -562,16 +562,16 @@
       if ( $category != NULL ) {
         $blog_content  .= '&amp;category=' . $category;
       }
-      $blog_content  .= '">' . $lang_string[ 'nav_next' ] . '&#62;&#32;&#32;</a></span> ';
+      $blog_content  .= '">' . $lang_string[ 'nav_next' ] . '&#62; </a></span> ';
     }
 
     // Display Last link if we are not on the last page
     if ( $next_entry != NULL ) {
       list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[count($pages_array)-1] );
       $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
-      $blog_content  .= '">&#32;&#32;' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
+      $blog_content  .= '"> ' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
     }
-    $blog_content  .= '</b></p><br />';
+    $blog_content  .= '</p><br />';
 
     // Check for intervening static entries to be shown before current entries...
 
