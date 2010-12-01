@@ -5,7 +5,7 @@ img {
 
 hr
 {
-        height: 1px;
+        max-height: 1px;
         border: 0px;
 }
 
@@ -26,7 +26,7 @@ div #toggleSidebarAvatar, #toggleSidebarLinks, #toggleSidebarCalendar, #toggleSi
 
 #sidebar .calendar
 {
-  font-size: 10px;
+  font-size: 1 em;
 }
 
 #sidebar .calendar td

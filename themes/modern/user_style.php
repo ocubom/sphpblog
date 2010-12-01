@@ -83,7 +83,7 @@ header("Content-Type: text/css");
   }
 
   pre {
-    width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+    max-width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
     border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
     overflow: auto;
     border: 1px dotted #777;
@@ -114,7 +114,7 @@ header("Content-Type: text/css");
   }
   
   #popup {
-    width: 550px;
+    max-width: 550px;
     margin: 10px auto 10px auto;
     border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
     background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
@@ -124,7 +124,7 @@ header("Content-Type: text/css");
     background-image: url('<?php echo( $header_graphic ); ?>');
     background-repeat: no-repeat;
     border-style: none;
-    height: 25px;
+    min-height: 25px;
     padding: 105px 5px 5px 5px;
     border-bottom: 1px solid #<?php echo(get_user_color('border_color')); ?>;
     font-size: 1.3em;

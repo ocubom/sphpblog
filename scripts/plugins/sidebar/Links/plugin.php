@@ -76,11 +76,11 @@
 					if ( $url == '' ) { // This is a spacer
 						$str .= '<br />' . $title . '<br />';
 					} else {
-						if ( strpos($url, 'http') === 0 ) { // Open in new window
+/*						if ( strpos($url, 'http') === 0 ) { // Open in new window
 							$str .= '<a href="' . $url . '" target="_blank">' . $title . '</a><br />';
-						} else { // Open in same window
+						} else { // Open in same window*/
 							$str .= '<a href="' . $url . '">' . $title . '</a><br />';
-						}
+						/*}*/
 					}
 				}
 			}
