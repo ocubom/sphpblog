@@ -657,7 +657,7 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
       echo( "<div class=\"menu_title\">\n" );
       if ( isset( $toggleDiv ) ) {
         echo( "\t" . '<a id="link' . $toggleDiv . '" onclick="toggleBlock(\'' . $toggleDiv . '\');" >' );
-        echo( '<img src="' . $img_hide . '" alt="twisty" /> ' );
+        echo( '<img height="11" width="11" src="' . $img_hide . '" alt="twisty" /> ' );
       }
       echo( $blockArray[ 'title' ] );
       if ( isset( $toggleDiv ) ) {
