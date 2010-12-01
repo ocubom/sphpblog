@@ -392,7 +392,7 @@
             } else {
               $star_image = 'no_star.png';
             }
-            $str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="" /></a>';
+            $str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img height="9" width="9" src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="$star_image" /></a>';
           }
           $entry_array[ 'stars_nototals' ] = $str;
           $str  .= ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';

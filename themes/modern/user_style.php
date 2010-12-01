@@ -62,13 +62,6 @@ header("Content-Type: text/css");
     font-weight: bold;
     margin: .3em 0 .3em 0;
   }
-  h1 { font-size: 1.8em; }
-  h2 { font-size: 1.6em; }
-  h3 { font-size: 1.5em; }
-  h4 { font-size: 1.3em; }
-  h5 { font-size: 1.2em; }
-  h6 { font-size: 1.1em; }
-
   
   /* TYPEOGRAPHY */
   

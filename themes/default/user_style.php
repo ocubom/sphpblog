@@ -28,7 +28,7 @@ header("Content-Type: text/css");
   body {
     background-color: #<?php echo(get_user_color('bg_color')); ?>;
     color: #<?php echo(get_user_color('txt_color')); ?>;
-    font-size: 11px;
+    font-size: .7em;
     margin: 0px;
     padding: 0px;
     /* Standard. Readable */
@@ -43,36 +43,6 @@ h1, h2, h3, h4, h5, h6
     text-shadow: #bbb 2px 2px 1px;
 
   margin: 2px 0px 2px 0px;
-}
-
-h1
-{
-  font-size: 20px;
-}
-
-h2
-{
-  font-size: 18px;
-}
-
-h3
-{
-  font-size: 16px;
-}
-
-h4
-{
-  font-size: 14px;
-}
-
-h5
-{
-  font-size: 12px;
-}
-
-h6
-{
-  font-size: 10px;
 }
 
   p
@@ -92,12 +62,12 @@ h6
   }
 
   form {
-    font-size: 11px;
-  }
+    font-size: 1em;
+  } 
 
   input, select, option, textarea
   {
-    font-size: 11px;
+    font-size: 1em;  
     text-align: left;
   }
 
@@ -121,7 +91,7 @@ h6
   }
   
   pre {
-    width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+    max-width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
     overflow: auto;
     border: 1px dotted #<?php echo(get_user_color('inner_border_color')); ?>;
     padding: 5px;
@@ -145,7 +115,7 @@ blockquote {
   #header {
     background-repeat: no-repeat;
     background-image: url('<?php echo( $header_graphic ); ?>');
-    height: 25px;
+    min-height: 25px;
     border-color: #<?php echo(get_user_color('border_color')); ?>;
     color: #<?php echo(get_user_color('header_txt_color')); ?>;
     background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
@@ -154,7 +124,7 @@ blockquote {
     padding: 105px 5px 5px 5px;
     border-width: 0px 0px 1px 0px;
     border-style: solid;
-    font-size: 14px;
+    font-size: 1.4em;
     font-weight: bold;
   }
 
@@ -175,7 +145,7 @@ blockquote {
   #maincontent .blog_subject {
     color: #<?php echo(get_user_color('headline_txt_color')); ?>;
     font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 1.4em;
     font-weight: bold;
     margin: 0px;
   }
@@ -215,7 +185,7 @@ blockquote {
 #maincontent .blog_byline
 {
   color: #999999; /* date_txt_color */
-  font-size: 9px;
+  font-size: .9em;
   margin-bottom: 10px;
 }
 

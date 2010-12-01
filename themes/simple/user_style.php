@@ -52,34 +52,6 @@ header("Content-Type: text/css");
 	        font-weight: bold;
 	        margin: 2px 0px 2px 0px;
 	}
-h1
-{
-        font-size: 20px;
-}
-
-h2
-{
-        font-size: 18px;
-}
-
-h3
-{
-        font-size: 16px;
-}
-
-h4
-{
-        font-size: 14px;
-}
-
-h5
-{
-        font-size: 12px;
-}
-h6
-{
-        font-size: 10px;
-}
 
 	a:link, a:visited {
 		color: #<?php echo(get_user_color('link_reg_color')); ?>;
@@ -137,7 +109,7 @@ input, select, option, textarea
 	#header {
 		color: #<?php echo(get_user_color('header_txt_color')); ?>;
 		background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
-	        height: 25px;
+	        min-height: 25px;
         	background: url(images/nav-background.gif) repeat-x;
 	}
 
