@@ -145,13 +145,13 @@ blockquote {
   #header {
     background-repeat: no-repeat;
     background-image: url('<?php echo( $header_graphic ); ?>');
-    height: 75px;
+    height: 25px;
     border-color: #<?php echo(get_user_color('border_color')); ?>;
     color: #<?php echo(get_user_color('header_txt_color')); ?>;
     background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
     font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
     margin: 0px;
-    padding: 4px 12px 4px 12px;
+    padding: 105px 5px 5px 5px;
     border-width: 0px 0px 1px 0px;
     border-style: solid;
     font-size: 14px;

@@ -135,7 +135,8 @@ input, select, option, textarea
   }
 
   #header {
-    min-height: 78px;
+    min-height: 15px;
+    padding: 85px 5px 5px 10px;
     background-repeat: no-repeat;
     background-image: url('<?php echo( $header_graphic ); ?>');
     margin-left:auto; margin-right:auto;
@@ -146,11 +147,8 @@ input, select, option, textarea
     border-width: 0px 0px 0px 0px;
     border-style: solid;
     font-family: Arial, Helvetica, Sans-Serif;
-/*    margin: 0px; */
     font-size: 14px;
     font-weight: bold;
-/*    margin-bottom: -20px; */
-/*    padding: 10px; */
   }
 
   #footer {
