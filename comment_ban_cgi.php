@@ -73,7 +73,7 @@
 	
 	// Theme Layout
 	ob_start();	
-	if ( $GLOBALS['blog_config'][ 'blog_comments_popup' ] == 1 ) {
+	if ( $blog_config->getTag('blog_comments_popup') == 1 ) {
 		theme_popuplayout();
 	} else {
 		theme_pagelayout();
