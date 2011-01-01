@@ -230,21 +230,17 @@
 			// Hosted in sub-directory.
 			$base_url = dirname(sb_curPageURL()) . '/';
 		}
-		
+
 		header('Content-type: application/xml');
 		echo "<?xml version=\"1.0\" encoding=\"" . $lang_string[ 'php_charset' ] . "\"?>\n";
-		echo '<feed version="0.3" xmlns="http://purl.org/atom/ns#" xml:lang="' . str_replace('_', '-', $lang_string[ 'rss_locale' ]) . "\">\n";
-		//Required channel fields
-		echo "\t<title>" . clean_atom_output( $blog_config->getTag('BLOG_TITLE') ) . "</title>\n";
-		echo "\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php\" />\n";
-		echo "\t<modified>" . gmdate( 'Y-m-d' ) . 'T' . gmdate( 'H:i:s' ) . "Z</modified>\n";
-		//Optional channel fields
-		echo "\t<author>\n";
-		echo "\t\t<name>" . clean_atom_output( $blog_config->getTag('BLOG_AUTHOR') ) . "</name>\n";
-		// echo "\t\t<email>" . clean_atom_output( $blog_config->getTag('BLOG_EMAIL') ) . "</email>\n";
+		echo "<feed xmlns=\"http://www.w3.org/2005/Atom\">\n";
+		echo "\t<title>" . clean_atom_output( $blog_config->getTag('BLOG_TITLE')) . "</title>\n";
+		echo "\t<link href=\"" . $base_url . "atom.php\" rel=\"self\" />\n";
+		echo "\t<link href=\"" . $base_url . "\" />\n"; echo "\t<id>". $base_url . "index.php</id>\n";
+		echo "\t<updated>" . gmdate( 'Y-m-d' ) . 'T' . gmdate( 'H:i:s' ) . "Z</updated>\n";
+		echo "\t<author>\n"; echo "\t\t<name>" . clean_atom_output( $blog_config->getTag('BLOG_AUTHOR')) . "</name>\n";
+		echo "\t\t<email>" . clean_atom_output( $blog_config->getTag('BLOG_EMAIL')) . "</email>\n";
 		echo "\t</author>\n";
-		echo "\t<copyright>" . clean_atom_output( 'Copyright ' . strftime( '%Y' ) . ', ' . $blog_config->getTag('BLOG_AUTHOR') ) . "</copyright>\n";
-		echo "\t<generator url=\"http://www.sourceforge.net/projects/sphpblog\" version=\"" . $sb_info[ 'version' ] . "\">SPHPBLOG</generator>\n";
 
 		// Read entry files
 		if ( $max_entries<=0 ) {
@@ -262,21 +258,15 @@
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
 				if ( ( empty( $category ) ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
 					$entries++;
-					echo "\t<entry>\n";
-					//Required item fields
-					echo "\t\t<title>" . clean_atom_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
+
+					echo "\t<entry>\n"; echo "\t\t<title>" . clean_atom_output( blog_to_html( $contents[ 'SUBJECT' ], false, false ) ) . "</title>\n";
+					echo "\t\t<link href=\"" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "\" />\n";
 					echo "\t\t<link rel=\"alternate\" type=\"text/html\" href=\"" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "\" />\n";
-					echo "\t\t<content type=\"text/html\" mode=\"escaped\"><![CDATA[" . replace_more_tag( blog_to_html( $contents[ 'CONTENT' ], false, false ), true, '' ) . $content_footer . "]]></content>\n";
-					
-					//Optional item fields
-					echo "\t\t<id>" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "</id>\n";
-					echo "\t\t<issued>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</issued>\n";
-					echo "\t\t<modified>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $blog_date ) . "Z</modified>\n";
-					// Only output if <comments> if they are enabled.
-					if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') ) {
-						//echo "\t\t<comments>" . $base_url . "comments.php?y=" . $year_dir . "&amp;m=" . $month_dir . "&amp;entry=" . sb_strip_extension( $entry_filename ) . "</comments>\n";
-					}
-					echo "\t</entry>\n";
+					echo "\t\t<link rel=\"edit\" href=\"" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "\" />\n"; echo "\t\t<id>" . $base_url . "index.php?entry=" . sb_strip_extension( $entry_filename ) . "</id>\n";
+					echo "\t\t<summary type=\"html\"><![CDATA[" . replace_more_tag( blog_to_html( $contents[ 'CONTENT' ], false, false ), true, '' ) . $content_footer . "]]></summary>\n";
+					echo "\t\t<updated>" . gmdate( 'Y-m-d', $contents[ 'DATE' ] ) . 'T' . gmdate( 'H:i:s', $contents[ 'DATE' ] ) . "Z</updated>\n";
+					echo "\t</entry>\n"; 
+
    					break;
 				}
 			}

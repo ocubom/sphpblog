@@ -10,7 +10,7 @@
 	<meta name="generator" content="Simple PHP Blog" />
 	<link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php{CATEGORY_ID}" />
 	<link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php{CATEGORY_ID}" />
-	<link rel="alternate" type="application/atom+xml" title="Get Atom 0.3 Feed" href="atom.php{CATEGORY_ID}" />
+	<link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="atom.php{CATEGORY_ID}" />
 	<link rel="search" type="application/opensearchdescription+xml" title="{BLOG_TITLE}" href="{SEARCH_URI}" />
 	
 	<!-- Meta Data -->
