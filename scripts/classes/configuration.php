@@ -143,7 +143,7 @@
 			// $this->setTag('BLOG_HEADER_GRAPHIC', '');
 			$this->setTag('BLOG_ENABLE_START_CATEGORY', 0);
 			// $this->setTag('BLOG_ENABLE_START_CATEGORY_SELECTION', '');
-			$this->setTag('BLOG_ENABLE_PRINT', 1);
+			$this->setTag('BLOG_ENABLE_PRINT', 0);
 			// $this->setTag('INFO_KEYWORDS', '');
 			// $this->setTag('INFO_DESCRIPTION', '');
 			// $this->setTag('INFO_COPYRIGHT', '');

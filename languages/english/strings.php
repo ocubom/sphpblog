@@ -469,7 +469,7 @@
       case 'install01':
         $lang_string['title'] = "Welcome";
         $lang_string['instructions'] = "
-        Thank you for choosing Simple PHP Blog!<br /><br />Simple PHP Blog is a light-weight blogging system. It requires PHP 4.1 or greater, and write-permissions on the server. All information is stored in flat-files, so no database is required.<br /><br />
+        Thank you for choosing Simple PHP Blog!<br /><br />Simple PHP Blog is a light-weight blogging system. It requires PHP 5.0 or greater, and write-permissions on the server. All information is stored in flat-files, so no database is required.<br /><br />
         In order to begin, Simple PHP Blog needs to create three folders (<b>config</b>, <b>content</b>, and <b>images</b>) in which to store your information. After that, you will create your password and then you can start blogging.<br /><br />
         <b>Click below to begin setup:</b>";
         $lang_string['begin'] = "[ Begin Setup ]";
