@@ -5,7 +5,7 @@
 	// Simple PHP Version: 0.4.6
 	// Language Version:   0.4.1.1
 	
-	
+	// Updated by NightCat for 0.7.0
 	
 	function sb_language( $page ) {
 		global $language, $html_charset, $php_charset, $lang_string;
@@ -39,6 +39,8 @@
 		$lang_string['menu_setup'] = "設定";
 		$lang_string['menu_categories'] = "文章分類";
 		$lang_string['menu_info'] = "頁面資訊"; // <-- New 0.3.7
+  $lang_string['manage_users'] = "管理使用者";  // new 0.4.9
+  $lang_string['manage_php_config'] = "查閱 PHP 設定"; // New in 0.5.0.1
 		$lang_string['menu_options'] = "時間選項";
 		$lang_string['menu_themes'] = "佈景主題";
 		$lang_string['menu_colors'] = "配色";
@@ -51,7 +53,14 @@
 		$lang_string['menu_add_block'] = "自定區塊";
 		$lang_string['menu_emoticons'] = "Emoticons"; // New for 0.4.7
 		$lang_string['menu_avatar'] = "Avatar"; // New for 0.4.7
-		
+    $lang_string['menu_moderation'] = "用詞/IP 管制"; // New for 0.4.9
+    $lang_string['menu_commentmoderation'] = "未審批回應"; // New for 0.5.0
+    $lang_string['menu_random_entry'] = "隨機文章"; // New for 0.5.2
+    $lang_string['menu_plugins'] = "Plugins"; // New for 0.5.2
+    $lang_string['notice_moderator1'] = "你有"; // New for 0.7.0
+    $lang_string['notice_moderator2'] = " 個回應需要批准。"; // New for 0.7.0
+    $lang_string['notice_loggedin'] = "你已經登入"; // New for 0.7.0
+	
 		// Counter
 		$lang_string['counter_today'] = "Today:"; // New for 0.4.8
 		$lang_string['counter_yesterday'] = "Yesterday:"; // New for 0.4.8
@@ -60,13 +69,17 @@
 		
 		// Other
 		$lang_string['home'] = "返回首頁";
-		$lang_string['nav_next'] = '下一頁'; // <-- New 0.3.7
-		$lang_string['nav_back'] = '前一頁'; // <-- New 0.3.7
+		$lang_string['nav_next'] = "下一頁"; // <-- New 0.3.7
+		$lang_string['nav_back'] = "前一頁"; // <-- New 0.3.7
 		$lang_string['search_title'] = '搜尋：'; // <-- New 0.3.7
 		$lang_string['search_go'] = '開始'; // <-- New 0.3.7
 		$lang_string['page_generated_in'] = '本頁花費了 %s 秒產生'; // <-- New 0.3.7
 		$lang_string['counter_total'] = 'Site Views: '; // New in 0.4.8
 		$lang_string['read_more'] = 'More...'; // New in 0.4.8
+    $lang_string['nav_first'] = '第一頁'; // New in 0.5.0.1
+    $lang_string['nav_last'] = '最後'; // New in 0.5.0.1
+    $lang_String['randomentry'] = '隨機文章'; // New in 0.5.0.1
+    $lang_string['randomquote'] = '隨機引用'; // New in 0.5.0.1
 		
 		// SB Functions
 		$lang_string['sb_months'] = array( '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' );
@@ -85,7 +98,13 @@
 		$lang_string['sb_comment_btn'] = '回應';
 		$lang_string['sb_comments_plural_btn_number_first'] = true;
 		$lang_string['sb_comments_plural_btn'] = '回應';
-		
+    $lang_string['sb_postedby'] = 'Posted by'; // New in 0.5.0
+    $lang_string['sb_admin'] = 'Administrator'; // New in 0.5.0
+    $lang_string['sb_read_entry_btn'] = '閱讀文章'; // New in 0.5.0
+    $lang_string['sb_comment_view'] = '閱讀'; // New in 0.5.0
+    $lang_string['sb_comments_plural_view'] = '閱讀'; // New in 0.5.0
+    $lang_string['print_article'] = '列印文章'; // New in 0.5.2
+
 		// ( 1 view )
 		$lang_string['sb_view_counter_pre'] = '';
 		$lang_string['sb_view_counter_post'] = '預覽';
@@ -244,6 +263,17 @@
 				$lang_string['menu_link_reg_color'] = "選單連結";
 				$lang_string['menu_link_hi_color'] = "選單游標連結";
 				$lang_string['menu_link_down_color'] = "選單使用中連結";
+        $lang_string['static_bg'] = "Static 背景"; // New in 0.5.0
+        $lang_string['static_title_bg'] = "Static 標題背景"; // New in 0.5.0
+        $lang_string['static_border'] = "Static 邊框"; // New in 0.5.0
+        $lang_string['static_title_text'] = "Static 標題文字"; // New in 0.5.0
+        $lang_string['static_text'] = "Static 文字"; // New in 0.5.0
+        $lang_string['comment_bg'] = "回應背景"; // New in 0.5.0
+        $lang_string['comment_title_bg'] = "回應標題背景"; // New in 0.5.0
+        $lang_string['comment_border'] = "回應邊框"; // New in 0.5.0
+        $lang_string['comment_title_text'] = "回應標題文字"; // New in 0.5.0
+        $lang_string['comment_text'] = "回應文字"; // New in 0.5.0
+
 				// Submit
 				$lang_string['color_preset'] = "配色主題:";
 				$lang_string['scheme_name'] = "請填入你的配色主題名稱(英文):";
@@ -278,13 +308,35 @@
 				$lang_string['delete_btn'] = "刪除";
 				$lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
 				$lang_string['expired_comment2'] = " days."; // New for 0.4.8
-				
-				$lang_string['blacklisted'] = "Sorry, your IP address has been banned. Comments not allowed."; // New for 0.4.8
+        $lang_string['ban_btn'] = "ban ip"; // New for 0.4.8
+
+				$lang_string['blacklisted'] = "抱歉，你的IP已經被封鎖，所以不能回應。"; // New for 0.4.8
 				// Error Response
+        $lang_string['bannedword'] = "Your comment, url, name or email contained word(s) that have been banned by the administrator. Your comment has NOT been posted."; // New for 0.4.8
+        $lang_string['nocomments'] = "此文章不能回應。"; // New for 0.4.9
+        $lang_string['email_moderator'] = "Comments are currently moderated. This comment needs approval before it will be seen by the public."; // New for 0.5.0
+        $lang_string['user_notice_mod'] = "Moderation is turned on for this blog. Your comment will require the administrators approval before it will be visible."; // new for 0.5.0
+        $lang_string['return_to_comments'] = '返回回應';
+
 				$lang_string['error_add'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能儲存這篇回應。<br /><br />伺服器報告：<br />";
 				$lang_string['error_delete'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能刪除這篇回應。<br /><br />伺服器報告：<br />";
 				$lang_string['form_error'] = "名字以及回應欄不能留白。"; // <-- Need Translation
 				break;
+        $lang_string['error_ban'] = "<h2>Whoops!</h2>IP not added to banned ip listing.<br /><br />Server Reported:<br />";
+        $lang_string['success_add'] = "<h2>Comment Added!</h2>Your comment has been successfully saved."; // New for 0.4.8.1
+        $lang_string['success_delete'] = "<h2>Comment Deleted!</h2>The comment has been deleted."; // New for 0.4.8.1
+        $lang_string['success_ban1'] = "<h2>IP Banned!";
+        $lang_string['success_ban2'] = "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."; // New for 0.4.8.1
+        $lang_string['error_noip'] = "No IP Provided for Blacklist Request.";
+        $lang_string[ 'error_comments_disabled' ] = '<h2>Error!</h2>Hey! Comments are disabled on this blog. Are you a spambot?'; // New 0.5.0
+        $lang_string[ 'error_no_match' ] = "<h2>Error!</h2>Your IP address doesn\'t match posted IP address. Are you a spambot?"; // New 0.5.0
+        $lang_string[ 'error_fields_missing' ] = '<h2>Error!</h2>Missing the following fields: '; // New 0.5.0
+        $lang_string[ 'error_spambot' ] = '<h2>Error!</h2>Capcha data is missing. Are you a spambot?'; // New 0.5.0
+        $lang_string[ 'error_capcha' ] = '<h2>Error!</h2>The capcha you entered is incorrect.'; // New 0.5.0
+        $lang_string[ 'error_bad_data' ] = '<h2>Error!</h2>Post data is not valid. Are you a hacker?'; // New 0.5.0
+        $lang_string[ 'error_entry_missing' ] = '<h2>Error!</h2>You are trying to comment on an entry that doesn\'t exist'; // New 0.5.0
+        $lang_string[ 'error_empty_text' ] = '<h2>Error!</h2>You didn\'t enter any comments or your name.'; // New 0.5.0
+
 			case 'delete':
 				$lang_string['title'] = "刪除回應";
 				$lang_string['instructions'] = "這是你準備刪除的文章，請再次確認，因為刪除後就不能挽回了。";
@@ -292,6 +344,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;取消&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>因為發生了某些問題，所以不能刪除這篇文章。<br /><br />伺服器報告：<br />";
+        $lang_string['success'] = "<h2>刪除文章！</h2>文章已經刪除。"; // New for 0.4.8.1
 				break;
 			case 'delete_static':
 				$lang_string['title'] = "刪除靜態文章";
@@ -300,6 +353,7 @@
 				$lang_string['cancel_btn'] = "&nbsp;取消&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>無法刪除這篇文章。<br /><br />伺服器報告：<br />";
+        $lang_string['success'] = "<h2>刪除靜熊文章！</h2>靜態文章已經刪除。"; // New for 0.4.8.1
 				break;
 			case 'image_list':
 				$lang_string['title'] = "圖片列表";
@@ -335,14 +389,18 @@
 				$lang_string['password'] = "密碼";
 				$lang_string['submit_btn'] = "&nbsp;確定&nbsp;";
 				// Success
-				$lang_string['success'] = "<h2>成功！</h2>你已經登入了。祝你 Blogging 快樂！<p />"; // Happy Blogging
+				$lang_string['success'] = "<h2>成功！</h2>你已經登入了。愉快地 Blogging 吧！<p />"; // Happy Blogging
 				// Wrong Password
 				$lang_string['wrong_password'] = "<h2>喔喔！</h2>你不能登入。請確認你有使用正確的使用者名稱以及密碼，並且再試一次。<p />";
+        $lang_string['inactive_account'] = "<h2>喔喔！</h2>你不能登入。你的戶口因為某些原因被管理員停用了。<p />";  // new 0.7.0
 				$lang_string['form_error'] = "使用者名稱以及密碼欄不能留白。";
 				break;
 			case 'logout':
 				$lang_string['title'] = "登出";
 				$lang_string['instructions'] = "<h2>喔喔！</h2>登出失敗。無法刪除 Cookies，為何你還在登入狀態呢？<p />"; // Why are you still logged in?
+        $lang_string['error'] = "<h2>再見！</h2>你已經登出。(你根本沒有登入過)<p />"; // New 0.5.0
+        $lang_string['error_no_cookie'] = "<h2>再見！</h2>你已經登出。(找不到cookie。你根本沒有登入過)<p />"; // New 0.5.0
+        $lang_string['success'] = "<h2>再見！</h2>你已經登出。<p />(5 秒後將自動轉向首頁)<p />"; // New 0.5.0
 				break;
 			case 'forms':
 				$lang_string['title'] = "";
@@ -472,6 +530,7 @@
 				$lang_string['title'] = "設定";
 				$lang_string['instructions'] = "在這裡你能改變 Blog 的名稱，以及你自己的資料，";
 				$lang_string['blog_title'] = "Blog 站名：";
+        $lang_string['blog_header'] = "Header Graphic URL: images/blogheader.jpg (Leave blank for default theme graphic).";
 				$lang_string['blog_author'] = "作者：";
 				$lang_string['blog_email'] = "Email："; // <-- New 0.3.7
 				$lang_string['blog_avatar'] = "Avatar URL: (Leave blank for none)."; // <-- New 0.4.7
@@ -479,9 +538,29 @@
 				$lang_string['blog_choose_language'] = "請選擇語言：";
 				$lang_string['blog_enable_comments'] = "准許回應"; // <-- New 0.3.6
 				$lang_string['blog_comments_popup'] = "在新視窗開啟回應"; // <-- New 0.3.6
-				$lang_string['blog_enable_voting'] = "准許觀眾對文章評分"; // <-- New 0.3.8
+	$lang_string['blog_enable_start_category'] = "使用指定類別作為首頁："; // Now for 0.5.1
+        $lang_string['blog_search_top'] = "在文章中顯示搜尋(Search)，而非在sidebar"; // New for 0.5.0
+        $lang_string['blog_enable_static_block'] = "顯示指定的區塊作為首頁： "; // New for 0.5.0
+        $lang_string['static_block_border'] = '顯示邊框'; // New for 0.5.0
+        $lang_string['static_block_noborder'] = '沒有邊框'; // New for 0.5.0
+        			$lang_string['blog_enable_voting'] = "准許觀眾對文章評分"; // <-- New 0.3.8
 				$lang_string['blog_enable_cache'] = "開啟文章內容快取 (需要較強大的伺服器)"; // New for 0.4.6
+       $lang_string['blog_enable_calendar'] = "啟用 Calendar"; // New for 0.4.6
+        $lang_string['blog_enable_archives'] = "啟用 Archives Block"; // New for 0.4.8
+        $lang_string['blog_enable_counter'] = "啟用Counter 在 Sidebar"; // New for 0.4.8
+        $lang_string['blog_counter_hours'] = "在Counter再次計算點擊率前延遲的小時(根據特定ip address)："; // New for 0.4.8
+        $lang_string['blog_enable_login'] = "啟用 Login Link (請先 bookmark \"login.php\" first...)"; // New for 0.4.8
+        $lang_string['blog_enable_title'] = "啟用純文字標題區塊 (勿鍚選此項若標題已畫在header圖片內)"; // New for 0.4.6
+        $lang_string['blog_enable_permalink'] = "啟用文章中的 Permalink功能"; // New for 0.4.6
+        $lang_string['blog_enable_print'] = "啟用文章中的列印文章功能"; // New for 0.5.2
+        $lang_string['blog_enable_capcha'] = "啟用 Anti-Spam"; // New for 0.4.8
+        $lang_string['blog_footer_counter'] = "啟用 Counter 在首尾"; // New for 0.4.8
+        $lang_string['blog_enable_capcha_image'] = "Anti-Spam Images (GD library only) / Anti-Spam Text Field"; // New for 0.4.8
+        $lang_string['blog_enable_stats'] = "啟用Stats Option 在 Menu"; // New for 0.4.7
+        $lang_string['blog_enable_lastcomments'] = "啟用最近回應列表"; // New for 0.4.7
+        $lang_string['blog_enable_lastentries'] = "啟用最近文章列表"; // New for 0.4.7
 				$lang_string['blog_email_notification'] = "有新的回應時用 Email 通知你"; // <-- New 0.3.7
+  
 				$lang_string['blog_send_pings'] = "送出網誌的 &quot;pings&quot;"; // <-- New 0.3.7 //　不知道這是啥 -_-|||
 				$lang_string['blog_ping_urls'] = "輸入你的 &quot;ping&quot; 服務的完整網址。(像是 http://rpc.weblogs.com/RPC2)<br />(如果有多個網址，可用逗號分開。)"; // <-- New 0.3.7
 				$lang_string['blog_trackback_about'] = "<b>引用(Trackback)</b>是一種在各blog之間提供通知方法的功能. 發送Trackback可以讓另一個
@@ -503,6 +582,7 @@
 				$lang_string['submit_btn'] = "&nbsp;確定&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>無法儲存剛剛的資訊。當儲存資料的時候遇到了某些問題。<br /><br />伺服器報告：<br />";
+        $lang_string['success'] = "<h2>設定已儲存！</h2>資料已成功儲存。"; // New for 0.4.8.1
 				$lang_string['form_error'] = "Blog 站名以及作者欄不能留白。";
 				$lang_string['label_entry_order'] = "文章的排列法：";
 				$lang_string['select_new_to_old'] = "新的文章在前面";
@@ -519,6 +599,9 @@
 				$lang_string['title_general'] = "General"; // New in 0.4.7
 				$lang_string['title_language'] = "Language"; // New in 0.4.7
 				$lang_string['blog_comment_days_expiry'] = "Comments Allowed For How Many Days? (0 means no expiry)"; // New in 0.4.8
+        $lang_string['blog_comments_moderation'] = "Require comment entries to be approved by logged in user before public
+          (always visible to logged in user)"; // New in 0.5.0
+        $lang_string['comment_moderation'] = "Moderation Options"; // New in 0.5.0
 				$lang_string['blog_enable_calendar'] = "顯示日曆/舊文章區塊"; // New for 0.4.6
 				$lang_string['blog_enable_archives'] = "Enable Archives Block"; // New for 0.4.8
 				$lang_string['blog_enable_counter'] = "Enable Counter in Sidebar"; // New for 0.4.8
@@ -533,6 +616,18 @@
 				$lang_string['blog_enable_lastcomments'] = "Enable Most Recent Comments Listing"; // New for 0.4.7
 				$lang_string['blog_enable_lastentries'] = "Enable Most Recent Entries Listing"; // New for 0.4.7
 				break;
+      case 'moderation':   // New 0.4.8
+        $lang_string['title'] = "Moderation Preferences";
+        $lang_string['instructions'] = "You can modify the auto moderation lists here.";
+        $lang_string['submit_btn'] = "&nbsp;Save Moderation Settings&nbsp;";
+        // Error Response
+        $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
+        $lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
+        $lang_string['banned_address_list_title'] = "<h2>Banned IP Addresses</h2>";
+        $lang_string['banned_address_list'] = "Below is a list of numerical ip addresses that have been banned from entering comments. Each ip is on a separate line and must be numbers (not DNS names). When logged in, IP's can be banned directly from the comments view.";
+        $lang_string['banned_word_list_title'] = "<h2>Banned Words</h2>";
+        $lang_string['banned_word_list'] = "Below is a list of words that are not allowed to be in the url or the text. Each word or group of words is on a separate line. The comments will attempt to match each line exactly in order to enact the ban.";
+        break;
 				case 'trackbacks':  // <-- New 0.3.8
 				// Trackbacks
 				$lang_string['title'] = "引用(Trackbacks)";
@@ -585,6 +680,7 @@
 				$lang_string['submit_btn'] = "&nbsp;確定&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>無法儲存剛剛的資訊。當儲存資料的時候遇到了某些問題。<br /><br />伺服器報告：<br />";
+        $lang_string['success'] = "<h2>設定已儲存！</h2>資料已成功儲存。"; // New for 0.4.8.1
 				break;
 			case 'themes':
 				$lang_string['title'] = "佈景主題";
@@ -595,6 +691,7 @@
 				$lang_string['submit_btn'] = "&nbsp;確定&nbsp;";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>無法儲存剛剛的資訊。當儲存資料的時候遇到了某些問題。<br /><br />伺服器報告：<br />";
+       $lang_string['success'] = "<h2>主題已儲存！</h2>資料已成功儲存。"; // New for 0.4.8.1
 				break;
 			case 'upload_img':
 				$lang_string['title'] = "上傳圖片：";
@@ -603,6 +700,7 @@
 				$lang_string['upload_btn'] = "上傳";
 				// Error Response
 				$lang_string['error'] = "<h2>喔喔！</h2>無法上傳圖片。以下是一些資訊：<br /><br />伺服器報告：<br />";
+       $lang_string['success'] = "<h2>圖檔已上傳！</h2>圖檔已成功儲存。"; // New for 0.4.8.1
 				break;
 			case 'search': // <-- New 0.3.7
 				$lang_string['title'] = "搜尋結果：";
@@ -675,6 +773,40 @@
 				$lang_string["save_error"] = 'Error! Emoticon preferences not saved.';
 				$lang_string["save_button"] = 'Save Emoticons';
 				break;
+      case 'archives': // New for 0.4.8
+        $lang_string['title'] = "Archives";
+        $lang_string['showall'] = "顯示全部";
+        break;
+
+      case '管理使用者': // Add for 0.7.0
+        $lang_string['title'] = "Manage Editing Users";
+        $lang_string['instructions'] = "Add, Modify, or Delete users that are not administrators but have the ability to create blog entries and/or moderate the comments.";
+        $lang_string['fulladminerror'] = "You must be a full administrator to do this!";
+        $lang_string['header_user'] = "User: ";
+        $lang_string['header_property'] = "Property";
+        $lang_string['header_value'] = "Value";
+        $lang_string['prop_username'] = "Username:";
+        $lang_string['prop_fullname'] = "Display Name:";
+        $lang_string['prop_password'] = "Password:";
+        $lang_string['prop_email'] = "Email:";
+        $lang_string['prop_avatar'] = "Avatar URL:";
+        $lang_string['prop_state'] = "Active?";
+        $lang_string['prop_sec_Moderate'] = "Moderate Comments?";
+        $lang_string['prop_sec_Delete'] = "Delete Blog Entries?";
+        $lang_string['prop_sec_Edit'] = "Edit Any Entry?";
+        $lang_string['btn_SaveChanges'] = "Save Changes";
+        $lang_string['btn_CreateUser'] = "Create User";
+        $lang_string['btn_Cancel'] = "Cancel";  
+        $lang_string['grid_header'] = "User Listing";
+        $lang_string['grid_login'] = 'Login';
+        $lang_string['grid_email'] = 'Email';
+        $lang_string['grid_avatar'] = 'Avatar';
+        $lang_string['grid_state'] = 'Active?';
+        $lang_string['btn_modify'] = 'Modify';
+        $lang_string['btn_delete'] = 'Delete';
+        $lang_string['create_user'] = 'Create New User';
+        break;
+
 			default:
 				break;
 		}
