@@ -9,7 +9,7 @@
 	// Search Functions
 	// ----------------
 	
-	function search ( $search_str, $max_results=10 ) {
+	function search ( $search_str, $max_results=0 ) {
 		// Search in contents feature a list of keywords separated by spaces
 		// (c) 2004 Javier Gutiérrez Chamorro (Guti), guti <at> ya <dot> com
 		//
@@ -37,7 +37,7 @@
 			}
 			
 			if ( $max_results <= 0 ) {
-				$max_results=10;
+				$max_results=30;
 			}
 			
 			$results=0;
