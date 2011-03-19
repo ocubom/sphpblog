@@ -506,6 +506,9 @@
     if ($current_page > 0) {
       list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[0] );
       $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+          if ( $category != NULL ) {
+            $blog_content  .= '&amp;category=' . $category;
+          }
       $blog_content  .= '">&#60;&#60;' . $lang_string['nav_first'] . ' </a></span>';
     }
 
@@ -569,6 +572,10 @@
     if ( $next_entry != NULL ) {
       list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $pages_array[count($pages_array)-1] );
       $blog_content  .= '<span><a href="index.php?m=' . $month_dir . '&amp;y=' . $year_dir . '&amp;d=' . $d . '&amp;entry=' . sb_strip_extension( $entry_filename );
+          if ( $category != NULL ) {
+            $blog_content  .= '&amp;category=' . $category;
+          }
+
       $blog_content  .= '"> ' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
     }
     $blog_content  .= '</p><br />';
