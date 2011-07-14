@@ -160,6 +160,32 @@
         }
       }
 
+      // new bit to get list of entries in current category (NEW CAT NUMBERS)
+      $cat_file_array = array();
+      if(isset($category)){
+          $cat_cat_sub_arr = get_sub_categories($category);
+          array_push( $cat_cat_sub_arr, $category );
+          for ( $i = 0; $i < count( $entry_file_array ); $i++ ) {
+              list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
+              $cat_blog_entry_data = blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
+              if ( array_key_exists( 'CATEGORIES', $cat_blog_entry_data ) ) {
+                  $cat_cat_array = explode( ',', $cat_blog_entry_data[ 'CATEGORIES' ] );
+                  if ( in_arrayr( $cat_cat_array, $cat_sub_arr ) ) {
+                      array_push( $cat_file_array, $entry_file_array[ $i ] );
+                  }
+              }
+          }
+      }
+      //determines which entry is currently being viewd in a category (NEW CAT NUMBERS)
+      $cat_entry_index = 0;
+      for ( $i = 0; $i < count( $cat_file_array ); $i++ ) {
+          if ( $look_for == substr( $cat_file_array[ $i ], 0, strlen( $look_for ) ) ) {
+              // MATCH!
+              $cat_entry_index = $i;
+              break;
+          }
+      }
+
       // Store info for next and previous links...
       if ( count( $file_array ) > $blog_max_entries ) {
         $next_entry = array_pop( $file_array );
@@ -493,10 +519,19 @@
     // Figure out page count - need this first for the First and Last links
     $pages_array = array();
     $current_page = 0;
-    for ( $p = 0; $p < count( $entry_file_array ); $p += $blog_config->getTag('BLOG_MAX_ENTRIES') ) {
+    if ($category==NULL) {
+     for ( $p = 0; $p < count( $entry_file_array ); $p += $blog_config->getTag('BLOG_MAX_ENTRIES') ) {
       array_push( $pages_array, $entry_file_array[ $p ] );
       if ($entry_index >= $p && $entry_index < $p + $blog_config->getTag('BLOG_MAX_ENTRIES')) {
         $current_page = count($pages_array)-1;
+      }
+     }
+    } else {
+      for ( $q = 0; $q < count( $cat_file_array ); $q += $blog_config->getTag( 'BLOG_MAX_ENTRIES' )) {
+        array_push( $pages_array, $cat_file_array[ $q ] );
+        if ($cat_entry_index >= $q && $cat_entry_index < $q + $blog_config->getTag( 'BLOG_MAX_ENTRIES')) {
+          $current_page = count($pages_array)-1;
+        }
       }
     }
 
