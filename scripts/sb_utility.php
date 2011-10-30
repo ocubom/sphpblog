@@ -37,6 +37,22 @@
 		return NULL;
 	}
 
+function return_bytes($val) {
+    $val = trim($val);
+    $last = strtolower($val[strlen($val)-1]);
+    switch($last) {
+        // The 'G' modifier is available since PHP 5.1.0
+        case 'g':
+            $val *= 1024;
+        case 'm':
+            $val *= 1024;
+        case 'k':
+            $val *= 1024;
+    }
+
+    return $val;
+}
+
         function phpini_check() {
                 // TODO translations
                 // TODO more PHP checks here
@@ -60,7 +76,7 @@
                         echo "<p>WARNING: Zlib module not present.  This is needed for compressing database files and web pages in transit.</p>";
                 if (!function_exists('getimagesize'))
                         echo "<p>WARNING: GD library module not present.  This is needed for CAPCHA/anti-spam image support.</p>";
-                echo "<p>NOTE: Maximum size for image uploads is " . min(intval(ini_get('upload_max_filesize')), intval(ini_get('post_max_size')))/(1024*1024) . " MB.  Adjust upload_max_filesize and post_max_size in php.ini to larger values if you need to upload bigger files.</p>";
+                echo "<p>NOTE: Maximum size for image uploads is " . min(intval(return_bytes(ini_get('upload_max_filesize'))), intval(return_bytes(ini_get('post_max_size'))))/(1024*1024) . " MB.  Adjust upload_max_filesize and post_max_size in php.ini to larger values if you need to upload bigger files.</p>";
         }
 
 	function write_users($user_list) {
