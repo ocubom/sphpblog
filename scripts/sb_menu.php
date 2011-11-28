@@ -712,11 +712,7 @@ function get_blocks() {
           }
           
           global $blog_config, $theme_vars;
-          if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
-            $str_comments  .= '<a href="javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$comment_name.'</a><br />';
-          } else {
-            $str_comments  .= '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
-          }
+          $str_comments  .= '<a href="comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'">'.$comment_name.'</a><br />';
           
           // $str_comments = $str_comments . format_date_menu( $comment_date ) . '<br />';
           $str_comments  .= format_date( $comment_date ) . '<br />';
@@ -835,11 +831,7 @@ function get_blocks() {
           }
           
           global $blog_config, $theme_vars;
-          if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
-            $str_trackbacks  .= '<a href="javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)">'.$trackback_title.'</a><br />';
-          } else {
-            $str_trackbacks  .= '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
-          }
+          $str_trackbacks  .= '<a href="trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$blog_entry_id.'&amp;__mode=html">'.$trackback_title.'</a><br />';
           
           // $str_trackbacks = $str_trackbacks . format_date_menu( $trackback_date ) . '<br />';
           $str_trackbacks  .= format_date( $trackback_date ) . '<br />';

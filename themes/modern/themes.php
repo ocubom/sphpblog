@@ -246,14 +246,6 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 }
 }
 */
-
-    if ( $blog_config->getTag('BLOG_ENABLE_PRINT') ){ // New for 0.5.2
-      if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
-        // Show 'print article' string...
-        $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
-      }
-    }
-
     if ( isset( $entry_array['relatedlink']['url'] ) ) {
       // Show 'relatedlink' symbol - New to 0.4.6
       $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . $entry_array['relatedlink']['url'] . '">' . $entry_array['relatedlink']['name'] . '</a>' . "\n";
@@ -579,45 +571,6 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 	<?php
 	// End Page Layout HTML
     
-  }
-
-  // Function:
-  // theme_popuplayout( )
-  //
-  // Popup Layout Container/Wrapper
-  // -----------------------------
-  // This function controls all HTML output to the browser.
-  //
-  // Same as above, but for the pop-up comment window and
-  // the image list pop-up.
-  //
-  function theme_popuplayout () {
-    global $user_colors, $blog_theme, $blog_config, $theme_vars;
-
-    // New 0.3.8
-    //
-    // You can change the width of the CONTENT area by editing
-    // this variable in the "theme_init()" function at the top of
-    // this file.
-    $popup_width = $theme_vars[ 'popup_window' ][ 'content_width' ];
-
-    // Begin Page Layout HTML
-    ?>
-    <body>
-      <div id="popup">
-        <?php if ( $blog_config->getTag('BLOG_ENABLE_TITLE') ) { echo('<div id="title">' . $blog_config->getTag('BLOG_TITLE') . '</div>'); } ?>
-        <div id="innerpage">
-          <div id="content">
-            <?php page_content(); ?>
-          </div>
-        </div>
-        <div id="footer">
-          <?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?>
-        </div>
-      </div>
-    </body>
-    <?php
-    // End Page Layout HTML
   }
 
   function theme_menu_block ($blockArray, $comment='MENU BLOCK', $toggleDiv=null) {

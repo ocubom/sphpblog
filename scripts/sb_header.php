@@ -80,9 +80,7 @@
 <?php
 
 if (function_exists('page_content')) {
-	if (array_key_exists('print', $_GET) && $_GET['print']==true && function_exists('theme_popuplayout')) {
-        	theme_popuplayout();
-	} elseif (function_exists('theme_pagelayout')) {
+	if (function_exists('theme_pagelayout')) {
         	theme_pagelayout();
 	} else {
 		page_content();

@@ -426,11 +426,7 @@
         }
 
         // Has to be populated regardless - used by the more tag
-        if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
-          $entry_array[ 'comment' ][ 'url' ] = 'javascript:openpopup(\'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
-        } else {
-          $entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
-        }
+        $entry_array[ 'comment' ][ 'url' ] = 'comments.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
 
         // Comments / Read - will show regardless of comments being enabled
         if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
@@ -478,11 +474,7 @@
 
         // Trackback
         if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == true ) {
-          if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
-            $entry_array[ 'trackback' ][ 'url' ] = 'javascript:openpopup(\'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;__mode=html\','.$theme_vars[ 'popup_window' ][ 'width' ].','.$theme_vars[ 'popup_window' ][ 'height' ].',true)';
-          } else {
-            $entry_array[ 'trackback' ][ 'url' ] = 'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;__mode=html';
-          }
+          $entry_array[ 'trackback' ][ 'url' ] = 'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;__mode=html';
 
           $entry_array[ 'trackback' ][ 'ping_url' ] = $base_permalink_url . 'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
 

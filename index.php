@@ -161,11 +161,7 @@
 	
 	// Theme Layout
 	ob_start();
-	if (array_key_exists('print', $_GET) && $_GET['print']==true) {
-		theme_popuplayout();
-	} else {
-		theme_pagelayout();
-	}
+	theme_pagelayout();
 	$page_template->setTag('{BODY}', ob_get_clean());
 		
 	// Final Output

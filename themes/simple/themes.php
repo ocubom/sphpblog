@@ -206,15 +206,6 @@
       }
     }
 
-    // PRINT ARTICLE
-    $printlink = "";
-    if ( $blog_config->getTag('BLOG_ENABLE_PRINT') ){ // New for 0.5.2
-      if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
-        // Show 'print article'
-        $printlink = '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true">' . $GLOBALS['lang_string']['print_article'] . '</a>';
-      }
-    }
-
     // RELATED LINK
     $relatedlink = "";
     if ( isset( $entry_array['relatedlink']['url'] ) ) {
@@ -302,8 +293,8 @@
     array_push( $replace, $trackbacks );
     array_push( $search, '%permalink%' );
     array_push( $replace, $permalink );
-    array_push( $search, '%printlink%' );
-    array_push( $replace, $printlink );
+//    array_push( $search, '%printlink%' );
+//    array_push( $replace, $printlink );
     array_push( $search, '%relatedlink%' );
     array_push( $replace, $relatedlink );
     array_push( $search, '%ipaddress%' );
@@ -622,59 +613,6 @@
 
     // DO SEARCH AND REPLACE
     echo( str_replace( $search, $replace, $template ) );
-  }
-
-  // -----------------
-  // Popup Window Layout
-  // -----------------
-  //
-  // Function:
-  // theme_popuplayout( )
-  //
-  // Popup Layout Container/Wrapper
-  // -----------------------------
-  // This function controls all HTML output to the browser.
-  //
-  // Same as above, but for the pop-up comment window and
-  // the image list pop-up.
-  //
-  function theme_popuplayout () {
-    global $user_colors, $blog_config, $blog_theme, $theme_vars;
-
-    // ------------------
-    // HTML POPUP TEMPLATE
-    // ------------------
-    $template = theme_load_template( "themes/" . $blog_theme . "/templates/popup_layout.html" );
-
-    // SEARCH AND REPLACE TERMS
-    $search = array();
-    $replace = array();
-
-    array_push( $search, '%popup_width%' );
-    array_push( $replace, $theme_vars[ 'popup_window' ][ 'content_width' ] );
-
-    $arr = array_keys( $user_colors );
-    for ( $i = 0; $i < count( $arr ); $i++ ) {
-      array_push( $search, '%" . $arr[$i] . "%' );
-      array_push( $replace, $user_colors[ $arr[$i] ] );
-    }
-
-    array_push( $search, '%blog_title%' );
-    array_push( $replace, $blog_config->getTag('BLOG_TITLE') );
-    array_push( $search, '%footer%' );
-    array_push( $replace, $blog_config->getTag('BLOG_FOOTER') . " - " . page_generated_in() );
-
-    // MAIN CONTENT
-    array_push( $search, '%content%' );
-
-    ob_start();
-    page_content();
-    $main_content = ob_get_clean();
-
-    array_push( $replace,  $main_content);
-
-    // DO SEARCH AND REPLACE
-    echo( str_replace($search, $replace, $template ) );
   }
 
   // ----------

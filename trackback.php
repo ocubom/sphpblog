@@ -122,11 +122,7 @@
   }
 
   global $blog_config;
-  if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
-    theme_popuplayout();
-  } else {
-    theme_pagelayout();
-  }
+  theme_pagelayout();
 ?>
 </html>
 

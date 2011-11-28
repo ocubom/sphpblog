@@ -152,7 +152,8 @@
 			<div id="toggleSetupEntries" class="toggleBody"><p />
 				<input type="checkbox" id="blog_enable_voting" name="blog_enable_voting"<?php if ( $blog_config->getTag('BLOG_ENABLE_VOTING') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_voting'] ); ?><br />
 				<input type="checkbox" id="blog_enable_permalink" name="blog_enable_permalink"<?php if ( $blog_config->getTag('BLOG_ENABLE_PERMALINK') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_permalink'] ); ?><br />
-				<input type="checkbox" id="blog_enable_print" name="blog_enable_print"<?php if ( $blog_config->getTag('BLOG_ENABLE_PRINT') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_print'] ); ?><br />
+				<!--<input type="checkbox" id="blog_enable_print" name="blog_enable_print"<?php if ( $blog_config->getTag('BLOG_ENABLE_PRINT') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_print'] ); ?><br />-->
+				<input type="checkbox" id="blog_enable_print" name="blog_enable_print" disabled="disabled"> <?php echo( $GLOBALS['lang_string']['blog_enable_print'] ); ?> (DEPRECATED)<br />
 				<input type="checkbox" id="blog_enable_capcha" name="blog_enable_capcha"<?php if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_capcha'] ); ?><br />
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="blog_enable_capcha_image" name="blog_enable_capcha_image"<?php if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') == 1 ) { echo ( ' checked' ); } if ( function_exists( 'imagecreate' )==false ) { echo(' disabled'); }?>> <?php echo( $GLOBALS['lang_string']['blog_enable_capcha_image'] ); ?><br />
 				<input type="checkbox" id="blog_enable_cache" name="blog_enable_cache"<?php if ( $blog_config->getTag('BLOG_ENABLE_CACHE') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_cache'] ); ?><br />
@@ -272,8 +273,10 @@
 			if (!ini_get('allow_url_fopen')) { ?>
 				WARNING: These settings will not take effect until <a href='http://www.php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen'>allow_url_fopen</a> has been enabled in php.ini.<p />
 			<?php } ?>
-				<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_enabled'] ); ?><br />
-				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_auto_discovery'] ); ?><p />
+				<!--<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_enabled'] ); ?><br />
+				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_auto_discovery'] ); ?><p />-->
+				<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled" disabled="disabled" <?php if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_enabled'] ); ?> (DEPRECATED)<br />
+				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery" disabled="disabled" <?php if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_trackback_auto_discovery'] ); ?> (DEPRECATED)<p />
 			</div>
 
 			<p />
@@ -287,6 +290,7 @@
 				<input type="checkbox" id="blog_enable_comments" name="blog_enable_comments"<?php if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_comments'] ); ?><br />
 				<input type="checkbox" id="blog_email_notification" name="blog_email_notification"<?php if ( $blog_config->getTag('BLOG_EMAIL_NOTIFICATION') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_email_notification'] ); ?><br />
 				<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup"<?php if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_comments_popup'] ); ?><p />
+				<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup" disabled="disabled"> <?php echo( $GLOBALS['lang_string']['blog_comments_popup'] ); ?> (DEPRECATED)<p />
 
 				<label for="blog_comment_days_expiry"><?php echo( $GLOBALS['lang_string']['blog_comment_days_expiry'] ); ?></label>
 				<input type="text" name="blog_comment_days_expiry" value="<?php echo( $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') ); ?>" autocomplete="OFF" size="3"><p />
@@ -333,7 +337,8 @@
 			</a><p />
 			<div id="toggleSetupCompression" class="toggleBody"><p />
 				<?php echo( $GLOBALS['lang_string']['blog_gzip_about'] ); ?><p />
-				<input type="checkbox" id="blog_enable_gzip_txt" name="blog_enable_gzip_txt"<?php if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_gzip_txt'] ); ?><br />
+				<!--<input type="checkbox" id="blog_enable_gzip_txt" name="blog_enable_gzip_txt"<?php if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_gzip_txt'] ); ?><br />-->
+				<input type="checkbox" id="blog_enable_gzip_txt" name="blog_enable_gzip_txt" disabled="disabled" <?php if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_gzip_txt'] ); ?> (DEPRECATED)<br />
 				<input type="checkbox" id="blog_enable_gzip_output" name="blog_enable_gzip_output"<?php if ( $blog_config->getTag('BLOG_ENABLE_GZIP_OUTPUT') == 1 ) { echo ( ' checked' ); } if ( extension_loaded( 'zlib' ) == false ) { echo ( ' disabled' ); } ?>> <?php echo( $GLOBALS['lang_string']['blog_enable_gzip_output'] ); ?><p />
 			</div>
 

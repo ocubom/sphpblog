@@ -146,16 +146,6 @@
       }
     }
 
-    if ( $blog_config->getTag('BLOG_ENABLE_PRINT')){ // New for 0.5.2
-      if ( isset( $entry_array[ 'permalink' ][ 'url' ] ) ) {
-        // Show 'print article' string...
-        if ( $comment_area != "" ) {
-          $comment_area  .= '&nbsp;|&nbsp;';
-        }
-        $comment_area  .= '<a href="' . $entry_array[ 'permalink' ][ 'url' ] . '&amp;print=true">' . $GLOBALS['lang_string']['print_article'] . '</a>' . "\n";
-      }
-    }
-
     if ( isset( $entry_array['relatedlink']['url'] ) ) {
       // Show 'relatedlink' symbol - New to 0.4.6
       if ( $comment_area != "" ) {
@@ -454,57 +444,6 @@
     </body>
     <?php
     // End Page Layout HTML
-  }
-
-  // Function:
-  // theme_popuplayout( )
-  //
-  // Popup Layout Container/Wrapper
-  // -----------------------------
-  // This function controls all HTML output to the browser.
-  //
-  // Same as above, but for the pop-up comment window and
-  // the image list pop-up.
-  //
-  function theme_popuplayout () {
-    global $user_colors, $blog_config, $theme_vars;
-
-    // New 0.3.8
-    //
-    // You can change the width of the CONTENT area by editing
-    // this variable in the "theme_init()" function at the top of
-    // this file.
-    $popup_width = $theme_vars[ 'popup_window' ][ 'content_width' ];
-
-    // Begin Popup Layout HTML
-    ?>
-    <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" onload="pageInit();">
-      <br />
-      <table border="0" width="<?php echo( $popup_width ); ?>" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid #<?php echo(get_user_color('border_color')); ?>;">
-        <tr align="left" valign="top">
-          <td bgcolor="#<?php echo(get_user_color('header_bg_color')); ?>">
-            <div id="header">
-              <?php echo($blog_config->getTag('BLOG_TITLE')); ?><br />
-            </div>
-          </td>
-        </tr>
-        <tr align="left" valign="top">
-          <td bgcolor="#<?php echo(get_user_color('main_bg_color')); ?>">
-            <div id="maincontent">
-              <?php page_content(); ?>
-            </div>
-          </td>
-        </tr>
-        <tr align="left" valign="top">
-          <td bgcolor="#<?php echo(get_user_color('footer_bg_color')); ?>">
-            <div id="footer"><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></div>
-          </td>
-        </tr>
-      </table>
-      <br />
-    </body>
-    <?php
-    // End Popup Layout HTML
   }
 
   function theme_menu () {
