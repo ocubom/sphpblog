@@ -472,20 +472,6 @@
 
         $entry_array[ 'entry' ] = replace_more_tag ( $entry_array[ 'entry' ] , false, $entry_array[ 'comment' ][ 'url' ] );
 
-        // Trackback
-        if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == true ) {
-          $entry_array[ 'trackback' ][ 'url' ] = 'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;__mode=html';
-
-          $entry_array[ 'trackback' ][ 'ping_url' ] = $base_permalink_url . 'trackback.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
-
-          // [ n trackbacks ] (In Russian the number should come last.)
-          if ( $lang_string[ 'sb_comment_btn_number_first' ] == true ) {
-            $entry_array[ 'trackback' ][ 'name' ] = $trackback_count . ' ' . $lang_string[ 'sb_trackback' ];
-          } else {
-            $entry_array[ 'trackback' ][ 'name' ] = $lang_string[ 'sb_trackback' ] . ' ' . $trackback_count;
-          }
-        }
-
         // New 0.4.8
         if ( array_key_exists( 'IP-ADDRESS', $blog_entry_data ) ) {
           $entry_array[ 'ip-address' ] = $blog_entry_data[ 'IP-ADDRESS' ];

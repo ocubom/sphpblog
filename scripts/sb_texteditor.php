@@ -281,21 +281,6 @@
           echo( HTML_input( $lang_string[ 'label_relatedlink' ], 'blog_relatedlink', $default_relatedlink, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
         }
           
-        // Trackback Input
-        if ( $mode == 'entry' ) {
-          if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
-            $value = $default_tb_ping;
-            if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') ) {
-              if ( $default_tb_ping ) {
-                $value = $default_tb_ping;
-              } else {
-                $value = $lang_string[ 'label_tb_autodiscovery' ];
-              }
-            }
-            echo( HTML_input( $lang_string[ 'label_tb_ping' ], 'tb_ping', $value, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
-          }
-        }
-          
         // Category Selection Box
         if ( $mode == 'entry' ) {
           category_selection_box( $default_categories );

@@ -49,7 +49,6 @@
 	require_once('sb_image.php');
 	require_once('sb_display.php');
 	require_once('sb_color.php'); // These functions don't get used
-	require_once('sb_trackback.php');
 	require_once('sb_feed.php');
 	require_once('sb_categories.php');
 	require_once('sb_forms.php');

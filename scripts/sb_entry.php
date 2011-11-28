@@ -156,10 +156,6 @@
 				}
 			}
 			
-			// Trackback pings?
-			if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
-				trackback_ping( $tb_ping, $blog_subject, $permalink, $blog_text );
-			}
 			return ( true );
 		} else {
 			// Error:

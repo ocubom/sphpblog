@@ -124,17 +124,7 @@
 			unset( $comment_file_array );
 			
 			// Count trackbacks
-			if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == true ) {
-				$trackback_file_array = sb_folder_listing( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/', array( '.txt', '.gz' ) );
-				for ( $k = 0; $k < count( $trackback_file_array ); $k++ ) {
-					$total_number_trackbacks++;
-					$total_bytes_trackbacks+=filesize( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . sb_strip_extension( $entry_filename ) . '/trackbacks/' . $trackback_file_array[ $k ] );
-				}
-				$entries[ $i ][ 'trackbacks' ]=$k;
-			}
-			else {
-				$entries[ $i ][ 'trackbacks' ]=0;
-			}
+			$entries[ $i ][ 'trackbacks' ]=0;
 			unset( $trackback_file_array );
 		}
 		unset( $entry_file_array );
@@ -192,18 +182,6 @@
 				usort( $entries, 'sort_comments' );
 				for ( $i=0; $i<min(10, $total_number_comments); $i++) {
 					$entry_array[ 'entry' ]	 .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'comments' ], 0 ) . ').<br />';
-				}
-				echo( theme_staticentry( $entry_array ) );
-			}
-		}
-
-		if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') ) {
-			if ( is_array( $entries ) ) {
-				$entry_array = array();
-				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_trackbacked_entries'];
-				usort( $entries, 'sort_trackbacks' );
-				for ( $i=0; $i<min(10, $total_number_trackbacks); $i++) {
-					$entry_array[ 'entry' ]	 .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'trackbacks' ], 0 ) . ').<br />';
 				}
 				echo( theme_staticentry( $entry_array ) );
 			}
