@@ -612,11 +612,10 @@
         $lang_string['rss_max_entries'] = "Maximum Entries to Display in Feeds:";
         $lang_string['blog_comment_tags'] = "Tags to Allow in Comments:";
         $lang_string['blog_gzip_about'] = "
-          Since PHP 4.0.4, PHP has had the ability to read and write gzip (.gz) compressed files,
-          thus saving disk-space. It can also transparently compress pages that are sent to browsers
+          PHP has the ability to transparently compress pages that are sent to browsers
           which support gzip compression, thus saving bandwidth.<br />
           <br />
-          Zlib support in PHP is not enabled by default. If the checkboxes are disabled, then your
+          Zlib support in PHP is not enabled by default. If the checkbox is disabled, then your
           installation of PHP does not support the Zlib extension.";
         $lang_string['blog_enable_gzip_txt'] = "Enable GZIP Compression for Database Files";
         $lang_string['blog_enable_gzip_output'] = "Enable GZIP Compression for HTTP Output";
