@@ -245,7 +245,7 @@ function sb_curPageURL() {
 
 															// Store Filename
 															$ext = strtolower( strrchr( $entry_filename, '.' ) );
-															if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
+															/*if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
 																if ( $ext == '.txt' ) {
 																	$str = sb_read_file( $dir.$year_dir.'/'.$month_dir.'/'.$entry_filename );
 																	if ( $str ) {
@@ -256,7 +256,7 @@ function sb_curPageURL() {
 																		}
 																	}
 																}
-															} else {
+															} else {*/
 																if ( $ext == '.gz' ) {
 																	$str = sb_read_file( $dir.$year_dir.'/'.$month_dir.'/'.$entry_filename );
 																	if ( $str ) {
@@ -267,7 +267,7 @@ function sb_curPageURL() {
 																		}
 																	}
 																}
-															}
+															//}
 														} else {
 
 															// COMMENTS
@@ -282,7 +282,7 @@ function sb_curPageURL() {
 
 																				// Store Filename
 																				$ext = strtolower( strrchr( $comment_filename, '.' ) );
-																				if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
+																				/*if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
 																					if ( $ext == '.txt' ) {
 																						$str = sb_read_file( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/'.$comment_filename );
 																						if ( $str ) {
@@ -293,7 +293,7 @@ function sb_curPageURL() {
 																							}
 																						}
 																					}
-																				} else {
+																				} else {*/
 																					if ( $ext == '.gz' ) {
 																						$str = sb_read_file( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/'.$comment_filename );
 																						if ( $str ) {
@@ -304,7 +304,7 @@ function sb_curPageURL() {
 																							}
 																						}
 																					}
-																				}
+																				//}
 																			}
 																		}
 
@@ -326,7 +326,7 @@ function sb_curPageURL() {
 
 																				// Store Filename
 																				$ext = strtolower( strrchr( $trackback_filename, '.' ) );
-																				if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
+																				/*if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
 																					if ( $ext == '.txt' ) {
 																						$str = sb_read_file( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/'.$trackback_filename );
 																						if ( $str ) {
@@ -337,7 +337,7 @@ function sb_curPageURL() {
 																							}
 																						}
 																					}
-																				} else {
+																				} else {*/
 																					if ( $ext == '.gz' ) {
 																						$str = sb_read_file( $dir.$year_dir.'/'.$month_dir.'/'.$trackbacks_dir.'/'.$trackback_filename );
 																						if ( $str ) {
@@ -348,7 +348,7 @@ function sb_curPageURL() {
 																							}
 																						}
 																					}
-																				}
+																				//}
 																			}
 																		}
 
@@ -380,7 +380,7 @@ function sb_curPageURL() {
 
 											// Store Filename
 											$ext = strtolower( strrchr( $entry_filename, '.' ) );
-											if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
+											/*if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
 												if ( $ext == '.txt' ) {
 													$str = sb_read_file( $dir.$year_dir.'/'.$entry_filename );
 													if ( $str ) {
@@ -391,7 +391,7 @@ function sb_curPageURL() {
 														}
 													}
 												}
-											} else {
+											} else { */
 												if ( $ext == '.gz' ) {
 													$str = sb_read_file( $dir.$year_dir.'/'.$entry_filename );
 													if ( $str ) {
@@ -402,7 +402,7 @@ function sb_curPageURL() {
 														}
 													}
 												}
-											}
+											//}
 
 										}
 									}

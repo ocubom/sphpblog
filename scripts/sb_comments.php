@@ -447,11 +447,7 @@
     }
 
     $stamp = date('ymd-His');
-    if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
-      $entryFile = $dir.'comment'.$stamp.'.txt.gz';
-    } else {
-      $entryFile = $dir.'comment'.$stamp.'.txt';
-    }
+    $entryFile = $dir.'comment'.$stamp.'.txt';
 
     // Save the file
     $save_data = array();

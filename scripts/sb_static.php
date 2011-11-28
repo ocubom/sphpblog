@@ -111,11 +111,7 @@
       sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt.gz' );
       sb_delete_file( CONTENT_DIR.'static/' . $updateFile . '.txt' );
 
-      if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
-        $entryFile = $file_name . '.txt.gz';
-      } else {
-        $entryFile = $file_name . '.txt';
-      }
+      $entryFile = $file_name . '.txt';
       
       // (We're just going to assume that the files and dirs exist...)
     } else {
@@ -145,11 +141,7 @@
       }
 
       $stamp = date('ymd-His');
-      if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
-        $entryFile = $file_name.'.txt.gz';
-      } else {
-        $entryFile = $file_name.'.txt';
-      }
+      $entryFile = $file_name.'.txt';
 
     }
 

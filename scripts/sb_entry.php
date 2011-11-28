@@ -107,9 +107,6 @@
 			sb_delete_file( $updateFile . '.txt.gz' );
 			
 			$entryFile = $updateFile . '.txt';
-			if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
-				$entryFile .= '.gz';
-			}
 		} else {
 			// Create an entry
 			//
@@ -132,9 +129,6 @@
 			
 			$stamp = date('ymd-His', $blog_date);
 			$entryFile = $dir.$y.'/'.$m.'/'.'entry'.$stamp.'.txt';
-			if ( $blog_config->getTag('BLOG_ENABLE_GZIP_TXT') ) {
-				$entryFile .= '.gz';
-			}
 			
 			//$permalink = 'index.php?y='.$y.'&amp;m='.$m.'&amp;entry=entry'.$stamp;
 			$permalink = 'index.php?entry=' . str_replace(' ', '-', $save_data[ 'SUBJECT' ]);
