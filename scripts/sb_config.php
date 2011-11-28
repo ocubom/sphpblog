@@ -128,7 +128,7 @@
 		if ( isset( $user_file ) ) {
 			if (!file_exists(CONFIG_DIR.'schemes')) {
 				$oldumask = umask(0);
-				$ok = mkdir(CONFIG_DIR.'schemes', 0777 );
+				$ok = mkdir(CONFIG_DIR.'schemes', BLOG_MASK );
 				umask($oldumask);
 			}
 			$custom_file = CONFIG_DIR.'schemes/' . $user_file . '.txt';

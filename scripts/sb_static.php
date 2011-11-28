@@ -127,13 +127,13 @@
 
       if (!file_exists(CONTENT_DIR)) {
         $oldumask = umask(0);
-        $ok = mkdir(CONTENT_DIR, 0777 );
+        $ok = mkdir(CONTENT_DIR, BLOG_MASK );
         umask($oldumask);
       }
       
       if (!file_exists(CONTENT_DIR.'static')) {
         $oldumask = umask(0);
-        $ok = mkdir(CONTENT_DIR.'static', 0777 );
+        $ok = mkdir(CONTENT_DIR.'static', BLOG_MASK );
         umask($oldumask);
         if (!$ok) {
           return ( 'Couldn\'t creating directory: '.CONTENT_DIR.'static' );

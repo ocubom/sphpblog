@@ -42,7 +42,7 @@
 			if ( $_FILES[ 'user_emot' ][ 'error' ] == 0 ) {
 				if (!file_exists($uploaddir)) {
 					$oldumask = umask(0);
-					@mkdir($uploaddir, 0777 );
+					@mkdir($uploaddir, BLOG_MASK );
 					@umask($oldumask);
 				}
 				
@@ -57,7 +57,7 @@
                         			$ok = -1;
 					} else {
 						if ( @move_uploaded_file($_FILES[ 'user_emot' ][ 'tmp_name' ], $uploadfile ) ) {
-							chmod( $uploadfile, 0777 );
+							chmod( $uploadfile, BLOG_MASK );
 							$ok = true;
 						}
 					}

@@ -467,7 +467,7 @@ function sb_curPageURL() {
 																					// Check that comments/ dir exists
 																					if (!file_exists( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/comments' )) {
 																						$oldumask = umask(0);
-																						$ok = mkdir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/comments', 0777 );
+																						$ok = mkdir( $dir.$year_dir.'/'.$month_dir.'/'.$comments_dir.'/comments', BLOG_MASK );
 																						umask($oldumask);
 																					}
 

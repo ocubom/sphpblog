@@ -91,7 +91,7 @@
       // Create one regardless - this is so it works when comments are turned off
       // Make sure that the folder exists for old users
       if (!file_exists($dir)) {
-        @mkdir($dir, 0777, TRUE);
+        @mkdir($dir, BLOG_MASK, TRUE);
       }
       sb_write_file( $dir . '../view_counter.txt' , $view_counter );
     }
@@ -417,7 +417,7 @@
 
     if (!file_exists($dir)) {
       $oldumask = umask(0);
-      $ok = mkdir($dir, 0777 );
+      $ok = mkdir($dir, BLOG_MASK );
       umask($oldumask);
       if (!$ok) {
         // There is a bug in some versions of PHP that will
@@ -432,7 +432,7 @@
 
     if (!file_exists($dir)) {
       $oldumask = umask(0);
-      $ok = mkdir($dir, 0777 );
+      $ok = mkdir($dir, BLOG_MASK );
       umask($oldumask);
       if (!$ok) {
         // There was a problem creating the directory

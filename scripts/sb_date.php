@@ -22,7 +22,7 @@
 
     if (!file_exists(CONFIG_DIR)) {
       $oldumask = umask(0);
-      $ok = mkdir(CONFIG_DIR, 0777 );
+      $ok = mkdir(CONFIG_DIR, BLOG_MASK );
       umask($oldumask);
     }
 

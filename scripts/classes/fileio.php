@@ -91,7 +91,6 @@
 			//if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
 			//	$str = gzencode( $str, 9 );
 			//}
-			
 			fileio::make_dir(dirname($filename));
 			
 			@umask(0);
@@ -100,7 +99,7 @@
 			$bytes_written = file_put_contents( $filename, $str );
 			
 			if ( $length == $bytes_written ) {
-				@chmod($filename, 0777);
+				@chmod($filename, BLOG_MASK);
 				return $bytes_written;
 			} else {
 				return false;
@@ -135,7 +134,7 @@
 		* @param		string $dir
 		* @return		boolean
 		*/
-		function make_dir( $dir, $mode=0777 ) {
+		function make_dir( $dir, $mode=BLOG_MASK ) {
 			
 			@umask(0);
 			if (is_dir($dir) || @mkdir($dir,$mode)) {
@@ -166,7 +165,6 @@
 		* @return		boolean
 		*/
 		function copy_dir( $source, $dest ) {
-			
 			// Simple copy for a file
 			if (is_file($source)) {
 				if ( copy($source, $dest) ) {
@@ -180,7 +178,7 @@
 			// Make destination directory
 			if ( !is_dir($dest) ) {
 				@umask(0);
-				mkdir($dest, 0777);
+				mkdir($dest, BLOG_MASK);
 			}
 		
 			// Loop through the folder
@@ -325,7 +323,7 @@
 		return fileio::write_file($filename, $str);
 	}
   
-	function sb_create_folder( $dir, $mode=0777 ) {
+	function sb_create_folder( $dir, $mode=BLOG_MASK ) {
 		return fileio::make_dir($dir, $mode);
 	}
   

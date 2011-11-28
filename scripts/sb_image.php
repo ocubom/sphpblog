@@ -15,11 +15,10 @@
 		{
 		// Get a list of images in the image folder. Return HTML.
 		//
-		// TODO 777 is bad, fix this!
 		if (!file_exists(IMAGES_DIR)) 
 			{
 			$oldumask = umask(0);
-			$ok = mkdir(IMAGES_DIR, 0777 );
+			$ok = mkdir(IMAGES_DIR, BLOG_MASK );
 			umask($oldumask);
 			}
 		

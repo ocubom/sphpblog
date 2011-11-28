@@ -25,7 +25,7 @@
 		if ( $_FILES[ 'userfile' ][ 'error' ][$i] == 0 ) {
 		if (!file_exists(IMAGES_DIR)) {
 			$oldumask = umask(0);
-			@mkdir(IMAGES_DIR, 0777 );
+			@mkdir(IMAGES_DIR, BLOG_MASK );
 			@umask($oldumask);
 		}
 				
@@ -63,7 +63,7 @@
 		}
 		
 		if ( move_uploaded_file($_FILES['userfile']['tmp_name'][$i], $uploadfile ) ) {
-			chmod( $uploadfile, 0777 );
+			chmod( $uploadfile, BLOG_MASK );
 			$ok = true;
 		} else {
 			$ok = false;

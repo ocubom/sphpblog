@@ -5,6 +5,8 @@
 	//error_reporting( E_ALL ^ E_NOTICE );
 	error_reporting( 0 );
 
+	define('BLOG_MASK', 0775);
+
 	require_once('config.php');
 	
 	// Last version and update information.

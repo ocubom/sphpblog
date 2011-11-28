@@ -40,7 +40,7 @@
 		if ( !file_exists( $dir ) ) {
 			// Creating Folder
 			$oldumask = umask( 0 );
-			$ok = mkdir( $dir, 0777 );
+			$ok = mkdir( $dir, BLOG_MASK );
 			umask( $oldumask );
 			
 			if ( !file_exists( $dir ) ) {
