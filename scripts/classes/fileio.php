@@ -50,8 +50,14 @@
 			
 			if ( file_exists($filename) ) {
 					$str = file_get_contents( $filename );
+//print "reading from: ". substr($filename, 0, strrpos($filename, '.'));
+					// this is to transition off of .gz stored files, TODO it can be removed in a long time.
 					if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
 						$str = gzinflate( substr( $str, 10 ) );
+						// write out txt here, delete .gz
+						if ($this->write_file(substr($filename, 0, strrpos($filename, '.')) . ".txt", $str) !== FALSE) {
+						  $this->delete_file($filename);
+                                                }
 					}
 					
 					// Cache file data...
@@ -82,9 +88,9 @@
 		*/
 		function write_file( $filename, $str ) {
 			
-			if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
-				$str = gzencode( $str, 9 );
-			}
+			//if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
+			//	$str = gzencode( $str, 9 );
+			//}
 			
 			fileio::make_dir(dirname($filename));
 			
