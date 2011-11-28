@@ -15,6 +15,8 @@
 
 	// Variables
 	// define('USE_MOD_REWRITE', false);
+
+	define('BLOG_MASK', 0775);
 	
 	// FOLDER LOCATIONS
 	define('CONTENT_DIR',	ROOT_DIR.'content/');
