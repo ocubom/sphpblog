@@ -33,7 +33,6 @@
 	
 	// Load all the other functions.
 	
-	require_once('sb_fileio.php');
 	require_once('sb_config.php');
 	require_once('sb_login.php');
 	require_once('sb_theme.php');
