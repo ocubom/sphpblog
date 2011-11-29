@@ -492,8 +492,9 @@
         Follow the trouble-shooting instructions below and click <b>Try Again</b>:<br />
         <ol>
         <li>Manually create the following folders: <b>config</b>, <b>content</b>, and <b>images</b>.</li>
-        <li>Enabled <b>Write Permissions</b> on the folders: In your FTP program, Owner, User, and World should have <b>Read</b> and <b>Write</b> access. <i>(You may need to contact your service provider to change these...)</i></li>
+        <li>Enabled <b>Write Permissions</b> on the folders: In your FTP program, 'User' and 'Group' should have <b>Read</b> and <b>Write</b> access. In some cases you might need to enable 'Other' as well. <i>(You may need to contact your service provider to change these...)</i></li>
         <li>Make sure the UID's of all your files and folders are the same. <i>(You may need to contact your service provider to change these...)</i></li>
+        <li>In scripts/config.php set BLOG_MASK to 0777.</li>
         </ol>";
         $lang_string['try_again'] = "[ Try Again ]";
         // Success

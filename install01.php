@@ -46,6 +46,9 @@
 
 		echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $lang_string['begin'] . '</a><p />' );
 
+		// TODO language file
+                print "<p>We think your blog is at: " . $_SERVER["SERVER_NAME"] . BASEURL . ".  If not, set BASEURL correctly in scripts/config.php</p>";
+
 		phpini_check();
 		
 		// PAGE CONTENT END
