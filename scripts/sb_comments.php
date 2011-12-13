@@ -64,10 +64,10 @@
   function read_comments ( $y, $m, $entry, $logged_in ) {
     global $blog_content, $blog_config, $lang_string, $user_colors;
 
-    $filename = CONTENT_DIR.$y.'/'.$m.'/'.$entry;
+    //$filename = CONTENT_DIR.$y.'/'.$m.'/'.$entry;
 
-    $blog_content = read_entry_from_file( $filename );
-    $blog_content = replace_more_tag ( $blog_content , true, '' );
+    //$blog_content = read_entry_from_file( $filename );
+    //$blog_content = replace_more_tag ( $blog_content , true, '' );
 
     // Comments
     $basedir = CONTENT_DIR;

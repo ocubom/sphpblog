@@ -69,17 +69,24 @@
 	function page_content() {
 		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
 
+		// show entry
+		$filename = CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
+		$blog_content = read_entry_from_file( $filename );
+		$blog_content = replace_more_tag ( $blog_content , true, '' );
+		print $blog_content;
+
+		// show comments
+		echo "<h2>" . $GLOBALS['lang_string']['title'] . "</h2>";
 		echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) );
 		echo( '<p />' );
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['header'];
 
 		// ADD COMMENT FORM
 		ob_start(); ?>
 
-		<h2><?php echo( $GLOBALS['lang_string']['header'] ); ?></h2>
 		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
 
 		<form action='comment_add_cgi.php' method="post" name="vbform" onsubmit="return validate_comment(this)">

@@ -3,8 +3,8 @@ BUGS
 - plus/minus button on menus not working. are these pointless 
 since the next page will just show them again?  should we use session cookies to 
 remember it?
-- remove print links (use config setting?)
 
+- switch capcha to recapcha? we need to figure out the keying
 - fix urls in plugins
 - move install pages to separate directory
 - integrate gallery
