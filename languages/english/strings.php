@@ -38,6 +38,8 @@
     $lang_string['menu_info'] = "Meta Tags";
     $lang_string['manage_users'] = "User Manager";
     $lang_string['manage_php_config'] = "View PHP Configuration"; // New in 0.5.0.1
+    $lang_string['zip_backup'] = "Download Data Backup"; // New in 0.8.0
+    $lang_string['image_backup'] = "Download Image Backup"; // New in 0.8.0
     $lang_string['menu_options'] = "Date &amp; Time";
     $lang_string['menu_themes'] = "Themes";
     $lang_string['menu_colors'] = "Colors";

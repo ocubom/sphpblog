@@ -40,6 +40,8 @@
 				$str  .= '<a href="' . BASEURL . 'info.php">' . $GLOBALS[ 'lang_string' ][ 'menu_info' ] . '</a><br />';
 				$str  .= '<a href="' . BASEURL . 'manage_users.php">' . $GLOBALS[ 'lang_string' ][ 'manage_users' ] . '</a><br />';
 				$str  .= '<a href="' . BASEURL . 'phpinfo.php">' . $GLOBALS[ 'lang_string' ][ 'manage_php_config' ] . '</a><br />';
+				$str  .= '<a href="' . BASEURL . 'zip.php?dirs=content,config">' . $GLOBALS[ 'lang_string' ][ 'zip_backup' ] . '</a><br />';
+				$str  .= '<a href="' . BASEURL . 'zip.php?dirs=images">' . $GLOBALS[ 'lang_string' ][ 'image_backup' ] . '</a><br />';
 				$str  .= '<hr />';
 				$str  .= '<a href="' . BASEURL . 'moderation.php">' . $GLOBALS[ 'lang_string' ][ 'menu_moderation' ] . '</a><br />';
 				if ( $blog_config->getTag( 'blog_comments_moderation' ) ) {
