@@ -6,12 +6,48 @@ Version History
 
 ---------------
 
+0.8.0
+
+===============
+
+- fix for proper permalink URL creation
+- title alignment fix
+- mobile device improvements
+- updated to Atom 1.0
+- removed popup themes
+- removed print links in favor of print CSS
+- removed trackback code
+- removed gzip storage capability
+- fixes for handling windows paths
+- added support for downloading a backup zip file
+
+0.7.0
+
+===============
+
+- added bookmarks plugin
+- added poweredby/badges plugin
+- added creative commons license box
+- various bug fixes
+- added Slovak and Brazillian Portuguese languages
+- XHTML Basic and CSS validation for mobile devices
+- added text based permalinks for search engine optimization
+- added option to require SSL login
+- fixed capcha strings
+- reduced javascript dependencies
+- changed default hyperlink target action to non-new window
+- added markitup for javascript post editor
+- theme code simplifications
+- retains post when logged out during composition
+
 0.6.0
 
 ===============
 
 - Various bug and security fixes.
 - Shows user information about relevent php.ini settings.
+- added opensearch capability
+- added more language files
 
 0.5.0
 

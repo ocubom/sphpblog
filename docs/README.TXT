@@ -5,7 +5,7 @@ About
 -----
 I started this project because I wanted a dead-simple blog. One that
 didn't need a database, used flat text files, and looked nice. It's
-main advantage is that it only requires PHP 4.1 and write permissions.
+main advantage is that it only requires PHP 5.0 and write permissions.
 
 There is no setup, just unzip and copy. (But you might want to look
 at the INSTALL.TXT file...)

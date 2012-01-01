@@ -6,6 +6,12 @@ Author
 Created by: Alexander Palmo (apalmo <at> bigevilbrain <dot> com)
 Date: 08/02/2004
 
+Maintained by: Neil M. (neil <at> nabber <dot> org)
+
+Version: 0.6.0 and newer
+
+Date: 08/15/2010
+
 Contributors
 ------------
 RSS, RDF, Atom, ping, GZip, email, search and some bug fixes and enhacements by Javier Gutierrez (guti <at> ya <dot> com)
