@@ -4,41 +4,52 @@
 	// ---------------
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
-	$logged_in = logged_in( true, true );
 
+        $logged_in = logged_in( false, true );
+
+        if (!$logged_in) {
+                save_post('static');
+                redirect_to_url( 'login.php' );
+                exit;
+        }
+	
 	read_config();
-
+	
 	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
 	sb_language( 'add_static' );
 
+        $restored = restore_post();
+        if (!empty($restored) AND empty($_POST) AND empty($_GET)) {
+                $_POST = $restored[1];
+        }
+        reset_post();
+	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
+	
+
+	if (array_key_exists('submit', $_POST)) {
+                sb_language('add');
+	        $filename = sb_stripslashes( $_POST[ 'file_name' ] );
+       		$filename = preg_replace( '/(\s|\\\|\/|%|#)/', '_', $filename ); // Replace whitespaces [\n\r\f\t ], slashes, % and # with _
+
+	        global $ok;
+        	$ok = write_static_entry( sb_stripslashes( $_POST[ 'blog_subject' ] ), sb_stripslashes( $_POST[ 'blog_text' ] ), $_POST[ 'entry' ], $filename, $_POST[ 'check_visiblemenu' ] );
+
+	        if ( $ok === true ) {
+        	        redirect_to_url( 'index.php' );
+	        } else {
+                        echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+                }
+
+        }
 
 	// ------------
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config;
-
-	/*
-		// SUBJECT
-		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
-
-		// PAGE CONTENT BEGIN
-		ob_start();
-
-		echo( $GLOBALS['lang_string']['instructions'] . '<p />' );
-		echo( '<hr />' );
-		sb_editor( 'static' );
-
-		// PAGE CONTENT END
-		$entry_array[ 'entry' ] = ob_get_clean();
-
-		// THEME ENTRY
-		echo( theme_staticentry( $entry_array ) );
-		*/
+		global $lang_string, $blog_config, $langkey;
 		
 		// INSTRUCTIONS
 		$entry_array = array();
@@ -56,6 +67,7 @@
 		$entry_array[ 'entry' ] = $editor['form'];
 		echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
 	}
+
 	// ----
 	// HTML
 	// ----

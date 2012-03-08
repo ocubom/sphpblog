@@ -126,8 +126,8 @@
       $lang_string['btn_readmore'] = "read more"; // 0.4.8
       $lang_string['view_images'] = "View Uploaded Images";
       $lang_string['label_entry'] = "Entry:";
-      $lang_string['btn_preview'] = "&nbsp;Preview&nbsp;";
-      $lang_string['btn_post'] = "&nbsp;Post&nbsp;";
+      $lang_string['btn_preview'] = "Preview";
+      $lang_string['btn_post'] = "Post";
       $lang_string['chk_visiblemenu'] = "Visible (Show in menu)";
       $lang_string['file_name'] = "Static File Name: (no spaces or file extensions)";
 
@@ -171,8 +171,8 @@
         $lang_string['instructions_preview'] = "Here's how your entry looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
         $lang_string['title_update'] = "Update Entry";
         $lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
-        $lang_string['ok_btn'] = "&nbsp;OK&nbsp;";
-        $lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
+        $lang_string['ok_btn'] = "OK";
+        $lang_string['cancel_btn'] = "Cancel";
 
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your entry.<br /><br />Server Reported:<br />";
@@ -181,14 +181,14 @@
 
       case 'add_static':
         // Add Entry
-        $lang_string['title'] = "Add Static Page";
-        $lang_string['instructions'] = "Fill out the form below to create a Static Page. Unlike a regular Blog Entry, Static Entries appear in the Links menu. They are for pages that you always want available such as: About Me, Contact Us, Schedule, etc. Click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
+        $lang_string['title'] = "Edit Static Page";
+        $lang_string['instructions'] = "Fill out the form below to create a Static Page. Unlike a regular Blog Entry, Static Entries appear in the Links menu. They are for pages that you always want available such as: About Me, Contact Us, Schedule, etc. If you're using text styles or including images, remember to 'close' all your 'tags'. Click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
 
         // Preview / Edit Entry
-        $lang_string['title_preview'] = "Preview / Edit Static Page";
-        $lang_string['instructions_preview'] = "Here's how your Static Page looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
-        $lang_string['title_update'] = "Update Static Page";
-        $lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
+        //$lang_string['title_preview'] = "Preview / Edit Static Page";
+        //$lang_string['instructions_preview'] = "Here's how your Static Page looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
+        //$lang_string['title_update'] = "Update Static Page";
+        //$lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
         $lang_string['form_error'] = "Please complete the Subject, Entry, and File Name fields.";
 
         // Error Response
@@ -241,7 +241,7 @@
         $lang_string['no_categories_found'] = "No Categories Found";
         $lang_string['category_list'] = "Category List:";
         $lang_string['validate'] = "Validate";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         break;
 
       case 'colors':
@@ -296,9 +296,9 @@
         $lang_string['color_preset'] = "Color Schemes:";
         $lang_string['scheme_name'] = "Enter a custom color scheme name:";
         $lang_string['scheme_file'] = "Enter scheme file name: (no spaces or file extensions)";
-        $lang_string['save_btn'] = "&nbsp;Save&nbsp;";
+        $lang_string['save_btn'] = "Save";
         $lang_string['form_error'] = "Please enter a name for your custom color scheme.";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         $lang_string['theme_doesnt_allow_colors'] = 'The currently selected theme does not allow for custom colors.';
 
         // Error Response
@@ -326,7 +326,7 @@
         $lang_string['commentposted'] = "New comment posted at: ";  // New for 0.4.6.2
         $lang_string['comment_remember'] = "Remember me:";
         $lang_string['comment_text'] = "Comment:";
-        $lang_string['post_btn'] = "&nbsp;Post Comment&nbsp;";
+        $lang_string['post_btn'] = "Post Comment";
         $lang_string['delete_btn'] = "delete";
         $lang_string['ban_btn'] = "ban ip"; // New for 0.4.8
         $lang_string['expired_comment1'] = "We are sorry. New comments are not allowed after "; // New for 0.4.8
@@ -364,8 +364,8 @@
       case 'delete':
         $lang_string['title'] = "Delete Entry";
         $lang_string['instructions'] = "This is the entry you are about to delete. Please make sure you really want to get rid of it, there's no undo...";
-        $lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
-        $lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
+        $lang_string['ok_btn'] = "Ok";
+        $lang_string['cancel_btn'] = "Cancel";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Entry Deleted!</h2>The entry has been deleted."; // New for 0.4.8.1
@@ -374,8 +374,8 @@
       case 'delete_static':
         $lang_string['title'] = "Delete Static Page";
         $lang_string['instructions'] = "This is the static page you are about to delete. Please make sure you really want to get rid of it, there's no undo...";
-        $lang_string['ok_btn'] = "&nbsp;Ok&nbsp;";
-        $lang_string['cancel_btn'] = "&nbsp;Cancel&nbsp;";
+        $lang_string['ok_btn'] = "Ok";
+        $lang_string['cancel_btn'] = "Cancel";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Couldn't delete entry.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Static Page Deleted!</h2>The static page has been deleted."; // New for 0.4.8.1
@@ -393,7 +393,7 @@
         $lang_string['info_description'] = "Description: (An abstract or a free-text description of your site.)";
         $lang_string['info_copyright'] = "Rights: (Copyright statement, or link to document containing information.)";
         $lang_string['tracking_code'] = "External Tracking Code: (HTML code that needs to be run on the main page (in the header tags for safety) only for every user that comes to the page i.e. Google Analytics)";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Meta-Data Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
@@ -421,7 +421,7 @@
         $lang_string['instructions'] = "Please enter your Username and Password below";
         $lang_string['username'] = "Username:";
         $lang_string['password'] = "Password";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Success
         $lang_string['success'] = "<h2>Success!</h2>You are now logged in. Happy blogging!<p />";
         // Wrong Password
@@ -449,7 +449,7 @@
         $lang_string['instructions'] = "Use the form below to change your Username and/or Password. Enter the Username and Password that you want to use.";
         $lang_string['username'] = "Username:";
         $lang_string['password'] = "Password:";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Success
         $lang_string['success'] = "<h2>Success!</h2>Your Username and/or Password is active. Happy blogging!<p />";
         // Wrong Password
@@ -465,7 +465,7 @@
         $lang_string['title'] = "Welcome";
         $lang_string['instructions'] = "Thank you for choosing Simple PHP Blog!";
         $lang_string['blog_choose_language'] = "Choose Language:";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         break;
 
       case 'install01':
@@ -522,7 +522,7 @@
         $lang_string['instructions'] = "Use the form below to Create a Username and Password.";
         $lang_string['username'] = "Username:";
         $lang_string['password'] = "Password:";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Success
         $lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in. Click below to visit the Setup page, where you can name your blog. Happy blogging!<p />";
         $lang_string['btn_setup'] = "[ Setup ]";
@@ -555,7 +555,7 @@
         $lang_string['instructions'] = "Please enter your Username and Password below";
         $lang_string['username'] = "Username:";
         $lang_string['password'] = "Password";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Success
         $lang_string['success'] = "<h2>Congratulations!</h2>You are now logged in.<p />
         Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p />
@@ -622,7 +622,7 @@
           installation of PHP does not support the Zlib extension.";
         $lang_string['blog_enable_gzip_txt'] = "Enable GZIP Compression for Database Files";
         $lang_string['blog_enable_gzip_output'] = "Enable GZIP Compression for HTTP Output";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
@@ -662,7 +662,7 @@
       case 'moderation':
         $lang_string['title'] = "Moderation Preferences";
         $lang_string['instructions'] = "You can modify the auto moderation lists here.";
-        $lang_string['submit_btn'] = "&nbsp;Save Moderation Settings&nbsp;";
+        $lang_string['submit_btn'] = "Save Moderation Settings";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Preferences Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
@@ -723,7 +723,7 @@
         $lang_string['preview'] = "Preview:";
         $lang_string['server_offset'] = "Server Offset:";
         // Buttons
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Options Saved!</h2>Information has been successfully saved."; // New for 0.4.8.1
@@ -735,7 +735,7 @@
         // Themes
         $lang_string['choose_theme'] = "Themes:";
         // Buttons
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         // Error Response
         $lang_string['error'] = "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />Server Reported:<br />";
         $lang_string['success'] = "<h2>Theme Selected!</h2>Information has been successfully saved."; // New for 0.4.8.1
@@ -767,7 +767,7 @@
         $lang_string['email'] = "Email:";
         $lang_string['subject'] = "Subject:";
         $lang_string['comment'] = "Comment:";
-        $lang_string['submit_btn'] = "&nbsp;Submit&nbsp;";
+        $lang_string['submit_btn'] = "Submit";
         $lang_string['success'] = "<h2>Success!</h2>Your message has been sent.<p />";
         $lang_string['failure'] = "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />";
         $lang_string['contactsent'] = "Contact sent through: ";  // New for 0.4.6

@@ -76,7 +76,7 @@
     $entry = sb_strip_extension( $entry_id );
     if ( $logged_in == true ) {
       $entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
-      $entry_array[ 'edit' ][ 'url' ] = 'preview_static_cgi.php?entry='.$entry;
+      $entry_array[ 'edit' ][ 'url' ] = 'add_static.php?entry='.$entry;
       $entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
       $entry_array[ 'delete' ][ 'url' ] = 'delete_static.php?entry='.$entry;
     }

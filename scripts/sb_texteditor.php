@@ -187,13 +187,13 @@
     // --------------
     switch ( $mode ) {
       case 'entry' :
-        $submit_page = 'add_cgi.php';
-        $preview_page = 'preview_cgi.php';
+        //$submit_page = 'add_cgi.php';
+        //$preview_page = 'preview_cgi.php';
         $validate_script = 'validate';
         break;
       case 'static' :
-        $submit_page = 'add_static_cgi.php';
-        $preview_page = 'preview_static_cgi.php';
+        //$submit_page = 'add_static_cgi.php';
+        //$preview_page = 'preview_static_cgi.php';
         $validate_script = 'validate_static';
         break;
     }
@@ -209,7 +209,7 @@
     
     
     ?>
-    <form action='<?php echo( $submit_page ); ?>' method="post" name="editor" id="editor" onsubmit="return <?php echo( $validate_script ); ?>(this)">
+    <form action='' method="post" name="editor" id="editor" onsubmit="return <?php echo( $validate_script ); ?>(this)">
       <?php
       
         // Hidden Fields

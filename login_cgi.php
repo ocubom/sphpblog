@@ -53,7 +53,7 @@
 			$type = $restored[0];
 			$page = 'preview_cgi.php';
 			if ($type == 'static') {
-				$page = 'preview_static_cgi.php';
+				$page = 'add_static.php';
 			}
 			// TODO add to language file
 			echo( "<a href=\"$page\">Restore your last draft.</a>" );
