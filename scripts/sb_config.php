@@ -34,14 +34,6 @@
 		}
 		*/
 		
-		/*
-		// Hack to put in Google Analytics, etc
-		$blog_config->getTag('BLOG_FOOTER_ONLY') = $blog_config->getTag('BLOG_FOOTER');
-		if ( isset( $blog_config->getTag('TRACKING_CODE') ) ) {
-			$blog_config->gstrTag('BLOG_FOOTER'); .= $blog_config->getTag('TRACKING_CODE');
-		}
-		*/
-
 		// LOAD THEME
 		global $blog_theme;
 		$blog_theme = $blog_config->getTag('BLOG_THEME');

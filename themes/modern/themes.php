@@ -564,7 +564,8 @@ $comment_area .= '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://digg.com/submit?phase
 		
 			</div>
 			<div id="footer">
-				<?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?>
+				<p><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></p>
+				<?php echo($blog_config->getTag('TRACKING_CODE')); ?>
 			</div>
 		</div>
 	</body>

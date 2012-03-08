@@ -147,7 +147,7 @@
 			// $this->setTag('INFO_KEYWORDS', '');
 			// $this->setTag('INFO_DESCRIPTION', '');
 			// $this->setTag('INFO_COPYRIGHT', '');
-			// $this->setTag('TRACKING_CODE', '');
+			$this->setTag('TRACKING_CODE', '');
 			// $this->setTag('BANNED_ADDRESS_LIST', '');
 			// $this->setTag('BANNED_WORD_LIST', '');
 			$this->setTag('BLOG_THEME', 'default');
