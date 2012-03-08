@@ -10,15 +10,16 @@ $ifile = IMAGES_DIR.$file;
 
 // detect file type first
 $meta = pathinfo($ifile);
+$ext = strtolower($meta['extension']);
 
 $img_origineel = NULL;
-if ($meta['extension'] == 'jpg' or $meta['extension'] == 'jpeg') {
+if ($ext == 'jpg' or $ext == 'jpeg') {
     $img_origineel = imagecreatefromjpeg($ifile);
 }
-if ($meta['extension'] == 'gif') {
+if ($ext == 'gif') {
     $img_origineel = imagecreatefromgif($ifile);
 }
-if ($meta['extension'] == 'png') {
+if ($ext == 'png') {
     $img_origineel = imagecreatefrompng($ifile);
 }
 
