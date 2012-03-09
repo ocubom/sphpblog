@@ -129,78 +129,54 @@
 			<?php echo( $GLOBALS['lang_string']['label_insert'] ); ?><br />
 			<?php
 			global $blog_config;
+			$jsstr = "";
 
 			$allowed = explode(',', $blog_config->getTag('COMMENT_TAGS_ALLOWED'));
 
 			if ( in_array( 'b', $allowed ) ) {
-				?><input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_bold'] ); ?>" onclick="ins_styles(this.form.comment_text,'b','');" /><?php
+				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_bold'] . '" onclick="ins_styles(this.form.comment_text,\'b\',\'\');" />';
 			}
 			if ( in_array( 'i', $allowed ) ) {
-				?><input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_italic'] ); ?>" onclick="ins_styles(this.form.comment_text,'i','');" /><?php
+				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_italic'] . '" onclick="ins_styles(this.form.comment_text,\'i\',\'\');" />';
 			}
 			if ( in_array( 'center', $allowed ) ) {
-				?><input type="button" class="bginput" value="center" onclick="ins_styles(this.form.comment_text,'center','');" /><?php
+				$jsstr .= '<input type="button" class="bginput" value="center" onclick="ins_styles(this.form.comment_text,\'center\',\'\');" />';
 			}
-
 			if ( in_array( 'url', $allowed ) ) {
-				?><input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_url'] ); ?>" onclick="ins_url_no_options(this.form.comment_text);" /><?php
+				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_url'] . '" onclick="ins_url_no_options(this.form.comment_text);" />';
 			}
 			if ( in_array( 'img', $allowed ) ) {
-				?><input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_image'] ); ?>" onclick="ins_image_v2(this.form.comment_text);" /><?php
+				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_image'] . '" onclick="ins_image_v2(this.form.comment_text);" />';
 			}
-			?>
 
-			<select name="style_dropdown" onchange="ins_style_dropdown(this.form.comment_text,this.form.style_dropdown.value);">
-				<option label="--" value="--">--</option>
-				<?php
-				if ( in_array( 'blockquote', $allowed ) ) {
-					?><option label="[blockquote]xxx[/blockquote]" value="blockquote">[blockquote]xxx[/blockquote]</option><?php
+				$jsstr .= '<select name="style_dropdown" onchange="ins_style_dropdown(this.form.comment_text,this.form.style_dropdown.value);">
+				<option label="--" value="--">--</option>';
+
+                                $nsstr = "<noscript><p>Available Tags</p><ul>";
+				foreach (array('blockquote','pre','code','strong', 'b', 'em', 'i', 'del', 'ins', 'strike') as $tag) {
+					if ( in_array( $tag, $allowed ) ) {
+						$jsstr .= "<option label=\"[$tag]xxx[/$tag]\" value=\"$tag\">[$tag]xxx[/$tag]</option>";
+						$nsstr .= "<li>[$tag]xxx[/$tag]</li>";
+					}
 				}
-				if ( in_array( 'pre', $allowed ) ) {
-					?><option label="[pre]xxx[/pre]" value="pre">[pre]xxx[/pre]</option><?php
-				}
-				if ( in_array( 'code', $allowed ) ) {
-					?><option label="[code]xxx[/code]" value="code">[code]xxx[/code]</option><?php
-				}
-				if ( in_array( 'strong', $allowed ) ) {
-					?><option label="[strong]xxx[/strong]" value="strong">[strong]xxx[/strong]</option><?php
-				}
-				if ( in_array( 'b', $allowed ) ) {
-					?><option label="[b]xxx[/b]" value="b">[b]xxx[/b]</option><?php
-				}
-				if ( in_array( 'em', $allowed ) ) {
-					?><option label="[em]xxx[/em]" value="em">[em]xxx[/em]</option><?php
-				}
-				if ( in_array( 'i', $allowed ) ) {
-					?><option label="[i]xxx[/i]" value="i">[i]xxx[/i]</option><?php
-				}
+
 				if ( in_array( 'hN', $allowed ) ) {
-					?><option label="[hN]xxx[/hN] (N=1-6)" value="hN">[hN]xxx[/hN] (?=1-6)</option><?php
+					$jsstr .= "<option label=\"[hN]xxx[/hN] (N=1-6)\" value=\"hN\">[hN]xxx[/hN] (?=1-6)</option>";
+					$nsstr .= "<li>[hN]xxx[/hN] (N=1-6)</li>";
 				}
-				if ( in_array( 'html', $allowed ) ) {
-					?><option label="[html]xxx[/html]" value="html">[html]xxx[/html]</option><?php
-				}
-				if ( in_array( 'del', $allowed ) ) {
-					?><option label="[del]xxx[/del]" value="del">[del]xxx[/del]</option><?php
-				}
-				if ( in_array( 'ins', $allowed ) ) {
-					?><option label="[ins]xxx[/ins]" value="ins">[ins]xxx[/ins]</option><?php
-				}
-				if ( in_array( 'strike', $allowed ) ) {
-					?><option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option><?php
-				}
-				?>
-			</select>
-			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.comment_text,this.form.style_dropdown.value);" /><br /><br />
+				// TODO, this should really be hidden if the browser doesn't support javascript
+				//print "<script type='text/javascript'>document.write('";
+				print $jsstr . "</select>";
+				//print "');<script>\n";
 
-			<?php emoticons_show(); ?>
+			print $nsstr . "</ul></noscript>";
+			emoticons_show();
 
-			<?php
 			if ( in_array( 'img', $allowed ) ) {
 				global $theme_vars;
 				?>
-					<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $GLOBALS['lang_string']['view_images'] ); ?></a><br />
-					<?php echo image_dropdown(); ?><br /><br />
+					<a traget="_blank" href='image_list.php'><?php echo( $GLOBALS['lang_string']['view_images'] ); ?></a><br />
+					<?php echo image_dropdown('comment_text'); ?><br /><br />
 				<?php
 			}
 			?>
@@ -277,7 +253,7 @@
 	
 	// Extra Javascript
 	ob_start();
-	require_once('scripts/sb_editor.php');
+	sb_editor_js('commment_text');
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Extra Javascript

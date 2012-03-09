@@ -566,6 +566,138 @@ $(document).ready(function()	{
 
 <script type="text/javascript">
 	<!--
+
+	// for custom comment editor only
+        // Insert Style Tags
+        function ins_styles(theform,sb_code,prompt_text,tag_prompt) {
+                // Insert [x]yyy[/x] style markup
+
+                // Get selected text
+                var selected_text = getSelectedText(theform);
+
+                if (selected_text == '') {
+                        // Display prompt if no text is selected
+                        var inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", '' );
+                        if ( (inserttext != null) ) {
+                                insertAtCaret(theform, "["+sb_code+"]"+inserttext+"[/"+sb_code+"]");
+                                theform.focus();
+                        }
+                } else {
+                        // Insert text automatically around selection
+                        insertAtCaret(theform, "["+sb_code+"]"+selected_text+"[/"+sb_code+"]");
+                        theform.focus();
+                }
+        }
+
+        // Insert URL Tag
+        function ins_url_no_options(theform) {
+                // inserts named url link - [url=mylink new=true]text[/url]
+                link_url = prompt('<?php echo( $lang_string[ 'insert_url2' ] ); ?>'+'\n[url=xxx][/url]',"http://");
+                if ( (link_url != null) ) {
+                        // Get selected text
+                        var link_text = getSelectedText(theform);
+                        if (link_text == '') {
+                                // Display prompt if no text is selected
+                                link_text = prompt('<?php echo( $lang_string[ 'insert_url1' ] ); ?>'+'\n[url=]xxx[/url]',"");
+                        }
+                        if ( (link_text == null) || (link_text == '') ) {
+                                link_text = link_url;
+                        }
+                        str = '[url='+link_url+']'+link_text+'[/url]';
+
+                        insertAtCaret(theform, str);
+                        theform.focus();
+                }
+        }
+
+       // Insert Style Tags
+        function ins_style_dropdown(theform, sb_code) {
+                // Insert [sb_code]xxx[/sb_code] style markup
+
+                if ( sb_code != '-'+'-' ) {
+                        // Get selected text
+                        var selected_text = getSelectedText(theform);
+
+                        if (selected_text == '') {
+                                prompt_text = '[' + sb_code + ']xxx[/' + sb_code + ']';
+                                user_input = prompt( prompt_text, '' );
+                                if ( (user_input != null) ) {
+                                        insertAtCaret(theform, '['+sb_code+']'+user_input+'[/'+sb_code+']');
+                                        theform.focus();
+                                }
+                        } else {
+                                // Insert text automatically around selection
+                                insertAtCaret(theform, "["+sb_code+"]"+selected_text+"[/"+sb_code+"]");
+                                theform.focus();
+                        }
+                }
+        }
+
+        // Insert Image Tag
+        function ins_image_v2(theform) {
+                image_url = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+'\n[img=http://xxx] or [img=xxx]\n\n<?php echo( $lang_string[ 'insert_image_optional' ] ); ?>\nwidth=xxx height=xxx popup=true/false float=left/right','http://');
+                if ((image_url != null) && (image_url != '')) {
+                        // Optional
+                        image_width = prompt('<?php echo( $lang_string[ 'insert_image_width' ] ); ?>'+'\n[img=xxx width=xxx]','');
+                        image_height = prompt('<?php echo( $lang_string[ 'insert_image_height' ] ); ?>'+'\n[img=xxx height=xxx]','');
+                        image_popup = prompt('<?php echo( $lang_string[ 'insert_image_popup' ] ); ?>'+'\n[img=xxx popup=true/false]', '');
+                        image_float = prompt('<?php echo( $lang_string[ 'insert_image_float' ] ); ?>'+'\n[img=xxx float=left/right]','');
+
+                        str = '[img='+image_url;
+                        if ((image_width != null) && (image_width != '')) {
+                                str += ' width='+image_width;
+                        }
+                        if ((image_height != null) && (image_height != '')) {
+                                str += ' height='+image_height;
+                        }
+                        if ((image_popup != null) && (image_popup != '')) {
+                                image_popup.toLowerCase;
+                                if ( image_popup == 'true' || image_popup == 'false' ) {
+                                        str += ' popup='+image_popup;
+                                }
+                        }
+                        if ((image_float != null) && (image_float != '')) {
+                                image_float.toLowerCase;
+                                if ( image_float == 'left' || image_float == 'right' ) {
+                                        str += ' float='+image_float;
+                                }
+                        }
+                        str += ']';
+
+                        insertAtCaret(theform, str);
+                        theform.focus();
+
+                }
+        }
+
+        function getSelectedText(obj) {
+                if (document.selection && document.selection.createRange) {
+                        // Internet Explorer 4.0x
+
+                        obj.focus();
+                        var orig = obj.value.replace(/\r\n/g, "\n"); // IE Bug
+                        var range = document.selection.createRange();
+
+                        if (range.parentElement() != obj) {
+                                return '';
+                        }
+
+                        txt = range.text;
+
+                        return txt;
+                } else if (obj.selectionStart >= 0) {
+                        // FireFox & Safari
+                        var start = obj.selectionStart;
+                        var end    = obj.selectionEnd;
+                        var txt    = obj.value.substr(start, end-start);
+
+                        return txt;
+                } else {
+                        return '';
+		}
+	}
+
+	// end custom for comment editor
 	
 	// Insert Image Dropdown Menu
 	function ins_image_dropdown(theform,theImage) {
