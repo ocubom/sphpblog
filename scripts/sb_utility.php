@@ -72,6 +72,8 @@ function return_bytes($val) {
                         echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
                 if (!ini_get('file_uploads'))
                         echo "<p>WARNING: php.ini config value file_uploads is set to Off.  This is needed for uploading images and emoticons.</p>";
+                if (intval(ini_get('max_file_uploads')) <= 0)
+                        echo "<p>WARNING: php.ini config value max_file_uploads is set to zero or less.  This is needed for uploading images and emoticons.</p>";
                 if (!function_exists('gzcompress'))
                         echo "<p>WARNING: Zlib module not present.  This is needed for compressing database files and web pages in transit.</p>";
                 if (!function_exists('getimagesize'))
