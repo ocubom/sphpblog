@@ -5,6 +5,19 @@
   // must be uploaded to SourceForge.net under Simple PHP Blog or
   // emailed to apalmo <at> bigevilbrain <dot> com
 
+function sb_editor_controls($textfield) {
+        global $blog_config;
+        // Image Selection Dropdown
+        editor_image_dropdown($textfield);
+        
+        // Emoticon Selection
+	if ($blog_config->getTag('USE_EMOTICONS')) {
+        	emoticons_show($textfield);
+	}
+        
+	editor_style_buttons();
+}
+
   // ------------------
   // Text Editor
   // ------------------
@@ -15,7 +28,8 @@
     global $lang_string, $user_colors, $blog_config, $theme_vars;
     
     // Include Supporting Java Script
-    require_once('scripts/sb_editor.php');
+    //require_once('scripts/sb_editor.php');
+    //editor_js($text_id);
     
     // Default Form Values
     $default_subject = null; // Value for Subject input field
@@ -202,8 +216,7 @@
     
     // ----- Form Begin -----
     ob_start();
-    
-    
+        
     ?>
     <form action='' method="post" name="editor" id="editor" onsubmit="return <?php echo( $validate_script ); ?>(this)">
       <?php
@@ -237,37 +250,11 @@
            echo( '> ' . $lang_string[ 'chk_visiblemenu' ] . '<p />' );
         }
 
-?>        
+?>
       <label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
 <?php
-        // Image Selection Dropdown
-        editor_image_dropdown();
-        
-        // Emoticon Selection
-	if ($blog_config->getTag('USE_EMOTICONS')) {
-        	emoticons_show();
-	}
-        
-        // Content Text Area
-
-      ?>
-
-<noscript>
-<p>Available Tags:</p>
-<ul>
-<li>[blockquote]xxx[/blockquote]</li>
-<li>[pre]xxx[/pre]</li>
-<li>[em]xxx[/em]</li>
-<li>[strong]xxx[/strong]</li>
-<li>[u]xxx[/u]</li>
-<li>[h?]xxx[/h?] (?=1-6)</li>
-<li>[strike]xxx[/strike]</li>
-<li>[img=http://example.com/image.jpg width=x height=x popup=true/false float=left/right]</li>
-<li>[url=http://example.com new=true/false]link text[/url]</li>
-<li>[center]xxx[/center]</li>
-<li>[more] (entry only, not static pages)</li>
-</ul>
-</noscript>
+      sb_editor_controls('blog_text');
+?>
 
       <textarea style="width: <?php echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="blog_text" name="blog_text" rows="20" cols="50" autocomplete="OFF" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);"><?php echo( $default_content ); ?></textarea><p />
       <?php
@@ -340,17 +327,17 @@
     <?php
   }
 
-  function editor_image_dropdown () {
+  function editor_image_dropdown ($textfield) {
     // Image Selection Dropdown
     global $lang_string, $theme_vars;
     
-    $str = image_dropdown();
+    $str = image_dropdown($textfield);
     if ( $str !== NULL ) {
       echo( '<p>' . $str . '<a target="_blank" href="image_list.php">' . $lang_string[ 'view_images' ] . '</a></p>' );
     }
   }
   
-  function image_dropdown () {
+  function image_dropdown ($textfield) {
     // Get a list of images in the image folder. Return HTML.
     //
     global $theme_vars;
@@ -392,7 +379,7 @@
             array_push( $itemArray, $item );
           }
         }
-        $str = HTML_dropdown( false, 'image_list', $itemArray, false, 'ins_image_dropdown(this.form.blog_text,this.form.image_list);' );
+        $str = HTML_dropdown( false, 'image_list', $itemArray, false, "ins_image_dropdown(document.getElementById('$textfield'),document.getElementById('image_list'));" );
       }
     }
     
@@ -548,4 +535,114 @@
     echo( $str );
   }
 
+function sb_editor_js($text_id) {
+
+global $blog_config;
+
+if ($blog_config->getTag('USE_JS_EDITOR')) {
+
+?>
+
+<link rel="stylesheet" type="text/css" href="scripts/plugins/markitup/markitup/skins/sphpblog/style.css" />
+<link rel="stylesheet" type="text/css" href="scripts/plugins/markitup/markitup/sets/sphpblog/style.css" />
+
+<script type="text/javascript" src="scripts/plugins/markitup/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/markitup/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="scripts/plugins/markitup/markitup/sets/sphpblog/set.js"></script>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	$('#<?php echo $text_id; ?>').markItUp(mySettings);
+	
+});
+-->
+</script>
+
+<?php
+}
+?>
+
+<script type="text/javascript">
+	<!--
+	
+	// Insert Image Dropdown Menu
+	function ins_image_dropdown(theform,theImage) {
+		if (theImage.value != '-'+'-') {
+			insertAtCaret(theform, theImage.value);
+			theform.focus();
+		}
+	}
+	
+	//Insert Emoticon
+	function ins_emoticon(theform, emoticon) {
+		insertAtCaret(theform, emoticon);
+		theform.focus();
+	}
+	
+	// Validate the Form
+	function validate(theform) {
+		if (theform.blog_text.value=="" || theform.blog_subject.value=="") {
+			alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	// Validate the Form
+	function validate_static(theform) {
+		if (theform.blog_text.value=="" || theform.blog_subject.value=="" || theform.file_name.value=="" ) {
+			alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function setCaretTo(obj, pos) {
+		if(obj.createTextRange) {
+			var range = obj.createTextRange();
+			range.move('character', pos);
+			range.select();
+		} else if(obj.selectionStart) {
+			obj.focus();
+			obj.setSelectionRange(pos, pos);
+		}
+	}
+	
+	function insertAtCaret(obj, text) {
+		var mytext;
+		obj.focus();
+		
+		if (document.selection) {
+			// 'Code For IE'
+			text = ' ' + text + ' ';
+			if (obj.createTextRange && obj.caretPos) {
+				var caretPos = obj.caretPos;
+				caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+				return;
+			}
+		} else if (obj.selectionStart!==false) {
+			// 'Code for Gecko'
+			var start = obj.selectionStart;
+			var end   = obj.selectionEnd;
+			
+			obj.value = obj.value.substr(0, start) + text + obj.value.substr(end, obj.value.length);
+		}
+		
+		if (start != null) {
+			setCaretTo(obj, start + text.length);
+		} else {
+			obj.focus();
+			obj.value += text;
+		}
+	}
+
+	-->
+</script>
+
+<?php
+}
 ?>

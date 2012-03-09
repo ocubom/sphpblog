@@ -118,6 +118,12 @@
 		echo( $str );
 		
 		echo( '<hr />' );
+
+                // PREVIEW
+
+                $editor = sb_editor('static');
+                echo( $editor['preview'] );
+
 	?>
 	
 		<form action='add_block.php' method="post" name="editor" id="editor" onsubmit="return validate_block(this)">
@@ -125,33 +131,9 @@
 			<label for="blog_subject"><?php echo( $GLOBALS['lang_string']['block_name'] ); ?></label><br />
 			<input type="text" name="block_name" autocomplete="OFF" value="<?php echo $block_name; ?>" size="40"><br /><br />
 			
-			<?php echo( $GLOBALS['lang_string']['label_insert'] ); ?><br />
-			<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_bold'] ); ?>" onclick="ins_styles(this.form.block_content,'b','');" />
-			<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_italic'] ); ?>" onclick="ins_styles(this.form.block_content,'i','');" />
-			<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_url'] ); ?>" onclick="ins_url(this.form.block_content);" />
-			<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['btn_image'] ); ?>" onclick="ins_image_v2(this.form.block_content);"/>
+			<?php sb_editor_controls('text'); ?>
 			
-			<select name="style_dropdown" onchange="ins_style_dropdown(this.form.block_content,this.form.style_dropdown.value);">
-				<option label="--" value="--">--</option>
-				<option label="[blockquote]xxx[/blockquote]" value="blockquote">[blockquote]xxx[/blockquote]</option>
-				<option label="[pre]xxx[/pre]" value="pre">[pre]xxx[/pre]</option>
-				<option label="[code]xxx[/code]" value="code">[code]xxx[/code]</option>
-				<option label="[strong]xxx[/strong]" value="strong">[strong]xxx[/strong]</option>
-				<option label="[b]xxx[/b]" value="b">[b]xxx[/b]</option>
-				<option label="[em]xxx[/em]" value="em">[em]xxx[/em]</option>
-				<option label="[i]xxx[/i]" value="i">[i]xxx[/i]</option>
-				<option label="[h?]xxx[/h?] (?=1-6)" value="h?">[h?]xxx[/h?] (?=1-6)</option>
-				<option label="[html]xxx[/html]" value="html">[html]xxx[/html]</option>
-				<option label="[del]xxx[/del]" value="del">[del]xxx[/del]</option>
-				<option label="[ins]xxx[/ins]" value="ins">[ins]xxx[/ins]</option>
-				<option label="[strike]xxx[/strike]" value="strike">[strike]xxx[/strike]</option>
-			</select>
-			<input type="button" class="bginput" value="ok" onclick="ins_style_dropdown(this.form.block_content,this.form.style_dropdown.value);" /><br /><br />
-			
-			<a href="javascript:openpopup('image_list.php',<?php echo( $theme_vars[ 'popup_window' ][ 'width' ] ); ?>,<?php echo( $theme_vars[ 'popup_window' ][ 'height' ] ); ?>,true);"><?php echo( $GLOBALS['lang_string']['view_images'] ); ?></a><br />
-			<?php echo image_dropdown(); ?><br /><br />
-			
-			<label for="blog_text"><?php echo( $GLOBALS['lang_string']['block_content'] ); ?></label><br />
+			<label for="text"><?php echo( $GLOBALS['lang_string']['block_content'] ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50" autocomplete="OFF"><?php echo $block_content; ?></textarea><br /><br />
 			
 			<?php if( isset( $block_id ) ) { ?>
@@ -183,6 +165,10 @@
 	
 	// Theme Layout
 	ob_start();
+
+        sb_editor_js('text');
+        $page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
+
 	theme_pagelayout(); 
 	$page_template->setTag('{BODY}', ob_get_clean());
 		

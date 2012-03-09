@@ -80,7 +80,7 @@
 	
 	// Extra Javascript
 	ob_start();
-	require_once('scripts/sb_editor.php');
+        sb_editor_js('blog_text');
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title

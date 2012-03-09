@@ -83,7 +83,7 @@
 		return( $emoteimage_arr );
 	}
 	
-	function emoticons_show () {
+	function emoticons_show ($textfield='blog_text') {
 		$emote_arr = emoticons_load_tags();
 		
 		$str = null;
@@ -91,7 +91,7 @@
 			$path = $emote_arr[ $n ][ 'PATH' ];
 			$tags_str = $emote_arr[ $n ][ 'TAGS' ];
 			$tags_arr = explode( ' ', $tags_str );
-			$str .=  '<span onclick="Javascript:theform=(document.getElementById(\'comment_text\')==null)?document.getElementById(\'blog_text\'):document.getElementById(\'comment_text\');ins_emoticon(theform, \'' . encode_input_value(addslashes($tags_arr[0])) . '\');">' ."\n";
+			$str .=  '<span onclick="Javascript:theform=(document.getElementById(\'comment_text\')==null)?document.getElementById(\'' . $textfield . '\'):document.getElementById(\'comment_text\');ins_emoticon(theform, \'' . encode_input_value(addslashes($tags_arr[0])) . '\');">' ."\n";
 			$str .=  '<img src="' . $path . '" alt="'.encode_input_value($tags_str).'"title="'.encode_input_value($tags_str).'"  />' ."\n";
 			$str .=  '</span>' ."\n";
 		}

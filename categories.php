@@ -178,7 +178,11 @@
 			}
 		?></textarea><br />
 			<br />
-			<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['validate'] ); ?>" onclick="validate(document.forms.categories);" />
+		<script type="text/javascript">
+		// <!--
+			document.write('<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['validate'] ); ?>" onclick="validate(document.forms.categories);" />');
+		//-->
+		</script>
 			<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
 		</form>
 		
