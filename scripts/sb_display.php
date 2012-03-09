@@ -113,7 +113,7 @@
       // to 1000's of entries.
       //
 
-      $cats = split( ',', $category);
+      $cats = explode( ',', $category);
       $cat_sub_arr = array();
       for ($i = 0; $i < count($cats); $i++)
       {
@@ -341,7 +341,7 @@
            (( $logged_in == true) and ( $admin == 'no' ) and ( $blog_entry_data[ 'CREATEDBY' ] == $_SESSION[ 'username' ]) ))
         {
           $entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
-          $entry_array[ 'edit' ][ 'url' ] = 'preview_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
+          $entry_array[ 'edit' ][ 'url' ] = 'add.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
         }
 
         if ( (( $logged_in == true ) and ( $admin == 'yes' )) or
@@ -924,7 +924,7 @@
     //
     // This function is used by:
     //    1). delete.php
-    //    2). preview_cgi.php
+    //    2). add.php
     //    3). sb_comments.php
     //
     if ( file_exists( $entry_id . '.txt' ) ) {

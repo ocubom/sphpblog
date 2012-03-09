@@ -51,7 +51,7 @@
 			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
 		} else {
 			$type = $restored[0];
-			$page = 'preview_cgi.php';
+			$page = 'add.php';
 			if ($type == 'static') {
 				$page = 'add_static.php';
 			}

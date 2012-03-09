@@ -157,8 +157,8 @@
     switch ($page) {
       case 'add':
         // Add Entry
-        $lang_string['title'] = "Add Entry";
-        $lang_string['instructions'] = "Are you ready to blog? Fill out the form below and click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
+        $lang_string['title'] = "Edit Entry";
+        $lang_string['instructions'] = "Are you ready to blog? If you're using text styles or including images, remember to 'close' all your 'tags'. Fill out the form below and click 'Preview' to see how your entry will look, or click 'Post' to save your entry.";
         $lang_string['title_ad'] = "Confirm Trackback Pings";
         $lang_string['instructions_ad'] = "These are the Auto-Discovered URIs you're about to ping. If you do not want to ping a certain URI, uncheck it below. Then press the 'OK' button to ping the checked URIs or press 'Cancel' to not ping at all.";
         $lang_string['label_tb_ping'] = "Trackback ping(s) to send (comma separated)";
@@ -167,10 +167,10 @@
         $lang_string['label_categories'] = "Category List";
 
         // Preview / Edit Entry
-        $lang_string['title_preview'] = "Preview / Edit Entry";
-        $lang_string['instructions_preview'] = "Here's how your entry looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
-        $lang_string['title_update'] = "Update Entry";
-        $lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
+        //$lang_string['title_preview'] = "Preview / Edit Entry";
+        //$lang_string['instructions_preview'] = "Here's how your entry looks. If you're using text styles or including images, remember to 'close' all your 'tags'.";
+        //$lang_string['title_update'] = "Update Entry";
+        //$lang_string['instructions_update'] = "You can change your entry using the form below. Click 'Preview' or 'Post' when you're done.";
         $lang_string['ok_btn'] = "OK";
         $lang_string['cancel_btn'] = "Cancel";
 

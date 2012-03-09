@@ -187,13 +187,9 @@
     // --------------
     switch ( $mode ) {
       case 'entry' :
-        //$submit_page = 'add_cgi.php';
-        //$preview_page = 'preview_cgi.php';
         $validate_script = 'validate';
         break;
       case 'static' :
-        //$submit_page = 'add_static_cgi.php';
-        //$preview_page = 'preview_static_cgi.php';
         $validate_script = 'validate_static';
         break;
     }
@@ -292,8 +288,8 @@
         }
       ?>
       
-      <input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" onclick="this.form.action='<?php echo( $preview_page ); ?>';" />
-      <input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" onclick="this.form.action='<?php echo( $submit_page ); ?>';" /><p />
+      <input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" />
+      <input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" />
     </form>
     <?php
     
