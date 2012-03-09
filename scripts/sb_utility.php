@@ -68,8 +68,8 @@ function return_bytes($val) {
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONTENT_DIR . ".</p>";
                 if (!open_basedir_check($dir . '/' . IMAGES_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . IMAGES_DIR . ".</p>";
-                if (!ini_get('allow_url_fopen'))
-                        echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
+                //if (!ini_get('allow_url_fopen'))
+                //        echo "<p>WARNING: php.ini config value allow_url_fopen is set to Off.  This is needed for trackbacks.</p>";
                 if (!ini_get('file_uploads'))
                         echo "<p>WARNING: php.ini config value file_uploads is set to Off.  This is needed for uploading images and emoticons.</p>";
                 if (intval(ini_get('max_file_uploads')) <= 0)
