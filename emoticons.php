@@ -97,7 +97,7 @@
 			$str_out .=	 "\t</table>\n\t";
 			
 			$str_out .=	 '<hr />';
-			$str_out .=	 "\t<input type=\"submit\" value=\"".$lang_string["save_button"]."\" />\n";
+			$str_out .=	 "\t<input type=\"submit\" value=\"".$lang_string['save_button']."\" />\n";
 			$str_out .=	 "</form>\n";
 			
 			return $str_out;

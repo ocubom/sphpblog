@@ -85,6 +85,13 @@
 						closedir( $dhandle );
 					}
 
+					// sort array
+					// Obtain a list of columns
+					$label = array();
+					for ($i = 0; $i < sizeof($arr); $i++) {
+						$label[] = $arr[$i]['label'];
+					}
+                                        array_multisort($label, $arr);
 					// HTML_dropdown( $label=false, $id, $itemArray, $add_returns=true, $onchange=null, $width=0, $size=0, $multiple=false, $disabled=false )
 					echo( HTML_dropdown( $GLOBALS['lang_string']['blog_choose_language'], "blog_language", $arr ) );
 				?>

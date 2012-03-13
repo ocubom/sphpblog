@@ -62,6 +62,15 @@
 						array_push( $dropdown_arr, $item );
 						
 					}
+
+                                        // sort array
+                                        // Obtain a list of columns
+                                        $label = array();
+                                        for ($i = 0; $i < sizeof($arr); $i++) {
+                                                $label[] = $arr[$i]['label'];
+                                        }
+                                        array_multisort($label, $arr);
+
 					echo( HTML_dropdown( $GLOBALS['lang_string']['blog_choose_language'], "blog_language", $dropdown_arr ) );
 				?>
 				<p />

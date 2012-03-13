@@ -14,7 +14,7 @@
 		// Language: Finnish
 		$lang_string['language'] = 'finnish';
     $lang_string['locale'] = array('fi_FI', 'fi');
-		$lang_string['rss_locale'] = 'finnish'; // New 0.4.8		
+		$lang_string['rss_locale'] = 'fi-FI'; // New 0.4.8		
 
 		// ISO Charset: ISO-8859-1
 		$lang_string['html_charset'] = 'ISO-8859-1';

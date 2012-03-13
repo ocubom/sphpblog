@@ -2,10 +2,12 @@
 // convert strings.php format to gettext.po
 
 function convert2po($filename) {
+    print "Converting $filename\n";
+
     # add the page name to the start to make it unique
-    $rename_tags = array('title', 'instructions', 'error', 'success', 'form_error', 'wrong_password', 'header', 'submit_btn_edit', 'submit_btn_add');
+    $rename_tags = array('title', 'instructions', 'error', 'success', 'form_error', 'wrong_password', 'header', 'submit_btn_edit', 'submit_btn_add', 'error_add', 'error_delete', 'success_delete', 'instructions_update', 'instructions_edit', 'instructions_modify');
     # just take the first one of these
-    $skip_tags = array('ok_btn', 'cancel_btn', 'submit_btn', 'delete_btn', 'username', 'password', 'up', 'down', 'edit', 'delete', 'blog_choose_language', 'btn_setup', 'continue');
+    $skip_tags = array('ok_btn', 'cancel_btn', 'submit_btn', 'delete_btn', 'username', 'password', 'up', 'down', 'edit', 'delete', 'blog_choose_language', 'btn_setup', 'continue', 'useragent', 'IPAddress', 'name', 'email', 'comment_text', 'wrote', 'comment', 'zero_day', 'long_date', 'short_date');
     # skip these completely
     $filter_tags = array('title_update', 'title_preview', 'instrutions_update', 'instructions_preview');
 
@@ -31,7 +33,7 @@ function convert2po($filename) {
 
                   if (array_key_exists($key, $keyvalues)) {
                     if (!in_array($key, $skip_tags)) {
-                      print "Duplicate key $section: $key\n";
+                      print "WARNING: Duplicate key $section: $key\n";
                     }
                   } elseif (in_array($key, $filter_tags)) {
                   } else {
@@ -44,8 +46,14 @@ function convert2po($filename) {
     fclose($handle);
     fclose($whandle);
     }
+    system("msgfmt \"$outfile\"");
 }
 
-convert2po("english/strings.php");
+$contents = scandir(".");
+foreach ($contents as $dir) {
+    if (is_dir($dir) AND $dir[0] != ".") {
+        convert2po("$dir/strings.php");
+    }
+}
 
 ?>
