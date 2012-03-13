@@ -372,7 +372,7 @@
     }
 
     if ( $logged_in == true ) {
-      $str  .= '<a href="add_link.php">[ ' . $lang_string[ 'sb_add_link_btn' ]  . ' ]</a><br />';
+      $str  .= '<a href="add_link.php">[ ' . _sb('sb_add_link_btn')  . ' ]</a><br />';
     }
 
     return ( $str );
@@ -480,7 +480,7 @@
 
 function get_blocks() {
     //default order
-    $plugin_array = array('Avatar', 'Links', 'AuthoringMenu', 'Preferences', 'Calendar', 'RandomEntry', 'Archives', 'Categories', 'Search', 'CounterTotals', 'RecentEntries', 'RecentComments', 'RecentTrackbacks');
+    $plugin_array = array('Avatar', 'Links', 'AuthoringMenu', 'Preferences', 'Calendar', 'RandomEntry', 'Archives', 'Categories', 'Search', 'CounterTotals', 'RecentEntries', 'RecentComments');
 
     // Read blocks file.
     $filename = CONFIG_DIR.'blocks.txt';
@@ -536,11 +536,13 @@ function get_blocks() {
         // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
         if ($array[$i + 1] == 'plugin') {
           // handle as a plugin
+            if (class_exists( $array[$i])) {
                         $plugin = new $array[$i];
 			$val = $plugin->display();
 			$block_array[$i] = $val['title'];
                         $block_array[$i+1] = $val['content'];
                         unset( $plugin );
+            }
         }
         elseif ( (($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == true) and ( $array[$i] != $blog_config->getTag('STATIC_BLOCK_OPTIONS') ))
            or ($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == false) ) {
