@@ -16,7 +16,6 @@ remember it?
 - integrate gallery
 - integrate guest book?
 - separate color schemes from themes
-- create language maintenance tools
 
 New config settings:
 - Show comments by default ID: 2981075 
