@@ -796,9 +796,6 @@ msgstr "Description: (Un résumé ou une description libre de votre site.)"
 msgid "info_copyright"
 msgstr "Droits: (Informations sur la license du contenu, ou lien vers un document contenant ces informations.)"
 
-msgid "tracking_code"
-msgstr "Code de tracking externe: (code HTML ayant besoin de tourner sur la page principale (dans les tags d\{en-tête par sécurité) uniquement pour chaque utilisateur qui arrive sur la page - par ex. Google Analytics)"
-
 msgid "info_error"
 msgstr "<h2>Oouups!</h2>Informations non sauvegardées. Une erreur est survenue durant la sauvegarde de vos informations.<br /><br />Le serveur a retourné:<br />"
 

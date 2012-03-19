@@ -1153,9 +1153,6 @@ msgstr ""
 msgid "locale"
 msgstr ""
 
-msgid "title"
-msgstr ""
-
 msgid "sb_add_link_btn"
 msgstr ""
 
