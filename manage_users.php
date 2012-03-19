@@ -37,7 +37,7 @@
 	if ( $_GET[ 'action' ] == "update" ) {
 		// Since we arent adding a new user - we can blindly update the record as required
 		if ($_SESSION[ 'fulladmin' ] != 'yes' ) {
-			echo($lang_string['fulladminerror']);
+			echo(_sb('fulladminerror'));
 		} else {
 
 	                $user_list = read_users();
@@ -116,11 +116,11 @@
 	// PAGE CONTENT
 	// -----------
 	function page_content() {
-		global $lang_string, $blog_config, $theme_vars, $blog_theme;
+		global $blog_config, $theme_vars, $blog_theme;
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -170,41 +170,41 @@
 			
 			echo( '<table width="'.$GLOBALS['theme_vars']['content_width'].'" cellspacing="0" cellpadding="2">' );
 			if ( $_GET[ 'type' ] == "edit" ) {
-			echo( '<tr class="header"><th></th><th>' . $lang_string['header_user'] . $tmp[1] . '</th><th></th></tr>'); }
-			echo( '<tr class="header"><th></th><th>' . $lang_string['header_property'] . '</th><th>' . $lang_string['header_value'] . '</th></tr>');
+			echo( '<tr class="header"><th></th><th>' . _sb('header_user') . $tmp[1] . '</th><th></th></tr>'); }
+			echo( '<tr class="header"><th></th><th>' . _sb('header_property') . '</th><th>' . _sb('header_value') . '</th></tr>');
 
 			if ( $_GET[ 'type' ] == "new" ) {
 				// Populate default values
 				$tmp[4] = 'Y'; // Active
 				$tmp[6] = 'Y'; // Allow moderation
 
-				echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_username'] . '</td><td><input type="text" name="sUsername" value="" autocomplete="OFF" size="40";"></td></tr>');
+				echo( '<tr class="data2"><td></td><td>' . _sb('prop_username') . '</td><td><input type="text" name="sUsername" value="" autocomplete="OFF" size="40";"></td></tr>');
 			}
-			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_fullname'] . '</td><td><input type="text" name="sFullname" value="' . htmlspecialchars($tmp[0]) . '" autocomplete="OFF" size="40";"></td></tr>');
-			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_password'] . '</td><td><input type="password" name="sPassword" value="' . htmlspecialchars($tmp[2]) . '" autocomplete="OFF" size="60";"></td></tr>');
-			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_email'] . '</td><td><input type="text" name="sEmail" value="' . htmlspecialchars($tmp[5]) . '" autocomplete="OFF" size="40";"></td></tr>');
-			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_avatar'] . '</td><td><input type="text" name="sAvatar" value="' . htmlspecialchars($tmp[3]) . '" autocomplete="OFF" size="60";"></td></tr>');
-			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_state'] . '</td><td><input type="checkbox" name="sActive"');
+			echo( '<tr class="data1"><td></td><td>' . _sb('prop_fullname') . '</td><td><input type="text" name="sFullname" value="' . htmlspecialchars($tmp[0]) . '" autocomplete="OFF" size="40";"></td></tr>');
+			echo( '<tr class="data2"><td></td><td>' . _sb('prop_password') . '</td><td><input type="password" name="sPassword" value="' . htmlspecialchars($tmp[2]) . '" autocomplete="OFF" size="60";"></td></tr>');
+			echo( '<tr class="data1"><td></td><td>' . _sb('prop_email') . '</td><td><input type="text" name="sEmail" value="' . htmlspecialchars($tmp[5]) . '" autocomplete="OFF" size="40";"></td></tr>');
+			echo( '<tr class="data2"><td></td><td>' . _sb('prop_avatar') . '</td><td><input type="text" name="sAvatar" value="' . htmlspecialchars($tmp[3]) . '" autocomplete="OFF" size="60";"></td></tr>');
+			echo( '<tr class="data1"><td></td><td>' . _sb('prop_state') . '</td><td><input type="checkbox" name="sActive"');
 			if ( $tmp[4] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
 			echo( '></td></tr>');
-			echo( '<tr class="data2"><td></td><td>' . $lang_string['prop_sec_Moderate'] . '</td><td><input type="checkbox" name="sModComments"');
+			echo( '<tr class="data2"><td></td><td>' . _sb('prop_sec_Moderate') . '</td><td><input type="checkbox" name="sModComments"');
 			if ( $tmp[6] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
 			echo( '></td></tr>');
-			echo( '<tr class="data1"><td></td><td>' . $lang_string['prop_sec_Delete'] . '</td><td><input type="checkbox" name="sDeleteEntries"');
+			echo( '<tr class="data1"><td></td><td>' . _sb('prop_sec_Delete') . '</td><td><input type="checkbox" name="sDeleteEntries"');
 			if ( $tmp[7] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
 			echo( '></td></tr>');
-			echo( '<tr class="data2"><td></td><td>' .	 $lang_string['prop_sec_Edit'] . '</td><td><input type="checkbox" name="sEditAny"');
+			echo( '<tr class="data2"><td></td><td>' .	 _sb('prop_sec_Edit') . '</td><td><input type="checkbox" name="sEditAny"');
 			if ( $tmp[8] == 'Y' ) { echo ( ' checked'); } else { echo ( ' unchecked'); };
 			echo( '></td></tr>');
 
 			echo('</table>');
 			echo('<hr />');
 			if ( $_GET[ 'type' ] == "edit" ) {
-				echo('<input type="submit" name="submit" value="' . $lang_string['btn_SaveChanges'] . '" />');
+				echo('<input type="submit" name="submit" value="' . _sb('btn_SaveChanges') . '" />');
 			} else {
-				echo('<input type="submit" name="submit" value="' . $lang_string['btn_CreateUser'] . '" />');
+				echo('<input type="submit" name="submit" value="' . _sb('btn_CreateUser') . '" />');
 			}
-			echo('<input type="submit" name="cancel" value="' . $lang_string['btn_Cancel'] . '" />');
+			echo('<input type="submit" name="cancel" value="' . _sb('btn_Cancel') . '" />');
 			echo('</form>');
 		}
 
@@ -213,10 +213,10 @@
 		// 2. Only show list when not modifying, adding or deleting an entry
 		if ( ($_SESSION[ 'fulladmin' ] == 'yes' ) AND ( $_GET[ 'action' ] == "" ))	{
 			// Button to add new user - only available to Administrator
-			echo( '<a href="manage_users.php?action=modify&type=new">' . $lang_string['create_user'] . '</a><p />');
+			echo( '<a href="manage_users.php?action=modify&type=new">' . _sb('create_user') . '</a><p />');
 			echo( '<table width="'.$GLOBALS['theme_vars']['content_width'].'" cellspacing="0" cellpadding="2">' );
-			echo( '<tr class="header"><th></th><th><i>' . $lang_string['grid_header'] . '</i></th><th></th><th></th><th></th></tr>');
-			echo( '<tr class="header"><th></th><th>' . $lang_string['grid_login'] . '</th><th>' . $lang_string['grid_email'] . '</th><th>' . $lang_string['grid_avatar'] . '</th><th>' . $lang_string['grid_state'] . '</th></tr>');
+			echo( '<tr class="header"><th></th><th><i>' . _sb('grid_header') . '</i></th><th></th><th></th><th></th></tr>');
+			echo( '<tr class="header"><th></th><th>' . _sb('grid_login') . '</th><th>' . _sb('grid_email') . '</th><th>' . _sb('grid_avatar') . '</th><th>' . _sb('grid_state') . '</th></tr>');
 
 			$user_list = read_users();
 
@@ -227,10 +227,10 @@
 
 			foreach ($user_list as $tmp) {
 					if (($linecount % 2) == 0) {
-						echo( '<tr class="data1"><td></td><td><b>' . $tmp[0] . '</b></td><td></td><td><b><a href="manage_users.php?action=modify&type=edit&user=' . $tmp[1] . '">' . $lang_string['btn_modify'] . '</a>&nbsp|&nbsp<a href="manage_users.php?action=delete&user=' . $tmp[1] . '">' . $lang_string['btn_delete'] . '</a></b></td><td></td></tr>');
+						echo( '<tr class="data1"><td></td><td><b>' . $tmp[0] . '</b></td><td></td><td><b><a href="manage_users.php?action=modify&type=edit&user=' . $tmp[1] . '">' . _sb('btn_modify') . '</a>&nbsp|&nbsp<a href="manage_users.php?action=delete&user=' . $tmp[1] . '">' . _sb('btn_delete') . '</a></b></td><td></td></tr>');
 						echo( '<tr class="data1"><td></td><td>' . $tmp[1] . '</td><td>' . $tmp[5] . '</td><td>' . $tmp[3] . '</td><td>' . $tmp[4] . '</td></tr>');
 					} else {
-						echo( '<tr class="data2"><td></td><td><b>' . $tmp[0] . '</b></td><td></td><td><b><a href="manage_users.php?action=modify&type=edit&user=' . $tmp[1] . '">' . $lang_string['btn_modify'] . '</a>&nbsp|&nbsp<a href="manage_users.php?action=delete&user=' . $tmp[1] . '">' . $lang_string['btn_delete'] . '</a></b></td><td></td></tr>');
+						echo( '<tr class="data2"><td></td><td><b>' . $tmp[0] . '</b></td><td></td><td><b><a href="manage_users.php?action=modify&type=edit&user=' . $tmp[1] . '">' . _sb('btn_modify') . '</a>&nbsp|&nbsp<a href="manage_users.php?action=delete&user=' . $tmp[1] . '">' . _sb('btn_delete') . '</a></b></td><td></td></tr>');
 						echo( '<tr class="data2"><td></td><td>' . $tmp[1] . '</td><td>' . $tmp[5] . '</td><td>' . $tmp[3] . '</td><td>' . $tmp[4] . '</td></tr>');
 					}
 					$linecount = $linecount + 1;
@@ -273,7 +273,7 @@
 		// <!--
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
+				alert("<?php echo( _sb('form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -285,7 +285,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

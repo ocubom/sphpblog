@@ -76,7 +76,7 @@
 		while ( ( $entries<$max_entries ) && ( $i<count( $entry_file_array ) ) ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-			$cats = split( ',', $contents[ 'CATEGORIES' ] );
+			$cats = explode( ',', $contents[ 'CATEGORIES' ] );
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
 				if ( ( empty( $category ) ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
 					$entries++;
@@ -254,7 +254,7 @@
 		while ( ( $entries<$max_entries ) && ( $i<count( $entry_file_array ) ) ) {
 			list( $entry_filename, $year_dir, $month_dir ) = explode( '|', $entry_file_array[ $i ] );
 			$contents=blog_entry_to_array( CONTENT_DIR . $year_dir . '/' . $month_dir . '/' . $entry_filename );
-			$cats = split( ',', $contents[ 'CATEGORIES' ] );
+			$cat = explode( ',', $contents[ 'CATEGORIES' ] );
 			for ( $j = 0; $j < count( $cats ); $j++ ) {
 				if ( ( empty( $category ) ) || strpos( ',' . $category . ',', ',' . $cats[ $j ] . ',' )!==false ) {
 					$entries++;

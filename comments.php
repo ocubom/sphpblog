@@ -67,7 +67,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
+		global $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
 
 		// show entry
 		$filename = CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/'.$_GET[ 'entry' ];
@@ -76,18 +76,18 @@
 		print $blog_content;
 
 		// show comments
-		echo "<h2>" . $GLOBALS['lang_string']['title'] . "</h2>";
+		echo "<h2>" . _sb('title') . "</h2>";
 		echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) );
 		echo( '<p />' );
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['header'];
+		$entry_array[ 'subject' ] = _sb('header');
 
 		// ADD COMMENT FORM
 		ob_start(); ?>
 
-		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+		<?php echo( _sb('instructions') ); ?><p />
 
 		<form action='comment_add_cgi.php' method="post" name="vbform" onsubmit="return validate_comment(this)">
 			<input type="hidden" name="y" value="<?php echo( $_GET[ 'y' ] ); ?>" />
@@ -96,7 +96,7 @@
 
 			<?php
 			if ($GLOBALS['logged_in']==false ) {
-				echo('<label for="comment_name">' . $GLOBALS['lang_string']['comment_name'] . '</label><br />');
+				echo('<label for="comment_name">' . _sb('comment_name') . '</label><br />');
 				echo('<input type="text" name="comment_name" id="comment_name" value="' . $_COOKIE[ 'comment_name' ] . '" autocomplete="off" /><br />');
 			} else {
 				$admin = $_SESSION[ 'fulladmin' ];
@@ -107,7 +107,7 @@
 			}
 
 			if ($GLOBALS['logged_in']==false ) {
-				echo('<label for="comment_email">' . $GLOBALS['lang_string']['comment_email'] . '</label><br />');
+				echo('<label for="comment_email">' . _sb('comment_email') . '</label><br />');
 				echo('<input type="text" name="comment_email" id="comment_email" value="' . $_COOKIE[ 'comment_email' ] . '" autocomplete="off" /><br />');
 			} else {
 				// Blank Email
@@ -115,9 +115,9 @@
 			}
 
 			if ($GLOBALS['logged_in']==false ) {
-				echo('<label for="comment_url">' . $GLOBALS['lang_string']['comment_url'] . '</label><br />');
+				echo('<label for="comment_url">' . _sb('comment_url') . '</label><br />');
 				echo('<input type="text" name="comment_url" id="comment_url" value="' . $_COOKIE[ 'comment_url' ] . '" autocomplete="off" /><br />');
-				echo('<label for="comment_remember">' . $GLOBALS['lang_string']['comment_remember'] . '<input type="checkbox" name="comment_remember" id="comment_remember" value="1"');
+				echo('<label for="comment_remember">' . _sb('comment_remember') . '<input type="checkbox" name="comment_remember" id="comment_remember" value="1"');
 				echo(' autocomplete="off" /></label><br /><br />');
 			} else {
 				// Blank URL
@@ -126,7 +126,7 @@
 			?>
 
 			<!-- NEW -->
-			<?php echo( $GLOBALS['lang_string']['label_insert'] ); ?><br />
+			<?php echo( _sb('label_insert') ); ?><br />
 			<?php
 			global $blog_config;
 			$jsstr = "";
@@ -134,19 +134,19 @@
 			$allowed = explode(',', $blog_config->getTag('COMMENT_TAGS_ALLOWED'));
 
 			if ( in_array( 'b', $allowed ) ) {
-				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_bold'] . '" onclick="ins_styles(this.form.comment_text,\'b\',\'\');" />';
+				$jsstr .= '<input type="button" class="bginput" value="' . _sb('btn_bold') . '" onclick="ins_styles(this.form.comment_text,\'b\',\'\');" />';
 			}
 			if ( in_array( 'i', $allowed ) ) {
-				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_italic'] . '" onclick="ins_styles(this.form.comment_text,\'i\',\'\');" />';
+				$jsstr .= '<input type="button" class="bginput" value="' . _sb('btn_italic') . '" onclick="ins_styles(this.form.comment_text,\'i\',\'\');" />';
 			}
 			if ( in_array( 'center', $allowed ) ) {
 				$jsstr .= '<input type="button" class="bginput" value="center" onclick="ins_styles(this.form.comment_text,\'center\',\'\');" />';
 			}
 			if ( in_array( 'url', $allowed ) ) {
-				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_url'] . '" onclick="ins_url_no_options(this.form.comment_text);" />';
+				$jsstr .= '<input type="button" class="bginput" value="' . _sb('btn_url') . '" onclick="ins_url_no_options(this.form.comment_text);" />';
 			}
 			if ( in_array( 'img', $allowed ) ) {
-				$jsstr .= '<input type="button" class="bginput" value="' . $GLOBALS['lang_string']['btn_image'] . '" onclick="ins_image_v2(this.form.comment_text);" />';
+				$jsstr .= '<input type="button" class="bginput" value="' . _sb('btn_image') . '" onclick="ins_image_v2(this.form.comment_text);" />';
 			}
 
 				$jsstr .= '<select name="style_dropdown" onchange="ins_style_dropdown(this.form.comment_text,this.form.style_dropdown.value);">
@@ -175,13 +175,13 @@
 			if ( in_array( 'img', $allowed ) ) {
 				global $theme_vars;
 				?>
-					<a traget="_blank" href='image_list.php'><?php echo( $GLOBALS['lang_string']['view_images'] ); ?></a><br />
+					<a traget="_blank" href='image_list.php'><?php echo( _sb('view_images') ); ?></a><br />
 					<?php echo image_dropdown('comment_text'); ?><br /><br />
 				<?php
 			}
 			?>
 
-			<label for="comment_text"><?php echo( $GLOBALS['lang_string']['comment_text'] ); ?></label><br />
+			<label for="comment_text"><?php echo( _sb('comment_text') ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="comment_text" name="comment_text" rows="20" cols="50" autocomplete="off"></textarea><br /><br />
 
 			<?php
@@ -196,9 +196,9 @@
 				echo('<label for="comment_capcha">');
 
 				if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') ) {
-					printf( $GLOBALS['lang_string']['comment_capcha'] . ' <br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
+					printf( _sb('comment_capcha') . ' <br /><img src="capcha.php?entry=' . $_GET[ 'entry' ] . '" />' );
 				} else {
-					printf( $GLOBALS['lang_string']['comment_capcha'] . ' ' .sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) );
+					printf( _sb('comment_capcha') . ' ' .sb_str_to_ascii( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) );
 				}
 
 				echo('</label><br />');
@@ -206,13 +206,13 @@
 
 				if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
 					if ( $logged_in == false ) {
-						echo($lang_string['user_notice_mod'] . '<br /><br />');
+						echo(_sb('user_notice_mod') . '<br /><br />');
 					}
 				}
 			}
 			?>
 
-			<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['post_btn'] ); ?>" />
+			<input type="submit" name="submit" value="<?php echo( _sb('post_btn') ); ?>" />
 
 		</form>
 
@@ -223,17 +223,17 @@
 		if ( $oBlacklist->isBanned( getIP() ) == true ) {
 			// Check Blacklist
 			ob_end_clean();
-			$entry_array[ 'entry' ] = $lang_string['blacklisted'];
+			$entry_array[ 'entry' ] = _sb('blacklisted');
 		} else if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == false ) {
 			ob_end_clean(); // Don't show anything to do with the comment editing.
-			$entry_array[ 'entry' ] = $lang_string['nocomments']; 
+			$entry_array[ 'entry' ] = _sb('nocomments'); 
 		} else if ( are_comments_expired( $GLOBALS[ 'month' ], $GLOBALS[ 'day' ], $GLOBALS[ 'year' ] ) ) {
 			// Check Expiration Date
 			ob_end_clean();
-			$entry_array[ 'entry' ] = $lang_string['expired_comment1'] . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') . $lang_string['expired_comment2'];
+			$entry_array[ 'entry' ] = _sb('expired_comment1') . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') . _sb('expired_comment2');
 		} else if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == 0 ){
 			ob_end_clean();
-			$entry_array[ 'entry' ] = $lang_string['nocomments'];
+			$entry_array[ 'entry' ] = _sb('nocomments');
 		} else {
 			$entry_array[ 'entry' ] = ob_get_clean();
 		}
@@ -264,7 +264,7 @@
 		// Validate the Form
 		function validate_comment(theform) {
 			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
-				alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
+				alert("<?php echo( _sb('form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -279,7 +279,7 @@
 	if (!isset($_GET['entry'])) {
 		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE'));
 	} else {
-		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	}
 	
 	// Theme Layout

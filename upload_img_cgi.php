@@ -79,7 +79,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-	global $lang_string, $user_colors;
+	global $user_colors;
 	if ( $ok !== true ) {
  		switch($_FILES['userfile'][$i]['error'])
  		{
@@ -93,12 +93,12 @@
  			case 8: $errstring = "File upload stopped by extension. Introduced in PHP 5.2.0."; break;
  			default: $errstring = "The reason of error is unknown. <br>Please look after to the "+$_FILES['userfile'][$i]['error']+" error code for the _FILES['userfile']['error'] in the php manual"; break;
  		}
- 		echo( $GLOBALS['lang_string']['error'] . $ok . $errstring . '<p />');
+ 		echo( _sb('error') . $ok . $errstring . '<p />');
 	}
 	//echo(count($_FILES['userfile']));
 	//print_r($_FILES['userfile']);
 	//echo($_FILES['userfile']['name'][0]);
-	echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a><br /><br />' );
+	echo( '<a href="index.php">' . _sb('home') . '</a><br /><br />' );
 	}
 	
 	// ----
@@ -112,7 +112,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

@@ -28,15 +28,15 @@
 		/* ------ OPTIONS ------ */
 		
 		function optionsForm () {
-			$label_firstDay = $GLOBALS['lang_string']['label_calendar_start'];
-			$sunday = $GLOBALS['lang_string']['cal_sunday'];
-			$monday = $GLOBALS['lang_string']['cal_monday'];
+			$label_firstDay = _sb('label_calendar_start');
+			$sunday = _sb('cal_sunday');
+			$monday = _sb('cal_monday');
 			$value_firstDay = $this->prefs['firstDay'];
 			
 			$label_dateFormat = 'Date format as defined by the PHP <a href="http://us2.php.net/manual/en/function.strftime.php" target="_blank">strftime()</a> function';
 			$value_dateFormat = $this->prefs['dateFormat'];
 			
-			$save = $GLOBALS['lang_string']['submit_btn'];
+			$save = _sb('submit_btn');
 			
 			ob_start(); ?>
 			<!-- FORM -->
@@ -83,7 +83,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_calendar' ];
+			return _sb('menu_calendar');
 		}
 		
 		function getContent () {

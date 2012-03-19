@@ -18,7 +18,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_links' ];
+			return _sb('menu_links');
 		}
 		
 		function getContent () {
@@ -28,7 +28,7 @@
 		
 			if ( $GLOBALS[ 'logged_in' ] == true ) {
 				// You are logged in.
-				$str .= sprintf( '<b>%s<br />%s</b><br /><br />', $_SESSION[ 'user' ], $GLOBALS[ 'lang_string' ][ 'notice_loggedin' ] );
+				$str .= sprintf( '<b>%s<br />%s</b><br /><br />', $_SESSION[ 'user' ], _sb('notice_loggedin'));
 				
 				// There are x unmodded comments.
 				if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
@@ -37,16 +37,16 @@
 						if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) {
 							$width = $GLOBALS[ 'theme_vars' ][ 'popup_window' ][ 'width' ];
 							$height = $GLOBALS[ 'theme_vars' ][ 'popup_window' ][ 'height' ];
-							$str .= sprintf( '<a href="javascript:openpopup(\'comments_moderation.php\',%s,%s,true)">%s%d%s</a><br /><br />', $width, $height, $GLOBALS[ 'lang_string' ]['notice_moderator1'], $unmodCount, $GLOBALS[ 'lang_string' ]['notice_moderator2'] );
+							$str .= sprintf( '<a href="javascript:openpopup(\'comments_moderation.php\',%s,%s,true)">%s%d%s</a><br /><br />', $width, $height, _sb('notice_moderator1'), $unmodCount, _sb('notice_moderator2') );
 						} else {
-							$str .= sprintf( '<a href="comments_moderation.php">%s%d%s</a><br /><br />', $GLOBALS[ 'lang_string' ]['notice_moderator1'], $unmodCount, $GLOBALS[ 'lang_string' ]['notice_moderator2'] );
+							$str .= sprintf( '<a href="comments_moderation.php">%s%d%s</a><br /><br />', _sb('notice_moderator1'), $unmodCount, _sb('notice_moderator2') );
 						}
 					}
 				}
 			}
 			
 			// Home.
-			$str .= sprintf( '<a href="%sindex.php">%s</a><br />', BASEURL, $GLOBALS[ 'lang_string' ][ 'menu_home' ] );
+			$str .= sprintf( '<a href="%sindex.php">%s</a><br />', BASEURL, _sb('menu_home') );
 			
 			// Contact.
 			$temp = ($blog_config->getTag('BLOG_EMAIL'));
@@ -54,13 +54,13 @@
 				$oBlacklist = new CBlacklist;
 				$oBlacklist->load( CONFIG_DIR . 'blacklist.txt' );
 				if ( $oBlacklist->isBanned( getIP() ) == false || $GLOBALS[ 'logged_in' ] == true  ) {
-					$str .= sprintf( '<a href="%scontact.php">%s</a><br />', BASEURL, $GLOBALS[ 'lang_string' ][ 'menu_contact' ] );
+					$str .= sprintf( '<a href="%scontact.php">%s</a><br />', BASEURL, _sb('menu_contact') );
 				}
 			}
 			
 			// Stats.
 			if ( $blog_config->getTag('BLOG_ENABLE_STATS') ) {
-				$str .= sprintf( '<a href="%sstats.php">%s</a><br />', BASEURL, $GLOBALS[ 'lang_string' ][ 'menu_stats' ] );
+				$str .= sprintf( '<a href="%sstats.php">%s</a><br />', BASEURL, _sb('menu_stats') );
 			}
 			
 			// Read links file.
@@ -87,11 +87,11 @@
 			
 			// Login / Logout
 			if ( $GLOBALS[ 'logged_in' ] == true ) {
-				$str = $str . '<a href="add_link.php">[ ' . $GLOBALS[ 'lang_string' ][ 'sb_add_link_btn' ]  . ' ]</a><br />';
-				$str .= '<hr /><a href="logout.php">' . $GLOBALS[ 'lang_string' ][ 'menu_logout' ] . '</a>';
+				$str = $str . '<a href="add_link.php">[ ' . _sb('sb_add_link_btn')  . ' ]</a><br />';
+				$str .= '<hr /><a href="logout.php">' . _sb('menu_logout') . '</a>';
 			} else {
 				if ( $blog_config->getTag('BLOG_ENABLE_LOGIN') ) {
-					$str .= '<hr /><a href="login.php">' . $GLOBALS[ 'lang_string' ][ 'menu_login' ] . '</a>';
+					$str .= '<hr /><a href="login.php">' . _sb('menu_login') . '</a>';
 				}
 			}
 			

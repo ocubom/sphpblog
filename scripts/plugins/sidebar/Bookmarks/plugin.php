@@ -30,7 +30,7 @@
                         $provider = $this->prefs['provider'];
 			$checked = "checked='checked'";
 
-                        $save = $GLOBALS['lang_string']['submit_btn'];
+                        $save = _sb('submit_btn');
 
                         ob_start(); ?>
                         <!-- FORM -->
@@ -61,8 +61,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			//return $GLOBALS[ 'lang_string' ][ 'menu_archive' ];
-			return 'Bookmark Sharing';
+			return _sb('Bookmark Sharing');
 		}
 		
 		function getContent () {

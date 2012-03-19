@@ -36,29 +36,29 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $theme_vars;
+		global $blog_config, $theme_vars;
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+		<?php echo( _sb('instructions') ); ?><p />
 
 		<!-- FORM -->
 		<form action="moderation.php" method="post" name="moderation" name="moderation" onsubmit="return validate(this)">
 
-			<?php echo( $GLOBALS['lang_string']['banned_address_list_title'] ); ?>
-			<label for="info_keywords"><?php echo( $GLOBALS['lang_string']['banned_address_list'] ); ?></label><br />
+			<?php echo( _sb('banned_address_list_title') ); ?>
+			<label for="info_keywords"><?php echo( _sb('banned_address_list') ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="banned_address_list" rows="20" cols="50" autocomplete="OFF"><?php echo($blog_config->getTag('BANNED_ADDRESS_LIST')); ?></textarea><br /><br />
 
-				<?php echo( $GLOBALS['lang_string']['banned_word_list_title'] ); ?>
-			<label for="info_keywords"><?php echo( $GLOBALS['lang_string']['banned_word_list'] ); ?></label><br />
+				<?php echo( _sb('banned_word_list_title') ); ?>
+			<label for="info_keywords"><?php echo( _sb('banned_word_list') ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="banned_word_list" rows="20" cols="50" autocomplete="OFF"><?php echo($blog_config->getTag('BANNED_WORD_LIST')); ?></textarea><br /><br />
 
 			<!-- SUBMIT -->
-			<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
+			<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" />
 		</form>
 		<?php 
 		// PAGE CONTENT END
@@ -79,7 +79,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

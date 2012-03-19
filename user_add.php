@@ -151,7 +151,7 @@
 		
 		// PAGE CONTENT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		$entry_array[ 'entry' ] = $content_template->getHTML();
 		
 		
@@ -170,7 +170,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

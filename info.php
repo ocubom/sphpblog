@@ -37,11 +37,11 @@
 	// PAGE CONTENT
 	// -----------
 	function page_content() {
-		global $lang_string, $blog_config, $theme_vars, $blog_theme;
+		global $blog_config, $theme_vars, $blog_theme;
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -50,33 +50,33 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+				echo( _sb('error') . $ok . '<p />' );
 			} else {
-				echo( $GLOBALS['lang_string']['success'] . '<p />' );
+				echo( _sb('success') . '<p />' );
 			}
-			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+			echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		} else {
 			?>
 			
-			<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+			<?php echo( _sb('instructions') ); ?><p />
 			
 			<form action="info.php" method="post" name="info" name="info">
 				
-				<label for="info_keywords"><?php echo( $GLOBALS['lang_string']['info_keywords'] ); ?></label><br />
+				<label for="info_keywords"><?php echo( _sb('info_keywords') ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_keywords" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config->getTag('INFO_KEYWORDS')); ?></textarea><br /><br />
 				
-				<label for="info_description"><?php echo( $GLOBALS['lang_string']['info_description'] ); ?></label><br />
+				<label for="info_description"><?php echo( _sb('info_description') ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_description" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config->getTag('INFO_DESCRIPTION')); ?></textarea><br /><br />
 				
-				<label for="info_copyright"><?php echo( $GLOBALS['lang_string']['info_copyright'] ); ?></label><br />
+				<label for="info_copyright"><?php echo( _sb('info_copyright') ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="info_copyright" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config->getTag('INFO_COPYRIGHT')); ?></textarea><br /> <br />
 
-				<label for="tracking_code"><?php echo( $GLOBALS['lang_string']['tracking_code'] ); ?></label><br />
+				<label for="tracking_code"><?php echo( _sb('tracking_code') ); ?></label><br />
 				<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="tracking_code" rows="5" cols="50" autocomplete="OFF"><?php echo($blog_config->getTag('TRACKING_CODE')); ?></textarea><br />
 
 				<hr />
 
-				<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
+				<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" />
 			</form>
 			
 			<?php 
@@ -104,7 +104,7 @@
 		<!--
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
+				alert("<?php echo( _sb('form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -116,7 +116,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

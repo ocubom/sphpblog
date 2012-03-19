@@ -23,12 +23,14 @@ if ($ext == 'png') {
     $img_origineel = imagecreatefrompng($ifile);
 }
 
-$new_w = imagesx($img_origineel);
-$new_h = imagesy($img_origineel);
+if ($img_origineel) {
 
-header("Content-type: image/jpeg");
+    $new_w = imagesx($img_origineel);
+    $new_h = imagesy($img_origineel);
 
-if ($new_h > $new_w)
+    header("Content-type: image/jpeg");
+
+    if ($new_h > $new_w)
 	{
 	$height = "100";
 	$new_w = abs($new_w / ($new_h / $height));
@@ -39,7 +41,7 @@ if ($new_h > $new_w)
 	imageJPEG($img_destination);
 
 	}
-else
+    else
 	{
 	$width = "100";
 	$new_h = abs($new_h / ($new_w / $width));
@@ -49,6 +51,8 @@ else
 	imagecopyresampled($img_destination,$img_origineel,0,$tussen,0,0,$new_w,$new_h,imagesx($img_origineel),imagesy($img_origineel));
 	imageJPEG($img_destination);
 	}
-ImageDestroy($img_destination); 
+    ImageDestroy($img_destination); 
+
+}
 
 ?>

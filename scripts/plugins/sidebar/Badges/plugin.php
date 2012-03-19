@@ -41,7 +41,7 @@
                         $atom = $this->prefs['atom'];
                         $rdf = $this->prefs['rdf'];
 
-                        $save = $GLOBALS['lang_string']['submit_btn'];
+                        $save = _sb('submit_btn');
 
                         ob_start(); ?>
                         <!-- FORM -->

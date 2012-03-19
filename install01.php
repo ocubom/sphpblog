@@ -33,18 +33,18 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config;
+		global $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( $GLOBALS['lang_string']['instructions'] . '<p />' );
+		echo( _sb('instructions') . '<p />' );
 
-		echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $lang_string['begin'] . '</a><p />' );
+		echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('begin') . '</a><p />' );
 
 		// TODO language file
                 print "<p>We think your blog is at: " . $_SERVER["SERVER_NAME"] . BASEURL . ".  If not, set BASEURL correctly in scripts/config.php</p>";
@@ -69,7 +69,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

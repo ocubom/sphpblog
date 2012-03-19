@@ -20,8 +20,9 @@
 
 	if (empty($title)) {
 		$title = $blog_config->getTag('BLOG_TITLE');
-		if (!empty($GLOBALS['lang_string']['title'])) {
-			$title = $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title'];
+		$custom_title = _sb('title');
+		if (!empty($custom_title)) {
+			$title = $blog_config->getTag('BLOG_TITLE').' - '. $custom_title;
 		}
 	}
         $locale = str_replace('_', '-', $GLOBALS['lang_string']['locale']);

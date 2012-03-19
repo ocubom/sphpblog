@@ -84,11 +84,11 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $ad_array, $auto_discovery_confirm;
+		global $blog_config, $ad_array, $auto_discovery_confirm;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -97,11 +97,11 @@
 			// Display error message.
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+				echo( _sb('error') . $ok . '<p />' );
 			} else {
-				echo( $GLOBALS['lang_string']['success'] . '<p />' );
+				echo( _sb('success') . '<p />' );
 			}
-			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a><br /><br />' );
+			echo( '<a href="index.php">' . _sb('home') . '</a><br /><br />' );
 		}
 	}
 	} else {
@@ -109,12 +109,12 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config;
+		global $blog_config;
 		
 		// INSTRUCTIONS
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
-		$entry_array[ 'entry' ] = $GLOBALS['lang_string']['instructions'] . '<p />' . $GLOBALS['lang_string']['instructions'] . '<p />';
+		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'entry' ] = _sb('instructions') . '<p />' . _sb('instructions') . '<p />';
 		echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
 		
 		// PREVIEW
@@ -123,7 +123,7 @@
 		
 		// EDITOR
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		$entry_array[ 'entry' ] = $editor['form'];
 		echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
 	}
@@ -146,7 +146,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

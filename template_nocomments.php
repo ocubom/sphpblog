@@ -19,11 +19,11 @@
   // PAGE CONTENT
   // ------------
   function page_content() {
-    global $lang_string, $blog_config;
+    global $blog_config;
   
     // SUBJECT
     $entry_array = array();
-    $entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+    $entry_array[ 'subject' ] = _sb('title');
     // $entry_array[ 'subject' ] = 'Subject Line';
     // $entry_array[ 'entry' ] = 'Body Content<br /><a href="http://www.google.com/">Google</a>';
     
@@ -51,7 +51,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

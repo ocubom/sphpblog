@@ -33,8 +33,6 @@
 	// PAGE CONTENT
 	// ------------
 	function create_folder( $dir ) {
-		global $lang_string;
-		
 		echo( 'Making <b>' . $dir . '</b> folder: ' );
 		
 		if ( !file_exists( $dir ) ) {
@@ -45,33 +43,33 @@
 			
 			if ( !file_exists( $dir ) ) {
 				// Failed
-				echo( '<b style="color: red;">' . $lang_string['folder_failed'] . '</b><br />' );
+				echo( '<b style="color: red;">' . _sb('folder_failed') . '</b><br />' );
 				return( -1 );
 				
 			} else {
 				// Worked
-				echo( '<b style="color: green;">' . $lang_string['folder_success'] . '</b><br />' );
+				echo( '<b style="color: green;">' . _sb('folder_success') . '</b><br />' );
 				return( 0 );
 			}
 			
 		} else {
 			// Folder Already Exists
-				echo( '<b style="color: green;">' . $lang_string['folder_exists'] . '</b><br />' );
+				echo( '<b style="color: green;">' . _sb('folder_exists') . '</b><br />' );
 			return( 0 );
 		}
 	}
 	
 	function page_content() {
-		global $lang_string, $blog_config;
+		global $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( $GLOBALS['lang_string']['instructions'] . '<p />' );
+		echo( _sb('instructions') . '<p />' );
 		
 		echo( '<hr />' );
 		
@@ -100,11 +98,11 @@ deny from all
 		echo( '<br />' );
 		
 		if ( $result < 0 ) {
-			echo( $lang_string['help'] . '<p />' );
-			echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $lang_string['try_again'] . '</a><p />' );
+			echo( _sb('help') . '<p />' );
+			echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('try_again') . '</a><p />' );
 		} else {
-			echo( $lang_string['success'] . '<p />' );
-			echo( '<a href="install03.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $lang_string['continue'] . '</a><p />' );
+			echo( _sb('success') . '<p />' );
+			echo( '<a href="install03.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('continue') . '</a><p />' );
 		}
 		
 		// PAGE CONTENT END
@@ -125,7 +123,7 @@ deny from all
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

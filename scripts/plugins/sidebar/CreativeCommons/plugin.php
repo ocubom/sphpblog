@@ -28,7 +28,7 @@
                         $license = $this->prefs['license'];
                         $licensever = $this->prefs['licensever'];
 
-                        $save = $GLOBALS['lang_string']['submit_btn'];
+                        $save = _sb('submit_btn');
 
                         ob_start(); ?>
                         <!-- FORM -->

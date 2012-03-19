@@ -46,21 +46,21 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $ok;
+		global $blog_config, $ok;
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok !== true ) {
-			echo $GLOBALS['lang_string']['error_delete'] . $ok . '<p />';
+			echo _sb('error_delete') . $ok . '<p />';
 		} else {
-			echo $GLOBALS['lang_string']['success_delete'] . '<p />';
+			echo _sb('success_delete') . '<p />';
 		}
-		echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+		echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
@@ -80,7 +80,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();	

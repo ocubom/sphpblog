@@ -676,8 +676,7 @@
 				$string = substr( $string, 0, $tagpos );
 				//Now put in the More link
 				if ( $url != '' ){
-					$read_more = isset( $lang_string['read_more'] ) ? $lang_string['read_more'] : 'Read more...';
-					$string	 .= ' <a href="' . $url . '">' . $read_more . '</a><br />';
+					$string	 .= ' <a href="' . $url . '">' . _sb('read_more') . '</a><br />';
 				}
 			}
 		}

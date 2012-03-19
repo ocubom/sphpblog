@@ -21,28 +21,28 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $result;
+		global $result;
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		switch ( $result ) {
 			case 0:
-				echo( $GLOBALS['lang_string']['error'] );
+				echo( _sb('error') );
 				break;
 			case 1:
-				echo( $GLOBALS['lang_string']['success'] );
+				echo( _sb('success') );
 				break;
 			case -1:
-				echo( $GLOBALS['lang_string']['error_no_cookie'] );
+				echo( _sb('error_no_cookie') );
 				break;
 		}
 		
-		echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+		echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
@@ -68,7 +68,7 @@
 	}
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

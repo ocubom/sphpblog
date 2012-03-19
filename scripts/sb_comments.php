@@ -62,7 +62,7 @@
   }
 
   function read_comments ( $y, $m, $entry, $logged_in ) {
-    global $blog_content, $blog_config, $lang_string, $user_colors;
+    global $blog_content, $blog_config, $user_colors;
 
     //$filename = CONTENT_DIR.$y.'/'.$m.'/'.$entry;
 
@@ -141,11 +141,11 @@
         if( (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'MOD' ) == true ) ) or
             (( $logged_in == true) and ( $admin == 'yes' )))
         {
-          $entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'delete_btn' ];
+          $entry_array[ 'delete' ][ 'name' ] = _sb('delete_btn');
           $entry_array[ 'delete' ][ 'url' ] = 'comment_delete_cgi.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;comment=' . ( $contents[$i][ 'entry' ] );
 
           if ( array_key_exists( 'IP-ADDRESS', $comment_entry_data ) ) {
-            $entry_array[ 'ban' ][ 'name' ] = $lang_string[ 'ban_btn' ];
+            $entry_array[ 'ban' ][ 'name' ] = _sb('ban_btn');
             $entry_array[ 'ban' ][ 'url' ] = 'comment_ban_cgi.php?ban=' . $comment_entry_data[ 'IP-ADDRESS' ] .'&amp;y='.$y.'&amp;m='.$m.'&amp;entry='.$entry.'&amp;comment=' . ( $contents[$i][ 'entry' ] );
           }
         }
@@ -172,7 +172,7 @@
   }
 
   function read_unmodded_comments ( $logged_in ) {
-    global $lang_string, $blog_config;
+    global $blog_config;
     
     if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') != true ) {
       return('Comments are not enabled. Check the Preferences page.');
@@ -204,17 +204,17 @@
           if ( $comment_entry_data[ 'MODERATIONFLAG' ] == 'H') {
             global $theme_vars;
             $results++;
-              $output_str .= '<b>' . $lang_string['enteredby'] . $comment_entry_data[ 'NAME' ]  . '</b><br />';
-              $output_str .= $lang_string['entrydate'] . format_date( $comment_entry_data[ 'DATE' ] ) . '<br />';
-              $output_str .= $lang_string['blogentrytitle'] . '<a href="comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
-              $output_str .= $lang_string['enteredcontent'] . $comment_entry_data[ 'CONTENT' ] . '<br />';
-              $output_str .= '<a href="comment_approve_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $lang_string['mod_approve'] . '</a>';
-              $output_str .= '<a href="comment_delete_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '&amp;sourcepage=m" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $lang_string['mod_delete'] . '</a><br /><br />';
+              $output_str .= '<b>' . _sb('enteredby') . $comment_entry_data[ 'NAME' ]  . '</b><br />';
+              $output_str .= _sb('entrydate') . format_date( $comment_entry_data[ 'DATE' ] ) . '<br />';
+              $output_str .= _sb('blogentrytitle') . '<a href="comments.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . $blog_entry_data[ 'SUBJECT' ] . '</a><br />';
+              $output_str .= _sb('enteredcontent') . $comment_entry_data[ 'CONTENT' ] . '<br />';
+              $output_str .= '<a href="comment_approve_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . _sb('mod_approve') . '</a>';
+              $output_str .= '<a href="comment_delete_cgi.php?y=' . $year_dir . '&amp;m=' . $month_dir . '&amp;entry=' . sb_strip_extension( $entry_filename ) . '&amp;comment=' . $comment_filename . '&amp;sourcepage=m" title="' . format_date( $comment_entry_data[ 'DATE' ] ) . '">' . _sb('mod_delete') . '</a><br /><br />';
           }
         }
       }
     }
-    $output_str .= '<b>' . $results . $lang_string['totalunmodded'] . '</b>';
+    $output_str .= '<b>' . $results . _sb('totalunmodded') . '</b>';
 
     return ( $output_str );
   }
@@ -407,7 +407,7 @@
 
   function write_comment ( $y, $m, $entry, $comment_name, $comment_email, $comment_url, $comment_text, $user_ip, $hold_flag='', $comment_date=null ) {
     // Save new entry or update old entry
-    global $blog_config, $sb_info, $lang_string;
+    global $blog_config, $sb_info;
     
     sb_delete_file( CONFIG_DIR.'~blog_comment_listing.tmp' ); // Delete comment array cache
 
@@ -477,18 +477,18 @@
 
         $client_ip_local = getIP();
 
-        $subject=$lang_string[ 'commentposted' ] . ' ' . $blog_config->getTag('BLOG_TITLE');
-        $body='<b>' . $lang_string[ 'name' ] . '</b> ' . $save_data[ 'NAME' ] . '<br />';
-        $body .= '<b>' . $lang_string[ 'IPAddress' ] . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
-        $body .= '<b>' . $lang_string[ 'useragent' ] . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
+        $subject= _sb('commentposted') . ' ' . $blog_config->getTag('BLOG_TITLE');
+        $body='<b>' . _sb('name') . '</b> ' . $save_data[ 'NAME' ] . '<br />';
+        $body .= '<b>' . _sb('IPAddress') . '</b> ' . $client_ip_local . ' (' . @gethostbyaddr($client_ip_local) .')<br />';
+        $body .= '<b>' . _sb('useragent') . '</b> ' . $_SERVER[ 'HTTP_USER_AGENT' ] . '<br />';
         if ( array_key_exists( 'EMAIL', $save_data ) ) {
-          $body .= "<b>" . $lang_string[ 'email' ] . "</b> <a href=\"mailto:" . $save_data[ "EMAIL" ] . "\">" . $save_data[ "EMAIL" ] . "</a><br />\n";
+          $body .= "<b>" . _sb('email') . "</b> <a href=\"mailto:" . $save_data[ "EMAIL" ] . "\">" . $save_data[ "EMAIL" ] . "</a><br />\n";
         }
         if ( array_key_exists( 'URL', $save_data ) ) {
-          $body .= "<b>" . $lang_string[ 'homepage' ] . "</b> <a href=\"" . $save_data[ "URL" ] . "\">" . $save_data[ "URL" ] . "</a><br />\n";
+          $body .= "<b>" . _sb('homepage') . "</b> <a href=\"" . $save_data[ "URL" ] . "\">" . $save_data[ "URL" ] . "</a><br />\n";
         }
         $body .= "<br />\n";
-        $body .= "<b>" . $lang_string[ 'comment' ] . "</b><br />\n";
+        $body .= "<b>" . _sb('comment') . "</b><br />\n";
 
         $port = ':' . $_SERVER[ 'SERVER_PORT'];
         if ($port == ':80') {
@@ -503,12 +503,12 @@
         }
 
         $body  .= '<a href="' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '">' . $base_url . 'comments.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . "</a><br />\n<br />\n";
-        $body  .= sprintf( $lang_string[ 'wrote' ], format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
+        $body  .= sprintf( _sb('wrote'), format_date( $comment_date ), $comment_name, blog_to_html( $comment_text, true, false ) );
         $body  .= '<br /><br />';
 
         if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
           if ( $logged_in == false ) {
-            $body  .= $lang_string['email_moderator'] . "\n";
+            $body  .= _sb('email_moderator') . "\n";
           }
         }
 
@@ -530,7 +530,7 @@
 
   function set_comment_holdflag ( $filename, $hold_flag='') {
     // Save new entry or update old entry
-    global $blog_config, $sb_info, $lang_string;
+    global $blog_config, $sb_info;
 
     sb_delete_file( CONFIG_DIR.'~blog_comment_listing.tmp' );
 

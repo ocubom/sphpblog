@@ -45,7 +45,7 @@
     // Read entries by month and year. Generate HTML output.
     //
     // Used for the main Index page.
-    global $lang_string, $blog_config, $user_colors;
+    global $blog_config, $user_colors;
     
     $dir = CONTENT_DIR.'static/';
     
@@ -75,9 +75,9 @@
     // Author edit and delete
     $entry = sb_strip_extension( $entry_id );
     if ( $logged_in == true ) {
-      $entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
+      $entry_array[ 'edit' ][ 'name' ] = _sb('sb_edit');
       $entry_array[ 'edit' ][ 'url' ] = 'add_static.php?entry='.$entry;
-      $entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
+      $entry_array[ 'delete' ][ 'name' ] = _sb('sb_delete');
       $entry_array[ 'delete' ][ 'url' ] = 'delete_static.php?entry='.$entry;
     }
     

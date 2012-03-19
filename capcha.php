@@ -6,7 +6,7 @@
 		session_start();
 	}
 
-	if ( !isset( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ) {
+	if ( empty($_GET[ 'entry' ]) OR !isset( $_SESSION[ 'capcha_' . $_GET[ 'entry' ] ] ) ) {
 		exit;
 	}
 

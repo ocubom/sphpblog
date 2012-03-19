@@ -18,12 +18,12 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_archive' ];
+			return _sb('menu_archive');
 		}
 		
 		function getContent () {
 			$str = '';
-			$str .= '<a href="archives.php">' . $GLOBALS[ 'lang_string' ][ 'menu_viewarchives' ] . '</a><br />' . "\n";
+			$str .= '<a href="archives.php">' . _sb('menu_viewarchives') . '</a><br />' . "\n";
 			$str .= read_menus_tree( $GLOBALS['month'], $GLOBALS['year'], $GLOBALS['day'], 0 );
 			
 			return $str;

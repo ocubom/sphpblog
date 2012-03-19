@@ -26,21 +26,21 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $ok;
+		global $blog_config, $ok;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok === true ) {
-			echo( $GLOBALS['lang_string']['success'] );
+			echo( _sb('success') );
 		} else {
 			switch ($ok) {
-				case 100: $errortext = $GLOBALS['lang_string']['wrong_password'];
-				case 101: $errortext = $GLOBALS['lang_string']['inactive_account'];
+				case 100: $errortext = _sb('wrong_password');
+				case 101: $errortext = _sb('inactive_account');
 			}
 			echo( $errortext );
 		}
@@ -48,7 +48,7 @@
 		$restored = restore_post();
 
 		if (empty($restored)) {	
-			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+			echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		} else {
 			$type = $restored[0];
 			$page = 'add.php';
@@ -63,10 +63,10 @@
 		if ( $upgrade_count > 0 ) {
 			echo( "<hr />" );
 			echo( "<br />" );
-			echo( $GLOBALS['lang_string']['upgrade'] );
-			$str = str_replace ( '%n', $upgrade_count, $GLOBALS['lang_string']['upgrade_count'] );
+			echo( _sb('upgrade') );
+			$str = str_replace ( '%n', $upgrade_count, _sb('upgrade_count') );
 			echo( $str . "<br /><br />" );
-			echo( "<a href=\"upgrade.php\">" . $GLOBALS['lang_string']['upgrade_url'] ."</a><br />" );
+			echo( "<a href=\"upgrade.php\">" . _sb('upgrade_url') ."</a><br />" );
 		}
 		
 		// PAGE CONTENT END
@@ -87,7 +87,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

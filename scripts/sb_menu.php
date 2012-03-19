@@ -37,7 +37,7 @@
   /*
   function read_menus_calendar ( $m, $y, $d ) {
     // hint: $d isn't used for anything anymore
-    global $lang_string, $user_colors, $blog_config;
+    global $user_colors, $blog_config;
     
     if ( !isset( $m ) ) {
       $m = date( 'm' );
@@ -226,8 +226,6 @@
   function read_menus_tree ( $m, $y, $d, $max_chars=75, $base_url='index.php', $showall=false ) {
     // Create the right-hand navigation menu and Archives page. Return HTML
     // hint: $d isn't used for anything anymore
-    global $lang_string;
-    
     $entry_array = blog_entry_listing();
     // $entry_array[$i] = implode( '|', array( $entry_filename, $year_dir, $month_dir ) ) );
     
@@ -334,8 +332,6 @@
     // Create the right-hand link menu. Return HTML
     //
   
-    global $lang_string;
-    
     // Read links file.
     $filename = CONFIG_DIR.'links.txt';
     $result = sb_read_file( $filename );
@@ -382,11 +378,10 @@
   function write_link ( $link_name, $link_url, $link_id ) {
     // Save new link. Update links file
     //
-    
+    global $lang_string;
     // write_link( clean_post_text( $blog_subject ), 'static.php?page='.$entryFile, $i-1 );
     
     // Clean up link name and make safe for HTML and text database storage.
-    global $lang_string;
     $link_name = str_replace( '|', ':', $link_name );
     $link_name = htmlspecialchars( $link_name, ENT_QUOTES, $lang_string[ 'php_charset' ] );
     

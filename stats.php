@@ -2,16 +2,12 @@
 	// ---------------
 	// INITIALIZE PAGE
 	// ---------------
+	$page = 'stats';
 	require_once('scripts/sb_functions.php');
 	
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'stats' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -61,7 +57,7 @@
 
 	
 	function generate_stats ( ) {
-		global $lang_string, $blog_config;
+		global $blog_config;
 
 		// To avoid server overload
 		sleep(1);
@@ -139,18 +135,18 @@
 		unset( $static_file_array );
 
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'] . ' - ' . $GLOBALS['lang_string']['general'];
-		$entry_array[ 'entry' ]	 .= sprintf( $GLOBALS['lang_string']['entry_info'], number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ]	 .= sprintf( $GLOBALS['lang_string']['comment_info'], number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ]	 .= sprintf( $GLOBALS['lang_string']['trackback_info'], number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ]	 .= sprintf( $GLOBALS['lang_string']['static_info'], number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ]	 .= sprintf( $GLOBALS['lang_string']['vote_info'], number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
+		$entry_array[ 'subject' ] = _sb('title') . ' - ' . _sb('general');
+		$entry_array[ 'entry' ]	 .= sprintf( _sb('entry_info'), number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]	 .= sprintf( _sb('comment_info'), number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]	 .= sprintf( _sb('trackback_info'), number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]	 .= sprintf( _sb('static_info'), number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) ) . '.<br />';
+		$entry_array[ 'entry' ]	 .= sprintf( _sb('vote_info'), number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
 		echo( theme_staticentry( $entry_array ) );		
 		
 		if ( $blog_config->getTag('BLOG_ENABLE_VOTING') == true ) {
 			if ( is_array( $entries ) ) {
 				$entry_array = array();
-				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_rated_entries'];
+				$entry_array[ 'subject' ] = _sb('most_rated_entries');
 				usort( $entries, 'sort_rates' );
 				for ( $i=0; $i<min(10, $total_number_entries); $i++) {
 					$entry_array[ 'entry' ]	 .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'rates' ], 2 ) . ').<br />';
@@ -158,7 +154,7 @@
 				echo( theme_staticentry( $entry_array ) );
 			
 				$entry_array = array();
-				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_voted_entries'];
+				$entry_array[ 'subject' ] = _sb('most_voted_entries');
 				usort( $entries, 'sort_votes' );
 				for ( $i=0; $i<min(10, $total_number_comments); $i++) {
 					$entry_array[ 'entry' ]	 .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'votes' ], 0 ) . ').<br />';
@@ -170,7 +166,7 @@
 		if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
 			if ( is_array( $entries ) ) {
 				$entry_array = array();
-				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_viewed_entries'];
+				$entry_array[ 'subject' ] = _sb('most_viewed_entries');
 				usort( $entries, 'sort_views' );
 				for ( $i=0; $i<min(10, $total_number_entries); $i++) {
 					$entry_array[ 'entry' ]	 .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'views' ], 0 ) . ').<br />';
@@ -178,7 +174,7 @@
 				echo( theme_staticentry( $entry_array ) );
 			
 				$entry_array = array();
-				$entry_array[ 'subject' ] = $GLOBALS['lang_string']['most_commented_entries'];
+				$entry_array[ 'subject' ] = _sb('most_commented_entries');
 				usort( $entries, 'sort_comments' );
 				for ( $i=0; $i<min(10, $total_number_comments); $i++) {
 					$entry_array[ 'entry' ]	 .= '<a href="index.php?entry=' . sb_strip_extension( $entries[ $i ][ 'filename' ] ) . '">' . $entries[ $i ][ 'subject' ] . '</a> (' . number_format( $entries[ $i ][ 'comments' ], 0 ) . ').<br />';
@@ -192,25 +188,5 @@
 		echo( generate_stats() );
 	}
 
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

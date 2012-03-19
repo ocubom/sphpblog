@@ -18,7 +18,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'counter_title' ];
+			return _sb('counter_title');
 		}
 		
 		function getContent () {

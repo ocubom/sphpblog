@@ -20,7 +20,7 @@
 		// Read entries by month, year and/or day. Generate HTML output.
 		//
 		// Used for the main Index page.
-		global $lang_string, $blog_config, $user_colors;
+		global $blog_config, $user_colors;
 		
 		// To avoid server overload
 		sleep(1);

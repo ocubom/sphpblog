@@ -6,10 +6,10 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
+	//read_config();
 	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'index' );
+	//require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
+	//sb_language( 'index' );
 	
 	// ---------------
 	// POST PROCESSING

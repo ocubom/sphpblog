@@ -25,7 +25,7 @@ function sb_editor_controls($textfield) {
     // The "Text Editor Interface" for Simple PHP Blog
     //
     // This is used on the "add.php", "preview_cgi.php", "add_static.php", "preview_static_cgi.php" pages. I'm planning on using it for comments page also...
-    global $lang_string, $user_colors, $blog_config, $theme_vars;
+    global $user_colors, $blog_config, $theme_vars;
     
     // Include Supporting Java Script
     //require_once('scripts/sb_editor.php');
@@ -237,7 +237,7 @@ function sb_editor_controls($textfield) {
         
         // Subject Input
         // HTML_input( $label=false, $id, $value=null, $add_returns=true, $type='text', $size=null, $maxlength=null, $onchange=null, $width=0, $disabled=false, $autocomplete=false );
-        echo( HTML_input( $lang_string[ 'label_subject' ], 'blog_subject', $default_subject, true, 'text', 0, null, null, $theme_vars[ 'max_image_width' ] ) );
+        echo( HTML_input( _sb('label_subject'), 'blog_subject', $default_subject, true, 'text', 0, null, null, $theme_vars[ 'max_image_width' ] ) );
         
         // Date Selection Block
         if ( $mode == 'entry' ) {
@@ -247,11 +247,11 @@ function sb_editor_controls($textfield) {
         if ( $mode == 'static' ) {
            echo( '<input type="checkbox" id="check_visiblemenu" name="check_visiblemenu"' );
            if ( $default_menu_visible == true ) { echo ( ' checked' ); }
-           echo( '> ' . $lang_string[ 'chk_visiblemenu' ] . '<p />' );
+           echo( '> ' . _sb('chk_visiblemenu') . '<p />' );
         }
 
 ?>
-      <label for="blog_text"><?php echo( $lang_string[ 'label_entry' ] ); ?></label><br />
+      <label for="blog_text"><?php echo( _sb('label_entry') ); ?></label><br />
 <?php
       sb_editor_controls('blog_text');
 ?>
@@ -261,7 +261,7 @@ function sb_editor_controls($textfield) {
       
         // Related Link Input
         if ( $mode == 'entry' ) {
-          echo( HTML_input( $lang_string[ 'label_relatedlink' ], 'blog_relatedlink', $default_relatedlink, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
+          echo( HTML_input( _sb('label_relatedlink'), 'blog_relatedlink', $default_relatedlink, true, 'text', null, null, null, $theme_vars[ 'max_image_width' ] ) );
         }
           
         // Category Selection Box
@@ -275,8 +275,8 @@ function sb_editor_controls($textfield) {
         }
       ?>
       
-      <input type="submit" name="preview" value="<?php echo( $lang_string[ 'btn_preview' ] ); ?>" />
-      <input type="submit" name="submit" value="<?php echo( $lang_string[ 'btn_post' ] ); ?>" />
+      <input type="submit" name="preview" value="<?php echo( _sb('btn_preview') ); ?>" />
+      <input type="submit" name="submit" value="<?php echo( _sb('btn_post') ); ?>" />
     </form>
     <?php
     
@@ -294,18 +294,14 @@ function sb_editor_controls($textfield) {
   
   function editor_static_file( $filename ) {
     // Static File Name
-    global $lang_string;
-  
     ?>
-      <label for="file_name"><?php echo( $lang_string[ 'file_name' ] ); ?></label><br/>
+      <label for="file_name"><?php echo( _sb('file_name') ); ?></label><br/>
       <input type="text" name="file_name" autocomplete="OFF" size="40" value="<?php echo $filename; ?>"><br /><br />
     <?php
   }
   
   function editor_style_buttons() {
     // Style Tag Dropdown
-    global $lang_string;
-
     ?>
 
 <noscript>
@@ -329,11 +325,11 @@ function sb_editor_controls($textfield) {
 
   function editor_image_dropdown ($textfield) {
     // Image Selection Dropdown
-    global $lang_string, $theme_vars;
+    global $theme_vars;
     
     $str = image_dropdown($textfield);
     if ( $str !== NULL ) {
-      echo( '<p>' . $str . '<a target="_blank" href="image_list.php">' . $lang_string[ 'view_images' ] . '</a></p>' );
+      echo( '<p>' . $str . '<a target="_blank" href="image_list.php">' . _sb('view_images') . '</a></p>' );
     }
   }
   
@@ -388,7 +384,7 @@ function sb_editor_controls($textfield) {
   
   function editor_date_select( $default_time ) {
     // Date Selection Block
-    global $lang_string, $blog_config;
+    global $blog_config;
     
     // Edit / Select Date
     $default_time = isset( $default_time ) ? $default_time : time();
@@ -409,7 +405,7 @@ function sb_editor_controls($textfield) {
       }
       array_push( $itemArray, $item );
     }
-    $dd_day = HTML_dropdown( $lang_string[ 'day' ], 'day', $itemArray, false );
+    $dd_day = HTML_dropdown( _sb('day'), 'day', $itemArray, false );
     
     // Month Drop Down
     $itemArray = array();
@@ -422,7 +418,7 @@ function sb_editor_controls($textfield) {
       }
       array_push( $itemArray, $item );
     }
-    $dd_month = HTML_dropdown( $lang_string[ 'month' ], 'month', $itemArray, false );
+    $dd_month = HTML_dropdown( _sb('month'), 'month', $itemArray, false );
     
     // Year Drop Down
     $itemArray = array();
@@ -436,7 +432,7 @@ function sb_editor_controls($textfield) {
       }
       array_push( $itemArray, $item );
     }
-    $dd_year = HTML_dropdown( $lang_string[ 'year' ], 'year', $itemArray, false );
+    $dd_year = HTML_dropdown( _sb('year'), 'year', $itemArray, false );
     
     echo($dd_day . ' ' . $dd_month . ' ' . $dd_year . '<p />');
     
@@ -457,17 +453,15 @@ function sb_editor_controls($textfield) {
       }
       array_push( $itemArray, $item );
     }
-    $dd_hour = HTML_dropdown( $lang_string[ 'hour' ], 'hour', $itemArray, false );
-    $dd_minute = '<label for="mm">'.$lang_string[ 'minute' ].'</label> <input name="minute" id="minute" type="text" value="'.$e_minute.'" size="2" maxlength="2" />';
-    $dd_second = '<label for="mm">'.$lang_string[ 'second' ].'</label> <input name="second" id="second" type="text" value="'.$e_second.'" size="2" maxlength="2" />';
+    $dd_hour = HTML_dropdown( _sb('hour'), 'hour', $itemArray, false );
+    $dd_minute = '<label for="mm">'._sb('minute').'</label> <input name="minute" id="minute" type="text" value="'.$e_minute.'" size="2" maxlength="2" />';
+    $dd_second = '<label for="mm">'._sb('second').'</label> <input name="second" id="second" type="text" value="'.$e_second.'" size="2" maxlength="2" />';
       
     echo($dd_hour . ' ' . $dd_minute . ' ' . $dd_second . '<p />');
   }
   
   function category_selection_box ( $selected_cat_array=array() ) {
     // Returns categories HTML.
-    global $lang_string;
-    
     $str = NULL;
     $catArray = get_category_array();
     if ( count($catArray) > 0) {
@@ -495,7 +489,7 @@ function sb_editor_controls($textfield) {
         array_push( $itemArray, $item );
       }
       // HTML_dropdown( $label=false, $id, $itemArray, $add_returns=true, $onchange=null, $width=0, $size=0, $multiple=false, $disabled=false )
-      $str = HTML_dropdown( $lang_string[ 'label_categories' ], 'catlist[]', $itemArray, true, null, 0, min( 8, count($catArray) ), true );
+      $str = HTML_dropdown( _sb('label_categories'), 'catlist[]', $itemArray, true, null, 0, min( 8, count($catArray) ), true );
     }
     
     echo( $str );
@@ -503,8 +497,6 @@ function sb_editor_controls($textfield) {
 	
 	function category_combo_box ( $fieldname, $selected_item ) {
     // Returns categories HTML.
-    global $lang_string;
-    
 		$str = NULL;
     $catArray = get_category_array();
     if ( count($catArray) > 0) {
@@ -577,7 +569,7 @@ $(document).ready(function()	{
 
                 if (selected_text == '') {
                         // Display prompt if no text is selected
-                        var inserttext = prompt( '<?php echo( $lang_string[ 'insert_styles' ] ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", '' );
+                        var inserttext = prompt( '<?php echo( _sb('insert_styles') ); ?>'+"\n["+sb_code+"]xxx[/"+sb_code+"]", '' );
                         if ( (inserttext != null) ) {
                                 insertAtCaret(theform, "["+sb_code+"]"+inserttext+"[/"+sb_code+"]");
                                 theform.focus();
@@ -592,13 +584,13 @@ $(document).ready(function()	{
         // Insert URL Tag
         function ins_url_no_options(theform) {
                 // inserts named url link - [url=mylink new=true]text[/url]
-                link_url = prompt('<?php echo( $lang_string[ 'insert_url2' ] ); ?>'+'\n[url=xxx][/url]',"http://");
+                link_url = prompt('<?php echo( _sb('insert_url2') ); ?>'+'\n[url=xxx][/url]',"http://");
                 if ( (link_url != null) ) {
                         // Get selected text
                         var link_text = getSelectedText(theform);
                         if (link_text == '') {
                                 // Display prompt if no text is selected
-                                link_text = prompt('<?php echo( $lang_string[ 'insert_url1' ] ); ?>'+'\n[url=]xxx[/url]',"");
+                                link_text = prompt('<?php echo( _sb('insert_url1') ); ?>'+'\n[url=]xxx[/url]',"");
                         }
                         if ( (link_text == null) || (link_text == '') ) {
                                 link_text = link_url;
@@ -635,13 +627,13 @@ $(document).ready(function()	{
 
         // Insert Image Tag
         function ins_image_v2(theform) {
-                image_url = prompt('<?php echo( $lang_string[ 'insert_image' ] ); ?>'+'\n[img=http://xxx] or [img=xxx]\n\n<?php echo( $lang_string[ 'insert_image_optional' ] ); ?>\nwidth=xxx height=xxx popup=true/false float=left/right','http://');
+                image_url = prompt('<?php echo( _sb('insert_image') ); ?>'+'\n[img=http://xxx] or [img=xxx]\n\n<?php echo( _sb('insert_image_optional') ); ?>\nwidth=xxx height=xxx popup=true/false float=left/right','http://');
                 if ((image_url != null) && (image_url != '')) {
                         // Optional
-                        image_width = prompt('<?php echo( $lang_string[ 'insert_image_width' ] ); ?>'+'\n[img=xxx width=xxx]','');
-                        image_height = prompt('<?php echo( $lang_string[ 'insert_image_height' ] ); ?>'+'\n[img=xxx height=xxx]','');
-                        image_popup = prompt('<?php echo( $lang_string[ 'insert_image_popup' ] ); ?>'+'\n[img=xxx popup=true/false]', '');
-                        image_float = prompt('<?php echo( $lang_string[ 'insert_image_float' ] ); ?>'+'\n[img=xxx float=left/right]','');
+                        image_width = prompt('<?php echo( _sb('insert_image_width') ); ?>'+'\n[img=xxx width=xxx]','');
+                        image_height = prompt('<?php echo( _sb('insert_image_height') ); ?>'+'\n[img=xxx height=xxx]','');
+                        image_popup = prompt('<?php echo( _sb('insert_image_popup') ); ?>'+'\n[img=xxx popup=true/false]', '');
+                        image_float = prompt('<?php echo( _sb('insert_image_float') ); ?>'+'\n[img=xxx float=left/right]','');
 
                         str = '[img='+image_url;
                         if ((image_width != null) && (image_width != '')) {
@@ -716,7 +708,7 @@ $(document).ready(function()	{
 	// Validate the Form
 	function validate(theform) {
 		if (theform.blog_text.value=="" || theform.blog_subject.value=="") {
-			alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+			alert("<?php echo( _sb('form_error') ); ?>");
 			return false;
 		} else {
 			return true;
@@ -726,7 +718,7 @@ $(document).ready(function()	{
 	// Validate the Form
 	function validate_static(theform) {
 		if (theform.blog_text.value=="" || theform.blog_subject.value=="" || theform.file_name.value=="" ) {
-			alert("<?php echo( $lang_string[ 'form_error' ] ); ?>");
+			alert("<?php echo( _sb('form_error') ); ?>");
 			return false;
 		} else {
 			return true;

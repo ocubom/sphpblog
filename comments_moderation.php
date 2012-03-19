@@ -26,16 +26,16 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
+		global $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 
-		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+		<?php echo( _sb('instructions') ); ?><p />
 
 		<?php echo( read_unmodded_comments($logged_in) ); ?><p />
 

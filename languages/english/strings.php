@@ -6,7 +6,7 @@
   // Simple PHP Version: 0.5.0.1
   // Language Version:   0.5.0.1
 
-  function sb_language( $page ) {
+  function sb_language( $page ="") {
     global $language, $html_charset, $php_charset, $lang_string;
 
     // Language: English

@@ -41,11 +41,11 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $user_colors;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -54,23 +54,23 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+				echo( _sb('error') . $ok . '<p />' );
 			} else {
-				echo( $GLOBALS['lang_string']['success'] . '<p />' );
+				echo( _sb('success') . '<p />' );
 			}
-			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a><br /><br />' );
+			echo( '<a href="index.php">' . _sb('home') . '</a><br /><br />' );
 		} else {
 		
 			?>
-			<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+			<?php echo( _sb('instructions') ); ?><p />
 			
 			<hr />
 			
 			<form action='delete.php' method="post">
 				<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>">
 				<input type="hidden" name="path" value="<?php echo( CONTENT_DIR.$_GET[ 'y' ].'/'.$_GET[ 'm' ].'/' ); ?>">
-				<input type="submit" name="yes" value="<?php echo( $GLOBALS['lang_string']['ok_btn'] ); ?>" />
-				<input type="submit" name="no" value="<?php echo( $GLOBALS['lang_string']['cancel_btn'] ); ?>" />
+				<input type="submit" name="yes" value="<?php echo( _sb('ok_btn') ); ?>" />
+				<input type="submit" name="no" value="<?php echo( _sb('cancel_btn') ); ?>" />
 			</form>
 			<?php 
 		}
@@ -97,7 +97,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

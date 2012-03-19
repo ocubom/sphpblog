@@ -6,10 +6,7 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'themes' );
+	sb_import_lang($lang, 'themes' );
 	
 	// ---------------
 	// POST PROCESSING
@@ -33,11 +30,11 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $logged_in, $theme_vars, $blog_theme, $ok;
+		global $user_colors, $logged_in, $theme_vars, $blog_theme, $ok;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -46,23 +43,23 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
+				echo( _sb('error') . $ok . '<p />' );
 			} else {
-				echo( $GLOBALS['lang_string']['success'] . '<p />' );
+				echo( _sb('success') . '<p />' );
 			}
 			
-			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+			echo( '<a href="index.php">' . _sb('home') . '</a>' );
 			
 		} else {
 			?>
 			
-			<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+			<?php echo( _sb('instructions') ); ?><p />
 			
 			<hr noshade size="1" color="#<?php echo(get_user_color('inner_border_color')); ?>" />
 			
 			<form action="themes.php" method="post" name="setup" name="setup">
 				
-				<label for="blog_theme"><?php echo( $GLOBALS['lang_string']['choose_theme'] ); ?></label><br />
+				<label for="blog_theme"><?php echo( _sb('choose_theme') ); ?></label><br />
 				<select name="blog_theme">
 				<?php
 						$dir = 'themes/';
@@ -97,7 +94,7 @@
 				
 				<hr noshade size="1" color="#<?php echo(get_user_color('inner_border_color')); ?>" />
 				
-				<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" /><br /><br />
+				<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" /><br /><br />
 			</form>
 			
 			<?php 
@@ -120,7 +117,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

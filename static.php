@@ -33,7 +33,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $logged_in, $entry_array;
+		global $logged_in, $entry_array;
 		
 		echo( theme_staticentry( $entry_array, $logged_in ) );
 	}
@@ -49,7 +49,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

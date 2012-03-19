@@ -23,10 +23,10 @@
 		// Returns "Page Generated x.xxxx in seconds"
 		global $page_timestamp;
 
-		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), $GLOBALS[ 'lang_string' ][ 'page_generated_in' ] );
+		$str = str_replace ( '%s', round( getmicrotime() - $page_timestamp, 4 ), _sb('page_generated_in') );
 		
 		if ( $GLOBALS['blog_config']->getTag('BLOG_FOOTER_COUNTER') ) {
-			$str  .= '&nbsp;|&nbsp;' . $GLOBALS[ 'lang_string' ][ 'counter_total' ] . stat_total();
+			$str  .= '&nbsp;|&nbsp;' . _sb('counter_total') . stat_total();
 		}
 
 		return ( $str );

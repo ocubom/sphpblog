@@ -15,11 +15,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'add_block' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -46,11 +41,11 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $block_id, $block_name, $block_content, $action, $lang_string, $theme_vars;
+		global $block_id, $block_name, $block_content, $action, $theme_vars;
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -83,18 +78,18 @@
 				//	up | down | edit | delete
 				$str	.= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 1 ) {
-					$str	.= '<a href="add_block.php?action=up&block_id='.$i.'">' . $GLOBALS['lang_string']['up'] . '</a> | ';
+					$str	.= '<a href="add_block.php?action=up&block_id='.$i.'">' . _sb('up') . '</a> | ';
 				} else {
-					$str	.= $GLOBALS['lang_string']['up'] . ' | ';
+					$str	.= _sb('up') . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str	.= '<a href="add_block.php?action=down&block_id='.$i.'">' . $GLOBALS['lang_string']['down'] . '</a>';
+					$str	.= '<a href="add_block.php?action=down&block_id='.$i.'">' . _sb('down') . '</a>';
 				} else {
-					$str	.= $GLOBALS['lang_string']['down'];
+					$str	.= _sb('down');
 				}
 				if ($array[$i+1] != 'plugin') {
-					$str	.= ' | <a href="add_block.php?action=edit&block_id='.$i.'">' . $GLOBALS['lang_string']['edit'] . '</a> | ';
-					$str	.= '<a href="add_block.php?action=delete&block_id='.$i.'">' . $GLOBALS['lang_string']['delete'] . '</a> ';
+					$str	.= ' | <a href="add_block.php?action=edit&block_id='.$i.'">' . _sb('edit') . '</a> | ';
+					$str	.= '<a href="add_block.php?action=delete&block_id='.$i.'">' . _sb('delete') . '</a> ';
 				} elseif ($hasoptions) {
 					$str	.= ' | <a href="plugins.php?options=' . $array[$i] . '">options</a>';
 				}
@@ -107,9 +102,9 @@
 			
 			
 			if ($action === "edit") {
-				echo $GLOBALS['lang_string']['instructions_edit'] . '<p />';
+				echo _sb('instructions_edit') . '<p />';
 			} else {
-				echo $GLOBALS['lang_string']['instructions_modify'] . '<p />';
+				echo _sb('instructions_modify') . '<p />';
 			}
 		//} else {
 		//	echo $GLOBALS['lang_string']['instructions'] . '<p />';
@@ -128,18 +123,18 @@
 	
 		<form action='add_block.php' method="post" name="editor" id="editor" onsubmit="return validate_block(this)">
 		
-			<label for="blog_subject"><?php echo( $GLOBALS['lang_string']['block_name'] ); ?></label><br />
+			<label for="blog_subject"><?php echo (_sb('block_name') ); ?></label><br />
 			<input type="text" name="block_name" autocomplete="OFF" value="<?php echo $block_name; ?>" size="40"><br /><br />
 			
 			<?php sb_editor_controls('text'); ?>
 			
-			<label for="text"><?php echo( $GLOBALS['lang_string']['block_content'] ); ?></label><br />
+			<label for="text"><?php echo( _sb('block_content') ); ?></label><br />
 			<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="block_content" rows="20" cols="50" autocomplete="OFF"><?php echo $block_content; ?></textarea><br /><br />
 			
 			<?php if( isset( $block_id ) ) { ?>
 			<input type="hidden" name="block_id" value="<?php echo $block_id; ?>" />
 			<?php } ?>
-			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $block_id ) && $action === 'edit' ) { echo $GLOBALS['lang_string']['submit_btn_edit']; } else { echo $GLOBALS['lang_string']['submit_btn_add']; } ?>&nbsp;" onclick="this.form.action='add_block.php';" />
+			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $block_id ) && $action === 'edit' ) { echo _sb('submit_btn_edit'); } else { echo _sb('submit_btn_add'); } ?>&nbsp;" onclick="this.form.action='add_block.php';" />
 		</form>
 		
 		<?php
@@ -150,29 +145,5 @@
 		echo( theme_staticentry( $entry_array ) );
 	}
 
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
-	
-	// Theme Layout
-	ob_start();
-
-        sb_editor_js('text');
-        $page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

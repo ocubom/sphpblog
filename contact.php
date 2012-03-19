@@ -31,25 +31,25 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $theme_vars; 
+		global $blog_config, $theme_vars; 
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		
-		<?php echo ( $GLOBALS['lang_string']['instructions'] ); ?><p />
+		<?php echo ( _sb('instructions') ); ?><p />
 		<form action="contact_cgi.php" method="post" onsubmit="return validate(this)">
 		<p>
-		<label for="name"><?php echo( $GLOBALS['lang_string']['name'] ); ?></label><br />
+		<label for="name"><?php echo( _sb('name') ); ?></label><br />
 		<input type="text" name="name" id="name" size="40" /><br /><br />
-		<label for="email"><?php echo( $GLOBALS['lang_string']['email'] ); ?></label><br />
+		<label for="email"><?php echo( _sb('email') ); ?></label><br />
 		<input type="text" name="email" id="email" size="40" /><br /><br />
-		<label for="subject"><?php echo( $GLOBALS['lang_string']['subject'] ); ?></label><br />
+		<label for="subject"><?php echo( _sb('subject') ); ?></label><br />
 		<input type="text" name="subject" id="subject" size="40" /><br /><br />
-		<label for="text"><?php echo( $GLOBALS['lang_string']['comment'] ); ?></label><br />
+		<label for="text"><?php echo( _sb('comment') ); ?></label><br />
 		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="text" name="comment" rows="20" cols="50"></textarea><br /><br />
 		
 		<?php
@@ -59,9 +59,9 @@
 		} else {
 			echo('<label for="capcha_contact">');
 			if ( function_exists('imagecreate') && $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') ) {
-				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<br /><img src="capcha.php?entry=contact" alt="CAPCHA" />' );
+				echo ( _sb('contact_capcha') . '<br /><img src="capcha.php?entry=contact" alt="CAPCHA" />' );
 			} else {
-				echo ( $GLOBALS['lang_string']['contact_capcha'] . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
+				echo ( _sb('contact_capcha') . '<b>' . sb_str_to_ascii( $_SESSION[ 'capcha_contact' ] ) . '</b>' );
 			}
 			echo('</label><br />');
 			echo('<input type="text" name="capcha_contact" id="capcha_contact" value="" maxlength="6" /><br /><br />');
@@ -70,7 +70,7 @@
 		</p>
 		<hr />
 		<p>
-		<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
+		<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" />
 		</p>
 		</form>
 		<?php
@@ -98,7 +98,7 @@
 		// <!--
 		function validate(theform) {
 			if (theform.subject.value=="" || theform.comment.value=="" || theform.email.value=="") {
-				alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
+				alert("<?php echo( _sb('form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -110,7 +110,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

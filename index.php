@@ -2,6 +2,7 @@
 	// ---------------
 	// INITIALIZE PAGE
 	// ---------------
+        $page = "index";
 	require_once('scripts/sb_functions.php');
 	
 	// Login
@@ -13,13 +14,8 @@
 		session_start();
 	}
 	$_SESSION['cookies_enabled'] = '1';
-	
-	// Read configuration file
-	read_config();
-	
-	// Load language strings
-	require_once(ROOT_DIR . '/languages/' . $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'index' );
+
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -106,7 +102,7 @@
 		$is_permalink = false;
 	}
 	
-	global $lang_string, $sb_info, $blog_config;
+	global $sb_info, $blog_config;
 	
 	// Check the option for specific category on first page...
 	// If nothing was passed into this page, then use the default
@@ -135,36 +131,6 @@
 		echo( $content);
 	}
 	
-	// ----
-	// HTML
-	// ----
-	
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Page Title
-	if (!isset($_GET['entry'])) {
-		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE'));
-	} else {
-		$str = $blog_config->getTag('BLOG_TITLE').' - '.get_entry_title(substr($_GET['entry'], 5, 2), substr($_GET['entry'], 7, 2), $_GET['entry']);
-		$page_template->setTag('{PAGE_TITLE}', $str);
-	}
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 
-	// Category RSS
-	$cat = '';
-	if (isset($_GET['category'])) {
-		$cat = '?c=' . $_GET['category'];
-	}
-	$page_template->setTag('{CATEGORY_ID}', $cat);
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout();
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
 ?>

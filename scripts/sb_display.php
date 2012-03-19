@@ -326,7 +326,7 @@
 
         // Read More link
         if ( array_key_exists( 'relatedlink', $blog_entry_data ) ) {
-        $entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
+        $entry_array[ 'relatedlink' ][ 'name' ] = _sb('sb_relatedlink');
         $entry_array[ 'relatedlink' ][ 'url' ] = $blog_entry_data[ 'relatedlink' ];
         }
 
@@ -340,18 +340,18 @@
            (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'EDIT' ) == true ) and ( $blog_entry_data[ 'CREATEDBY' ] != $_SESSION[ 'username' ]) ) or
            (( $logged_in == true) and ( $admin == 'no' ) and ( $blog_entry_data[ 'CREATEDBY' ] == $_SESSION[ 'username' ]) ))
         {
-          $entry_array[ 'edit' ][ 'name' ] = $lang_string[ 'sb_edit' ];
+          $entry_array[ 'edit' ][ 'name' ] = _sb('sb_edit');
           $entry_array[ 'edit' ][ 'url' ] = 'add.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
         }
 
         if ( (( $logged_in == true ) and ( $admin == 'yes' )) or
            (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'DEL' ) == true ) ))
         {
-          $entry_array[ 'delete' ][ 'name' ] = $lang_string[ 'sb_delete' ];
+          $entry_array[ 'delete' ][ 'name' ] = _sb('sb_delete');
           $entry_array[ 'delete' ][ 'url' ] = 'delete.php?y='.$y.'&amp;m='.$m.'&amp;entry='.$entry;
         }
 
-        $entry_array[ 'permalink' ][ 'name' ] = $lang_string[ 'sb_permalink' ];
+        $entry_array[ 'permalink' ][ 'name' ] = _sb('sb_permalink');
         $entry_array[ 'permalink' ][ 'url' ] = $base_permalink_url . 'index.php?entry=' . str_replace(' ', '-', $blog_entry_data[ 'SUBJECT' ]);
 
         // // blog_to_html( $str, $comment_mode, $strip_all_tags, $add_no_follow=false, $emoticon_replace=false )
@@ -418,7 +418,7 @@
             } else {
               $star_image = 'no_star.png';
             }
-            $str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . $lang_string[ 'sb_rate_entry_btn' ] . '"><img height="9" width="9" src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="$star_image" /></a>';
+            $str  .= '<a rel="nofollow" href="rate_cgi.php?y=' . $y . '&amp;m=' . $m . '&amp;entry=' . $entry . '&amp;rating=' . $star_number . '" title="' . _sb('sb_rate_entry_btn') . '"><img height="9" width="9" src="themes/' . $blog_theme . '/images/stars/' . $star_image . '" alt="$star_image" /></a>';
           }
           $entry_array[ 'stars_nototals' ] = $str;
           $str  .= ' ( ' . round( $rating * 5, 1 ) . ' / ' . $votes . ' )';
@@ -430,13 +430,13 @@
 
         // Comments / Read - will show regardless of comments being enabled
         if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == true ) {
-          $commenttext = $lang_string[ 'sb_comment_btn' ];
-          $commentplural = $lang_string[ 'sb_comments_plural_btn' ];
-          $comment = $lang_string[ 'sb_add_comment_btn' ];
+          $commenttext = _sb('sb_comment_btn');
+          $commentplural = _sb('sb_comments_plural_btn');
+          $comment = _sb('sb_add_comment_btn');
         } else {
-          $commenttext = $lang_string[ 'sb_comment_view' ];
-          $commentplural = $lang_string['sb_comments_plural_view'];
-          $comment = $lang_string['sb_read_entry_btn'];
+          $commenttext = _sb('sb_comment_view');
+          $commentplural = _sb('sb_comments_plural_view');
+          $comment = _sb('sb_read_entry_btn');
         }
 
         // Add comment buttons
@@ -464,9 +464,9 @@
         // Add view counter
         if ( $view_counter > 0 ) {
           if ( $view_counter == 1) {
-            $entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_post' ];
+            $entry_array[ 'comment' ][ 'count' ] = _sb('sb_view_counter_pre') . $view_counter . _('sb_view_counter_post');
           } else {
-            $entry_array[ 'comment' ][ 'count' ] = $lang_string[ 'sb_view_counter_plural_pre' ] . $view_counter . $lang_string[ 'sb_view_counter_plural_post' ];
+            $entry_array[ 'comment' ][ 'count' ] = _sb('sb_view_counter_plural_pre') . $view_counter . _sb('sb_view_counter_plural_post');
           }
         }
 
@@ -478,7 +478,7 @@
         }
 
         if ( array_key_exists( 'CREATEDBY', $blog_entry_data ) ) {
-          $entry_array[ 'createdby' ][ 'text' ] = $lang_string[ 'sb_postedby' ] . ' ' . Get_Fullname( $blog_entry_data[ 'CREATEDBY' ] );
+          $entry_array[ 'createdby' ][ 'text' ] = _sb('sb_postedby') . ' ' . Get_Fullname( $blog_entry_data[ 'CREATEDBY' ] );
           $entry_array[ 'createdby' ][ 'name' ] = Get_Fullname( $blog_entry_data[ 'CREATEDBY' ] );
           $entry_array[ 'avatarurl' ] = Get_AvatarUrl( $blog_entry_data[ 'CREATEDBY' ] ); 
         }
@@ -522,7 +522,7 @@
           if ( $category != NULL ) {
             $blog_content  .= '&amp;category=' . $category;
           }
-      $blog_content  .= '">&#60;&#60;' . $lang_string['nav_first'] . ' </a></span>';
+      $blog_content  .= '">&#60;&#60;' . _sb('nav_first') . ' </a></span>';
     }
 
     // Display Back lin if required
@@ -533,7 +533,7 @@
       if ( $category != NULL ) {
         $blog_content  .= '&amp;category=' . $category;
       }
-      $blog_content  .= '"> &#60;' . $lang_string[ 'nav_back' ] . ' </a></span> ';
+      $blog_content  .= '"> &#60;' . _sb('nav_back') . ' </a></span> ';
     }
 
     // Display page count
@@ -578,7 +578,7 @@
       if ( $category != NULL ) {
         $blog_content  .= '&amp;category=' . $category;
       }
-      $blog_content  .= '">' . $lang_string[ 'nav_next' ] . '&#62; </a></span> ';
+      $blog_content  .= '">' . _sb('nav_next') . '&#62; </a></span> ';
     }
 
     // Display Last link if we are not on the last page
@@ -589,7 +589,7 @@
             $blog_content  .= '&amp;category=' . $category;
           }
 
-      $blog_content  .= '"> ' . $lang_string['nav_last'] . '&#62;&#62;</a></span>';
+      $blog_content  .= '"> ' . _sb('nav_last') . '&#62;&#62;</a></span>';
     }
     $blog_content  .= '</p><br />';
 
@@ -652,13 +652,13 @@
 
     // admin only
     if ( $username == 'admin' ) {
-      $fullname = $lang_string['sb_admin'];
+      $fullname = _sb('sb_admin');
       return ( $fullname );
     }
 
     // Go to the users database and get the user name
     if ( $username == '' ) {
-      $fullname = $lang_string['sb_admin'];
+      $fullname = _sb('sb_admin');
       return ( $fullname );
     } else {
       $user_list = read_users();
@@ -670,7 +670,7 @@
         }
       }
     }
-    return ( $lang_string['sb_admin'] );
+    return ( _sb('sb_admin') );
   }
 
   function get_avatarurl( $username ) {
@@ -852,7 +852,7 @@
     $blog_entry = blog_entry_to_array( $filename );
 
     if ($blog_entry == FALSE ) {
-      $title = $lang_string[ 'title' ]; // For some reason we couldnt load the file
+      $title = _sb('title'); // For some reason we couldnt load the file
     } else {
       $title = blog_to_html( $blog_entry[ 'SUBJECT' ], false, false ); // loaded and fired
     }
@@ -887,7 +887,7 @@
       $entry_array[ 'tb_ping' ] = blog_to_html( $tb_ping, false, false );
     }
     if ( $temp_relatedlink !== '' ) {
-      $entry_array[ 'relatedlink' ][ 'name' ] = $lang_string[ 'sb_relatedlink' ];
+      $entry_array[ 'relatedlink' ][ 'name' ] = _sb('sb_relatedlink');
       $entry_array[ 'relatedlink' ][ 'url' ] = blog_to_html( $relatedlink, false, false );
     }
 

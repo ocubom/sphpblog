@@ -32,18 +32,18 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $theme_vars, $blog_theme;
+		global $user_colors, $theme_vars, $blog_theme;
 		global $link_id, $link_name, $link_url;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		
 		<?php		
-		echo( $GLOBALS['lang_string']['instructions'] . '<p />' );
+		echo( _sb('instructions') . '<p />' );
 		
 		// Read links file.
 		$filename = CONFIG_DIR.'links.txt';
@@ -54,7 +54,7 @@
 		if ( $result ) {
 			
 			echo( '<hr />' );
-			echo $GLOBALS['lang_string']['up'] . '<p />';
+			echo _sb('up') . '<p />';
 	
 			$array = explode('|', $result);
 			for ( $i = 0; $i < count( $array ); $i = $i + 2 ) {
@@ -65,17 +65,17 @@
 				}
 				$str	.= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				if ( $i > 0 ) {
-					$str	.= '<a href="add_link.php?action=up&link_id='.$i.'">' . $GLOBALS['lang_string']['up'] . '</a> | ';
+					$str	.= '<a href="add_link.php?action=up&link_id='.$i.'">' . _sb('up') . '</a> | ';
 				} else {
-					$str	.= $GLOBALS['lang_string']['up'] . ' | ';
+					$str	.= _sb('up') . ' | ';
 				}
 				if ( $i < ( count( $array ) - 2 ) ) {
-					$str	.= '<a href="add_link.php?action=down&link_id='.$i.'">' . $GLOBALS['lang_string']['down'] . '</a> | ';
+					$str	.= '<a href="add_link.php?action=down&link_id='.$i.'">' . _sb('down') . '</a> | ';
 				} else {
-					$str	.= $GLOBALS['lang_string']['down'] . ' | ';
+					$str	.= _sb('down') . ' | ';
 				}
-				$str	.= '<a href="add_link.php?action=edit&link_id='.$i.'">' . $GLOBALS['lang_string']['edit'] . '</a> | ';
-				$str	.= '<a href="add_link.php?action=delete&link_id='.$i.'">' . $GLOBALS['lang_string']['delete'] . '</a> ';
+				$str	.= '<a href="add_link.php?action=edit&link_id='.$i.'">' . _sb('edit') . '</a> | ';
+				$str	.= '<a href="add_link.php?action=delete&link_id='.$i.'">' . _sb('delete') . '</a> ';
 				$str	.= '<br /><br />';
 			}
 			
@@ -93,7 +93,7 @@
 		echo( '<hr />' );
 		
 		if ( isset( $link_id ) == true ) {
-			echo $GLOBALS['lang_string']['instructions_edit'] . '<br /><br />';
+			echo _sb('instructions_edit') . '<br /><br />';
 			echo ( 1 + ( $link_id / 2 ) ) . ' - ' . $link_name . ' ( ' . $link_url . ' ) ' . '<br /><br />';
 		}
 		?>
@@ -103,7 +103,7 @@
 			
 			<?php
 				// Preset Color Dropdown
-				echo ('<label for="static_pages">' . $GLOBALS['lang_string']['static_pages'] . '</label><br />' . "\n");
+				echo ('<label for="static_pages">' . _sb('static_pages') . '</label><br />' . "\n");
 				echo ('<select name="static_pages" id="static_pages" onChange="load_static();">' . "\n");
 				echo( '<option label="--" value="--">--</option>' . "\n");
 				
@@ -123,13 +123,13 @@
 				echo ('</select><br /><br />');
 			?>
 		
-			<label for="link_name"><?php echo( $GLOBALS['lang_string']['link_name'] ); ?></label><br />
+			<label for="link_name"><?php echo( _sb('link_name') ); ?></label><br />
 			<input type="text" name="link_name" id="link_name" autocomplete="OFF" value="<?php if ( isset( $link_name ) ) { echo( $link_name ); } ?>"><br /><br />
 			
-			<label for="link_url"><?php echo( $GLOBALS['lang_string']['link_url'] ); ?></label><br />
+			<label for="link_url"><?php echo( _sb('link_url') ); ?></label><br />
 			<input type="text" name="link_url" id="link_url" autocomplete="OFF" size="45" value="<?php if ( isset( $link_url ) ) { echo( $link_url ); } else { echo( 'http://' ); }?>"><br /><br />
 			
-			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $link_id ) ) { echo $GLOBALS['lang_string']['submit_btn_edit']; } else { echo $GLOBALS['lang_string']['submit_btn_add']; } ?>&nbsp;" onclick="this.form.action='add_link.php';" />
+			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $link_id ) ) { echo _sb('submit_btn_edit'); } else { echo _sb('submit_btn_add'); } ?>&nbsp;" onclick="this.form.action='add_link.php';" />
 		</form>
 		
 		<?php
@@ -151,7 +151,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Extra Javascript
 	ob_start();
@@ -161,7 +161,7 @@
 			// Comment Popup Window
 			function validate_link(theform) {
 				if ( theform.link_name.value=="" ) {
-					alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
+					alert("<?php echo( _sb('form_error') ); ?>");
 					return false;
 				} else {
 					return true;

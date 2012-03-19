@@ -18,7 +18,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_categories' ];
+			return _sb('menu_categories');
 		}
 		
 		function getContent () {

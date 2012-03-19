@@ -11,12 +11,14 @@ function convert2pot($filename) {
         while (($buffer = fgets($handle, 4096)) !== false) {
             //echo $buffer;
             $matches = null;
-            if (preg_match("/\['lang_string'\]\[ *'([a-zA-Z0-9_]+)' *\]/", $buffer, $matches)) {
+            if (preg_match("/\[ *['\"]lang_string['\"] *\]\[ *['\"]([a-zA-Z0-9_]+)['\"] *\]/", $buffer, $matches)) {
                 $keys[] = $matches[1];
-            } elseif (preg_match("/lang_string\[ *'([a-zA-Z0-9_]+)' *\]/", $buffer, $matches)) {
+            } elseif (preg_match("/lang_string *\[ *['\"]([a-zA-Z0-9_]+)['\"] *\]/", $buffer, $matches)) {
+                $keys[] = $matches[1];
+            } elseif (preg_match("/_sb *\( *['\"]([^'\"]+)['\"]/", $buffer, $matches)) {
                 $keys[] = $matches[1];
             } elseif (preg_match("/lang_string/", $buffer)) {
-                print "MISS: $buffer\n";
+                //print "MISS: $buffer\n";
             }
         }
     fclose($handle);
@@ -25,14 +27,19 @@ function convert2pot($filename) {
 }
 
 // file keys in php files
-$contents = scandir("..");
 $allkeys = array();
-foreach ($contents as $filename) {
+
+$paths = array(glob("../*.php"), glob("../*/*.php"), glob("../*/*/*.php"), glob("../*/*/*/*/*.php"));
+
+foreach ($paths as $contents) {
+  foreach ($contents as $filename) {
     if (!is_dir($filename)) {
-        $keys = convert2pot("../$filename");
+        $keys = convert2pot($filename);
         $allkeys = array_merge($allkeys, $keys);
     }
+  }
 }
+
 $allkeys = array_unique($allkeys);
 
 // write to .pot

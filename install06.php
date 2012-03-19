@@ -36,21 +36,21 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $ok, $blog_config;
+		global $ok, $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok === true ) {
-			echo( $GLOBALS['lang_string']['success'] );
-			echo( '<a href="setup.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $GLOBALS['lang_string']['btn_setup'] . '</a>' );
+			echo( _sb('success') );
+			echo( '<a href="setup.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('btn_setup') . '</a>' );
 		} else {
-			echo( $GLOBALS['lang_string']['wrong_password'] );
-			echo( '<a href="install05.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . $GLOBALS['lang_string']['btn_try_again'] . '</a>' );
+			echo( _('wrong_password') );
+			echo( '<a href="install05.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('btn_try_again') . '</a>' );
 		}
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
@@ -70,7 +70,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

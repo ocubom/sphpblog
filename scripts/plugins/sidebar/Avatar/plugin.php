@@ -27,9 +27,9 @@
 		/* ------ OPTIONS ------ */
 		
 		function optionsForm () {
-			$label_url = $GLOBALS['lang_string']['blog_avatar'];
+			$label_url = _sb('blog_avatar');
 			$value_url = $this->prefs['url'];
-			$save = $GLOBALS['lang_string']['submit_btn'];
+			$save = _sb('submit_btn');
 			$width = $GLOBALS['theme_vars']['max_image_width'] - 20;
 		
 			ob_start(); ?>
@@ -63,14 +63,14 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_avatar' ];
+			return _sb('menu_avatar');
 		}
 		
 		function getContent () {
 			$str = '';
 			
 			if ( !empty( $this->prefs['url'] ) ) {
-				$str = sprintf( '<img src="%s" alt="%s" />', $this->prefs['url'], $GLOBALS[ 'lang_string' ][ 'menu_avatar' ] );
+				$str = sprintf( '<img src="%s" alt="%s" />', $this->prefs['url'], _sb('menu_avatar'));
 			}
 			
 			return $str;

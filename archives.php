@@ -75,12 +75,12 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $month, $year, $day, $lang_string, $showall;
+		global $month, $year, $day, $showall;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string['title'];
-		$entry_array[ 'entry' ] = '<p><a href="archives.php?showall=1">' . $lang_string['showall'] . '</a></p>' . read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
+		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'entry' ] = '<p><a href="archives.php?showall=1">' . _sb('showall') . '</a></p>' . read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
 		
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
@@ -97,7 +97,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

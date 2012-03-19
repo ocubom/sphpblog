@@ -29,7 +29,7 @@
 		function optionsForm () {
 			$label_count = 'Number of entries to display (1-100)';// $GLOBALS['lang_string']['blog_avatar'];
 			$value_count = $this->prefs['count'];
-			$save = $GLOBALS['lang_string']['submit_btn'];
+			$save = _sb('submit_btn');
 			$width = $GLOBALS['theme_vars']['max_image_width'] - 20;
 		
 			ob_start(); ?>
@@ -61,7 +61,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_random_entry' ];
+			return _sb('menu_random_entry');
 		}
 		
 		function getContent () {

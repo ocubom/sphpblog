@@ -19,7 +19,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors;
+		global $user_colors;
 		
 		// -------------------------------
 		// Emoticon code by NoWhereMan and Hydra
@@ -68,7 +68,7 @@
 		}
 
 		function emoticons_admin_display() {
-			global $theme_vars, $lang_string;
+			global $theme_vars;
 			// Emoticon table
 			$emo = emoticons_load();
 			
@@ -97,7 +97,7 @@
 			$str_out .=	 "\t</table>\n\t";
 			
 			$str_out .=	 '<hr />';
-			$str_out .=	 "\t<input type=\"submit\" value=\"".$lang_string['save_button']."\" />\n";
+			$str_out .=	 "\t<input type=\"submit\" value=\"". _sb('save_button')."\" />\n";
 			$str_out .=	 "</form>\n";
 			
 			return $str_out;
@@ -148,17 +148,17 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />
+		<?php echo( _sb('instructions') ); ?><p />
 
 		<?php if (ini_get('upload_files')) { ?>		
 		<hr />		
 		<!-- Upload New Emoticon Form -->
 		<form enctype="multipart/form-data" name="emoticons_up" method="post" action="emoticons.php">
-			<?php echo( $lang_string['upload_instructions'] ); ?> <input name="user_emot" type="file" /><input type="submit" value="Upload" />
+			<?php echo( _sb('upload_instructions') ); ?> <input name="user_emot" type="file" /><input type="submit" value="Upload" />
 		</form>
 		<!-- Upload New Emoticon Form -->
 		
@@ -170,13 +170,13 @@
 			$ok = upload_emoticons();
 			switch( $ok ) {
 				case true:
-					echo( $lang_string["upload_success"] );
+					echo( _sb("upload_success") );
 					break;
 				case false:
-					echo( $lang_string["upload_error"] );
+					echo( _sb("upload_error") );
 					break;
 				case -1:
-					echo( $lang_string["upload_invalid"] );
+					echo( _sb("upload_invalid") );
 					break;
 			}
 		}
@@ -187,9 +187,9 @@
 			// User is updating emoticon preferences.
 			$form_arr = emoticons_getform();
 			if ( emoticons_save($form_arr) ) {
-				echo( $lang_string["save_success"] );
+				echo( _sb("save_success") );
 			} else {
-				echo( $lang_string["save_error"] );
+				echo( _sb("save_error") );
 			}
 		}
 		
@@ -213,7 +213,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

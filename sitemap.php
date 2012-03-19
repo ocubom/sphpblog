@@ -34,7 +34,7 @@
 	// Read entries by month, year and/or day. Generate HTML output.
 	//
 	// Used for the main Index page.
-	global $lang_string, $blog_config, $user_colors, $sb_info;
+	global $blog_config, $user_colors, $sb_info;
 	
 	$entry_file_array = blog_entry_listing();
 

@@ -33,16 +33,16 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config;
+		global $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( $GLOBALS['lang_string']['instructions'] . '<p />' );
+		echo( _sb('instructions') . '<p />' );
 		?>
 			<form action="install01.php" method="post">
 				<?php
@@ -71,11 +71,11 @@
                                         }
                                         array_multisort($label, $arr);
 
-					echo( HTML_dropdown( $GLOBALS['lang_string']['blog_choose_language'], "blog_language", $dropdown_arr ) );
+					echo( HTML_dropdown( _sb('blog_choose_language'), "blog_language", $dropdown_arr ) );
 				?>
 				<p />
 				
-				<input type="submit" name="submit" value="<?php echo( $lang_string['submit_btn'] ); ?>" />
+				<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" />
 			</form>
 		<?php 
 		// PAGE CONTENT END
@@ -96,7 +96,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

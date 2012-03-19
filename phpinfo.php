@@ -19,7 +19,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $ok;
+		global $blog_config, $ok;
 	
 		// SUBJECT
 		$entry_array = array();

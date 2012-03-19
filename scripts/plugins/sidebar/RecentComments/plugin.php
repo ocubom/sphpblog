@@ -34,7 +34,7 @@
 			$label_dateFormat = 'Date format as defined by the PHP <a href="http://us2.php.net/manual/en/function.strftime.php" target="_blank">strftime()</a> function';
 			$value_dateFormat = $this->prefs['dateFormat'];
 			
-			$save = $GLOBALS['lang_string']['submit_btn'];
+			$save = _sb('submit_btn');
 			
 			$width = $GLOBALS['theme_vars']['max_image_width'] - 20;
 		
@@ -80,7 +80,7 @@
 		/* ------ GETTERS & SETTERS ------ */
 		
 		function getTitle () {
-			return $GLOBALS[ 'lang_string' ][ 'menu_most_recent' ];
+			return _sb('menu_most_recent');
 		}
 		
 		function getContent () {

@@ -2,14 +2,10 @@
 	// ---------------
 	// INITIALIZE PAGE
 	// ---------------
+	$page = 'login';
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
-	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'login' );
 	
 	// ---------------
 	// POST PROCESSING
@@ -29,11 +25,11 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $logged_in, $theme_vars, $blog_theme, $blog_config;
+		global $logged_in, $theme_vars, $blog_theme, $blog_config;
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 			
 		// PAGE CONTENT BEGIN
 		ob_start(); 
@@ -50,18 +46,18 @@
 		}
 
 ?>
-		<p><?php echo( $GLOBALS['lang_string']['instructions'] ); ?></p>
+		<p><?php echo( _sb('instructions') ); ?></p>
 		
 		<hr />
 		
 		<form action="login_cgi.php" method="post" onsubmit="return validate(this)">
-			<label for="user"><?php echo( $GLOBALS['lang_string']['username'] ); ?></label><br />
+			<label for="user"><?php echo( _sb('username') ); ?></label><br />
 			<input type="text" name="user" size="40"><p />
 			
-			<label for="pass"><?php echo( $GLOBALS['lang_string']['password'] ); ?></label><br />
+			<label for="pass"><?php echo( _sb('password') ); ?></label><br />
 			<input type="password" name="pass" size="40"><p />
 			
-			<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
+			<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" />
 		</form>
 		
 		<?php 
@@ -97,7 +93,7 @@
 	// <!--
 	function validate(theform) {
 		if (theform.user.value=="" || theform.pass.value=="") {
-			alert("<?php echo( $GLOBALS['lang_string']['form_error'] ); ?>");
+			alert("<?php echo( _sb('form_error') ); ?>");
 			return false;
 		} else {
 			return true;
@@ -106,17 +102,9 @@
 	// -->
 	</script>
 <?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+$javascript = ob_get_clean();
+
+require_once(ROOT_DIR . '/scripts/sb_footer.php');
+
 ?>

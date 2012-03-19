@@ -29,7 +29,7 @@
 		if ($blog_config->getTag('BLOG_ENABLE_COMMENTS') == 0) {
 			$commentsEnabled = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_comments_disabled'];
+			$error_message = _sb('error_comments_disabled');
 		} else {
 			$commentsEnabled = true;
 		}
@@ -50,7 +50,7 @@
 		} else {
 			$allFieldsExist = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_fields_missing'] . implode ( ', ', $missingFields );
+			$error_message = _sb('error_fields_missing') . implode ( ', ', $missingFields );
 		}
 	}
 	
@@ -61,7 +61,7 @@
 		if ( $oBlacklist->isBanned( getIP() ) == true ) {
 			$notBlackListed = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['blacklisted'];
+			$error_message = _('blacklisted');
 		} else {
 			$notBlackListed = true;
 		}
@@ -79,7 +79,7 @@
 		} else {
 			$postDataValid = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_bad_data'];
+			$error_message = _('error_bad_data');
 		}
 	}
 	
@@ -91,7 +91,7 @@
 			// Fix submitted by Jan Normann Nielsen via Sourceforge 2006-08-11
 			$notSpamBot = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_spambot'];
+			$error_message = _sb('error_spambot');
 		} else {
 			$notSpamBot = true;
 		}
@@ -104,7 +104,7 @@
 		} else {
 			$capchaCorrect = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_capcha'];
+			$error_message = _sb('error_capcha');
 		}
 	}
 	
@@ -115,7 +115,7 @@
 		if ( $oBannedWords->ContainsBannedWord( $_POST[ 'comment_name' ], $_POST[ 'comment_email' ], $_POST[ 'comment_url' ], $_POST[ 'comment_text' ] ) ) {
 			$noBannedWords = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['bannedword'];
+			$error_message = _sb('bannedword');
 		} else {
 			$noBannedWords = true;
 		}
@@ -128,7 +128,7 @@
 		} else {
 			$entryExists = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_entry_missing'];
+			$error_message = _sb('error_entry_missing');
 		}
 	}
 	
@@ -137,7 +137,7 @@
 		if ( strlen( $_POST[ 'comment_name' ] ) == 0 || strlen( $_POST[ 'comment_text' ] ) == 0 ) {
 			$notEmpty = false;
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_empty_text'];
+			$error_message = _sb('error_empty_text');
 		} else {
 			$notEmpty = true;
 		}
@@ -152,7 +152,7 @@
 		if ( are_comments_expired( $month, $dday, $year ) ) {
 			$notExpired = false;
 			$ok = false;
-			$error_message = $lang_string['expired_comment1'] . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') . $lang_string['expired_comment2'];
+			$error_message = _sb('expired_comment1') . $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') . _sb('expired_comment2');
 		} else {
 			$notExpired = true;
 		}
@@ -198,7 +198,7 @@
 		} else {
 			// problem writing file or couldn't create folder.
 			$ok = false;
-			$error_message = $GLOBALS['lang_string']['error_add'] . $result;
+			$error_message = _sb('error_add') . $result;
 		}
 	}
 	
@@ -213,30 +213,30 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $logged_in, $ok, $error_message;
+		global $blog_config, $logged_in, $ok, $error_message;
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok == true ) {
-			echo( $GLOBALS['lang_string']['success_add'] . '<p />' );
+			echo( _sb('success_add') . '<p />' );
 			
 			if ( $blog_config->getTag('BLOG_COMMENTS_MODERATION') ) {
 				if ( $logged_in == false ) {
-					echo($lang_string['user_notice_mod'] . '<p />');
+					echo(_sb('user_notice_mod') . '<p />');
 				}
 			}
 			
 			$relative_url = 'comments.php?y='.$_POST[ 'y' ].'&m='.$_POST[ 'm' ].'&entry='.$_POST[ 'entry' ];
-			echo( '<a href="' . $relative_url . '">' . $GLOBALS['lang_string']['return_to_comments'] . '</a><p />' );
+			echo( '<a href="' . $relative_url . '">' . _sb('return_to_comments') . '</a><p />' );
 		} else {
 			echo( $error_message . '<p />' );
 		}
-		echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
+		echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
@@ -256,7 +256,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();	

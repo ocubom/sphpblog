@@ -127,18 +127,18 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $blog_config;
+		global $user_colors, $blog_config;
 				
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>	
 		
 		<?php
-			echo ( $GLOBALS['lang_string']['instructions'] . '<p />');
-			echo ( '<b>' . $GLOBALS['lang_string']['current_categories'] . '</b><br />');
+			echo ( _sb('instructions') . '<p />');
+			echo ( '<b>' . _sb('current_categories') . '</b><br />');
 			
 			$catArray = get_category_array();
 			if ( count($catArray) > 0) {
@@ -154,13 +154,13 @@
 				}
 				echo( $str );
 			} else {
-				echo( $GLOBALS['lang_string']['no_categories_found'] . '<br />' );
+				echo( _sb('no_categories_found') . '<br />' );
 			}
 		?>
 		
 		
 		<form action="categories.php" method="post" name="categories" id="categories" onsubmit="return validate(this)">
-		<label for="category_list"><?php echo( $GLOBALS['lang_string']['category_list'] ); ?></label><br />
+		<label for="category_list"><?php echo( _sb('category_list') ); ?></label><br />
 		<textarea style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;" id="category_list" name="category_list" rows="20" cols="50" autocomplete="OFF"><?php
 			$catArray = get_category_array();
 			if ( count($catArray) > 0) {
@@ -180,10 +180,10 @@
 			<br />
 		<script type="text/javascript">
 		// <!--
-			document.write('<input type="button" class="bginput" value="<?php echo( $GLOBALS['lang_string']['validate'] ); ?>" onclick="validate(document.forms.categories);" />');
+			document.write('<input type="button" class="bginput" value="<?php echo( _sb('validate') ); ?>" onclick="validate(document.forms.categories);" />');
 		//-->
 		</script>
-			<input type="submit" name="submit" value="<?php echo( $GLOBALS['lang_string']['submit_btn'] ); ?>" />
+			<input type="submit" name="submit" value="<?php echo( _sb('submit_btn') ); ?>" />
 		</form>
 		
 		<?php
@@ -299,7 +299,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

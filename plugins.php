@@ -127,12 +127,12 @@
 			unset( $plugin );
 		}
 		
-		echo( sprintf( '<input type="submit" name="submit" value="%s" />', $GLOBALS['lang_string']['submit_btn'] ) );
+		echo( sprintf( '<input type="submit" name="submit" value="%s" />', _sb('submit_btn') ) );
 		echo( '</form>' );
 	}
 	
 	function page_content() {
-		global $lang_string, $blog_config;
+		global $blog_config;
 	
 		// SUBJECT
 		$entry_array = array();
@@ -166,7 +166,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

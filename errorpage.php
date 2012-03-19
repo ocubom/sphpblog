@@ -22,14 +22,15 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $blog_config, $blog_theme;
+		global $blog_config, $blog_theme;
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $lang_string[ $_SESSION['errornum'] ];
+		// TODO this doesn't work well with the language tools
+		$entry_array[ 'subject' ] = _sb( $_SESSION['errornum'] );
 		$entry_array[ 'entry' ] = '<table width="100%"	border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
-		$entry_array[ 'entry' ]	 .= '<td>' . $lang_string[ $_SESSION['errortype'] ] . '<br><br>';
-		$entry_array[ 'entry' ]	 .= $GLOBALS['lang_string']['clientid'] . @gethostbyaddr(getIP()) . '</td></tr></table>';
+		$entry_array[ 'entry' ]	 .= '<td>' . _sb($_SESSION['errortype'] ) . '<br><br>';
+		$entry_array[ 'entry' ]	 .= _sb('clientid') . @gethostbyaddr(getIP()) . '</td></tr></table>';
 
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
@@ -46,7 +47,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();

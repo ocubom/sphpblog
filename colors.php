@@ -19,36 +19,15 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $lang_string, $user_colors, $theme_vars, $blog_theme;		
+		global $user_colors, $theme_vars, $blog_theme;		
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = $GLOBALS['lang_string']['title'];
+		$entry_array[ 'subject' ] = _sb('title');
 	
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( $GLOBALS['lang_string']['instructions'] ); ?><p />		
-		<?php 
-			/*
-				$entry_array = array();
-				$entry_array[ 'subject' ] = 'BLOG ENTRY SAMPLE';
-				$entry_array[ 'date' ] = 'viernes, 22 de octubre de 2004, 09:48';
-				$entry_array[ 'permalink' ][ 'name' ] = $GLOBALS['lang_string']['sb_permalink'];
-				$entry_array[ 'permalink' ][ 'url' ] = 'colors.php';
-				$entry_array[ 'entry' ] = blog_to_html('[html]El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.<br /><br /><a href="colors.php">El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.</a><br /><br />El perro de San Roque no tiene rabo por que Ramón Rodríguez se lo ha robado.[/html]', false, false ) . '<br />';
-				$entry_array[ 'stars' ] = '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" style="border-style: none">' . '<img src="themes/' . $blog_theme . '/images/stars/full_star.png" style="border-style: none">' . '<img src="themes/' . $blog_theme . '/images/stars/half_star.png" style="border-style: none">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" style="border-style: none">' . '<img src="themes/' . $blog_theme . '/images/stars/no_star.png" style="border-style: none">';
-				$entry_array[ 'comment' ][ 'url' ] = 'colors.php';
-				$entry_array[ 'comment' ][ 'name' ] = $GLOBALS['lang_string']['sb_add_comment_btn'];
-				$entry_array[ 'comment' ][ 'count' ] = $GLOBALS['lang_string']['sb_view_counter_pre'] . '0' . $GLOBALS['lang_string']['sb_view_counter_post'];
-				$entry_array[ 'trackback' ][ 'url' ] = 'colors.php';
-				$entry_array[ 'trackback' ][ 'ping_url' ] = 'colors.php';
-				$entry_array[ 'count' ] = 1;
-				$entry_array[ 'maxcount' ] = 1;
-				$entry_array[ 'logged_in' ] = $logged_in;
-				
-				echo ( theme_blogentry( $entry_array ));
-			*/
-		?>
+		<?php echo( _sb('instructions') ); ?><p />		
 		
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
@@ -110,11 +89,11 @@
 				
 				echo ('</table><p />' . "\n");
 			
-				echo ('<input type="submit" name="submit" value="' . $GLOBALS['lang_string']['submit_btn'] . '"/>' );
+				echo ('<input type="submit" name="submit" value="' . _sb('submit_btn') . '"/>' );
 				echo( '<hr />' . "\n" );
 				
 				// Preset Color Dropdown
-				echo ('<label for="presets">' . $GLOBALS['lang_string']['color_preset'] . '</label><br />' . "\n");
+				echo ('<label for="presets">' . _sb('color_preset') . '</label><br />' . "\n");
 				echo ('<select name="presets" id="presets" onChange="load_preset();">' . "\n");
 				echo( '<option label="--" value="--">--</option>' . "\n");
 				
@@ -167,11 +146,11 @@
 				echo ('</select><br /><br />');				
 			?>
 			
-			<label for="scheme_name"><?php echo( $GLOBALS['lang_string']['scheme_name'] ); ?></label><br />
+			<label for="scheme_name"><?php echo( _sb('scheme_name') ); ?></label><br />
 			<input type="text" name="scheme_name" id="scheme_name" autocomplete="OFF" value="" size="40" maxlength="32"><br /><br />
 			
-			<label for="scheme_file"><?php echo( $GLOBALS['lang_string']['scheme_file'] ); ?></label><br />
-			<input type="text" name="scheme_file" id="scheme_file" autocomplete="OFF" value="" size="40" maxlength="32"> <input type="submit" name="save_btn" value="<?php echo( $GLOBALS['lang_string']['save_btn'] ); ?>" />
+			<label for="scheme_file"><?php echo( _sb('scheme_file') ); ?></label><br />
+			<input type="text" name="scheme_file" id="scheme_file" autocomplete="OFF" value="" size="40" maxlength="32"> <input type="submit" name="save_btn" value="<?php echo( _sb('save_btn') ); ?>" />
 		
 		</form>
 		
@@ -179,7 +158,7 @@
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
 		if ( $theme_vars[ 'options' ][ 'disallow_colors' ] == 1 ) { 
-			$entry_array[ 'entry' ] = $lang_string['theme_doesnt_allow_colors'];
+			$entry_array[ 'entry' ] = _sb('theme_doesnt_allow_colors');
 		}
 		
 		// THEME ENTRY
@@ -256,7 +235,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.$GLOBALS['lang_string']['title']);
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
 	
 	// Theme Layout
 	ob_start();
