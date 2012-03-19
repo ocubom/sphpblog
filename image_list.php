@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true ); 
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'image_list' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -23,12 +18,12 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('image_list_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( _sb('instructions') . '<p /><hr />');
+		echo( _sb('image_list_instructions') . '<p /><hr />');
 		echo image_list();
 		
 		// PAGE CONTENT END
@@ -49,7 +44,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('image_list_title'));
 	
 	// Theme Layout
 	ob_start();

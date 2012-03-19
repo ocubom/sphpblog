@@ -6,29 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( false, false );
 	
-	read_config();
-	
-	// ---------------
-	// POST PROCESSING
-	// ---------------
-	
-	// Validate Language
-	$temp_lang = '';
-	if ( isset( $_POST['blog_language'] ) ) {
-		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
-	} else if ( array_key_exists( 'blog_language', $_GET ) ) {	
-		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
-	}
-	if (validate_language($temp_lang) == false) {
-		$temp_lang = 'english';
-	}
-	
-	global $blog_config;
-	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'install06' );
-	
 	$ok = check_password( sb_stripslashes( $_POST['user'] ), sb_stripslashes( $_POST['pass'] ) );
 	$logged_in = $ok;
 	
@@ -40,16 +17,16 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('install06_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok === true ) {
-			echo( _sb('success') );
+			echo( _sb('install06_success') );
 			echo( '<a href="setup.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('btn_setup') . '</a>' );
 		} else {
-			echo( _('wrong_password') );
+			echo( _('install06_wrong_password') );
 			echo( '<a href="install05.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('btn_try_again') . '</a>' );
 		}
 		// PAGE CONTENT END
@@ -70,7 +47,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('install06_title'));
 	
 	// Theme Layout
 	ob_start();

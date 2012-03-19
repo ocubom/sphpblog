@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'info' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -41,7 +36,7 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('info_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -50,15 +45,15 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( _sb('error') . $ok . '<p />' );
+				echo( _sb('info_error') . $ok . '<p />' );
 			} else {
-				echo( _sb('success') . '<p />' );
+				echo( _sb('info_success') . '<p />' );
 			}
 			echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		} else {
 			?>
 			
-			<?php echo( _sb('instructions') ); ?><p />
+			<?php echo( _sb('info_instructions') ); ?><p />
 			
 			<form action="info.php" method="post" name="info" name="info">
 				
@@ -104,7 +99,7 @@
 		<!--
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( _sb('form_error') ); ?>");
+				alert("<?php echo( _sb('info_form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -116,7 +111,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('info_title'));
 	
 	// Theme Layout
 	ob_start();

@@ -24,13 +24,6 @@
 		session_start();
 	}
 
-	// Read configuration file
-	read_config();
-
-	// Load language strings
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'comments' );
-
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -76,18 +69,18 @@
 		print $blog_content;
 
 		// show comments
-		echo "<h2>" . _sb('title') . "</h2>";
+		echo "<h2>" . _sb('comments_title') . "</h2>";
 		echo( read_comments( $_GET[ 'y' ], $_GET[ 'm' ], $_GET[ 'entry' ], $logged_in ) );
 		echo( '<p />' );
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('header');
+		$entry_array[ 'subject' ] = _sb('comments_header');
 
 		// ADD COMMENT FORM
 		ob_start(); ?>
 
-		<?php echo( _sb('instructions') ); ?><p />
+		<?php echo( _sb('comments_instructions') ); ?><p />
 
 		<form action='comment_add_cgi.php' method="post" name="vbform" onsubmit="return validate_comment(this)">
 			<input type="hidden" name="y" value="<?php echo( $_GET[ 'y' ] ); ?>" />
@@ -264,7 +257,7 @@
 		// Validate the Form
 		function validate_comment(theform) {
 			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
-				alert("<?php echo( _sb('form_error') ); ?>");
+				alert("<?php echo( _sb('comments_form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -279,7 +272,7 @@
 	if (!isset($_GET['entry'])) {
 		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE'));
 	} else {
-		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('comments_title'));
 	}
 	
 	// Theme Layout

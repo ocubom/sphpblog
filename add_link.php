@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'add_link' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -37,13 +32,13 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('add_link_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		
 		<?php		
-		echo( _sb('instructions') . '<p />' );
+		echo( _sb('add_link_instructions') . '<p />' );
 		
 		// Read links file.
 		$filename = CONFIG_DIR.'links.txt';
@@ -93,7 +88,7 @@
 		echo( '<hr />' );
 		
 		if ( isset( $link_id ) == true ) {
-			echo _sb('instructions_edit') . '<br /><br />';
+			echo _sb('add_link_instructions_edit') . '<br /><br />';
 			echo ( 1 + ( $link_id / 2 ) ) . ' - ' . $link_name . ' ( ' . $link_url . ' ) ' . '<br /><br />';
 		}
 		?>
@@ -129,7 +124,7 @@
 			<label for="link_url"><?php echo( _sb('link_url') ); ?></label><br />
 			<input type="text" name="link_url" id="link_url" autocomplete="OFF" size="45" value="<?php if ( isset( $link_url ) ) { echo( $link_url ); } else { echo( 'http://' ); }?>"><br /><br />
 			
-			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $link_id ) ) { echo _sb('submit_btn_edit'); } else { echo _sb('submit_btn_add'); } ?>&nbsp;" onclick="this.form.action='add_link.php';" />
+			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $link_id ) ) { echo _sb('add_link_submit_btn_edit'); } else { echo _sb('add_link_submit_btn_add'); } ?>&nbsp;" onclick="this.form.action='add_link.php';" />
 		</form>
 		
 		<?php
@@ -151,7 +146,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('add_link_title'));
 	
 	// Extra Javascript
 	ob_start();
@@ -161,7 +156,7 @@
 			// Comment Popup Window
 			function validate_link(theform) {
 				if ( theform.link_name.value=="" ) {
-					alert("<?php echo( _sb('form_error') ); ?>");
+					alert("<?php echo( _sb('add_link_form_error') ); ?>");
 					return false;
 				} else {
 					return true;

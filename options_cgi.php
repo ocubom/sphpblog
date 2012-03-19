@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'options' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -63,15 +58,15 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('options_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok !== true ) {
-			echo( _sb('error') . $ok . '<p />' );
+			echo( _sb('options_error') . $ok . '<p />' );
 		} else {
-			echo( _sb('success') . '<p />' );
+			echo( _sb('options_success') . '<p />' );
 		}
 		
 		echo( '<a href="index.php">' . _sb('home') . '</a>' );
@@ -94,7 +89,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('options_title'));
 	
 	// Theme Layout
 	ob_start();

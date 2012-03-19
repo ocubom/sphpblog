@@ -852,7 +852,7 @@
     $blog_entry = blog_entry_to_array( $filename );
 
     if ($blog_entry == FALSE ) {
-      $title = _sb('title'); // For some reason we couldnt load the file
+      $title = ""; // For some reason we couldnt load the file
     } else {
       $title = blog_to_html( $blog_entry[ 'SUBJECT' ], false, false ); // loaded and fired
     }

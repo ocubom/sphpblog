@@ -6,29 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
-	read_config();
-	
-	// ---------------
-	// POST PROCESSING
-	// ---------------
-	
-	// Validate Language
-	$temp_lang = '';
-	if ( isset( $_POST['blog_language'] ) ) {
-		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
-	} else if ( array_key_exists( 'blog_language', $_GET ) ) {	
-		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
-	}
-	if (validate_language($temp_lang) == false) {
-		$temp_lang = 'english';
-	}
-	
-	global $blog_config;
-	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'install04' );
-	
 	// $ok = create_password( sb_stripslashes( $_POST['user'] ), sb_stripslashes( $_POST['pass'] ) );
 	// $logged_in = $ok;
 	
@@ -40,12 +17,12 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('install04_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( _sb('instructions') . '<p />' );
+		echo( _sb('install04_instructions') . '<p />' );
 		
 		$hashedUser = crypt( sb_stripslashes( $_POST['user'] ) );
 		$hashedPass = crypt( sb_stripslashes( $_POST['pass'] ) );
@@ -82,7 +59,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('install04_title'));
 	
 	// Theme Layout
 	ob_start();

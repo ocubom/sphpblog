@@ -6,8 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	sb_import_lang($lang, 'themes' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -34,7 +32,7 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('themes_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -43,9 +41,9 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( _sb('error') . $ok . '<p />' );
+				echo( _sb('upload_img_error') . $ok . '<p />' );
 			} else {
-				echo( _sb('success') . '<p />' );
+				echo( _sb('upload_img_success') . '<p />' );
 			}
 			
 			echo( '<a href="index.php">' . _sb('home') . '</a>' );
@@ -53,7 +51,7 @@
 		} else {
 			?>
 			
-			<?php echo( _sb('instructions') ); ?><p />
+			<?php echo( _sb('themes_instructions') ); ?><p />
 			
 			<hr noshade size="1" color="#<?php echo(get_user_color('inner_border_color')); ?>" />
 			
@@ -117,7 +115,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('themes_title'));
 	
 	// Theme Layout
 	ob_start();

@@ -79,7 +79,7 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('archives_title');
 		$entry_array[ 'entry' ] = '<p><a href="archives.php?showall=1">' . _sb('showall') . '</a></p>' . read_menus_tree( $month, $year, $day, 300, 'archives.php', $showall );
 		
 		// THEME ENTRY
@@ -97,7 +97,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('archives_title'));
 	
 	// Theme Layout
 	ob_start();

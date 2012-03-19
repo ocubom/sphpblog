@@ -6,29 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
-	read_config();
-	
-	// ---------------
-	// POST PROCESSING
-	// ---------------
-	
-	// Validate Language
-	$temp_lang = '';
-	if ( isset( $_POST['blog_language'] ) ) {
-		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
-	} else if ( array_key_exists( 'blog_language', $_GET ) ) {	
-		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
-	}
-	if (validate_language($temp_lang) == false) {
-		$temp_lang = 'english';
-	}
-	
-	global $blog_config;
-	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'install02' );
-	
 	// ------------
 	// PAGE CONTENT
 	// ------------
@@ -64,12 +41,12 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('install02_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( _sb('instructions') . '<p />' );
+		echo( _sb('install02_instructions') . '<p />' );
 		
 		echo( '<hr />' );
 		
@@ -101,7 +78,7 @@ deny from all
 			echo( _sb('help') . '<p />' );
 			echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('try_again') . '</a><p />' );
 		} else {
-			echo( _sb('success') . '<p />' );
+			echo( _sb('install02_success') . '<p />' );
 			echo( '<a href="install03.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('continue') . '</a><p />' );
 		}
 		
@@ -123,7 +100,7 @@ deny from all
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('install02_title'));
 	
 	// Theme Layout
 	ob_start();

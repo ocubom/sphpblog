@@ -12,11 +12,6 @@
 	}
 	$_SESSION[ 'capcha_contact' ] = sb_get_capcha();
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'contact' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -35,12 +30,12 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('contact_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 		
-		<?php echo ( _sb('instructions') ); ?><p />
+		<?php echo ( _sb('contact_instructions') ); ?><p />
 		<form action="contact_cgi.php" method="post" onsubmit="return validate(this)">
 		<p>
 		<label for="name"><?php echo( _sb('name') ); ?></label><br />
@@ -98,7 +93,7 @@
 		// <!--
 		function validate(theform) {
 			if (theform.subject.value=="" || theform.comment.value=="" || theform.email.value=="") {
-				alert("<?php echo( _sb('form_error') ); ?>");
+				alert("<?php echo( _sb('contact_form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -110,7 +105,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('contact_title'));
 	
 	// Theme Layout
 	ob_start();

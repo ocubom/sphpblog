@@ -135,7 +135,7 @@
 		unset( $static_file_array );
 
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title') . ' - ' . _sb('general');
+		$entry_array[ 'subject' ] = _sb('stats_title') . ' - ' . _sb('general');
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('entry_info'), number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('comment_info'), number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('trackback_info'), number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';

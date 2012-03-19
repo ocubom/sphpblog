@@ -11,13 +11,6 @@
 		session_start();
 	}
 
-	// Read configuration file
-	read_config();
-
-	// Load language strings
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'comment_moderation' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -30,12 +23,12 @@
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('comment_moderation_title');
 
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
 
-		<?php echo( _sb('instructions') ); ?><p />
+		<?php echo( _sb('comment_moderation_instructions') ); ?><p />
 
 		<?php echo( read_unmodded_comments($logged_in) ); ?><p />
 

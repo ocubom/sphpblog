@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	read_config();
-
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'moderation' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -40,11 +35,11 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('moderation_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( _sb('instructions') ); ?><p />
+		<?php echo( _sb('moderation_instructions') ); ?><p />
 
 		<!-- FORM -->
 		<form action="moderation.php" method="post" name="moderation" name="moderation" onsubmit="return validate(this)">
@@ -79,7 +74,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('moderation_title'));
 	
 	// Theme Layout
 	ob_start();

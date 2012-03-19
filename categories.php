@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'categories' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -131,13 +126,13 @@
 				
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('categories_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>	
 		
 		<?php
-			echo ( _sb('instructions') . '<p />');
+			echo ( _sb('categories_instructions') . '<p />');
 			echo ( '<b>' . _sb('current_categories') . '</b><br />');
 			
 			$catArray = get_category_array();
@@ -299,7 +294,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('categories_title'));
 	
 	// Theme Layout
 	ob_start();

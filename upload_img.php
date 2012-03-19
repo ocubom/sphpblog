@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'upload_img' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -23,7 +18,7 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('upload_img_title');
 			
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
@@ -31,7 +26,7 @@
 		<?php
 		$formstate = $_REQUEST['formstate'];
 		if (!ini_get('file_uploads')) {
-			echo( _sb('error') . 'php.ini file_uploads = Off.<p />' );
+			echo( _sb('upload_img_error') . 'php.ini file_uploads = Off.<p />' );
 		}
 		elseif($formstate !="showuploaders"){
 	echo('<form action="upload_img.php" method="get">'. _sb('howmany') .' (Total Max: ' . intval(return_bytes(ini_get('post_max_size')))/(1024*1024) . ' MB) <select id="howmany" name="howmany">');
@@ -48,7 +43,7 @@ EOF;
 			$howmany = $_REQUEST['howmany'];
 			$formstate = "notshowuploaders";
 			
-			echo( _sb('instructions') );
+			echo( _sb('upload_img_instructions') );
 			echo(' (Total Max: ' . intval(return_bytes(ini_get('post_max_size')))/(1024*1024) . ' MB) <p />');
 		
 			echo('<form enctype="multipart/form-data" action="upload_img_cgi.php" method="POST">');
@@ -81,7 +76,7 @@ EOF;
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('upload_img_title'));
 	
 	// Theme Layout
 	ob_start();

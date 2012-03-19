@@ -5,24 +5,17 @@
         // ---------------
         require_once('sb_functions.php');
 
-        read_config();
-
-        require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-        if (!empty($lang)) {
-		sb_language($lang);
-	}
-
                 if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
                         $uri = sb_curPageURL().'/index.php'; // Blog is root level
                 } else {
                         $uri = dirname(sb_curPageURL()).'/index.php'; // Blog is in sub-directory
                 }
 
+        // TODO grab more specific title from page
 	if (empty($title)) {
 		$title = $blog_config->getTag('BLOG_TITLE');
-		$custom_title = _sb('title');
 		if (!empty($custom_title)) {
-			$title = $blog_config->getTag('BLOG_TITLE').' - '. $custom_title;
+			$title = $blog_config->getTag('BLOG_TITLE');
 		}
 	}
         $locale = str_replace('_', '-', $GLOBALS['lang_string']['locale']);

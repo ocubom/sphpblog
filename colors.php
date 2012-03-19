@@ -6,11 +6,6 @@
 	global $logged_in, $theme_vars;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'colors' );	
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -23,11 +18,11 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('colors_title');
 	
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( _sb('instructions') ); ?><p />		
+		<?php echo( _sb('colors_instructions') ); ?><p />		
 		
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
@@ -235,7 +230,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('colors_title'));
 	
 	// Theme Layout
 	ob_start();

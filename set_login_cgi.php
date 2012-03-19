@@ -12,11 +12,6 @@
 		$logged_in = $ok;
 	}
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'set_login' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -29,15 +24,15 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('set_login_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok === true ) {
-			echo( _sb('success') . '<p />');
+			echo( _sb('set_login_success') . '<p />');
 		} else {
-			echo( _sb('wrong_password') . '<p />');
+			echo( _sb('set_login_wrong_password') . '<p />');
 		}
 		
 		echo( '<a href="index.php">' . _sb('home') . '</a>' );
@@ -60,7 +55,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('set_login_title'));
 	
 	// Theme Layout
 	ob_start();

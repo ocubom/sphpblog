@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'static' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -49,7 +44,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('static_title'));
 	
 	// Theme Layout
 	ob_start();

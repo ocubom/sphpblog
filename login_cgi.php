@@ -30,16 +30,16 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('login_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok === true ) {
-			echo( _sb('success') );
+			echo( _sb('login_success') );
 		} else {
 			switch ($ok) {
-				case 100: $errortext = _sb('wrong_password');
+				case 100: $errortext = _sb('login_wrong_password');
 				case 101: $errortext = _sb('inactive_account');
 			}
 			echo( $errortext );
@@ -87,7 +87,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('login_title'));
 	
 	// Theme Layout
 	ob_start();

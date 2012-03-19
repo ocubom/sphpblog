@@ -31,7 +31,7 @@
 			$entry_array[ 'subject' ] = $search->getTitle();
 		} else {	
 			// SUBJECT
-			$entry_array[ 'subject' ] = _sb('title');
+			$entry_array[ 'subject' ] = _sb('search_result_title');
 		}
 		
 		// PAGE CONTENT BEGIN
@@ -43,7 +43,7 @@
 		print $search->getContent();
 
 		if (!empty($search_string)) {			
-		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $GLOBALS['lang_string']['php_charset'] ), _sb('instructions') ) . '<br />' );
+		echo ( str_replace( '%string', @htmlspecialchars( $search_string, ENT_QUOTES, $GLOBALS['lang_string']['php_charset'] ), _sb('search_result_instructions') ) . '<br />' );
 		
 		echo( '<hr />' );
 
@@ -74,7 +74,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('search_title'));
 	
 	// Theme Layout
 	ob_start();

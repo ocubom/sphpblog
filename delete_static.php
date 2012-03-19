@@ -6,10 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'delete_static' );
 	
 	// ---------------
 	// POST PROCESSING
@@ -48,7 +44,7 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('delete_static_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -57,13 +53,13 @@
 			// Check to see if we're posting data...
 			global $ok;
 			if ( $ok !== true ) {
-				echo( _sb('error') . $ok . '<p />' );
+				echo( _sb('delete_static_error') . $ok . '<p />' );
 			} else {
-				echo( _sb('success') . '<p />' );
+				echo( _sb('delete_static_success') . '<p />' );
 			}
 			echo( '<a href="index.php">' . _sb('home') . '</a>' );
 		} else {
-			echo( _sb('instructions') . '<p /><hr />');
+			echo( _sb('delete_static_instructions') . '<p /><hr />');
 			echo( get_static_entry_by_file( $_GET[ 'entry' ] ) );
 			?>			
 			<hr />
@@ -96,7 +92,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('delete_static_title'));
 	
 	// Theme Layout
 	ob_start();

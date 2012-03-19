@@ -2,6 +2,7 @@
 	// Simple PHP Blog is released under the GNU Public License.
 	// Error reporting should be set to 0 in production environments.
 	error_reporting( E_ALL ^ E_NOTICE );
+	// use this for production
 	error_reporting( 0 );
 
 	// Root Directory
@@ -76,9 +77,24 @@ print "<br>";
         require_once('sb_config.php');
         read_config();
 
+        require_once('sb_forms.php');
         require_once(ROOT_DIR . "/languages/sb_lang.php");
+
         // Load language strings
-        $lang = $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE');
+
+        // Validate Language
+        $lang = 'english';
+        if ( isset( $_REQUEST['blog_language'] ) ) {
+                $temp_lang = '';
+                $temp_lang = sb_stripslashes( $_REQUEST['blog_language'] );
+                if (validate_language($temp_lang) !== false) {
+                    $lang = $temp_lang;
+                }
+                //$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
+        } else {
+               $lang = $GLOBALS['blog_config']->getTag('BLOG_LANGUAGE');
+        }
+
         sb_import_lang($lang);
 
         require_once('sb_login.php');
@@ -98,7 +114,6 @@ print "<br>";
         require_once('sb_color.php'); // These functions don't get used
         require_once('sb_feed.php');
         require_once('sb_categories.php');
-        require_once('sb_forms.php');
         require_once('sb_texteditor.php');
         require_once('sb_counter.php');
         require_once('sb_blacklist.php');

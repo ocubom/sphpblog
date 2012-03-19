@@ -9,11 +9,6 @@
 		session_start();
 	}
 
-	read_config();
-
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'errorpage' );
-
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -47,7 +42,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('errorpage_title'));
 	
 	// Theme Layout
 	ob_start();

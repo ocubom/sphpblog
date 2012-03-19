@@ -45,7 +45,7 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('add_block_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -68,7 +68,7 @@
 				
 				// 1 - Name of Block
 				$str	.= ( 1 + ($i/2) ) . ' - ' . $array[$i];
-				if ($array[$i+1] == 'plugin') {
+				if ($array[$i+1] == 'plugin' AND class_exists($array[$i])) {
 					$plugin = new $array[$i];
 					$hasoptions = $plugin->getOptions();
 					$str	.= ' <a href="plugins.php">(Plugin)</a> ';
@@ -102,13 +102,10 @@
 			
 			
 			if ($action === "edit") {
-				echo _sb('instructions_edit') . '<p />';
+				echo _sb('add_block_instructions_edit') . '<p />';
 			} else {
-				echo _sb('instructions_modify') . '<p />';
+				echo _sb('add_block_instructions_modify') . '<p />';
 			}
-		//} else {
-		//	echo $GLOBALS['lang_string']['instructions'] . '<p />';
-		//}
 		
 		echo( $str );
 		
@@ -134,7 +131,7 @@
 			<?php if( isset( $block_id ) ) { ?>
 			<input type="hidden" name="block_id" value="<?php echo $block_id; ?>" />
 			<?php } ?>
-			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $block_id ) && $action === 'edit' ) { echo _sb('submit_btn_edit'); } else { echo _sb('submit_btn_add'); } ?>&nbsp;" onclick="this.form.action='add_block.php';" />
+			<input type="submit" name="submit" value="&nbsp;<?php if ( isset ( $block_id ) && $action === 'edit' ) { echo _sb('add_block_submit_btn_edit'); } else { echo _sb('add_block_submit_btn_add'); } ?>&nbsp;" onclick="this.form.action='add_block.php';" />
 		</form>
 		
 		<?php

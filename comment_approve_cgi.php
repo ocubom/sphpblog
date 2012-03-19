@@ -10,11 +10,6 @@
 		session_start();
 	}
 
-	read_config();
-
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'comments' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -42,7 +37,7 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('comments_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -72,7 +67,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('comments_title'));
 	
 	// Theme Layout
 	ob_start();	

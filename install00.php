@@ -6,29 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
-	read_config();
-	
-	// ---------------
-	// POST PROCESSING
-	// ---------------
-	
-	// Validate Language
-	$temp_lang = '';
-	if ( isset( $_POST['blog_language'] ) ) {
-		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
-	} else if ( array_key_exists( 'blog_language', $_GET ) ) {	
-		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
-	}
-	if (validate_language($temp_lang) == false) {
-		$temp_lang = 'english';
-	}
-	
-	global $blog_config;
-	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'install00' );
-	
 	// ------------
 	// PAGE CONTENT
 	// ------------
@@ -37,12 +14,12 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('install00_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( _sb('instructions') . '<p />' );
+		echo( _sb('install00_instructions') . '<p />' );
 		?>
 			<form action="install01.php" method="post">
 				<?php
@@ -96,7 +73,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('install00_title'));
 	
 	// Theme Layout
 	ob_start();

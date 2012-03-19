@@ -29,14 +29,14 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('login_title');
 			
 		// PAGE CONTENT BEGIN
 		ob_start(); 
 
 		if ($_SERVER["HTTPS"] != 'on') {
 		    if ($blog_config->getTag('HTTPS') == 'WARN') {
-			print "<p style='background-color: red; color: white'>WARNING: Password will be sent unencrypted!</p>"; 
+			print "<p style='background-color: red; color: white'>" . _sb("WARNING: Password will be sent unencrypted!") . "</p>"; 
                         $url = $blog_config->getTag('HTTPS_URL');
                         if (empty($url)) {
 			    $url = str_replace('http://', 'https://', sb_curPageURL()); 
@@ -46,7 +46,7 @@
 		}
 
 ?>
-		<p><?php echo( _sb('instructions') ); ?></p>
+		<p><?php echo( _sb('login_instructions') ); ?></p>
 		
 		<hr />
 		
@@ -93,7 +93,7 @@
 	// <!--
 	function validate(theform) {
 		if (theform.user.value=="" || theform.pass.value=="") {
-			alert("<?php echo( _sb('form_error') ); ?>");
+			alert("<?php echo( _sb('login_form_error') ); ?>");
 			return false;
 		} else {
 			return true;

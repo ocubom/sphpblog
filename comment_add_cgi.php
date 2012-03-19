@@ -198,7 +198,7 @@
 		} else {
 			// problem writing file or couldn't create folder.
 			$ok = false;
-			$error_message = _sb('error_add') . $result;
+			$error_message = _sb('comments_error_add') . $result;
 		}
 	}
 	
@@ -217,7 +217,7 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('comments_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -256,7 +256,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('comments_title'));
 	
 	// Theme Layout
 	ob_start();	

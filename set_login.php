@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'set_login' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -23,7 +18,7 @@
 	
 	// SUBJECT
 	$entry_array = array();
-	$entry_array[ 'subject' ] = _sb('title');
+	$entry_array[ 'subject' ] = _sb('set_login_title');
 	
 	// PAGE CONTENT
 	$entry_array[ 'entry' ] = _sb('explanation');
@@ -49,7 +44,7 @@
 		// <!--
 		function validate(theform) {
 			if (theform.user.value=="" || theform.pass.value=="") {
-				alert("<?php echo( _sb('form_error') ); ?>");
+				alert("<?php echo( _sb('set_login_form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -61,7 +56,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('set_login_title'));
 	
 	// Theme Layout
 	ob_start();

@@ -8,11 +8,6 @@
 	
 	$logged_in = logged_in( false, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'logout' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -25,17 +20,17 @@
 	
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('logout_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		switch ( $result ) {
 			case 0:
-				echo( _sb('error') );
+				echo( _sb('logout_error') );
 				break;
 			case 1:
-				echo( _sb('success') );
+				echo( _sb('logout_success') );
 				break;
 			case -1:
 				echo( _sb('error_no_cookie') );
@@ -68,7 +63,7 @@
 	}
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('logout_title'));
 	
 	// Theme Layout
 	ob_start();

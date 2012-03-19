@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'trackbacks' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -36,15 +31,15 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('trackbacks_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
 		if ( $ok !== true ) {
-			echo( _sb('error_delete') . $ok . '<p />');
+			echo( _sb('trackbacks_error_delete') . $ok . '<p />');
 		} else {
-			echo( _sb('success_delete') . '<p />');
+			echo( _sb('trackbacks_success_delete') . '<p />');
 		}
 		
 		echo( '<a href="index.php">' . _sb('home') . '</a>' );
@@ -67,7 +62,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('trackbacks_title'));
 	
 	// Theme Layout
 	ob_start();

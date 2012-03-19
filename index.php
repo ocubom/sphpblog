@@ -15,7 +15,7 @@
 	}
 	$_SESSION['cookies_enabled'] = '1';
 
-	require_once('scripts/sb_header.php');
+	//require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING

@@ -12,11 +12,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	read_config();
-
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'manage_users' );
-
 	// --------------
 	// PRE-PROCESSING
 	// --------------
@@ -120,26 +115,10 @@
 
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('manage_users_title');
 
 		// PAGE CONTENT BEGIN
 		ob_start();
-
-		 /*
-		// PAGE HEADER
-		if ( array_key_exists( "info_keywords", $_POST ) && array_key_exists( "info_description", $_POST ) && array_key_exists( "info_copyright", $_POST ) ) {
-			// Check to see if we're posting data...
-			global $ok;
-			if ( $ok !== true ) {
-				echo( $GLOBALS['lang_string']['error'] . $ok . '<p />' );
-			} else {
-				echo( $GLOBALS['lang_string']['success'] . '<p />' );
-			}
-			echo( '<a href="index.php">' . $GLOBALS['lang_string']['home'] . '</a>' );
-		} else {
-			echo( $lang_string['instructions'] . '<p />' );
-		}
-		*/
 
 		// PAGE BODY
 
@@ -273,7 +252,7 @@
 		// <!--
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( _sb('form_error') ); ?>");
+				alert("<?php echo( _sb('manage_users_form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -285,7 +264,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('manage_users_title'));
 	
 	// Theme Layout
 	ob_start();

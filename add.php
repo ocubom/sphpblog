@@ -13,11 +13,6 @@
 		exit;
 	}
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'add' );
-
 	$restored = restore_post();
 	if (!empty($restored) AND empty($_POST) AND empty($_GET)) {
 		$_POST = $restored[1];
@@ -88,7 +83,7 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('add_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
@@ -97,9 +92,9 @@
 			// Display error message.
 			global $ok;
 			if ( $ok !== true ) {
-				echo( _sb('error') . $ok . '<p />' );
+				echo( _sb('add_error') . $ok . '<p />' );
 			} else {
-				echo( _sb('success') . '<p />' );
+				echo( _sb('add_success') . '<p />' );
 			}
 			echo( '<a href="index.php">' . _sb('home') . '</a><br /><br />' );
 		}
@@ -113,8 +108,8 @@
 		
 		// INSTRUCTIONS
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
-		$entry_array[ 'entry' ] = _sb('instructions') . '<p />' . _sb('instructions') . '<p />';
+		$entry_array[ 'subject' ] = _sb('add_title');
+		$entry_array[ 'entry' ] = _sb('add_instructions') . '<p />';
 		echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
 		
 		// PREVIEW
@@ -123,7 +118,7 @@
 		
 		// EDITOR
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('add_title');
 		$entry_array[ 'entry' ] = $editor['form'];
 		echo( theme_staticentry( $entry_array ) ); // THEME ENTRY
 	}
@@ -146,7 +141,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('add_title'));
 	
 	// Theme Layout
 	ob_start();

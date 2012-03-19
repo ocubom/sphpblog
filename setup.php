@@ -6,26 +6,6 @@
 	global $logged_in, $blog_config;
 	$logged_in = logged_in( true, true );
 
-	read_config();
-	
-	global $blog_config;
-
-	// Validate Language
-	$temp_lang = $blog_config->getTag('BLOG_LANGUAGE');
-	if ( isset( $_POST['blog_language'] ) ) {
-		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
-	} else if ( array_key_exists( 'blog_language', $_GET ) ) {
-		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
-	}
-	if (validate_language($temp_lang) == false) {
-		$temp_lang = 'english';
-	}
-
-	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
-
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'setup' );
-
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -39,13 +19,13 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('setup_title');
 		
 		$allowed = explode(',', $blog_config->getTag('COMMENT_TAGS_ALLOWED'));
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( _sb('instructions') ); ?><p />
+		<?php echo( _sb('setup_instructions') ); ?><p />
 
 		<!-- FORM -->
 		<form action="setup_cgi.php" method="post" name="setup" name="setup" onsubmit="return validate(this)">
@@ -396,7 +376,7 @@
 		// <!--
 		function validate(theform) {
 			if (theform.blog_title.value=="" || theform.blog_author.value=="" ) {
-				alert("<?php echo( _sb('form_error') ); ?>");
+				alert("<?php echo( _sb('setup_form_error') ); ?>");
 				return false;
 			} else {
 				return true;
@@ -408,7 +388,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
 
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('setup_title'));
 	
 	// Theme Layout
 	ob_start();

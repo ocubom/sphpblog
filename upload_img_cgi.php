@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'upload_img' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -93,7 +88,7 @@
  			case 8: $errstring = "File upload stopped by extension. Introduced in PHP 5.2.0."; break;
  			default: $errstring = "The reason of error is unknown. <br>Please look after to the "+$_FILES['userfile'][$i]['error']+" error code for the _FILES['userfile']['error'] in the php manual"; break;
  		}
- 		echo( _sb('error') . $ok . $errstring . '<p />');
+ 		echo( _sb('upload_img_error') . $ok . $errstring . '<p />');
 	}
 	//echo(count($_FILES['userfile']));
 	//print_r($_FILES['userfile']);
@@ -112,7 +107,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('upload_img_title'));
 	
 	// Theme Layout
 	ob_start();

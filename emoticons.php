@@ -6,11 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 	
-	read_config();
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'emoticons' );
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -148,11 +143,11 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('emoticons_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start(); ?>
-		<?php echo( _sb('instructions') ); ?><p />
+		<?php echo( _sb('emoticons_instructions') ); ?><p />
 
 		<?php if (ini_get('upload_files')) { ?>		
 		<hr />		
@@ -213,7 +208,7 @@
 	get_init_code($page_template);
 	
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('emoticons_title'));
 	
 	// Theme Layout
 	ob_start();

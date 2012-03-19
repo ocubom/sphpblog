@@ -6,29 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( false, false );
 	
-	read_config();
-	
-	// ---------------
-	// POST PROCESSING
-	// ---------------
-	
-	// Validate Language
-	$temp_lang = '';
-	if ( isset( $_POST['blog_language'] ) ) {
-		$temp_lang = sb_stripslashes( $_POST['blog_language'] );
-	} else if ( array_key_exists( 'blog_language', $_GET ) ) {	
-		$temp_lang = sb_stripslashes( $_GET['blog_language'] );
-	}
-	if (validate_language($temp_lang) == false) {
-		$temp_lang = 'english';
-	}
-	
-	global $blog_config;
-	$blog_config->setTag('BLOG_LANGUAGE', $temp_lang);
-	
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'install05' );
-	
 	// ------------
 	// PAGE CONTENT
 	// ------------
@@ -37,12 +14,12 @@
 		
 		// SUBJECT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('title');
+		$entry_array[ 'subject' ] = _sb('install05_title');
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
 		
-		echo( _sb('instructions') . '<p />' );
+		echo( _sb('install05_instructions') . '<p />' );
 		?>
 		
 		<hr />
@@ -82,7 +59,7 @@
 	// <!--
 	function validate(theform) {
 		if (theform.user.value=="" || theform.pass.value=="") {
-			alert("<?php echo( _sb('form_error') ); ?>");
+			alert("<?php echo( _sb('install05_form_error') ); ?>");
 			return false;
 		} else {
 			return true;
@@ -94,7 +71,7 @@
 	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
  
 	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('title'));
+	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('install05_title'));
 	
 	// Theme Layout
 	ob_start();
