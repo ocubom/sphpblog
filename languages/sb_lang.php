@@ -19,6 +19,9 @@ function sb_import_lang($name, $page="") {
       if (preg_match("/msgstr \"(.*)\"/", $buffer, $matches)) {
         $lang_string[$lastid] = $matches[1];
       }
+      if (preg_match("/^\"(.*)\"/", $buffer, $matches)) {
+        $lang_string[$lastid] .= $matches[1];
+      }
     }
     fclose($handle);
   }

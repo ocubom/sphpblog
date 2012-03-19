@@ -20,6 +20,9 @@ function convert2pot($filename) {
             } elseif (preg_match("/lang_string/", $buffer)) {
                 //print "MISS: $buffer\n";
             }
+            //if (sizeof($keys) > 0 AND $keys[sizeof($keys)-1] == 'title') {
+            //    print "$filename\n";
+            //}
         }
     fclose($handle);
     }
@@ -33,7 +36,7 @@ $paths = array(glob("../*.php"), glob("../*/*.php"), glob("../*/*/*.php"), glob(
 
 foreach ($paths as $contents) {
   foreach ($contents as $filename) {
-    if (!is_dir($filename)) {
+    if (!is_dir($filename) AND !stristr($filename, "languages")) {
         $keys = convert2pot($filename);
         $allkeys = array_merge($allkeys, $keys);
     }

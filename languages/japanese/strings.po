@@ -1,0 +1,1557 @@
+msgid "language"
+msgstr "japanese"
+
+msgid "locale"
+msgstr "Array"
+
+msgid "rss_locale"
+msgstr "ja-JP"
+
+msgid "html_charset"
+msgstr "EUC-JP"
+
+msgid "php_charset"
+msgstr "EUC-JP"
+
+msgid "menu_links"
+msgstr "¥³¥ó¥Æ¥ó¥Ä"
+
+msgid "menu_home"
+msgstr "¥Û¡¼¥à"
+
+msgid "menu_contact"
+msgstr "¥á¡¼¥ë"
+
+msgid "menu_stats"
+msgstr "Åý·×¥Ç¡¼¥¿"
+
+msgid "menu_calendar"
+msgstr "¥«¥ì¥ó¥À¡¼"
+
+msgid "menu_random_entry"
+msgstr "¥é¥ó¥À¥à ¥¨¥ó¥È¥ê¡¼"
+
+msgid "menu_archive"
+msgstr "¥¢¡¼¥«¥¤¥Ö"
+
+msgid "menu_viewarchives"
+msgstr "²áµî¤Îµ­»ö¤ò¸«¤ë"
+
+msgid "menu_menu"
+msgstr "¥á¥Ë¥å¡¼"
+
+msgid "menu_add"
+msgstr "¿·µ¬¥¨¥ó¥È¥ê¡¼"
+
+msgid "menu_add_static"
+msgstr "ÀÅÅª¥Ú¡¼¥¸¤ÎºîÀ®"
+
+msgid "menu_upload"
+msgstr "²èÁü¤Î¥¢¥Ã¥×¥í¡¼¥É"
+
+msgid "menu_setup"
+msgstr "ÀßÄê"
+
+msgid "menu_categories"
+msgstr "¥«¥Æ¥´¥ê¡¼"
+
+msgid "menu_info"
+msgstr "¥¤¥ó¥Õ¥©¥á¡¼¥·¥ç¥ó"
+
+msgid "manage_users"
+msgstr "¥æ¡¼¥¶´ÉÍý"
+
+msgid "manage_php_config"
+msgstr "PHP ¤ÎÀßÄê¤ò¸«¤ë"
+
+msgid "menu_options"
+msgstr "¥ª¥×¥·¥ç¥óÀßÄê"
+
+msgid "menu_themes"
+msgstr "¥Æ¡¼¥Þ"
+
+msgid "menu_colors"
+msgstr "ÇÛ¿§"
+
+msgid "menu_change_login"
+msgstr "¥í¥°¥¤¥ó¥­¡¼ÊÑ¹¹"
+
+msgid "menu_logout"
+msgstr "¥í¥°¥¢¥¦¥È"
+
+msgid "menu_login"
+msgstr "¥í¥°¥¤¥ó"
+
+msgid "menu_most_recent"
+msgstr "ºÇ¿·¤Î¥³¥á¥ó¥È"
+
+msgid "menu_most_recent_entries"
+msgstr "ºÇ¿·¤Î¥¨¥ó¥È¥ê¡¼"
+
+msgid "menu_most_recent_trackback"
+msgstr "ºÇ¿·¤Î¥È¥é¥Ã¥¯¥Ð¥Ã¥¯"
+
+msgid "menu_add_block"
+msgstr "¥«¥¹¥¿¥à¥Ö¥í¥Ã¥¯"
+
+msgid "menu_emoticons"
+msgstr "É½¾ð¥¢¥¤¥³¥ó"
+
+msgid "menu_avatar"
+msgstr "¥¢¥Ð¥¿¡¼"
+
+msgid "menu_moderation"
+msgstr "Ã±¸ì/IP ¤Ë¤è¤ë¥â¥Ç¥ì¡¼¥·¥ç¥ó"
+
+msgid "menu_commentmoderation"
+msgstr "¾µÇ§ÂÔ¤Á¤Î¥³¥á¥ó¥È"
+
+msgid "menu_plugins"
+msgstr "¥×¥é¥°¥¤¥ó"
+
+msgid "notice_moderator1"
+msgstr "¤¢¤Ê¤¿¤Î"
+
+msgid "notice_moderator2"
+msgstr " ¾µÇ§¤¬É¬Í×¤Ê¥³¥á¥ó¥È¤¬¤¢¤ê¤Þ¤¹¡£"
+
+msgid "notice_loggedin"
+msgstr "¥í¥°¥¤¥óÃæ¤Ç¤¹¡£"
+
+msgid "counter_today"
+msgstr "º£Æü:"
+
+msgid "counter_yesterday"
+msgstr "ºòÆü:"
+
+msgid "counter_totalsidebar"
+msgstr "¹ç·×:"
+
+msgid "counter_title"
+msgstr "¥«¥¦¥ó¥¿¤Î¹ç·×"
+
+msgid "home"
+msgstr "¥Û¡¼¥à¤ØÌá¤ë"
+
+msgid "nav_next"
+msgstr "¿Ê¤à"
+
+msgid "nav_back"
+msgstr "Ìá¤ë"
+
+msgid "nav_first"
+msgstr "ºÇ½é¤Ø"
+
+msgid "nav_last"
+msgstr "ºÇ¸å¤Ø"
+
+msgid "search_title"
+msgstr "¥µ¥¤¥ÈÆâ¸¡º÷"
+
+msgid "search_go"
+msgstr "¸¡º÷"
+
+msgid "page_generated_in"
+msgstr "¥Ú¡¼¥¸À¸À® %s ÉÃ"
+
+msgid "counter_total"
+msgstr "Site Views: "
+
+msgid "read_more"
+msgstr "¤â¤Ã¤ÈÆÉ¤à..."
+
+msgid "randomquote"
+msgstr "¥é¥ó¥À¥à °úÍÑ"
+
+msgid "sb_months"
+msgstr "Array"
+
+msgid "sb_default_title"
+msgstr "¥¿¥¤¥È¥ë¤Ê¤·"
+
+msgid "sb_default_author"
+msgstr "Åê¹Æ¼ÔÌ¾¤Ê¤·"
+
+msgid "sb_default_footer"
+msgstr "¥Õ¥Ã¥¿¤Ê¤·"
+
+msgid "sb_edit"
+msgstr "ÊÔ½¸"
+
+msgid "sb_delete"
+msgstr "ºï½ü"
+
+msgid "sb_permalink"
+msgstr "¤³¤Î¥¨¥ó¥È¥ê¡¼¤ÎURL"
+
+msgid "sb_trackback"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯"
+
+msgid "sb_postedby"
+msgstr "Åê¹Æ¼Ô"
+
+msgid "sb_admin"
+msgstr "´ÉÍý¼Ô"
+
+msgid "sb_relatedlink"
+msgstr "´ØÏ¢¤¹¤ë¥ê¥ó¥¯"
+
+msgid "sb_add_comment_btn"
+msgstr "¥³¥á¥ó¥È¤ò½ñ¤¯"
+
+msgid "sb_read_entry_btn"
+msgstr "¥¨¥ó¥È¥ê¡¼¤òÆÉ¤à"
+
+msgid "sb_comment_btn_number_first"
+msgstr "1"
+
+msgid "sb_comment_btn"
+msgstr "¥³¥á¥ó¥È"
+
+msgid "sb_comment_view"
+msgstr "É½¼¨"
+
+msgid "sb_comments_plural_btn_number_first"
+msgstr "1"
+
+msgid "sb_comments_plural_btn"
+msgstr "¥³¥á¥ó¥È"
+
+msgid "sb_comments_plural_view"
+msgstr "É½¼¨"
+
+msgid "sb_view_counter_pre"
+msgstr ""
+
+msgid "sb_view_counter_post"
+msgstr " ²óÉ½¼¨"
+
+msgid "sb_view_counter_plural_pre"
+msgstr ""
+
+msgid "sb_view_counter_plural_post"
+msgstr " ²óÉ½¼¨"
+
+msgid "sb_add_link_btn"
+msgstr "¥ê¥ó¥¯¤ÎÀßÄê¡¦ÄÉ²Ã"
+
+msgid "sb_rate_entry_btn"
+msgstr "¥¨¥ó¥È¥ê¡¼¤òºÎÅÀ"
+
+msgid "label_subject"
+msgstr "¥¿¥¤¥È¥ë"
+
+msgid "label_insert"
+msgstr "¥¿¥°¤ÎÁÞÆþ"
+
+msgid "btn_bold"
+msgstr "¥Ü¡¼¥ë¥É"
+
+msgid "btn_italic"
+msgstr "¥¤¥¿¥ê¥Ã¥¯"
+
+msgid "btn_image"
+msgstr "¥¤¥á¡¼¥¸"
+
+msgid "btn_url"
+msgstr "¥ê¥ó¥¯"
+
+msgid "btn_readmore"
+msgstr "read more"
+
+msgid "view_images"
+msgstr "¥¢¥Ã¥×¥í¡¼¥É²èÁü¤Î»²¾È"
+
+msgid "label_entry"
+msgstr "ÆâÍÆ"
+
+msgid "btn_preview"
+msgstr "&nbsp;¥×¥ì¥Ó¥å¡¼&nbsp;"
+
+msgid "btn_post"
+msgstr "&nbsp;Åê¹Æ&nbsp;"
+
+msgid "chk_visiblemenu"
+msgstr "¥á¥Ë¥å¡¼¤ÎÃæ¤ËÉ½¼¨ "
+
+msgid "file_name"
+msgstr "¤³¤Î¥¨¥ó¥È¥ê¡¼¤Î¥Õ¥¡¥¤¥ëÌ¾ (¥¹¥Ú¡¼¥¹¤È³ÈÄ¥»Ò¤ÏÉÔ²Ä)"
+
+msgid "insert_styles"
+msgstr "¥Æ¥­¥¹¥È¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "insert_image"
+msgstr "²èÁü¤ÎURL¤òÆþÎÏ"
+
+msgid "insert_url1"
+msgstr "¥ê¥ó¥¯¥Æ¥­¥¹¥È(¥ª¥×¥·¥ç¥ó)"
+
+msgid "insert_url2"
+msgstr "¥ê¥ó¥¯ÀèURL"
+
+msgid "insert_url3"
+msgstr "¿·¤·¤¤¥¦¥£¥ó¥É¥¦¤Ç³«¤¯ (¥ª¥×¥·¥ç¥ó)"
+
+msgid "add_form_error"
+msgstr "¥¿¥¤¥È¥ë¤ÈÆâÍÆ¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "insert_image_optional"
+msgstr "¥ª¥×¥·¥ç¥ó:"
+
+msgid "insert_image_width"
+msgstr "²£¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):"
+
+msgid "insert_image_height"
+msgstr "½Ä¥µ¥¤¥º (¥ª¥×¥·¥ç¥ó):"
+
+msgid "insert_image_popup"
+msgstr "¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥£¥ó¥É¥¦ÀßÄê(¥ª¥×¥·¥ç¥ó):"
+
+msgid "insert_image_float"
+msgstr "²èÁü¤Î²ó¤ê¹þ¤ß°ÌÃÖ(¥ª¥×¥·¥ç¥ó):"
+
+msgid "day"
+msgstr "Æü"
+
+msgid "month"
+msgstr "·î"
+
+msgid "year"
+msgstr "Ç¯"
+
+msgid "hour"
+msgstr "»þ"
+
+msgid "minute"
+msgstr "Ê¬"
+
+msgid "second"
+msgstr "ÉÃ"
+
+msgid "add_title"
+msgstr "¿·µ¬¥¨¥ó¥È¥ê¡¼"
+
+msgid "add_instructions"
+msgstr "¿·¤·¤¤¥¨¥ó¥È¥ê¡¼¤òºîÀ®¤·¤Þ¤¹¡£<br />¥¨¥ó¥È¥ê¡¼¤Î³ÎÇ§¤Ï¡Ö¥×¥ì¥Ó¥å¡¼¡×¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£<br />´°À®¤·¤¿¥¨¥ó¥È¥ê¡¼¤ÎÅê¹Æ¤Ï¡ÖÅê¹Æ¡×¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "title_ad"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤Î³ÎÇ§"
+
+msgid "instructions_ad"
+msgstr "¼«Æ°Åª¤Ë¸¡½Ð¤µ¤ì¤¿URL¤Ç¤¹¡£¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤òµö²Ä¤¹¤ë¾ì¹ç¤Ï¡ÖOK¡×¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "label_tb_ping"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯Á÷¿® (¥«¥ó¥Þ¤Ç¶èÀÚ¤Ã¤ÆÊ£¿ô»ØÄê²ÄÇ½)"
+
+msgid "label_tb_autodiscovery"
+msgstr "autodiscovery"
+
+msgid "label_relatedlink"
+msgstr "Related Link"
+
+msgid "label_categories"
+msgstr "Category List"
+
+msgid "add_instructions_update"
+msgstr "¥¨¥ó¥È¥ê¡¼¤ÎÅê¹Æ¡¢³ÎÇ§¤ò¹Ô¤¦»ö¤¬½ÐÍè¤Þ¤¹¡£"
+
+msgid "ok_btn"
+msgstr "&nbsp;OK&nbsp;"
+
+msgid "cancel_btn"
+msgstr "&nbsp;Cancel&nbsp;"
+
+msgid "add_error"
+msgstr "<h2>Whoops!</h2>¥¨¥ó¥È¥ê¡¼¤ÎÊÝÂ¸¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "add_success"
+msgstr "<h2>¥¨¥ó¥È¥ê¡¼¤òÊÝÂ¸¤·¤Þ¤·¤¿</h2>¥¨¥ó¥È¥ê¡¼¤ÎÊÝÂ¸¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£"
+
+msgid "add_static_form_error"
+msgstr "¥¿¥¤¥È¥ë¡¢ÆâÍÆ¡¢¥Õ¥¡¥¤¥ë¥Í¡¼¥à¤òµ­Æþ¤·¤Æ²¼¤µ¤¤"
+
+msgid "add_static_title"
+msgstr "ÀÅÅª¥Ú¡¼¥¸¤ÎºîÀ®"
+
+msgid "add_static_instructions"
+msgstr "¥Ú¡¼¥¸±¦Â¦¤Î¥³¥ó¥Æ¥ó¥Ä¥¨¥ê¥¢¤Ë¥ê¥ó¥¯¤µ¤ì¤ëÀÅÅª¥Ú¡¼¥¸¤òºîÀ®¤·¤Þ¤¹¡£"
+
+msgid "add_static_instructions_update"
+msgstr "ÀÅÅª¥Ú¡¼¥¸¤ÎÅê¹Æ¡¢¥×¥ì¥Ó¥å¡¼¤¬¹Ô¤¨¤Þ¤¹¡£"
+
+msgid "add_static_error"
+msgstr "<h2>Whoops!</h2>En¥¨¥ó¥È¥ê¡¼¤¬ÅÐÏ¿¤Ç¤­¤Þ¤»¤ó<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "comments_form_error"
+msgstr "Please complete the Name and Comment fields."
+
+msgid "name"
+msgstr "Name:"
+
+msgid "email"
+msgstr "Email:"
+
+msgid "homepage"
+msgstr "Homepage:"
+
+msgid "comment"
+msgstr "Comment:"
+
+msgid "IPAddress"
+msgstr "IP Address:"
+
+msgid "useragent"
+msgstr "User Agent:"
+
+msgid "wrote"
+msgstr "<i>On %s, %s wrote:</i><br /> <br /> %s"
+
+msgid "comment_capcha"
+msgstr "Anti-Spam: Enter "
+
+msgid "comments_title"
+msgstr "¥³¥á¥ó¥È"
+
+msgid "comments_header"
+msgstr "¥³¥á¥ó¥È¤ò½ñ¤¯"
+
+msgid "comments_instructions"
+msgstr "É¬Í×»ö¹à¤È¥³¥á¥ó¥È¤òÆþÎÏ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "comment_name"
+msgstr "Ì¾Á°:"
+
+msgid "comment_email"
+msgstr "Email:"
+
+msgid "comment_url"
+msgstr "URL:"
+
+msgid "commentposted"
+msgstr "New comment posted at: "
+
+msgid "comment_remember"
+msgstr "¾ðÊó¤òÅÐÏ¿¤¹¤ë:"
+
+msgid "comment_text"
+msgstr "¥³¥á¥ó¥È:"
+
+msgid "post_btn"
+msgstr "&nbsp;¥³¥á¥ó¥È¤òÅê¹Æ&nbsp;"
+
+msgid "delete_btn"
+msgstr "ºï½ü"
+
+msgid "ban_btn"
+msgstr "¤³¤Î¥æ¡¼¥¶¡ÊIP¥¢¥É¥ì¥¹¡Ë¤«¤é¤Î¥³¥á¥ó¥È¤ò¶Ø»ß"
+
+msgid "expired_comment1"
+msgstr "We are sorry. New comments are not allowed after "
+
+msgid "expired_comment2"
+msgstr " days."
+
+msgid "blacklisted"
+msgstr "Sorry, your IP address has been banned. Comments not allowed."
+
+msgid "bannedword"
+msgstr "Your comment, url, name or email contained word(s) that have been banned by the administrator. Your comment has NOT been posted."
+
+msgid "nocomments"
+msgstr "Comments are not available for this entry.          "
+
+msgid "email_moderator"
+msgstr "Comments are currently moderated. This comment needs approval before it will be seen by the public."
+
+msgid "user_notice_mod"
+msgstr "Moderation is turned on for this blog. Your comment will require the administrators approval before it will be visible."
+
+msgid "return_to_comments"
+msgstr "Return to Comments"
+
+msgid "comments_error_add"
+msgstr "<h2>Whoops!</h2>¥³¥á¥ó¥È¤¬Åê¹Æ¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "comments_error_delete"
+msgstr "<h2>Whoops!</h2>¥³¥á¥ó¥È¤¬Åê¹Æ¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£<br /><br /> I ran into a problem while deleting your comment.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "error_ban"
+msgstr "<h2>Whoops!</h2>IP not added to banned ip listing.<br /><br />Server Reported:<br />"
+
+msgid "success_add"
+msgstr "<h2>Comment Added!</h2>Your comment has been successfully saved."
+
+msgid "comments_success_delete"
+msgstr "<h2>Comment Deleted!</h2>The comment has been deleted."
+
+msgid "success_ban1"
+msgstr "<h2>IP Banned!"
+
+msgid "success_ban2"
+msgstr "</h2>To remove this ban in the future, use the Moderation option in the preferences menu."
+
+msgid "error_noip"
+msgstr "IP ¥¢¥É¥ì¥¹¤Ê¤·¤Ç¥Ö¥é¥Ã¥¯¥ê¥¹¥ÈÍ×µá¤ò¤·¤Þ¤·¤¿"
+
+msgid "error_comments_disabled"
+msgstr "<h2>Error!</h2>Hey! Comments are disabled on this blog. Are you a spambot?"
+
+msgid "error_no_match"
+msgstr "<h2>Error!</h2>Your IP address doesn't match posted IP address. Are you a spambot?"
+
+msgid "error_fields_missing"
+msgstr "<h2>Error!</h2>Missing the following fields: "
+
+msgid "error_spambot"
+msgstr "<h2>Error!</h2>Capcha data is missing. Are you a spambot?"
+
+msgid "error_capcha"
+msgstr "<h2>Error!</h2>The capcha you entered is incorrect."
+
+msgid "error_bad_data"
+msgstr "<h2>Error!</h2>Post data is not valid. Are you a hacker?"
+
+msgid "error_entry_missing"
+msgstr "<h2>Error!</h2>You are trying to comment on an entry that doesn't exist"
+
+msgid "error_empty_text"
+msgstr "<h2>Error!</h2>You didn't enter any comments or your name."
+
+msgid "add_block_form_error"
+msgstr "¥¿¥¤¥È¥ë¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "add_block_title"
+msgstr "¥Ö¥í¥Ã¥¯¤ÎÊÔ½¸¤ÈÄÉ²Ã"
+
+msgid "add_block_instructions"
+msgstr "¥«¥¹¥¿¥à¥Ö¥í¥Ã¥¯¤ÎÄÉ²Ã¤ÈÊÔ½¸¤ò¹Ô¤¤¤Þ¤¹¡£<br />¥«¥¹¥¿¥à¥Ö¥í¥Ã¥¯¤È¤Ï¥Ú¡¼¥¸±¦Éô¤Î¥á¥Ë¥å¡¼Æâ¤ËÇ¤°Õ¤ËÁý¤ä¤»¤ë¥Ö¥í¥Ã¥¯¤Ç¤¹¡£"
+
+msgid "up"
+msgstr "¾å¤ë"
+
+msgid "down"
+msgstr "²¼¤¬¤ë"
+
+msgid "edit"
+msgstr "ÊÔ½¸"
+
+msgid "delete"
+msgstr "ºï½ü"
+
+msgid "block_name"
+msgstr "¥Ö¥í¥Ã¥¯¥¿¥¤¥È¥ë"
+
+msgid "block_content"
+msgstr "¥Ö¥í¥Ã¥¯¤ÎÆâÍÆ"
+
+msgid "add_block_instructions_edit"
+msgstr "¥Ö¥í¥Ã¥¯ÊÔ½¸Ãæ"
+
+msgid "add_block_instructions_modify"
+msgstr "¥¯¥ê¥Ã¥¯¤·¤Æ¥Ö¥í¥Ã¥¯¤òÊÑ¹¹¤·¤Æ²¼¤µ¤¤"
+
+msgid "add_block_submit_btn_edit"
+msgstr "ÊÔ½¸"
+
+msgid "add_block_submit_btn_add"
+msgstr "ÄÉ²Ã"
+
+msgid "static_pages"
+msgstr "Static Pages:"
+
+msgid "add_link_title"
+msgstr "¥ê¥ó¥¯¤ÎÄÉ²Ã¡¦ÊÔ½¸"
+
+msgid "add_link_instructions"
+msgstr "Â¾¤Î¥µ¥¤¥È¤Ø¤Î¥ê¥ó¥¯¤òÄÉ²Ã¤·¤Þ¤¹¡£<br />ÄÉ²Ã¤Ï¥¢¥É¥ì¥¹¤òµ­Æþ¤·¡Ö¥ê¥ó¥¯¤ò²Ã¤¨¤ë¡×¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£¥ê¥ó¥¯¤Î½ç½ø¤òÊÑ¹¹¤¹¤ë¤Ë¤Ï¡Ö¾å¤Ø¡×¡Ö²¼¤Ø¡×¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£¥ê¥ó¥¯¤ò½¤Àµ¤¹¤ë¤Ë¤ÏÊÔ½¸¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£¥ê¥ó¥¯¤òºï½ü¤Ïºï½ü¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "link_name"
+msgstr "Ì¾Á°:"
+
+msgid "link_url"
+msgstr "¥ê¥ó¥¯ÀèURL: (¶õÍó¤Ç¥»¥Ñ¥ì¡¼¥¿¡¼¤Ë¤Ê¤ê¤Þ¤¹¡£)"
+
+msgid "add_link_instructions_edit"
+msgstr "¥ê¥ó¥¯¤ÎÊÔ½¸Ãæ:"
+
+msgid "add_link_instructions_modify"
+msgstr "¥ê¥ó¥¯¤ò½¤Àµ¤¹¤ë¤Ë¤Ï²¼¤Ë¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£:"
+
+msgid "add_link_submit_btn_edit"
+msgstr "¥ê¥ó¥¯¤ÎÊÔ½¸"
+
+msgid "add_link_submit_btn_add"
+msgstr "¥ê¥ó¥¯¤ò²Ã¤¨¤ë"
+
+msgid "add_link_form_error"
+msgstr "Ì¾Á°¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "categories_title"
+msgstr "¥«¥Æ¥´¥ê¡¼¤ÎÄÉ²Ã¤ÈÊÔ½¸"
+
+msgid "categories_instructions"
+msgstr "°Ê²¼¤Î¥Õ¥©¡¼¥à¤ò»ÈÍÑ¤·¤Æ¥«¥Æ¥´¥ê¡¼¤ÎÄÉ²Ã¤ÈÊÔ½¸¤ò¹Ô¤¤¤Þ¤¹¡£<br /> ¤½¤ì¤¾¤ì¤Î¥«¥Æ¥´¥ê¹àÌÜ¤Ë¤Ï'¥«¥Æ¥´¥êÌ¾(IDÈÖ¹æ)'¤òÉÕ¤±¤Æ²¼¤µ¤¤¡£ <br />¥¹¥Ú¡¼¥¹¤¬¤¢¤ë¾ì¹ç¤Ï¤½¤Î¤Þ¤ÞÈ¿±Ç¤·¤Þ¤¹¡£<br /><br /><b>Îã:</b><br />°ìÈÌ(1)<br />¥Ë¥å¡¼¥¹(3)<br />&nbsp;&nbsp;¹ðÃÎ (6)<br />&nbsp;&nbsp;¥¤¥Ù¥ó¥È (5)<br />&nbsp;&nbsp;&nbsp;&nbsp;²»³Ú (7)<br />¥Æ¥¯¥Î¥í¥¸¡¼ (2)<br />"
+
+msgid "categories_error"
+msgstr "¥¨¥é¡¼"
+
+msgid "current_categories"
+msgstr "¥«¥ì¥ó¥È¥«¥Æ¥´¥ê¡¼"
+
+msgid "no_categories_found"
+msgstr "¥«¥Æ¥´¥ê¡¼¤¬¤¢¤ê¤Þ¤»¤ó"
+
+msgid "category_list"
+msgstr "¥«¥Æ¥´¥ê¡¼¥ê¥¹¥È"
+
+msgid "validate"
+msgstr "¥«¥Æ¥´¥ê¡¼¤òÍ­¸ú¤Ë¤¹¤ë"
+
+msgid "submit_btn"
+msgstr "&nbsp;·èÄê&nbsp;"
+
+msgid "colors_title"
+msgstr "ÇÛ¿§ÊÑ¹¹"
+
+msgid "colors_instructions"
+msgstr "¥Ú¡¼¥¸¤ÎÇÛ¿§¤òÊÑ¹¹¤·¤Þ¤¹¡£<br />³Æ¹àÌÜ¤òÁªÂò¤·¤Æ¥«¥é¡¼¥Ô¥Ã¥«¡¼¤â¤·¤¯¤Ï¿ôÃÍ¤Ç¿§¤ò»ØÄê¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "bg_color"
+msgstr "BG Page"
+
+msgid "main_bg_color"
+msgstr "BG Main Page"
+
+msgid "border_color"
+msgstr "Page Border"
+
+msgid "inner_border_color"
+msgstr "Inner Border"
+
+msgid "header_bg_color"
+msgstr "BG Header"
+
+msgid "header_txt_color"
+msgstr "Header Text"
+
+msgid "menu_bg_color"
+msgstr "BG Menu"
+
+msgid "footer_bg_color"
+msgstr "BG Footer"
+
+msgid "txt_color"
+msgstr "Main Text"
+
+msgid "headline_txt_color"
+msgstr "Headline Text"
+
+msgid "date_txt_color"
+msgstr "Date Text"
+
+msgid "footer_txt_color"
+msgstr "Footer Text"
+
+msgid "link_reg_color"
+msgstr "Link Default"
+
+msgid "link_hi_color"
+msgstr "Link Hover"
+
+msgid "link_down_color"
+msgstr "Link Active"
+
+msgid "entry_bg"
+msgstr "Entry BG"
+
+msgid "entry_title_bg"
+msgstr "Entry Title BG"
+
+msgid "entry_border"
+msgstr "Entry Border"
+
+msgid "entry_title_text"
+msgstr "Entry Title Text"
+
+msgid "entry_text"
+msgstr "Entry Text"
+
+msgid "static_bg"
+msgstr "Static BG"
+
+msgid "static_title_bg"
+msgstr "Static Title BG"
+
+msgid "static_border"
+msgstr "Static Border"
+
+msgid "static_title_text"
+msgstr "Static Title Text"
+
+msgid "static_text"
+msgstr "Static Text"
+
+msgid "comment_bg"
+msgstr "¥³¥á¥ó¥È¤ÎÇØ·Ê"
+
+msgid "comment_title_bg"
+msgstr "¥³¥á¥ó¥È¥¿¥¤¥È¥ë¤ÎÇØ·Ê"
+
+msgid "comment_border"
+msgstr "¥³¥á¥ó¥È¤Î¶­³¦"
+
+msgid "comment_title_text"
+msgstr "¥³¥á¥ó¥È¥¿¥¤¥È¥ë¤ÎÊ¸»ú"
+
+msgid "menu_bg"
+msgstr "Menu BG"
+
+msgid "menu_title_bg"
+msgstr "Menu Title BG"
+
+msgid "menu_border"
+msgstr "Menu Border"
+
+msgid "menu_title_text"
+msgstr "Menu Title Text"
+
+msgid "menu_text"
+msgstr "Menu Text"
+
+msgid "menu_link_reg_color"
+msgstr "Menu Link Default"
+
+msgid "menu_link_hi_color"
+msgstr "Menu Link Hover"
+
+msgid "menu_link_down_color"
+msgstr "Menu Link Active"
+
+msgid "color_preset"
+msgstr "Color Schemes:"
+
+msgid "scheme_name"
+msgstr "Enter a custom color scheme name:"
+
+msgid "scheme_file"
+msgstr "Enter scheme file name: (no spaces or file extensions)"
+
+msgid "save_btn"
+msgstr "&nbsp;Save&nbsp;"
+
+msgid "colors_form_error"
+msgstr "Please enter a name for your custom color scheme."
+
+msgid "theme_doesnt_allow_colors"
+msgstr "The currently selected theme does not allow for custom colors."
+
+msgid "colors_error"
+msgstr "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your entry.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "colors_success"
+msgstr "<h2>¿§¤òÊÝÂ¸¤·¤Þ¤·¤¿!</h2>¾ðÊó¤ÎÊÝÂ¸¤ËÀ®¸ù¤·¤Þ¤·¤¿"
+
+msgid "delete_title"
+msgstr "¥¨¥ó¥È¥ê¡¼¤Îºï½ü"
+
+msgid "delete_instructions"
+msgstr "¥¨¥ó¥È¥ê¡¼¤Îºï½ü¤ò¹Ô¤¤¤Þ¤¹¡£<br />°ìÅÙºï½ü¤·¤¿¥¨¥ó¥È¥ê¡¼¤Ï¸µ¤ËÌá¤¹»ö¤Ï½ÐÍè¤Þ¤»¤ó¡£"
+
+msgid "delete_error"
+msgstr "<h2>Whoops!</h2>ºï½ü¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "delete_success"
+msgstr "<h2>¥¨¥ó¥È¥ê¡¼¤òºï½ü¤·¤Þ¤·¤¿!</h2>¥¨¥ó¥È¥ê¡¼¤Ïºï½ü¤µ¤ì¤Þ¤·¤¿¡£"
+
+msgid "delete_static_title"
+msgstr "ÀÅÅª¥Ú¡¼¥¸¤Îºï½ü"
+
+msgid "delete_static_instructions"
+msgstr "ÀÅÅª¥Ú¡¼¥¸¤Îºï½ü¤ò¹Ô¤¤¤Þ¤¹¡£°ìÅÙºï½ü¤·¤¿¥Ú¡¼¥¸¤ò¸µ¤ËÌá¤¹»ö¤Ï¤Ç¤­¤Þ¤»¤ó¡£"
+
+msgid "delete_static_error"
+msgstr "<h2>Whoops!</h2>ºï½ü¤Ë¼ºÇÔ¤·¤Þ¤·¤¿<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "delete_static_success"
+msgstr "<h2>ÀÅÅª¥Ú¡¼¥¸¤òºï½ü¤·¤Þ¤·¤¿!</h2>ÀÅÅª¥Ú¡¼¥¸¤Ïºï½ü¤µ¤ì¤Þ¤·¤¿¡£"
+
+msgid "image_list_title"
+msgstr "Image List"
+
+msgid "image_list_instructions"
+msgstr "¥Õ¥¡¥¤¥ëÌ¾¤ò¥¯¥ê¥Ã¥¯¤Ç²èÁü¤ò»²¾È¤·¤Þ¤¹¡£<br /><br />¥¨¥ó¥È¥ê¡¼¤Ë²èÁü¤ò²Ã¤¨¤ëÊýË¡:<br />1) ¥ê¥ó¥¯¤ò¥³¥ó¥È¥í¡¼¥ë¥¯¥ê¥Ã¥¯¤·¤Æ¡¢<br />¡Ö¥¯¥ê¥Ã¥×¥Ü¡¼¥É¤Ø¤Î¥³¥Ô¡¼¡¦¥ê¥ó¥¯¡×¤òÁª¤ó¤Ç¤¯¤À¤µ¤¤¡£.<br />2) ¿·µ¬¥¨¥ó¥È¥ê¡¼¤ØÌá¤ê¡¢ÊÔ½¸¤·¤Æ¤¯¤À¤µ¤¤¡£<br />3) ¡Öimg¡×¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¡¢¥¦¥£¥ó¥É¥¦¤ØURL¤ò»ØÄê¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "info_title"
+msgstr "¥á¥¿¾ðÊó"
+
+msgid "info_instructions"
+msgstr "¥µ¡¼¥Á¥¨¥ó¥¸¥ó¤äRSSÇÛ¿®¤Ë»ÈÍÑ¤µ¤ì¤ë¾ðÊó¤òÀßÄê¤·¤Þ¤¹¡£"
+
+msgid "info_keywords"
+msgstr "¥­¡¼¥ï¡¼¥É(¥«¥ó¥Þ¤ÇÊ£¿ô»ØÄê²ÄÇ½¡£Îã: ¥·¥ó¥·¥ó¥·¥ó¥·¥ó¥×¥ë,PHP,¥Ö¥í¥°)"
+
+msgid "info_description"
+msgstr "ÀâÌÀ(¥µ¥¤¥È¤Î¾Ò²ð¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£)"
+
+msgid "info_copyright"
+msgstr "Ãøºî¸¢É½¼¨(Ãøºî¸¢É½¼¨¤Î¥Æ¥­¥¹¥È¤äÃøºî¸¢É½¼¨¥Ú¡¼¥¸¤Î¥¢¥É¥ì¥¹¤Ê¤É)"
+
+msgid "tracking_code"
+msgstr "External Tracking Code: (HTML code that needs to be run on the main page (in the header tags for safety) only for every user that comes to the page i.e. Google Analytics)"
+
+msgid "info_error"
+msgstr "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "info_success"
+msgstr "<h2>¥á¥¿¾ðÊó¤òÊÝÂ¸¤·¤Þ¤·¤¿!</h2>¾ðÊó¤ÎÊÝÂ¸¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£"
+
+msgid "info_form_error"
+msgstr "¥¿¥¤¥È¥ë¡¢Ãø¼Ô¤Î¥Õ¥£¡¼¥ë¥É¤òµ­Æþ¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "rating_error"
+msgstr "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "rating_success"
+msgstr "<h2>É¾²Á¤òÊÝÂ¸¤·¤Þ¤·¤¿!</h2>¤¢¤Ê¤¿¤¬¹Ô¤Ã¤¿É¾²Á¤ÏÊÝÂ¸¤µ¤ì¤Þ¤·¤¿¡£"
+
+msgid "upgrade"
+msgstr "<h2>Upgrade</h2>"
+
+msgid "upgrade_count"
+msgstr "%n comment files need to be upgraded:"
+
+msgid "upgrade_url"
+msgstr "Upgrade Comments"
+
+msgid "login_title"
+msgstr "¥í¥°¥¤¥ó"
+
+msgid "login_instructions"
+msgstr "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "username"
+msgstr "¥æ¡¼¥¶Ì¾:"
+
+msgid "password"
+msgstr "¥Ñ¥¹¥ï¡¼¥É"
+
+msgid "login_success"
+msgstr "<h2>Success!</h2>¥í¥°¥¤¥ó¤·¤Þ¤·¤¿¡£¤½¤ì¤Ç¤Ï¤ª³Ú¤·¤ß²¼¤µ¤¤!<p />"
+
+msgid "login_wrong_password"
+msgstr "<h2>Whoops!</h2>¥í¥°¥¤¥ó¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£Àµ¤·¤¤¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òºÆµ­Æþ¤·¤Æ²¼¤µ¤¤¡£<p />"
+
+msgid "inactive_account"
+msgstr "<h2>Whoops!</h2>¥í¥°¥¤¥ó¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£ ¤¢¤Ê¤¿¤Î¥¢¥«¥¦¥ó¥È¤Ï¡¢¤Ê¤ó¤é¤«¤ÎÍýÍ³¤Ç¡¢´ÉÍý¼Ô¤Ë¤è¤Ã¤ÆÌµ¸ú²½¤µ¤ì¤Æ¤¤¤Þ¤¹¡£<p />"
+
+msgid "login_form_error"
+msgstr "¥æ¡¼¥¶Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "logout_title"
+msgstr "¥í¥°¥¢¥¦¥È"
+
+msgid "logout_error"
+msgstr "<h2>Goodbye!</h2>¥í¥°¥¢¥¦¥È¤·¤Þ¤·¤¿¡£(¤É¤Ã¤Á¤ß¤Á¥í¥°¥¤¥ó¤·¤Æ¤Ê¤«¤Ã¤¿¤±¤É¡ª)<p />"
+
+msgid "error_no_cookie"
+msgstr "<h2>Goodbye!</h2>¥í¥°¥¢¥¦¥È¤·¤Þ¤·¤¿¡£(¥¯¥Ã¥­¡¼¤¬¸«¤Ä¤«¤ê¤Þ¤»¤ó¤Ç¤·¤¿¡£¥í¥°¥¤¥ó¤·¤Æ¤Ê¤«¤Ã¤¿¤ó¤Ç¤·¤ç¤¦¡£)<p />"
+
+msgid "logout_success"
+msgstr "<h2>Goodbye!</h2>¥í¥°¥¢¥¦¥È¤·¤Þ¤·¤¿¡£<p /> (5ÉÃ¸å¤Ë¥Û¡¼¥à¥Ú¡¼¥¸¤Ø°ÜÆ°¤·¤Þ¤¹¡£)<p />"
+
+msgid "forms_title"
+msgstr ""
+
+msgid "forms_instructions"
+msgstr ""
+
+msgid "forms_error"
+msgstr "<h2>Whoops!</h2>ÊÝÂ¸¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "set_login_title"
+msgstr "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÊÑ¹¹"
+
+msgid "set_login_instructions"
+msgstr "¤¢¤Ê¤¿¤Î¥æ¡¼¥¶¡¼Ì¾¤Þ¤¿¤Ï¥Ñ¥¹¥ï¡¼¥É¤òÊÑ¹¹¤·¤Þ¤¹¡£<br />¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤ª¤è¤Ó¥Ñ¥¹¥ï¡¼¥É¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "set_login_success"
+msgstr "<h2>Success!</h2>¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤¬Í­¸ú¤Ë¤Ê¤ê¤Þ¤·¤¿¡£<p />"
+
+msgid "set_login_wrong_password"
+msgstr "<h2>Whoops!</h2>¿·¤·¤¤¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÅÐÏ¿¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "set_login_form_error"
+msgstr "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "explanation"
+msgstr "In recent versions, our password structure has changed.  There is no longer a way to update passwords 					and/or logins from inside the blog code.  In order to change your password, delete /config/password.php and make sure install*.php 					exists on the local server.  Once that is done, refresh this page (or logout).  You will be presented with the same script 					to generate your password as you did when originally creating the blog site."
+
+msgid "install00_title"
+msgstr "Welcome"
+
+msgid "install00_instructions"
+msgstr "Thank you for choosing Simple PHP Blog!"
+
+msgid "blog_choose_language"
+msgstr "Choose Language:"
+
+msgid "install01_title"
+msgstr "Simple PHP Blog¤Ø¤è¤¦¤³¤½¡ª"
+
+msgid "install01_instructions"
+msgstr "Thank you for choosing Simple PHP Blog!<br /><br />Simple PHP Blog ¤ÏPHP 4.1°Ê¹ß¤ÇÆ°ºî¤¹¤ë¥Ö¥í¥°¥·¥¹¥Æ¥à¤Ç¤¹¡£<br />¥í¥°¥Õ¥¡¥¤¥ë¤ò¥Æ¥­¥¹¥È¥Õ¥¡¥¤¥ë¤Ë¤è¤ê´ÉÍý¤¹¤ë¤Î¤Ç¥Ç¡¼¥¿¥Ù¡¼¥¹¤òÉ¬Í×¤È¤·¤Þ¤»¤ó¡£<br />¥Ç¡¼¥¿¤ò³ÊÇ¼¤¹¤ë£³¤Ä¤Î¥Õ¥©¥ë¥À('config', 'content', and 'images')¤ò¼«Æ°ºîÀ®¤·¤Þ¤¹¡£<br /><b>²¼¤Î¥á¥Ã¥»¡¼¥¸¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¼¡¤Ë¿Ê¤ó¤Ç¤¯¤À¤µ¤¤:</b>"
+
+msgid "begin"
+msgstr "[ ¥»¥Ã¥È¥¢¥Ã¥×¤òÂ³¤±¤ë ]"
+
+msgid "install02_title"
+msgstr "¥»¥Ã¥È¥¢¥Ã¥×"
+
+msgid "install02_instructions"
+msgstr "¥Ç¡¼¥¿³ÊÇ¼¥Õ¥©¥ë¥À¤òºîÀ®¤·¤Þ¤¹¡£"
+
+msgid "folder_exists"
+msgstr "¥Õ¥©¥ë¥À¤Ï´û¤ËºîÀ®ºÑ¤ß¤Ç¤¹¡£"
+
+msgid "folder_failed"
+msgstr "¥Õ¥©¥ë¥ÀºîÀ®¤Ë¼ºÇÔ¤·¤Þ¤·¤¿"
+
+msgid "folder_success"
+msgstr "¥Õ¥©¥ë¥ÀºîÀ®´°Î»¤·¤Þ¤·¤¿"
+
+msgid "help"
+msgstr " 				<h2>Whoops!</h2> 				Could not create one or more folders! This is most likely due to:<br> 				<i>1) <b>Write Permissions</b> aren't set to allow <b>Read/Write</b> access.</i><br> 				<i>2) The <b>UID</b>'s (user ID's) of all files and folder must match.</i><p /> 				 				Follow the trouble-shooting instructions below and please try again:<p />				 				1) Manually create the following folders: <b>config</b>, <b>content</b>, and <b>images</b>.<p /> 				2) Enabled <b>Write Permissions</b> on the folders. In your FTP program, Owner, User, and World should have <b>Read</b> and <b>Write</b> access. <i>(You may need to contact your service provider to change these...)</i><p /> 				3) Make sure the UID's of all your files and folders are the same. <i>(You may need to contact your service provider to change these...)</i>"
+
+msgid "try_again"
+msgstr "[ Try Again ]"
+
+msgid "install02_success"
+msgstr "<h2>À®¸ù!</h2>¥Õ¥©¥ë¥ÀºîÀ®¤¬´°Î»¤·¤Þ¤·¤¿¡£<p /><b>¥»¥Ã¥È¥¢¥Ã¥×¤òÂ³¤±¤ë¤ò¥¯¥ê¥Ã¥¯¤·¤Æ²¼¤µ¤¤:</b>"
+
+msgid "continue"
+msgstr "[ ¥»¥Ã¥È¥¢¥Ã¥×¤òÂ³¤±¤ë ]"
+
+msgid "supported"
+msgstr "<b>Your web server supports the following encryption schemes:</b>"
+
+msgid "standard"
+msgstr "Standard DES Encryption: "
+
+msgid "extended"
+msgstr "Extended DES Encryption: "
+
+msgid "MD5"
+msgstr "MD5 Encryption: "
+
+msgid "blowfish"
+msgstr "Blowfish Encryption: "
+
+msgid "enabled"
+msgstr "enabled"
+
+msgid "disabled"
+msgstr "disabled"
+
+msgid "using_standard"
+msgstr "<b>Using Standard DES Encryption...</b>"
+
+msgid "using_extended"
+msgstr "<b>Using Extended DES Encryption...</b>"
+
+msgid "using_MD5"
+msgstr "<b style='color: green;'>Using MD5 Encryption...</b>"
+
+msgid "using_blowfish"
+msgstr "<b style='color: green;'>Using Blowfish Encryption...</b>"
+
+msgid "using_unknown"
+msgstr "<b>Using Unknown Encryption...</b>"
+
+msgid "salt_length"
+msgstr " <i>(Salt Length = %string)</i><br />"
+
+msgid "install03_title"
+msgstr "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤ÎÀßÄê"
+
+msgid "install03_instructions"
+msgstr "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "install03_success"
+msgstr "<h2>Congratulations!</h2>¥¤¥ó¥¹¥È¡¼¥ë¤Ï´°Î»¤·¤Þ¤·¤¿¡£¤½¤ì¤Ç¤Ï¤ª³Ú¤·¤ß¤¯¤À¤µ¤¤¡£<p />"
+
+msgid "btn_setup"
+msgstr "[ ÀßÄê¤Ë¿Ê¤à ]"
+
+msgid "install03_wrong_password"
+msgstr "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your Username and/or Password.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "install03_form_error"
+msgstr "¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òµ­Æþ¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "install04_title"
+msgstr "Create Password File"
+
+msgid "install04_instructions"
+msgstr "Here's the tricky part:<br /> 				<ol> 				<li>Open a Text Editor application. <i>(Note Pad, Word Pad, Word, BBEdit, Pico, VI, etc...)</i></li> 				<li>Create a New Text Document.</li> 				<li>Copy and paste the code in the box below into your document.</li> 				<li>Save your file and name it <b>password.php</b> <i>(Be sure to save it in <b>text</b> or <b>plain text</b> format.)</i></li> 				<li>Open a FTP application.</li> 				<li>Upload your new <b>password.php</b> into the <b>config</b> folder on your web site.</li> 				<li>Delete the <b>password.php</b> from your hard drive.</li> 				</ol> 				"
+
+msgid "information"
+msgstr "<i>Note: If you want to reset your username and password (probably because you forgot it), delete the <b>password.php</b> file in the <b>config</b> folder on your web site. The next time you visit your site, it will walk you through this installation process again...</i>"
+
+msgid "code"
+msgstr "Code for <b>password.php</b> file:"
+
+msgid "install05_title"
+msgstr "Login"
+
+msgid "install05_instructions"
+msgstr "Please enter your Username and Password below"
+
+msgid "install05_success"
+msgstr "<h2>Congratulations!</h2>You are now logged in.<p /> 				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p /> 				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />"
+
+msgid "install05_wrong_password"
+msgstr "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />"
+
+msgid "install05_form_error"
+msgstr "Please complete the Username and Password fields."
+
+msgid "btn_try_again"
+msgstr "[ Try Again ]"
+
+msgid "install06_title"
+msgstr "Login"
+
+msgid "install06_instructions"
+msgstr "Please enter your Username and Password below"
+
+msgid "install06_success"
+msgstr "<h2>Congratulations!</h2>You are now logged in.<p /> 				Click below to visit the <b>Setup</b> page, where you can personalize your new blog.<p /> 				<i>Note: Now that you've completed the installation process, it is recommended that you delete the <b>installXX.php</b> files from your web site. (i.e. install00.php through install06.php)</i><p />"
+
+msgid "install06_wrong_password"
+msgstr "<h2>Whoops!</h2>You are not logged in. Please verify that you typed your Username and Password correctly and try again.<p />"
+
+msgid "install06_form_error"
+msgstr "Please complete the Username and Password fields."
+
+msgid "setup_title"
+msgstr "ÀßÄê"
+
+msgid "setup_instructions"
+msgstr "blog¤ÎÀßÄê¤È´ÉÍý¼Ô¾ðÊó¤òÀßÄê¤·¤Þ¤¹¡£"
+
+msgid "blog_title"
+msgstr "¥Ö¥í¥°¥¿¥¤¥È¥ë"
+
+msgid "blog_header"
+msgstr "¥Ø¥Ã¥À²èÁü¤Î URL: images/blogheader.jpg (¥Æ¡¼¥Þ¤´¤È¤Î¥Ç¥Õ¥©¥ë¥È²èÁü¤ò»È¤¦¾ì¹ç¤Ï¶õ¤Î¤Þ¤Þ¤Ë¤·¤Æ¤¯¤À¤µ¤¤¡£)"
+
+msgid "blog_author"
+msgstr "´ÉÍý¼ÔÌ¾"
+
+msgid "blog_email"
+msgstr "Email:"
+
+msgid "blog_avatar"
+msgstr "¥¢¥Ð¥¿¡¼ URL: (»È¤ï¤Ê¤¤¾ì¹ç¤Ï¶õ¤Î¤Þ¤Þ¤Ë¤·¤Æ¤¯¤À¤µ¤¤¡£)"
+
+msgid "blog_footer"
+msgstr "¥Õ¥Ã¥¿:"
+
+msgid "blog_enable_comments"
+msgstr "¥³¥á¥ó¥Èµ¡Ç½¤ò»È¤¦"
+
+msgid "blog_comments_popup"
+msgstr "¥³¥á¥ó¥È¤ò¥Ý¥Ã¥×¥¢¥Ã¥×¥¦¥¤¥ó¥É¥¦¤ÇÉ½¼¨"
+
+msgid "blog_enable_start_category"
+msgstr "Use specific category for first page of entries: "
+
+msgid "blog_search_top"
+msgstr "Show Search In Entries (instead of in sidebar)"
+
+msgid "blog_enable_static_block"
+msgstr "Show a defined block as the first entry of blog entries: "
+
+msgid "static_block_border"
+msgstr "Show Border"
+
+msgid "static_block_noborder"
+msgstr "No Border"
+
+msgid "blog_enable_voting"
+msgstr "¥¨¥ó¥È¥ê¡¼É¾²Áµ¡Ç½¤ò»È¤¦"
+
+msgid "blog_enable_cache"
+msgstr "Enable Blog Entry Cache (may provide speed increase on some servers)"
+
+msgid "blog_enable_calendar"
+msgstr "Enable Calendar / Archives Block"
+
+msgid "blog_enable_archives"
+msgstr "Enable Archives Block"
+
+msgid "blog_enable_counter"
+msgstr "Enable Counter in Sidebar"
+
+msgid "blog_counter_hours"
+msgstr "Number of hours to delay before hits are counted again (based on specific ip address):"
+
+msgid "blog_enable_login"
+msgstr "Enable Login Link (Please bookmark 'login.php' first...)"
+
+msgid "blog_enable_title"
+msgstr "Enable Plain Text Title Block (Clear checkbox if the title is in the header graphic)"
+
+msgid "blog_enable_permalink"
+msgstr "Enable Permalink on Blog Entries"
+
+msgid "blog_enable_capcha"
+msgstr "Enable Anti-Spam"
+
+msgid "blog_footer_counter"
+msgstr "Enable Counter in Footer"
+
+msgid "blog_enable_capcha_image"
+msgstr "Anti-Spam Images (GD library only) / Anti-Spam Text Field"
+
+msgid "blog_enable_stats"
+msgstr "Enable Stats Option in Menu"
+
+msgid "blog_enable_lastcomments"
+msgstr "Enable Most Recent Comments Listing"
+
+msgid "blog_enable_lastentries"
+msgstr "Enable Most Recent Entries Listing"
+
+msgid "blog_email_notification"
+msgstr "¿·¤·¤¤¥³¥á¥ó¥È¤¬¤¢¤ë¾ì¹ç¥á¡¼¥ë¤ÇÃÎ¤é¤»¤ë"
+
+msgid "blog_send_pings"
+msgstr "¥µ¡¼¥Ð¡¼¤ËPing¤òÁ÷¿®¤¹¤ë"
+
+msgid "blog_ping_urls"
+msgstr "Àµ³Î¤ÊURL¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£ (Îã¡§http://rpc.weblogs.com/RPC2)<br />(¥«¥ó¥Þ¤Ç¶èÀÚ¤ë»ö¤Ë¤è¤êÊ£¿ô¤Î¥µ¡¼¥Ð¡¼¤ò»ØÄê¤¹¤ë¤³¤È¤¬½ÐÍè¤Þ¤¹¡£)"
+
+msgid "blog_trackback_about"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯Á÷¼õ¿®µ¡Ç½¤ÎÀßÄê¤ò¹Ô¤¤¤Þ¤¹¡£<br /> ¼êÆ°¤Ç¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤òÄÉ²Ã¤¹¤ë¤«¼«Æ°¸¡½Ðµ¡Ç½¤ò»ÈÍÑ¤¹¤ë¤«ÁªÂò¤Ç¤­¤Þ¤¹¡£"
+
+msgid "blog_trackback_enabled"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯µ¡Ç½¤ò»ÈÍÑ¤¹¤ë"
+
+msgid "blog_trackback_auto_discovery"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¤Î¼«Æ°Á÷¼õ¿®µ¡Ç½¤ò»ÈÍÑ¤¹¤ë¡£"
+
+msgid "blog_max_entries"
+msgstr "£±¥Ú¡¼¥¸Æâ¤ÎºÇÂçÉ½¼¨¥¨¥ó¥È¥ê¿ô"
+
+msgid "blog_comment_tags"
+msgstr "¥³¥á¥ó¥ÈÆâ¤Ç»ÈÍÑ²ÄÇ½¤Ê¥¿¥°"
+
+msgid "blog_gzip_about"
+msgstr "SPHP 4.0.4°Ê¹ß¤«¤é»ÈÍÑ²ÄÇ½¤Êgzip(.gz)°µ½Ìµ¡Ç½¤ÎÀßÄê¤ò¹Ô¤¤¤Þ¤¹¡£<br />¥Õ¥¡¥¤¥ë¤ò°µ½Ì¤¹¤ë»ö¤Ë¤è¤ê¥Ç¥£¥¹¥¯¥¹¥Ú¡¼¥¹¤ÎÀáÌó¤È¥µ¡¼¥Ð¡¼¤Ø¤ÎÉé²Ù¤òÍÞ¤¨¤ë»ö¤¬¤Ç¤­¤Þ¤¹¡£<br />½é´üÀßÄê¤Ç¤Ï¥ª¥Õ¤Ë¤Ê¤Ã¤Æ¤ª¤ê¤Þ¤¹¤Î¤ÇÉ¬Í×¤Ë±þ¤¸¤ÆÍ­¸ú¤Ë¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "blog_enable_gzip_txt"
+msgstr "¥í¥°¥Õ¥¡¥¤¥ë¤ògzip¤Ç°µ½Ì¤¹¤ë"
+
+msgid "blog_enable_gzip_output"
+msgstr "HTTP½ÐÎÏÍÑ¤Îgzip°µ½Ì¤ò»ÈÍÑ¤·¤Þ¤¹"
+
+msgid "setup_error"
+msgstr "<h2>Whoops!</h2>ÀßÄê¤ÎÊÝÂ¸¤Ë¼ºÇÔ¤·¤Þ¤·¤¿<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "setup_success"
+msgstr "<h2>ÀßÄê¤òÊÝÂ¸¤·¤Þ¤·¤¿!</h2>¾ðÊó¤ÎÊÝÂ¸¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£"
+
+msgid "setup_form_error"
+msgstr "Please complete the Title and Author fields."
+
+msgid "label_entry_order"
+msgstr "¥¨¥ó¥È¥ê¡¼¤ÎÉ½¼¨"
+
+msgid "select_new_to_old"
+msgstr "¿·¤·¤¤½ç¤ËÉ½¼¨"
+
+msgid "select_old_to_new"
+msgstr "¸Å¤¤½ç¤ËÉ½¼¨"
+
+msgid "label_comment_order"
+msgstr "¥³¥á¥ó¥È¤ÎÉ½¼¨"
+
+msgid "cal_sunday"
+msgstr "ÆüÍËÆü"
+
+msgid "cal_monday"
+msgstr "·îÍËÆü"
+
+msgid "label_calendar_start"
+msgstr "¥«¥ì¥ó¥À¡¼¤Î½µ¤¬»Ï¤Þ¤ëÍËÆü"
+
+msgid "title_sidebar"
+msgstr "¥µ¥¤¥É¥Ð¡¼"
+
+msgid "title_comments"
+msgstr "¥³¥á¥ó¥È"
+
+msgid "title_trackback"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯"
+
+msgid "title_compression"
+msgstr "°µ½Ì"
+
+msgid "title_entries"
+msgstr "¥¨¥ó¥È¥ê¡¼"
+
+msgid "title_general"
+msgstr "°ìÈÌ"
+
+msgid "title_language"
+msgstr "¸À¸ì"
+
+msgid "blog_comment_days_expiry"
+msgstr "¥¨¥ó¥È¥ê¡¼¤¬Åê¹Æ¤µ¤ì¤Æ¤«¤é²¿Æü¤Î´Ö¥³¥á¥ó¥È¤Ç¤­¤ë¤è¤¦¤Ë¤·¤Þ¤¹¤«? (0 ¤Ï´ü¸Â¤Ê¤·)"
+
+msgid "blog_comments_moderation"
+msgstr "Require comment entries to be approved by logged in user before public           (always visible to logged in user)"
+
+msgid "comment_moderation"
+msgstr "¥³¥á¥ó¥È¾µÇ§¥ª¥×¥·¥ç¥ó"
+
+msgid "options_title"
+msgstr "¥ª¥×¥·¥ç¥óÀßÄê"
+
+msgid "options_instructions"
+msgstr "¥³¥á¥ó¥È¤È¥¨¥ó¥È¥ê¡¼¤ÎÆüÉÕÉ½¼¨¤È»þ´ÖÉ½¼¨¤ò¥«¥¹¥¿¥Þ¥¤¥º¤¹¤ë¤¿¤á¤ÎÀßÄê¤Ç¤¹¡£<br />ÆüÉÕ¤ÏÃ»¤¤ÆüÉÕ¤«Ä¹¤¤ÆüÉÕ¡¢»þ¹ïÉ½¼¨¤Ï12»þ´ÖÀ©¤¢¤ë¤¤¤Ï24»þ´ÖÀ©¤Î»þ¹ïÉ½¼¨¤òÁªÂò¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£<br />¥×¥ì¥Ó¥å¡¼¤Ç³ÎÇ§¤¹¤ë»ö¤¬¤Ç¤­¤Þ¤¹¡£"
+
+msgid "ldate_title"
+msgstr "Ä¹¤¤ÆüÉÕ·Á¼°"
+
+msgid "weekday"
+msgstr "ÍËÆü"
+
+msgid "none"
+msgstr "Ìµ¤·"
+
+msgid "sdate_title"
+msgstr "Ã»¤¤ÆüÉÕ:"
+
+msgid "s_month"
+msgstr "·î"
+
+msgid "s_mon"
+msgstr "MMM"
+
+msgid "s_day"
+msgstr "Æü"
+
+msgid "s_year"
+msgstr "Ç¯"
+
+msgid "zero_day"
+msgstr "¥¼¥í¤òÉÕ¤±¤ë¡ÊÎã¡§01¡Ë"
+
+msgid "show_century"
+msgstr "À¾Îñ¡ÊÎ¬¼°¡Ë¤òÉ½¼¨"
+
+msgid "time_title"
+msgstr "»þ¹ïÉ½¼¨"
+
+msgid "12hour"
+msgstr "12»þ´ÖÀ©"
+
+msgid "24hour"
+msgstr "24»þ´ÖÀ©"
+
+msgid "before_noon"
+msgstr "¸áÁ°"
+
+msgid "after_noon"
+msgstr "¸á¸å"
+
+msgid "date_title"
+msgstr "ÆüÉÕ¤ÎÉ½¼¨·Á¼°:"
+
+msgid "long_date"
+msgstr "Ä¹¤¤ÆüÉÕ"
+
+msgid "short_date"
+msgstr "Ã»¤¤ÆüÉÕ"
+
+msgid "time"
+msgstr "»þ¹ï"
+
+msgid "menu_title"
+msgstr "¥á¥Ë¥å¡¼¤ÎÆüÉÕÉ½¼¨·Á¼°:"
+
+msgid "zero_month"
+msgstr "¥¼¥í¤òÉÕ¤±¤ë¡ÊÎã¡§01¡Ë"
+
+msgid "zero_hour"
+msgstr "»þ¹ï¤Ë¥¼¥í¤òÉÕ¤±¤ë¡ÊÎã¡§01¡Ë"
+
+msgid "separator"
+msgstr "¥»¥Ñ¥ì¡¼¥¿¡¼"
+
+msgid "preview"
+msgstr "¥×¥ì¥Ó¥å¡¼"
+
+msgid "server_offset"
+msgstr "¥µ¡¼¥Ð¡¼¥ª¥Õ¥»¥Ã¥È"
+
+msgid "options_error"
+msgstr "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "options_success"
+msgstr "<h2>¥ª¥×¥·¥ç¥ó¤òÊÝÂ¸¤·¤Þ¤·¤¿!</h2>¾ðÊó¤ÎÊÝÂ¸¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£"
+
+msgid "upload_img_title"
+msgstr "²èÁü¤Î¥¢¥Ã¥×¥í¡¼¥É"
+
+msgid "upload_img_instructions"
+msgstr "²èÁü¥Õ¥¡¥¤¥ë¤Î¥¢¥Ã¥×¥í¡¼¥É¤ò¹Ô¤¤¤Þ¤¹¡£"
+
+msgid "select_file"
+msgstr "¥Õ¥¡¥¤¥ë¤ÎÁªÂò"
+
+msgid "upload_btn"
+msgstr "¥¢¥Ã¥×¥í¡¼¥É"
+
+msgid "upload_img_error"
+msgstr "<h2>Whoops!</h2>²èÁü¤ò¥¢¥Ã¥×¥í¡¼¥É¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£ Here's some more information:<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "upload_img_success"
+msgstr "<h2>²èÁü¤ò¥¢¥Ã¥×¥í¡¼¥É¤·¤Þ¤·¤¿!</h2>²èÁü¤Î¥¢¥Ã¥×¥í¡¼¥É¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£"
+
+msgid "themes_title"
+msgstr "³°´Ñ¤ÎÊÑ¹¹"
+
+msgid "themes_instructions"
+msgstr "¥×¥ë¥À¥¦¥ó¥á¥Ë¥å¡¼¤«¤é»ÈÍÑ¤¹¤ë¥Æ¡¼¥Þ¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£"
+
+msgid "choose_theme"
+msgstr "themes"
+
+msgid "themes_error"
+msgstr "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving your information.<br /><br />¥µ¡¼¥Ð¤«¤é¤Î±þÅú¤Ï:<br />"
+
+msgid "themes_success"
+msgstr "<h2>¥Æ¡¼¥Þ¤òÁªÂò¤·¤Þ¤·¤¿!</h2>¾ðÊó¤ÎÊÝÂ¸¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£"
+
+msgid "search_result_title"
+msgstr "Ãµº÷·ë²Ì"
+
+msgid "search_result_instructions"
+msgstr "¸¡º÷¥­¡¼¥ï¡¼¥É¡§<b>%string</b>:"
+
+msgid "not_found"
+msgstr "¸«¤Ä¤«¤ê¤Þ¤»¤ó¤Ç¤·¤¿¡£<br />°ã¤¦¥­¡¼¥ï¡¼¥É¤ÇºÆ¸¡º÷¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "contact_title"
+msgstr "¥³¥ó¥¿¥¯¥È"
+
+msgid "contact_instructions"
+msgstr "´ÉÍý¿Í¤Ø¤Î¥á¥Ã¥»¡¼¥¸¡¦Ï¢Íí¤Ï¤³¤Á¤é¤Ø¤ª´ê¤¤¤·¤Þ¤¹¡£"
+
+msgid "contact_form_error"
+msgstr "¥¿¥¤¥È¥ë¤È¥á¥Ã¥»¡¼¥¸¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "subject"
+msgstr "¥¿¥¤¥È¥ë¤òµ­Æþ¤·¤Æ²¼¤µ¤¤¡£"
+
+msgid "contact_success"
+msgstr "<h2>Success!</h2>Your message has been sent.<p />"
+
+msgid "failure"
+msgstr "<h2>Error!</h2>Your message has not been sent. Most likely the Anti Spam was not entered properly.<p />"
+
+msgid "contact_capcha"
+msgstr "Anti-Spam: Enter "
+
+msgid "contactsent"
+msgstr "Contact sent through: "
+
+msgid "errorpage-nocookies_title"
+msgstr "HTTP Error 403.8 - Page/Function Access Denied"
+
+msgid "errorline1"
+msgstr "The page or function you attempted to process requires the use of cookies."
+
+msgid "errorline2"
+msgstr "Restore cookie functionality within your browser or protection software and attempt your request again."
+
+msgid "clientid"
+msgstr "Client ID: "
+
+msgid "trackbacks_title"
+msgstr "¥È¥é¥Ã¥¯¥Ð¥Ã¥¯"
+
+msgid "trackbacks_header"
+msgstr "¤³¤Î¥¨¥ó¥È¥ê¡¼¤Î¥È¥é¥Ã¥¯¥Ð¥Ã¥¯URL"
+
+msgid "trackbacks_error_add"
+msgstr "Error storing trackback data."
+
+msgid "stats_title"
+msgstr "Åý·×"
+
+msgid "general"
+msgstr "Á´ÂÎ"
+
+msgid "entry_info"
+msgstr "<b>%s</b> ¥¨¥ó¥È¥ê¡¼»ÈÍÑÍÆÎÌ <b>%s</b> words stored in <b>%s</b> bytes"
+
+msgid "comment_info"
+msgstr "<b>%s</b> ¥³¥á¥ó¥È»ÈÍÑÎÌ <b>%s</b> words stored in <b>%s</b> bytes"
+
+msgid "trackback_info"
+msgstr "<b>%s</b> ÊÝÂ¸¥È¥é¥Ã¥¯¥Ð¥Ã¥¯ <b>%s</b> bytes"
+
+msgid "static_info"
+msgstr "<b>%s</b> ÀÅÅª¥Ú¡¼¥¸ <b>%s</b> words stored in <b>%s</b> bytes"
+
+msgid "most_viewed_entries"
+msgstr "10 ¥¨¥ó¥È¥ê¡¼»²¾È¿ô"
+
+msgid "most_commented_entries"
+msgstr "10 ¥¨¥ó¥È¥ê¡¼É¾²Á"
+
+msgid "most_trackbacked_entries"
+msgstr "10 ¥È¥é¥Ã¥¯¥Ð¥Ã¥¯¿ô"
+
+msgid "vote_info"
+msgstr "<b>%s</b> votes stored in <b>%s</b> bytes"
+
+msgid "most_voted_entries"
+msgstr "10 Most voted entries"
+
+msgid "most_rated_entries"
+msgstr "10 Most rated entries"
+
+msgid "403.8"
+msgstr "HTTP Error 403.8 - Page/Function Access Denied"
+
+msgid "404"
+msgstr "HTTP Error 404 - Page/Function Does Not Exist"
+
+msgid "error_404"
+msgstr "The page or function you attempted to process does not exist."
+
+msgid "error_javascript"
+msgstr "The page or function you attempted requires javascript in order to properly function."
+
+msgid "error_emailnotsent"
+msgstr "The message you attempted to send has failed."
+
+msgid "error_emailnotsentcapcha"
+msgstr "The message you attempted to send has failed because the anti-spam entry was incorrect or missing."
+
+msgid "emoticons_title"
+msgstr "Admin Emoticons"
+
+msgid "emoticons_instructions"
+msgstr " 					Check the emoticons you want to use. Write in the box the Tags you want  					to be replaced by the image. Multiple tags may be used, just separated them  					by spaces.<br /><br /> 		 					For instance:<br /> 					:) :-) :SMILE: :HAPPY:<br /><br /> 					 					<i>(It is highly recommended that you make the Tags longer than 2 characters,  					otherwise unexpected substitutions may occur.)</i>"
+
+msgid "upload_instructions"
+msgstr "Upload New Emoticon:"
+
+msgid "upload_success"
+msgstr "Success! Image uploaded successfully!"
+
+msgid "upload_error"
+msgstr "Error! Image was not uploaded."
+
+msgid "upload_invalid"
+msgstr "Error! Invalid image file. Image must be a png, jpg, or gif."
+
+msgid "save_success"
+msgstr "Emoticon preferences saved successfully!"
+
+msgid "save_error"
+msgstr "Error! Emoticon preferences not saved."
+
+msgid "save_button"
+msgstr "É½¾ð¥¢¥¤¥³¥ó¤òÊÝÂ¸"
+
+msgid "manage_users_title"
+msgstr "¥æ¡¼¥¶¤Î´ÉÍý¤ÈÊÑ¹¹"
+
+msgid "manage_users_instructions"
+msgstr "Add, Modify, or Delete users that are not administrators but have the ability to create blog entries and/or moderate the comments."
+
+msgid "fulladminerror"
+msgstr "You must be a full administrator to do this!"
+
+msgid "header_user"
+msgstr "¥æ¡¼¥¶: "
+
+msgid "header_property"
+msgstr "¹àÌÜ"
+
+msgid "header_value"
+msgstr "ÃÍ"
+
+msgid "prop_username"
+msgstr "¥æ¡¼¥¶Ì¾:"
+
+msgid "prop_fullname"
+msgstr "É½¼¨¤¹¤ëÌ¾Á°:"
+
+msgid "prop_password"
+msgstr "¥Ñ¥¹¥ï¡¼¥É:"
+
+msgid "prop_email"
+msgstr "Email:"
+
+msgid "prop_avatar"
+msgstr "¥¢¥Ð¥¿¡¼ URL:"
+
+msgid "prop_state"
+msgstr "Active?"
+
+msgid "prop_sec_Moderate"
+msgstr "Moderate Comments?"
+
+msgid "prop_sec_Delete"
+msgstr "Blog ¤Î¥¨¥ó¥È¥ê¡¼¤òºï½ü²ÄÇ½?"
+
+msgid "prop_sec_Edit"
+msgstr "¤¹¤Ù¤Æ¤Î¥¨¥ó¥È¥ê¡¼¤òÊÔ½¸²ÄÇ½?"
+
+msgid "btn_SaveChanges"
+msgstr "ÊÑ¹¹¤òÊÝÂ¸"
+
+msgid "btn_CreateUser"
+msgstr "¥æ¡¼¥¶ºîÀ®"
+
+msgid "btn_Cancel"
+msgstr "¥­¥ã¥ó¥»¥ë"
+
+msgid "grid_header"
+msgstr "¥æ¡¼¥¶°ìÍ÷"
+
+msgid "grid_login"
+msgstr "¥í¥°¥¤¥óÌ¾"
+
+msgid "grid_email"
+msgstr "Email"
+
+msgid "grid_avatar"
+msgstr "¥¢¥Ð¥¿¡¼"
+
+msgid "grid_state"
+msgstr "Active?"
+
+msgid "btn_modify"
+msgstr "ÊÑ¹¹"
+
+msgid "btn_delete"
+msgstr "ºï½ü"
+
+msgid "create_user"
+msgstr "¥æ¡¼¥¶ºîÀ®"
+
+msgid "archives_title"
+msgstr "¥¢¡¼¥«¥¤¥Ö"
+
+msgid "showall"
+msgstr "¤¹¤Ù¤ÆÉ½¼¨"
+

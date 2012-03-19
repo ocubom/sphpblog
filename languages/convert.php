@@ -53,6 +53,10 @@ function convert2po($filename) {
             $lang_string = array();
             $matches = null;
             sb_language($section);
+            //special case
+            if ($section == 'search') {
+                $section = 'search_result';
+            }
             $keys  = array_keys($lang_string);
             foreach ($keys as $key) {
                   $newkey = $key;
@@ -66,9 +70,8 @@ function convert2po($filename) {
                     }
                   } elseif (in_array($key, $filter_tags)) {
                   } else {
-                    $value = str_replace("\n", " ", $lang_string[$key]);
-                    $value = str_replace("\'", "'", $value);
-                    $value = str_replace("\"", "'", $value);
+                    $value = str_replace(array("\n", "\r"), " ", $lang_string[$key]);
+                    $value = str_replace(array("\'", "\""), "'", $value);
                     $keyvalues[$newkey] = $value;
                     $text = "msgid \"$newkey\"\nmsgstr \"$value\"\n\n";
                     fwrite($whandle, $text);
