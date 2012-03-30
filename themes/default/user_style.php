@@ -1,8 +1,6 @@
 <?php
 require_once('../../scripts/sb_functions.php');
 
-read_config();
-
     $content_width = $theme_vars[ 'content_width' ];
     $menu_width = $theme_vars[ 'menu_width' ];
     $page_width = $content_width + $menu_width;

@@ -78,6 +78,8 @@
         <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL; ?>themes/common.css" />
         <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL; ?>themes/<?php echo $GLOBALS['blog_theme'] ?>/user_style.php" />
         <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL; ?>themes/<?php echo $GLOBALS['blog_theme'] ?>/style.css" />
+	<link rel="stylesheet" media="only screen and (max-width: 800px)" href="<?php print BASEURL; ?>themes/mediumres.css" type="text/css" />
+	<link rel="stylesheet" media="only screen and (max-width: 640px)" href="<?php print BASEURL; ?>themes/handheld.css" type="text/css" />
         <link rel="stylesheet" type="text/css" media="print" href="<?php print BASEURL; ?>themes/print.css" />
 
 	<?php echo $head; ?>
