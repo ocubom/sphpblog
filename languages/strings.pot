@@ -43,6 +43,9 @@ msgstr ""
 msgid "add_block_submit_btn_edit"
 msgstr ""
 
+msgid "add_link_form_error"
+msgstr ""
+
 msgid "add_link_title"
 msgstr ""
 
@@ -64,13 +67,10 @@ msgstr ""
 msgid "add_link_submit_btn_edit"
 msgstr ""
 
-msgid "add_link_form_error"
+msgid "add_static_title"
 msgstr ""
 
 msgid "add_static_error"
-msgstr ""
-
-msgid "add_static_title"
 msgstr ""
 
 msgid "add_static_instructions"
@@ -130,6 +130,9 @@ msgstr ""
 msgid "colors_success"
 msgstr ""
 
+msgid "comments_title"
+msgstr ""
+
 msgid "error_comments_disabled"
 msgstr ""
 
@@ -157,9 +160,6 @@ msgstr ""
 msgid "comments_error_add"
 msgstr ""
 
-msgid "comments_title"
-msgstr ""
-
 msgid "success_add"
 msgstr ""
 
@@ -185,6 +185,9 @@ msgid "comments_error_delete"
 msgstr ""
 
 msgid "comments_success_delete"
+msgstr ""
+
+msgid "comments_form_error"
 msgstr ""
 
 msgid "comments_header"
@@ -238,9 +241,6 @@ msgstr ""
 msgid "nocomments"
 msgstr ""
 
-msgid "comments_form_error"
-msgstr ""
-
 msgid "comment_moderation_title"
 msgstr ""
 
@@ -248,6 +248,9 @@ msgid "comment_moderation_instructions"
 msgstr ""
 
 msgid "contact_title"
+msgstr ""
+
+msgid "contact_form_error"
 msgstr ""
 
 msgid "contact_instructions"
@@ -266,9 +269,6 @@ msgid "comment"
 msgstr ""
 
 msgid "contact_capcha"
-msgstr ""
-
-msgid "contact_form_error"
 msgstr ""
 
 msgid "contactsent"
@@ -316,10 +316,10 @@ msgstr ""
 msgid "delete_static_instructions"
 msgstr ""
 
-msgid "save_button"
+msgid "emoticons_title"
 msgstr ""
 
-msgid "emoticons_title"
+msgid "save_button"
 msgstr ""
 
 msgid "emoticons_instructions"
@@ -367,10 +367,13 @@ msgstr ""
 msgid "image_list_instructions"
 msgstr ""
 
-msgid "php_charset"
+msgid "info_form_error"
 msgstr ""
 
 msgid "info_title"
+msgstr ""
+
+msgid "php_charset"
 msgstr ""
 
 msgid "info_error"
@@ -394,9 +397,6 @@ msgstr ""
 msgid "tracking_code"
 msgstr ""
 
-msgid "info_form_error"
-msgstr ""
-
 msgid "install00_title"
 msgstr ""
 
@@ -415,6 +415,12 @@ msgstr ""
 msgid "begin"
 msgstr ""
 
+msgid "We think your blog is at %s."
+msgstr ""
+
+msgid "install02_title"
+msgstr ""
+
 msgid "folder_failed"
 msgstr ""
 
@@ -422,9 +428,6 @@ msgid "folder_success"
 msgstr ""
 
 msgid "folder_exists"
-msgstr ""
-
-msgid "install02_title"
 msgstr ""
 
 msgid "install02_instructions"
@@ -440,6 +443,9 @@ msgid "install02_success"
 msgstr ""
 
 msgid "continue"
+msgstr ""
+
+msgid "install03_form_error"
 msgstr ""
 
 msgid "install03_title"
@@ -487,9 +493,6 @@ msgstr ""
 msgid "password"
 msgstr ""
 
-msgid "install03_form_error"
-msgstr ""
-
 msgid "install04_title"
 msgstr ""
 
@@ -502,13 +505,13 @@ msgstr ""
 msgid "information"
 msgstr ""
 
+msgid "install05_form_error"
+msgstr ""
+
 msgid "install05_title"
 msgstr ""
 
 msgid "install05_instructions"
-msgstr ""
-
-msgid "install05_form_error"
 msgstr ""
 
 msgid "install06_title"
@@ -523,6 +526,9 @@ msgstr ""
 msgid "btn_try_again"
 msgstr ""
 
+msgid "login_form_error"
+msgstr ""
+
 msgid "login_title"
 msgstr ""
 
@@ -530,9 +536,6 @@ msgid "WARNING: Password will be sent unencrypted!"
 msgstr ""
 
 msgid "login_instructions"
-msgstr ""
-
-msgid "login_form_error"
 msgstr ""
 
 msgid "login_success"
@@ -565,10 +568,13 @@ msgstr ""
 msgid "error_no_cookie"
 msgstr ""
 
-msgid "fulladminerror"
+msgid "manage_users_form_error"
 msgstr ""
 
 msgid "manage_users_title"
+msgstr ""
+
+msgid "fulladminerror"
 msgstr ""
 
 msgid "header_user"
@@ -623,9 +629,6 @@ msgid "grid_login"
 msgstr ""
 
 msgid "btn_modify"
-msgstr ""
-
-msgid "manage_users_form_error"
 msgstr ""
 
 msgid "moderation_instructions"
@@ -736,10 +739,10 @@ msgstr ""
 msgid "options_success"
 msgstr ""
 
-msgid "Sidebar Plugins"
+msgid "View PHP Info Full Screen"
 msgstr ""
 
-msgid "setup_title"
+msgid "Sidebar Plugins"
 msgstr ""
 
 msgid "rating_title"
@@ -757,7 +760,7 @@ msgstr ""
 msgid "not_found"
 msgstr ""
 
-msgid "search_title"
+msgid "set_login_form_error"
 msgstr ""
 
 msgid "set_login_title"
@@ -766,13 +769,16 @@ msgstr ""
 msgid "explanation"
 msgstr ""
 
-msgid "set_login_form_error"
-msgstr ""
-
 msgid "set_login_success"
 msgstr ""
 
 msgid "set_login_wrong_password"
+msgstr ""
+
+msgid "setup_form_error"
+msgstr ""
+
+msgid "setup_title"
 msgstr ""
 
 msgid "setup_instructions"
@@ -955,9 +961,6 @@ msgstr ""
 msgid "blog_enable_gzip_output"
 msgstr ""
 
-msgid "setup_form_error"
-msgstr ""
-
 msgid "setup_error"
 msgstr ""
 
@@ -997,9 +1000,6 @@ msgstr ""
 msgid "most_commented_entries"
 msgstr ""
 
-msgid "index_title"
-msgstr ""
-
 msgid "themes_title"
 msgstr ""
 
@@ -1024,6 +1024,9 @@ msgstr ""
 msgid "trackbacks_success_delete"
 msgstr ""
 
+msgid "Upgrade"
+msgstr ""
+
 msgid "upload_img_title"
 msgstr ""
 
@@ -1037,6 +1040,9 @@ msgid "select_file"
 msgstr ""
 
 msgid "upload_btn"
+msgstr ""
+
+msgid "Add User"
 msgstr ""
 
 msgid "delete_btn"
@@ -1436,5 +1442,8 @@ msgid "menu_most_recent"
 msgstr ""
 
 msgid "menu_most_recent_entries"
+msgstr ""
+
+msgid "search_title"
 msgstr ""
 

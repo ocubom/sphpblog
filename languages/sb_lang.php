@@ -30,6 +30,7 @@ function sb_import_lang($name, $page="") {
 function _sb($text) {
     global $lang, $lang_string;
     if (!array_key_exists($text, $lang_string) OR empty($lang_string[$text])) {
+	//print var_dump(debug_backtrace());
         trigger_error("Missing translation string in $lang '$text'\n");
         return $text;
     }

@@ -415,7 +415,7 @@ msgid "clientid"
 msgstr "Client ID: "
 
 msgid "errorpage_title"
-msgstr ""
+msgstr "Error"
 
 msgid "moderation_title"
 msgstr "Moderation Preferences"
@@ -643,7 +643,7 @@ msgid "login_title"
 msgstr "Login"
 
 msgid "WARNING: Password will be sent unencrypted!"
-msgstr ""
+msgstr "WARNING: Password will be sent unencrypted!"
 
 msgid "login_instructions"
 msgstr "Please enter your Username and Password below"
@@ -874,14 +874,11 @@ msgstr ""
 msgid "options_success"
 msgstr "<h2>Options Saved!</h2>Information has been successfully saved."
 
-msgid "Sidebar Plugins"
-msgstr ""
-
 msgid "setup_title"
 msgstr "Preferences"
 
 msgid "rating_title"
-msgstr ""
+msgstr "Rating"
 
 msgid "rating_error"
 msgstr ""
@@ -1396,7 +1393,7 @@ msgid "insert_image_float"
 msgstr "Float (Optional):"
 
 msgid "form_error"
-msgstr ""
+msgstr "Form Error."
 
 msgid "page_generated_in"
 msgstr "Page Generated in %s seconds"
