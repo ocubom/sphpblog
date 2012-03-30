@@ -12,6 +12,37 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
+	// Extra CSS
+	ob_start();
+?>
+	<style type="text/css">
+		.header th{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
+		.data1 td{background-color: #<?php echo(get_user_color('menu_bg')); ?>}
+		.data2 td{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
+	</style>
+<?php
+	$head .= ob_get_clean();
+
+	// Extra Javascript
+	ob_start();
+?>
+	<script type="text/javascript">
+		// <!--
+		function validate(theform) {
+			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
+				alert("<?php echo( _sb('manage_users_form_error') ); ?>");
+				return false;
+			} else {
+				return true;
+			}
+		}
+		// -->
+	</script>
+<?php
+	$head .= ob_get_clean();
+	$page_title =_sb('manage_users_title');
+	require_once('scripts/sb_header.php');
+
 	// --------------
 	// PRE-PROCESSING
 	// --------------
@@ -224,54 +255,6 @@
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 	}
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
 
-	// Extra CSS
-	ob_start();
-?>
-	<style type="text/css">
-		.header th{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
-		.data1 td{background-color: #<?php echo(get_user_color('menu_bg')); ?>}
-		.data2 td{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
-	</style>
-<?php
-	$page_template->appendTag('{CSS}', ob_get_clean());
-
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		function validate(theform) {
-			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( _sb('manage_users_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		// -->
-	</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('manage_users_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

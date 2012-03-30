@@ -31,6 +31,9 @@
         $dateString[] = '%y';
       }
     }
+    if (empty($dateString)) {
+        return "";
+    }
     return ( implode("/", $dateString) );
   }
   

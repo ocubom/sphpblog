@@ -1620,6 +1620,9 @@ msgstr "Most Recent Comments"
 msgid "menu_most_recent_entries"
 msgstr "Most Recent Entries"
 
+msgid "Sidebar Plugins"
+msgstr "Sidebar Plugins"
+
 #~ msgid "language"
 #~ msgstr "english"
 

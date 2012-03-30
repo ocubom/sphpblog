@@ -6,6 +6,28 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( false, true );
+
+	// Extra Javascript
+	ob_start();
+?>
+<script type="text/javascript">
+	// <!--
+	function validate(theform) {
+		if (theform.user.value=="" || theform.pass.value=="") {
+			alert("<?php echo( _sb('login_form_error') ); ?>");
+			return false;
+		} else {
+			return true;
+		}
+	}
+	// -->
+	</script>
+<?php
+
+$head .= ob_get_clean();
+$page_title = _sb('login_title');
+
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -76,35 +98,7 @@
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 	}
-	// ----
-	// HTML
-	// ----
 	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra Javascript
-	ob_start();
-?>
-<script type="text/javascript">
-	// <!--
-	function validate(theform) {
-		if (theform.user.value=="" || theform.pass.value=="") {
-			alert("<?php echo( _sb('login_form_error') ); ?>");
-			return false;
-		} else {
-			return true;
-		}
-	}
-	// -->
-	</script>
-<?php
-
-$javascript = ob_get_clean();
-
 require_once(ROOT_DIR . '/scripts/sb_footer.php');
 
 ?>

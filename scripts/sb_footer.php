@@ -3,6 +3,7 @@
         // HTML
         // ----
 
+/* OLD
         $page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
 
         // Meta Data
@@ -33,4 +34,20 @@
         // Final Output
         $output = $page_template->getHTML();
         echo($output);
+
+NEW
+*/
+
+flush();
+
+if (function_exists('page_content')) {
+        if (function_exists('theme_pagelayout')) {
+                theme_pagelayout();
+        } else {
+                page_content();
+        }
+}
+
 ?>
+
+</html>

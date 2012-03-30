@@ -10,6 +10,9 @@ BUGS
 since the next page will just show them again?  should we use session cookies to 
 remember it?
 
+- fix comment javascript editor
+- pull title when using index?entry format
+- add caching headers for non-logged in users
 - switch capcha to recapcha? we need to figure out the keying
 - fix urls in plugins
 - move install pages to separate directory

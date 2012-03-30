@@ -5,6 +5,34 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
+
+	// Extra Javascript
+	ob_start();
+?>
+	<script type="text/javascript">
+		// <!--
+			// Comment Popup Window
+			function validate_link(theform) {
+				if ( theform.link_name.value=="" ) {
+					alert("<?php echo( _sb('add_link_form_error') ); ?>");
+					return false;
+				} else {
+					return true;
+				}
+			}
+			
+			function load_static() {
+				str = document.forms[ 'addlink' ][ 'static_pages' ].value;
+				document.getElementById("link_name").value = str;
+				document.getElementById("link_url").value = "static.php?page=" + str;
+			}
+		// -->
+	</script>
+<?php
+	$head .= ob_get_clean();
+
+	$page_title = _sb('add_link_title');
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -135,50 +163,6 @@
 		echo( theme_staticentry( $entry_array ) );
 	}
 
-	// ----
-	// HTML
-	// ----
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('add_link_title'));
-	
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-			// Comment Popup Window
-			function validate_link(theform) {
-				if ( theform.link_name.value=="" ) {
-					alert("<?php echo( _sb('add_link_form_error') ); ?>");
-					return false;
-				} else {
-					return true;
-				}
-			}
-			
-			function load_static() {
-				str = document.forms[ 'addlink' ][ 'static_pages' ].value;
-				document.getElementById("link_name").value = str;
-				document.getElementById("link_url").value = "static.php?page=" + str;
-			}
-		// -->
-	</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
 ?>

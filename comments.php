@@ -3,6 +3,7 @@
 	// INITIALIZE PAGE
 	// ---------------
 	require_once('scripts/sb_functions.php');
+	$page_title =_sb('comments_title');
 
 	function strposa($haystack ,$needles=array(),$offset=0){
 		$chr = array();
@@ -23,6 +24,26 @@
 	if ( !session_id() ) {
 		session_start();
 	}
+
+	// Extra Javascript
+	ob_start();
+	print sb_editor_js('commment_text');
+?>
+	<script type="text/javascript">
+		// <!--
+		// Validate the Form
+		function validate_comment(theform) {
+			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
+				alert("<?php echo( _sb('comments_form_error') ); ?>");
+				return false;
+			} else {
+				return true;
+			}
+		}
+		// -->
+	</script>
+<?php
+	$head .= ob_get_clean();
 
 	// ---------------
 	// POST PROCESSING
@@ -59,6 +80,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $user_colors, $logged_in, $theme_vars, $blog_theme, $blog_config;
 
@@ -234,53 +256,5 @@
 		echo( theme_staticentry( $entry_array ) );
 	}
 	
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra Javascript
-	ob_start();
-	sb_editor_js('commment_text');
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-	
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		// Validate the Form
-		function validate_comment(theform) {
-			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
-				alert("<?php echo( _sb('comments_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		// -->
-	</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-	
-	// Page Title
-	if (!isset($_GET['entry'])) {
-		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE'));
-	} else {
-		$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('comments_title'));
-	}
-	
-	// Theme Layout
-	ob_start();	
-	theme_pagelayout();
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

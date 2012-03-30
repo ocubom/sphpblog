@@ -3,6 +3,7 @@
 	// INITIALIZE PAGE
 	// ---------------
 	require_once('scripts/sb_functions.php');
+	$page_title = _sb("contact_title");
 
 	global $logged_in;
 	$logged_in = logged_in( false, true );
@@ -12,6 +13,24 @@
 	}
 	$_SESSION[ 'capcha_contact' ] = sb_get_capcha();
 	
+	// Extra Javascript
+	ob_start();
+?>
+	<script type="text/javascript">
+		// <!--
+		function validate(theform) {
+			if (theform.subject.value=="" || theform.comment.value=="" || theform.email.value=="") {
+				alert("<?php echo( _sb('contact_form_error') ); ?>");
+				return false;
+			} else {
+				return true;
+			}		
+		}
+		// -->
+	</script>
+<?php
+	$head .= ob_get_clean();
+
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -25,6 +44,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $blog_config, $theme_vars; 
 		
@@ -80,39 +100,6 @@
 	// HTML
 	// ----
 	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		function validate(theform) {
-			if (theform.subject.value=="" || theform.comment.value=="" || theform.email.value=="") {
-				alert("<?php echo( _sb('contact_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}		
-		}
-		// -->
-	</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('contact_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
 ?>

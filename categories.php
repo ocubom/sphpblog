@@ -5,6 +5,103 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
+
+	// Extra Javascript
+	ob_start();
+?>
+	<script type="text/javascript">
+		// <!--
+		function validate(theform) {
+			if (theform.category_list.value == "" ) {
+				// If the form is empty, then delete existing categories
+				return true;
+				
+			} else {
+				str = theform.category_list.value;
+				
+				// Define the return character
+				if ( str.indexOf( unescape("%0D%0A") ) != -1 ) {
+					// Windows
+					return_char = unescape("%0D%0A");
+				} else if ( str.indexOf( unescape("%0A") ) != -1 ) {
+					// Unix / Mac IE
+					return_char = unescape("%0A");
+				} else if ( str.indexOf( unescape("%0D") ) != -1 ) {
+					// Mac
+					return_char = unescape("%0D");
+				}
+				
+				// Split input into an array
+				input_arr = str.split( return_char );
+				valid_arr = Array();
+					
+				// Loop through the array, validate input.
+				for ( i=0; i<input_arr.length; i++ ) {
+					line_str = input_arr[i];
+					if ( line_str == "" ) {
+						// Whoops! Empty Line. Skip it...
+						continue;
+					} else {
+						// Search for the ID Number in parentheses... (###)
+						parentheses_start = line_str.lastIndexOf("(");
+						parentheses_end = line_str.lastIndexOf(")");
+						if ( parentheses_start == -1 || parentheses_end == -1 || parentheses_start >= parentheses_end ) {
+							// Whoops! parentheses missing...
+							alert( "Missing parentheses on line: " + (i+1) + "\n\n" + line_str );
+							return false;
+						} else {
+							// Grab ID
+							id_str = line_str.slice( parentheses_start+1, parentheses_end );
+							if ( id_str == "" ) {
+								alert( "Missing 'Unique ID Number' on line: " + (i+1) + "\n\n" + line_str );
+								return false;
+							} else {
+								id_number = parseInt( id_str, 10 );
+								if ( typeof id_number == "number" && isNaN(id_number) == false ) {
+								
+									// So far so good... Now get rid of trailing spaces.
+									name_str = line_str.slice( 0, parentheses_start );
+									while ( name_str.charAt( name_str.length-1 ) == " " ) {
+										name_str = name_str.substring( 0, name_str.length-1 );
+									}
+									
+									// Count beginning spaces or &nbsp; characters...
+									space_count = 0;
+									while ( name_str.charAt( 0 ) == " " ||	name_str.charCodeAt( 0 ) == 160 ) {
+										name_str = name_str.substring( 1, name_str.length );
+										space_count++;
+									}
+									
+									if ( name_str != "" ) {
+										// Okay, we've got all the parts...
+										item_arr = Array( id_number, name_str, space_count );
+										valid_arr[valid_arr.length] = item_arr;
+										
+										// alert( id_number + " - " + name_str + " - " + space_count );
+									} else {
+										alert( "Missing 'Category Name' on line: " + (i+1) + "\n\n" + line_str );
+										return false;
+									}
+									
+								} else {
+									alert( "'Unique ID' (" + id_str + ") is not a number on line: " + (i+1) + "\n\n" + line_str );			
+									return false;
+								}
+							}
+						}
+					}
+				}
+				alert( "Success! " + (valid_arr.length) + " categories validated!" );
+				
+				return true;
+			}
+		}
+		//-->
+	</script>
+<?php
+	$head .= ob_get_clean();
+	$page_title = _sb('categories_title');
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -188,120 +285,6 @@
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 	}
-	// ----
-	// HTML
-	// ----
 	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		function validate(theform) {
-			if (theform.category_list.value == "" ) {
-				// If the form is empty, then delete existing categories
-				return true;
-				
-			} else {
-				str = theform.category_list.value;
-				
-				// Define the return character
-				if ( str.indexOf( unescape("%0D%0A") ) != -1 ) {
-					// Windows
-					return_char = unescape("%0D%0A");
-				} else if ( str.indexOf( unescape("%0A") ) != -1 ) {
-					// Unix / Mac IE
-					return_char = unescape("%0A");
-				} else if ( str.indexOf( unescape("%0D") ) != -1 ) {
-					// Mac
-					return_char = unescape("%0D");
-				}
-				
-				// Split input into an array
-				input_arr = str.split( return_char );
-				valid_arr = Array();
-					
-				// Loop through the array, validate input.
-				for ( i=0; i<input_arr.length; i++ ) {
-					line_str = input_arr[i];
-					if ( line_str == "" ) {
-						// Whoops! Empty Line. Skip it...
-						continue;
-					} else {
-						// Search for the ID Number in parentheses... (###)
-						parentheses_start = line_str.lastIndexOf("(");
-						parentheses_end = line_str.lastIndexOf(")");
-						if ( parentheses_start == -1 || parentheses_end == -1 || parentheses_start >= parentheses_end ) {
-							// Whoops! parentheses missing...
-							alert( "Missing parentheses on line: " + (i+1) + "\n\n" + line_str );
-							return false;
-						} else {
-							// Grab ID
-							id_str = line_str.slice( parentheses_start+1, parentheses_end );
-							if ( id_str == "" ) {
-								alert( "Missing 'Unique ID Number' on line: " + (i+1) + "\n\n" + line_str );
-								return false;
-							} else {
-								id_number = parseInt( id_str, 10 );
-								if ( typeof id_number == "number" && isNaN(id_number) == false ) {
-								
-									// So far so good... Now get rid of trailing spaces.
-									name_str = line_str.slice( 0, parentheses_start );
-									while ( name_str.charAt( name_str.length-1 ) == " " ) {
-										name_str = name_str.substring( 0, name_str.length-1 );
-									}
-									
-									// Count beginning spaces or &nbsp; characters...
-									space_count = 0;
-									while ( name_str.charAt( 0 ) == " " ||	name_str.charCodeAt( 0 ) == 160 ) {
-										name_str = name_str.substring( 1, name_str.length );
-										space_count++;
-									}
-									
-									if ( name_str != "" ) {
-										// Okay, we've got all the parts...
-										item_arr = Array( id_number, name_str, space_count );
-										valid_arr[valid_arr.length] = item_arr;
-										
-										// alert( id_number + " - " + name_str + " - " + space_count );
-									} else {
-										alert( "Missing 'Category Name' on line: " + (i+1) + "\n\n" + line_str );
-										return false;
-									}
-									
-								} else {
-									alert( "'Unique ID' (" + id_str + ") is not a number on line: " + (i+1) + "\n\n" + line_str );			
-									return false;
-								}
-							}
-						}
-					}
-				}
-				alert( "Success! " + (valid_arr.length) + " categories validated!" );
-				
-				return true;
-			}
-		}
-		//-->
-	</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('categories_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

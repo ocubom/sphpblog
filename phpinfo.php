@@ -5,6 +5,9 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in;
 	$logged_in = logged_in( true, true );
+
+	$page_title = 'PHP Version: '.phpversion();
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -23,7 +26,9 @@
 		// PAGE CONTENT BEGIN
 		ob_start();
 		phpini_check();
-		phpinfo();
+		print "<a href='phpinfoframe.php'>" . _sb("View PHP Info Full Screen") . "</a>";
+		print "<iframe src='phpinfoframe.php' width='100%' height='600px' />";
+		//phpinfo();
 		
 		// PAGE CONTENT END
 		$entry_array[ 'entry' ] = ob_get_clean();
@@ -32,25 +37,5 @@
 		echo( theme_staticentry( $entry_array ) );
 	}
 
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '.'PHP Version: '.phpversion());
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

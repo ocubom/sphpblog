@@ -6,6 +6,43 @@
 	global $logged_in, $blog_config;
 	$logged_in = logged_in( true, true );
 
+        // Extra CSS
+        ob_start();
+?>
+        <style type="text/css">
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        padding: 0px 10px 0px 10px;
+                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+                        border-width: 1px;
+                        border-style: dashed;
+                        display: block;
+                }
+        </style>
+<?php
+        $head .= ob_get_clean();
+
+        // Extra Javascript
+        ob_start();
+?>
+        <script type="text/javascript">
+                // <!--
+                function validate(theform) {
+                        if (theform.blog_title.value=="" || theform.blog_author.value=="" ) {
+                                alert("<?php echo( _sb('setup_form_error') ); ?>");
+                                return false;
+                        } else {
+                                return true;
+                        }
+                }
+                // -->
+        </script>
+<?php
+        $head .= ob_get_clean();
+
+	$page_title = _sb('setup_title');
+	require_once('scripts/sb_header.php');
+
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -343,59 +380,6 @@
 		echo( theme_staticentry( $entry_array ) );
 	}
 	
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra CSS
-	ob_start();
-?>
-	<style type="text/css">
-		div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
-		{
-			padding: 0px 10px 0px 10px;
-			border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
-			border-width: 1px;
-			border-style: dashed;
-			display: block;
-		}
-	</style>
-<?php
-	$page_template->appendTag('{CSS}', ob_get_clean());
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		function validate(theform) {
-			if (theform.blog_title.value=="" || theform.blog_author.value=="" ) {
-				alert("<?php echo( _sb('setup_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		// -->
-	</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('setup_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
 ?>

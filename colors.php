@@ -5,6 +5,69 @@
 	require_once('scripts/sb_functions.php');
 	global $logged_in, $theme_vars;
 	$logged_in = logged_in( true, true );
+
+	// Extra CSS
+	ob_start();
+?>
+<style type="text/css">
+	.swatch {
+		height: 20px;
+		width: 20px;
+		color: #000;
+		background: #fff;
+		border: 1px solid #999;
+	}
+</style>
+<?php
+	$head .= ob_get_clean();
+
+	// Extra Javascript
+	ob_start();
+?>
+<script type="text/javascript">
+	// <!--
+	
+	// Update Text Fields
+	function set_hex ( hex_val ) {
+		var str;
+		for (i=0; i<document.forms[ 'colors' ][ 'area' ].length; i++) {
+			if (document.forms[ 'colors' ][ 'area' ][i].checked == true) {
+				str = document.forms[ 'colors' ][ 'area' ][i].value;
+			}
+		}
+		document.forms[ 'colors' ][str].value = hex_val;
+		changeColor(str, "#"+hex_val);
+	}
+	
+	// Change Swatch Color
+	function changeColor(area, whichColor) {
+		document.getElementById(area+'_swatch').style.backgroundColor = whichColor;
+	}
+	
+	function load_preset() {
+		// alert( 'hello' );
+		str = document.forms[ 'colors' ][ 'presets' ].value;
+		if ( str != '--' ) {
+			arr = str.split('|');
+			for (i=4; i<arr.length; i=i+2) {
+				id = arr[i];
+				hex = arr[i+1];
+				document.forms[ 'colors' ][id].value = hex;
+				document.getElementById(id+'_swatch').style.backgroundColor = "#"+hex;
+			}
+			document.getElementById("scheme_name").value = arr[0];
+			document.getElementById("scheme_file").value = arr[1];
+		}
+	}
+	
+	// -->
+</script>
+<?php
+	$head .= ob_get_clean();
+	
+	// Page Title
+	$page_title = _sb('colors_title');
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -159,85 +222,5 @@
 		// THEME ENTRY
 		echo( theme_staticentry( $entry_array ) );
 	}
-
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra CSS
-	ob_start();
-?>
-<style type="text/css">
-	.swatch {
-		height: 20px;
-		width: 20px;
-		color: #000;
-		background: #fff;
-		border: 1px solid #999;
-	}
-</style>
-<?php
-	$page_template->appendTag('{CSS}', ob_get_clean());
-
-	// Extra Javascript
-	ob_start();
-?>
-<script type="text/javascript">
-	// <!--
-	
-	// Update Text Fields
-	function set_hex ( hex_val ) {
-		var str;
-		for (i=0; i<document.forms[ 'colors' ][ 'area' ].length; i++) {
-			if (document.forms[ 'colors' ][ 'area' ][i].checked == true) {
-				str = document.forms[ 'colors' ][ 'area' ][i].value;
-			}
-		}
-		document.forms[ 'colors' ][str].value = hex_val;
-		changeColor(str, "#"+hex_val);
-	}
-	
-	// Change Swatch Color
-	function changeColor(area, whichColor) {
-		document.getElementById(area+'_swatch').style.backgroundColor = whichColor;
-	}
-	
-	function load_preset() {
-		// alert( 'hello' );
-		str = document.forms[ 'colors' ][ 'presets' ].value;
-		if ( str != '--' ) {
-			arr = str.split('|');
-			for (i=4; i<arr.length; i=i+2) {
-				id = arr[i];
-				hex = arr[i+1];
-				document.forms[ 'colors' ][id].value = hex;
-				document.getElementById(id+'_swatch').style.backgroundColor = "#"+hex;
-			}
-			document.getElementById("scheme_name").value = arr[0];
-			document.getElementById("scheme_file").value = arr[1];
-		}
-	}
-	
-	// -->
-</script>
-<?php
-	$page_template->appendTag('{JAVASCRIPT}', ob_get_clean());
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('colors_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

@@ -14,12 +14,22 @@
         // TODO grab more specific title from page
 	if (empty($title)) {
 		$title = $blog_config->getTag('BLOG_TITLE');
-		if (!empty($custom_title)) {
-			$title = $blog_config->getTag('BLOG_TITLE');
+		$entry_title = get_entry_title(substr($_GET['entry'], 5, 2), substr($_GET['entry'], 7, 2), $_GET['entry']);
+		if (!empty($page_title)) {
+			$title .= " - " . $page_title;
+		}
+		if (!empty($entry_title)) {
+			$title .= " - " . $entry_title;
 		}
 	}
         $locale = str_replace('_', '-', $GLOBALS['lang_string']['locale']);
 	$search_uri = dirname($uri) . '/plugins/search.php';
+
+        // Category RSS
+        $cat = '';
+        if (isset($_GET['category'])) {
+                $cat = '?c=' . $_GET['category'];
+        }
 
 	print "<?xml version=\"1.0\" encoding=\"" . $GLOBALS['lang_string']['html_charset'] . "\" ?>\n";
 ?>
@@ -32,10 +42,10 @@
 
         <!-- Meta Data -->
         <meta name="generator" content="Simple PHP Blog" />
-        <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php<?php echo $categoryid ?>" />
-        <link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php<?php echo $categoryid ?>" />
-        <link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="atom.php<?php echo $categoryid ?>" />
-        <link rel="search" type="application/opensearchdescription+xml" title="<?php echo $title; ?>" href="<?php echo $search_uri ?>" />
+        <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php<?php echo $cat ?>" />
+        <link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php<?php echo $cat ?>" />
+        <link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="atom.php<?php echo $cat ?>" />
+        <link rel="search" type="application/opensearchdescription+xml" title="<?php echo $blog_config->getTag('BLOG_TITLE'); ?>" href="<?php echo $search_uri ?>" />
 
         <!-- Meta Data -->
         <!-- http://dublincore.org/documents/dces/ -->
@@ -72,13 +82,6 @@
 	<?php echo $head; ?>
 </head>
 <?php
-
-if (function_exists('page_content')) {
-	if (function_exists('theme_pagelayout')) {
-        	theme_pagelayout();
-	} else {
-		page_content();
-	}
-}
+flush();
 
 ?>

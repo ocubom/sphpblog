@@ -2,11 +2,13 @@
 	// ---------------
 	// INITIALIZE PAGE
 	// ---------------
-	$page = 'stats';
 	require_once('scripts/sb_functions.php');
 	
 	global $logged_in;
 	$logged_in = logged_in( false, true );
+
+	$page_title = _sb('stats_title');
+	require_once('scripts/sb_header.php');
 
 	// ---------------
 	// POST PROCESSING

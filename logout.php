@@ -7,6 +7,14 @@
 	$result = logout();
 	
 	$logged_in = logged_in( false, true );
+
+	$page_title = _sb('logout_title');
+        // Extra Meta Data
+        if ($result==1) {
+                $head .= '<meta http-equiv="refresh" content="5; URL=index.php" />';
+        }
+
+	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -47,30 +55,5 @@
 		// 
 	}
 
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Extra Meta Data
-	if ($result==1) {
-		$page_template->setTag('{META}', '<meta http-equiv="refresh" content="5; URL=index.php" />');
-	}
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('logout_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>

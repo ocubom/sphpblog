@@ -530,6 +530,7 @@ function sb_editor_controls($textfield) {
 function sb_editor_js($text_id) {
 
 global $blog_config;
+ob_start();
 
 if ($blog_config->getTag('USE_JS_EDITOR')) {
 
@@ -768,5 +769,6 @@ $(document).ready(function()	{
 </script>
 
 <?php
+    return ob_get_clean();
 }
 ?>

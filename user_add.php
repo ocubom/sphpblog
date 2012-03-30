@@ -6,6 +6,9 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
+	$page_title = _sb('Add User');
+	require_once('scripts/sb_header.php');
+
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -146,7 +149,7 @@
 		
 		// PAGE CONTENT
 		$entry_array = array();
-		$entry_array[ 'subject' ] = _sb('moderation_title');
+		$entry_array[ 'subject' ] = _sb('Add User');
 		$entry_array[ 'entry' ] = $content_template->getHTML();
 		
 		
@@ -154,27 +157,5 @@
 		echo( theme_staticentry( $entry_array ) );
 	}
 
-	// ----
-	// HTML
-	// ----
-	
-	// Main Page Template
-	$page_template = new Template(TEMPLATE_DIR.'layouts/index.tpl');
-	
-	// Meta Data
-	get_init_code($page_template);
-	
-	// Page Title
-	$page_template->setTag('{PAGE_TITLE}', $blog_config->getTag('BLOG_TITLE').' - '. _sb('moderation_title'));
-	
-	// Theme Layout
-	ob_start();
-	theme_pagelayout(); 
-	$page_template->setTag('{BODY}', ob_get_clean());
-		
-	// Final Output
-	$output = $page_template->getHTML();
-	echo($output);
-	
-	// trace(resource_report());
+	require_once(ROOT_DIR . '/scripts/sb_footer.php');
 ?>
