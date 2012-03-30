@@ -283,3 +283,8 @@ font-weight: bold;
 text-decoration: none;
 }
 
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+                }
+

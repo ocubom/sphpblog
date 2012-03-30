@@ -350,3 +350,9 @@ input, select, option, textarea
 }
 
 .divider { margin: 20px 0px 15px 0px; }
+
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+                }
+

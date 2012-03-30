@@ -12,17 +12,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	// Extra CSS
-	ob_start();
-?>
-	<style type="text/css">
-		.header th{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
-		.data1 td{background-color: #<?php echo(get_user_color('menu_bg')); ?>}
-		.data2 td{background-color: #<?php echo(get_user_color('menu_border')); ?>;}
-	</style>
-<?php
-	$head .= ob_get_clean();
-
 	// Extra Javascript
 	ob_start();
 ?>
@@ -41,7 +30,6 @@
 <?php
 	$head .= ob_get_clean();
 	$page_title =_sb('manage_users_title');
-	require_once('scripts/sb_header.php');
 
 	// --------------
 	// PRE-PROCESSING
@@ -141,6 +129,7 @@
 	// -----------
 	// PAGE CONTENT
 	// -----------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $blog_config, $theme_vars, $blog_theme;
 

@@ -6,21 +6,6 @@
 	global $logged_in, $theme_vars;
 	$logged_in = logged_in( true, true );
 
-	// Extra CSS
-	ob_start();
-?>
-<style type="text/css">
-	.swatch {
-		height: 20px;
-		width: 20px;
-		color: #000;
-		background: #fff;
-		border: 1px solid #999;
-	}
-</style>
-<?php
-	$head .= ob_get_clean();
-
 	// Extra Javascript
 	ob_start();
 ?>

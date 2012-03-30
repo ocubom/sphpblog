@@ -416,3 +416,9 @@ blockquote {
 		.defaultform .column_quadruple input[type='password'] {
 			width: 98px;
 			}
+
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+                }
+

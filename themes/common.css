@@ -57,3 +57,19 @@ body {
   margin: 2px 2px 4px 8px;
 }
 
+        .swatch {
+                height: 20px;
+                width: 20px;
+                color: #000;
+                background: #fff;
+                border: 1px solid #999;
+        }
+
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        padding: 0px 10px 0px 10px;
+                        border-width: 1px;
+                        border-style: dashed;
+                        display: block;
+                }
+

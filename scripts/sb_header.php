@@ -82,6 +82,8 @@
 	<link rel="stylesheet" media="only screen and (max-width: 640px)" href="<?php print BASEURL; ?>themes/handheld.css" type="text/css" />
         <link rel="stylesheet" type="text/css" media="print" href="<?php print BASEURL; ?>themes/print.css" />
 
+	<script type="text/javascript" src="<?php print BASEURL; ?>scripts/sb_javascript.js"></script>
+
 	<?php echo $head; ?>
 </head>
 <?php

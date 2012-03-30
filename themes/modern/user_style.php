@@ -377,3 +377,9 @@ header("Content-Type: text/css");
   margin: 0;
   padding: .5em 0 0 0;
 }
+
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+                }
+

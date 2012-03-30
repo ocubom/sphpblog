@@ -235,3 +235,9 @@ input, select, option, textarea
 	entry_border
 	entry_title_text
 	entry_text */
+
+                div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
+                {
+                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+                }
+
