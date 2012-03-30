@@ -51,6 +51,9 @@ msgstr "Block Content:"
 msgid "add_block_submit_btn_edit"
 msgstr "Edit Block"
 
+msgid "add_link_form_error"
+msgstr "Please complete the Name field."
+
 msgid "add_link_title"
 msgstr "Add / Manage Links"
 
@@ -76,16 +79,13 @@ msgstr "Link URL: (Optional. Leave empty to create separator.)"
 msgid "add_link_submit_btn_edit"
 msgstr "Edit Link"
 
-msgid "add_link_form_error"
-msgstr "Please complete the Name field."
+msgid "add_static_title"
+msgstr "Edit Static Page"
 
 msgid "add_static_error"
 msgstr ""
 "<h2>Whoops!</h2>Entry not saved. I ran into a problem while saving your "
 "entry.<br /><br />Server Reported:<br />"
-
-msgid "add_static_title"
-msgstr "Edit Static Page"
 
 msgid "add_static_instructions"
 msgstr ""
@@ -160,6 +160,9 @@ msgstr ""
 msgid "colors_success"
 msgstr "<h2>Colors Saved!</h2>Information has been successfully saved."
 
+msgid "comments_title"
+msgstr "Comments"
+
 msgid "error_comments_disabled"
 msgstr ""
 "<h2>Error!</h2>Hey! Comments are disabled on this blog. Are you a spambot?"
@@ -193,9 +196,6 @@ msgstr ""
 "<h2>Whoops!</h2>Comment not saved. I ran into a problem while saving your "
 "comment.<br /><br />Server Reported:<br />"
 
-msgid "comments_title"
-msgstr "Comments"
-
 msgid "success_add"
 msgstr "<h2>Comment Added!</h2>Your comment has been successfully saved."
 
@@ -228,6 +228,9 @@ msgstr ""
 
 msgid "comments_success_delete"
 msgstr "<h2>Comment Deleted!</h2>The comment has been deleted."
+
+msgid "comments_form_error"
+msgstr "Please complete the Name, Comment and Anti-Spam fields."
 
 msgid "comments_header"
 msgstr "Add Comment"
@@ -280,9 +283,6 @@ msgstr "Sorry, your IP address has been banned. Comments not allowed."
 msgid "nocomments"
 msgstr "Comments are not available for this entry."
 
-msgid "comments_form_error"
-msgstr "Please complete the Name, Comment and Anti-Spam fields."
-
 msgid "comment_moderation_title"
 msgstr "Unmodded Comments"
 
@@ -293,6 +293,9 @@ msgstr ""
 
 msgid "contact_title"
 msgstr "Contact"
+
+msgid "contact_form_error"
+msgstr "Please complete the Subject and Comment fields."
 
 msgid "contact_instructions"
 msgstr "Fill in the form:"
@@ -311,9 +314,6 @@ msgstr "Comment:"
 
 msgid "contact_capcha"
 msgstr "Anti-Spam: Enter "
-
-msgid "contact_form_error"
-msgstr "Please complete the Subject and Comment fields."
 
 msgid "contactsent"
 msgstr "Contact sent through: "
@@ -366,11 +366,11 @@ msgstr ""
 "This is the static page you are about to delete. Please make sure you really "
 "want to get rid of it, there's no undo..."
 
-msgid "save_button"
-msgstr "Save Emoticons"
-
 msgid "emoticons_title"
 msgstr "Admin Emoticons"
+
+msgid "save_button"
+msgstr "Save Emoticons"
 
 msgid "emoticons_instructions"
 msgstr ""
@@ -430,11 +430,14 @@ msgstr ""
 ">2) Return to the Add Entry or Edit Entry page.<br />3) Click the 'img' "
 "button and paste the URL into the window."
 
-msgid "php_charset"
-msgstr "UTF-8"
+msgid "info_form_error"
+msgstr "Please complete the Title and Author fields."
 
 msgid "info_title"
 msgstr "Meta-Data Information"
+
+msgid "php_charset"
+msgstr "UTF-8"
 
 msgid "info_error"
 msgstr ""
@@ -466,9 +469,6 @@ msgstr ""
 "the header tags for safety) only for every user that comes to the page i.e. "
 "Google Analytics)"
 
-msgid "info_form_error"
-msgstr "Please complete the Title and Author fields."
-
 msgid "install00_title"
 msgstr "Welcome"
 
@@ -495,6 +495,12 @@ msgstr ""
 msgid "begin"
 msgstr "[ Begin Setup ]"
 
+msgid "We think your blog is at %s."
+msgstr ""
+
+msgid "install02_title"
+msgstr "Setup"
+
 msgid "folder_failed"
 msgstr "Whoops! Could not create folder..."
 
@@ -503,9 +509,6 @@ msgstr "Success! Folder created..."
 
 msgid "folder_exists"
 msgstr "Okay! Folder already exists. No changes made..."
-
-msgid "install02_title"
-msgstr "Setup"
 
 msgid "install02_instructions"
 msgstr ""
@@ -539,6 +542,9 @@ msgstr ""
 
 msgid "continue"
 msgstr "[ Continue ]"
+
+msgid "install03_form_error"
+msgstr "Please complete the Username and Password fields."
 
 msgid "install03_title"
 msgstr "Create Username &amp; Password"
@@ -585,9 +591,6 @@ msgstr "Username:"
 msgid "password"
 msgstr "Password"
 
-msgid "install03_form_error"
-msgstr "Please complete the Username and Password fields."
-
 msgid "install04_title"
 msgstr "Create Password File"
 
@@ -613,14 +616,14 @@ msgstr ""
 "folder on your web site. The next time you visit your site, it will walk you "
 "through this installation process again...</i>"
 
+msgid "install05_form_error"
+msgstr "Please complete the Username and Password fields."
+
 msgid "install05_title"
 msgstr "Login"
 
 msgid "install05_instructions"
 msgstr "Please enter your Username and Password below"
-
-msgid "install05_form_error"
-msgstr "Please complete the Username and Password fields."
 
 msgid "install06_title"
 msgstr "Login"
@@ -639,6 +642,9 @@ msgstr "[ Setup ]"
 msgid "btn_try_again"
 msgstr "[ Try Again ]"
 
+msgid "login_form_error"
+msgstr "Please complete the Username and Password fields."
+
 msgid "login_title"
 msgstr "Login"
 
@@ -648,8 +654,8 @@ msgstr "WARNING: Password will be sent unencrypted!"
 msgid "login_instructions"
 msgstr "Please enter your Username and Password below"
 
-msgid "login_form_error"
-msgstr "Please complete the Username and Password fields."
+msgid "Don"
+msgstr ""
 
 msgid "login_success"
 msgstr "<h2>Success!</h2>You are now logged in. Happy blogging!<p />"
@@ -663,6 +669,9 @@ msgid "inactive_account"
 msgstr ""
 "<h2>Whoops!</h2>You are not logged in. Your account has been disabled by the "
 "administrator for some reason.<p />"
+
+msgid "Restore your last draft."
+msgstr ""
 
 msgid "upgrade"
 msgstr "<h2>Upgrade</h2>"
@@ -690,11 +699,14 @@ msgstr ""
 "<h2>Goodbye!</h2>You are now logged out. (No cookie was found. You weren't "
 "logged in anyway!)<p />"
 
-msgid "fulladminerror"
-msgstr "You must be a full administrator to do this!"
+msgid "manage_users_form_error"
+msgstr ""
 
 msgid "manage_users_title"
 msgstr "Manage Editing Users"
+
+msgid "fulladminerror"
+msgstr "You must be a full administrator to do this!"
 
 msgid "header_user"
 msgstr "User: "
@@ -749,9 +761,6 @@ msgstr "Login"
 
 msgid "btn_modify"
 msgstr "Modify"
-
-msgid "manage_users_form_error"
-msgstr ""
 
 msgid "moderation_instructions"
 msgstr "You can modify the auto moderation lists here."
@@ -874,8 +883,11 @@ msgstr ""
 msgid "options_success"
 msgstr "<h2>Options Saved!</h2>Information has been successfully saved."
 
-msgid "setup_title"
-msgstr "Preferences"
+msgid "View PHP Info Full Screen"
+msgstr ""
+
+msgid "Sidebar Plugins"
+msgstr "Sidebar Plugins"
 
 msgid "rating_title"
 msgstr "Rating"
@@ -894,8 +906,8 @@ msgstr "Search Results"
 msgid "not_found"
 msgstr "No results found"
 
-msgid "search_title"
-msgstr "Search"
+msgid "set_login_form_error"
+msgstr "Please complete the Username and Password fields."
 
 msgid "set_login_title"
 msgstr "Change Username &amp; Password"
@@ -910,9 +922,6 @@ msgstr ""
 "script            to generate your password as you did when originally "
 "creating the blog site."
 
-msgid "set_login_form_error"
-msgstr "Please complete the Username and Password fields."
-
 msgid "set_login_success"
 msgstr ""
 "<h2>Success!</h2>Your Username and/or Password is active. Happy blogging!<p /"
@@ -922,6 +931,12 @@ msgid "set_login_wrong_password"
 msgstr ""
 "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving "
 "your Username and/or Password.<br /><br />Server Reported:<br />"
+
+msgid "setup_form_error"
+msgstr "Please complete the Title and Author fields."
+
+msgid "setup_title"
+msgstr "Preferences"
 
 msgid "setup_instructions"
 msgstr ""
@@ -960,6 +975,12 @@ msgstr "Avatar URL: images/avatar.jpg (Leave blank for none)."
 msgid "blog_footer"
 msgstr "Footer:"
 
+msgid "Enable Emoticons"
+msgstr "Enable Emoticons"
+
+msgid "Enable Advanced Editor"
+msgstr "Enable Advanced Editor"
+
 msgid "title_entries"
 msgstr "Entries"
 
@@ -995,6 +1016,11 @@ msgstr "Maximum Entries to Display:"
 msgid "rss_max_entries"
 msgstr "Maximum Entries to Display in Feeds:"
 
+msgid "Allowed number of years to go back.  WARNING: You may get unexpected behavior when using years before 2000."
+msgstr ""
+"Allowed number of years to go back.  WARNING: You may get unexpected "
+"behavior when using years before 2000."
+
 msgid "select_new_to_old"
 msgstr "List Newest First"
 
@@ -1011,7 +1037,7 @@ msgid "blog_enable_start_category"
 msgstr "Use specific category for first page of entries: "
 
 msgid "Use static page for first page:"
-msgstr ""
+msgstr "Use static page for first page:"
 
 msgid "title_sidebar"
 msgstr "Sidebar"
@@ -1066,23 +1092,6 @@ msgstr "Show Border"
 msgid "static_block_noborder"
 msgstr "No Border"
 
-msgid "title_trackback"
-msgstr "Trackbacks"
-
-msgid "blog_trackback_about"
-msgstr ""
-"Trackback provides a method of notification between blogs. Let "
-"another            blog know that you are linking to them by sending them a "
-"trackback ping. See who is linking to            your blog by receiving "
-"trackback pings.<br />             You can either enter the URIs to ping "
-"manually, or try to do it automatically through             Auto-Discovery."
-
-msgid "blog_trackback_enabled"
-msgstr "Enable trackback in my blog"
-
-msgid "blog_trackback_auto_discovery"
-msgstr "Enable Auto-Discovery when submitting a post containing URLs"
-
 msgid "title_comments"
 msgstr "Comments"
 
@@ -1091,9 +1100,6 @@ msgstr "Enable User Comments"
 
 msgid "blog_email_notification"
 msgstr "Send email notification when comments are posted"
-
-msgid "blog_comments_popup"
-msgstr "Open Comments in Popup Window"
 
 msgid "blog_comment_days_expiry"
 msgstr "Comments Allowed For How Many Days? (0 means no expiry)"
@@ -1125,9 +1131,6 @@ msgstr "Enable GZIP Compression for Database Files"
 
 msgid "blog_enable_gzip_output"
 msgstr "Enable GZIP Compression for HTTP Output"
-
-msgid "setup_form_error"
-msgstr "Please complete the Title and Author fields."
 
 msgid "setup_error"
 msgstr ""
@@ -1170,9 +1173,6 @@ msgstr "10 Most viewed entries"
 msgid "most_commented_entries"
 msgstr "10 Most commented entries"
 
-msgid "index_title"
-msgstr ""
-
 msgid "themes_title"
 msgstr "Themes"
 
@@ -1201,6 +1201,9 @@ msgstr ""
 msgid "trackbacks_success_delete"
 msgstr "<h2>Trackback Deleted!</h2>The trackback link has been deleted."
 
+msgid "Upgrade"
+msgstr ""
+
 msgid "upload_img_title"
 msgstr "Upload Image"
 
@@ -1215,6 +1218,9 @@ msgstr "Select file:"
 
 msgid "upload_btn"
 msgstr "Upload"
+
+msgid "Add User"
+msgstr ""
 
 msgid "delete_btn"
 msgstr "delete"
@@ -1617,8 +1623,29 @@ msgstr "Most Recent Comments"
 msgid "menu_most_recent_entries"
 msgstr "Most Recent Entries"
 
-msgid "Sidebar Plugins"
-msgstr "Sidebar Plugins"
+msgid "search_title"
+msgstr "Search"
+
+#~ msgid "title_trackback"
+#~ msgstr "Trackbacks"
+
+#~ msgid "blog_trackback_about"
+#~ msgstr ""
+#~ "Trackback provides a method of notification between blogs. Let "
+#~ "another            blog know that you are linking to them by sending them "
+#~ "a trackback ping. See who is linking to            your blog by receiving "
+#~ "trackback pings.<br />             You can either enter the URIs to ping "
+#~ "manually, or try to do it automatically through             Auto-"
+#~ "Discovery."
+
+#~ msgid "blog_trackback_enabled"
+#~ msgstr "Enable trackback in my blog"
+
+#~ msgid "blog_trackback_auto_discovery"
+#~ msgstr "Enable Auto-Discovery when submitting a post containing URLs"
+
+#~ msgid "blog_comments_popup"
+#~ msgstr "Open Comments in Popup Window"
 
 #~ msgid "language"
 #~ msgstr "english"

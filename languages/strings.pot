@@ -538,6 +538,9 @@ msgstr ""
 msgid "login_instructions"
 msgstr ""
 
+msgid "Don"
+msgstr ""
+
 msgid "login_success"
 msgstr ""
 
@@ -545,6 +548,9 @@ msgid "login_wrong_password"
 msgstr ""
 
 msgid "inactive_account"
+msgstr ""
+
+msgid "Restore your last draft."
 msgstr ""
 
 msgid "upgrade"
@@ -811,6 +817,12 @@ msgstr ""
 msgid "blog_footer"
 msgstr ""
 
+msgid "Enable Emoticons"
+msgstr ""
+
+msgid "Enable Advanced Editor"
+msgstr ""
+
 msgid "title_entries"
 msgstr ""
 
@@ -842,6 +854,9 @@ msgid "blog_max_entries"
 msgstr ""
 
 msgid "rss_max_entries"
+msgstr ""
+
+msgid "Allowed number of years to go back.  WARNING: You may get unexpected behavior when using years before 2000."
 msgstr ""
 
 msgid "select_new_to_old"
@@ -913,18 +928,6 @@ msgstr ""
 msgid "static_block_noborder"
 msgstr ""
 
-msgid "title_trackback"
-msgstr ""
-
-msgid "blog_trackback_about"
-msgstr ""
-
-msgid "blog_trackback_enabled"
-msgstr ""
-
-msgid "blog_trackback_auto_discovery"
-msgstr ""
-
 msgid "title_comments"
 msgstr ""
 
@@ -932,9 +935,6 @@ msgid "blog_enable_comments"
 msgstr ""
 
 msgid "blog_email_notification"
-msgstr ""
-
-msgid "blog_comments_popup"
 msgstr ""
 
 msgid "blog_comment_days_expiry"

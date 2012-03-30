@@ -53,8 +53,7 @@
 			if ($type == 'static') {
 				$page = 'add_static.php';
 			}
-			// TODO add to language file
-			echo( "<a href=\"$page\">Restore your last draft.</a>" );
+			echo( "<a href=\"$page\">" . _sb("Restore your last draft.") . "</a>" );
 		}
 		
 		$upgrade_count = move_all_comment_files( true, true );

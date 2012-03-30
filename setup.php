@@ -155,14 +155,12 @@
 				<input type="text" name="https_url" value="<?php echo($blog_config->getTag('HTTPS_URL')); ?>" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;">
 				</p>
 				<p>
-<!-- TODO add to language file -->
 				<input type="checkbox" id="use_emoticons" name="use_emoticons"<?php if ( $blog_config->getTag('USE_EMOTICONS') == 1 ) { echo ( ' checked' ); } ?>> 
-				Enable Emoticons
+				<?php print _sb("Enable Emoticons"); ?>
 				</p>
 				<p>
-<!-- TODO add to language file -->
 				<input type="checkbox" id="use_js_editor" name="use_js_editor"<?php if ( $blog_config->getTag('USE_JS_EDITOR') == 1 ) { echo ( ' checked' ); } ?>> 
-				Enable Advanced Editor
+				<?php print _sb("Enable Advanced Editor"); ?>
 				</p>
 			</div>
 
@@ -191,8 +189,7 @@
 				<label for="rss_max_entries"><?php echo( _sb('rss_max_entries') ); ?></label><br />
 				<input type="text" name="rss_max_entries" value="<?php echo( $blog_config->getTag('RSS_MAX_ENTRIES') ); ?>" autocomplete="OFF" size="6">
 				<br />
-				<!-- TODO language file -->
-				<label for="back_years">Allowed number of years to go back.  WARNING: You may get unexpected behavior when using years before 2000.</label><br />
+				<label for="back_years"><?php print _sb("Allowed number of years to go back.  WARNING: You may get unexpected behavior when using years before 2000."); ?></label><br />
 				<input type="text" name="back_years" value="<?php echo( $blog_config->getTag('BACK_YEARS') ); ?>" autocomplete="OFF" size="6">
 				<p />
 				<?php
@@ -285,25 +282,6 @@
 			</div>
 
 			<p />
-			<!-- TRACKBACK -->
-<!--
-			<a id="linkSetupTrackbacks" href="javascript:toggleBlock('SetupTrackbacks');">
-				<img src="<?php global $blog_theme; $img_hide = 'themes/' . $blog_theme . '/images/minus.gif'; echo( $img_hide ); ?>" name="twisty">
-				<h4 style="display: inline;"><?php echo( _sb('title_trackback') ); ?></h4>
-			</a><p />
-			<div id="toggleSetupTrackbacks" class="toggleBody"><p />
-				<?php echo( _sb('blog_trackback_about') ); ?><p />
-			<?php // TODO translation for this
-			if (!ini_get('allow_url_fopen')) { ?>
-				WARNING: These settings will not take effect until <a href='http://www.php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen'>allow_url_fopen</a> has been enabled in php.ini.<p />
-			<?php } ?>
-				<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_trackback_enabled') ); ?><br />
-				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery"<?php if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_trackback_auto_discovery') ); ?><p />
-				<input type="checkbox" id="blog_trackback_enabled" name="blog_trackback_enabled" disabled="disabled" <?php if ( $blog_config->getTag('BLOG_TRACKBACK_ENABLED') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_trackback_enabled') ); ?> (DEPRECATED)<br />
-				<input type="checkbox" id="blog_trackback_auto_discovery" name="blog_trackback_auto_discovery" disabled="disabled" <?php if ( $blog_config->getTag('BLOG_TRACKBACK_AUTO_DISCOVERY') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_trackback_auto_discovery') ); ?> (DEPRECATED)<p />
-			</div>
--->
-			<p />
 
 			<!-- COMMENTS -->
 			<a id="linkSetupComments" href="javascript:toggleBlock('SetupComments');">
@@ -313,9 +291,6 @@
 			<div id="toggleSetupComments" class="toggleBody"><p />
 				<input type="checkbox" id="blog_enable_comments" name="blog_enable_comments"<?php if ( $blog_config->getTag('BLOG_ENABLE_COMMENTS') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_enable_comments') ); ?><br />
 				<input type="checkbox" id="blog_email_notification" name="blog_email_notification"<?php if ( $blog_config->getTag('BLOG_EMAIL_NOTIFICATION') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_email_notification') ); ?><br />
-<!--				<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup"<?php if ( $blog_config->getTag('BLOG_COMMENTS_POPUP') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_comments_popup') ); ?><p />
-				<input type="checkbox" id="blog_comments_popup" name="blog_comments_popup" disabled="disabled"> <?php echo( _sb('blog_comments_popup') ); ?> (DEPRECATED)<p />
--->
 				<label for="blog_comment_days_expiry"><?php echo( _sb('blog_comment_days_expiry') ); ?></label>
 				<input type="text" name="blog_comment_days_expiry" value="<?php echo( $blog_config->getTag('BLOG_COMMENT_DAYS_EXPIRY') ); ?>" autocomplete="OFF" size="3"><p />
 

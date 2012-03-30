@@ -88,8 +88,7 @@ $page_title = _sb('login_title');
 
                 if (!empty($restored)) {
                         $type = $restored[0];
-                        // TODO add to language file
-                        echo( "<p>Don't worry!  Your draft has been saved, login to restore your last draft.</p>");
+                        echo( "<p>" . _sb("Don't worry!  Your draft has been saved, login to restore your last draft.") . "</p>");
                 }
 
 		// PAGE CONTENT END
