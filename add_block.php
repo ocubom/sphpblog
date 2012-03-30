@@ -121,7 +121,7 @@
 
 	?>
 	
-		<form action='add_block.php' method="post" name="editor" id="editor" onsubmit="return validate_block(this)">
+		<form action='add_block.php' method="post" name="editor" id="editor">
 		
 			<label for="blog_subject"><?php echo (_sb('block_name') ); ?></label><br />
 			<input type="text" name="block_name" autocomplete="OFF" value="<?php echo $block_name; ?>" size="40"><br /><br />

@@ -1,4 +1,6 @@
 <?php
+	require_once("container.php");
+	// TODO remove config.php dependency, pass in $this->path
 	/**
 	* Blog preferences.
 	*
@@ -6,7 +8,7 @@
 	* @access		public
 	*/
 	class Configuration extends container {
-		var $path, $html_template, $tags;
+		var $path, $tags;
 		
 		/**
 		* Contructor
@@ -16,7 +18,6 @@
 		*/
 		function Configuration($filename='configuration.txt') {
 			$this->path = CONFIG_DIR;
-			$this->html_template = TEMPLATE_DIR.'data/configuration.tpl';
 		
 			$this->filename = $filename;
 			

@@ -26,7 +26,8 @@
 
 		echo( '<a href="install02.php?blog_language=' . $blog_config->getTag('BLOG_LANGUAGE') . '">' . _sb('begin') . '</a><p />' );
 
-                print "<p>" . printf(_sb("We think your blog is at %s."), $_SERVER["SERVER_NAME"] . BASEURL) . " " . _sb("If not, set BASEURL correctly in scripts/config.php") . "</p>";
+                print "<p>" . printf(_sb("We think your blog is at %s."), $_SERVER["SERVER_NAME"] . BASEURL) . " ";
+		print _sb("If not, set BASEURL correctly in scripts/config.php") . "</p>";
 
 		phpini_check();
 		

@@ -1,4 +1,7 @@
 <?php
+	require_once("fileio.php");
+	require_once("arrays.php");
+	// TODO remove config.php dependency for CONTENT_DIR
 	/**
 	* Data container class.
 	*

@@ -15,7 +15,8 @@
 	* folder_listing( $dir )
 	* strip_extension( $filename )
 	*/
-	
+
+	// TODO remove config.php dependency (BLOG_MASK)	
 	class fileio {
 		
 		/**

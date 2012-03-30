@@ -493,10 +493,10 @@ msgstr ""
 "<b>Click below to begin setup:</b>"
 
 msgid "begin"
-msgstr "[ Begin Setup ]"
+msgstr "Begin Setup"
 
 msgid "We think your blog is at %s."
-msgstr ""
+msgstr "We think your blog is at %s."
 
 msgid "install02_title"
 msgstr "Setup"
@@ -1625,6 +1625,9 @@ msgstr "Most Recent Entries"
 
 msgid "search_title"
 msgstr "Search"
+
+msgid "If not, set BASEURL correctly in scripts/config.php"
+msgstr "If not, set BASEURL correctly in scripts/config.php"
 
 #~ msgid "title_trackback"
 #~ msgstr "Trackbacks"

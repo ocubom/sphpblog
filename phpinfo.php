@@ -17,7 +17,7 @@
 	// PAGE CONTENT
 	// ------------
 	function page_content() {
-		global $blog_config, $ok;
+		global $blog_config, $ok, $sb_info;
 	
 		// SUBJECT
 		$entry_array = array();
@@ -25,6 +25,7 @@
 		
 		// PAGE CONTENT BEGIN
 		ob_start();
+		printf("Simple PHP Blog Version %s (%s)", $sb_info[ 'version' ], $sb_info[ 'last_update' ]);
 		phpini_check();
 		print "<a href='phpinfoframe.php'>" . _sb("View PHP Info Full Screen") . "</a>";
 		print "<iframe src='phpinfoframe.php' width='100%' height='600px' />";

@@ -1,4 +1,6 @@
 <?php
+	require_once("config.php");
+	require_once("classes/configuration.php");
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
@@ -65,7 +67,7 @@
 	}
 	
 	function get_installed_translations() {
-		$dir = 'languages/';	
+		$dir = ROOT_DIR.'languages/';	
 		$translation_arr = array();;
 		clearstatcache();
 		
@@ -162,8 +164,8 @@
 
 	function get_block_list () {
 		// Create the right-hand block. Return array
-		global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in;
-		global $lang_string;
+		//global $blog_content, $blog_subject, $blog_text, $blog_date, $user_colors, $logged_in;
+		//global $lang_string;
 
 		// Read blocks file.
 		$filename = CONFIG_DIR.'blocks.txt';

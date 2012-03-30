@@ -1,4 +1,5 @@
 <?php
+	// TODO remove dependency on config.ph for TEMPLATE_DIR
 	/**
 	* Template class.
 	*

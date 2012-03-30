@@ -1,4 +1,6 @@
 <?php
+	require_once("container.php");
+	//TODO remove dependency on config.php for USER_DIR, TEMPLATE_DIR
 	/**
 	* Feature story class.
 	*

@@ -1,4 +1,5 @@
 <?php
+	// do HTML output here
 
         // ---------------
         // INITIALIZE PAGE
@@ -42,9 +43,9 @@
 
         <!-- Meta Data -->
         <meta name="generator" content="Simple PHP Blog" />
-        <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="rss.php<?php echo $cat ?>" />
-        <link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="rdf.php<?php echo $cat ?>" />
-        <link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="atom.php<?php echo $cat ?>" />
+        <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="<?php print BASEURL; ?>rss.php<?php echo $cat ?>" />
+        <link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="<?php print BASEURL; ?>rdf.php<?php echo $cat ?>" />
+        <link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="<?php print BASEURL; ?>atom.php<?php echo $cat ?>" />
         <link rel="search" type="application/opensearchdescription+xml" title="<?php echo $blog_config->getTag('BLOG_TITLE'); ?>" href="<?php echo $search_uri ?>" />
 
         <!-- Meta Data -->
@@ -74,10 +75,10 @@
         <!-- Fav Icon -->
         <link rel="shortcut icon" href="interface/favicon.ico" />
 
-        <link rel="stylesheet" type="text/css" media="all" href="themes/common.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="themes/<?php echo $GLOBALS['blog_theme'] ?>/user_style.php" />
-        <link rel="stylesheet" type="text/css" media="all" href="themes/<?php echo $GLOBALS['blog_theme'] ?>/style.css" />
-        <link rel="stylesheet" type="text/css" media="print" href="themes/print.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL; ?>themes/common.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL; ?>themes/<?php echo $GLOBALS['blog_theme'] ?>/user_style.php" />
+        <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL; ?>themes/<?php echo $GLOBALS['blog_theme'] ?>/style.css" />
+        <link rel="stylesheet" type="text/css" media="print" href="<?php print BASEURL; ?>themes/print.css" />
 
 	<?php echo $head; ?>
 </head>

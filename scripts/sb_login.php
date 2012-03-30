@@ -5,6 +5,9 @@
   // must be uploaded to SourceForge.net under Simple PHP Blog or
   // emailed to apalmo <at> bigevilbrain <dot> com
 
+   require_once("config.php");
+   require_once("sb_communicate.php");
+
   // -------------------------
   // Session & Login Functions
   // -------------------------
@@ -29,7 +32,7 @@
 
     // Check if user is logged in.
     if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
-      if ( $_SESSION[ 'site_path' ] === dirname($_SERVER[ 'PHP_SELF' ]) ) {
+      if ( $_SESSION[ 'site_path' ] === BASEURL ) {
         if ( $_SESSION[ 'ip' ] === getIP() ) {
           // User is logged in.
           return ( true );
@@ -89,7 +92,7 @@
     // Check if user is logged in (just for reporting...)
     $was_logged_in = 0;
     if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
-      if ( $_SESSION[ 'site_path' ] === dirname($_SERVER[ 'PHP_SELF' ]) ) {
+      if ( $_SESSION[ 'site_path' ] === BASEURL ) {
         if ( $_SESSION[ 'ip' ] === getIP() ) {
           $was_logged_in = 1;
         }
@@ -135,7 +138,7 @@
 
           // Support for PHP >= 4.1.0
           $_SESSION[ 'logged_in' ] = 'yes';
-          $_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
+          $_SESSION[ 'site_path' ] = BASEURL;
           $_SESSION[ 'fulladmin' ] = 'yes';
           $_SESSION[ 'ip' ] = getIP();
           $_SESSION[ 'user' ] = 'Administrator';
@@ -243,7 +246,7 @@
 
           // Support for PHP >= 4.1.0
           $_SESSION[ 'logged_in' ] = 'yes';
-          $_SESSION[ 'site_path' ] = dirname($_SERVER[ 'PHP_SELF' ]);
+          $_SESSION[ 'site_path' ] = BASEURL;
           $_SESSION[ 'fulladmin' ] = 'no';
           $_SESSION[ 'ip' ] = getIP();
           $_SESSION[ 'user' ] = $tmp[0];

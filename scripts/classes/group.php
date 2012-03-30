@@ -1,4 +1,6 @@
 <?php
+	require_once("container.php");
+	// TODO remove config.php dependency
 	/**
 	* Feature story class.
 	*

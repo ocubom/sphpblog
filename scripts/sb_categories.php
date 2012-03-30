@@ -1,4 +1,6 @@
 <?php 
+	require_once("config.php");
+	require_once("classes/fileio.php");
 
 	// The Simple PHP Blog is released under the GNU Public License.
 	//
