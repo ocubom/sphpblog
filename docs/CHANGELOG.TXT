@@ -20,6 +20,10 @@ Version History
 - removed gzip storage capability
 - fixes for handling windows paths
 - added support for downloading a backup zip file
+- language system rewrite to be gettext compatible
+- better support for non-javascript browsers
+- fix for adding page metadata
+- various bugfixes
 
 0.7.0
 
