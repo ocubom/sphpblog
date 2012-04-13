@@ -28,21 +28,6 @@
 	// Extra Javascript
 	ob_start();
 	print sb_editor_js('commment_text');
-?>
-	<script type="text/javascript">
-		// <!--
-		// Validate the Form
-		function validate_comment(theform) {
-			if ( theform.comment_text.value=="" || theform.comment_name.value=="" || theform.comment_capcha.value=="" ) {
-				alert("<?php echo( _sb('comments_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		// -->
-	</script>
-<?php
 	$head .= ob_get_clean();
 
 	// ---------------
@@ -104,7 +89,7 @@
 
 		<?php echo( _sb('comments_instructions') ); ?><p />
 
-		<form action='comment_add_cgi.php' method="post" name="vbform" onsubmit="return validate_comment(this)">
+		<form action='comment_add_cgi.php' method="post" name="vbform">
 			<input type="hidden" name="y" value="<?php echo( $_GET[ 'y' ] ); ?>" />
 			<input type="hidden" name="m" value="<?php echo( $_GET[ 'm' ] ); ?>" />
 			<input type="hidden" name="entry" value="<?php echo( $_GET[ 'entry' ] ); ?>" />

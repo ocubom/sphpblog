@@ -45,7 +45,7 @@
 		<?php echo( _sb('moderation_instructions') ); ?><p />
 
 		<!-- FORM -->
-		<form action="moderation.php" method="post" name="moderation" name="moderation" onsubmit="return validate(this)">
+		<form action="moderation.php" method="post" name="moderation" name="moderation">
 
 			<?php echo( _sb('banned_address_list_title') ); ?>
 			<label for="info_keywords"><?php echo( _sb('banned_address_list') ); ?></label><br />

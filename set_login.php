@@ -6,24 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		function validate(theform) {
-			if (theform.user.value=="" || theform.pass.value=="") {
-				alert("<?php echo( _sb('set_login_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		// -->
-	</script>
-<?php
-	$head .= ob_get_clean();
-
 	$page_title = _sb('set_login_title');
 	require_once('scripts/sb_header.php');
 	

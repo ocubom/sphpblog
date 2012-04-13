@@ -7,7 +7,7 @@
 	$logged_in = logged_in( false, true );
 
 	// TODO dynamically grab this
-	//$page_title =_sb('static_title');
+	//$page_title = 'static_title';
 	
 	// ---------------
 	// POST PROCESSING

@@ -7,24 +7,6 @@
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 
-	// Extra Javascript
-	ob_start();
-?>
-<script type="text/javascript">
-	// <!--
-	function validate(theform) {
-		if (theform.user.value=="" || theform.pass.value=="") {
-			alert("<?php echo( _sb('login_form_error') ); ?>");
-			return false;
-		} else {
-			return true;
-		}
-	}
-	// -->
-	</script>
-<?php
-
-$head .= ob_get_clean();
 $page_title = _sb('login_title');
 
 	require_once('scripts/sb_header.php');
@@ -72,7 +54,7 @@ $page_title = _sb('login_title');
 		
 		<hr />
 		
-		<form action="login_cgi.php" method="post" onsubmit="return validate(this)">
+		<form action="login_cgi.php" method="post">
 			<label for="user"><?php echo( _sb('username') ); ?></label><br />
 			<input type="text" name="user" size="40"><p />
 			
@@ -88,7 +70,7 @@ $page_title = _sb('login_title');
 
                 if (!empty($restored)) {
                         $type = $restored[0];
-                        echo( "<p>" . _sb("Don't worry!  Your draft has been saved, login to restore your last draft.") . "</p>");
+                        echo( "<p>" . _sb("Do not worry!  Your draft has been saved, login to restore your last draft.") . "</p>");
                 }
 
 		// PAGE CONTENT END

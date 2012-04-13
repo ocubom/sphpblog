@@ -6,23 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		<!--
-		function validate(theform) {
-			if (theform.blog_title.value=="" || theform.blog_author.value=="" || theform.blog_footer.value=="" ) {
-				alert("<?php echo( _sb('info_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}
-		}
-		//-->
-	</script>
-<?php
-	$head .= ob_get_clean();
 	$page_title = _sb('info_title');
 	
 	// ---------------

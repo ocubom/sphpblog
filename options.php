@@ -30,7 +30,7 @@
 		
 		<?php echo( _sb('options_instructions') ); ?><p />		
 
-		<form action="options_cgi.php" method="post" name="setup" id="setup" onsubmit="return validate(this)">
+		<form action="options_cgi.php" method="post" name="setup" id="setup">
 			
 			<?php echo( _sb('ldate_title') ); ?><br /><br />
 			<table border="0" cellspacing="0" cellpadding="0">

@@ -1,7 +1,8 @@
 <!--
-function dirname (path) {
-    return path.replace(/\/[^\/]*\/?$/, '');
-}
+
+	function dirname (path) {
+		return path.replace(/\/[^\/]*\/?$/, '');
+	}
 	
 	// POPUP WINDOW
 	function openpopup(popurl, w, h, sizable) {

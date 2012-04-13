@@ -13,24 +13,6 @@
 	}
 	$_SESSION[ 'capcha_contact' ] = sb_get_capcha();
 	
-	// Extra Javascript
-	ob_start();
-?>
-	<script type="text/javascript">
-		// <!--
-		function validate(theform) {
-			if (theform.subject.value=="" || theform.comment.value=="" || theform.email.value=="") {
-				alert("<?php echo( _sb('contact_form_error') ); ?>");
-				return false;
-			} else {
-				return true;
-			}		
-		}
-		// -->
-	</script>
-<?php
-	$head .= ob_get_clean();
-
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -56,7 +38,7 @@
 		ob_start(); ?>
 		
 		<?php echo ( _sb('contact_instructions') ); ?><p />
-		<form action="contact_cgi.php" method="post" onsubmit="return validate(this)">
+		<form action="contact_cgi.php" method="post">
 		<p>
 		<label for="name"><?php echo( _sb('name') ); ?></label><br />
 		<input type="text" name="name" id="name" size="40" /><br /><br />

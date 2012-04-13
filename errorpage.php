@@ -27,7 +27,6 @@
 		$entry_array[ 'subject' ] = _sb('errorpage_title');
 		$entry_array[ 'entry' ] = '<table width="100%"	border="0"><tr><td><img src="themes/' . $blog_theme . '/images/error_icon.png" alt="" border="0" /></td>';
 		if (isset($_SESSION['errortype'])) {
-		// TODO this doesn't work well with the language tools
 			$entry_array[ 'entry' ]	 .= '<td>' . $_SESSION['errornum'] . ' ' . $_SESSION['errortype'] . '<br><br>';
 		} else {
 			$entry_array[ 'entry' ]  .= '<td>' . _sb('errorline1') . '<br><br>';

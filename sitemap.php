@@ -69,7 +69,7 @@
 		}
 		$i++;
 	}
-	//Need to dump static pages
+	// TODO Need to dump static pages
 	echo "</urlset>";
 	
 	function write_map( $loc, $lastmod, $changefreq, $priority )

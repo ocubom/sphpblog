@@ -11,16 +11,6 @@
 ?>
 	<script type="text/javascript">
 		// <!--
-			// Comment Popup Window
-			function validate_link(theform) {
-				if ( theform.link_name.value=="" ) {
-					alert("<?php echo( _sb('add_link_form_error') ); ?>");
-					return false;
-				} else {
-					return true;
-				}
-			}
-			
 			function load_static() {
 				str = document.forms[ 'addlink' ][ 'static_pages' ].value;
 				document.getElementById("link_name").value = str;
@@ -121,7 +111,7 @@
 		}
 		?>
 		
-		<form action='add_link.php' method="post" name="addlink" id="addlink"	 onsubmit="return validate_link(this)">
+		<form action='add_link.php' method="post" name="addlink" id="addlink">
 			<input type="hidden" name="link_id" value="<?php if ( isset( $link_id ) ) { echo( $link_id ); } ?>">
 			
 			<?php

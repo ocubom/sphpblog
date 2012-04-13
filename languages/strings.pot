@@ -43,9 +43,6 @@ msgstr ""
 msgid "add_block_submit_btn_edit"
 msgstr ""
 
-msgid "add_link_form_error"
-msgstr ""
-
 msgid "add_link_title"
 msgstr ""
 
@@ -106,6 +103,12 @@ msgstr ""
 msgid "colors_title"
 msgstr ""
 
+msgid "colors_error"
+msgstr ""
+
+msgid "colors_success"
+msgstr ""
+
 msgid "colors_instructions"
 msgstr ""
 
@@ -122,12 +125,6 @@ msgid "save_btn"
 msgstr ""
 
 msgid "theme_doesnt_allow_colors"
-msgstr ""
-
-msgid "colors_error"
-msgstr ""
-
-msgid "colors_success"
 msgstr ""
 
 msgid "comments_title"
@@ -185,9 +182,6 @@ msgid "comments_error_delete"
 msgstr ""
 
 msgid "comments_success_delete"
-msgstr ""
-
-msgid "comments_form_error"
 msgstr ""
 
 msgid "comments_header"
@@ -250,9 +244,6 @@ msgstr ""
 msgid "contact_title"
 msgstr ""
 
-msgid "contact_form_error"
-msgstr ""
-
 msgid "contact_instructions"
 msgstr ""
 
@@ -283,7 +274,13 @@ msgstr ""
 msgid "wrote"
 msgstr ""
 
+msgid "error_emailnotsentcapcha"
+msgstr ""
+
 msgid "contact_success"
+msgstr ""
+
+msgid "error_emailnotsent"
 msgstr ""
 
 msgid "delete_title"
@@ -343,7 +340,7 @@ msgstr ""
 msgid "save_error"
 msgstr ""
 
-msgid "errorpage-nocookies_title"
+msgid "errorpage_title"
 msgstr ""
 
 msgid "errorline1"
@@ -355,9 +352,6 @@ msgstr ""
 msgid "clientid"
 msgstr ""
 
-msgid "errorpage_title"
-msgstr ""
-
 msgid "moderation_title"
 msgstr ""
 
@@ -365,9 +359,6 @@ msgid "image_list_title"
 msgstr ""
 
 msgid "image_list_instructions"
-msgstr ""
-
-msgid "info_form_error"
 msgstr ""
 
 msgid "info_title"
@@ -418,6 +409,9 @@ msgstr ""
 msgid "We think your blog is at %s."
 msgstr ""
 
+msgid "If not, set BASEURL correctly in scripts/config.php"
+msgstr ""
+
 msgid "install02_title"
 msgstr ""
 
@@ -443,9 +437,6 @@ msgid "install02_success"
 msgstr ""
 
 msgid "continue"
-msgstr ""
-
-msgid "install03_form_error"
 msgstr ""
 
 msgid "install03_title"
@@ -505,9 +496,6 @@ msgstr ""
 msgid "information"
 msgstr ""
 
-msgid "install05_form_error"
-msgstr ""
-
 msgid "install05_title"
 msgstr ""
 
@@ -526,9 +514,6 @@ msgstr ""
 msgid "btn_try_again"
 msgstr ""
 
-msgid "login_form_error"
-msgstr ""
-
 msgid "login_title"
 msgstr ""
 
@@ -538,7 +523,7 @@ msgstr ""
 msgid "login_instructions"
 msgstr ""
 
-msgid "Don"
+msgid "Do not worry!  Your draft has been saved, login to restore your last draft."
 msgstr ""
 
 msgid "login_success"
@@ -572,9 +557,6 @@ msgid "logout_success"
 msgstr ""
 
 msgid "error_no_cookie"
-msgstr ""
-
-msgid "manage_users_form_error"
 msgstr ""
 
 msgid "manage_users_title"
@@ -766,9 +748,6 @@ msgstr ""
 msgid "not_found"
 msgstr ""
 
-msgid "set_login_form_error"
-msgstr ""
-
 msgid "set_login_title"
 msgstr ""
 
@@ -779,9 +758,6 @@ msgid "set_login_success"
 msgstr ""
 
 msgid "set_login_wrong_password"
-msgstr ""
-
-msgid "setup_form_error"
 msgstr ""
 
 msgid "setup_title"
@@ -967,9 +943,6 @@ msgstr ""
 msgid "setup_success"
 msgstr ""
 
-msgid "static_title"
-msgstr ""
-
 msgid "stats_title"
 msgstr ""
 
@@ -1040,6 +1013,33 @@ msgid "select_file"
 msgstr ""
 
 msgid "upload_btn"
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
+msgstr ""
+
+msgid "Value: 1; The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
+msgid "No file was uploaded."
+msgstr ""
+
+msgid "Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3."
+msgstr ""
+
+msgid "Failed to write file to disk. Introduced in PHP 5.1.0."
+msgstr ""
+
+msgid "File upload stopped by extension. Introduced in PHP 5.2.0."
+msgstr ""
+
+msgid "The reason of error is unknown."
 msgstr ""
 
 msgid "Add User"

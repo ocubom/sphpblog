@@ -6,11 +6,9 @@ To do list
 
 BUGS
 - fix urls in plugins
-- error codes for errorpage.php not in language files
 
 Improvements
 - pull title when using index?entry format
-- Clean up javascript
 - remove pagecontent functions
 - move post processing pages into initial page
 - add caching headers for non-logged in users

@@ -6,23 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, false );
 	
-	// Extra Javascript
-	ob_start();
-?>	
-	<script type="text/javascript">
-	<!--
-	function validate(theform) {
-		if (theform.user.value=="" || theform.pass.value=="") {
-			alert("<?php echo( _sb('install03_form_error') ); ?>");
-			return false;
-		} else {
-			return true;
-		}
-	}
-	//-->
-	</script>
-<?php
-	$head .= ob_get_clean();
 	$page_title = _sb('install03_title');
 	require_once('scripts/sb_header.php');
 
@@ -66,7 +49,7 @@
 		
 		<hr />
 		
-		<form action="install04.php?blog_language=<?php echo( $blog_config->getTag('BLOG_LANGUAGE') ); ?>" method="post" onsubmit="return validate(this)">
+		<form action="install04.php?blog_language=<?php echo( $blog_config->getTag('BLOG_LANGUAGE') ); ?>" method="post">
 			<label for="user"><?php echo( _sb('username') ); ?></label><br />
 			<input type="text" name="user" autocomplete="OFF" size="40"><br /><br />
 			

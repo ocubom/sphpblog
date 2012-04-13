@@ -6,24 +6,6 @@
 	global $logged_in, $blog_config;
 	$logged_in = logged_in( true, true );
 
-        // Extra Javascript
-        ob_start();
-?>
-        <script type="text/javascript">
-                // <!--
-                function validate(theform) {
-                        if (theform.blog_title.value=="" || theform.blog_author.value=="" ) {
-                                alert("<?php echo( _sb('setup_form_error') ); ?>");
-                                return false;
-                        } else {
-                                return true;
-                        }
-                }
-                // -->
-        </script>
-<?php
-        $head .= ob_get_clean();
-
 	$page_title = _sb('setup_title');
 	require_once('scripts/sb_header.php');
 
@@ -49,7 +31,7 @@
 		<?php echo( _sb('setup_instructions') ); ?><p />
 
 		<!-- FORM -->
-		<form action="setup_cgi.php" method="post" name="setup" name="setup" onsubmit="return validate(this)">
+		<form action="setup_cgi.php" method="post" name="setup" name="setup">
 
 			<!-- LANGUAGE -->
 			<a id="linkSetupLanguage" href="javascript:toggleBlock('SetupLanguage');">

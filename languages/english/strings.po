@@ -131,6 +131,14 @@ msgstr "Submit"
 msgid "colors_title"
 msgstr "Change Colors"
 
+msgid "colors_error"
+msgstr ""
+"<h2>Whoops!</h2>Information not saved. I ran into a problem while saving "
+"your entry.<br /><br />Server Reported:<br />"
+
+msgid "colors_success"
+msgstr "<h2>Colors Saved!</h2>Information has been successfully saved."
+
 msgid "colors_instructions"
 msgstr ""
 "You can change the text and background colors for your blog. First select "
@@ -151,14 +159,6 @@ msgstr "Save"
 
 msgid "theme_doesnt_allow_colors"
 msgstr "The currently selected theme does not allow for custom colors."
-
-msgid "colors_error"
-msgstr ""
-"<h2>Whoops!</h2>Information not saved. I ran into a problem while saving "
-"your entry.<br /><br />Server Reported:<br />"
-
-msgid "colors_success"
-msgstr "<h2>Colors Saved!</h2>Information has been successfully saved."
 
 msgid "comments_title"
 msgstr "Comments"
@@ -208,7 +208,7 @@ msgid "return_to_comments"
 msgstr "Return to Comments"
 
 msgid "Error! Comment cannot be approved. Unknown error."
-msgstr ""
+msgstr "Error! Comment cannot be approved. Unknown error."
 
 msgid "error_ban"
 msgstr ""
@@ -327,8 +327,16 @@ msgstr "User Agent:"
 msgid "wrote"
 msgstr "<i>On %s, %s wrote:</i><br /> <br /> %s"
 
+msgid "error_emailnotsentcapcha"
+msgstr ""
+"The message you attempted to send has failed because the anti-spam entry was "
+"incorrect or missing."
+
 msgid "contact_success"
 msgstr "<h2>Success!</h2>Your message has been sent.<p />"
+
+msgid "error_emailnotsent"
+msgstr "The message you attempted to send has failed."
 
 msgid "delete_title"
 msgstr "Delete Entry"
@@ -399,6 +407,9 @@ msgstr "Emoticon preferences saved successfully!"
 msgid "save_error"
 msgstr "Error! Emoticon preferences not saved."
 
+msgid "errorpage_title"
+msgstr "Error"
+
 msgid "errorline1"
 msgstr ""
 "The page or function you attempted to process requires the use of cookies."
@@ -410,9 +421,6 @@ msgstr ""
 
 msgid "clientid"
 msgstr "Client ID: "
-
-msgid "errorpage_title"
-msgstr "Error"
 
 msgid "moderation_title"
 msgstr "Moderation Preferences"
@@ -495,6 +503,9 @@ msgstr "Begin Setup"
 msgid "We think your blog is at %s."
 msgstr "We think your blog is at %s."
 
+msgid "If not, set BASEURL correctly in scripts/config.php"
+msgstr "If not, set BASEURL correctly in scripts/config.php"
+
 msgid "install02_title"
 msgstr "Setup"
 
@@ -530,7 +541,7 @@ msgstr ""
 "li>          </ol>"
 
 msgid "try_again"
-msgstr "[ Try Again ]"
+msgstr "Try Again"
 
 msgid "install02_success"
 msgstr ""
@@ -538,7 +549,7 @@ msgstr ""
 "continue:</b>"
 
 msgid "continue"
-msgstr "[ Continue ]"
+msgstr "Continue"
 
 msgid "install03_form_error"
 msgstr "Please complete the Username and Password fields."
@@ -565,22 +576,22 @@ msgid "blowfish"
 msgstr "Blowfish Encryption: "
 
 msgid "using_standard"
-msgstr "<b>Using Standard DES Encryption...</b>"
+msgstr "Using Standard DES Encryption..."
 
 msgid "using_extended"
-msgstr "<b>Using Extended DES Encryption...</b>"
+msgstr "Using Extended DES Encryption..."
 
 msgid "using_MD5"
-msgstr "<b style='color: green;'>Using MD5 Encryption...</b>"
+msgstr "Using MD5 Encryption..."
 
 msgid "using_blowfish"
-msgstr "<b style='color: green;'>Using Blowfish Encryption...</b>"
+msgstr "Using Blowfish Encryption..."
 
 msgid "using_unknown"
-msgstr "<b>Using Unknown Encryption...</b>"
+msgstr "Using Unknown Encryption..."
 
 msgid "salt_length"
-msgstr " <i>(Salt Length = %string)</i><br />"
+msgstr "(Salt Length = %string)<br />"
 
 msgid "username"
 msgstr "Username:"
@@ -634,10 +645,10 @@ msgstr ""
 "site. (i.e. install00.php through install06.php)</i><p />"
 
 msgid "btn_setup"
-msgstr "[ Setup ]"
+msgstr "Setup"
 
 msgid "btn_try_again"
-msgstr "[ Try Again ]"
+msgstr "Try Again"
 
 msgid "login_form_error"
 msgstr "Please complete the Username and Password fields."
@@ -1013,7 +1024,9 @@ msgstr "Maximum Entries to Display:"
 msgid "rss_max_entries"
 msgstr "Maximum Entries to Display in Feeds:"
 
-msgid "Allowed number of years to go back.  WARNING: You may get unexpected behavior when using years before 2000."
+msgid ""
+"Allowed number of years to go back.  WARNING: You may get unexpected "
+"behavior when using years before 2000."
 msgstr ""
 "Allowed number of years to go back.  WARNING: You may get unexpected "
 "behavior when using years before 2000."
@@ -1137,9 +1150,6 @@ msgstr ""
 msgid "setup_success"
 msgstr "<h2>Preferences Saved!</h2>Information has been successfully saved."
 
-msgid "static_title"
-msgstr ""
-
 msgid "stats_title"
 msgstr "Statistics"
 
@@ -1199,7 +1209,7 @@ msgid "trackbacks_success_delete"
 msgstr "<h2>Trackback Deleted!</h2>The trackback link has been deleted."
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Upgrade"
 
 msgid "upload_img_title"
 msgstr "Upload Image"
@@ -1216,8 +1226,43 @@ msgstr "Select file:"
 msgid "upload_btn"
 msgstr "Upload"
 
-msgid "Add User"
+msgid "There is no error, the file uploaded with success."
+msgstr "There is no error, the file uploaded with success."
+
+msgid ""
+"Value: 1; The uploaded file exceeds the upload_max_filesize directive in php."
+"ini."
 msgstr ""
+"Value: 1; The uploaded file exceeds the upload_max_filesize directive in php."
+"ini."
+
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+
+msgid "The uploaded file was only partially uploaded."
+msgstr "The uploaded file was only partially uploaded."
+
+msgid "No file was uploaded."
+msgstr "No file was uploaded."
+
+msgid "Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3."
+msgstr "Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3."
+
+msgid "Failed to write file to disk. Introduced in PHP 5.1.0."
+msgstr "Failed to write file to disk. Introduced in PHP 5.1.0."
+
+msgid "File upload stopped by extension. Introduced in PHP 5.2.0."
+msgstr "File upload stopped by extension. Introduced in PHP 5.2.0."
+
+msgid "The reason of error is unknown."
+msgstr "The reason of error is unknown."
+
+msgid "Add User"
+msgstr "Add User"
 
 msgid "delete_btn"
 msgstr "delete"
@@ -1238,10 +1283,10 @@ msgid "enteredcontent"
 msgstr "Content: "
 
 msgid "mod_approve"
-msgstr "[Approve] "
+msgstr "Approve"
 
 msgid "mod_delete"
-msgstr "[Delete]"
+msgstr "Delete"
 
 msgid "totalunmodded"
 msgstr " total item(s) waiting for moderator update."
@@ -1623,9 +1668,6 @@ msgstr "Most Recent Entries"
 msgid "search_title"
 msgstr "Search"
 
-msgid "If not, set BASEURL correctly in scripts/config.php"
-msgstr "If not, set BASEURL correctly in scripts/config.php"
-
 #~ msgid "title_trackback"
 #~ msgstr "Trackbacks"
 
@@ -1872,14 +1914,6 @@ msgstr "If not, set BASEURL correctly in scripts/config.php"
 #~ msgstr ""
 #~ "The page or function you attempted requires javascript in order to "
 #~ "properly function."
-
-#~ msgid "error_emailnotsent"
-#~ msgstr "The message you attempted to send has failed."
-
-#~ msgid "error_emailnotsentcapcha"
-#~ msgstr ""
-#~ "The message you attempted to send has failed because the anti-spam entry "
-#~ "was incorrect or missing."
 
 #~ msgid "manage_users_instructions"
 #~ msgstr ""
