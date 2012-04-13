@@ -97,7 +97,7 @@
 			@umask(0);
 			
 			$length = strlen($str);
-			$bytes_written = file_put_contents( $filename, $str );
+			$bytes_written = @file_put_contents( $filename, $str );
 			
 			if ( $length == $bytes_written ) {
 				@chmod($filename, BLOG_MASK);

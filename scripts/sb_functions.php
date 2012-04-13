@@ -5,7 +5,7 @@
 	// Error reporting should be set to 0 in production environments.
 	error_reporting( E_ALL ^ E_NOTICE );
 	// use this for production
-	//error_reporting( 0 );
+	error_reporting( 0 );
 
 	require_once("config.php");	
         /*require_once(CLASSES_DIR.'fileio.php');
