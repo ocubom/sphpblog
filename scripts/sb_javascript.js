@@ -1,4 +1,8 @@
 <!--
+function dirname (path) {
+    return path.replace(/\/[^\/]*\/?$/, '');
+}
+	
 	// POPUP WINDOW
 	function openpopup(popurl, w, h, sizable) {
 		str = 'width='+(w+20)+',height='+(h+30);
@@ -130,7 +134,7 @@
 					twistyObj = linkObj.getElementsByTagName('img')[0];
 					
 					if (twistyObj) {
-						twistyObj.setAttribute('src', blogSettings['img_path'] + 'plus.gif');
+						twistyObj.setAttribute('src', dirname(twistyObj.getAttribute('src')) + '/plus.gif');
 						twistyObj.setAttribute('alt','[+]');
 					} else {
 						linkObj.innerHTML = "[+]";
@@ -144,7 +148,7 @@
 					twistyObj = linkObj.getElementsByTagName('img')[0];
 					
 					if (twistyObj) {
-						twistyObj.setAttribute('src', blogSettings['img_path'] + 'minus.gif');
+						twistyObj.setAttribute('src', dirname(twistyObj.getAttribute('src')) + '/minus.gif');
 						twistyObj.setAttribute('alt','[-]');
 					} else {
 				linkObj.innerHTML = "[-]";
@@ -179,6 +183,6 @@
 			elm['on' + evType] = fn;
 		}
 	}
-	
+
 	addEvent(window, 'load', init, false);
 -->
