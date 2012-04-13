@@ -399,9 +399,6 @@ msgstr "Emoticon preferences saved successfully!"
 msgid "save_error"
 msgstr "Error! Emoticon preferences not saved."
 
-msgid "errorpage-nocookies_title"
-msgstr "HTTP Error 403.8 - Page/Function Access Denied"
-
 msgid "errorline1"
 msgstr ""
 "The page or function you attempted to process requires the use of cookies."

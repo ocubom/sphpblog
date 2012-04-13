@@ -6,6 +6,7 @@ To do list
 
 BUGS
 - fix urls in plugins
+- error codes for errorpage.php not in language files
 
 Improvements
 - pull title when using index?entry format

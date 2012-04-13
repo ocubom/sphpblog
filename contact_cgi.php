@@ -17,7 +17,7 @@
 	$client_ip_local = getIP();
 	
 		if (!isset($_SESSION['cookies_enabled'])) {
-		redirect_to_url('errorpage-nocookies.php');
+		redirect_to_url('errorpage.php');
 		// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage-nocookies.php');
 	}
 	
@@ -36,7 +36,7 @@
 		$ok=sb_mail( $_POST[ 'email' ], $blog_config->getTag('BLOG_EMAIL'), $subject, $body, false );
 	} else {
 		$_SESSION['errornum'] = '403.8';
-		$_SESSION['errortype'] = 'error_emailnotsentcapcha';
+		$_SESSION['errortype'] = _sb('error_emailnotsentcapcha');
 		redirect_to_url('errorpage.php');
 		// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
 	}
@@ -60,7 +60,7 @@
 			echo( _sb('contact_success') );
 		} else {
 			$_SESSION['errornum'] = '403.8';
-			$_SESSION['errortype'] = 'error_emailnotsent';
+			$_SESSION['errortype'] = _sb('error_emailnotsent');
 			redirect_to_url('errorpage.php');
 			// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
 		}

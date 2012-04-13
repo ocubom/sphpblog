@@ -32,7 +32,6 @@
 	$head .= ob_get_clean();
 
 	$page_title = _sb('add_link_title');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -54,6 +53,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $user_colors, $theme_vars, $blog_theme;
 		global $link_id, $link_name, $link_url;

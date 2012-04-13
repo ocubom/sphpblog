@@ -37,7 +37,7 @@
 	
 	// The user must have cookies enabled in order to send contacts - this helps with blank emails
 	if (!isset($_SESSION['cookies_enabled'])) {
-		redirect_to_url('errorpage-nocookies.php');
+		redirect_to_url('errorpage.php');
 		// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage-nocookies.php');
 	}
 	

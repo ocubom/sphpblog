@@ -52,25 +52,58 @@
 	
 	// Page Title
 	$page_title = _sb('colors_title');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
-	
+if (isset($_POST['submit']) OR isset($_POST['save_btn'])) {
+        $color_def = theme_default_colors();
+        $post_array = array();
+        array_push( $post_array, 'name' );
+        if ( array_key_exists( 'save_btn', $_POST ) == true && $_POST[ 'scheme_name' ] != '' && $_POST[ 'scheme_file' ] != '' ) {
+                $str = str_replace( '|', ':', sb_stripslashes( $_POST[ 'scheme_name' ] ) );
+                array_push( $post_array, $str );
+        } else {
+                array_push( $post_array, 'custom' );
+        }
+
+        for ( $i = 0; $i < count( $color_def ); $i++ ) {
+                $id = $color_def[$i][ 'id' ];
+                $color = sb_stripslashes( $_POST[ $id ] );
+                array_push( $post_array, $id );
+                array_push( $post_array, $color );
+        }
+
+        // Check if we should save color scheme, or just update colors on web site.
+        if ( array_key_exists( 'save_btn', $_POST ) == true && $_POST[ 'scheme_name' ] != '' && $_POST[ 'scheme_file' ] != '' ) {
+                $filename = sb_stripslashes( $_POST[ 'scheme_file' ] );
+                $filename = preg_replace( '/(\s|\\\|\/|%|#)/', '_', $filename ); // Replace whitespaces [\n\r\f\t ], slashes, % and # with _
+                $ok = write_colors( $post_array, $filename );
+        } else {
+                $ok = write_colors( $post_array, NULL );
+        }
+}	
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
-		global $user_colors, $theme_vars, $blog_theme;		
+		global $user_colors, $theme_vars, $blog_theme, $ok;		
 	
 		// SUBJECT
 		$entry_array = array();
 		$entry_array[ 'subject' ] = _sb('colors_title');
 	
 		// PAGE CONTENT BEGIN
-		ob_start(); ?>
-		<?php echo( _sb('colors_instructions') ); ?><p />		
+		ob_start();
+		if (isset($ok)) { 
+			if ( $ok === false ) {
+        	                echo( _sb('colors_error') . $ok . '<p />' );
+	                } else {
+                       		echo _sb('colors_success') . '<p />';
+                	}
+		}
+		echo( _sb('colors_instructions') ); ?><p />		
 		
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
@@ -85,7 +118,7 @@
 			</embed>
 		</object><p />
 		
-		<form method="post" name="colors" id="colors" action="colors_cgi.php">
+		<form method="post" name="colors" id="colors" action="">
 			<?php
 				global $user_colors, $theme_vars;
 				$color_def = theme_default_colors();
