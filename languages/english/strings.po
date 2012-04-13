@@ -51,9 +51,6 @@ msgstr "Block Content:"
 msgid "add_block_submit_btn_edit"
 msgstr "Edit Block"
 
-msgid "add_link_form_error"
-msgstr "Please complete the Name field."
-
 msgid "add_link_title"
 msgstr "Add / Manage Links"
 
@@ -229,9 +226,6 @@ msgstr ""
 msgid "comments_success_delete"
 msgstr "<h2>Comment Deleted!</h2>The comment has been deleted."
 
-msgid "comments_form_error"
-msgstr "Please complete the Name, Comment and Anti-Spam fields."
-
 msgid "comments_header"
 msgstr "Add Comment"
 
@@ -293,9 +287,6 @@ msgstr ""
 
 msgid "contact_title"
 msgstr "Contact"
-
-msgid "contact_form_error"
-msgstr "Please complete the Subject and Comment fields."
 
 msgid "contact_instructions"
 msgstr "Fill in the form:"
@@ -435,9 +426,6 @@ msgstr ""
 ">2) Return to the Add Entry or Edit Entry page.<br />3) Click the 'img' "
 "button and paste the URL into the window."
 
-msgid "info_form_error"
-msgstr "Please complete the Title and Author fields."
-
 msgid "info_title"
 msgstr "Meta-Data Information"
 
@@ -551,9 +539,6 @@ msgstr ""
 msgid "continue"
 msgstr "Continue"
 
-msgid "install03_form_error"
-msgstr "Please complete the Username and Password fields."
-
 msgid "install03_title"
 msgstr "Create Username &amp; Password"
 
@@ -624,9 +609,6 @@ msgstr ""
 "folder on your web site. The next time you visit your site, it will walk you "
 "through this installation process again...</i>"
 
-msgid "install05_form_error"
-msgstr "Please complete the Username and Password fields."
-
 msgid "install05_title"
 msgstr "Login"
 
@@ -650,9 +632,6 @@ msgstr "Setup"
 msgid "btn_try_again"
 msgstr "Try Again"
 
-msgid "login_form_error"
-msgstr "Please complete the Username and Password fields."
-
 msgid "login_title"
 msgstr "Login"
 
@@ -662,7 +641,8 @@ msgstr "WARNING: Password will be sent unencrypted!"
 msgid "login_instructions"
 msgstr "Please enter your Username and Password below"
 
-msgid "Don"
+msgid ""
+"Do not worry!  Your draft has been saved, login to restore your last draft."
 msgstr ""
 
 msgid "login_success"
@@ -706,9 +686,6 @@ msgid "error_no_cookie"
 msgstr ""
 "<h2>Goodbye!</h2>You are now logged out. (No cookie was found. You weren't "
 "logged in anyway!)<p />"
-
-msgid "manage_users_form_error"
-msgstr ""
 
 msgid "manage_users_title"
 msgstr "Manage Editing Users"
@@ -914,9 +891,6 @@ msgstr "Search Results"
 msgid "not_found"
 msgstr "No results found"
 
-msgid "set_login_form_error"
-msgstr "Please complete the Username and Password fields."
-
 msgid "set_login_title"
 msgstr "Change Username &amp; Password"
 
@@ -939,9 +913,6 @@ msgid "set_login_wrong_password"
 msgstr ""
 "<h2>Whoops!</h2>Information not saved. I ran into a problem while saving "
 "your Username and/or Password.<br /><br />Server Reported:<br />"
-
-msgid "setup_form_error"
-msgstr "Please complete the Title and Author fields."
 
 msgid "setup_title"
 msgstr "Preferences"
@@ -1667,6 +1638,33 @@ msgstr "Most Recent Entries"
 
 msgid "search_title"
 msgstr "Search"
+
+#~ msgid "add_link_form_error"
+#~ msgstr "Please complete the Name field."
+
+#~ msgid "comments_form_error"
+#~ msgstr "Please complete the Name, Comment and Anti-Spam fields."
+
+#~ msgid "contact_form_error"
+#~ msgstr "Please complete the Subject and Comment fields."
+
+#~ msgid "info_form_error"
+#~ msgstr "Please complete the Title and Author fields."
+
+#~ msgid "install03_form_error"
+#~ msgstr "Please complete the Username and Password fields."
+
+#~ msgid "install05_form_error"
+#~ msgstr "Please complete the Username and Password fields."
+
+#~ msgid "login_form_error"
+#~ msgstr "Please complete the Username and Password fields."
+
+#~ msgid "set_login_form_error"
+#~ msgstr "Please complete the Username and Password fields."
+
+#~ msgid "setup_form_error"
+#~ msgstr "Please complete the Title and Author fields."
 
 #~ msgid "title_trackback"
 #~ msgstr "Trackbacks"
