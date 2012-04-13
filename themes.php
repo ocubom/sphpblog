@@ -7,7 +7,6 @@
 	$logged_in = logged_in( true, true );
 
 	$page_title = _sb('themes_title');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -30,6 +29,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $user_colors, $logged_in, $theme_vars, $blog_theme, $ok;
 		

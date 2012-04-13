@@ -7,7 +7,6 @@
 	$logged_in = logged_in( true, true );
 
 	$page_title = _sb('Sidebar Plugins');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -71,6 +70,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function get_installed_plugins() {
 		
 		$dir = ROOT_DIR . '/scripts/plugins/sidebar/';	

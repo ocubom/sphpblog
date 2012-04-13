@@ -5,17 +5,17 @@ To do list
 ----------
 
 BUGS
-- align titles appropriately
-- plus/minus button on menus not working. are these pointless 
-since the next page will just show them again?  should we use session cookies to 
-remember it?
+- fix urls in plugins
 
-- fix comment javascript editor
+Improvements
 - pull title when using index?entry format
+- Clean up javascript
+- remove pagecontent functions
+- move post processing pages into initial page
 - add caching headers for non-logged in users
 - switch capcha to recapcha? we need to figure out the keying
-- fix urls in plugins
 - move install pages to separate directory
+- move admin/user pages to separate directory
 - integrate gallery
 - integrate guest book?
 - separate color schemes from themes
@@ -37,7 +37,7 @@ Alex		Image/File 		[0%] Enhance the Image Upload feature. Add ability to delete 
 			Update
 
 Alex		Anit-Leech /	[0%] Add some protection against people stealing bandwidth by hijacking images. 
-			Anit-hotlink
+			Anti-hotlink
 
 Alex		Guest Book		[0%] Optional Guest Book.
 
@@ -50,9 +50,6 @@ Guti		404 static		[90%] Add a default static page to show if the requested stati
 			translations	
 
 			Cleanup			[5%] Take care of the total memory used by a script. Try to recycle big temporal array, and to unset them as soon as they are not needed
-
-Alex		Improve 	[40%] Continue to improve the installation scripts. Detect more cases (like Safe Mode issues.)
-			Installation 	
 
 Alex		XML 		[0%] Switch to XML data format.
 

@@ -24,7 +24,6 @@
 <?php
 	$head .= ob_get_clean();
 	$page_title = _sb('info_title');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -51,6 +50,7 @@
 	// -----------
 	// PAGE CONTENT
 	// -----------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $blog_config, $theme_vars, $blog_theme;
 	

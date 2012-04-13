@@ -16,7 +16,6 @@
 	$logged_in = logged_in( true, true );
 
 	$page_title = _sb('add_block_title');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -43,6 +42,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $block_id, $block_name, $block_content, $action, $theme_vars;
 	

@@ -6,8 +6,6 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	read_config();
-
 	//This functions makes a recursive array of a folder or not 
 	function directoryToArray($directory, $recursive) 
 	{

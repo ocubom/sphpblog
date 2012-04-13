@@ -21,7 +21,6 @@
 
 	$page_title = _sb('add_static_title');
         $head .= sb_editor_js('blog_text');
-	require_once('scripts/sb_header.php');
 	
 	// ---------------
 	// POST PROCESSING
@@ -47,6 +46,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $blog_config, $langkey;
 		

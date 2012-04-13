@@ -21,8 +21,6 @@
 
 	$page_title = _sb('add_title');
 	$head .= sb_editor_js('blog_text');
-	require_once('scripts/sb_header.php');
-	
 
 	// ---------------
 	// POST PROCESSING
@@ -83,6 +81,8 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
+	
 	function page_content() {
 		global $blog_config, $ad_array, $auto_discovery_confirm;
 		

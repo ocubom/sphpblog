@@ -884,7 +884,7 @@ msgid "options_success"
 msgstr "<h2>Options Saved!</h2>Information has been successfully saved."
 
 msgid "View PHP Info Full Screen"
-msgstr ""
+msgstr "View PHP Info Full Screen"
 
 msgid "Sidebar Plugins"
 msgstr "Sidebar Plugins"

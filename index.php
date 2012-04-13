@@ -15,8 +15,6 @@
 	}
 	$_SESSION['cookies_enabled'] = '1';
 
-	require_once('scripts/sb_header.php');
-	
 	// ---------------
 	// POST PROCESSING
 	// ---------------
@@ -117,6 +115,8 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
+	
 	function page_content() {
 		global $month, $year, $day, $category, $logged_in, $entry, $is_permalink, $blog_config;
 
