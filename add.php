@@ -108,6 +108,7 @@
 	// ------------
 	// PAGE CONTENT
 	// ------------
+	require_once('scripts/sb_header.php');
 	function page_content() {
 		global $blog_config;
 		
