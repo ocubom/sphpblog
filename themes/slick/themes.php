@@ -438,7 +438,7 @@
                     <div id="maincontent">
                       <?php page_content(); ?>
                     </div>
-                    <div id="footer"><p><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></p><?php echo($blog_config->getTag('TRACKING_CODE')); ?></div>
+                    <div id="footer"><p><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></p></div>
            </div>
       </div>
     </body>

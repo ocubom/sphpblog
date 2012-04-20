@@ -520,7 +520,7 @@
     array_push( $search, '%menu%' );
     array_push( $replace, theme_menu() );
     array_push( $search, '%footer%' );
-    array_push( $replace, "<p>" . $blog_config->getTag('BLOG_FOOTER') . " - " . page_generated_in() . "</p>" . $blog_config->getTag('TRACKING_CODE'));
+    array_push( $replace, "<p>" . $blog_config->getTag('BLOG_FOOTER') . " - " . page_generated_in() . "</p>");
 
     // MENU WIDGETS (NO CUSTOM PATH)
     array_push( $search, '%widget_avatar%' );

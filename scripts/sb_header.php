@@ -84,7 +84,11 @@
 
 	<script type="text/javascript" src="<?php print BASEURL; ?>scripts/sb_javascript.js"></script>
 
-	<?php echo $head; ?>
+<?php
+	echo($blog_config->getTag('TRACKING_CODE'));
+	echo $head;
+
+?>
 </head>
 <?php
 flush();
