@@ -8,11 +8,6 @@
 	// Include Required Functions
 	require_once('scripts/sb_functions.php');
 
-	read_config();
-
-	require_once('languages/' . $blog_config->getTag('BLOG_LANGUAGE') . '/strings.php');
-	sb_language( 'index' );
-
 	// Please note, you can change the number of entries that appear by
 	// passing the variable 'n' in the URL. You can also limit it to a certain
 	// category by passing 'c'. For instance, this will make it show
