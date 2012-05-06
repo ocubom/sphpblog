@@ -158,15 +158,19 @@ function return_bytes($val) {
         }
 
 function sb_curPageURL() {
+ return sb_host() . $_SERVER["SCRIPT_NAME"];
+}
+
+function sb_host() {
  $pageURL = 'http';
  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
  $pageURL .= "://";
  if ($_SERVER["HTTPS"] == "on" && $_SERVER["SERVER_PORT"] != "443") {
-  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["SCRIPT_NAME"];
+  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
  } elseif ($_SERVER["HTTPS"] != "on" && $_SERVER["SERVER_PORT"] != "80") {
-  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["SCRIPT_NAME"];
+  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
  } else {
-  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["SCRIPT_NAME"];
+  $pageURL .= $_SERVER["SERVER_NAME"];
  }
  return $pageURL;
 }
