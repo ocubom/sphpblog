@@ -335,7 +335,9 @@
         $y = sb_strip_extension( $contents[$i][ 'year' ] );
         $m = sb_strip_extension( $contents[$i][ 'month' ] );
         //$blog_entry_data[ 'CREATEDBY' ]
-        $admin = $_SESSION[ 'fulladmin' ];
+        $admin = "no";
+        if (!empty($_SESSION[ 'fulladmin' ]))
+            $admin = $_SESSION[ 'fulladmin' ];
         if ( (( $logged_in == true ) and ( $admin == 'yes' )) or
            (( $logged_in == true) and ( $admin == 'no' ) and ( CheckUserSecurity( $_SESSION[ 'username' ], 'EDIT' ) == true ) and ( $blog_entry_data[ 'CREATEDBY' ] != $_SESSION[ 'username' ]) ) or
            (( $logged_in == true) and ( $admin == 'no' ) and ( $blog_entry_data[ 'CREATEDBY' ] == $_SESSION[ 'username' ]) ))

@@ -130,11 +130,15 @@ function sb_editor_controls($textfield) {
         // Store Data for Form Use
         $default_subject = htmlDecode( $blog_entry_data[ 'SUBJECT' ] );
         $default_content = $blog_entry_data[ 'CONTENT' ];
-        $default_tb_ping = htmlDecode( $blog_entry_data[ 'TB_PING' ] );
+        $default_tb_ping = "";
+        if (!empty($blog_entry_data[ 'TB_PING' ]))
+          $default_tb_ping = htmlDecode( $blog_entry_data[ 'TB_PING' ] );
         if ( array_key_exists( "CATEGORIES", $blog_entry_data ) ) {
           $default_categories = explode( ',', $blog_entry_data[ 'CATEGORIES' ] );
         }
-        $default_relatedlink = htmlDecode( $blog_entry_data[ 'relatedlink'] );
+        $default_relatedlink = "";
+        if (!empty($blog_entry_data[ 'relatedlink' ]))
+          $default_relatedlink = htmlDecode( $blog_entry_data[ 'relatedlink'] );
         
         // Split up Date Information
         $temp_date = substr($_GET['entry'],-13,6);
