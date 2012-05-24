@@ -53,7 +53,7 @@ function sb_editor_controls($textfield) {
       // Add Static Mode
       // ------------
     
-      if ( array_key_exists( 'entry', $_GET ) ) {
+      if ( array_key_exists( 'entry', $_GET ) AND empty($_POST)) {
         // -------------------
         // Edit Existing Static Entry
         // -------------------
@@ -109,7 +109,7 @@ function sb_editor_controls($textfield) {
       // Add Entry Mode
       // ------------
     
-      if ( array_key_exists( 'entry', $_GET ) == true && array_key_exists( 'y', $_GET ) == true && array_key_exists( 'm', $_GET ) == true ) {
+      if ( array_key_exists( 'entry', $_GET ) == true && array_key_exists( 'y', $_GET ) == true && array_key_exists( 'm', $_GET ) == true AND empty($_POST)) {
         // --------------
         // Edit Existing Entry
         // --------------
