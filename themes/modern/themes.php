@@ -130,7 +130,7 @@
     // Display SUBJECT Line
 //    $blog_content .= "\n<!-- BLOG TITLE BEGIN -->\n";
     $blog_content = $blog_content . '<div class="blog_title">';
-    if ( $entry_array[ 'avatarurl' ] != '' ) {
+    if ( !empty($entry_array[ 'avatarurl' ])) {
       $blog_content = $blog_content . '<img src="' . $entry_array[ 'avatarurl'] . '" alt="" style="border-style: none" />';  }
     if (!empty($entry_array[ 'id' ])) {
       $blog_content .= $entry_array[ 'subject' ] . '<a id="' . $entry_array[ 'id' ] . '">&nbsp;</a><br />' . "\n";

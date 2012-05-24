@@ -66,7 +66,7 @@
 						// Indent the proper number of spaces...
 						$str  .= '&nbsp;';
 					}
-					if ( $GLOBALS[ 'category' ] == $id_number ) {
+					if ( !empty($GLOBALS[ 'category' ]) AND $GLOBALS[ 'category' ] == $id_number ) {
 						// This is the current viewing category...
 						$str  .= $name_str;
 					} else {

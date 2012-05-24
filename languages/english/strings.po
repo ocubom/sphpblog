@@ -644,6 +644,7 @@ msgstr "Please enter your Username and Password below"
 msgid ""
 "Do not worry!  Your draft has been saved, login to restore your last draft."
 msgstr ""
+"Do not worry!  Your draft has been saved, login to restore your last draft."
 
 msgid "login_success"
 msgstr "<h2>Success!</h2>You are now logged in. Happy blogging!<p />"
@@ -659,7 +660,7 @@ msgstr ""
 "administrator for some reason.<p />"
 
 msgid "Restore your last draft."
-msgstr ""
+msgstr "Restore your last draft."
 
 msgid "upgrade"
 msgstr "<h2>Upgrade</h2>"
