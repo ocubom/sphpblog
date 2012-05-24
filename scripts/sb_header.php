@@ -15,7 +15,8 @@
         // TODO grab more specific title from page
 	if (empty($title)) {
 		$title = $blog_config->getTag('BLOG_TITLE');
-		$entry_title = get_entry_title(substr($_GET['entry'], 5, 2), substr($_GET['entry'], 7, 2), $_GET['entry']);
+                if (!empty($_GET['entry']))
+                        $entry_title = get_entry_title(substr($_GET['entry'], 5, 2), substr($_GET['entry'], 7, 2), $_GET['entry']);
 		if (!empty($page_title)) {
 			$title .= " - " . $page_title;
 		}
@@ -86,7 +87,8 @@
 
 <?php
 	echo($blog_config->getTag('TRACKING_CODE'));
-	echo $head;
+        if (!empty($head))
+            echo $head;
 
 ?>
 </head>

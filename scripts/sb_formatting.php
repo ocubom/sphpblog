@@ -503,6 +503,7 @@
 					$attrib_height = NULL;
 					$attrib_popup = NULL;
 					$attrib_float = NULL;
+					$attrib_alt = NULL;
 
 					if ( is_array( $attrib_array ) ) {
 						$str_url = $attrib_array[0];
@@ -522,6 +523,9 @@
 										break;
 									case 'float';
 										$attrib_float = $temp_arr[1];
+										break;
+									case 'alt';
+										$attrib_alt = $temp_arr[1];
 										break;
 								}
 							}
