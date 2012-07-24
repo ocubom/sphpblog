@@ -6,6 +6,13 @@ Version History
 
 ---------------
 
+0.8.1
+
+===============
+
+- fix for proper add.php rendering
+- other minor bug fixes
+
 0.8.0
 
 ===============
