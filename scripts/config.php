@@ -63,8 +63,8 @@ print "<br>";
         // Last version and update information.
         //
         global $sb_info;
-        $sb_info[ 'version' ] = "0.8.0";
-        $sb_info[ 'last_update' ] = '04/13/12';
+        $sb_info[ 'version' ] = "0.8.1";
+        $sb_info[ 'last_update' ] = '07/23/12';
 
         //Remove timeout limit
         //@set_time_limit( 0 );
