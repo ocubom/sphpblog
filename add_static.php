@@ -36,7 +36,7 @@
         	$ok = write_static_entry( sb_stripslashes( $_POST[ 'blog_subject' ] ), sb_stripslashes( $_POST[ 'blog_text' ] ), $_POST[ 'entry' ], $filename, $_POST[ 'check_visiblemenu' ] );
 
 	        if ( $ok === true ) {
-        	        redirect_to_url( 'index.php' );
+        	        redirect_to_url( 'static.php?page=' . $filename );
 	        } else {
                         echo( _sb('add_static_error') . $ok . '<p />' );
                 }
