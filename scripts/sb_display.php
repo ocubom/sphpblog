@@ -466,7 +466,7 @@
         // Add view counter
         if ( $view_counter > 0 ) {
           if ( $view_counter == 1) {
-            $entry_array[ 'comment' ][ 'count' ] = _sb('sb_view_counter_pre') . $view_counter . _('sb_view_counter_post');
+            $entry_array[ 'comment' ][ 'count' ] = _sb('sb_view_counter_pre') . $view_counter . _sb('sb_view_counter_post');
           } else {
             $entry_array[ 'comment' ][ 'count' ] = _sb('sb_view_counter_plural_pre') . $view_counter . _sb('sb_view_counter_plural_post');
           }
