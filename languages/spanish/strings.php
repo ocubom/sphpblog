@@ -4,7 +4,7 @@
 	//  Retocado por Cristian Olate, cristian <dot> olate <at> gmail <dot> com (0.4.8)
     //  Retocado por Montse Treviño mtrevim <at> gmail <dot> com  (0.5.1) [2008]
 	
-	function sb_language( $page ="") {
+	function sb_language() {
 		global $lang_string;
 		
 		// Language: Spanish

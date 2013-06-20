@@ -1,10 +1,10 @@
 <?php
 
-function sb_import_lang($name, $page="") {
+function sb_import_lang($name) {
   include("$name/strings.php");
-  // call old init function here
+  // call init function to set locale here
   
-  //sb_language( $page );
+  sb_language();
 
   global $lang_string;
 
