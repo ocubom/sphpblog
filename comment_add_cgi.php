@@ -187,7 +187,9 @@
 		}
 		
 		// Delete entry capcha session
-		@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
+		// session_uregister deprecated
+		//@session_unregister( 'capcha_' . $_GET[ 'entry' ] );
+		unset($_SESSION['capcha_' . $_GET[ 'entry' ]]);
 		
 		if ( $result === true ) {
 			// comment was successfully written!
