@@ -17,24 +17,26 @@
     ini_set('url_rewriter.tags','');
     ini_set('session.use_trans_sid', false);
     // the session was expiring before the cookie, this way they are in sync
-    ini_set('session.gc_maxlifetime', 60*60*24*5);
+    ini_set('session.gc_maxlifetime', LOGOUT_TIME);
 
     // Init the session.
-    session_set_cookie_params(60*60*24*5);
+    session_set_cookie_params(LOGOUT_TIME);
 
     // Check if the user has a client-side cookie.
-    if ( isset( $_COOKIE[ 'sid' ] ) ) {
-      session_id($_COOKIE[ 'sid' ]);
-    }
+    //if ( isset( $_COOKIE[ 'sid' ] ) ) {
+      //session_id($_COOKIE[ 'sid' ]);
+    //}
 
     // Start the session.
     session_start ();
     // regenerate the sesssion id, especially because this is probably unencrypted
-    session_regenerate_id();
+//print_r($_SESSION);
+    session_regenerate_id(true);
     
     // TODO fix IP address lockdown, doesn't work with load balancing proxy
 
     // Check if user is logged in.
+//print_r($_SESSION);
     if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
       if ( $_SESSION[ 'site_path' ] === BASEURL ) {
 //        if ( $_SESSION[ 'ip' ] === getIP() ) {
@@ -83,12 +85,12 @@
     ini_set('session.use_trans_sid', false);
     
     // Init the session.
-    session_set_cookie_params(60*60*24*5);
+    session_set_cookie_params(LOGOUT_TIME);
     
     // Check if the user has a client-side cookie.
-    if ( isset( $_COOKIE[ 'sid' ] ) ) {
-      session_id($_COOKIE[ 'sid' ]);
-    }
+    //if ( isset( $_COOKIE[ 'sid' ] ) ) {
+    //  session_id($_COOKIE[ 'sid' ]);
+    //}
     
     // Start the session.
     session_start();
@@ -97,9 +99,9 @@
     $was_logged_in = 0;
     if ( isset( $_SESSION[ 'logged_in' ] ) && $_SESSION[ 'logged_in' ] == 'yes' ) {
       if ( $_SESSION[ 'site_path' ] === BASEURL ) {
-        if ( $_SESSION[ 'ip' ] === getIP() ) {
+        //if ( $_SESSION[ 'ip' ] === getIP() ) {
           $was_logged_in = 1;
-        }
+        //}
       }
     }
         
@@ -135,10 +137,10 @@
           ini_set('url_rewriter.tags','');
           ini_set('session.use_trans_sid', false);
           // the session was expiring before the cookie, this way they are in sync
-          ini_set('session.session.gc_maxlifetime', 60*60*24*5);
+          ini_set('session.session.gc_maxlifetime', LOGOUT_TIME);
 
-          session_set_cookie_params(60*60*24*5);
-          @session_start();
+          session_set_cookie_params(LOGOUT_TIME);
+          session_start();
 
           // Support for PHP >= 4.1.0
           $_SESSION[ 'logged_in' ] = 'yes';
@@ -147,7 +149,7 @@
           $_SESSION[ 'ip' ] = getIP();
           $_SESSION[ 'user' ] = 'Administrator';
           $_SESSION[ 'username' ] = 'admin';
-          setcookie('sid',session_id(),time()+60*60*24*5);
+          //setcookie('sid',session_id(),time()+LOGOUT_TIME);
           
           // Clear variables (why not...)
           $username = null;
@@ -243,10 +245,10 @@
           ini_set('url_rewriter.tags','');
           ini_set('session.use_trans_sid', false);
           // the session was expiring before the cookie, this way they are in sync
-          ini_set('session.session.gc_maxlifetime', 60*60*24*5);
+          ini_set('session.session.gc_maxlifetime', LOGOUT_TIME);
 
           session_set_cookie_params(60*60*24*7);
-          @session_start();
+          session_start();
 
           // Support for PHP >= 4.1.0
           $_SESSION[ 'logged_in' ] = 'yes';
@@ -255,7 +257,7 @@
           $_SESSION[ 'ip' ] = getIP();
           $_SESSION[ 'user' ] = $tmp[0];
           $_SESSION[ 'username' ] = $tmp[1];
-          setcookie('sid',session_id(),time()+60*60*24*7);
+          //setcookie('sid',session_id(),time()+60*60*24*7);
           return ( true );
         } else {
           return ( false );

@@ -42,7 +42,8 @@ print "<br>";
 */
 	define('BASEURL', getbaseurl(ROOT_DIR, $_SERVER["DOCUMENT_ROOT"]));
 
-	define('CUSTOM_HEADER', false);
+	define('CUSTOM_HEADER', true);
+	define('LOGOUT_TIME', 3600*24*7);
 	// Variables
 	// define('USE_MOD_REWRITE', false);
 
