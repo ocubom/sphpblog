@@ -363,7 +363,6 @@
     global $user_colors, $blog_config, $blog_theme, $theme_vars;
 
     ?>
-    <body>
       <div id='page'>
             <div id="header">
 
@@ -383,7 +382,6 @@
               <div id="footer"><p><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></p></div>
         </div>
       </div>
-    </body>
     <?php
     // End Page Layout HTML
   }

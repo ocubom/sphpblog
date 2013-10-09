@@ -42,6 +42,7 @@ print "<br>";
 */
 	define('BASEURL', getbaseurl(ROOT_DIR, $_SERVER["DOCUMENT_ROOT"]));
 
+	define('CUSTOM_HEADER', false);
 	// Variables
 	// define('USE_MOD_REWRITE', false);
 

@@ -578,7 +578,6 @@
 
     // Begin Page Layout HTML
     ?>
-    <body>
       <div id="page">
             <div id="header">
             <?php
@@ -597,7 +596,6 @@
                     <div id="footer"><p><?php echo($blog_config->getTag('BLOG_FOOTER')); ?> - <?php echo( page_generated_in() ); ?></p></div>
             </div>
       </div>
-    </body>
     <?php
     // End Page Layout HTML
   }

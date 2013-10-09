@@ -10,6 +10,10 @@ if (function_exists('page_content')) {
         }
 }
 
+if (CUSTOM_HEADER) {
+	// put custom header code here
+	@include_once("$webroot/include/footer.php");
+} else {
+	print "</body></html>";
+}
 ?>
-
-</html>
