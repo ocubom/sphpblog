@@ -464,7 +464,7 @@
         $entry_array[ 'comment' ][ 'comment_count' ] = $comment_count;
 
         // Add view counter
-        if ( $view_counter > 0 ) {
+        if ( $view_counter > 0 AND intval($blog_config->getTag('BLOG_COUNT_VIEWS'))) {
           if ( $view_counter == 1) {
             $entry_array[ 'comment' ][ 'count' ] = _sb('sb_view_counter_pre') . $view_counter . _sb('sb_view_counter_post');
           } else {

@@ -982,6 +982,9 @@ msgstr "Anti-Spam Images (GD library only) / Anti-Spam Text Field"
 msgid "blog_enable_cache"
 msgstr "Enable Blog Entry Cache (may provide speed increase on some servers)"
 
+msgid "blog_count_views"
+msgstr "Enable counting of views for each entry and display on main page"
+
 msgid "blog_send_pings"
 msgstr "Send weblog &quot;pings&quot;"
 

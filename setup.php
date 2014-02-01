@@ -145,7 +145,7 @@
 				<input type="checkbox" id="blog_enable_capcha" name="blog_enable_capcha"<?php if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_enable_capcha') ); ?><br />
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="blog_enable_capcha_image" name="blog_enable_capcha_image"<?php if ( $blog_config->getTag('BLOG_ENABLE_CAPCHA_IMAGE') == 1 ) { echo ( ' checked' ); } if ( function_exists( 'imagecreate' )==false ) { echo(' disabled'); }?>> <?php echo( _sb('blog_enable_capcha_image') ); ?><br />
 				<input type="checkbox" id="blog_enable_cache" name="blog_enable_cache"<?php if ( $blog_config->getTag('BLOG_ENABLE_CACHE') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_enable_cache') ); ?><br />
-				<input type="checkbox" id="blog_send_pings" name="blog_send_pings"<?php if ( $blog_config->getTag('BLOG_SEND_PINGS') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_send_pings') ); ?><p />
+				<input type="checkbox" id="blog_count_views" name="blog_count_views"<?php if ( $blog_config->getTag('BLOG_COUNT_VIEWS') == 1 ) { echo ( ' checked' ); } ?>> <?php echo( _sb('blog_count_views') ); ?><p />
 				<label for="blog_ping_urls"><?php echo( _sb('blog_ping_urls') ); ?></label><br />
 				<input type="text" name="blog_ping_urls" value="<?php echo($blog_config->getTag('BLOG_PING_URLS')); ?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] - 20 ); ?>px;"><br />
 				<br />

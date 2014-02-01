@@ -49,6 +49,7 @@
 			array_push($this->tags, 'BLOG_TRACKBACK_ENABLED');
 			array_push($this->tags, 'BLOG_TRACKBACK_AUTO_DISCOVERY');
 			array_push($this->tags, 'BLOG_ENABLE_CACHE');
+			array_push($this->tags, 'BLOG_COUNT_VIEWS');
 			array_push($this->tags, 'BLOG_ENABLE_CALENDAR');
 			array_push($this->tags, 'BLOG_CALENDAR_START');
 			array_push($this->tags, 'BLOG_ENABLE_TITLE');
@@ -121,6 +122,7 @@
 			$this->setTag('BLOG_TRACKBACK_ENABLED', 0);
 			$this->setTag('BLOG_TRACKBACK_AUTO_DISCOVERY', 0);
 			$this->setTag('BLOG_ENABLE_CACHE', 1);
+			$this->setTag('BLOG_COUNT_VIEWS', 1);
 			$this->setTag('BLOG_ENABLE_CALENDAR', 1);
 			$this->setTag('BLOG_CALENDAR_START', 'sunday');
 			$this->setTag('BLOG_ENABLE_TITLE', 1);

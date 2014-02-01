@@ -93,7 +93,9 @@
       if (!file_exists($dir)) {
         @mkdir($dir, BLOG_MASK, TRUE);
       }
-      sb_write_file( $dir . '../view_counter.txt' , $view_counter );
+      if (intval($blog_config->getTag('BLOG_COUNT_VIEWS'))) {
+        sb_write_file( $dir . '../view_counter.txt' , $view_counter );
+      }
     }
 
     $contents = array();

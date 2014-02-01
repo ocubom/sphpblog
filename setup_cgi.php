@@ -82,6 +82,7 @@
 	$new_config->setTag('BLOG_TRACKBACK_ENABLED', 	$_POST['blog_trackback_enabled'] == 'on');
 	$new_config->setTag('BLOG_TRACKBACK_AUTO_DISCOVERY', $_POST['blog_trackback_auto_discovery'] == 'on');
 	$new_config->setTag('BLOG_ENABLE_CACHE', 		$_POST['blog_enable_cache'] == 'on');
+	$new_config->setTag('BLOG_COUNT_VIEWS', 		$_POST['blog_count_views'] == 'on');
 	$new_config->setTag('BLOG_ENABLE_CALENDAR', 	$_POST['blog_enable_calendar'] == 'on');
 	$new_config->setTag('BLOG_CALENDAR_START', 		$_POST['blog_calendar_start']);
 	$new_config->setTag('BLOG_ENABLE_TITLE', 		$_POST['blog_enable_title'] == 'on');
