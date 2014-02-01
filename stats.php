@@ -33,14 +33,14 @@
 		}
 	}
 
-	function sort_trackbacks ( $a, $b ) {
+/*	function sort_trackbacks ( $a, $b ) {
 		if ( $a[ 'trackbacks' ] < $b[ 'trackbacks' ] ) {
 			return( 1 );
 		} else {
 			return( -1 );
 		}
 	}
-	
+*/	
 	function sort_votes ( $a, $b ) {
 		if ( $a[ 'votes' ] < $b[ 'votes' ] ) {
 			return( 1 );
@@ -69,11 +69,11 @@
 		$total_number_comments = 0;
 		$total_number_statics = 0;
 		$total_number_votes = 0;
-		$total_number_trackbacks = 0;
+//		$total_number_trackbacks = 0;
 		$total_bytes_entries = 0;
 		$total_bytes_comments = 0;
 		$total_bytes_statics = 0;
-		$total_bytes_trackbacks = 0;
+//		$total_bytes_trackbacks = 0;
 		$total_bytes_votes = 0;
 		$total_words_entries = 0;
 		$total_words_comments = 0;
@@ -122,8 +122,8 @@
 			unset( $comment_file_array );
 			
 			// Count trackbacks
-			$entries[ $i ][ 'trackbacks' ]=0;
-			unset( $trackback_file_array );
+			//$entries[ $i ][ 'trackbacks' ]=0;
+			//unset( $trackback_file_array );
 		}
 		unset( $entry_file_array );
 		
@@ -140,7 +140,7 @@
 		$entry_array[ 'subject' ] = _sb('stats_title') . ' - ' . _sb('general');
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('entry_info'), number_format( $total_number_entries, 0 ), number_format( $total_words_entries, 0 ), number_format( $total_bytes_entries, 0 ) ) . '.<br />';
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('comment_info'), number_format( $total_number_comments, 0 ), number_format( $total_words_comments, 0 ), number_format( $total_bytes_comments, 0 ) ) . '.<br />';
-		$entry_array[ 'entry' ]	 .= sprintf( _sb('trackback_info'), number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
+//		$entry_array[ 'entry' ]	 .= sprintf( _sb('trackback_info'), number_format( $total_number_trackbacks, 0 ), number_format( $total_bytes_trackbacks, 0 ) ) . '.<br />';
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('static_info'), number_format( $total_number_statics, 0 ), number_format( $total_words_statics, 0 ), number_format( $total_bytes_statics, 0 ) ) . '.<br />';
 		$entry_array[ 'entry' ]	 .= sprintf( _sb('vote_info'), number_format( $total_number_votes, 0 ), number_format( $total_bytes_votes, 0 ) ) . '.<br />';
 		echo( theme_staticentry( $entry_array ) );		
