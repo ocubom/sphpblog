@@ -67,53 +67,37 @@
 	$new_config->setTag('BLOG_LANGUAGE', 			$_POST['blog_language']);
 	$new_config->setTag('BLOG_ENTRY_ORDER', 		$_POST['blog_entry_order']);
 	$new_config->setTag('BLOG_COMMENT_ORDER', 		$_POST['blog_comment_order']);
-	$new_config->setTag('BLOG_ENABLE_COMMENTS', 	$_POST['blog_enable_comments'] == 'on');
 	$new_config->setTag('BLOG_MAX_ENTRIES', 		$temp_max_entries);
-	$new_config->setTag('BLOG_COMMENTS_POPUP', 		$_POST['blog_comments_popup'] == 'on');
 	$new_config->setTag('COMMENT_TAGS_ALLOWED', 	$comment_tags_allowed);
 	$new_config->setTag('BLOG_EMAIL', 				sb_stripslashes($_POST['blog_email']));
 	$new_config->setTag('BLOG_AVATAR', 				$_POST['blog_avatar']);
-	$new_config->setTag('BLOG_ENABLE_GZIP_TXT', 	$_POST['blog_enable_gzip_txt'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_GZIP_OUTPUT', 	$_POST['blog_enable_gzip_output'] == 'on');
-	$new_config->setTag('BLOG_EMAIL_NOTIFICATION', 	$_POST['blog_email_notification'] == 'on');
-	$new_config->setTag('BLOG_SEND_PINGS', 			$_POST['blog_send_pings'] == 'on');
 	$new_config->setTag('BLOG_PING_URLS', 			sb_stripslashes($_POST['blog_ping_urls']));
-	$new_config->setTag('BLOG_ENABLE_VOTING', 		$_POST['blog_enable_voting'] == 'on');
-	$new_config->setTag('BLOG_TRACKBACK_ENABLED', 	$_POST['blog_trackback_enabled'] == 'on');
-	$new_config->setTag('BLOG_TRACKBACK_AUTO_DISCOVERY', $_POST['blog_trackback_auto_discovery'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_CACHE', 		$_POST['blog_enable_cache'] == 'on');
-	$new_config->setTag('BLOG_COUNT_VIEWS', 		$_POST['blog_count_views'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_CALENDAR', 	$_POST['blog_enable_calendar'] == 'on');
 	$new_config->setTag('BLOG_CALENDAR_START', 		$_POST['blog_calendar_start']);
-	$new_config->setTag('BLOG_ENABLE_TITLE', 		$_POST['blog_enable_title'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_PERMALINK', 	$_POST['blog_enable_permalink'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_STATS', 		$_POST['blog_enable_stats'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_LASTCOMMENTS', $_POST['blog_enable_lastcomments'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_LASTENTRIES', 	$_POST['blog_enable_lastentries'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_CAPCHA', 		$_POST['blog_enable_capcha'] == 'on');
 	$new_config->setTag('BLOG_COMMENT_DAYS_EXPIRY', $temp_blog_comment_days_expiry);
-	$new_config->setTag('BLOG_ENABLE_CAPCHA_IMAGE', $_POST['blog_enable_capcha_image'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_ARCHIVES', 	$_POST['blog_enable_archives'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_LOGIN', 		$_POST['blog_enable_login'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_COUNTER', 		$_POST['blog_enable_counter'] == 'on');
-	$new_config->setTag('BLOG_FOOTER_COUNTER', 		$_POST['blog_footer_counter'] == 'on');
-	$new_config->setTag('BLOG_COUNTER_HOURS', 		$temp_blog_counter_hours);
-	$new_config->setTag('BLOG_COMMENTS_MODERATION', $_POST['blog_comments_moderation'] == 'on');
-	$new_config->setTag('BLOG_SEARCH_TOP', 			$_POST['blog_search_top'] == 'on');
-	$new_config->setTag('BLOG_ENABLE_STATIC_BLOCK', $_POST['blog_enable_static_block'] == 'on');
 	$new_config->setTag('STATIC_BLOCK_OPTIONS', 	$_POST['static_block_options']);
 	$new_config->setTag('STATIC_BLOCK_BORDER', 		$_POST['static_block_border']);
 	$new_config->setTag('BLOG_HEADER_GRAPHIC', 		$_POST['blog_header_graphic']);
-	$new_config->setTag('BLOG_ENABLE_START_CATEGORY', $_POST['blog_enable_start_category'] == 'on');
+	$new_config->setTag('BLOG_COUNTER_HOURS', 		$temp_blog_counter_hours);
 	$new_config->setTag('BLOG_ENABLE_START_CATEGORY_SELECTION', $_POST['blog_enable_start_category_selection']);
-	$new_config->setTag('BLOG_ENABLE_PRINT', 		$_POST['blog_enable_print'] == 'on');
 	$new_config->setTag('HTTPS', $_POST['https']);
 	$new_config->setTag('HTTPS_URL', $_POST['https_url']);
-	$new_config->setTag('USE_EMOTICONS', 		$_POST['use_emoticons'] == 'on');
-	$new_config->setTag('USE_JS_EDITOR', 		$_POST['use_js_editor'] == 'on');
 	$new_config->setTag('BACK_YEARS', 		$back_years);
 	$new_config->setTag('RSS_MAX_ENTRIES', 		$rss_max_entries);
 	$new_config->setTag('STATIC_HOME', 		sb_stripslashes($_POST['static_home']));
+
+	// checkboxes
+	$checkboxes = array('BLOG_COMMENTS_POPUP','BLOG_ENABLE_COMMENTS','BLOG_ENABLE_GZIP_TXT',
+		'BLOG_ENABLE_GZIP_OUTPUT','BLOG_EMAIL_NOTIFICATION','BLOG_SEND_PINGS','BLOG_ENABLE_VOTING',
+		'BLOG_TRACKBACK_ENABLED','BLOG_TRACKBACK_AUTO_DISCOVERY','BLOG_ENABLE_CACHE',
+		'BLOG_COUNT_VIEWS','BLOG_ENABLE_CALENDAR','BLOG_ENABLE_TITLE','BLOG_ENABLE_PERMALINK',
+		'BLOG_ENABLE_STATS','BLOG_ENABLE_LASTCOMMENTS','BLOG_ENABLE_LASTENTRIES','BLOG_ENABLE_CAPCHA',
+		'BLOG_ENABLE_CAPCHA_IMAGE','BLOG_ENABLE_ARCHIVES','BLOG_ENABLE_LOGIN','BLOG_ENABLE_COUNTER',
+		'BLOG_FOOTER_COUNTER','BLOG_COMMENTS_MODERATION','BLOG_SEARCH_TOP','BLOG_ENABLE_STATIC_BLOCK',
+		'BLOG_ENABLE_START_CATEGORY','BLOG_ENABLE_PRINT','USE_EMOTICONS','USE_JS_EDITOR'
+	);
+	foreach ($checkboxes as $box) {
+		$new_config->setTag(strtoupper($box), $_POST[strtolower($box)] == 'on');
+	}
 
 	// $new_config->setTag('BANNED_ADDRESS_LIST','');
 	// $new_config->setTag('BANNED_WORD_LIST','');
