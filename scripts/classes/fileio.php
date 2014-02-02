@@ -50,7 +50,12 @@
 			}
 			
 			if ( file_exists($filename) ) {
-					$str = file_get_contents( $filename );
+					//$str = file_get_contents( $filename );
+					$fp = fopen($filename, "r");
+					flock($fp,LOCK_SH);
+					$str = stream_get_contents($fp);
+					flock($fp, LOCK_UN);
+					fclose($fp);
 //print "reading from: ". substr($filename, 0, strrpos($filename, '.'));
 					// this is to transition off of .gz stored files, TODO it can be removed in a long time.
 					if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
@@ -97,7 +102,13 @@
 			@umask(0);
 			
 			$length = strlen($str);
-			$bytes_written = @file_put_contents( $filename, $str );
+			//$bytes_written = @file_put_contents( $filename, $str );
+			$fp = fopen($filename, "w");
+			flock($fp,LOCK_EX);
+			$bytes_written = fwrite($fp, $str);
+			fflush($fp);
+			flock($fp, LOCK_UN);
+			fclose($fp);
 			
 			if ( $length == $bytes_written ) {
 				@chmod($filename, BLOG_MASK);
