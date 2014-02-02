@@ -5,7 +5,9 @@
         // INITIALIZE PAGE
         // ---------------
         $CACHE = false;
-	@include_once("../include/site.php");
+	if (CUSTOM_HEADER) {
+		@include_once("../include/site.php");
+	}
         require_once('sb_functions.php');
 
                 if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
