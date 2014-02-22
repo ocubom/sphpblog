@@ -3,19 +3,10 @@
 
 	// Simple PHP Blog is released under the GNU Public License.
 	// Error reporting should be set to 0 in production environments.
-	error_reporting( E_ALL ^ E_NOTICE );
+	//error_reporting( E_ALL ^ E_NOTICE );
 	// use this for production
 	error_reporting( 0 );
-
 	require_once("config.php");	
-        /*require_once(CLASSES_DIR.'fileio.php');
-        require_once(CLASSES_DIR.'arrays.php');
-        require_once(CLASSES_DIR.'template.php');
-        require_once(CLASSES_DIR.'html.php');
-        require_once(CLASSES_DIR.'container.php');
-        require_once(CLASSES_DIR.'configuration.php');
-        require_once(CLASSES_DIR.'user.php');
-        require_once(CLASSES_DIR.'group.php');*/
 
        // Read configuration file
         require_once('sb_config.php');
@@ -55,7 +46,6 @@
         require_once('sb_entry.php');
         require_once('sb_image.php');
         require_once('sb_display.php');
-        //require_once('sb_color.php'); // These functions don't get used
         require_once('sb_feed.php');
         require_once('sb_categories.php');
         require_once('sb_texteditor.php');

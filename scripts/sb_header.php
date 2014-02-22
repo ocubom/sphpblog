@@ -4,11 +4,13 @@
         // ---------------
         // INITIALIZE PAGE
         // ---------------
-        $CACHE = false;
-	if (CUSTOM_HEADER) {
-		@include_once("../include/site.php");
-	}
+
         require_once('sb_functions.php');
+
+	if (CUSTOM_HEADER) {
+	        $CACHE = false;
+		include_once("../include/site.php");
+	}
 
                 if ( ( dirname($_SERVER['PHP_SELF']) == '\\' || dirname($_SERVER['PHP_SELF']) == '/' ) ) {
                         $uri = sb_curPageURL().'/index.php'; // Blog is root level
@@ -39,7 +41,7 @@
 
 ob_start();
 
- ?>
+?>
         <!-- Meta Data -->
         <meta name="generator" content="Simple PHP Blog" />
         <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="<?php print BASEURL; ?>rss.php<?php echo $cat ?>" />
@@ -89,7 +91,7 @@ ob_start();
 
 if (CUSTOM_HEADER) {
 // put custom header code here
-	@include_once("../include/header.php");
+	include_once("../include/header.php");
 
 } else {
 	header("Content-Type: " . "text/html; charset=". $GLOBALS['lang_string']['html_charset'] ."");
@@ -113,7 +115,5 @@ if (CUSTOM_HEADER) {
 <?php
 
 }
-
-flush();
 
 ?>

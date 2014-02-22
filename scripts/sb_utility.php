@@ -204,9 +204,8 @@ function sb_host() {
 	// Must be called before any header output.
 	function sb_gzoutput ()
 	{
-		// Contributed by: Javier Gutierrez, guti <at> ya <dot> com
-		//
-	  	if ( ( ini_get( 'zlib.output_compression' ) != '0' ) && ( ini_get('zlib.output_compression' ) != 'On' ) && ( extension_loaded('zlib') ) )
+                $zlibini = ini_get( 'zlib.output_compression' );
+	  	if ( ( empty($zlibini) || $zlibini == 'Off' ) && extension_loaded('zlib') )
 		{
 			ini_set( 'zlib.output_compression_level', 9);
 			ob_start( 'ob_gzhandler' );
@@ -378,6 +377,12 @@ function sb_host() {
 	function assign_rand_value($num)
 	{
 	// accepts 1 - 36
+           if ($num <= 26) {
+               return chr($num+96);
+           } else {
+               return chr($num+21);
+           }
+/*
   switch($num)
   {
     case "1":
@@ -489,7 +494,7 @@ function sb_host() {
      $rand_value = "9";
     break;
   	}
-	return $rand_value;
+	return $rand_value;*/
 	}
 
 	function get_rand_id($length)

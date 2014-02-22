@@ -7,9 +7,7 @@
 	global $logged_in;
 	$logged_in = logged_in( false, true );
 
-$page_title = _sb('login_title');
-
-	require_once('scripts/sb_header.php');
+	$page_title = _sb('login_title');
 	
 	// ---------------
 	// POST PROCESSING
@@ -25,6 +23,7 @@ $page_title = _sb('login_title');
 		    }
 		}
 	
+	require_once('scripts/sb_header.php');
 	// ------------
 	// PAGE CONTENT
 	// ------------
