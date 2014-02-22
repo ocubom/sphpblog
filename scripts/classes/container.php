@@ -183,7 +183,6 @@
 		* @return		string
 		*/
 		function getTag($tag) {
-			
 			// If the data is cached then load the real data.
 			if ($this->is_cached_data) {
 				if (in_array($tag,$this->do_not_cache_tags)) {
@@ -196,6 +195,7 @@
 					return($this->data[$tag]);
 				}
 			}
+                        trigger_error("Invalid Tag: $tag");
 			return('');
 		}
 		
