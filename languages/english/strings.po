@@ -1066,7 +1066,7 @@ msgid "cal_monday"
 msgstr "Monday"
 
 msgid "blog_search_top"
-msgstr "Show Search In Entries (instead of in sidebar)"
+msgstr "Show Search In Entries"
 
 msgid "blog_enable_static_block"
 msgstr "Show a defined block as the first entry of blog entries: "

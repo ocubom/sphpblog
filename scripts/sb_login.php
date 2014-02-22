@@ -29,9 +29,9 @@
 
     // Start the session.
     session_start ();
-    // regenerate the sesssion id, especially because this is probably unencrypted
+    // TODO regenerate the sesssion id, especially because this is probably unencrypted
 //print_r($_SESSION);
-    session_regenerate_id(true);
+//    session_regenerate_id(true);
     
     // TODO fix IP address lockdown, doesn't work with load balancing proxy
 
