@@ -108,7 +108,7 @@ function get_license($name, $v="3.0") {
 
     return '
 <!--Creative Commons License--><a rel="license" href="http://creativecommons.org/licenses/' . $name . '/' . $v . '/"><img alt="Creative Commons License" 
-height="31" width="88" src="http://i.creativecommons.org/l/' . $name . '/' . $v . '/88x31.png"/></a><br/>This work is licensed under a <a rel="license" 
+height="31" width="88" src="//i.creativecommons.org/l/' . $name . '/' . $v . '/88x31.png"/></a><br/>This work is licensed under a <a rel="license" 
 href="http://creativecommons.org/licenses/' . $name . '/' . $v . '/">Creative Commons ' . $lookup . ' ' . $v . ' License</a>.<!--/Creative Commons License-->
 ';
     
