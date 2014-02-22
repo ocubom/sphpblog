@@ -44,8 +44,8 @@
 				$str  .= '<a href="' . BASEURL . 'zip.php?dirs=images">' . _sb('image_backup') . '</a><br />';
 				$str  .= '<hr />';
 				$str  .= '<a href="' . BASEURL . 'moderation.php">' . _sb('menu_moderation') . '</a><br />';
-				if ( $blog_config->getTag( 'blog_comments_moderation' ) ) {
-					$str  .= '<a href="' . BASEURL . 'comments_moderation.php">' . _('menu_commentmoderation') . ' (' . get_unmodded_count(1) . ')</a><br />';
+				if ( $blog_config->getTag( 'BLOG_COMMENTS_MODERATION' ) ) {
+					$str  .= '<a href="' . BASEURL . 'comments_moderation.php">' . _sb('menu_commentmoderation') . ' (' . get_unmodded_count(1) . ')</a><br />';
 				}
 			}
 			
