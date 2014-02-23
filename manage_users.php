@@ -76,12 +76,12 @@
 				// we have to compare as required (if we blind post - it will encrypt the crypted pass ;-)
 				$password = $_GET[ 'oldpasshash' ];
 				if ( $password != $_POST[ 'sPassword' ] ) {
-					$password = crypt( $_GET[ 'user' ], $_POST[ 'sPassword' ] );
+					$password = crypt( $_POST[ 'sPassword' ] );
 				}
 
 				$array = array($_POST[ 'sFullname' ], $_GET[ 'user' ], $password, $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
 			} else {
-				$array = array($_POST[ 'sFullname' ], $_POST[ 'sUsername' ], crypt( $_POST[ 'sUsername' ], $_POST[ 'sPassword' ] ), $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
+				$array = array($_POST[ 'sFullname' ], $_POST[ 'sUsername' ], crypt( $_POST[ 'sPassword' ] ), $_POST[ 'sAvatar' ], $active, $_POST[ 'sEmail' ], $modcomments, $deleteentries, $editany, $blankfield);
 			}
 			$new_user_list[] = $array;
 			write_users($new_user_list);

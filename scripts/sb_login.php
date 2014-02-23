@@ -128,7 +128,7 @@
     } else {
       // Verify Username
       if ( crypt( $user, $username ) === $username ) {
-        if ( crypt( $pass, $password ) === $password ) {
+        if ( password_verify($pass, $password ) ) {
           // Start Session and Set Cookie
           session_unset();
           session_destroy();
@@ -214,13 +214,13 @@
   // The rest of this is used for the non-Admin users
   // Users that may only create blog entries and moderate
 
-  function encrypt_password ( $pass ) {
+//  function encrypt_password ( $pass ) {
     // Generate and store password hash and log the user in.
     //
-    $mypasswd = $pass;
-    $hashed = crypt($mypasswd);
-    return ( $mypasswd );
-  }
+ //   $mypasswd = $pass;
+ //   $hashed = crypt($mypasswd);
+ //   return ( $mypasswd );
+ // }
   
   function check_secondary_password ( $user, $pass ) {
     // Check password against hashed password file
@@ -236,8 +236,7 @@
         }
 
         // OK, we've found the right secondary user - check their password
-        $chkpass = crypt($user, $pass);
-        if ($tmp[2] === $chkpass) {
+        if (password_verify($pass, $tmp[2])) {
           session_unset();
           session_destroy();
           $_SESSION = array();
@@ -265,4 +264,12 @@
       }
     }
   }
+
+// we can remove this code once everyting is on PHP 5.5 or newer
+if (!function_exists('password_verify')) {
+  function password_verify($password, $hash) {
+    return crypt( $password, $hash ) === $hash;
+  }
+}
+
 ?>

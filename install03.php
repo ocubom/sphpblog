@@ -26,25 +26,8 @@
 		echo( _sb('install03_instructions') . '<p />' );
 		
 		crypto_check();
-		echo('<br />');
-	
-		$hashtest = crypt('test');
-		if ( strlen( $hashtest ) <= 13 ) {
-			echo( _sb('using_standard') );
-		} else if ( strlen( $hashtest ) <= 20 ) {
-			echo( _sb('using_extended') );
-		} else if ( substr( $hashtest, 0, 3 ) == '$1$' ) {
-			echo( _sb('using_MD5') );
-		} else if ( substr( $hashtest, 0, 3 ) == '$2$' || substr( $hashtest, 0, 4 ) == '$2a$' ) {
-			echo( _sb('using_blowfish') );
-		} else if ( substr( $hashtest, 0, 3 ) == '$5$' ) {
-			echo( _sb('using_sha256') );
-		} else if ( substr( $hashtest, 0, 3 ) == '$6$' ) {
-			echo( _sb('using_sha512') );
-		} else {
-			echo( _sb('using_unknown') );
-		}
-		echo( str_replace( '%string', CRYPT_SALT_LENGTH, _sb('salt_length') ) );
+
+		// TODO warn if password is unencrypted
 		?>
 		
 		<hr />
