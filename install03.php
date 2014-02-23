@@ -25,11 +25,7 @@
 		
 		echo( _sb('install03_instructions') . '<p />' );
 		
-		echo( _sb('supported'). '<br />');
-		echo( _sb('standard') . ( CRYPT_STD_DES == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
-		echo( _sb('extended') . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
-		echo( _sb('MD5') . ( CRYPT_MD5 == 1 ?'<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
-		echo( _sb('blowfish') . ( CRYPT_BLOWFISH == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+		crypto_check();
 		echo('<br />');
 	
 		$hashtest = crypt('test');
@@ -41,6 +37,10 @@
 			echo( _sb('using_MD5') );
 		} else if ( substr( $hashtest, 0, 3 ) == '$2$' || substr( $hashtest, 0, 4 ) == '$2a$' ) {
 			echo( _sb('using_blowfish') );
+		} else if ( substr( $hashtest, 0, 3 ) == '$5$' ) {
+			echo( _sb('using_sha256') );
+		} else if ( substr( $hashtest, 0, 3 ) == '$6$' ) {
+			echo( _sb('using_sha512') );
 		} else {
 			echo( _sb('using_unknown') );
 		}

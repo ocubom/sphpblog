@@ -560,6 +560,12 @@ msgstr "MD5 Encryption: "
 msgid "blowfish"
 msgstr "Blowfish Encryption: "
 
+msgid "sha256"
+msgstr "SHA256 Encryption: "
+
+msgid "sha512"
+msgstr "SHA512 Encryption: "
+
 msgid "using_standard"
 msgstr "Using Standard DES Encryption..."
 
@@ -571,6 +577,12 @@ msgstr "Using MD5 Encryption..."
 
 msgid "using_blowfish"
 msgstr "Using Blowfish Encryption..."
+
+msgid "using_sha256"
+msgstr "Using SHA256 Encryption..."
+
+msgid "using_sha512"
+msgstr "Using SHA512 Encryption..."
 
 msgid "using_unknown"
 msgstr "Using Unknown Encryption..."

@@ -27,6 +27,7 @@
 		ob_start();
 		printf("Simple PHP Blog Version %s (%s)", $sb_info[ 'version' ], $sb_info[ 'last_update' ]);
 		phpini_check();
+		crypto_check();
 		print "<a href='phpinfoframe.php'>" . _sb("View PHP Info Full Screen") . "</a>";
 		print "<iframe src='phpinfoframe.php' width='100%' height='600px' />";
 		//phpinfo();

@@ -53,6 +53,16 @@ function return_bytes($val) {
     return $val;
 }
 
+	function crypto_check() {
+                echo( _sb('supported'). '<br />');
+                echo( _sb('standard') . ( CRYPT_STD_DES == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+                echo( _sb('extended') . ( CRYPT_EXT_DES == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+                echo( _sb('MD5') . ( CRYPT_MD5 == 1 ?'<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+                echo( _sb('blowfish') . ( CRYPT_BLOWFISH == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+                echo( _sb('sha256') . ( CRYPT_SHA256 == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+                echo( _sb('sha512') . ( CRYPT_SHA512 == 1 ? '<b style="color: green;">' . _sb('enabled') . '</b>' : '<b style="color: red;">' . _sb('disabled') . '</b>' ) . '<br />');
+	}
+
         function phpini_check() {
                 // TODO translations
                 // TODO more PHP checks here
