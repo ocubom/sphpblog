@@ -89,8 +89,8 @@ function return_bytes($val) {
 		$dir = dirname(dirname(__file__));
 
                 print "<p>PHP Configuration Checks:</p>";
-                if (strnatcmp(phpversion(),'5.3') < 0)
-                        echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
+                if (version_compare(PHP_VERSION,'5.3.0') < 0)
+                        echo "<p>ERROR: Your version of PHP (" . PHP_VERSION . ") is too old.</p>";
                 if (!open_basedir_check($dir . '/' . CONFIG_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONFIG_DIR . ".</p>";
                 if (!open_basedir_check($dir . '/' . CONTENT_DIR))
