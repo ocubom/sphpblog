@@ -89,7 +89,7 @@ function return_bytes($val) {
 		$dir = dirname(dirname(__file__));
 
                 print "<p>PHP Configuration Checks:</p>";
-                if (strnatcmp(phpversion(),'5.0') < 0)
+                if (strnatcmp(phpversion(),'5.3') < 0)
                         echo "<p>ERROR: Your version of PHP (" . phpversion() . ") is too old.</p>";
                 if (!open_basedir_check($dir . '/' . CONFIG_DIR))
                         echo "<p>ERROR: You need to set your php.ini <a href='http://www.php.net/manual/en/ini.core.php#ini.open-basedir'>open_basedir</a> to include $dir/" . CONFIG_DIR . ".</p>";
@@ -107,6 +107,8 @@ function return_bytes($val) {
                         echo "<p>WARNING: Zlib module not present.  This is needed for compressing database files and web pages in transit.</p>";
                 if (!function_exists('getimagesize'))
                         echo "<p>WARNING: GD library module not present.  This is needed for CAPCHA/anti-spam image support.</p>";
+                if (get_magic_quotes_runtime())
+                        echo "<p>NOTICE: magic_quotes_gpc is DEPRECATED in PHP 5.3 and sphpblog. You should turn this off if possible</p>";
                 echo "<p>NOTE: Maximum size for image uploads is " . min(intval(return_bytes(ini_get('upload_max_filesize'))), intval(return_bytes(ini_get('post_max_size'))))/(1024*1024) . " MB.  Adjust upload_max_filesize and post_max_size in php.ini to larger values if you need to upload bigger files.</p>";
         }
 

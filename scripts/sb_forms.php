@@ -58,7 +58,7 @@
 	* @return		string
 	*/
 	function smartstripslashes($str) {
-		if ( get_magic_quotes_gpc() == true ) {
+		if ( get_magic_quotes_gpc() ) {
 			$str = stripslashes($str);
 		}
 		return $str;
@@ -74,7 +74,7 @@
 	* @return		string
 	*/
 	function smartaddslashes($str) {
-		if ( get_magic_quotes_gpc() == false ) {
+		if ( !get_magic_quotes_gpc() ) {
 			$str = addslashes( $str );
 		}
 		return $str;
