@@ -28,7 +28,7 @@
 	// Extra Javascript
 	ob_start();
 	print sb_editor_js('commment_text');
-	$head .= ob_get_clean();
+	$header .= ob_get_clean();
 
 	// ---------------
 	// POST PROCESSING

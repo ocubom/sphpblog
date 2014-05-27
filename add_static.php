@@ -20,7 +20,7 @@
         reset_post();
 
 	$page_title = _sb('add_static_title');
-        $head .= sb_editor_js('blog_text');
+        $header .= sb_editor_js('blog_text');
 	
 	// ---------------
 	// POST PROCESSING

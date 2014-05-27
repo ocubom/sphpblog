@@ -11,7 +11,7 @@
 	$page_title = _sb('logout_title');
         // Extra Meta Data
         if ($result==1) {
-                $head .= '<meta http-equiv="refresh" content="5; URL=index.php" />';
+                $header .= '<meta http-equiv="refresh" content="5; URL=index.php" />';
         }
 
 	require_once('scripts/sb_header.php');

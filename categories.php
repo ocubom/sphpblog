@@ -99,7 +99,7 @@
 		//-->
 	</script>
 <?php
-	$head .= ob_get_clean();
+	$header .= ob_get_clean();
 	$page_title = _sb('categories_title');
 	
 	// ---------------

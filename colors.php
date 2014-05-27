@@ -48,7 +48,7 @@
 	// -->
 </script>
 <?php
-	$head .= ob_get_clean();
+	$header .= ob_get_clean();
 	
 	// Page Title
 	$page_title = _sb('colors_title');

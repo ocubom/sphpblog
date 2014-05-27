@@ -6,7 +6,7 @@
 	global $logged_in;
 	$logged_in = logged_in( true, true );
 
-	$head .= "<script type=\"text/javascript\" src=" . BASEURL . "scripts/sb_options.js\"></script>";
+	$header .= "<script type=\"text/javascript\" src=" . BASEURL . "scripts/sb_options.js\"></script>";
 	$page_title = _sb('options_title');
 	require_once('scripts/sb_header.php');
 	
