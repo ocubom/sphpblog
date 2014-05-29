@@ -3,7 +3,7 @@ Simple PHP Blog:
 
 Upgrading
 ---------
-There are two recommened ways to upgrade.
+There are two recommended ways to upgrade.
 
 Note
 ----
