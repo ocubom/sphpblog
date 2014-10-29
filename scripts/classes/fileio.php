@@ -61,8 +61,8 @@
 					if ( strtolower( strrchr( $filename, '.' ) ) == '.gz' && extension_loaded( 'zlib' ) ) {
 						$str = gzinflate( substr( $str, 10 ) );
 						// write out txt here, delete .gz
-						if ($this->write_file(substr($filename, 0, strrpos($filename, '.')) . ".txt", $str) !== FALSE) {
-						  $this->delete_file($filename);
+						if (fileio::write_file(substr($filename, 0, strrpos($filename, '.')) . ".txt", $str) !== FALSE) {
+						  fileio::delete_file($filename);
                                                 }
 					}
 					
